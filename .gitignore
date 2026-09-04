@@ -1,0 +1,21 @@
+# --- Android / IntelliJ ---
+.gradle/
+/local.properties
+/.idea/
+/.kotlin/
+*.iml
+.DS_Store
+
+# --- Build Artifacts ---
+build/
+app/build/
+*.apk
+*.aab
+
+# --- Internal / Private files ---
+INTERNAL_README.md
+
+# --- Test Assets ---
+# Excluding the copy in androidTest/assets to avoid duplication
+# as the source exists in the root testdata/ directory.
+app/src/androidTest/assets/

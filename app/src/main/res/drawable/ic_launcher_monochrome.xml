@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="108dp"
+    android:height="108dp"
+    android:viewportWidth="1024"
+    android:viewportHeight="1024">
+    <group
+        android:pivotX="512"
+        android:pivotY="512"
+        android:scaleX="0.75"
+        android:scaleY="0.75">
+        <!-- Book silhouette -->
+        <path
+            android:fillColor="#000000"
+            android:pathData="M67,346Q267,287 504,343Q740,287 955,350L936,833Q719,785 512,868Q307,786 87,833Z" />
+        <!-- Illustration Frame -->
+        <path
+            android:fillColor="#000000"
+            android:pathData="M540,462a8,8 0,0 1,8 -8h300a8,8 0,0 1,8 8v312a8,8 0,0 1,-8 8h-300a8,8 0,0 1,-8 -8z" />
+        <!-- Sparkles -->
+        <path
+            android:fillColor="#000000"
+            android:pathData="M125,184c18,1 25,-7 26,-25c1,18 8,26 26,27c-18,1 -25,8 -26,26c-1,18 -8,-25 -26,-28Z" />
+        <path
+            android:fillColor="#000000"
+            android:pathData="M806,122c16,1 22,-6 23,-22c1,16 7,23 23,24c-16,1 -22,7 -23,23c-1,16 -7,-22 -23,-25Z" />
+    </group>
+</vector>
