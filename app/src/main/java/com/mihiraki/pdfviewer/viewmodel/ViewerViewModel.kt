@@ -69,7 +69,7 @@ class ViewerViewModel(app: Application) : AndroidViewModel(app) {
         renderJob?.cancel(); renderJob = viewModelScope.launch {
             val settings = _state.value.settings
             val hits = _state.value.searchResults
-            val leftHits = hits.filter { it.pageIndex == target }.flatMap { it.rects }
+            val leftHits = hits.asSequence().filter { it.pageIndex == target }.flatMap { it.rects }.toList()
             
             if (settings.layout == ViewerLayout.SPREAD) {
                 val spreads = SpreadPlanner.plan(source.pageCount, settings.direction, settings.showCover, settings.coverMode)
@@ -77,8 +77,8 @@ class ViewerViewModel(app: Application) : AndroidViewModel(app) {
                 
                 val leftTarget = spread.left
                 val rightTarget = spread.right
-                val leftRects = hits.filter { it.pageIndex == leftTarget }.flatMap { it.rects }
-                val rightRects = hits.filter { it.pageIndex == rightTarget }.flatMap { it.rects }
+                val leftRects = hits.asSequence().filter { it.pageIndex == leftTarget }.flatMap { it.rects }.toList()
+                val rightRects = hits.asSequence().filter { it.pageIndex == rightTarget }.flatMap { it.rects }.toList()
 
                 val left = leftTarget?.let { source.render(it, width / 2, settings.highQuality, settings.sharpness, leftRects) }
                 val right = rightTarget?.let { source.render(it, width / 2, settings.highQuality, settings.sharpness, rightRects) }
@@ -89,7 +89,7 @@ class ViewerViewModel(app: Application) : AndroidViewModel(app) {
             }
         }
     }
-    fun move(delta: Int) = render(_state.value.currentPage + delta * if (_state.value.settings.layout == ViewerLayout.SPREAD) 2 else 1)
+    fun move(delta: Int) = render(_state.value.currentPage + (delta * if (_state.value.settings.layout == ViewerLayout.SPREAD) 2 else 1))
     fun toggleChrome() = _state.update { it.copy(chromeVisible = !it.chromeVisible) }
     fun dismissError() = _state.update { it.copy(errorKey = null) }
     fun search(query: String) = viewModelScope.launch {

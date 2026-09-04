@@ -47,7 +47,7 @@ import com.mihiraki.pdfviewer.viewmodel.ViewerViewModel
                     Image(
                         painter = painterResource(it),
                         contentDescription = tier,
-                        modifier = Modifier.fillMaxWidth().height(120.dp).align(Alignment.CenterHorizontally)
+                        modifier = Modifier.fillMaxWidth().height(120.dp).align(Alignment.CenterHorizontally),
                     )
                 }
             }

@@ -121,9 +121,9 @@ import com.mihiraki.pdfviewer.viewmodel.ViewerViewModel
             Icon(Icons.AutoMirrored.Filled.MenuBook, null, tint = androidx.compose.ui.graphics.Color.White, modifier = Modifier.size(80.dp))
             Spacer(Modifier.height(20.dp)); Button(onClick = { picker.launch(arrayOf("application/pdf")) }, modifier = Modifier.heightIn(min = 48.dp)) { Text(stringResource(R.string.open_pdf)) }
         }
-        if (state.source == null && !state.loading) IconButton(openSettings, Modifier.align(Alignment.TopEnd).padding(top = 36.dp, end = 8.dp).size(48.dp)) { Icon(Icons.Default.Settings, stringResource(R.string.settings), tint = androidx.compose.ui.graphics.Color.White) }
+        if ((state.source == null) && !state.loading) IconButton(openSettings, Modifier.align(Alignment.TopEnd).padding(top = 36.dp, end = 8.dp).size(48.dp)) { Icon(Icons.Default.Settings, stringResource(R.string.settings), tint = androidx.compose.ui.graphics.Color.White) }
         if (state.loading) CircularProgressIndicator(Modifier.align(Alignment.Center))
-        if (state.bitmap != null || state.secondBitmap != null) {
+        if ((state.bitmap != null) || (state.secondBitmap != null)) {
             val direction = state.settings.direction
             ZoomablePage(
                 Modifier.fillMaxSize(),
@@ -164,9 +164,33 @@ import com.mihiraki.pdfviewer.viewmodel.ViewerViewModel
         }
         state.errorKey?.let { key -> Snackbar(Modifier.align(Alignment.BottomCenter), action = { TextButton(onClick = vm::dismissError) { Text(stringResource(R.string.ok)) } }) { Text(errorText(key)) } }
     } }
-    if (state.passwordRequested) AlertDialog(onDismissRequest = {}, title = { Text(stringResource(R.string.password_required)) }, text = {
-        Column { OutlinedTextField(password, { password = it }, label = { Text(stringResource(R.string.password)) }, singleLine = true); state.errorKey?.let { Text(errorText(it), color = MaterialTheme.colorScheme.error) } }
-    }, confirmButton = { TextButton(onClick = { state.uri?.let { vm.open(it, password) } }) { Text(stringResource(R.string.open)) } }, dismissButton = { TextButton(onClick = vm::closeDocument) { Text(stringResource(R.string.cancel)) } })
+    if (state.passwordRequested) {
+        AlertDialog(
+            onDismissRequest = {},
+            title = { Text(stringResource(R.string.password_required)) },
+            text = {
+                Column {
+                    OutlinedTextField(
+                        password,
+                        { password = it },
+                        label = { Text(stringResource(R.string.password)) },
+                        singleLine = true
+                    )
+                    state.errorKey?.let { Text(errorText(it), color = MaterialTheme.colorScheme.error) }
+                }
+            },
+            confirmButton = {
+                TextButton(onClick = { state.uri?.let { vm.open(it, password) } }) {
+                    Text(stringResource(R.string.open))
+                }
+            },
+            dismissButton = {
+                TextButton(onClick = vm::closeDocument) {
+                    Text(stringResource(R.string.cancel))
+                }
+            }
+        )
+    }
 }
 
 @Composable private fun errorText(key: String) = stringResource(when (key) { "wrong_password" -> R.string.wrong_password; "permission_denied" -> R.string.permission_denied; "no_results" -> R.string.no_results; else -> R.string.cannot_open_pdf })

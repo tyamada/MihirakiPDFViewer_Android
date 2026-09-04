@@ -9,6 +9,7 @@ import android.graphics.Paint
 import android.graphics.pdf.PdfRenderer
 import android.net.Uri
 import android.os.ParcelFileDescriptor
+import androidx.core.graphics.createBitmap
 import com.mihiraki.pdfviewer.data.DocumentInfo
 import com.mihiraki.pdfviewer.data.SearchHit
 import com.mihiraki.pdfviewer.data.SearchRect
@@ -21,7 +22,6 @@ import java.io.Closeable
 import java.io.File
 import java.io.FileOutputStream
 import java.io.IOException
-import java.text.Normalizer
 
 sealed class PdfOpenException(message: String, cause: Throwable? = null) : IOException(message, cause) {
     class PasswordRequired : PdfOpenException("password_required")
@@ -86,13 +86,13 @@ private class HybridPdfSource(private val file: File, password: String?) : PdfSo
     }.getOrNull()
 
     override suspend fun render(page: Int, width: Int, highQuality: Boolean, sharpness: Float, highlights: List<SearchRect>): Bitmap = withContext(Dispatchers.IO) {
-        require(page in 0 until pageCount)
+        require(page in (0 until pageCount))
         val quality = if (highQuality) 2f else 1f
         val rendered = platformRenderer?.let { renderer ->
             renderer.openPage(page).use { p ->
                 val targetW = (width * quality).toInt().coerceAtLeast(1)
-                val targetH = (targetW * p.height.toFloat() / p.width).toInt().coerceAtLeast(1)
-                Bitmap.createBitmap(targetW, targetH, Bitmap.Config.ARGB_8888).also { bitmap ->
+                val targetH = ((targetW * p.height.toFloat()) / p.width).toInt().coerceAtLeast(1)
+                createBitmap(targetW, targetH, Bitmap.Config.ARGB_8888).also { bitmap ->
                     bitmap.eraseColor(Color.WHITE)
                     p.render(bitmap, null, null, PdfRenderer.Page.RENDER_MODE_FOR_DISPLAY)
                     
@@ -157,16 +157,20 @@ private class HybridPdfSource(private val file: File, password: String?) : PdfSo
     }
 
     private fun sharpen(source: Bitmap, amount: Float): Bitmap {
-        if (amount <= 0.01f || source.width < 3 || source.height < 3) return source
+        if ((amount <= 0.01f) || (source.width < 3) || (source.height < 3)) return source
         val w = source.width; val h = source.height
         val input = IntArray(w * h); val output = IntArray(w * h); source.getPixels(input, 0, w, 0, 0, w, h); input.copyInto(output)
         val a = amount.coerceIn(0f, 1f)
         fun channel(center: Int, neighbors: Int, shift: Int): Int {
             val c = center shr shift and 255
-            return (c * (1f + 4f * a) - neighbors * a).toInt().coerceIn(0, 255)
+            val valCenter = c * (1f + (4f * a))
+            val valNeighbors = neighbors * a
+            return (valCenter - valNeighbors).toInt().coerceIn(0, 255)
         }
-        for (y in 1 until h - 1) for (x in 1 until w - 1) {
-            val i = y * w + x; val c = input[i]; val ns = intArrayOf(input[i - 1], input[i + 1], input[i - w], input[i + w])
+        for (y in 1 until (h - 1)) for (x in 1 until (w - 1)) {
+            val i = (y * w) + x
+            val c = input[i]
+            val ns = intArrayOf(input[i - 1], input[i + 1], input[i - w], input[i + w])
             val r = channel(c, ns.sumOf { it shr 16 and 255 }, 16); val g = channel(c, ns.sumOf { it shr 8 and 255 }, 8); val b = channel(c, ns.sumOf { it and 255 }, 0)
             output[i] = (c and -0x1000000) or (r shl 16) or (g shl 8) or b
         }
