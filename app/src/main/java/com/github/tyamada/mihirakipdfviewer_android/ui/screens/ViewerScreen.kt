@@ -105,12 +105,20 @@ import com.github.tyamada.mihirakipdfviewer_android.viewmodel.ViewerViewModel
                     Text("${state.currentPage + 1} / ${state.pageCount}", modifier = Modifier.padding(horizontal = 12.dp))
 
                     CompositionLocalProvider(LocalLayoutDirection provides if (direction == ReadingDirection.L2R) LayoutDirection.Ltr else LayoutDirection.Rtl) {
-                        Slider(
-                            value = state.currentPage.toFloat(),
-                            onValueChange = { vm.render(it.toInt()) },
-                            valueRange = 0f..maxPage,
-                            modifier = Modifier.weight(1f),
-                        )
+                        Row(verticalAlignment = Alignment.CenterVertically, modifier = Modifier.weight(1f)) {
+                            IconButton(onClick = { vm.movePage(-1) }) {
+                                Icon(Icons.Default.ChevronLeft, stringResource(R.string.back))
+                            }
+                            Slider(
+                                value = state.currentPage.toFloat(),
+                                onValueChange = { vm.render(it.toInt()) },
+                                valueRange = 0f..maxPage,
+                                modifier = Modifier.weight(1f),
+                            )
+                            IconButton(onClick = { vm.movePage(1) }) {
+                                Icon(Icons.Default.ChevronRight, stringResource(R.string.open))
+                            }
+                        }
                     }
                 }
             }
@@ -134,25 +142,22 @@ import com.github.tyamada.mihirakipdfviewer_android.viewmodel.ViewerViewModel
             ) {
                 Row(Modifier.fillMaxSize(), horizontalArrangement = Arrangement.Center) {
                     if (state.settings.layout == com.github.tyamada.mihirakipdfviewer_android.data.ViewerLayout.SPREAD) {
-                        val images = listOf(state.bitmap, state.secondBitmap)
-                        val count = images.count { it != null }
-                        if (count == 1) {
-                            val image = images.first { it != null }
+                        val images = listOfNotNull(state.bitmap, state.secondBitmap)
+                        if (images.size == 1) {
+                            val image = images.first()
                             Box(Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
-                                Image(image!!.asImageBitmap(), null, Modifier.fillMaxSize(), contentScale = ContentScale.Fit)
+                                Image(image.asImageBitmap(), null, Modifier.fillMaxSize(), contentScale = ContentScale.Fit)
                             }
-                        } else {
+                        } else if (images.size == 2) {
                             images.forEachIndexed { index, image ->
                                 Box(modifier = Modifier.weight(1f).fillMaxHeight()) {
-                                    image?.let {
-                                        Image(
-                                            bitmap = it.asImageBitmap(),
-                                            contentDescription = null,
-                                            modifier = Modifier.fillMaxSize(),
-                                            contentScale = ContentScale.Fit,
-                                            alignment = if (index == 0) Alignment.CenterEnd else Alignment.CenterStart
-                                        )
-                                    }
+                                    Image(
+                                        bitmap = image.asImageBitmap(),
+                                        contentDescription = null,
+                                        modifier = Modifier.fillMaxSize(),
+                                        contentScale = ContentScale.Fit,
+                                        alignment = if (index == 0) Alignment.CenterEnd else Alignment.CenterStart
+                                    )
                                 }
                             }
                         }
@@ -180,7 +185,7 @@ import com.github.tyamada.mihirakipdfviewer_android.viewmodel.ViewerViewModel
                 }
             },
             confirmButton = {
-                TextButton(onClick = { state.uri?.let { vm.open(it, password) } }) {
+                TextButton(onClick = { state.uri?.let { vm.open(it, password = password) } }) {
                     Text(stringResource(R.string.open))
                 }
             },

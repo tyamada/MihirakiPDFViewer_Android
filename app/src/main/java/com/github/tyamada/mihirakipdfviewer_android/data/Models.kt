@@ -12,6 +12,8 @@ data class ViewerSettings(
     val highQuality: Boolean = false,
     val sharpness: Float = 0f,
     val purchasedTier: String? = null,
+    val lastUri: String? = null,
+    val lastPage: Int = 0,
 )
 
 data class DocumentInfo(

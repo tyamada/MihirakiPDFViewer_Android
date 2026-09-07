@@ -17,7 +17,9 @@ import com.tom_roush.pdfbox.pdmodel.PDDocument
 import com.tom_roush.pdfbox.text.PDFTextStripper
 import com.tom_roush.pdfbox.text.TextPosition
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.ensureActive
 import kotlinx.coroutines.withContext
+import kotlinx.coroutines.yield
 import java.io.Closeable
 import java.io.File
 import java.io.FileOutputStream
@@ -86,6 +88,7 @@ private class HybridPdfSource(private val file: File, password: String?) : PdfSo
     }.getOrNull()
 
     override suspend fun render(page: Int, width: Int, highQuality: Boolean, sharpness: Float, highlights: List<SearchRect>): Bitmap = withContext(Dispatchers.IO) {
+        ensureActive()
         require(page in (0 until pageCount))
         val quality = if (highQuality) 2f else 1f
         val rendered = platformRenderer?.let { renderer ->
@@ -96,6 +99,7 @@ private class HybridPdfSource(private val file: File, password: String?) : PdfSo
                     bitmap.eraseColor(Color.WHITE)
                     p.render(bitmap, null, null, PdfRenderer.Page.RENDER_MODE_FOR_DISPLAY)
                     
+                    yield()
                     if (highlights.isNotEmpty()) {
                         val canvas = Canvas(bitmap)
                         val paint = Paint().apply { color = 0xAAFFFF00.toInt(); style = Paint.Style.FILL }
@@ -134,6 +138,7 @@ private class HybridPdfSource(private val file: File, password: String?) : PdfSo
         val results = mutableListOf<SearchHit>()
         
         for (i in 0 until pageCount) {
+            ensureActive()
             val locator = CoordinateFinder(query)
             locator.startPage = i + 1
             locator.endPage = i + 1
@@ -159,22 +164,42 @@ private class HybridPdfSource(private val file: File, password: String?) : PdfSo
     private fun sharpen(source: Bitmap, amount: Float): Bitmap {
         if ((amount <= 0.01f) || (source.width < 3) || (source.height < 3)) return source
         val w = source.width; val h = source.height
-        val input = IntArray(w * h); val output = IntArray(w * h); source.getPixels(input, 0, w, 0, 0, w, h); input.copyInto(output)
         val a = amount.coerceIn(0f, 1f)
+        
+        // Use a single IntArray and process carefully to save memory
+        val pixels = try {
+            IntArray(w * h).also { source.getPixels(it, 0, w, 0, 0, w, h) }
+        } catch (e: OutOfMemoryError) {
+            android.util.Log.w("MihirakiPDF", "OOM during sharpen, skipping filter")
+            return source
+        }
+
+        val output = IntArray(w * h)
+        
         fun channel(center: Int, neighbors: Int, shift: Int): Int {
             val c = center shr shift and 255
             val valCenter = c * (1f + (4f * a))
             val valNeighbors = neighbors * a
             return (valCenter - valNeighbors).toInt().coerceIn(0, 255)
         }
-        for (y in 1 until (h - 1)) for (x in 1 until (w - 1)) {
-            val i = (y * w) + x
-            val c = input[i]
-            val ns = intArrayOf(input[i - 1], input[i + 1], input[i - w], input[i + w])
-            val r = channel(c, ns.sumOf { it shr 16 and 255 }, 16); val g = channel(c, ns.sumOf { it shr 8 and 255 }, 8); val b = channel(c, ns.sumOf { it and 255 }, 0)
-            output[i] = (c and -0x1000000) or (r shl 16) or (g shl 8) or b
+
+        for (y in 1 until (h - 1)) {
+            for (x in 1 until (w - 1)) {
+                val i = (y * w) + x
+                val c = pixels[i]
+                // Sum neighbors: top, bottom, left, right
+                val sumR = (pixels[i - w] shr 16 and 255) + (pixels[i + w] shr 16 and 255) + (pixels[i - 1] shr 16 and 255) + (pixels[i + 1] shr 16 and 255)
+                val sumG = (pixels[i - w] shr 8 and 255) + (pixels[i + w] shr 8 and 255) + (pixels[i - 1] shr 8 and 255) + (pixels[i + 1] shr 8 and 255)
+                val sumB = (pixels[i - w] and 255) + (pixels[i + w] and 255) + (pixels[i - 1] and 255) + (pixels[i + 1] and 255)
+                
+                val r = channel(c, sumR, 16); val g = channel(c, sumG, 8); val b = channel(c, sumB, 0)
+                output[i] = (c and -0x1000000) or (r shl 16) or (g shl 8) or b
+            }
         }
-        return Bitmap.createBitmap(output, w, h, Bitmap.Config.ARGB_8888).also { if (it !== source) source.recycle() }
+        
+        return Bitmap.createBitmap(output, w, h, Bitmap.Config.ARGB_8888).also { 
+            if (it !== source) source.recycle() 
+        }
     }
 }
 

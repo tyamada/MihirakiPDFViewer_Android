@@ -29,9 +29,23 @@ class ViewerViewModel(app: Application) : AndroidViewModel(app) {
     val state: StateFlow<ViewerUiState> = _state.asStateFlow()
     private var renderJob: Job? = null
 
-    init { viewModelScope.launch { preferences.settings.collect { _state.update { s -> s.copy(settings = it) } } } }
+    init {
+        viewModelScope.launch {
+            val initial = preferences.settings.first()
+            _state.update { it.copy(settings = initial) }
+            
+            // Auto-resume if no file is currently being opened (e.g. via Intent)
+            if (!_state.value.loading && _state.value.source == null) {
+                initial.lastUri?.let { open(Uri.parse(it), initial.lastPage) }
+            }
 
-    fun open(uri: Uri, password: String? = null) = viewModelScope.launch {
+            // Sync further settings changes
+            preferences.settings.collect { s -> _state.update { it.copy(settings = s) } }
+        }
+    }
+
+    fun open(uri: Uri, startPage: Int = 0, password: String? = null) = viewModelScope.launch {
+        if (_state.value.uri == uri && _state.value.source != null) return@launch
         closeDocument(); _state.update { it.copy(loading = true, uri = uri, errorKey = null, passwordRequested = false) }
         runCatching { pdfs.open(uri, password) }.onSuccess { source ->
             val direction = DirectionDetector.fromMetadata(source.layoutHint, source.directionHint) ?: ReadingDirection.L2R
@@ -42,6 +56,8 @@ class ViewerViewModel(app: Application) : AndroidViewModel(app) {
                 direction = direction,
                 layout = layout,
                 showCover = showCover,
+                lastUri = uri.toString(),
+                lastPage = startPage
             )
             _state.update {
                 it.copy(
@@ -53,7 +69,7 @@ class ViewerViewModel(app: Application) : AndroidViewModel(app) {
                 )
             }
             preferences.save(newSettings)
-            render(0)
+            render(startPage)
         }.onFailure { e ->
             when (e) {
                 is PdfOpenException.PasswordRequired -> _state.update { it.copy(loading = false, passwordRequested = true) }
@@ -67,12 +83,27 @@ class ViewerViewModel(app: Application) : AndroidViewModel(app) {
     fun render(page: Int, width: Int = 1080) {
         val source = _state.value.source ?: return
         val target = page.coerceIn(0, source.pageCount - 1)
-        _state.update { it.copy(currentPage = target) }
+        
+        // Save last viewed page
+        if (_state.value.currentPage != target) {
+            viewModelScope.launch {
+                val updated = _state.value.settings.copy(lastPage = target)
+                _state.update { it.copy(settings = updated) }
+                preferences.save(updated)
+            }
+        }
+
         renderJob?.cancel(); renderJob = viewModelScope.launch {
             val settings = _state.value.settings
             val hits = _state.value.searchResults
-            val leftHits = hits.asSequence().filter { it.pageIndex == target }.flatMap { it.rects }.toList()
             
+            // Recycle old bitmaps BEFORE starting new renders to free up memory early
+            val oldLeft = _state.value.bitmap
+            val oldRight = _state.value.secondBitmap
+            _state.update { it.copy(bitmap = null, secondBitmap = null) }
+            oldLeft?.recycle()
+            oldRight?.recycle()
+
             if (settings.layout == ViewerLayout.SPREAD) {
                 val spreads = SpreadPlanner.plan(source.pageCount, settings.direction, settings.showCover, settings.coverMode)
                 val spread = spreads.firstOrNull { (it.left == target) || (it.right == target) } ?: spreads.first()
@@ -84,14 +115,17 @@ class ViewerViewModel(app: Application) : AndroidViewModel(app) {
 
                 val left = leftTarget?.let { source.render(it, width / 2, settings.highQuality, settings.sharpness, leftRects) }
                 val right = rightTarget?.let { source.render(it, width / 2, settings.highQuality, settings.sharpness, rightRects) }
+                
                 _state.update { it.copy(currentPage = minOf(spread.left ?: Int.MAX_VALUE, spread.right ?: Int.MAX_VALUE), bitmap = left, secondBitmap = right) }
             } else {
+                val leftHits = hits.asSequence().filter { it.pageIndex == target }.flatMap { it.rects }.toList()
                 val first = source.render(target, width, settings.highQuality, settings.sharpness, leftHits)
-                _state.update { it.copy(bitmap = first, secondBitmap = null) }
+                _state.update { it.copy(currentPage = target, bitmap = first, secondBitmap = null) }
             }
         }
     }
     fun move(delta: Int) = render(_state.value.currentPage + (delta * if (_state.value.settings.layout == ViewerLayout.SPREAD) 2 else 1))
+    fun movePage(delta: Int) = render(_state.value.currentPage + delta)
     fun toggleChrome() = _state.update { it.copy(chromeVisible = !it.chromeVisible) }
     fun dismissError() = _state.update { it.copy(errorKey = null) }
     fun search(query: String) = viewModelScope.launch {
@@ -113,6 +147,11 @@ class ViewerViewModel(app: Application) : AndroidViewModel(app) {
         val value = transform(_state.value.settings); _state.update { it.copy(settings = value) }; preferences.save(value); render(_state.value.currentPage)
     }
     fun reset() = viewModelScope.launch { preferences.reset(); closeDocument(); _state.value = ViewerUiState() }
-    fun closeDocument() { renderJob?.cancel(); _state.value.source?.close(); _state.update { it.copy(source = null, bitmap = null, secondBitmap = null, currentPage = 0, passwordRequested = false) } }
+    fun closeDocument() {
+        renderJob?.cancel(); _state.value.source?.close()
+        val cleared = _state.value.settings.copy(lastUri = null, lastPage = 0)
+        _state.update { it.copy(source = null, bitmap = null, secondBitmap = null, currentPage = 0, passwordRequested = false, settings = cleared) }
+        viewModelScope.launch { preferences.save(cleared) }
+    }
     override fun onCleared() { closeDocument(); billing.close() }
 }
