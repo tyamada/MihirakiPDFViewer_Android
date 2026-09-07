@@ -1,11 +1,11 @@
-package com.mihiraki.pdfviewer
+package com.github.tyamada.mihirakipdfviewer_android
 
 import android.net.Uri
 import androidx.compose.ui.test.*
 import androidx.compose.ui.test.junit4.createAndroidComposeRule
 import androidx.test.platform.app.InstrumentationRegistry
-import com.mihiraki.pdfviewer.data.ReadingDirection
-import com.mihiraki.pdfviewer.data.ViewerLayout
+import com.github.tyamada.mihirakipdfviewer_android.data.ReadingDirection
+import com.github.tyamada.mihirakipdfviewer_android.data.ViewerLayout
 import org.junit.Assert.assertEquals
 import org.junit.Rule
 import org.junit.Test

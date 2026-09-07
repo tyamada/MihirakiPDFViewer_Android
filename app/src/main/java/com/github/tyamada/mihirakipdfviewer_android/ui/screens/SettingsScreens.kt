@@ -1,4 +1,4 @@
-package com.mihiraki.pdfviewer.ui.screens
+package com.github.tyamada.mihirakipdfviewer_android.ui.screens
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.*
@@ -13,9 +13,10 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
-import com.mihiraki.pdfviewer.R
-import com.mihiraki.pdfviewer.data.*
-import com.mihiraki.pdfviewer.viewmodel.ViewerViewModel
+import com.github.tyamada.mihirakipdfviewer_android.BuildConfig
+import com.github.tyamada.mihirakipdfviewer_android.R
+import com.github.tyamada.mihirakipdfviewer_android.data.*
+import com.github.tyamada.mihirakipdfviewer_android.viewmodel.ViewerViewModel
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable fun SettingsScreen(vm: ViewerViewModel, back: () -> Unit, help: () -> Unit, reset: () -> Unit, tips: () -> Unit) {
@@ -35,6 +36,11 @@ import com.mihiraki.pdfviewer.viewmodel.ViewerViewModel
             TextButton(onClick = tips, modifier = Modifier.fillMaxWidth()) { Text(stringResource(R.string.support)) }
             TextButton(onClick = reset, modifier = Modifier.fillMaxWidth()) { Text(stringResource(R.string.reset)) }
             
+            Section(stringResource(R.string.app_info))
+            Info(stringResource(R.string.version), BuildConfig.VERSION_NAME)
+            Info(stringResource(R.string.build_number), BuildConfig.VERSION_CODE.toString())
+            Info(stringResource(R.string.copyright), "©️ 2026 Takuma Yamada")
+
             state.settings.purchasedTier?.let { tier ->
                 val res = when (tier) {
                     "BRONZE" -> R.drawable.ic_tip_bronze

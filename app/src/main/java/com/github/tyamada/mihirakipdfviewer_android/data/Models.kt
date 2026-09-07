@@ -1,4 +1,4 @@
-package com.mihiraki.pdfviewer.data
+package com.github.tyamada.mihirakipdfviewer_android.data
 
 enum class ReadingDirection { L2R, R2L }
 enum class CoverMode { STANDARD, COMPATIBILITY }

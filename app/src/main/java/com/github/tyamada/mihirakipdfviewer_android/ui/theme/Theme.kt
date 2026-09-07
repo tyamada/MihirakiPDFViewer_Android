@@ -1,4 +1,4 @@
-package com.mihiraki.pdfviewer.ui.theme
+package com.github.tyamada.mihirakipdfviewer_android.ui.theme
 
 import androidx.compose.material3.*
 import androidx.compose.runtime.Composable

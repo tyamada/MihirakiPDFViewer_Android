@@ -1,4 +1,4 @@
-package com.mihiraki.pdfviewer.ui.screens
+package com.github.tyamada.mihirakipdfviewer_android.ui.screens
 
 import android.content.Intent
 import androidx.activity.compose.rememberLauncherForActivityResult
@@ -24,9 +24,9 @@ import androidx.compose.ui.platform.LocalLayoutDirection
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.LayoutDirection
 import androidx.compose.ui.unit.dp
-import com.mihiraki.pdfviewer.R
-import com.mihiraki.pdfviewer.data.ReadingDirection
-import com.mihiraki.pdfviewer.viewmodel.ViewerViewModel
+import com.github.tyamada.mihirakipdfviewer_android.R
+import com.github.tyamada.mihirakipdfviewer_android.data.ReadingDirection
+import com.github.tyamada.mihirakipdfviewer_android.viewmodel.ViewerViewModel
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable fun ViewerScreen(vm: ViewerViewModel, openSettings: () -> Unit, openTips: () -> Unit) {
@@ -133,7 +133,7 @@ import com.mihiraki.pdfviewer.viewmodel.ViewerViewModel
                 direction = direction,
             ) {
                 Row(Modifier.fillMaxSize(), horizontalArrangement = Arrangement.Center) {
-                    if (state.settings.layout == com.mihiraki.pdfviewer.data.ViewerLayout.SPREAD) {
+                    if (state.settings.layout == com.github.tyamada.mihirakipdfviewer_android.data.ViewerLayout.SPREAD) {
                         val images = listOf(state.bitmap, state.secondBitmap)
                         val count = images.count { it != null }
                         if (count == 1) {

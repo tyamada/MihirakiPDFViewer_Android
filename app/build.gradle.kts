@@ -1,3 +1,5 @@
+import java.util.Properties
+
 plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
@@ -5,19 +7,35 @@ plugins {
 }
 
 android {
-    namespace = "com.mihiraki.pdfviewer"
+    namespace = "com.github.tyamada.mihirakipdfviewer_android"
     compileSdk = 37
     buildToolsVersion = "36.0.0"
 
     defaultConfig {
-        applicationId = "com.mihiraki.pdfviewer"
+        applicationId = "com.github.tyamada.MihirakiPDFViewer_Android"
         minSdk = 26
         targetSdk = 37
-        versionCode = 1
-        versionName = "1.0.0"
+        versionCode = 6
+        versionName = "1.0.5"
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         vectorDrawables.useSupportLibrary = true
     }
+
+    signingConfigs {
+        val props = Properties()
+        val propFile = file("../local.properties")
+        if (propFile.exists()) {
+            propFile.inputStream().use { props.load(it) }
+        }
+
+        create("release") {
+            storeFile = (System.getenv("SIGNING_STORE_FILE") ?: props.getProperty("signing.storeFile"))?.let { file(it) }
+            storePassword = System.getenv("SIGNING_STORE_PASSWORD") ?: props.getProperty("signing.storePassword")
+            keyAlias = System.getenv("SIGNING_KEY_ALIAS") ?: props.getProperty("signing.keyAlias")
+            keyPassword = System.getenv("SIGNING_KEY_PASSWORD") ?: props.getProperty("signing.keyPassword")
+        }
+    }
+
     buildFeatures { compose = true; buildConfig = true }
     packaging.resources.excludes += "/META-INF/{AL2.0,LGPL2.1,DEPENDENCIES}"
     buildTypes {
@@ -25,6 +43,7 @@ android {
             isMinifyEnabled = true
             isShrinkResources = true
             proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
+            signingConfig = signingConfigs.getByName("release")
         }
     }
     compileOptions {

@@ -1,4 +1,4 @@
-package com.mihiraki.pdfviewer.data
+package com.github.tyamada.mihirakipdfviewer_android.data
 
 import android.content.Context
 import androidx.datastore.preferences.core.*

@@ -1,4 +1,4 @@
-package com.mihiraki.pdfviewer.billing
+package com.github.tyamada.mihirakipdfviewer_android.billing
 
 enum class TipTier(val productId: String, val badge: String) {
     BRONZE("tip_100", "🥉"), SILVER("tip_500", "🥈"), GOLD("tip_1000", "🥇");

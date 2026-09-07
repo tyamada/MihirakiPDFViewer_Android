@@ -1,4 +1,4 @@
-package com.mihiraki.pdfviewer.ui.screens
+package com.github.tyamada.mihirakipdfviewer_android.ui.screens
 
 import android.app.Activity
 import androidx.compose.foundation.layout.*
@@ -10,15 +10,15 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
-import com.mihiraki.pdfviewer.R
-import com.mihiraki.pdfviewer.billing.*
-import com.mihiraki.pdfviewer.viewmodel.ViewerViewModel
+import com.github.tyamada.mihirakipdfviewer_android.R
+import com.github.tyamada.mihirakipdfviewer_android.billing.*
+import com.github.tyamada.mihirakipdfviewer_android.viewmodel.ViewerViewModel
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable fun TipScreen(vm: ViewerViewModel, back: () -> Unit) {
-    val context = LocalContext.current; val manager = remember { BillingManager(context) }
+    val context = LocalContext.current; val manager = vm.billing
     val products by manager.products.collectAsState(); val purchase by manager.purchase.collectAsState()
-    val isDebug = com.mihiraki.pdfviewer.BuildConfig.DEBUG
+    val isDebug = com.github.tyamada.mihirakipdfviewer_android.BuildConfig.DEBUG
 
     LaunchedEffect(purchase) {
         if (purchase is PurchaseState.Success) {
@@ -26,7 +26,6 @@ import com.mihiraki.pdfviewer.viewmodel.ViewerViewModel
         }
     }
 
-    DisposableEffect(manager) { manager.connect(); onDispose(manager::close) }
     Scaffold(topBar = { TopAppBar(title = { Text(stringResource(R.string.support)) }, navigationIcon = { IconButton(back) { Icon(Icons.Default.ArrowBack, stringResource(R.string.back)) } }) }) { p ->
         Column(Modifier.padding(p).padding(20.dp), verticalArrangement = Arrangement.spacedBy(12.dp)) {
             Text(stringResource(R.string.tip_message)); TipTier.entries.forEach { tier ->

@@ -1,7 +1,7 @@
-package com.mihiraki.pdfviewer
+package com.github.tyamada.mihirakipdfviewer_android
 
-import com.mihiraki.pdfviewer.billing.TipTier
-import com.mihiraki.pdfviewer.data.*
+import com.github.tyamada.mihirakipdfviewer_android.billing.TipTier
+import com.github.tyamada.mihirakipdfviewer_android.data.*
 import org.junit.Assert.*
 import org.junit.Test
 

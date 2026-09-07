@@ -1,12 +1,13 @@
-package com.mihiraki.pdfviewer.viewmodel
+package com.github.tyamada.mihirakipdfviewer_android.viewmodel
 
 import android.app.Application
 import android.graphics.Bitmap
 import android.net.Uri
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.viewModelScope
-import com.mihiraki.pdfviewer.data.*
-import com.mihiraki.pdfviewer.pdf.*
+import com.github.tyamada.mihirakipdfviewer_android.billing.*
+import com.github.tyamada.mihirakipdfviewer_android.data.*
+import com.github.tyamada.mihirakipdfviewer_android.pdf.*
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.flow.*
 import kotlinx.coroutines.launch
@@ -23,6 +24,7 @@ data class ViewerUiState(
 class ViewerViewModel(app: Application) : AndroidViewModel(app) {
     private val pdfs = PdfDocumentRepository(app)
     private val preferences = SettingsRepository(app)
+    val billing = BillingManager(app)
     private val _state = MutableStateFlow(ViewerUiState())
     val state: StateFlow<ViewerUiState> = _state.asStateFlow()
     private var renderJob: Job? = null
@@ -112,5 +114,5 @@ class ViewerViewModel(app: Application) : AndroidViewModel(app) {
     }
     fun reset() = viewModelScope.launch { preferences.reset(); closeDocument(); _state.value = ViewerUiState() }
     fun closeDocument() { renderJob?.cancel(); _state.value.source?.close(); _state.update { it.copy(source = null, bitmap = null, secondBitmap = null, currentPage = 0, passwordRequested = false) } }
-    override fun onCleared() { closeDocument() }
+    override fun onCleared() { closeDocument(); billing.close() }
 }

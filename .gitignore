@@ -11,6 +11,8 @@ build/
 app/build/
 *.apk
 *.aab
+*.jks
+*.keystore
 
 # --- Internal / Private files ---
 INTERNAL_README.md

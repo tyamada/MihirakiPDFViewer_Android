@@ -1,10 +1,10 @@
-package com.mihiraki.pdfviewer.ui
+package com.github.tyamada.mihirakipdfviewer_android.ui
 
 import androidx.compose.runtime.Composable
 import androidx.navigation.compose.*
-import com.mihiraki.pdfviewer.ui.screens.*
-import com.mihiraki.pdfviewer.ui.theme.MihirakiTheme
-import com.mihiraki.pdfviewer.viewmodel.ViewerViewModel
+import com.github.tyamada.mihirakipdfviewer_android.ui.screens.*
+import com.github.tyamada.mihirakipdfviewer_android.ui.theme.MihirakiTheme
+import com.github.tyamada.mihirakipdfviewer_android.viewmodel.ViewerViewModel
 
 @Composable fun MihirakiApp(viewer: ViewerViewModel) = MihirakiTheme {
     val nav = rememberNavController()

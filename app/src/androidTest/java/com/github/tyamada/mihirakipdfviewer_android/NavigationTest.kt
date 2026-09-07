@@ -1,4 +1,4 @@
-package com.mihiraki.pdfviewer
+package com.github.tyamada.mihirakipdfviewer_android
 
 import androidx.compose.ui.test.*
 import androidx.compose.ui.test.junit4.createAndroidComposeRule

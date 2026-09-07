@@ -6,4 +6,8 @@
     <string name="reset_message">Reset the app settings.</string><string name="icon_reset_warning">If you changed the app icon, it cannot be restored after reset!</string>
     <string name="help_open"><b>Open PDF:</b> Use the file picker to select a PDF file from your device or cloud storage.</string><string name="help_navigate"><b>Navigate Pages:</b> Switch pages by swiping or using the slider.</string><string name="help_menu"><b>Menu:</b> Tap the screen to toggle the visibility of the toolbar and slider.</string><string name="help_zoom"><b>Zoom:</b> Pinch to zoom in or out. Long-press and drag to scroll while zoomed in.</string><string name="help_search"><b>Search:</b> Enter text into the search bar to find specific content within the PDF.</string><string name="help_layout"><b>Layout:</b> Use the layout options in the menu to switch between single-page and two-page views.</string>
     <string name="tip_message">If you enjoy the app, you can support its development.</string><string name="purchase">Purchase</string><string name="purchase_thanks">Thank you! %1$s support received.</string><string name="purchase_cancelled">Purchase cancelled.</string><string name="purchase_failed">Purchase failed. Please try again.</string>
+    <string name="app_info">App information</string>
+    <string name="version">Version</string>
+    <string name="build_number">Build number</string>
+    <string name="copyright">Copyright</string>
 </resources>

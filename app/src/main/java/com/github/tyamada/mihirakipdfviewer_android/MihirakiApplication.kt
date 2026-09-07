@@ -1,4 +1,4 @@
-package com.mihiraki.pdfviewer
+package com.github.tyamada.mihirakipdfviewer_android
 
 import android.app.Application
 import com.tom_roush.pdfbox.android.PDFBoxResourceLoader

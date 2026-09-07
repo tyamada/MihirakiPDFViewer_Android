@@ -1,4 +1,4 @@
-package com.mihiraki.pdfviewer.pdf
+package com.github.tyamada.mihirakipdfviewer_android.pdf
 
 import android.content.ContentResolver
 import android.content.Context
@@ -10,9 +10,9 @@ import android.graphics.pdf.PdfRenderer
 import android.net.Uri
 import android.os.ParcelFileDescriptor
 import androidx.core.graphics.createBitmap
-import com.mihiraki.pdfviewer.data.DocumentInfo
-import com.mihiraki.pdfviewer.data.SearchHit
-import com.mihiraki.pdfviewer.data.SearchRect
+import com.github.tyamada.mihirakipdfviewer_android.data.DocumentInfo
+import com.github.tyamada.mihirakipdfviewer_android.data.SearchHit
+import com.github.tyamada.mihirakipdfviewer_android.data.SearchRect
 import com.tom_roush.pdfbox.pdmodel.PDDocument
 import com.tom_roush.pdfbox.text.PDFTextStripper
 import com.tom_roush.pdfbox.text.TextPosition
