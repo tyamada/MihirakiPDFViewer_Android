@@ -2,7 +2,7 @@
     <string name="app_name">MihirakiPDFViewer</string><string name="open_pdf">PDFを開く</string><string name="open">開く</string><string name="settings">設定</string><string name="support">応援</string><string name="search">PDF内を検索</string><string name="ok">OK</string><string name="cancel">キャンセル</string><string name="back">戻る</string>
     <string name="password_required">パスワードが必要です</string><string name="password">パスワード</string><string name="wrong_password">パスワードが正しくありません。</string><string name="permission_denied">このファイルを読み取る権限がありません。</string><string name="cannot_open_pdf">PDFを開けません。ファイルが破損している可能性があります。</string><string name="no_results">検索結果がありません。</string>
     <string name="display_settings">表示設定</string><string name="high_quality">高画質化</string><string name="sharpness">シャープネス</string><string name="two_page">見開き表示</string><string name="show_cover">表紙表示</string><string name="reading_direction">ページ方向</string><string name="cover_mode">表紙設定</string>
-    <string name="document_info">ドキュメント情報</string><string name="title">タイトル</string><string name="author">作成者</string><string name="subject">サブタイトル</string><string name="keywords">キーワード</string><string name="pdf_version">PDFのバージョン</string><string name="options">オプション</string><string name="help">ヘルプ</string><string name="reset">リセット</string>
+    <string name="document_info">ドキュメント情報</string><string name="title">タイトル</string><string name="author">作成者</string><string name="subject">サブタイトル</string><string name="keywords">キーワード</string><string name="pdf_version">PDFのバージョン</string><string name="options">オプション</string><string name="help">ヘルプ</string><string name="licenses">ライセンス</string><string name="reset">リセット</string>
     <string name="reset_message">アプリの設定をリセットします。</string><string name="icon_reset_warning">アプリアイコンを変更している場合、リセット後に元に戻すことはできません！</string>
     <string name="help_open"><b>Open PDF:</b> ファイルピッカーから端末またはクラウドストレージのPDFを選択します。</string><string name="help_navigate"><b>Navigate Pages:</b> スワイプまたはスライダーでページを切り替えます。</string><string name="help_menu"><b>Menu:</b> 画面をタップしてツールバーとスライダーの表示を切り替えます。</string><string name="help_zoom"><b>Zoom:</b> ピンチで拡大・縮小します。拡大中は長押ししてドラッグします。</string><string name="help_search"><b>Search:</b> 検索バーに語句を入力してPDF内を検索します。</string><string name="help_layout"><b>Layout:</b> メニューから単ページ表示と見開き表示を切り替えます。</string>
     <string name="tip_message">アプリを気に入っていただけたら、開発を応援できます。</string><string name="purchase">購入</string><string name="purchase_thanks">ありがとうございます！%1$sの応援を受け取りました。</string><string name="purchase_cancelled">購入をキャンセルしました。</string><string name="purchase_failed">購入に失敗しました。もう一度お試しください。</string>
@@ -10,4 +10,6 @@
     <string name="version">バージョン</string>
     <string name="build_number">ビルド番号</string>
     <string name="copyright">著作権</string>
+    <string name="oss_license_title">オープンソースライセンス</string>
+    <string name="oss_license_description">このアプリは以下のオープンソースソフトウェアを利用しています：</string>
 </resources>

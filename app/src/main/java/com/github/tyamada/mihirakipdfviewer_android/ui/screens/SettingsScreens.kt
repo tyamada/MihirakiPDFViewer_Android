@@ -19,7 +19,7 @@ import com.github.tyamada.mihirakipdfviewer_android.data.*
 import com.github.tyamada.mihirakipdfviewer_android.viewmodel.ViewerViewModel
 
 @OptIn(ExperimentalMaterial3Api::class)
-@Composable fun SettingsScreen(vm: ViewerViewModel, back: () -> Unit, help: () -> Unit, reset: () -> Unit, tips: () -> Unit) {
+@Composable fun SettingsScreen(vm: ViewerViewModel, back: () -> Unit, help: () -> Unit, reset: () -> Unit, tips: () -> Unit, licenses: () -> Unit) {
     val state by vm.state.collectAsState()
     Scaffold(topBar = { TopAppBar(title = { Text(stringResource(R.string.settings)) }, navigationIcon = { IconButton(back) { Icon(Icons.AutoMirrored.Filled.ArrowBack, stringResource(R.string.back)) } }) }) { p ->
         Column(Modifier.padding(p).verticalScroll(rememberScrollState()).padding(16.dp)) {
@@ -34,6 +34,7 @@ import com.github.tyamada.mihirakipdfviewer_android.viewmodel.ViewerViewModel
             Section(stringResource(R.string.options))
             TextButton(onClick = help, modifier = Modifier.fillMaxWidth()) { Text(stringResource(R.string.help)) }
             TextButton(onClick = tips, modifier = Modifier.fillMaxWidth()) { Text(stringResource(R.string.support)) }
+            TextButton(onClick = licenses, modifier = Modifier.fillMaxWidth()) { Text(stringResource(R.string.licenses)) }
             TextButton(onClick = reset, modifier = Modifier.fillMaxWidth()) { Text(stringResource(R.string.reset)) }
             
             Section(stringResource(R.string.app_info))
