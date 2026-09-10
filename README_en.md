@@ -3,6 +3,8 @@
 [![Android Build](https://github.com/your-username/MihirakiPDFViewer_Android/actions/workflows/android.yml/badge.svg)](https://github.com/your-username/MihirakiPDFViewer_Android/actions)
 [![License](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
+English | [日本語](README.md)
+
 **MihirakiPDFViewer** is a modern, privacy-focused local PDF viewer for Android designed specifically for an optimal reading experience of two-page spreads and right-to-left (R2L) documents like Japanese Manga and Light Novels.
 
 Built with **Kotlin**, **Jetpack Compose**, and **Material 3** following the **MVVM** architecture.
