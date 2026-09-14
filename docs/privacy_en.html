@@ -13,15 +13,18 @@
     </header>
 
     <nav>
-        <a href="index.html">日本語</a>
-        <a href="index_en.html">English</a>
-        <a href="index_ko.html">한국어</a>
-        <a href="index_zh.html">简体中文</a>
-        <a href="index_de.html">Deutsch</a>
-        <a href="index_fr.html">Français</a>
-        <a href="index_es.html">Español</a>
-        <a href="index_pt.html">Português</a>
-        <a href="privacy_en.html">Privacy Policy</a>
+        <select onchange="location = this.value;">
+            <option value="privacy_de.html">Deutsch</option>
+            <option value="privacy_en.html" selected>English</option>
+            <option value="privacy_es.html">Español</option>
+            <option value="privacy_fr.html">Français</option>
+            <option value="privacy_pt.html">Português</option>
+            <option value="privacy_zh.html">简体中文</option>
+            <option value="privacy.html">日本語</option>
+            <option value="privacy_ko.html">한국어</option>
+        </select>
+        <a href="index_en.html">Home</a>
+        <a href="https://github.com/tyamada/MihirakiPDFViewer_Android" target="_blank">GitHub</a>
     </nav>
 
     <section>

@@ -65,5 +65,6 @@ footer {
     border-top: 1px solid #eee;
     padding-top: 20px;
 }
-nav { margin-bottom: 20px; }
-nav a { margin-right: 15px; text-decoration: none; color: #202e9b; }
+nav { margin-bottom: 20px; display: flex; align-items: center; gap: 15px; flex-wrap: wrap; }
+nav a { text-decoration: none; color: #202e9b; }
+nav select { padding: 5px 10px; border-radius: 4px; border: 1px solid #ccc; background: white; font-size: 0.9em; cursor: pointer; }
