@@ -24,9 +24,9 @@
 
 ## 📱 スクリーンショット
 
-| ホーム画面 | ビューア（見開き） | 検索ハイライト | 設定画面 |
-| :---: | :---: | :---: | :---: |
-| ![Home](screenshots/home_ja.png) | ![Viewer](screenshots/viewer_ja.png) | ![Search](screenshots/search_ja.png) | ![Settings](screenshots/settings_ja.png) |
+| ビューア（見開き） | 検索 | パスワード保護 | 応援 | 設定 |
+| :---: | :---: | :---: | :---: | :---: |
+| ![Viewer](assets/screenshots/smartphone_screenshot_view_ja.png) | ![Search](assets/screenshots/smartphone_screenshot_search_ja.png) | ![Password](assets/screenshots/smartphone_screenshot_password_ja.png) | ![Support](assets/screenshots/smartphone_screenshot_support_ja.png) | ![Settings](assets/screenshots/smartphone_screenshot_settings_ja.png) |
 
 ## 🛠 技術スタック
 
