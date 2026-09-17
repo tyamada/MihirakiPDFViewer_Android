@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MihirakiPDF - 跨頁與 R2L PDF 閱讀器</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>MihirakiPDF</h1>
+        <p>針對 Android 跨頁與右至左閱讀優化的現代 PDF 閱讀器</p>
+    </header>
+
+    <nav>
+        <select onchange="location = this.value;">
+            <option value="index_de.html">Deutsch</option>
+            <option value="index_en.html">English</option>
+            <option value="index_es.html">Español</option>
+            <option value="index_fil.html">Filipino</option>
+            <option value="index_fr.html">Français</option>
+            <option value="index_id.html">Indonesian</option>
+            <option value="index_ne.html">Nepali</option>
+            <option value="index_pt.html">Português</option>
+            <option value="index_vi.html">Tiếng Việt</option>
+            <option value="index_zh.html">简体中文</option>
+            <option value="index_zh-TW.html" selected>繁體中文</option>
+            <option value="index.html">日本語</option>
+            <option value="index_ko.html">한국어</option>
+        </select>
+        <a href="privacy_zh-TW.html">隱私權政策</a>
+        <a href="https://github.com/tyamada/MihirakiPDFViewer_Android" target="_blank">GitHub</a>
+    </nav>
+
+    <section>
+        <h2>✨ 主要功能</h2>
+        <div class="features">
+            <div class="feature-card">
+                <h3>📖 無縫跨頁</h3>
+                <p>並排查看兩個頁面。非常適合沉浸式漫畫和畫冊配置。</p>
+            </div>
+            <div class="feature-card">
+                <h3>🇯🇵 原生 R2L 支援</h3>
+                <p>完整支援從右至左的閱讀順序，包括反向滑桿和直覺的滑動手勢。</p>
+            </div>
+            <div class="feature-card">
+                <h3>🔄 自動偵測</h3>
+                <p>從 PDF 中介資料自動偵測頁面配置和閱讀方向，實現零配置體驗。</p>
+            </div>
+            <div class="feature-card">
+                <h3>🔍 精準搜尋</h3>
+                <p>快速文字搜尋，並在文件上提供精確的命中標示（黃色背景和紅色邊框）。</p>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <h2>📱 螢幕截圖</h2>
+        <div class="screenshots">
+            <img src="./screenshots/viewer_en.png" alt="跨頁視圖" style="width: 100%;">
+            <img src="./screenshots/search_en.png" alt="搜尋標示" style="width: 100%; margin-top: 10px;">
+            <div style="display: flex; gap: 10px; width: 100%;">
+                <img src="./screenshots/home_en.png" alt="主畫面" style="width: calc(50% - 5px);">
+                <img src="./screenshots/settings_en.png" alt="設定畫面" style="width: calc(50% - 5px);">
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <h2>🛡️ 隱私優先</h2>
+        <p>MihirakiPDF 的設計核心即是保護隱私。</p>
+        <ul>
+            <li>所有 PDF 處理均在您的裝置上本地執行。</li>
+            <li>您的文件絕不會上傳到任何外部伺服器。</li>
+            <li>不需要任何不必要的網路權限。</li>
+        </ul>
+        <p><small>*注意：僅在明確從 Google Drive 等雲端儲存服務開啟檔案時才會使用網路連線。</small></p>
+    </section>
+
+    <section>
+        <h2>💰 定價</h2>
+        <div class="feature-card" style="border-left: 5px solid #ef4fa7;">
+            <p><strong>免費且無廣告</strong></p>
+            <p>本應用程式完全免費使用。無論是否購買，所有核心功能（如 PDF 查看、跨頁和搜尋）均無任何限制地提供。</p>
+            <p><small>*提供選用的應用程式內小費以支援開發者。支援者將在設定畫面中看到特別的紀念徽章。</small></p>
+        </div>
+    </section>
+
+    <div class="cta">
+        <a href="#" class="btn">前往 Google Play 取得（即將推出）</a>
+    </div>
+
+    <footer>
+        <p>&copy; 2026 Takuma Yamada. 版權所有。</p>
+    </footer>
+</body>
+</html>

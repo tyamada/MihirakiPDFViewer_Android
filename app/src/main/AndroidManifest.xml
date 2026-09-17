@@ -1,5 +1,6 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
     <uses-permission android:name="com.android.vending.BILLING" />
+    <uses-feature android:name="android.hardware.touchscreen" android:required="false" />
     <application
         android:name="com.github.tyamada.mihirakipdfviewer_android.MihirakiApplication"
         android:allowBackup="true"

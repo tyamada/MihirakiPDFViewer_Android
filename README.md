@@ -56,7 +56,7 @@
 4. エミュレーターまたは実機（minSdk 26 以上）で実行します。
 
 ## 🧪 テスト
-ユニットテストおよびインストルメンテーション UI テストを実行できます:
+ユニットテストおよびインストルメンテーション UI テストを実行できます。テスト用の PDF ファイルは [こちら](https://1drv.ms/f/c/7a27b2713c2c2c38/IgDLhBYHJMKbRrvH92OpdA6jAQ4VUZNjFrJhqSYs9W4-BTo?e=JaNqSa) から入手可能です。
 ```bash
 ./gradlew test
 ./gradlew connectedAndroidTest

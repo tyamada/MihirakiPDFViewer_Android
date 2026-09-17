@@ -5,6 +5,7 @@ import androidx.activity.compose.rememberLauncherForActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.focusable
 import androidx.compose.foundation.gestures.*
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.icons.Icons
@@ -14,9 +15,14 @@ import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.focus.FocusRequester
+import androidx.compose.ui.focus.focusRequester
 import androidx.compose.ui.geometry.Offset
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.asImageBitmap
 import androidx.compose.ui.graphics.graphicsLayer
+import androidx.compose.ui.input.key.*
+import androidx.compose.ui.input.pointer.PointerEventType
 import androidx.compose.ui.input.pointer.pointerInput
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
@@ -26,15 +32,23 @@ import androidx.compose.ui.unit.LayoutDirection
 import androidx.compose.ui.unit.dp
 import com.github.tyamada.mihirakipdfviewer_android.R
 import com.github.tyamada.mihirakipdfviewer_android.data.ReadingDirection
+import com.github.tyamada.mihirakipdfviewer_android.data.ViewerLayout
 import com.github.tyamada.mihirakipdfviewer_android.viewmodel.ViewerViewModel
+import kotlin.math.abs
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable fun ViewerScreen(vm: ViewerViewModel, openSettings: () -> Unit, openTips: () -> Unit) {
     val state by vm.state.collectAsState(); val context = LocalContext.current
+    val focusRequester = remember { FocusRequester() }
     var password by remember { mutableStateOf("") }
     val picker = rememberLauncherForActivityResult(ActivityResultContracts.OpenDocument()) { uri -> uri?.let {
         runCatching { context.contentResolver.takePersistableUriPermission(it, Intent.FLAG_GRANT_READ_URI_PERMISSION) }; vm.open(it)
     } }
+
+    LaunchedEffect(Unit) {
+        focusRequester.requestFocus()
+    }
+
     Scaffold(
         topBar = {
             if (state.chromeVisible) {
@@ -67,8 +81,8 @@ import com.github.tyamada.mihirakipdfviewer_android.viewmodel.ViewerViewModel
                                     modifier = Modifier.fillMaxWidth().padding(vertical = 2.dp),
                                     textStyle = MaterialTheme.typography.bodySmall,
                                     colors = OutlinedTextFieldDefaults.colors(
-                                        focusedBorderColor = androidx.compose.ui.graphics.Color.Transparent,
-                                        unfocusedBorderColor = androidx.compose.ui.graphics.Color.Transparent,
+                                        focusedBorderColor = Color.Transparent,
+                                        unfocusedBorderColor = Color.Transparent,
                                     )
                                 )
                             } else {
@@ -124,12 +138,48 @@ import com.github.tyamada.mihirakipdfviewer_android.viewmodel.ViewerViewModel
             }
         },
     )
- { padding -> Box(Modifier.fillMaxSize().padding(padding).background(androidx.compose.ui.graphics.Color(0xFF202124))) {
+ { padding -> Box(
+     Modifier
+         .fillMaxSize()
+         .padding(padding)
+         .background(androidx.compose.ui.graphics.Color(0xFF202124))
+         .focusRequester(focusRequester)
+         .focusable()
+         .onKeyEvent { event ->
+             if (event.type == KeyEventType.KeyDown) {
+                 when (event.key) {
+                     Key.DirectionLeft -> {
+                         vm.move(if (state.settings.direction == ReadingDirection.L2R) -1 else 1)
+                         true
+                     }
+                     Key.DirectionRight -> {
+                         vm.move(if (state.settings.direction == ReadingDirection.L2R) 1 else -1)
+                         true
+                     }
+                     Key.Spacebar -> {
+                         vm.move(1)
+                         true
+                     }
+                     Key.Escape -> {
+                         if (state.chromeVisible) vm.toggleChrome()
+                         true
+                     }
+                     Key.F -> {
+                         if (event.isCtrlPressed) {
+                             if (!state.chromeVisible) vm.toggleChrome()
+                             true
+                         } else false
+                     }
+                     else -> false
+                 }
+             } else false
+         }
+ ) {
         if ((state.source == null) && !state.loading) Column(Modifier.align(Alignment.Center), horizontalAlignment = Alignment.CenterHorizontally) {
-            Icon(Icons.AutoMirrored.Filled.MenuBook, null, tint = androidx.compose.ui.graphics.Color.White, modifier = Modifier.size(80.dp))
+            Icon(Icons.AutoMirrored.Filled.MenuBook, null, tint = Color.White, modifier = Modifier.size(80.dp))
             Spacer(Modifier.height(20.dp)); Button(onClick = { picker.launch(arrayOf("application/pdf")) }, modifier = Modifier.heightIn(min = 48.dp)) { Text(stringResource(R.string.open_pdf)) }
         }
-        if ((state.source == null) && !state.loading) IconButton(openSettings, Modifier.align(Alignment.TopEnd).padding(top = 36.dp, end = 8.dp).size(48.dp)) { Icon(Icons.Default.Settings, stringResource(R.string.settings), tint = androidx.compose.ui.graphics.Color.White) }
+        if ((state.source == null) && !state.loading) IconButton(openSettings, Modifier.align(Alignment.TopEnd).padding(top = 36.dp, end = 8.dp).size(48.dp)) { Icon(Icons.Default.Settings, stringResource(R.string.settings), tint = Color.White) }
         if (state.loading) CircularProgressIndicator(Modifier.align(Alignment.Center))
         if ((state.bitmap != null) || (state.secondBitmap != null)) {
             val direction = state.settings.direction
@@ -141,7 +191,7 @@ import com.github.tyamada.mihirakipdfviewer_android.viewmodel.ViewerViewModel
                 direction = direction,
             ) {
                 Row(Modifier.fillMaxSize(), horizontalArrangement = Arrangement.Center) {
-                    if (state.settings.layout == com.github.tyamada.mihirakipdfviewer_android.data.ViewerLayout.SPREAD) {
+                    if (state.settings.layout == ViewerLayout.SPREAD) {
                         val images = listOfNotNull(state.bitmap, state.secondBitmap)
                         if (images.size == 1) {
                             val image = images.first()
@@ -228,6 +278,13 @@ import com.github.tyamada.mihirakipdfviewer_android.viewmodel.ViewerViewModel
                     awaitFirstDown(requireUnconsumed = false)
                     do {
                         val event = awaitPointerEvent()
+                        
+                        if (event.type == PointerEventType.Scroll && scale <= 1.05f) {
+                            val delta = event.changes.firstOrNull()?.scrollDelta?.y ?: 0f
+                            if (delta > 0.5f) onNext()
+                            else if (delta < -0.5f) onPrevious()
+                        }
+
                         val pan = event.calculatePan()
                         val zoom = event.calculateZoom()
 
@@ -244,7 +301,7 @@ import com.github.tyamada.mihirakipdfviewer_android.viewmodel.ViewerViewModel
                         }
                     } while (event.changes.any { it.pressed })
 
-                    if (scale <= 1.05f && kotlin.math.abs(totalPan.x) > 60f) {
+                    if (scale <= 1.05f && abs(totalPan.x) > 60f) {
                         val isForward = if (direction == ReadingDirection.L2R) totalPan.x < 0 else totalPan.x > 0
                         if (isForward) onNext() else onPrevious()
                     }

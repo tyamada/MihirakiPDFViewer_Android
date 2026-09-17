@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="fil">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MihirakiPDF - Two-Page Spread & R2L PDF Reader</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>MihirakiPDF</h1>
+        <p>Isang modernong PDF viewer na na-optimize para sa two-page spreads at R2L reading sa Android</p>
+    </header>
+
+    <nav>
+        <select onchange="location = this.value;">
+            <option value="index_de.html">Deutsch</option>
+            <option value="index_en.html">English</option>
+            <option value="index_es.html">Español</option>
+            <option value="index_fil.html" selected>Filipino</option>
+            <option value="index_fr.html">Français</option>
+            <option value="index_id.html">Indonesian</option>
+            <option value="index_ne.html">Nepali</option>
+            <option value="index_pt.html">Português</option>
+            <option value="index_vi.html">Tiếng Việt</option>
+            <option value="index_zh.html">简体中文</option>
+            <option value="index_zh-TW.html">繁體中文</option>
+            <option value="index.html">日本語</option>
+            <option value="index_ko.html">한국어</option>
+        </select>
+        <a href="privacy_fil.html">Patakaran sa Privacy</a>
+        <a href="https://github.com/tyamada/MihirakiPDFViewer_Android" target="_blank">GitHub</a>
+    </nav>
+
+    <section>
+        <h2>✨ Mga Pangunahing Tampok</h2>
+        <div class="features">
+            <div class="feature-card">
+                <h3>📖 Seamless Spreads</h3>
+                <p>Tingnan ang dalawang pahina nang magkatabi. Perpekto para sa manga at art book layout.</p>
+            </div>
+            <div class="feature-card">
+                <h3>🇯🇵 Native R2L Support</h3>
+                <p>Buong suporta para sa right-to-left reading order, kabilang ang mga inverted slider at intuitive swipe gestures.</p>
+            </div>
+            <div class="feature-card">
+                <h3>🔄 Auto-Detection</h3>
+                <p>Awtomatikong nakikita ang layout ng pahina at direksyon ng pagbabasa mula sa metadata ng PDF para sa zero-config na karanasan.</p>
+            </div>
+            <div class="feature-card">
+                <h3>🔍 Tumpak na Paghahanap</h3>
+                <p>Mabilis na paghahanap ng text na may tumpak na hit highlighting (dilaw na background at pulang border) sa mga dokumento.</p>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <h2>📱 Screenshots</h2>
+        <div class="screenshots">
+            <img src="./screenshots/viewer_en.png" alt="Spread View" style="width: 100%;">
+            <img src="./screenshots/search_en.png" alt="Search Highlighting" style="width: 100%; margin-top: 10px;">
+            <div style="display: flex; gap: 10px; width: 100%;">
+                <img src="./screenshots/home_en.png" alt="Home Screen" style="width: calc(50% - 5px);">
+                <img src="./screenshots/settings_en.png" alt="Settings Screen" style="width: calc(50% - 5px);">
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <h2>🛡️ Priyoridad ang Privacy</h2>
+        <p>MihirakiPDF ay dinisenyo na privacy ang nasa core nito.</p>
+        <ul>
+            <li>Ang lahat ng pagproseso ng PDF ay lokal na ginagawa sa iyong device.</li>
+            <li>Ang iyong mga dokumento ay hindi kailanman ia-upload sa anumang external server.</li>
+            <li>Walang hindi kinakailangang pahintulot sa internet ang kinakailangan.</li>
+        </ul>
+        <p><small>*Paalala: Ang koneksyon sa internet ay ginagamit lamang kapag tahasang nagbubukas ng mga file mula sa mga cloud storage service tulad ng Google Drive.</small></p>
+    </section>
+
+    <section>
+        <h2>💰 Presyo</h2>
+        <div class="feature-card" style="border-left: 5px solid #ef4fa7;">
+            <p><strong>Libre at Walang Ad</strong></p>
+            <p>Ang app ay ganap na libreng gamitin. Ang lahat ng mga pangunahing tampok, tulad ng pagtingin sa PDF, spreads, at paghahanap, ay magagamit nang walang anumang mga paghihigpit anuman ang pagbili.</p>
+            <p><small>*Ang mga opsyonal na in-app tip ay magagamit para suportahan ang developer. Ang mga supporter ay makakakita ng espesyal na commemorative badge sa Settings screen.</small></p>
+        </div>
+    </section>
+
+    <div class="cta">
+        <a href="#" class="btn">Kunin ito sa Google Play (Malapit na)</a>
+    </div>
+
+    <footer>
+        <p>&copy; 2026 Takuma Yamada. Nakareserba ang lahat ng karapatan.</p>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">MihirakiPDFViewer</string><string name="open_pdf">開啟 PDF</string><string name="open">開啟</string><string name="settings">設定</string><string name="support">支援</string><string name="search">搜尋 PDF</string><string name="ok">確定</string><string name="cancel">取消</string><string name="back">返回</string>
+    <string name="password_required">需要密碼</string><string name="password">密碼</string><string name="wrong_password">密碼錯誤。</string><string name="permission_denied">存取此檔案的權限被拒絕。機器翻譯</string><string name="cannot_open_pdf">無法開啟 PDF 或檔案已損壞。</string><string name="no_results">找不到搜尋結果。</string>
+    <string name="display_settings">顯示設定</string><string name="high_quality">高品質</string><string name="sharpness">清晰度</string><string name="two_page">雙頁檢視</string><string name="show_cover">顯示封面</string><string name="reading_direction">閱讀方向</string><string name="cover_mode">封面設定</string>
+    <string name="document_info">文件資訊</string><string name="title">標題</string><string name="author">作者</string><string name="subject">副標題</string><string name="keywords">關鍵字</string><string name="pdf_version">PDF 版本</string><string name="options">選項</string><string name="help">說明</string><string name="licenses">授權</string><string name="reset">重設</string>
+    <string name="reset_message">重設應用程式設定。</string><string name="icon_reset_warning">如果您變更了應用程式圖示，重設後將無法恢復！</string>
+    <string name="help_open"><b>開啟 PDF：</b>使用檔案選擇器從您的裝置或雲端儲存空間選取 PDF 檔案。</string><string name="help_navigate"><b>導覽頁面：</b>透過滑動或使用滑桿切換頁面。</string><string name="help_menu"><b>選單：</b>輕觸螢幕以切換工具列和滑桿的顯示狀態。</string><string name="help_zoom"><b>縮放：</b>捏合以放大或縮小。在放大狀態下長按並拖曳即可捲動。</string><string name="help_search"><b>搜尋：</b>在搜尋列中輸入文字以在 PDF 中尋找特定內容。</string><string name="help_layout"><b>版面配置：</b>使用選單中的版面配置選項在單頁和雙頁檢視之間切換。</string>
+    <string name="tip_message">如果您喜歡這款應用程式，可以支援其開發。</string><string name="purchase">購買</string><string name="purchase_thanks">謝謝！已收到 %1$s 的支援。</string><string name="purchase_cancelled">購買已取消。</string><string name="purchase_failed">購買失敗。請再試一次。</string>
+    <string name="app_info">應用程式資訊</string>
+    <string name="version">版本</string>
+    <string name="build_number">組建編號</string>
+    <string name="copyright">版權所有</string>
+    <string name="oss_license_title">開源授權</string>
+    <string name="oss_license_description">本應用程式使用以下開源軟體：</string>
+</resources>

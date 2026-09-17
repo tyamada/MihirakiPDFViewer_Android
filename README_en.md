@@ -56,7 +56,7 @@ Built with **Kotlin**, **Jetpack Compose**, and **Material 3** following the **M
 4. Run the app on an emulator or a physical device (minSdk 26).
 
 ## 🧪 Testing
-Run unit tests and instrumented UI tests:
+Run unit tests and instrumented UI tests. Test PDF files are available [here](https://1drv.ms/f/c/7a27b2713c2c2c38/IgDLhBYHJMKbRrvH92OpdA6jAQ4VUZNjFrJhqSYs9W4-BTo?e=JaNqSa).
 ```bash
 ./gradlew test
 ./gradlew connectedAndroidTest
