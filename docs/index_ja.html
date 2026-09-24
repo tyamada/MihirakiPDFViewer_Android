@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MihirakiPDFViewer - 見開き対応・右綴じPDFビューア</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>MihirakiPDFViewer</h1>
+        <p>日本特有の「見開き」と「右綴じ」を快適に楽しむためのAndroid用PDFビューア</p>
+    </header>
+
+    <nav>
+        <select onchange="location = this.value;">
+            <option value="index_de.html">Deutsch</option>
+            <option value="index.html">English</option>
+            <option value="index_es.html">Español</option>
+            <option value="index_fil.html">Filipino</option>
+            <option value="index_fr.html">Français</option>
+            <option value="index_id.html">Indonesian</option>
+            <option value="index_ne.html">Nepali</option>
+            <option value="index_pt.html">Português</option>
+            <option value="index_vi.html">Tiếng Việt</option>
+            <option value="index_zh.html">简体中文</option>
+            <option value="index_zh-TW.html">繁體中文</option>
+            <option value="index_ja.html" selected>日本語</option>
+            <option value="index_ko.html">한국어</option>
+        </select>
+        <a href="privacy.html">プライバシーポリシー</a>
+        <a href="https://github.com/tyamada/MihirakiPDFViewer_Android" target="_blank">GitHub</a>
+    </nav>
+
+    <section>
+        <h2>✨ 主な特徴</h2>
+        <div class="features">
+            <div class="feature-card">
+                <h3>📖 見開き表示</h3>
+                <p>2つのページを横に並べてシームレスに表示。漫画や画集の迫力をそのままに楽しめます。</p>
+            </div>
+            <div class="feature-card">
+                <h3>🇯🇵 右綴じ（R2L）対応</h3>
+                <p>日本の書籍に最適な右から左への読書順序をネイティブサポート。ページ移動も直感的です。</p>
+            </div>
+            <div class="feature-card">
+                <h3>🔄 自動構成検出</h3>
+                <p>PDFのメタデータから最適な表示レイアウトと綴じ方向を自動で判別します。</p>
+            </div>
+            <div class="feature-card">
+                <h3>🔍 強力な検索</h3>
+                <p>高速なテキスト検索と、ヒット箇所の精密なハイライト表示機能を搭載しています。</p>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <h2>📱 スクリーンショット</h2>
+        <div class="screenshots">
+            <img src="./screenshots/smartphone_screenshot_view_ja.png" alt="見開き表示の様子" style="width: 100%;">
+            <img src="./screenshots/smartphone_screenshot_search_ja.png" alt="検索機能" style="width: 100%; margin-top: 10px;">
+            <div style="display: flex; gap: 10px; width: 100%; margin-top: 10px;">
+                <img src="./screenshots/smartphone_screenshot_password_ja.png" alt="パスワード入力" style="width: calc(33.3% - 6.7px);">
+                <img src="./screenshots/smartphone_screenshot_support_ja.png" alt="開発者サポート" style="width: calc(33.3% - 6.7px);">
+                <img src="./screenshots/smartphone_screenshot_settings_ja.png" alt="設定画面" style="width: calc(33.3% - 6.7px);">
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <h2>🛡️ プライバシーへのこだわり</h2>
+        <p>MihirakiPDFViewerはプライバシーを最優先に設計されています。</p>
+        <ul>
+            <li>PDFファイルはすべてデバイス内でローカルに処理されます。</li>
+            <li>ドキュメントを外部サーバーに送信することはありません。</li>
+            <li>不要なインターネット権限は要求しません。</li>
+        </ul>
+        <p><small>※Googleドライブ等のクラウドストレージからファイルを開く場合にのみ、各サービスのプロバイダを介した通信が発生します。</small></p>
+    </section>
+
+    <section>
+        <h2>💰 アプリの価格</h2>
+        <div class="feature-card" style="border-left: 5px solid #ef4fa7;">
+            <p><strong>基本無料</strong>（広告なし）</p>
+            <p>本アプリは完全に無料でご利用いただけます。PDFの閲覧、見開き表示、検索といったすべての機能は、購入の有無にかかわらず制限なくお使いいただけます。</p>
+            <p><small>※本アプリには「開発者への応援（投げ銭）」としてアプリ内購入が含まれています。応援してくださった方には、設定画面に特別な記念バッジが表示されます。</small></p>
+        </div>
+    </section>
+
+    <div class="cta">
+        <a href="#" class="btn">Google Play でダウンロード（準備中）</a>
+    </div>
+
+    <footer>
+        <p>&copy; 2026 Takuma Yamada. All rights reserved.</p>
+    </footer>
+</body>
+</html>

@@ -3,75 +3,75 @@
 [![Android Build](https://github.com/tyamada/MihirakiPDFViewer_Android/actions/workflows/android.yml/badge.svg)](https://github.com/tyamada/MihirakiPDFViewer_Android/actions)
 [![License](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
-[English](README_en.md) | 日本語
+English | [日本語](README_ja.md)
 
-**MihirakiPDFViewer** は、日本特有の「右綴じ」や「見開き」ドキュメント（漫画やライトノベルなど）を快適に閲覧するために設計された、プライバシー重視のモダンな Android 用ローカル PDF ビューアです。
+**MihirakiPDFViewer** is a modern, privacy-focused local PDF viewer for Android designed specifically for an optimal reading experience of two-page spreads and right-to-left (R2L) documents like Japanese Manga and Light Novels.
 
-**Kotlin**、**Jetpack Compose**、**Material 3** を使用し、**MVVM** アーキテクチャに基づいて構築されています。
+Built with **Kotlin**, **Jetpack Compose**, and **Material 3** following the **MVVM** architecture.
 
-## ✨ 主な機能
+## ✨ Features
 
-- 📖 **見開き表示対応**: 2つのページを横に並べてシームレスに表示します。
-- 🔄 **自動構成検出**: PDF のメタデータからページレイアウト（単一/見開き）と読書方向（左綴じ/右綴じ）を自動的に検出し、最適な設定を適用します。
-- 🇯🇵 **右綴じ（R2L）完全対応**: 日本の書籍特有の右から左への読書順序や、右綴じの製本レイアウトをネイティブにサポート。
-- 🔍 **強力な検索機能**: 高速なテキスト検索に加え、ヒット箇所を精密にハイライト（黄色背景と赤枠）表示します。
-- 🛡️ **プライバシー重視**: PDF 処理にインターネット接続は不要です。Storage Access Framework (SAF) を使用し、ユーザーが明示的に選択したファイルのみにアクセスします。
-- 🚀 **高性能レンダリング**: Android 標準の `PdfRenderer` を使用し、互換性と機能向上のために `PDFBox-Android` をフォールバックとして併用します。
-- 🎨 **アダプティブ UI**: スマートフォンとタブレットの両方、さらに縦向きと横向きのどちらでも快適に動作するレスポンシブデザイン。
+- 📖 **Two-Page Spread Support**: Seamlessly view two pages side-by-side.
+- 🔄 **Auto-Detection**: Automatically detects page layout (Single/Spread) and reading direction (L2R/R2L) from PDF metadata.
+- 🇯🇵 **R2L Support**: Native support for right-to-left reading order and right-bound book layouts.
+- 🔍 **Powerful Search**: Fast text search with precise hit highlighting (yellow background and red border).
+- 🛡️ **Privacy First**: No internet permissions required for PDF processing. Uses Storage Access Framework (SAF) to only access files you choose.
+- 🚀 **Performant Rendering**: Uses Android's native `PdfRenderer` with a fallback to `PDFBox-Android` for maximum compatibility and features.
+- 🎨 **Adaptive UI**: Responsive design that works great on both phones and tablets, in portrait and landscape.
 
 > [!NOTE]
-> **インターネット接続について**: **Google ドライブ** などのクラウドストレージ上の PDF ファイルを開く場合にのみ、インターネット接続が必要です。端末内に保存されているローカルの PDF ファイルを閲覧するだけなら、インターネット接続は一切不要です。
+> **Internet Connectivity**: An internet connection is required only when opening PDF files stored on **Google Drive** or other cloud services. For PDF files stored locally on your device, no internet connection is required.
 
-## 📱 スクリーンショット
+## 📱 Screenshots
 
-| ビューア（見開き） | 検索 | パスワード保護 | 応援 | 設定 |
+| Viewer (Spread) | Search | Password Protection | Support | Settings |
 | :---: | :---: | :---: | :---: | :---: |
-| ![Viewer](assets/screenshots/smartphone_screenshot_view_ja.png) | ![Search](assets/screenshots/smartphone_screenshot_search_ja.png) | ![Password](assets/screenshots/smartphone_screenshot_password_ja.png) | ![Support](assets/screenshots/smartphone_screenshot_support_ja.png) | ![Settings](assets/screenshots/smartphone_screenshot_settings_ja.png) |
+| ![Viewer](assets/screenshots/smartphone_screenshot_view_en.png) | ![Search](assets/screenshots/smartphone_screenshot_search_en.png) | ![Password](assets/screenshots/smartphone_screenshot_password_en.png) | ![Support](assets/screenshots/smartphone_screenshot_support_en.png) | ![Settings](assets/screenshots/smartphone_screenshot_settings_en.png) |
 
-## 🛠 技術スタック
+## 🛠 Tech Stack
 
-- **言語**: [Kotlin](https://kotlinlang.org/)
-- **UI フレームワーク**: [Jetpack Compose](https://developer.android.com/jetpack/compose)
-- **デザインシステム**: [Material 3](https://m3.material.io/)
-- **アーキテクチャ**: MVVM (Model-View-ViewModel)
-- **PDF エンジン**: 標準 `PdfRenderer` + [PDFBox-Android](https://github.com/TomRoush/PdfBox-Android)
-- **ローカルストレージ**: [Jetpack DataStore](https://developer.android.com/topic/libraries/architecture/datastore) (Preferences)
-- **ナビゲーション**: [Jetpack Navigation Compose](https://developer.android.com/jetpack/compose/navigation)
-- **アプリ内課金**: [Google Play Billing Library](https://developer.android.com/google/play/billing) (開発者応援チップ用)
+- **Language**: [Kotlin](https://kotlinlang.org/)
+- **UI Framework**: [Jetpack Compose](https://developer.android.com/jetpack/compose)
+- **Design System**: [Material 3](https://m3.material.io/)
+- **Architecture**: MVVM (Model-View-ViewModel)
+- **PDF Engine**: Native `PdfRenderer` + [PDFBox-Android](https://github.com/TomRoush/PdfBox-Android)
+- **Local Storage**: [Jetpack DataStore](https://developer.android.com/topic/libraries/architecture/datastore) (Preferences)
+- **Navigation**: [Jetpack Navigation Compose](https://developer.android.com/jetpack/compose/navigation)
+- **In-App Billing**: [Google Play Billing Library](https://developer.android.com/google/play/billing) (for developer support tips)
 
-## 🚀 はじめに
+## 🚀 Getting Started
 
-### 動作要件
-- Android Studio Ladybug (またはそれ以降)
+### Prerequisites
+- Android Studio Ladybug (or newer)
 - JDK 17
 - Android SDK 37
 
-### ビルド方法
-1. リポジトリをクローンします:
+### Build
+1. Clone the repository:
    ```bash
    git clone https://github.com/tyamada/MihirakiPDFViewer_Android.git
    ```
-2. Android Studio でプロジェクトを開きます。
-3. Gradle ファイルと同期します。
-4. エミュレーターまたは実機（minSdk 26 以上）で実行します。
+2. Open the project in Android Studio.
+3. Sync the project with Gradle files.
+4. Run the app on an emulator or a physical device (minSdk 26).
 
-## 🧪 テスト
-ユニットテストおよびインストルメンテーション UI テストを実行できます。テスト用の PDF ファイルは [こちら](https://1drv.ms/f/c/7a27b2713c2c2c38/IgDLhBYHJMKbRrvH92OpdA6jAQ4VUZNjFrJhqSYs9W4-BTo?e=JaNqSa) から入手可能です。
+## 🧪 Testing
+Run unit tests and instrumented UI tests. Test PDF files are available [here](https://1drv.ms/f/c/7a27b2713c2c2c38/IgDLhBYHJMKbRrvH92OpdA6jAQ4VUZNjFrJhqSYs9W4-BTo?e=JaNqSa).
 ```bash
 ./gradlew test
 ./gradlew connectedAndroidTest
 ```
 
-## 💖 開発者の応援
-アプリを気に入っていただけた場合は、アプリ内の「応援」機能から開発を支援できます。Bronze、Silver、Gold の各チップを贈ると、設定画面に特別な記念アイコンが表示されます！
+## 💖 Support the Developer
+If you find this app useful, you can support further development via the in-app "Support" feature. We offer Bronze, Silver, and Gold tip tiers, which unlock a special commemorative icon in your settings screen!
 
-## 🤖 AI による開発
-このプロジェクトは、AI アシスタントを活用して開発されています：
-- **初期コード作成**: [ChatGPT](https://chat.openai.com/)
-- **コードの変更・機能追加・バグ修正**: [Gemini 3.0 Flash Preview](https://deepmind.google/technologies/gemini/flash/) (Android Studio 経由)
+## 🤖 Developed with AI
+This project was developed with the assistance of AI:
+- **Initial Code Generation**: [ChatGPT](https://chat.openai.com/)
+- **Modifications, Feature Implementation & Bug Fixes**: [Gemini 3.0 Flash Preview](https://deepmind.google/technologies/gemini/flash/) (via Android Studio)
 
-## 📄 ライセンス
-このプロジェクトは MIT License の下でライセンスされています。詳細は [LICENSE](LICENSE) ファイルを参照してください。
+## 📄 License
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
 ---
-*注: このアプリはローカルファイル閲覧用に最適化されており、ドキュメントをサーバーにアップロードすることはありません。*
+*Note: This app is optimized for local file viewing and does not upload your documents to any server.*

@@ -29,14 +29,24 @@ import com.github.tyamada.mihirakipdfviewer_android.viewmodel.ViewerViewModel
             SwitchRow(stringResource(R.string.two_page), state.settings.layout == ViewerLayout.SPREAD) { vm.updateSettings { s -> s.copy(layout = if (it) ViewerLayout.SPREAD else ViewerLayout.SINGLE) } }
             SwitchRow(stringResource(R.string.show_cover), state.settings.showCover) { vm.updateSettings { s -> s.copy(showCover = it) } }
             SelectRow(stringResource(R.string.reading_direction), state.settings.direction.name) { vm.updateSettings { s -> s.copy(direction = if (s.direction == ReadingDirection.L2R) ReadingDirection.R2L else ReadingDirection.L2R) } }
-            SelectRow(stringResource(R.string.cover_mode), state.settings.coverMode.name) { vm.updateSettings { s -> s.copy(coverMode = if (s.coverMode == CoverMode.STANDARD) CoverMode.COMPATIBILITY else CoverMode.STANDARD) } }
-            Section(stringResource(R.string.document_info)); Info(stringResource(R.string.title), state.info.title); Info(stringResource(R.string.author), state.info.author); Info(stringResource(R.string.subject), state.info.subject); Info(stringResource(R.string.keywords), state.info.keywords); Info(stringResource(R.string.pdf_version), state.info.version)
+
             Section(stringResource(R.string.options))
-            TextButton(onClick = help, modifier = Modifier.fillMaxWidth()) { Text(stringResource(R.string.help)) }
-            TextButton(onClick = tips, modifier = Modifier.fillMaxWidth()) { Text(stringResource(R.string.support)) }
-            TextButton(onClick = licenses, modifier = Modifier.fillMaxWidth()) { Text(stringResource(R.string.licenses)) }
-            TextButton(onClick = reset, modifier = Modifier.fillMaxWidth()) { Text(stringResource(R.string.reset)) }
+            SelectRow(stringResource(R.string.cover_mode), state.settings.coverMode.name) { vm.updateSettings { s -> s.copy(coverMode = if (s.coverMode == CoverMode.STANDARD) CoverMode.COMPATIBILITY else CoverMode.STANDARD) } }
+            TextButton(onClick = reset, modifier = Modifier.fillMaxWidth()) {
+                Box(Modifier.fillMaxWidth(), contentAlignment = Alignment.CenterStart) {
+                    Text(stringResource(R.string.reset))
+                }
+            }
+
+            Section(stringResource(R.string.document_info)); Info(stringResource(R.string.title), state.info.title); Info(stringResource(R.string.author), state.info.author); Info(stringResource(R.string.subject), state.info.subject); Info(stringResource(R.string.keywords), state.info.keywords); Info(stringResource(R.string.pdf_version), state.info.version)
             
+            Section(stringResource(R.string.help))
+            TextButton(onClick = help, modifier = Modifier.fillMaxWidth()) {
+                Box(Modifier.fillMaxWidth(), contentAlignment = Alignment.CenterStart) {
+                    Text(stringResource(R.string.help))
+                }
+            }
+
             Section(stringResource(R.string.app_info))
             Info(stringResource(R.string.version), BuildConfig.VERSION_NAME)
             Info(stringResource(R.string.build_number), BuildConfig.VERSION_CODE.toString())
@@ -58,6 +68,19 @@ import com.github.tyamada.mihirakipdfviewer_android.viewmodel.ViewerViewModel
                     )
                 }
             }
+
+            TextButton(onClick = licenses, modifier = Modifier.fillMaxWidth()) {
+                Box(Modifier.fillMaxWidth(), contentAlignment = Alignment.CenterStart) {
+                    Text(stringResource(R.string.licenses))
+                }
+            }
+
+            Section("開発者を応援")
+            TextButton(onClick = tips, modifier = Modifier.fillMaxWidth()) {
+                Box(Modifier.fillMaxWidth(), contentAlignment = Alignment.CenterStart) {
+                    Text(stringResource(R.string.support))
+                }
+            }
         }
     }
 }
@@ -73,5 +96,5 @@ import com.github.tyamada.mihirakipdfviewer_android.viewmodel.ViewerViewModel
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable fun ResetScreen(vm: ViewerViewModel, back: () -> Unit) = Scaffold(topBar = { TopAppBar(title = { Text(stringResource(R.string.reset)) }, navigationIcon = { IconButton(back) { Icon(Icons.AutoMirrored.Filled.ArrowBack, stringResource(R.string.back)) } }) }) { p ->
-    Column(Modifier.padding(p).padding(24.dp)) { Text(stringResource(R.string.reset_message), style = MaterialTheme.typography.titleLarge); Spacer(Modifier.height(16.dp)); Text(stringResource(R.string.icon_reset_warning), color = MaterialTheme.colorScheme.error); Spacer(Modifier.weight(1f)); Row(Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.End) { TextButton(back) { Text(stringResource(R.string.cancel)) }; Spacer(Modifier.width(8.dp)); Button(onClick = { vm.reset(); back() }) { Text(stringResource(R.string.reset)) } } }
+    Column(Modifier.padding(p).padding(24.dp)) { Text(stringResource(R.string.reset_message), style = MaterialTheme.typography.titleLarge); Spacer(Modifier.weight(1f)); Row(Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.End) { TextButton(back) { Text(stringResource(R.string.cancel)) }; Spacer(Modifier.width(8.dp)); Button(onClick = { vm.reset(); back() }) { Text(stringResource(R.string.reset)) } } }
 }

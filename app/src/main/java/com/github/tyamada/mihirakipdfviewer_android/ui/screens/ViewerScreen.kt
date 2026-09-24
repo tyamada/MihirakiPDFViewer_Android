@@ -3,6 +3,7 @@ package com.github.tyamada.mihirakipdfviewer_android.ui.screens
 import android.content.Intent
 import androidx.activity.compose.rememberLauncherForActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.compose.animation.core.*
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.focusable
@@ -10,6 +11,7 @@ import androidx.compose.foundation.gestures.*
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.MenuBook
+import androidx.compose.material.icons.automirrored.filled.*
 import androidx.compose.material.icons.filled.*
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
@@ -34,6 +36,7 @@ import com.github.tyamada.mihirakipdfviewer_android.R
 import com.github.tyamada.mihirakipdfviewer_android.data.ReadingDirection
 import com.github.tyamada.mihirakipdfviewer_android.data.ViewerLayout
 import com.github.tyamada.mihirakipdfviewer_android.viewmodel.ViewerViewModel
+import kotlinx.coroutines.delay
 import kotlin.math.abs
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -44,6 +47,15 @@ import kotlin.math.abs
     val picker = rememberLauncherForActivityResult(ActivityResultContracts.OpenDocument()) { uri -> uri?.let {
         runCatching { context.contentResolver.takePersistableUriPermission(it, Intent.FLAG_GRANT_READ_URI_PERMISSION) }; vm.open(it)
     } }
+
+    var showSwipeHint by remember { mutableStateOf(false) }
+    LaunchedEffect(state.source) {
+        if (state.source != null) {
+            showSwipeHint = true
+            delay(1000)
+            showSwipeHint = false
+        }
+    }
 
     LaunchedEffect(Unit) {
         focusRequester.requestFocus()
@@ -218,6 +230,54 @@ import kotlin.math.abs
             }
         }
         state.errorKey?.let { key -> Snackbar(Modifier.align(Alignment.BottomCenter), action = { TextButton(onClick = vm::dismissError) { Text(stringResource(R.string.ok)) } }) { Text(errorText(key)) } }
+
+        if (showSwipeHint && state.source != null) {
+            val isR2L = state.settings.direction == ReadingDirection.R2L
+            val infiniteTransition = rememberInfiniteTransition(label = "SwipeHint")
+            val translationX by infiniteTransition.animateFloat(
+                initialValue = if (isR2L) -60f else 60f,
+                targetValue = if (isR2L) 60f else -60f,
+                animationSpec = infiniteRepeatable(
+                    animation = tween(600, easing = LinearEasing),
+                    repeatMode = RepeatMode.Restart
+                ),
+                label = "ArrowTranslation"
+            )
+            val alpha by infiniteTransition.animateFloat(
+                initialValue = 0.2f,
+                targetValue = 1f,
+                animationSpec = infiniteRepeatable(
+                    animation = tween(300, easing = LinearEasing),
+                    repeatMode = RepeatMode.Reverse
+                ),
+                label = "ArrowAlpha"
+            )
+
+            Box(
+                modifier = Modifier.fillMaxSize(),
+                contentAlignment = Alignment.Center
+            ) {
+                Surface(
+                    color = Color.Black.copy(alpha = 0.6f),
+                    shape = MaterialTheme.shapes.medium,
+                    modifier = Modifier.padding(16.dp)
+                ) {
+                    Box(
+                        modifier = Modifier.size(100.dp, 80.dp),
+                        contentAlignment = Alignment.Center
+                    ) {
+                        Icon(
+                            imageVector = if (isR2L) Icons.AutoMirrored.Filled.ArrowForward else Icons.AutoMirrored.Filled.ArrowBack,
+                            contentDescription = null,
+                            tint = Color.White,
+                            modifier = Modifier
+                                .size(48.dp)
+                                .graphicsLayer(translationX = translationX, alpha = alpha)
+                        )
+                    }
+                }
+            }
+        }
     } }
     if (state.passwordRequested) {
         AlertDialog(
@@ -264,31 +324,26 @@ import kotlin.math.abs
     Box(
         modifier
             .pointerInput(Unit) {
-                detectTapGestures(
-                    onTap = { onTap() },
-                    onDoubleTap = {
-                        scale = 1f
-                        offset = Offset.Zero
-                    },
-                )
-            }
-            .pointerInput(Unit) {
                 awaitEachGesture {
+                    val down = awaitFirstDown(requireUnconsumed = false)
                     var totalPan = Offset.Zero
-                    awaitFirstDown(requireUnconsumed = false)
+                    var hasMoved = false
+                    val startTime = System.currentTimeMillis()
+
                     do {
                         val event = awaitPointerEvent()
                         
                         if (event.type == PointerEventType.Scroll && scale <= 1.05f) {
                             val delta = event.changes.firstOrNull()?.scrollDelta?.y ?: 0f
-                            if (delta > 0.5f) onNext()
-                            else if (delta < -0.5f) onPrevious()
+                            if (delta > 0.5f) { onNext(); return@awaitEachGesture }
+                            else if (delta < -0.5f) { onPrevious(); return@awaitEachGesture }
                         }
 
                         val pan = event.calculatePan()
                         val zoom = event.calculateZoom()
 
                         if (zoom != 1f || pan != Offset.Zero) {
+                            hasMoved = true
                             val newScale = (scale * zoom).coerceIn(1f, 5f)
                             if (newScale > 1f) {
                                 offset += pan
@@ -298,10 +353,18 @@ import kotlin.math.abs
                             scale = newScale
                             totalPan += pan
                             event.changes.forEach { it.consume() }
+                        } else {
+                            val currentPos = event.changes.firstOrNull()?.position ?: down.position
+                            if ((currentPos - down.position).getDistance() > 15f) {
+                                hasMoved = true
+                            }
                         }
                     } while (event.changes.any { it.pressed })
 
-                    if (scale <= 1.05f && abs(totalPan.x) > 60f) {
+                    val duration = System.currentTimeMillis() - startTime
+                    if (!hasMoved && duration < 350f) {
+                        onTap()
+                    } else if (scale <= 1.05f && abs(totalPan.x) > 60f) {
                         val isForward = if (direction == ReadingDirection.L2R) totalPan.x < 0 else totalPan.x > 0
                         if (isForward) onNext() else onPrevious()
                     }

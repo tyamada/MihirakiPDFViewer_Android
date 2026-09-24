@@ -28,7 +28,9 @@ import com.github.tyamada.mihirakipdfviewer_android.viewmodel.ViewerViewModel
 
     Scaffold(topBar = { TopAppBar(title = { Text(stringResource(R.string.support)) }, navigationIcon = { IconButton(back) { Icon(Icons.Default.ArrowBack, stringResource(R.string.back)) } }) }) { p ->
         Column(Modifier.padding(p).padding(20.dp), verticalArrangement = Arrangement.spacedBy(12.dp)) {
-            Text(stringResource(R.string.tip_message)); TipTier.entries.forEach { tier ->
+            Text(stringResource(R.string.tip_message))
+            Text(stringResource(R.string.tip_free_notice))
+            TipTier.entries.forEach { tier ->
                 val product = products.firstOrNull { it.productId == tier.productId }
                 val priceText = product?.oneTimePurchaseOfferDetailsList?.firstOrNull()?.formattedPrice
                     ?: if (isDebug) {

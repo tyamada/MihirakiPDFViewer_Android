@@ -1,0 +1,17 @@
+<resources>
+    <string name="app_name">MihirakiPDFViewer</string><string name="open_pdf">Abrir PDF</string><string name="open">Abrir</string><string name="settings">Configurações</string><string name="support">Apoiar</string><string name="search">Pesquisar no PDF</string><string name="ok">OK</string><string name="cancel">Cancelar</string><string name="back">Voltar</string>
+    <string name="password_required">Senha necessária</string><string name="password">Senha</string><string name="wrong_password">Senha incorreta.</string><string name="permission_denied">Permissão para ler este arquivo negada.</string><string name="cannot_open_pdf">O PDF não pode ser aberto ou está danificado.</string><string name="no_results">Nenhum resultado de pesquisa encontrado.</string>
+    <string name="display_settings">Configurações de exibição</string><string name="high_quality">Alta qualidade</string><string name="sharpness">Nitidez</string><string name="two_page">Visualização de página dupla</string><string name="show_cover">Mostrar capa</string><string name="reading_direction">Direção de leitura</string><string name="cover_mode">Configuração da capa</string>
+    <string name="document_info">Informações do documento</string><string name="title">Título</string><string name="author">Autor</string><string name="subject">Subtítulo</string><string name="keywords">Palavras-chave</string><string name="pdf_version">Versão do PDF</string><string name="options">Opções</string><string name="help">Ajuda</string><string name="licenses">Licenças</string><string name="reset">Redefinir</string>
+    <string name="reset_message">Redefinir as configurações do aplicativo.</string>
+    <string name="help_open"><b>Abrir PDF:</b> Use o seletor de arquivos para selecionar um arquivo PDF do seu dispositivo ou armazenamento em nuvem.</string><string name="help_navigate"><b>Navegar pelas páginas:</b> Alterne as páginas deslizando ou usando o controle deslizante.</string><string name="help_menu"><b>Menu:</b> Toque na tela para alternar a visibilidad da barra de ferramentas e do controle deslizante.</string><string name="help_zoom"><b>Zoom:</b> Faça o gesto de pinça para ampliar ou reduzir. Pressione e segure e arraste para rolar enquanto ampliado.</string><string name="help_search"><b>Pesquisar:</b> Insira texto na barra de pesquisa para encontrar conteúdo específico no PDF.</string><string name="help_layout"><b>Layout:</b> Use as opções de layout no menu para alternar entre visualizações de página única e página dupla.</string>
+    <string name="tip_message">Se você gosta do aplicativo, pode apoiar o seu desenvolvimento.</string>
+    <string name="tip_free_notice">Todos os recursos estão disponíveis sem compra.</string>
+    <string name="purchase">Comprar</string><string name="purchase_thanks">Obrigado! Suporte %1$s recebido.</string><string name="purchase_cancelled">Compra cancelada.</string><string name="purchase_failed">Falha na compra. Por favor, tente novamente.</string>
+    <string name="app_info">Informações do aplicativo</string>
+    <string name="version">Versão</string>
+    <string name="build_number">Número da compilação</string>
+    <string name="copyright">Diredireitos autorais</string>
+    <string name="oss_license_title">Licenças de código aberto</string>
+    <string name="oss_license_description">Este aplicativo usa o seguinte software de código aberto:</string>
+</resources>

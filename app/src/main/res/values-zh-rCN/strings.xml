@@ -1,0 +1,17 @@
+<resources>
+    <string name="app_name">MihirakiPDFViewer</string><string name="open_pdf">打开 PDF</string><string name="open">打开</string><string name="settings">设置</string><string name="support">支持</string><string name="search">搜索 PDF</string><string name="ok">确定</string><string name="cancel">取消</string><string name="back">返回</string>
+    <string name="password_required">需要密码</string><string name="password">密码</string><string name="wrong_password">密码错误。</string><string name="permission_denied">读取此文件的权限被拒绝。</string><string name="cannot_open_pdf">无法打开 PDF 或文件已损坏。</string><string name="no_results">未找到搜索结果。</string>
+    <string name="display_settings">显示设置</string><string name="high_quality">高画质</string><string name="sharpness">清晰度</string><string name="two_page">双页视图</string><string name="show_cover">显示封面</string><string name="reading_direction">阅读方向</string><string name="cover_mode">封面设置</string>
+    <string name="document_info">文档信息</string><string name="title">标题</string><string name="author">作者</string><string name="subject">副标题</string><string name="keywords">关键词</string><string name="pdf_version">PDF 版本</string><string name="options">选项</string><string name="help">帮助</string><string name="licenses">许可证</string><string name="reset">重置</string>
+    <string name="reset_message">重置应用设置。</string>
+    <string name="help_open"><b>打开 PDF：</b>使用文件选择器从您的设备或云存储中选择 PDF 文件。</string><string name="help_navigate"><b>导览页面：</b>通过滑动或使用滑块切换页面。</string><string name="help_menu"><b>菜单：</b>点击屏幕以切换工具栏和滑块的显示状态。</string><string name="help_zoom"><b>缩放：</b>捏合以放大或缩小。在放大状态下长按并拖动即可滚动。</string><string name="help_search"><b>搜索：</b>在搜索栏中输入文本以在 PDF 中查找特定内容。</string><string name="help_layout"><b>布局：</b>使用菜单中的布局选项在单页和双页视图之间切换。</string>
+    <string name="tip_message">如果您喜欢这款应用，可以支持其开发。</string>
+    <string name="tip_free_notice">无需购买即可使用所有功能。</string>
+    <string name="purchase">购买</string><string name="purchase_thanks">谢谢！已收到 %1$s 的支持。</string><string name="purchase_cancelled">购买已取消。</string><string name="purchase_failed">购买失败。请再试一次。</string>
+    <string name="app_info">应用信息</string>
+    <string name="version">版本</string>
+    <string name="build_number">构建编号</string>
+    <string name="copyright">版权所有</string>
+    <string name="oss_license_title">开源许可证</string>
+    <string name="oss_license_description">本应用使用以下开源软件：</string>
+</resources>

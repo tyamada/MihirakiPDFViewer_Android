@@ -1,0 +1,17 @@
+<resources>
+    <string name="app_name">MihirakiPDFViewer</string><string name="open_pdf">PDF 열기</string><string name="open">열기</string><string name="settings">설정</string><string name="support">후원</string><string name="search">PDF 검색</string><string name="ok">확인</string><string name="cancel">취소</string><string name="back">뒤로</string>
+    <string name="password_required">비밀번호 필요</string><string name="password">비밀번호</string><string name="wrong_password">비밀번호가 올바르지 않습니다.</string><string name="permission_denied">이 파일을 읽을 권한이 거부되었습니다.</string><string name="cannot_open_pdf">PDF를 열 수 없거나 손상되었습니다.</string><string name="no_results">검색 결과가 없습니다.</string>
+    <string name="display_settings">디스플레이 설정</string><string name="high_quality">고화질</string><string name="sharpness">선명도</string><string name="two_page">양면 보기</string><string name="show_cover">표지 표시</string><string name="reading_direction">읽기 방향</string><string name="cover_mode">표지 설정</string>
+    <string name="document_info">문서 정보</string><string name="title">제목</string><string name="author">저자</string><string name="subject">부제목</string><string name="keywords">키워드</string><string name="pdf_version">PDF 버전</string><string name="options">옵션</string><string name="help">도움말</string><string name="licenses">라이선스</string><string name="reset">초기화</string>
+    <string name="reset_message">앱 설정을 초기화합니다.</string>
+    <string name="help_open"><b>PDF 열기:</b> 파일 선택기를 사용하여 기기 또는 클라우드 스토리지에서 PDF 파일을 선택하세요.</string><string name="help_navigate"><b>페이지 탐색:</b> 스와이프하거나 슬라이더를 사용하여 페이지를 전환하세요.</string><string name="help_menu"><b>메뉴:</b> 화면을 탭하여 도구 모음과 슬라이더의 표시 여부를 전환하세요.</string><string name="help_zoom"><b>확대/축소:</b> 핀치하여 확대하거나 축소하세요. 확대된 상태에서 길게 누르고 드래그하여 스크롤하세요.</string><string name="help_search"><b>검색:</b> 검색창에 텍스트를 입력하여 PDF 내의 특정 콘텐츠를 찾으세요.</string><string name="help_layout"><b>레이아웃:</b> 메뉴의 레이아웃 옵션을 사용하여 단면 보기와 양면 보기를 전환하세요.</string>
+    <string name="tip_message">앱이 마음에 드신다면 개발을 후원해 주세요.</string>
+    <string name="tip_free_notice">구매하지 않아도 모든 기능을 이용할 수 있습니다.</string>
+    <string name="purchase">구매</string><string name="purchase_thanks">감사합니다! %1$s 후원을 받았습니다.</string><string name="purchase_cancelled">구매가 취소되었습니다.</string><string name="purchase_failed">구매에 실패했습니다. 다시 시도해 주세요.</string>
+    <string name="app_info">앱 정보</string>
+    <string name="version">버전</string>
+    <string name="build_number">빌드 번호</string>
+    <string name="copyright">저작권</string>
+    <string name="oss_license_title">오픈 소스 라이선스</string>
+    <string name="oss_license_description">이 앱은 다음 오픈 소스 소프트웨어를 사용합니다:</string>
+</resources>

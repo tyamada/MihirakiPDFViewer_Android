@@ -1,0 +1,17 @@
+<resources>
+    <string name="app_name">MihirakiPDFViewer</string><string name="open_pdf">PDF öffnen</string><string name="open">Öffnen</string><string name="settings">Einstellungen</string><string name="support">Unterstützung</string><string name="search">PDF durchsuchen</string><string name="ok">OK</string><string name="cancel">Abbrechen</string><string name="back">Zurück</string>
+    <string name="password_required">Passwort erforderlich</string><string name="password">Passwort</string><string name="wrong_password">Falsches Passwort.</string><string name="permission_denied">Berechtigung zum Lesen dieser Datei verweigert.</string><string name="cannot_open_pdf">PDF kann nicht geöffnet werden oder ist beschädigt.</string><string name="no_results">Keine Suchergebnisse gefunden.</string>
+    <string name="display_settings">Anzeigeeinstellungen</string><string name="high_quality">Hohe Qualität</string><string name="sharpness">Schärfe</string><string name="two_page">Doppelseitenansicht</string><string name="show_cover">Cover anzeigen</string><string name="reading_direction">Leserichtung</string><string name="cover_mode">Cover-Einstellung</string>
+    <string name="document_info">Dokumenteninformationen</string><string name="title">Titel</string><string name="author">Autor</string><string name="subject">Untertitel</string><string name="keywords">Schlüsselwörter</string><string name="pdf_version">PDF-Version</string><string name="options">Optionen</string><string name="help">Hilfe</string><string name="licenses">Lizenzen</string><string name="reset">Zurücksetzen</string>
+    <string name="reset_message">App-Einstellungen zurücksetzen.</string>
+    <string name="help_open"><b>PDF öffnen:</b> Verwenden Sie den Dateiauswahl, um eine PDF-Datei von Ihrem Gerät oder Cloud-Speicher auszuwählen.</string><string name="help_navigate"><b>Seiten navigieren:</b> Wechseln Sie Seiten durch Wischen oder Verwenden des Schiebereglers.</string><string name="help_menu"><b>Menü:</b> Tippen Sie auf den Bildschirm, um die Sichtbarkeit der Symbolleiste und des Schiebereglers umzuschalten.</string><string name="help_zoom"><b>Zoom:</b> Zum Vergrößern oder Verkleinern zusammenziehen. Gedrückt halten und ziehen, um zu scrollen, während herangezoomt ist.</string><string name="help_search"><b>Suchen:</b> Geben Sie Text in die Suchleiste ein, um bestimmte Inhalte im PDF zu finden.</string><string name="help_layout"><b>Layout:</b> Verwenden Sie die Layout-Optionen im Menü, um zwischen Einzelseiten- und Doppelseitenansicht zu wechseln.</string>
+    <string name="tip_message">Wenn Ihnen die App gefällt, können Sie die Entwicklung unterstützen.</string>
+    <string name="tip_free_notice">Alle Funktionen sind ohne Kauf verfügbar.</string>
+    <string name="purchase">Kaufen</string><string name="purchase_thanks">Vielen Dank! %1$s Unterstützung erhalten.</string><string name="purchase_cancelled">Kauf abgebrochen.</string><string name="purchase_failed">Kauf fehlgeschlagen. Bitte versuchen Sie es erneut.</string>
+    <string name="app_info">App-Informationen</string>
+    <string name="version">Version</string>
+    <string name="build_number">Build-Nummer</string>
+    <string name="copyright">Urheberrecht</string>
+    <string name="oss_license_title">Open-Source-Lizenzen</string>
+    <string name="oss_license_description">Diese App verwendet folgende Open-Source-Software:</string>
+</resources>
