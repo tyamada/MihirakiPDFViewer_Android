@@ -3,11 +3,14 @@ package com.github.tyamada.mihirakipdfviewer_android.viewmodel
 import android.app.Application
 import android.graphics.Bitmap
 import android.net.Uri
+import android.os.Build
+import android.util.Log
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.viewModelScope
 import com.github.tyamada.mihirakipdfviewer_android.billing.*
 import com.github.tyamada.mihirakipdfviewer_android.data.*
 import com.github.tyamada.mihirakipdfviewer_android.pdf.*
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.flow.*
 import kotlinx.coroutines.launch
@@ -28,6 +31,38 @@ class ViewerViewModel(app: Application) : AndroidViewModel(app) {
     private val _state = MutableStateFlow(ViewerUiState())
     val state: StateFlow<ViewerUiState> = _state.asStateFlow()
     private var renderJob: Job? = null
+
+    private val isLowRamDevice = Build.MODEL?.contains("SM-T510") == true
+    private val bitmapCache = object : LinkedHashMap<Int, Bitmap>(4, 0.75f, true) {
+        override fun removeEldestEntry(eldest: MutableMap.MutableEntry<Int, Bitmap>): Boolean {
+            return size > if (isLowRamDevice) 0 else 2
+        }
+    }
+
+    private suspend fun getOrRender(source: PdfSource, page: Int, width: Int, highQuality: Boolean, sharpness: Float, highlights: List<SearchRect>): Bitmap {
+        val targetWidth = if (isLowRamDevice) minOf(width, 720) else width
+        val useHighQ = if (isLowRamDevice) false else highQuality
+        val useSharp = if (isLowRamDevice) 0f else sharpness
+
+        if (!isLowRamDevice) {
+            synchronized(bitmapCache) {
+                bitmapCache[page]?.let { if (!it.isRecycled) return it }
+            }
+        }
+        val bmp = try {
+            source.render(page, targetWidth, useHighQ, useSharp, highlights)
+        } catch (e: OutOfMemoryError) {
+            Log.e("MihirakiPDF", "OOM during render", e)
+            System.gc()
+            source.render(page, targetWidth / 2, false, 0f, highlights)
+        }
+        if (!isLowRamDevice) {
+            synchronized(bitmapCache) {
+                bitmapCache[page] = bmp
+            }
+        }
+        return bmp
+    }
 
     init {
         viewModelScope.launch {
@@ -80,7 +115,7 @@ class ViewerViewModel(app: Application) : AndroidViewModel(app) {
         }
     }
 
-    fun render(page: Int, width: Int = 1080) {
+    fun render(page: Int, width: Int = if (isLowRamDevice) 720 else 1080) {
         val source = _state.value.source ?: return
         val target = page.coerceIn(0, source.pageCount - 1)
         
@@ -96,13 +131,14 @@ class ViewerViewModel(app: Application) : AndroidViewModel(app) {
         renderJob?.cancel(); renderJob = viewModelScope.launch {
             val settings = _state.value.settings
             val hits = _state.value.searchResults
-            
-            // Recycle old bitmaps BEFORE starting new renders to free up memory early
+
             val oldLeft = _state.value.bitmap
             val oldRight = _state.value.secondBitmap
-            _state.update { it.copy(bitmap = null, secondBitmap = null) }
-            oldLeft?.recycle()
-            oldRight?.recycle()
+            if (isLowRamDevice) {
+                _state.update { it.copy(bitmap = null, secondBitmap = null) }
+                oldLeft?.recycle()
+                oldRight?.recycle()
+            }
 
             if (settings.layout == ViewerLayout.SPREAD) {
                 val spreads = SpreadPlanner.plan(source.pageCount, settings.direction, settings.showCover, settings.coverMode)
@@ -113,13 +149,24 @@ class ViewerViewModel(app: Application) : AndroidViewModel(app) {
                 val leftRects = hits.asSequence().filter { it.pageIndex == leftTarget }.flatMap { it.rects }.toList()
                 val rightRects = hits.asSequence().filter { it.pageIndex == rightTarget }.flatMap { it.rects }.toList()
 
-                val left = leftTarget?.let { source.render(it, width / 2, settings.highQuality, settings.sharpness, leftRects) }
-                val right = rightTarget?.let { source.render(it, width / 2, settings.highQuality, settings.sharpness, rightRects) }
+                val left = leftTarget?.let { getOrRender(source, it, width / 2, settings.highQuality, settings.sharpness, leftRects) }
+                val right = rightTarget?.let { getOrRender(source, it, width / 2, settings.highQuality, settings.sharpness, rightRects) }
                 
+                if (isLowRamDevice) {
+                    oldLeft?.let { if (it !== left && it !== right) runCatching { it.recycle() } }
+                    oldRight?.let { if (it !== left && it !== right) runCatching { it.recycle() } }
+                }
+
                 _state.update { it.copy(currentPage = minOf(spread.left ?: Int.MAX_VALUE, spread.right ?: Int.MAX_VALUE), bitmap = left, secondBitmap = right) }
             } else {
                 val leftHits = hits.asSequence().filter { it.pageIndex == target }.flatMap { it.rects }.toList()
-                val first = source.render(target, width, settings.highQuality, settings.sharpness, leftHits)
+                val first = getOrRender(source, target, width, settings.highQuality, settings.sharpness, leftHits)
+                
+                if (isLowRamDevice) {
+                    oldLeft?.let { if (it !== first) runCatching { it.recycle() } }
+                    oldRight?.let { if (it !== first) runCatching { it.recycle() } }
+                }
+
                 _state.update { it.copy(currentPage = target, bitmap = first, secondBitmap = null) }
             }
         }
@@ -148,9 +195,20 @@ class ViewerViewModel(app: Application) : AndroidViewModel(app) {
     }
     fun reset() = viewModelScope.launch { preferences.reset(); closeDocument(); _state.value = ViewerUiState() }
     fun closeDocument() {
-        renderJob?.cancel(); _state.value.source?.close()
+        renderJob?.cancel()
+        _state.value.source?.close()
+        val oldBitmap = _state.value.bitmap
+        val oldSecond = _state.value.secondBitmap
         val cleared = _state.value.settings.copy(lastUri = null, lastPage = 0)
         _state.update { it.copy(source = null, bitmap = null, secondBitmap = null, currentPage = 0, passwordRequested = false, settings = cleared) }
+        
+        synchronized(bitmapCache) {
+            bitmapCache.values.forEach { runCatching { it.recycle() } }
+            bitmapCache.clear()
+        }
+        runCatching { oldBitmap?.recycle() }
+        runCatching { oldSecond?.recycle() }
+
         viewModelScope.launch { preferences.save(cleared) }
     }
     override fun onCleared() { closeDocument(); billing.close() }
