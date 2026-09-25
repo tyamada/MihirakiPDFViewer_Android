@@ -48,46 +48,32 @@ import com.github.tyamada.mihirakipdfviewer_android.viewmodel.ViewerViewModel
             }
 
             Section(stringResource(R.string.app_info))
-            ListItem(
-                headlineContent = { Text(stringResource(R.string.version)) },
-                supportingContent = {
-                    Row(verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.spacedBy(8.dp)) {
-                        Text(BuildConfig.VERSION_NAME)
-                        state.settings.allPurchasedTiers.forEach { tier ->
-                            val res = when (tier) {
-                                "BRONZE" -> R.drawable.ic_tip_bronze
-                                "SILVER" -> R.drawable.ic_tip_silver
-                                "GOLD" -> R.drawable.ic_tip_gold
-                                else -> null
-                            }
-                            res?.let {
-                                Image(
-                                    painter = painterResource(it),
-                                    contentDescription = tier,
-                                    modifier = Modifier.size(24.dp)
-                                )
-                            }
-                        }
-                    }
-                }
-            )
+            Info(stringResource(R.string.version), BuildConfig.VERSION_NAME)
             Info(stringResource(R.string.build_number), BuildConfig.VERSION_CODE.toString())
             Info(stringResource(R.string.copyright), "©️ 2026 Takuma Yamada")
 
-            state.settings.purchasedTier?.let { tier ->
-                val res = when (tier) {
-                    "BRONZE" -> R.drawable.ic_tip_bronze
-                    "SILVER" -> R.drawable.ic_tip_silver
-                    "GOLD" -> R.drawable.ic_tip_gold
-                    else -> null
-                }
-                res?.let {
-                    Spacer(Modifier.height(32.dp))
-                    Image(
-                        painter = painterResource(it),
-                        contentDescription = tier,
-                        modifier = Modifier.fillMaxWidth().height(120.dp).align(Alignment.CenterHorizontally),
-                    )
+            if (state.settings.allPurchasedTiers.isNotEmpty()) {
+                Spacer(Modifier.height(24.dp))
+                Row(
+                    Modifier.fillMaxWidth(),
+                    horizontalArrangement = Arrangement.Center,
+                    verticalAlignment = Alignment.CenterVertically
+                ) {
+                    state.settings.allPurchasedTiers.forEach { tier ->
+                        val res = when (tier) {
+                            "BRONZE" -> R.drawable.ic_tip_bronze
+                            "SILVER" -> R.drawable.ic_tip_silver
+                            "GOLD" -> R.drawable.ic_tip_gold
+                            else -> null
+                        }
+                        res?.let {
+                            Image(
+                                painter = painterResource(it),
+                                contentDescription = tier,
+                                modifier = Modifier.height(100.dp).padding(horizontal = 8.dp)
+                            )
+                        }
+                    }
                 }
             }
 
