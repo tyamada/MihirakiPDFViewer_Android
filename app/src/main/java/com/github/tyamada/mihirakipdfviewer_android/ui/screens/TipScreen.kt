@@ -84,7 +84,17 @@ import com.github.tyamada.mihirakipdfviewer_android.viewmodel.ViewerViewModel
                     }
                 }
             }
-            when (val s = purchase) { is PurchaseState.Success -> Text(stringResource(R.string.purchase_thanks, s.tier.name)); is PurchaseState.Cancelled -> Text(stringResource(R.string.purchase_cancelled)); is PurchaseState.Error -> Text(stringResource(R.string.purchase_failed), color = MaterialTheme.colorScheme.error); else -> Unit }
+            when (val s = purchase) {
+                is PurchaseState.Success -> {
+                    Column(verticalArrangement = Arrangement.spacedBy(4.dp)) {
+                        Text(stringResource(R.string.purchase_thanks, s.tier.name))
+                        Text(stringResource(R.string.purchase_badge_notice), style = MaterialTheme.typography.bodyMedium, color = MaterialTheme.colorScheme.primary)
+                    }
+                }
+                is PurchaseState.Cancelled -> Text(stringResource(R.string.purchase_cancelled))
+                is PurchaseState.Error -> Text(stringResource(R.string.purchase_failed), color = MaterialTheme.colorScheme.error)
+                else -> Unit
+            }
         }
     }
 }

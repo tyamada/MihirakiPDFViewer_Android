@@ -54,6 +54,12 @@ import com.github.tyamada.mihirakipdfviewer_android.viewmodel.ViewerViewModel
 
             if (state.settings.allPurchasedTiers.isNotEmpty()) {
                 Spacer(Modifier.height(24.dp))
+                Text(
+                    stringResource(R.string.purchased_badges_title),
+                    style = MaterialTheme.typography.titleMedium,
+                    color = MaterialTheme.colorScheme.primary,
+                    modifier = Modifier.padding(bottom = 8.dp)
+                )
                 Row(
                     Modifier.fillMaxWidth(),
                     horizontalArrangement = Arrangement.Center,
