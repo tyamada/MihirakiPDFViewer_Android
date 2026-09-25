@@ -1,13 +1,16 @@
 package com.github.tyamada.mihirakipdfviewer_android.ui.screens
 
 import android.app.Activity
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import com.github.tyamada.mihirakipdfviewer_android.R
@@ -43,7 +46,16 @@ import com.github.tyamada.mihirakipdfviewer_android.viewmodel.ViewerViewModel
 
                 ElevatedCard(Modifier.fillMaxWidth()) {
                     Row(Modifier.padding(16.dp), horizontalArrangement = Arrangement.spacedBy(16.dp)) {
-                        Text(tier.badge, style = MaterialTheme.typography.displaySmall)
+                        val iconRes = when (tier) {
+                            TipTier.BRONZE -> R.drawable.ic_tip_bronze
+                            TipTier.SILVER -> R.drawable.ic_tip_silver
+                            TipTier.GOLD -> R.drawable.ic_tip_gold
+                        }
+                        Image(
+                            painter = painterResource(iconRes),
+                            contentDescription = tier.name,
+                            modifier = Modifier.size(48.dp).align(Alignment.CenterVertically)
+                        )
                         Column(Modifier.weight(1f)) {
                             Text(tier.name)
                             Text(priceText)
