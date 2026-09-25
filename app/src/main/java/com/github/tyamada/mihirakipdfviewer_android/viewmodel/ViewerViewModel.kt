@@ -1,6 +1,8 @@
 package com.github.tyamada.mihirakipdfviewer_android.viewmodel
 
+import android.app.ActivityManager
 import android.app.Application
+import android.content.Context
 import android.graphics.Bitmap
 import android.net.Uri
 import android.os.Build
@@ -32,7 +34,10 @@ class ViewerViewModel(app: Application) : AndroidViewModel(app) {
     val state: StateFlow<ViewerUiState> = _state.asStateFlow()
     private var renderJob: Job? = null
 
-    private val isLowRamDevice = Build.MODEL?.contains("SM-T510") == true
+    private val activityManager = app.getSystemService(Context.ACTIVITY_SERVICE) as ActivityManager
+    private val memoryInfo = ActivityManager.MemoryInfo().also { activityManager.getMemoryInfo(it) }
+    private val totalRamGb = memoryInfo.totalMem / (1024.0 * 1024.0 * 1024.0)
+    private val isLowRamDevice = activityManager.isLowRamDevice || totalRamGb < 4.0
     private val bitmapCache = object : LinkedHashMap<Int, Bitmap>(4, 0.75f, true) {
         override fun removeEldestEntry(eldest: MutableMap.MutableEntry<Int, Bitmap>): Boolean {
             return size > if (isLowRamDevice) 0 else 2
