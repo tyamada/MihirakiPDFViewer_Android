@@ -19,6 +19,8 @@ class BillingManager(context: Context) : PurchasesUpdatedListener, AutoCloseable
     val products = _products.asStateFlow()
     private val _purchase = MutableStateFlow<PurchaseState>(PurchaseState.Idle)
     val purchase = _purchase.asStateFlow()
+    private val _purchasedTiers = MutableStateFlow<Set<TipTier>>(emptySet())
+    val purchasedTiers = _purchasedTiers.asStateFlow()
     private val client = BillingClient.newBuilder(context)
         .setListener(this)
         .enablePendingPurchases(PendingPurchasesParams.newBuilder().enableOneTimeProducts().build())
@@ -50,10 +52,12 @@ class BillingManager(context: Context) : PurchasesUpdatedListener, AutoCloseable
             QueryPurchasesParams.newBuilder().setProductType(BillingClient.ProductType.INAPP).build()
         ) { billingResult, purchases ->
             if (billingResult.responseCode == BillingClient.BillingResponseCode.OK) {
-                purchases.filter { it.purchaseState == Purchase.PurchaseState.PURCHASED }.forEach { purchase ->
-                    purchase.products.firstNotNullOfOrNull(TipTier::fromProductId)?.let { tier ->
-                        _purchase.value = PurchaseState.Success(tier)
-                    }
+                val tiers = purchases
+                    .filter { it.purchaseState == Purchase.PurchaseState.PURCHASED }
+                    .mapNotNull { purchase -> purchase.products.firstNotNullOfOrNull(TipTier::fromProductId) }
+                    .toSet()
+                if (tiers.isNotEmpty()) {
+                    _purchasedTiers.value = tiers
                 }
             }
         }
@@ -85,6 +89,7 @@ class BillingManager(context: Context) : PurchasesUpdatedListener, AutoCloseable
     }
 
     fun simulateSuccess(tier: TipTier) {
+        _purchasedTiers.value = _purchasedTiers.value + tier
         _purchase.value = PurchaseState.Success(tier)
     }
 
@@ -93,6 +98,7 @@ class BillingManager(context: Context) : PurchasesUpdatedListener, AutoCloseable
         if (result.responseCode != BillingClient.BillingResponseCode.OK) { _purchase.value = PurchaseState.Error(result.debugMessage); return }
         purchases.orEmpty().filter { it.purchaseState == Purchase.PurchaseState.PURCHASED }.forEach { purchase ->
             purchase.products.firstNotNullOfOrNull(TipTier::fromProductId)?.let { tier ->
+                _purchasedTiers.value = _purchasedTiers.value + tier
                 client.consumeAsync(ConsumeParams.newBuilder().setPurchaseToken(purchase.purchaseToken).build()) { consumed, _ ->
                     _purchase.value = if (consumed.responseCode == BillingClient.BillingResponseCode.OK) PurchaseState.Success(tier) else PurchaseState.Error(consumed.debugMessage)
                 }

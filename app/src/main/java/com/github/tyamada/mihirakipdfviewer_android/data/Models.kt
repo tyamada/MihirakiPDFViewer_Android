@@ -11,10 +11,13 @@ data class ViewerSettings(
     val showCover: Boolean = false,
     val highQuality: Boolean = false,
     val sharpness: Float = 0f,
+    val purchasedTiers: Set<String> = emptySet(),
     val purchasedTier: String? = null,
     val lastUri: String? = null,
     val lastPage: Int = 0,
-)
+) {
+    val allPurchasedTiers: Set<String> get() = purchasedTiers + listOfNotNull(purchasedTier)
+}
 
 data class DocumentInfo(
     val title: String = "", val author: String = "", val subject: String = "",

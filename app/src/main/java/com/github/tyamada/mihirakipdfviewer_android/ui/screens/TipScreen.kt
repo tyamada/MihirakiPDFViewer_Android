@@ -13,6 +13,7 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
+import com.github.tyamada.mihirakipdfviewer_android.BuildConfig
 import com.github.tyamada.mihirakipdfviewer_android.R
 import com.github.tyamada.mihirakipdfviewer_android.billing.*
 import com.github.tyamada.mihirakipdfviewer_android.viewmodel.ViewerViewModel
@@ -21,11 +22,19 @@ import com.github.tyamada.mihirakipdfviewer_android.viewmodel.ViewerViewModel
 @Composable fun TipScreen(vm: ViewerViewModel, back: () -> Unit) {
     val context = LocalContext.current; val manager = vm.billing
     val products by manager.products.collectAsState(); val purchase by manager.purchase.collectAsState()
-    val isDebug = com.github.tyamada.mihirakipdfviewer_android.BuildConfig.DEBUG
+    val purchasedTiers by manager.purchasedTiers.collectAsState()
+    val isDebug = BuildConfig.DEBUG
+
+    LaunchedEffect(purchasedTiers) {
+        if (purchasedTiers.isNotEmpty()) {
+            vm.updateSettings { s -> s.copy(purchasedTiers = s.purchasedTiers + purchasedTiers.map { it.name }) }
+        }
+    }
 
     LaunchedEffect(purchase) {
         if (purchase is PurchaseState.Success) {
-            vm.updateSettings { it.copy(purchasedTier = (purchase as PurchaseState.Success).tier.name) }
+            val tierName = (purchase as PurchaseState.Success).tier.name
+            vm.updateSettings { s -> s.copy(purchasedTiers = s.purchasedTiers + tierName, purchasedTier = tierName) }
         }
     }
 

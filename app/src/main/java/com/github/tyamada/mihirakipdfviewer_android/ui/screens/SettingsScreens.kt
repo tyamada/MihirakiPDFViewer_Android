@@ -53,7 +53,7 @@ import com.github.tyamada.mihirakipdfviewer_android.viewmodel.ViewerViewModel
                 supportingContent = {
                     Row(verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.spacedBy(8.dp)) {
                         Text(BuildConfig.VERSION_NAME)
-                        state.settings.purchasedTier?.let { tier ->
+                        state.settings.allPurchasedTiers.forEach { tier ->
                             val res = when (tier) {
                                 "BRONZE" -> R.drawable.ic_tip_bronze
                                 "SILVER" -> R.drawable.ic_tip_silver
