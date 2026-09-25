@@ -48,7 +48,29 @@ import com.github.tyamada.mihirakipdfviewer_android.viewmodel.ViewerViewModel
             }
 
             Section(stringResource(R.string.app_info))
-            Info(stringResource(R.string.version), BuildConfig.VERSION_NAME)
+            ListItem(
+                headlineContent = { Text(stringResource(R.string.version)) },
+                supportingContent = {
+                    Row(verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.spacedBy(8.dp)) {
+                        Text(BuildConfig.VERSION_NAME)
+                        state.settings.purchasedTier?.let { tier ->
+                            val res = when (tier) {
+                                "BRONZE" -> R.drawable.ic_tip_bronze
+                                "SILVER" -> R.drawable.ic_tip_silver
+                                "GOLD" -> R.drawable.ic_tip_gold
+                                else -> null
+                            }
+                            res?.let {
+                                Image(
+                                    painter = painterResource(it),
+                                    contentDescription = tier,
+                                    modifier = Modifier.size(24.dp)
+                                )
+                            }
+                        }
+                    }
+                }
+            )
             Info(stringResource(R.string.build_number), BuildConfig.VERSION_CODE.toString())
             Info(stringResource(R.string.copyright), "©️ 2026 Takuma Yamada")
 

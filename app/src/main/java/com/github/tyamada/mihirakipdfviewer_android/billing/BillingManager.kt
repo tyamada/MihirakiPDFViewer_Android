@@ -34,11 +34,29 @@ class BillingManager(context: Context) : PurchasesUpdatedListener, AutoCloseable
                 }
                 override fun onBillingSetupFinished(result: BillingResult) {
                     Log.d("Billing", "Setup finished: ${result.responseCode} - ${result.debugMessage}")
-                    if (result.responseCode == BillingClient.BillingResponseCode.OK) query() else _purchase.value =
-                        PurchaseState.Error("Setup Error: ${result.debugMessage} (Code ${result.responseCode})")
+                    if (result.responseCode == BillingClient.BillingResponseCode.OK) {
+                        query()
+                        queryPurchases()
+                    } else {
+                        _purchase.value = PurchaseState.Error("Setup Error: ${result.debugMessage} (Code ${result.responseCode})")
+                    }
                 }
             },
         )
+    }
+
+    private fun queryPurchases() {
+        client.queryPurchasesAsync(
+            QueryPurchasesParams.newBuilder().setProductType(BillingClient.ProductType.INAPP).build()
+        ) { billingResult, purchases ->
+            if (billingResult.responseCode == BillingClient.BillingResponseCode.OK) {
+                purchases.filter { it.purchaseState == Purchase.PurchaseState.PURCHASED }.forEach { purchase ->
+                    purchase.products.firstNotNullOfOrNull(TipTier::fromProductId)?.let { tier ->
+                        _purchase.value = PurchaseState.Success(tier)
+                    }
+                }
+            }
+        }
     }
 
     private fun query() {
