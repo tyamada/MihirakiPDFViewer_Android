@@ -111,12 +111,17 @@ import com.github.tyamada.mihirakipdfviewer_android.viewmodel.ViewerViewModel
             R.string.help_navigate,
             R.string.help_menu,
             R.string.help_zoom,
-            R.string.help_search,
-            R.string.help_layout
+            R.string.help_search
         )
-        val newItems = listOf(
-            R.string.help_display_settings,
-            R.string.help_options,
+        val subItems = listOf(
+            R.string.help_layout,
+            R.string.help_high_quality,
+            R.string.help_sharpness,
+            R.string.help_two_page,
+            R.string.help_show_cover,
+            R.string.help_reading_direction,
+            R.string.help_cover_mode,
+            R.string.help_reset,
             R.string.help_document_info,
             R.string.help_help,
             R.string.help_app_info,
@@ -125,7 +130,7 @@ import com.github.tyamada.mihirakipdfviewer_android.viewmodel.ViewerViewModel
         originalItems.forEach {
             Text(stringResource(it), Modifier.padding(bottom = 16.dp))
         }
-        newItems.forEach {
+        subItems.forEach {
             Text(stringResource(it), Modifier.padding(start = 24.dp, bottom = 16.dp))
         }
     }
