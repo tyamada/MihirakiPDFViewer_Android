@@ -105,7 +105,22 @@ import com.github.tyamada.mihirakipdfviewer_android.viewmodel.ViewerViewModel
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable fun HelpScreen(back: () -> Unit) = Scaffold(topBar = { TopAppBar(title = { Text(stringResource(R.string.help)) }, navigationIcon = { IconButton(back) { Icon(Icons.AutoMirrored.Filled.ArrowBack, stringResource(R.string.back)) } }) }) { p ->
-    Column(Modifier.padding(p).verticalScroll(rememberScrollState()).padding(20.dp)) { listOf(R.string.help_open, R.string.help_navigate, R.string.help_menu, R.string.help_zoom, R.string.help_search, R.string.help_layout).forEach { Text(stringResource(it), Modifier.padding(bottom = 16.dp)) } }
+    Column(Modifier.padding(p).verticalScroll(rememberScrollState()).padding(20.dp)) {
+        listOf(
+            R.string.help_open,
+            R.string.help_navigate,
+            R.string.help_menu,
+            R.string.help_zoom,
+            R.string.help_search,
+            R.string.help_layout,
+            R.string.help_display_settings,
+            R.string.help_options,
+            R.string.help_document_info,
+            R.string.help_help,
+            R.string.help_app_info,
+            R.string.help_support
+        ).forEach { Text(stringResource(it), Modifier.padding(bottom = 16.dp)) }
+    }
 }
 
 @OptIn(ExperimentalMaterial3Api::class)
