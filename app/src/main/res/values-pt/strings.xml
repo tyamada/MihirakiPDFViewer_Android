@@ -8,10 +8,19 @@
     <string name="tip_message">Se você gosta do aplicativo, pode apoiar o seu desenvolvimento.</string>
     <string name="tip_free_notice">Todos os recursos estão disponíveis sem compra.</string>
     <string name="purchase">Comprar</string><string name="purchase_thanks">Obrigado! Suporte %1$s recebido.</string><string name="purchase_cancelled">Compra cancelada.</string><string name="purchase_failed">Falha na compra. Por favor, tente novamente.</string>
+    <string name="purchased_badges_title">Distintivos de apoio adquiridos</string>
+    <string name="purchase_badge_notice">O distintivo de apoio foi exibido na tela de configurações.</string>
+
     <string name="app_info">Informações do aplicativo</string>
     <string name="version">Versão</string>
     <string name="build_number">Número da compilação</string>
     <string name="copyright">Diredireitos autorais</string>
     <string name="oss_license_title">Licenças de código aberto</string>
     <string name="oss_license_description">Este aplicativo usa o seguinte software de código aberto:</string>
+    <string name="help_display_settings"><b>Display settings:</b> Adjust high quality, sharpness, two-page view, cover mode, and reading direction.</string>
+    <string name="help_options"><b>Options:</b> Access cover options, reset settings, help, licenses, and support.</string>
+    <string name="help_document_info"><b>Document information:</b> View PDF metadata such as title, author, subject, keywords, and PDF version.</string>
+    <string name="help_help"><b>Help:</b> Read this guide for instructions on how to use the app.</string>
+    <string name="help_app_info"><b>App information:</b> Check app version, build number, copyright, and supporter badges.</string>
+    <string name="help_support"><b>Support the Developer:</b> Support further development via optional tips and view your supporter badges.</string>
 </resources>

@@ -8,10 +8,19 @@
     <string name="tip_message">यदि तपाईंलाई एप मनपर्छ भने, तपाईं यसको विकासलाई समर्थन गर्न सक्नुहुन्छ।</string>
     <string name="tip_free_notice">सबै सुविधाहरू खरिद नगरिकन उपलब्ध छन्。</string>
     <string name="purchase">खरिद गर्नुहोस्</string><string name="purchase_thanks">धन्यवाद! %1$s समर्थन प्राप्त भयो।</string><string name="purchase_cancelled">खरिद रद्द गरियो।</string><string name="purchase_failed">खरिद असफल भयो। कृपया फेरि प्रयास गर्नुहोस्।</string>
+    <string name="purchased_badges_title">खरिद गरिएका समर्थन ब्याजहरू</string>
+    <string name="purchase_badge_notice">सेटिङ स्क्रिनमा समर्थन ब्याज प्रदर्शन गरिएको छ。</string>
+
     <string name="app_info">एप जानकारी</string>
     <string name="version">संस्करण</string>
     <string name="build_number">बिल्ड नम्बर</string>
     <string name="copyright">प्रतिलिपि अधिकार</string>
     <string name="oss_license_title">ओपन सोर्स लाइसेन्सहरू</string>
     <string name="oss_license_description">यो एपले निम्न ओपन सोर्स सफ्टवेयर प्रयोग गर्दछ:</string>
+    <string name="help_display_settings"><b>Display settings:</b> Adjust high quality, sharpness, two-page view, cover mode, and reading direction.</string>
+    <string name="help_options"><b>Options:</b> Access cover options, reset settings, help, licenses, and support.</string>
+    <string name="help_document_info"><b>Document information:</b> View PDF metadata such as title, author, subject, keywords, and PDF version.</string>
+    <string name="help_help"><b>Help:</b> Read this guide for instructions on how to use the app.</string>
+    <string name="help_app_info"><b>App information:</b> Check app version, build number, copyright, and supporter badges.</string>
+    <string name="help_support"><b>Support the Developer:</b> Support further development via optional tips and view your supporter badges.</string>
 </resources>

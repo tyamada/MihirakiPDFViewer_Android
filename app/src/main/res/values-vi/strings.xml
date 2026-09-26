@@ -8,10 +8,19 @@
     <string name="tip_message">Nếu bạn thích ứng dụng này, bạn có thể hỗ trợ sự phát triển của nó.</string>
     <string name="tip_free_notice">Tất cả các tính năng đều có sẵn mà không cần mua.</string>
     <string name="purchase">Mua</string><string name="purchase_thanks">Cảm ơn bạn! Đã nhận được hỗ trợ %1$s.</string><string name="purchase_cancelled">Đã hủy giao dịch mua. </string><string name="purchase_failed">Giao dịch mua thất bại. Vui lòng thử lại.</string>
+    <string name="purchased_badges_title">Huy hiệu hỗ trợ đã mua</string>
+    <string name="purchase_badge_notice">Huy hiệu hỗ trợ đã được hiển thị trên màn hình cài đặt.</string>
+
     <string name="app_info">Thông tin ứng dụng</string>
     <string name="version">Phiên bản</string>
     <string name="build_number">Số bản dựng</string>
     <string name="copyright">Bản quyền</string>
     <string name="oss_license_title">Giấy phép mã nguồn mở</string>
     <string name="oss_license_description">Ứng dụng này sử dụng phần mềm mã nguồn mở sau:</string>
+    <string name="help_display_settings"><b>Display settings:</b> Adjust high quality, sharpness, two-page view, cover mode, and reading direction.</string>
+    <string name="help_options"><b>Options:</b> Access cover options, reset settings, help, licenses, and support.</string>
+    <string name="help_document_info"><b>Document information:</b> View PDF metadata such as title, author, subject, keywords, and PDF version.</string>
+    <string name="help_help"><b>Help:</b> Read this guide for instructions on how to use the app.</string>
+    <string name="help_app_info"><b>App information:</b> Check app version, build number, copyright, and supporter badges.</string>
+    <string name="help_support"><b>Support the Developer:</b> Support further development via optional tips and view your supporter badges.</string>
 </resources>

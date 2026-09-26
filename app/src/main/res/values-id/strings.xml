@@ -8,10 +8,19 @@
     <string name="tip_message">Jika Anda menyukai aplikasi ini, Anda dapat mendukung pengembangannya.</string>
     <string name="tip_free_notice">Semua fitur tersedia tanpa pembelian.</string>
     <string name="purchase">Beli</string><string name="purchase_thanks">Terima kasih! Dukungan %1$s diterima.</string><string name="purchase_cancelled">Pembelian dibatalkan.</string><string name="purchase_failed">Pembelian gagal. Silakan coba lagi.</string>
+    <string name="purchased_badges_title">Badge dukungan yang dibeli</string>
+    <string name="purchase_badge_notice">Badge dukungan telah ditampilkan di layar pengaturan.</string>
+
     <string name="app_info">Informasi aplikasi</string>
     <string name="version">Versi</string>
     <string name="build_number">Nomor build</string>
     <string name="copyright">Hak Cipta</string>
     <string name="oss_license_title">Lisensi Sumber Terbuka</string>
     <string name="oss_license_description">Aplikasi ini menggunakan perangkat lunak sumber terbuka berikut:</string>
+    <string name="help_display_settings"><b>Display settings:</b> Adjust high quality, sharpness, two-page view, cover mode, and reading direction.</string>
+    <string name="help_options"><b>Options:</b> Access cover options, reset settings, help, licenses, and support.</string>
+    <string name="help_document_info"><b>Document information:</b> View PDF metadata such as title, author, subject, keywords, and PDF version.</string>
+    <string name="help_help"><b>Help:</b> Read this guide for instructions on how to use the app.</string>
+    <string name="help_app_info"><b>App information:</b> Check app version, build number, copyright, and supporter badges.</string>
+    <string name="help_support"><b>Support the Developer:</b> Support further development via optional tips and view your supporter badges.</string>
 </resources>

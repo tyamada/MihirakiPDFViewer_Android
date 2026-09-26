@@ -4,7 +4,13 @@
     <string name="display_settings">表示設定</string><string name="high_quality">高画質化</string><string name="sharpness">シャープネス</string><string name="two_page">見開き表示</string><string name="show_cover">表紙表示</string><string name="reading_direction">ページ方向</string><string name="cover_mode">表紙設定</string>
     <string name="document_info">ドキュメント情報</string><string name="title">タイトル</string><string name="author">作成者</string><string name="subject">サブタイトル</string><string name="keywords">キーワード</string><string name="pdf_version">PDFのバージョン</string><string name="options">オプション</string><string name="help">ヘルプ</string><string name="licenses">ライセンス</string><string name="reset">リセット</string>
     <string name="reset_message">アプリの設定をリセットします。</string>
-    <string name="help_open"><b>Open PDF:</b> ファイルピッカーから端末またはクラウドストレージのPDFを選択します。</string><string name="help_navigate"><b>Navigate Pages:</b> スワイプまたはスライダーでページを切り替えます。</string><string name="help_menu"><b>Menu:</b> 画面をタップしてツールバーとスライダーの表示を切り替えます。</string><string name="help_zoom"><b>Zoom:</b> ピンチで拡大・縮小します。拡大中は長押ししてドラッグします。</string><string name="help_search"><b>Search:</b> 検索バーに語句を入力してPDF内を検索します。</string><string name="help_layout"><b>Layout:</b> メニューから単ページ表示と見開き表示を切り替えます。</string>
+    <string name="help_open"><b>Open PDF:</b> ファイルピッカーから端末またはクラウドストレージのPDFを選択します。</string><string name="help_navigate"><b>Navigate Pages:</b> スワイプまたはスライダーでページを切り替えます。</string><string name="help_menu"><b>Menu:</b> 画面をタップしてツールバーとスライダーの表示を切り替えます。</string><string name="help_zoom"><b>Zoom:</b> ピンチで拡大・縮小します。拡大中は長押ししてドラッグします。</string><string name="help_search"><b>Search:</b> 検索バーに語句を入力してPDF内を検索します。</string>    <string name="help_layout"><b>設定:</b> メニュー内の表示設定やオプションで閲覧環境をカスタマイズします。</string>
+    <string name="help_display_settings"><b>表示設定:</b> 高画質化、シャープネス、見開き表示、表紙設定、ページ方向を調整します。</string>
+    <string name="help_options"><b>オプション:</b> 表紙設定、設定のリセット、ヘルプ、ライセンス、応援にアクセスします。</string>
+    <string name="help_document_info"><b>ドキュメント情報:</b> タイトル、作成者、サブタイトル、キーワード、PDFバージョンなどのメタデータを表示します。</string>
+    <string name="help_help"><b>ヘルプ:</b> アプリの使い方に関するこのガイドを確認します。</string>
+    <string name="help_app_info"><b>アプリ情報:</b> アプリのバージョン、ビルド番号、著作権、サポーターバッジを確認します。</string>
+    <string name="help_support"><b>開発者を応援:</b> 任意の応援チップで開発を支援し、サポーターバッジを表示します。</string>
     <string name="tip_message">アプリを気に入っていただけたら、開発を応援できます。</string>
     <string name="tip_free_notice">購入しなくてもすべての機能を利用できます。</string>
     <string name="purchased_badges_title">購入した応援バッジ</string>

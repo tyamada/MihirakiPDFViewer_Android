@@ -8,10 +8,20 @@
     <string name="tip_message">如果您喜歡這款應用程式，可以支援其開發。</string>
     <string name="tip_free_notice">無需購買即可使用所有功能。</string>
     <string name="purchase">購買</string><string name="purchase_thanks">謝謝！已收到 %1$s 的支援。</string><string name="purchase_cancelled">購買已取消。</string><string name="purchase_failed">購買失敗。請再試一次。</string>
+    <string name="purchased_badges_title">已購買的支援徽章</string>
+    <string name="purchase_badge_notice">已在設定畫面中顯示支援徽章。</string>
+
     <string name="app_info">應用程式資訊</string>
     <string name="version">版本</string>
     <string name="build_number">組建編號</string>
     <string name="copyright">版權所有</string>
     <string name="oss_license_title">開源授權</string>
     <string name="oss_license_description">本應用程式使用以下開源軟體：</string>
+
+    <string name="help_display_settings"><b>Display settings:</b> Adjust high quality, sharpness, two-page view, cover mode, and reading direction.</string>
+    <string name="help_options"><b>Options:</b> Access cover options, reset settings, help, licenses, and support.</string>
+    <string name="help_document_info"><b>Document information:</b> View PDF metadata such as title, author, subject, keywords, and PDF version.</string>
+    <string name="help_help"><b>Help:</b> Read this guide for instructions on how to use the app.</string>
+    <string name="help_app_info"><b>App information:</b> Check app version, build number, copyright, and supporter badges.</string>
+    <string name="help_support"><b>Support the Developer:</b> Support further development via optional tips and view your supporter badges.</string>
 </resources>

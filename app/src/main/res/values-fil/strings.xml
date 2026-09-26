@@ -8,10 +8,19 @@
     <string name="tip_message">Kung nagustuhan mo ang app, maaari mong suportahan ang pag-develop nito.</string>
     <string name="tip_free_notice">Magagamit ang lahat ng tampok nang hindi kinakailangang bumili.</string>
     <string name="purchase">Bumili</string><string name="purchase_thanks">Salamat! %1$s suporta ang natanggap.</string><string name="purchase_cancelled">Kinansela ang pagbili.</string><string name="purchase_failed">Nabigo ang pagbili. Pakisubukan ulit.</string>
+    <string name="purchased_badges_title">Mga biniling badge ng suporta</string>
+    <string name="purchase_badge_notice">Ang badge ng suporta ay ipinakita sa screen ng mga setting.</string>
+
     <string name="app_info">Impormasyon ng app</string>
     <string name="version">Bersyon</string>
     <string name="build_number">Build number</string>
     <string name="copyright">Karapatang-ari</string>
     <string name="oss_license_title">Mga Lisensya ng Open Source</string>
     <string name="oss_license_description">Gumagamit ang app na ito ng sumusunod na open source software:</string>
+    <string name="help_display_settings"><b>Display settings:</b> Adjust high quality, sharpness, two-page view, cover mode, and reading direction.</string>
+    <string name="help_options"><b>Options:</b> Access cover options, reset settings, help, licenses, and support.</string>
+    <string name="help_document_info"><b>Document information:</b> View PDF metadata such as title, author, subject, keywords, and PDF version.</string>
+    <string name="help_help"><b>Help:</b> Read this guide for instructions on how to use the app.</string>
+    <string name="help_app_info"><b>App information:</b> Check app version, build number, copyright, and supporter badges.</string>
+    <string name="help_support"><b>Support the Developer:</b> Support further development via optional tips and view your supporter badges.</string>
 </resources>
