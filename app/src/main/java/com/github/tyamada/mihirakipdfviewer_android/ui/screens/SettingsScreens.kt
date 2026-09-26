@@ -52,6 +52,12 @@ import com.github.tyamada.mihirakipdfviewer_android.viewmodel.ViewerViewModel
             Info(stringResource(R.string.build_number), BuildConfig.VERSION_CODE.toString())
             Info(stringResource(R.string.copyright), "©️ 2026 Takuma Yamada")
 
+            TextButton(onClick = licenses, modifier = Modifier.fillMaxWidth()) {
+                Box(Modifier.fillMaxWidth(), contentAlignment = Alignment.CenterStart) {
+                    Text(stringResource(R.string.licenses))
+                }
+            }
+
             if (state.settings.allPurchasedTiers.isNotEmpty()) {
                 Spacer(Modifier.height(24.dp))
                 Text(
@@ -80,12 +86,6 @@ import com.github.tyamada.mihirakipdfviewer_android.viewmodel.ViewerViewModel
                             )
                         }
                     }
-                }
-            }
-
-            TextButton(onClick = licenses, modifier = Modifier.fillMaxWidth()) {
-                Box(Modifier.fillMaxWidth(), contentAlignment = Alignment.CenterStart) {
-                    Text(stringResource(R.string.licenses))
                 }
             }
 
