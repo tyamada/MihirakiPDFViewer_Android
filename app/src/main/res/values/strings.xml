@@ -9,7 +9,7 @@
     <string name="tip_free_notice">All features are available without purchase.</string>
     <string name="purchase">Purchase</string><string name="purchase_thanks">Thank you! %1$s support received.</string><string name="purchase_cancelled">Purchase cancelled.</string><string name="purchase_failed">Purchase failed. Please try again.</string>
     <string name="purchased_badges_title">Purchased Support Badges</string>
-    <string name="purchase_badge_notice">The badge has been displayed on the version screen.</string>
+    <string name="purchase_badge_notice">The support badge has been displayed on the settings screen.</string>
     <string name="app_info">App information</string>
     <string name="version">Version</string>
     <string name="build_number">Build number</string>
