@@ -4,7 +4,14 @@
     <string name="display_settings">表示設定</string><string name="high_quality">高画質化</string><string name="sharpness">シャープネス</string><string name="two_page">見開き表示</string><string name="show_cover">表紙表示</string><string name="reading_direction">ページ方向</string><string name="cover_mode">表紙設定</string>
     <string name="document_info">ドキュメント情報</string><string name="title">タイトル</string><string name="author">作成者</string><string name="subject">サブタイトル</string><string name="keywords">キーワード</string><string name="pdf_version">PDFのバージョン</string><string name="options">オプション</string><string name="help">ヘルプ</string><string name="licenses">ライセンス</string><string name="reset">リセット</string>
     <string name="reset_message">アプリの設定をリセットします。</string>
-    <string name="help_open"><b>PDFを開く:</b> ファイルピッカーから端末またはクラウドストレージのPDFを選択します。</string><string name="help_navigate"><b>ページ移動:</b> スワイプまたはスライダーでページを切り替えます。</string><string name="help_menu"><b>メニュー:</b> 画面をタップしてツールバーとスライダーの表示を切り替えます。</string><string name="help_zoom"><b>ズーム:</b> ピンチで拡大・縮小します。拡大中は長押ししてドラッグします。</string><string name="help_search"><b>検索:</b> 検索バーに語句を入力してPDF内を検索します。</string>    <string name="help_layout"><b>設定:</b> メニュー内の表示設定やオプションで閲覧環境をカスタマイズします。</string>
+    <string name="help_open"><b>PDFを開く:</b> ファイルピッカーから端末またはクラウドストレージのPDFを選択します。</string><string name="help_navigate"><b>ページ移動:</b> スワイプまたはスライダーでページを切り替えます。</string><string name="help_menu"><b>メニュー:</b> 画面をタップしてツールバーとスライダーの表示を切り替えます。</string><string name="help_zoom"><b>ズーム:</b> ピンチで拡大・縮小します。拡大中は長押ししてドラッグします。</string><string name="help_search"><b>検索:</b> 検索バーに語句を入力してPDF内を検索します。</string>    <string name="help_layout"><b>6. 設定:</b> 設定画面で表示をカスタマイズし、現在のドキュメントやアプリの情報を確認できます。</string>
+    <string name="help_high_quality"><b>高画質化:</b> PDFページをより高画質で表示します。</string>
+    <string name="help_sharpness"><b>シャープネス:</b> 文字や線をより鮮明に表示します。</string>
+    <string name="help_two_page"><b>見開き表示:</b> 2ページを横に並べて表示します。</string>
+    <string name="help_show_cover"><b>表紙を表示:</b> 見開き表示で最初のページを表紙として単独で表示します。</string>
+    <string name="help_reading_direction"><b>スクロール方向:</b> ページを左から右へ送るか、右から左へ送るかを選択します。</string>
+    <string name="help_cover_mode"><b>表紙設定:</b> 読む方向ごとの表紙の配置を選択します。</string>
+    <string name="help_reset"><b>リセット:</b> アプリの設定をリセットし、現在のドキュメントを閉じます。</string>
     <string name="help_display_settings"><b>表示設定:</b> 高画質化、シャープネス、見開き表示、表紙設定、ページ方向を調整します。</string>
     <string name="help_options"><b>オプション:</b> 表紙設定、設定のリセット、ヘルプ、ライセンス、応援にアクセスします。</string>
     <string name="help_document_info"><b>ドキュメント情報:</b> タイトル、作成者、サブタイトル、キーワード、PDFバージョンなどのメタデータを表示します。</string>
