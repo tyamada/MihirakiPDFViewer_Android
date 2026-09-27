@@ -14,6 +14,7 @@ import com.github.tyamada.mihirakipdfviewer_android.data.*
 import com.github.tyamada.mihirakipdfviewer_android.pdf.*
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
+import kotlinx.coroutines.ensureActive
 import kotlinx.coroutines.flow.*
 import kotlinx.coroutines.launch
 
@@ -33,6 +34,7 @@ class ViewerViewModel(app: Application) : AndroidViewModel(app) {
     private val _state = MutableStateFlow(ViewerUiState())
     val state: StateFlow<ViewerUiState> = _state.asStateFlow()
     private var renderJob: Job? = null
+    private var searchJob: Job? = null
 
     private val activityManager = app.getSystemService(Context.ACTIVITY_SERVICE) as ActivityManager
     private val memoryInfo = ActivityManager.MemoryInfo().also { activityManager.getMemoryInfo(it) }
@@ -180,11 +182,22 @@ class ViewerViewModel(app: Application) : AndroidViewModel(app) {
     fun movePage(delta: Int) = render(_state.value.currentPage + delta)
     fun toggleChrome() = _state.update { it.copy(chromeVisible = !it.chromeVisible) }
     fun dismissError() = _state.update { it.copy(errorKey = null) }
-    fun search(query: String) = viewModelScope.launch {
-        _state.update { it.copy(searchQuery = query) }; val source = _state.value.source ?: return@launch
-        val results = source.search(query)
-        _state.update { it.copy(searchResults = results, currentSearchIndex = if (results.isNotEmpty()) 0 else -1, errorKey = if (query.isNotBlank() && results.isEmpty()) "no_results" else null) }
-        results.firstOrNull()?.let { render(it.pageIndex) }
+    fun search(query: String) {
+        searchJob?.cancel()
+        searchJob = viewModelScope.launch {
+            _state.update { it.copy(searchQuery = query) }
+            val source = _state.value.source ?: return@launch
+            val results = source.search(query)
+            ensureActive()
+            _state.update { 
+                it.copy(
+                    searchResults = results, 
+                    currentSearchIndex = if (results.isNotEmpty()) 0 else -1, 
+                    errorKey = if (query.isNotBlank() && results.isEmpty()) "no_results" else null
+                ) 
+            }
+            results.firstOrNull()?.let { render(it.pageIndex) }
+        }
     }
     fun navigateSearch(delta: Int) {
         val results = _state.value.searchResults
@@ -201,6 +214,7 @@ class ViewerViewModel(app: Application) : AndroidViewModel(app) {
     fun reset() = viewModelScope.launch { preferences.reset(); closeDocument(); _state.value = ViewerUiState() }
     fun closeDocument() {
         renderJob?.cancel()
+        searchJob?.cancel()
         _state.value.source?.close()
         val oldBitmap = _state.value.bitmap
         val oldSecond = _state.value.secondBitmap

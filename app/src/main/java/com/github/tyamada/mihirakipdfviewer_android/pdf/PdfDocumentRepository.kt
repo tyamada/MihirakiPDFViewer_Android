@@ -9,6 +9,7 @@ import android.graphics.Paint
 import android.graphics.pdf.PdfRenderer
 import android.net.Uri
 import android.os.ParcelFileDescriptor
+import android.util.Log
 import androidx.core.graphics.createBitmap
 import com.github.tyamada.mihirakipdfviewer_android.data.DocumentInfo
 import com.github.tyamada.mihirakipdfviewer_android.data.SearchHit
@@ -18,12 +19,15 @@ import com.tom_roush.pdfbox.text.PDFTextStripper
 import com.tom_roush.pdfbox.text.TextPosition
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.ensureActive
+import kotlinx.coroutines.sync.Mutex
+import kotlinx.coroutines.sync.withLock
 import kotlinx.coroutines.withContext
 import kotlinx.coroutines.yield
 import java.io.Closeable
 import java.io.File
 import java.io.FileOutputStream
 import java.io.IOException
+import java.io.StringWriter
 
 sealed class PdfOpenException(message: String, cause: Throwable? = null) : IOException(message, cause) {
     class PasswordRequired : PdfOpenException("password_required")
@@ -73,6 +77,7 @@ private class HybridPdfSource(private val file: File, password: String?) : PdfSo
     private val descriptor = ParcelFileDescriptor.open(file, ParcelFileDescriptor.MODE_READ_ONLY)
     private val platformRenderer = runCatching { PdfRenderer(descriptor) }.getOrNull()
     private val pdfBoxRenderer = com.tom_roush.pdfbox.rendering.PDFRenderer(pdfBox)
+    private val mutex = Mutex()
 
     override val pageCount: Int = pdfBox.numberOfPages
     override val info = pdfBox.documentInformation.let {
@@ -87,71 +92,75 @@ private class HybridPdfSource(private val file: File, password: String?) : PdfSo
         pdfBox.documentCatalog.cosObject.getNameAsString("PageLayout")
     }.getOrNull()
 
-    override suspend fun render(page: Int, width: Int, highQuality: Boolean, sharpness: Float, highlights: List<SearchRect>): Bitmap = withContext(Dispatchers.IO) {
-        ensureActive()
-        require(page in (0 until pageCount))
-        val quality = if (highQuality) 2f else 1f
-        val rendered = platformRenderer?.let { renderer ->
-            renderer.openPage(page).use { p ->
-                val targetW = (width * quality).toInt().coerceAtLeast(1)
-                val targetH = ((targetW * p.height.toFloat()) / p.width).toInt().coerceAtLeast(1)
-                createBitmap(targetW, targetH, Bitmap.Config.ARGB_8888).also { bitmap ->
-                    bitmap.eraseColor(Color.WHITE)
-                    p.render(bitmap, null, null, PdfRenderer.Page.RENDER_MODE_FOR_DISPLAY)
-                    
-                    yield()
-                    if (highlights.isNotEmpty()) {
-                        val canvas = Canvas(bitmap)
-                        val paint = Paint().apply { color = 0xAAFFFF00.toInt(); style = Paint.Style.FILL }
-                        val borderPaint = Paint().apply { color = Color.RED; style = Paint.Style.STROKE; strokeWidth = 2f }
-                        val scale = targetW.toFloat() / p.width
-                        highlights.forEach { rect ->
-                            val l = rect.left * scale; val t = rect.top * scale
-                            val r = rect.right * scale; val b = rect.bottom * scale
-                            canvas.drawRect(l, t, r, b, paint)
-                            canvas.drawRect(l, t, r, b, borderPaint)
+    override suspend fun render(page: Int, width: Int, highQuality: Boolean, sharpness: Float, highlights: List<SearchRect>): Bitmap = mutex.withLock {
+        withContext(Dispatchers.IO) {
+            ensureActive()
+            require(page in (0 until pageCount))
+            val quality = if (highQuality) 2f else 1f
+            val rendered = platformRenderer?.let { renderer ->
+                renderer.openPage(page).use { p ->
+                    val targetW = (width * quality).toInt().coerceAtLeast(1)
+                    val targetH = ((targetW * p.height.toFloat()) / p.width).toInt().coerceAtLeast(1)
+                    createBitmap(targetW, targetH, Bitmap.Config.ARGB_8888).also { bitmap ->
+                        bitmap.eraseColor(Color.WHITE)
+                        p.render(bitmap, null, null, PdfRenderer.Page.RENDER_MODE_FOR_DISPLAY)
+                        
+                        yield()
+                        if (highlights.isNotEmpty()) {
+                            val canvas = Canvas(bitmap)
+                            val paint = Paint().apply { color = 0xAAFFFF00.toInt(); style = Paint.Style.FILL }
+                            val borderPaint = Paint().apply { color = Color.RED; style = Paint.Style.STROKE; strokeWidth = 2f }
+                            val scale = targetW.toFloat() / p.width
+                            highlights.forEach { rect ->
+                                val l = rect.left * scale; val t = rect.top * scale
+                                val r = rect.right * scale; val b = rect.bottom * scale
+                                canvas.drawRect(l, t, r, b, paint)
+                                canvas.drawRect(l, t, r, b, borderPaint)
+                            }
                         }
                     }
                 }
-            }
-        } ?: pdfBoxRenderer.renderImage(page, quality).also { bitmap ->
-             if (highlights.isNotEmpty()) {
-                 val canvas = Canvas(bitmap)
-                 val paint = Paint().apply { color = 0xAAFFFF00.toInt(); style = Paint.Style.FILL }
-                 val borderPaint = Paint().apply { color = Color.RED; style = Paint.Style.STROKE; strokeWidth = 2f }
-                 val pdPage = pdfBox.getPage(page)
-                 val box = pdPage.mediaBox
-                 val scale = bitmap.width.toFloat() / box.width
-                 highlights.forEach { rect ->
-                     val l = rect.left * scale; val t = rect.top * scale
-                     val r = rect.right * scale; val b = rect.bottom * scale
-                     canvas.drawRect(l, t, r, b, paint)
-                     canvas.drawRect(l, t, r, b, borderPaint)
+            } ?: pdfBoxRenderer.renderImage(page, quality).also { bitmap ->
+                 if (highlights.isNotEmpty()) {
+                     val canvas = Canvas(bitmap)
+                     val paint = Paint().apply { color = 0xAAFFFF00.toInt(); style = Paint.Style.FILL }
+                     val borderPaint = Paint().apply { color = Color.RED; style = Paint.Style.STROKE; strokeWidth = 2f }
+                     val pdPage = pdfBox.getPage(page)
+                     val box = pdPage.mediaBox
+                     val scale = bitmap.width.toFloat() / box.width
+                     highlights.forEach { rect ->
+                         val l = rect.left * scale; val t = rect.top * scale
+                         val r = rect.right * scale; val b = rect.bottom * scale
+                         canvas.drawRect(l, t, r, b, paint)
+                         canvas.drawRect(l, t, r, b, borderPaint)
+                     }
                  }
-             }
+            }
+            sharpen(rendered, sharpness)
         }
-        sharpen(rendered, sharpness)
     }
 
-    override suspend fun search(query: String): List<SearchHit> = withContext(Dispatchers.IO) {
-        if (query.isBlank()) return@withContext emptyList()
-        val results = mutableListOf<SearchHit>()
-        
-        for (i in 0 until pageCount) {
-            ensureActive()
-            val locator = CoordinateFinder(query)
-            locator.startPage = i + 1
-            locator.endPage = i + 1
-            try {
-                locator.writeText(pdfBox, java.io.StringWriter())
-            } catch (e: Exception) {
-                android.util.Log.e("MihirakiSearch", "Error searching page $i", e)
+    override suspend fun search(query: String): List<SearchHit> = mutex.withLock {
+        withContext(Dispatchers.IO) {
+            if (query.isBlank()) return@withContext emptyList()
+            val results = mutableListOf<SearchHit>()
+            
+            for (i in 0 until pageCount) {
+                ensureActive()
+                val locator = CoordinateFinder(query)
+                locator.startPage = i + 1
+                locator.endPage = i + 1
+                try {
+                    locator.writeText(pdfBox, StringWriter())
+                } catch (e: Exception) {
+                    Log.e("MihirakiSearch", "Error searching page $i", e)
+                }
+                if (locator.hits.isNotEmpty()) {
+                    results.add(SearchHit(i, locator.hits))
+                }
             }
-            if (locator.hits.isNotEmpty()) {
-                results.add(SearchHit(i, locator.hits))
-            }
+            results
         }
-        results
     }
 
     override fun close() {
