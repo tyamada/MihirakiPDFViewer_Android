@@ -26,7 +26,7 @@
 
 | ビューア（見開き） | 検索 | パスワード保護 | 応援 | 設定 |
 | :---: | :---: | :---: | :---: | :---: |
-| ![Viewer](assets/screenshots/smartphone/1_smartphone_screenshot_view_ja.png) | ![Search](assets/screenshots/smartphone/2_smartphone_screenshot_search_ja.png) | ![Password](assets/screenshots/smartphone/3_smartphone_screenshot_password_ja.png) | ![Support](assets/screenshots/smartphone/5_smartphone_screenshot_support_ja.png) | ![Settings](assets/screenshots/smartphone/4_smartphone_screenshot_settings_ja.png) |
+| ![Viewer](store_listing/screenshots/smartphone/1_smartphone_screenshot_view_ja.png) | ![Search](store_listing/screenshots/smartphone/2_smartphone_screenshot_search_ja.png) | ![Password](store_listing/screenshots/smartphone/3_smartphone_screenshot_password_ja.png) | ![Support](store_listing/screenshots/smartphone/5_smartphone_screenshot_support_ja.png) | ![Settings](store_listing/screenshots/smartphone/4_smartphone_screenshot_settings_ja.png) |
 
 ## 🛠 技術スタック
 

@@ -26,7 +26,7 @@ Built with **Kotlin**, **Jetpack Compose**, and **Material 3** following the **M
 
 | Viewer (Spread) | Search | Password Protection | Support | Settings |
 | :---: | :---: | :---: | :---: | :---: |
-| ![Viewer](assets/screenshots/smartphone/1_smartphone_screenshot_view_en.png) | ![Search](assets/screenshots/smartphone/2_smartphone_screenshot_search_en.png) | ![Password](assets/screenshots/smartphone/3_smartphone_screenshot_password_en.png) | ![Support](assets/screenshots/smartphone/5_smartphone_screenshot_support_en.png) | ![Settings](assets/screenshots/smartphone/4_smartphone_screenshot_settings_en.png) |
+| ![Viewer](store_listing/screenshots/smartphone/1_smartphone_screenshot_view_en.png) | ![Search](store_listing/screenshots/smartphone/2_smartphone_screenshot_search_en.png) | ![Password](store_listing/screenshots/smartphone/3_smartphone_screenshot_password_en.png) | ![Support](store_listing/screenshots/smartphone/5_smartphone_screenshot_support_en.png) | ![Settings](store_listing/screenshots/smartphone/4_smartphone_screenshot_settings_en.png) |
 
 ## 🛠 Tech Stack
 
