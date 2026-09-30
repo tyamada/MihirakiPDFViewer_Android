@@ -62,6 +62,9 @@
 ./gradlew connectedAndroidTest
 ```
 
+## 📋 動作確認リスト
+開発者およびユーザーによって検証されたデバイス互換性や動作確認の結果は、[VERIFICATION_LIST.md](VERIFICATION_LIST.md) に記載されています。
+
 ## 💖 開発者の応援
 アプリを気に入っていただけた場合は、アプリ内の「応援」機能から開発を支援できます。Bronze、Silver、Gold の各チップを贈ると、設定画面に特別な記念アイコンが表示されます！
 
