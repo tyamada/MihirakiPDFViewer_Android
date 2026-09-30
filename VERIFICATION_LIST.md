@@ -10,5 +10,5 @@ This is a list of verification results compiled from developer and user informat
 | ASUS | Chromebook CM30 | 152.0.7977.132 | 1.2.3 | No issues | 2     |
 
 ## Notes
-1. Disable the page cache function on low-RAM devices.
-2. Full-screen mode.
+1. The page cache function is automatically disabled on devices with low RAM capacity.
+2. Window mode and tablet (full-screen) mode ready.
