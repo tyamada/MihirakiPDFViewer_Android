@@ -69,6 +69,7 @@ import com.github.tyamada.mihirakipdfviewer_android.viewmodel.ViewerViewModel
                             Text(tier.name)
                             Text(priceText)
                         }
+                        val isPurchased = purchasedTiers.contains(tier)
                         Button(
                             onClick = {
                                 if (isDebug && product == null) {
@@ -77,9 +78,9 @@ import com.github.tyamada.mihirakipdfviewer_android.viewmodel.ViewerViewModel
                                     product?.let { manager.purchase(context as Activity, it) }
                                 }
                             },
-                            enabled = isDebug || product != null
+                            enabled = !isPurchased && (isDebug || product != null)
                         ) {
-                            Text(stringResource(R.string.purchase))
+                            Text(if (isPurchased) stringResource(R.string.purchased) else stringResource(R.string.purchase))
                         }
                     }
                 }

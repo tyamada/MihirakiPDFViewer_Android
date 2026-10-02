@@ -99,8 +99,19 @@ class BillingManager(context: Context) : PurchasesUpdatedListener, AutoCloseable
         purchases.orEmpty().filter { it.purchaseState == Purchase.PurchaseState.PURCHASED }.forEach { purchase ->
             purchase.products.firstNotNullOfOrNull(TipTier::fromProductId)?.let { tier ->
                 _purchasedTiers.value = _purchasedTiers.value + tier
-                client.consumeAsync(ConsumeParams.newBuilder().setPurchaseToken(purchase.purchaseToken).build()) { consumed, _ ->
-                    _purchase.value = if (consumed.responseCode == BillingClient.BillingResponseCode.OK) PurchaseState.Success(tier) else PurchaseState.Error(consumed.debugMessage)
+                if (!purchase.isAcknowledged) {
+                    val acknowledgeParams = AcknowledgePurchaseParams.newBuilder()
+                        .setPurchaseToken(purchase.purchaseToken)
+                        .build()
+                    client.acknowledgePurchase(acknowledgeParams) { ackResult ->
+                        _purchase.value = if (ackResult.responseCode == BillingClient.BillingResponseCode.OK) {
+                            PurchaseState.Success(tier)
+                        } else {
+                            PurchaseState.Error(ackResult.debugMessage)
+                        }
+                    }
+                } else {
+                    _purchase.value = PurchaseState.Success(tier)
                 }
             }
         }
