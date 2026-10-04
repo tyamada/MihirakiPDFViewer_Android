@@ -55,6 +55,17 @@ Built with **Kotlin**, **Jetpack Compose**, and **Material 3** following the **M
 3. Sync the project with Gradle files.
 4. Run the app on an emulator or a physical device (minSdk 26).
 
+## 📚 Sample PDFs
+Try out MihirakiPDFViewer with these sample PDF files:
+- [THE TRY-IT CLUB EPISODE 1 THE BREAK-TIME MAP (English)](docs/sample/tameshibu_episode1_en.pdf) (23MB)
+- [THE TRY-IT CLUB EPISODE 2 ROOM TO GROW (English)](docs/sample/tameshibu_episode2_en.pdf) (24MB)
+- [ためし部 第１話 ひと息マップ (Japanese)](docs/sample/tameshibu_episode1_ja.pdf) (23MB)
+- [ためし部 第２話 机、ひろがる。 (Japanese)](docs/sample/tameshibu_episode2_ja.pdf) (24MB)
+- [해봄부 제1화 한숨 돌림 지도 (Korean)](docs/sample/tameshibu_episode1_ko.pdf) (23MB)
+- [해봄부제2화 책상이 넓어지다 (Korean)](docs/sample/tameshibu_episode2_ko.pdf) (24MB)
+- [试试社 第1话 歇口气地图 (Chinese (Simplified))](docs/sample/tameshibu_episode1_zh_cn.pdf) (23MB)
+- [试试社 第2话 桌子变大了 (Chinese (Simplified))](docs/sample/tameshibu_episode2_zh_cn.pdf) (24MB)
+
 ## 🧪 Testing
 Run unit tests and instrumented UI tests. Test PDF files are available [here](https://1drv.ms/f/c/7a27b2713c2c2c38/IgDLhBYHJMKbRrvH92OpdA6jAQ4VUZNjFrJhqSYs9W4-BTo?e=JaNqSa).
 ```bash
