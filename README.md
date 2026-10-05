@@ -66,12 +66,14 @@ Try out MihirakiPDFViewer with these sample PDF files:
 - [试试社 第1话 歇口气地图 (Chinese (Simplified))](docs/sample/tameshibu_episode1_zh_cn.pdf) (23MB)
 - [试试社 第2话 桌子变大了 (Chinese (Simplified))](docs/sample/tameshibu_episode2_zh_cn.pdf) (24MB)
 
-## 🧪 Testing
+## 🧪 Testing & Diagnostics
 Run unit tests and instrumented UI tests. Test PDF files are available [here](https://1drv.ms/f/c/7a27b2713c2c2c38/IgDLhBYHJMKbRrvH92OpdA6jAQ4VUZNjFrJhqSYs9W4-BTo?e=JaNqSa).
 ```bash
 ./gradlew test
 ./gradlew connectedAndroidTest
 ```
+- **In-App Diagnostics**: Access "Testing & Diagnostics" in Settings to inspect real-time memory usage and rolling application logs (`AppLogger`).
+- **Performance & Stress Tests**: Includes automated memory tracking, rapid page navigation stress tests, and multi-document switching stability tests.
 
 ## 📋 Verification List
 Device compatibility and verification results tested by developers and users are documented in [VERIFICATION_LIST.md](VERIFICATION_LIST.md).

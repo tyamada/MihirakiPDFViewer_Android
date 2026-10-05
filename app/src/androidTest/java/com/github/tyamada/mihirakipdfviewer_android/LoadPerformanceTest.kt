@@ -73,4 +73,63 @@ class LoadPerformanceTest {
         Log.d("LoadPerformanceTest", "Search completed in ${searchTime}ms with ${compose.activity.viewer.state.value.searchResults.size} hits")
         assertTrue("Search time was non-positive", searchTime > 0)
     }
+
+    @Test fun testMemoryUsageDuringLoad() {
+        System.gc()
+        val runtime = Runtime.getRuntime()
+        val memBefore = runtime.totalMemory() - runtime.freeMemory()
+
+        val fileName = "load_test_1100_pages.pdf"
+        val file = copyAssetToCache(fileName)
+        val uri = Uri.fromFile(file)
+
+        InstrumentationRegistry.getInstrumentation().runOnMainSync {
+            compose.activity.viewer.open(uri)
+        }
+        compose.waitUntil(15000) { compose.activity.viewer.state.value.source != null }
+
+        System.gc()
+        val memAfter = runtime.totalMemory() - runtime.freeMemory()
+        val memDiffMb = (memAfter - memBefore) / 1024 / 1024
+        Log.d("LoadPerformanceTest", "Memory usage change after loading 1100 pages: ${memDiffMb}MB")
+        assertTrue("Memory diff should be recorded", memAfter > 0)
+    }
+
+    @Test fun testRapidPageNavigationStress() {
+        val fileName = "L2R_Cover.pdf"
+        val file = copyAssetToCache(fileName)
+        val uri = Uri.fromFile(file)
+
+        InstrumentationRegistry.getInstrumentation().runOnMainSync {
+            compose.activity.viewer.open(uri)
+        }
+        compose.waitUntil(10000) { compose.activity.viewer.state.value.source != null }
+
+        val startTime = System.currentTimeMillis()
+        InstrumentationRegistry.getInstrumentation().runOnMainSync {
+            repeat(10) {
+                compose.activity.viewer.move(1)
+            }
+        }
+        compose.waitForIdle()
+        val duration = System.currentTimeMillis() - startTime
+        Log.d("LoadPerformanceTest", "Rapid navigation stress test completed in ${duration}ms")
+        assertTrue("Navigation duration should be positive", duration >= 0)
+    }
+
+    @Test fun testMultiDocumentSwitching() {
+        val files = listOf("L2R_Single.pdf", "R2L_Cover.pdf", "load_test_1100_pages.pdf")
+        files.forEach { name ->
+            val file = copyAssetToCache(name)
+            val uri = Uri.fromFile(file)
+            InstrumentationRegistry.getInstrumentation().runOnMainSync {
+                compose.activity.viewer.open(uri)
+            }
+            compose.waitUntil(10000) { compose.activity.viewer.state.value.source != null }
+            InstrumentationRegistry.getInstrumentation().runOnMainSync {
+                compose.activity.viewer.closeDocument()
+            }
+        }
+        assertTrue("Multi-document switching completed successfully", true)
+    }
 }

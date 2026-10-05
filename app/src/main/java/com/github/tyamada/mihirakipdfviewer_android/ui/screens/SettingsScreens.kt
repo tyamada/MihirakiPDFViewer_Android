@@ -16,10 +16,11 @@ import androidx.compose.ui.unit.dp
 import com.github.tyamada.mihirakipdfviewer_android.BuildConfig
 import com.github.tyamada.mihirakipdfviewer_android.R
 import com.github.tyamada.mihirakipdfviewer_android.data.*
+import com.github.tyamada.mihirakipdfviewer_android.util.AppLogger
 import com.github.tyamada.mihirakipdfviewer_android.viewmodel.ViewerViewModel
 
 @OptIn(ExperimentalMaterial3Api::class)
-@Composable fun SettingsScreen(vm: ViewerViewModel, back: () -> Unit, help: () -> Unit, reset: () -> Unit, tips: () -> Unit, licenses: () -> Unit) {
+@Composable fun SettingsScreen(vm: ViewerViewModel, back: () -> Unit, help: () -> Unit, reset: () -> Unit, tips: () -> Unit, licenses: () -> Unit, diagnostics: () -> Unit) {
     val state by vm.state.collectAsState()
     Scaffold(topBar = { TopAppBar(title = { Text(stringResource(R.string.settings)) }, navigationIcon = { IconButton(back) { Icon(Icons.AutoMirrored.Filled.ArrowBack, stringResource(R.string.back)) } }) }) { p ->
         Column(Modifier.padding(p).verticalScroll(rememberScrollState()).padding(16.dp)) {
@@ -40,6 +41,13 @@ import com.github.tyamada.mihirakipdfviewer_android.viewmodel.ViewerViewModel
                 }
             }
             
+            Section("Testing & Diagnostics")
+            TextButton(onClick = diagnostics, modifier = Modifier.fillMaxWidth()) {
+                Box(Modifier.fillMaxWidth(), contentAlignment = Alignment.CenterStart) {
+                    Text("Testing & Diagnostic Logs")
+                }
+            }
+
             Section(stringResource(R.string.help))
             TextButton(onClick = help, modifier = Modifier.fillMaxWidth()) {
                 Box(Modifier.fillMaxWidth(), contentAlignment = Alignment.CenterStart) {
@@ -140,3 +148,52 @@ import com.github.tyamada.mihirakipdfviewer_android.viewmodel.ViewerViewModel
 @Composable fun ResetScreen(vm: ViewerViewModel, back: () -> Unit) = Scaffold(topBar = { TopAppBar(title = { Text(stringResource(R.string.reset)) }, navigationIcon = { IconButton(back) { Icon(Icons.AutoMirrored.Filled.ArrowBack, stringResource(R.string.back)) } }) }) { p ->
     Column(Modifier.padding(p).padding(24.dp)) { Text(stringResource(R.string.reset_message), style = MaterialTheme.typography.titleLarge); Spacer(Modifier.weight(1f)); Row(Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.End) { TextButton(back) { Text(stringResource(R.string.cancel)) }; Spacer(Modifier.width(8.dp)); Button(onClick = { vm.reset(); back() }) { Text(stringResource(R.string.reset)) } } }
 }
+
+@OptIn(ExperimentalMaterial3Api::class)
+@Composable fun DiagnosticScreen(back: () -> Unit) {
+    val logs by AppLogger.logs.collectAsState()
+    val runtime = Runtime.getRuntime()
+    val usedMemory = (runtime.totalMemory() - runtime.freeMemory()) / 1024 / 1024
+    val maxMemory = runtime.maxMemory() / 1024 / 1024
+
+    Scaffold(
+        topBar = {
+            TopAppBar(
+                title = { Text("Testing & Diagnostics") },
+                navigationIcon = { IconButton(back) { Icon(Icons.AutoMirrored.Filled.ArrowBack, stringResource(R.string.back)) } }
+            )
+        }
+    ) { p ->
+        Column(Modifier.padding(p).padding(16.dp).fillMaxSize()) {
+            Text("Memory Usage: ${usedMemory}MB / ${maxMemory}MB", style = MaterialTheme.typography.bodyLarge)
+            Spacer(Modifier.height(12.dp))
+            Row(Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.spacedBy(8.dp)) {
+                Button(onClick = { AppLogger.clear() }) { Text("Clear Logs") }
+            }
+            Spacer(Modifier.height(12.dp))
+            Text("Application Logs (${logs.size}):", style = MaterialTheme.typography.titleMedium)
+            Spacer(Modifier.height(8.dp))
+            Box(
+                Modifier
+                    .weight(1f)
+                    .fillMaxWidth()
+            ) {
+                val scrollState = rememberScrollState()
+                Column(Modifier.verticalScroll(scrollState)) {
+                    if (logs.isEmpty()) {
+                        Text("No logs recorded yet.", color = MaterialTheme.colorScheme.onSurfaceVariant)
+                    } else {
+                        logs.forEach { entry ->
+                            Text(
+                                "[${entry.timestamp}] ${entry.level}/${entry.tag}: ${entry.message}",
+                                style = MaterialTheme.typography.bodySmall,
+                                modifier = Modifier.padding(bottom = 4.dp)
+                            )
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+

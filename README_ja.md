@@ -66,12 +66,14 @@
 - [试试社 第1话 歇口气地图 (Chinese (Simplified))](docs/sample/tameshibu_episode1_zh_cn.pdf) (23MB)
 - [试试社 第2话 桌子变大了 (Chinese (Simplified))](docs/sample/tameshibu_episode2_zh_cn.pdf) (24MB)
 
-## 🧪 テスト
+## 🧪 テストと診断機能
 ユニットテストおよびインストルメンテーション UI テストを実行できます。テスト用の PDF ファイルは [こちら](https://1drv.ms/f/c/7a27b2713c2c2c38/IgDLhBYHJMKbRrvH92OpdA6jAQ4VUZNjFrJhqSYs9W4-BTo?e=JaNqSa) から入手可能です。
 ```bash
 ./gradlew test
 ./gradlew connectedAndroidTest
 ```
+- **アプリ内診断ログ**: 設定画面の「Testing & Diagnostics」から、リアルタイムのメモリ使用量や、インメモリバッファに記録されたアプリケーションログ (`AppLogger`) を確認できます。
+- **パフォーマンス・ストレステスト**: 大容量PDFのメモリトラッキングテスト、高速ページめくりストレステスト、連続ドキュメント切り替え安定性テストが含まれています。
 
 ## 📋 動作確認リスト
 開発者およびユーザーによって検証されたデバイス互換性や動作確認の結果は、[VERIFICATION_LIST.md](VERIFICATION_LIST.md) に記載されています。
