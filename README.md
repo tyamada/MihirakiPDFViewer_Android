@@ -18,6 +18,7 @@ Built with **Kotlin**, **Jetpack Compose**, and **Material 3** following the **M
 - 🛡️ **Privacy First**: No internet permissions required for PDF processing. Uses Storage Access Framework (SAF) to only access files you choose.
 - 🚀 **Performant Rendering**: Uses Android's native `PdfRenderer` with a fallback to `PDFBox-Android` for maximum compatibility and features.
 - 🎨 **Adaptive UI**: Responsive design that works great on both phones and tablets, in portrait and landscape.
+- 📋 **Diagnostics & Persistent Logging**: In-app device diagnostic testing and local app log management (stored securely locally for up to 14 days, with zero personal/file data logging and no automatic external transmission).
 
 > [!NOTE]
 > **Internet Connectivity**: An internet connection is required only when opening PDF files stored on **Google Drive** or other cloud services. For PDF files stored locally on your device, no internet connection is required.

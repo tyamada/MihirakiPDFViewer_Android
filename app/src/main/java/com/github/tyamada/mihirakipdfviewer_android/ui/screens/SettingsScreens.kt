@@ -149,7 +149,8 @@ import com.github.tyamada.mihirakipdfviewer_android.viewmodel.ViewerViewModel
             R.string.help_document_info,
             R.string.help_help,
             R.string.help_app_info,
-            R.string.help_support
+            R.string.help_support,
+            R.string.help_diagnostics
         )
         originalItems.forEach {
             Text(stringResource(it), Modifier.padding(bottom = 16.dp))
