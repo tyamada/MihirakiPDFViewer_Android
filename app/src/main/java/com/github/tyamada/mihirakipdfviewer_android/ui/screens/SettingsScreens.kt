@@ -13,6 +13,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
+import android.content.Intent
 import androidx.compose.ui.platform.LocalClipboardManager
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.AnnotatedString
@@ -23,7 +24,7 @@ import com.github.tyamada.mihirakipdfviewer_android.util.*
 import com.github.tyamada.mihirakipdfviewer_android.viewmodel.ViewerViewModel
 
 @OptIn(ExperimentalMaterial3Api::class)
-@Composable fun SettingsScreen(vm: ViewerViewModel, back: () -> Unit, help: () -> Unit, reset: () -> Unit, tips: () -> Unit, licenses: () -> Unit, diagnostics: () -> Unit, deviceTest: () -> Unit) {
+@Composable fun SettingsScreen(vm: ViewerViewModel, back: () -> Unit, help: () -> Unit, reset: () -> Unit, tips: () -> Unit, licenses: () -> Unit, diagnostics: () -> Unit, deviceTest: () -> Unit, logViewer: () -> Unit) {
     val state by vm.state.collectAsState()
     Scaffold(topBar = { TopAppBar(title = { Text(stringResource(R.string.settings)) }, navigationIcon = { IconButton(back) { Icon(Icons.AutoMirrored.Filled.ArrowBack, stringResource(R.string.back)) } }) }) { p ->
         Column(Modifier.padding(p).verticalScroll(rememberScrollState()).padding(16.dp)) {
@@ -72,6 +73,12 @@ import com.github.tyamada.mihirakipdfviewer_android.viewmodel.ViewerViewModel
             TextButton(onClick = deviceTest, modifier = Modifier.fillMaxWidth()) {
                 Box(Modifier.fillMaxWidth(), contentAlignment = Alignment.CenterStart) {
                     Text("実機テストを実行 (Device Test)")
+                }
+            }
+
+            TextButton(onClick = logViewer, modifier = Modifier.fillMaxWidth()) {
+                Box(Modifier.fillMaxWidth(), contentAlignment = Alignment.CenterStart) {
+                    Text("アプリログを表示・共有 (App Logs)")
                 }
             }
 
@@ -300,5 +307,104 @@ import com.github.tyamada.mihirakipdfviewer_android.viewmodel.ViewerViewModel
         }
     }
 }
+
+@OptIn(ExperimentalMaterial3Api::class)
+@Composable fun LogViewerScreen(back: () -> Unit) {
+    val context = LocalContext.current
+    var logs by remember { mutableStateOf(PersistentLogManager.getAllLogs()) }
+    var clearedSignal by remember { mutableStateOf(false) }
+
+    Scaffold(
+        topBar = {
+            TopAppBar(
+                title = { Text("アプリログ管理") },
+                navigationIcon = { IconButton(back) { Icon(Icons.AutoMirrored.Filled.ArrowBack, stringResource(R.string.back)) } }
+            )
+        }
+    ) { p ->
+        Column(Modifier.padding(p).padding(16.dp).fillMaxSize()) {
+            // Privacy Notice
+            Card(
+                colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surfaceVariant),
+                modifier = Modifier.fillMaxWidth()
+            ) {
+                Column(Modifier.padding(16.dp)) {
+                    Text(
+                        "🔒 プライバシー保護・データ管理について",
+                        style = MaterialTheme.typography.titleSmall,
+                        color = MaterialTheme.colorScheme.primary
+                    )
+                    Spacer(Modifier.height(4.dp))
+                    Text(
+                        "• ログを自動的に外部（サーバー等）に送信する機能はありません。\n• ユーザーの個人情報やPDFファイルの内容は一切記録されません。\n• 肥大化を防ぐため、14日以上経過したログファイルは自動的に削除されます。",
+                        style = MaterialTheme.typography.bodySmall
+                    )
+                }
+            }
+
+            Spacer(Modifier.height(16.dp))
+
+            Row(Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.spacedBy(8.dp)) {
+                Button(
+                    onClick = {
+                        val logText = logs.joinToString("\n")
+                        val sendIntent = Intent().apply {
+                            action = Intent.ACTION_SEND
+                            putExtra(Intent.EXTRA_TEXT, logText.ifBlank { "No logs available." })
+                            type = "text/plain"
+                        }
+                        val shareIntent = Intent.createChooser(sendIntent, "アプリログの共有")
+                        context.startActivity(shareIntent)
+                    },
+                    modifier = Modifier.weight(1f)
+                ) {
+                    Text("ログを共有する")
+                }
+
+                OutlinedButton(
+                    onClick = {
+                        PersistentLogManager.clearAllLogs()
+                        logs = PersistentLogManager.getAllLogs()
+                        clearedSignal = true
+                    },
+                    modifier = Modifier.weight(1f)
+                ) {
+                    Text("ログを削除")
+                }
+            }
+
+            if (clearedSignal) {
+                Spacer(Modifier.height(4.dp))
+                Text("すべてのログを削除しました。", color = MaterialTheme.colorScheme.primary, style = MaterialTheme.typography.bodySmall)
+            }
+
+            Spacer(Modifier.height(12.dp))
+            Text("保存されたログ (${logs.size} lines):", style = MaterialTheme.typography.titleMedium)
+            Spacer(Modifier.height(8.dp))
+
+            Box(
+                Modifier
+                    .weight(1f)
+                    .fillMaxWidth()
+            ) {
+                val scrollState = rememberScrollState()
+                Column(Modifier.verticalScroll(scrollState)) {
+                    if (logs.isEmpty()) {
+                        Text("記録されたログはありません。", color = MaterialTheme.colorScheme.onSurfaceVariant)
+                    } else {
+                        logs.forEach { line ->
+                            Text(
+                                line,
+                                style = MaterialTheme.typography.bodySmall,
+                                modifier = Modifier.padding(bottom = 2.dp)
+                            )
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
 
 
