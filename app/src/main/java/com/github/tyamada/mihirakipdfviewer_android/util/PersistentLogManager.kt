@@ -11,7 +11,7 @@ import java.util.Locale
 object PersistentLogManager {
     private const val TAG = "PersistentLog"
     private const val LOG_DIR_NAME = "app_logs"
-    private const val MAX_RETENTION_DAYS = 14L
+    private const val MAX_RETENTION_HOURS = 24L
     private val dateFormat = SimpleDateFormat("yyyy-MM-dd", Locale.US)
     private val timeFormat = SimpleDateFormat("HH:mm:ss.SSS", Locale.US)
 
@@ -79,7 +79,7 @@ object PersistentLogManager {
     fun cleanupOldLogs() {
         val dir = logDir ?: return
         val now = System.currentTimeMillis()
-        val maxAgeMillis = MAX_RETENTION_DAYS * 24 * 60 * 60 * 1000L
+        val maxAgeMillis = MAX_RETENTION_HOURS * 60 * 60 * 1000L
 
         dir.listFiles()?.forEach { file ->
             if (file.isFile) {

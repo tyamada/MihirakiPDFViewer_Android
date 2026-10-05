@@ -327,7 +327,7 @@ import com.github.tyamada.mihirakipdfviewer_android.viewmodel.ViewerViewModel
                     )
                     Spacer(Modifier.height(4.dp))
                     Text(
-                        "• ログを自動的に外部（サーバー等）に送信する機能はありません。\n• ユーザーの個人情報やPDFファイルの内容は一切記録されません。\n• 肥大化を防ぐため、14日以上経過したログファイルは自動的に削除されます。",
+                        "• ログを自動的に外部（サーバー等）に送信する機能はありません。\n• ユーザーの個人情報やPDFファイルの内容は一切記録されません。\n• 肥大化を防ぐため、24時間以上経過したログファイルは自動的に削除されます。",
                         style = MaterialTheme.typography.bodySmall
                     )
                 }
