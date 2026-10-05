@@ -14,9 +14,7 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import android.content.Intent
-import androidx.compose.ui.platform.LocalClipboardManager
 import androidx.compose.ui.platform.LocalContext
-import androidx.compose.ui.text.AnnotatedString
 import com.github.tyamada.mihirakipdfviewer_android.BuildConfig
 import com.github.tyamada.mihirakipdfviewer_android.R
 import com.github.tyamada.mihirakipdfviewer_android.data.*
@@ -217,9 +215,7 @@ import com.github.tyamada.mihirakipdfviewer_android.viewmodel.ViewerViewModel
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable fun DeviceTestScreen(back: () -> Unit) {
     val context = LocalContext.current
-    val clipboardManager = LocalClipboardManager.current
     var testResult by remember { mutableStateOf<DeviceTestResult?>(null) }
-    var copiedMessage by remember { mutableStateOf(false) }
 
     Scaffold(
         topBar = {
@@ -249,7 +245,7 @@ import com.github.tyamada.mihirakipdfviewer_android.viewmodel.ViewerViewModel
                     )
                     Spacer(Modifier.height(4.dp))
                     Text(
-                        "テスト結果を自動的に外部（サーバー等）に送信する機能はありません。データは端末内でのみ処理され、手動でコピーして共有する場合を除き外部に出ることはありません。",
+                        "テスト結果を自動的に外部（サーバー等）に送信する機能はありません。データは端末内でのみ処理され、手動で共有する場合を除き外部に出ることはありません。",
                         style = MaterialTheme.typography.bodySmall
                     )
                 }
@@ -260,7 +256,6 @@ import com.github.tyamada.mihirakipdfviewer_android.viewmodel.ViewerViewModel
             Button(
                 onClick = {
                     testResult = DeviceTestRunner.runTest(context)
-                    copiedMessage = false
                 },
                 modifier = Modifier.fillMaxWidth()
             ) {
@@ -287,22 +282,17 @@ import com.github.tyamada.mihirakipdfviewer_android.viewmodel.ViewerViewModel
                 Button(
                     onClick = {
                         val report = DeviceTestRunner.formatResultString(result)
-                        clipboardManager.setText(AnnotatedString(report))
-                        copiedMessage = true
+                        val sendIntent = Intent().apply {
+                            action = Intent.ACTION_SEND
+                            putExtra(Intent.EXTRA_TEXT, report)
+                            type = "text/plain"
+                        }
+                        val shareIntent = Intent.createChooser(sendIntent, "実機テスト結果の共有")
+                        context.startActivity(shareIntent)
                     },
                     modifier = Modifier.fillMaxWidth()
                 ) {
-                    Text("テスト結果をクリップボードにコピー")
-                }
-
-                if (copiedMessage) {
-                    Spacer(Modifier.height(8.dp))
-                    Text(
-                        "クリップボードにコピーしました！",
-                        color = MaterialTheme.colorScheme.primary,
-                        style = MaterialTheme.typography.bodyMedium,
-                        modifier = Modifier.align(Alignment.CenterHorizontally)
-                    )
+                    Text("テスト結果を共有する")
                 }
             }
         }
