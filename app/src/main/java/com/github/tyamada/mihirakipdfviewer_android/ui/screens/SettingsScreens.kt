@@ -13,14 +13,17 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.platform.LocalClipboardManager
+import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.text.AnnotatedString
 import com.github.tyamada.mihirakipdfviewer_android.BuildConfig
 import com.github.tyamada.mihirakipdfviewer_android.R
 import com.github.tyamada.mihirakipdfviewer_android.data.*
-import com.github.tyamada.mihirakipdfviewer_android.util.AppLogger
+import com.github.tyamada.mihirakipdfviewer_android.util.*
 import com.github.tyamada.mihirakipdfviewer_android.viewmodel.ViewerViewModel
 
 @OptIn(ExperimentalMaterial3Api::class)
-@Composable fun SettingsScreen(vm: ViewerViewModel, back: () -> Unit, help: () -> Unit, reset: () -> Unit, tips: () -> Unit, licenses: () -> Unit, diagnostics: () -> Unit) {
+@Composable fun SettingsScreen(vm: ViewerViewModel, back: () -> Unit, help: () -> Unit, reset: () -> Unit, tips: () -> Unit, licenses: () -> Unit, diagnostics: () -> Unit, deviceTest: () -> Unit) {
     val state by vm.state.collectAsState()
     Scaffold(topBar = { TopAppBar(title = { Text(stringResource(R.string.settings)) }, navigationIcon = { IconButton(back) { Icon(Icons.AutoMirrored.Filled.ArrowBack, stringResource(R.string.back)) } }) }) { p ->
         Column(Modifier.padding(p).verticalScroll(rememberScrollState()).padding(16.dp)) {
@@ -63,6 +66,12 @@ import com.github.tyamada.mihirakipdfviewer_android.viewmodel.ViewerViewModel
             TextButton(onClick = licenses, modifier = Modifier.fillMaxWidth()) {
                 Box(Modifier.fillMaxWidth(), contentAlignment = Alignment.CenterStart) {
                     Text(stringResource(R.string.licenses))
+                }
+            }
+
+            TextButton(onClick = deviceTest, modifier = Modifier.fillMaxWidth()) {
+                Box(Modifier.fillMaxWidth(), contentAlignment = Alignment.CenterStart) {
+                    Text("実機テストを実行 (Device Test)")
                 }
             }
 
@@ -196,4 +205,100 @@ import com.github.tyamada.mihirakipdfviewer_android.viewmodel.ViewerViewModel
         }
     }
 }
+
+@OptIn(ExperimentalMaterial3Api::class)
+@Composable fun DeviceTestScreen(back: () -> Unit) {
+    val context = LocalContext.current
+    val clipboardManager = LocalClipboardManager.current
+    var testResult by remember { mutableStateOf<DeviceTestResult?>(null) }
+    var copiedMessage by remember { mutableStateOf(false) }
+
+    Scaffold(
+        topBar = {
+            TopAppBar(
+                title = { Text("実機テスト・端末診断") },
+                navigationIcon = { IconButton(back) { Icon(Icons.AutoMirrored.Filled.ArrowBack, stringResource(R.string.back)) } }
+            )
+        }
+    ) { p ->
+        Column(Modifier.padding(p).padding(16.dp).verticalScroll(rememberScrollState()).fillMaxSize()) {
+            Text(
+                "この画面では、お使いの端末でビューアの動作確認テスト（メモリ、キャッシュ、PDFエンジン環境）を実行できます。",
+                style = MaterialTheme.typography.bodyMedium
+            )
+            Spacer(Modifier.height(16.dp))
+
+            // Privacy Notice
+            Card(
+                colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surfaceVariant),
+                modifier = Modifier.fillMaxWidth()
+            ) {
+                Column(Modifier.padding(16.dp)) {
+                    Text(
+                        "🔒 プライバシー保護に関するお知らせ",
+                        style = MaterialTheme.typography.titleSmall,
+                        color = MaterialTheme.colorScheme.primary
+                    )
+                    Spacer(Modifier.height(4.dp))
+                    Text(
+                        "テスト結果を自動的に外部（サーバー等）に送信する機能はありません。データは端末内でのみ処理され、手動でコピーして共有する場合を除き外部に出ることはありません。",
+                        style = MaterialTheme.typography.bodySmall
+                    )
+                }
+            }
+
+            Spacer(Modifier.height(20.dp))
+
+            Button(
+                onClick = {
+                    testResult = DeviceTestRunner.runTest(context)
+                    copiedMessage = false
+                },
+                modifier = Modifier.fillMaxWidth()
+            ) {
+                Text("テストを実行する")
+            }
+
+            Spacer(Modifier.height(24.dp))
+
+            testResult?.let { result ->
+                Text("📊 テスト結果", style = MaterialTheme.typography.titleMedium, color = MaterialTheme.colorScheme.primary)
+                Spacer(Modifier.height(8.dp))
+
+                Info("テスト日時", result.timestamp)
+                Info("ベンダー名", result.manufacturer)
+                Info("端末名", result.model)
+                Info("OS バージョン", "Android ${result.osVersion} (SDK ${result.sdkInt})")
+                Info("総メモリ / 空きメモリ", "${result.totalMemoryMb} MB / ${result.freeMemoryMb} MB")
+                Info("キャッシュ領域", if (result.cacheDirWritable) "書込可能 (OK)" else "エラー")
+                Info("PDF エンジン", if (result.pdfEngineAvailable) "利用可能 (OK)" else "エラー")
+                Info("ステータス", result.status)
+
+                Spacer(Modifier.height(16.dp))
+
+                Button(
+                    onClick = {
+                        val report = DeviceTestRunner.formatResultString(result)
+                        clipboardManager.setText(AnnotatedString(report))
+                        copiedMessage = true
+                    },
+                    modifier = Modifier.fillMaxWidth()
+                ) {
+                    Text("テスト結果をクリップボードにコピー")
+                }
+
+                if (copiedMessage) {
+                    Spacer(Modifier.height(8.dp))
+                    Text(
+                        "クリップボードにコピーしました！",
+                        color = MaterialTheme.colorScheme.primary,
+                        style = MaterialTheme.typography.bodyMedium,
+                        modifier = Modifier.align(Alignment.CenterHorizontally)
+                    )
+                }
+            }
+        }
+    }
+}
+
 
