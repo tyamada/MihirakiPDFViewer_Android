@@ -1,6 +1,7 @@
 # MihirakiPDFViewer for Android
 
 [![Android Build](https://github.com/tyamada/MihirakiPDFViewer_Android/actions/workflows/android.yml/badge.svg)](https://github.com/tyamada/MihirakiPDFViewer_Android/actions)
+[![Get it on Google Play](https://img.shields.io/badge/Google%20Play-Get%20it%20on-%2301875f?style=flat&logo=google-play&logoColor=white)](https://play.google.com/store/apps/details?id=com.github.tyamada.MihirakiPDFViewer_Android)
 [![License](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
 English | [日本語](README_ja.md)
