@@ -4,10 +4,11 @@ This is a list of verification results compiled from developer and user informat
 
 | Category   | Manufacturer | Device Name          |   OS Version   | App Version |  Result   | Notes |
 |:-----------|:-------------|:---------------------|:--------------:|:-----------:|:---------:|:------|
-| Smartphone | Sony         | Xperia 10VI XQ-ES44  |       16       |  1.3.0(21)  | No issues | -     |
-| Smartphone | Samsung      | Galaxy A54 5G SC-53D |       16       |  1.3.0(21)  | No issues | -     |
-| Tablet     | Samsung      | Galaxy Tab A SM-T510 |       9        |  1.3.0(21)  | No issues | 1     |
-| Tablet     | aiwa         | tab AG10             |       13       |  1.3.0(21)  | No issues | -     |
+| Smartphone | Google       | Pixel 8a             |       17       |  1.4.0(22)  | No issues | -     |
+| Smartphone | Samsung      | Galaxy A54 5G SC-53D |       16       |  1.4.0(22)  | No issues | -     |
+| Smartphone | Sony         | Xperia 10VI XQ-ES44  |       16       |  1.4.0(22)  | No issues | -     |
+| Tablet     | Samsung      | Galaxy Tab A SM-T510 |       9        |  1.4.0(22)  | No issues | 1     |
+| Tablet     | aiwa         | tab AG10             |       13       |  1.4.0(22)  | No issues | -     |
 | Desktop    | ASUS         | Chromebook CM30      | 152.0.7977.132 |  1.2.3(17)  | No issues | 2     |
 
 ## Notes
