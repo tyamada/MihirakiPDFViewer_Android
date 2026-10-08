@@ -22,8 +22,7 @@ import com.github.tyamada.mihirakipdfviewer_android.viewmodel.ViewerViewModel
                 licenses = { nav.navigate("licenses") },
                 diagnostics = { nav.navigate("diagnostics") },
                 deviceTest = { nav.navigate("device_test") },
-                logViewer = { nav.navigate("log_viewer") },
-                samplePdfs = { nav.navigate("sample_pdfs") }
+                logViewer = { nav.navigate("log_viewer") }
             )
         }
         composable("sample_pdfs") {
