@@ -6,6 +6,7 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.compose.animation.core.*
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.focusable
 import androidx.compose.foundation.gestures.*
 import androidx.compose.foundation.layout.*
@@ -195,11 +196,12 @@ import kotlin.math.abs
                 OutlinedButton(
                     onClick = openSamplePdfs,
                     modifier = Modifier.heightIn(min = 48.dp),
+                    border = BorderStroke(1.dp, Color.White),
                     colors = ButtonDefaults.outlinedButtonColors(contentColor = Color.White)
                 ) {
                     Icon(Icons.Default.Download, contentDescription = null, modifier = Modifier.size(20.dp))
                     Spacer(Modifier.width(8.dp))
-                    Text("Sample PDFs")
+                    Text("サンプルPDF")
                 }
                 Button(
                     onClick = { picker.launch(arrayOf("application/pdf")) },
