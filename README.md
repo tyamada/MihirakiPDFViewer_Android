@@ -1,6 +1,5 @@
 # MihirakiPDFViewer for Android
 
-[![Android Build](https://github.com/tyamada/MihirakiPDFViewer_Android/actions/workflows/android.yml/badge.svg)](https://github.com/tyamada/MihirakiPDFViewer_Android/actions)
 [![Get it on Google Play](https://img.shields.io/badge/Google%20Play-Get%20it%20on-%2301875f?style=flat&logo=google-play&logoColor=white)](https://play.google.com/store/apps/details?id=com.github.tyamada.MihirakiPDFViewer_Android)
 [![License](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
@@ -19,6 +18,7 @@ Built with **Kotlin**, **Jetpack Compose**, and **Material 3** following the **M
 - 🛡️ **Privacy First**: No internet permissions required for PDF processing. Uses Storage Access Framework (SAF) to only access files you choose.
 - 🚀 **Performant Rendering**: Uses Android's native `PdfRenderer` with a fallback to `PDFBox-Android` for maximum compatibility and features.
 - 🎨 **Adaptive UI**: Responsive design that works great on both phones and tablets, in portrait and landscape.
+- 📋 **Diagnostics & Persistent Logging**: In-app device diagnostic testing and local app log management (stored securely locally for up to 24 hours, with zero personal/file data logging and no automatic external transmission).
 
 > [!NOTE]
 > **Internet Connectivity**: An internet connection is required only when opening PDF files stored on **Google Drive** or other cloud services. For PDF files stored locally on your device, no internet connection is required.
@@ -72,6 +72,20 @@ Try out MihirakiPDFViewer with these sample PDF files:
 - [LE CLUB DES ESSAIS EPISODE 2 (French)](docs/sample/tameshibu_episode2_2_fr.pdf) (24MB)
 - [試試社 第1話 (Chinese (Traditional))](docs/sample/tameshibu_episode1_2_zh_tw.pdf) (23MB)
 - [試試社 第2話 (Chinese (Traditional))](docs/sample/tameshibu_episode2_2_zh_tw.pdf) (24MB)
+<<<<<<< HEAD
+
+### Sample PDF License & Attribution
+**"The Try-It Club" Episodes 1 & 2**
+© 2026 Komairo Biyori
+
+Parts of this work to which the publisher holds copyright and other licensable rights are provided under the Creative Commons Attribution 4.0 International (CC BY 4.0) license.
+https://creativecommons.org/licenses/by/4.0/
+
+When reusing this work, please display the title, author name "Komairo Biyori", the publisher of the original work, and a link to the license, and clearly indicate if any changes were made.
+
+This work uses generative AI for the creation of text, images, and translation. Materials whose rights belong to third parties, such as fonts, are subject to their respective licenses. This notice does not restrict the use of parts of the work that are not protected by copyright or similar rights.
+=======
+>>>>>>> testing
 
 ### Sample PDF License & Attribution
 **"The Try-It Club" Episodes 1 & 2**
@@ -84,12 +98,14 @@ When reusing this work, please display the title, author name "Komairo Biyori", 
 
 This work uses generative AI for the creation of text, images, and translation. Materials whose rights belong to third parties, such as fonts, are subject to their respective licenses. This notice does not restrict the use of parts of the work that are not protected by copyright or similar rights.
 
-## 🧪 Testing
+## 🧪 Testing & Diagnostics
 Run unit tests and instrumented UI tests. Test PDF files are available [here](https://1drv.ms/f/c/7a27b2713c2c2c38/IgDLhBYHJMKbRrvH92OpdA6jAQ4VUZNjFrJhqSYs9W4-BTo?e=JaNqSa).
 ```bash
 ./gradlew test
 ./gradlew connectedAndroidTest
 ```
+- **In-App Diagnostics**: Access "Testing & Diagnostics" in Settings to inspect real-time memory usage and rolling application logs (`AppLogger`).
+- **Performance & Stress Tests**: Includes automated memory tracking, rapid page navigation stress tests, and multi-document switching stability tests.
 
 ## 📋 Verification List
 Device compatibility and verification results tested by developers and users are documented in [VERIFICATION_LIST.md](VERIFICATION_LIST.md).
