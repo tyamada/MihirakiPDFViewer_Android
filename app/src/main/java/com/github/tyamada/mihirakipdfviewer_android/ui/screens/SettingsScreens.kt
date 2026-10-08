@@ -22,7 +22,7 @@ import com.github.tyamada.mihirakipdfviewer_android.util.*
 import com.github.tyamada.mihirakipdfviewer_android.viewmodel.ViewerViewModel
 
 @OptIn(ExperimentalMaterial3Api::class)
-@Composable fun SettingsScreen(vm: ViewerViewModel, back: () -> Unit, help: () -> Unit, reset: () -> Unit, tips: () -> Unit, licenses: () -> Unit, diagnostics: () -> Unit, deviceTest: () -> Unit, logViewer: () -> Unit) {
+@Composable fun SettingsScreen(vm: ViewerViewModel, back: () -> Unit, help: () -> Unit, reset: () -> Unit, tips: () -> Unit, licenses: () -> Unit, diagnostics: () -> Unit, deviceTest: () -> Unit, logViewer: () -> Unit, samplePdfs: () -> Unit) {
     val state by vm.state.collectAsState()
     Scaffold(topBar = { TopAppBar(title = { Text(stringResource(R.string.settings)) }, navigationIcon = { IconButton(back) { Icon(Icons.AutoMirrored.Filled.ArrowBack, stringResource(R.string.back)) } }) }) { p ->
         Column(Modifier.padding(p).verticalScroll(rememberScrollState()).padding(16.dp)) {
@@ -77,6 +77,13 @@ import com.github.tyamada.mihirakipdfviewer_android.viewmodel.ViewerViewModel
             TextButton(onClick = logViewer, modifier = Modifier.fillMaxWidth()) {
                 Box(Modifier.fillMaxWidth(), contentAlignment = Alignment.CenterStart) {
                     Text("アプリログを表示・共有 (App Logs)")
+                }
+            }
+
+            Section("Sample PDFs")
+            TextButton(onClick = samplePdfs, modifier = Modifier.fillMaxWidth()) {
+                Box(Modifier.fillMaxWidth(), contentAlignment = Alignment.CenterStart) {
+                    Text("サンプルPDFのダウンロード・管理 (Sample PDFs)")
                 }
             }
 
