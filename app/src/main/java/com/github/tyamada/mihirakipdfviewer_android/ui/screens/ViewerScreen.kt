@@ -42,7 +42,7 @@ import kotlinx.coroutines.withTimeoutOrNull
 import kotlin.math.abs
 
 @OptIn(ExperimentalMaterial3Api::class)
-@Composable fun ViewerScreen(vm: ViewerViewModel, openSettings: () -> Unit, openTips: () -> Unit, openSamplePdfs: () -> Unit) {
+@Composable fun ViewerScreen(vm: ViewerViewModel, openSettings: () -> Unit, openSamplePdfs: () -> Unit) {
     val state by vm.state.collectAsState(); val context = LocalContext.current
     val focusRequester = remember { FocusRequester() }
     var password by remember { mutableStateOf("") }
@@ -109,15 +109,6 @@ import kotlin.math.abs
                             }
                             IconButton(onClick = { picker.launch(arrayOf("application/pdf")) }) {
                                 Icon(Icons.Default.FolderOpen, stringResource(R.string.open_pdf))
-                            }
-                            val tipColor = when (state.settings.purchasedTier) {
-                                "BRONZE" -> androidx.compose.ui.graphics.Color(0xFFCD7F32)
-                                "SILVER" -> androidx.compose.ui.graphics.Color(0xFFC0C0C0)
-                                "GOLD" -> androidx.compose.ui.graphics.Color(0xFFFFD700)
-                                else -> LocalContentColor.current
-                            }
-                            IconButton(onClick = openTips) {
-                                Icon(Icons.Default.Favorite, stringResource(R.string.support), tint = tipColor)
                             }
                             IconButton(onClick = openSettings) {
                                 Icon(Icons.Default.Settings, stringResource(R.string.settings))
