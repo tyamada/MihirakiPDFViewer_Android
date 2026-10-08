@@ -8,7 +8,7 @@ data class SamplePdfItem(
     val fileName: String,
     val url: String,
     val fileSize: String,
-    val languageCode: String, // "en", "ja", "ko", "zh", "de", "fr"
+    val languageCode: String, // "en", "ja", "ko", "zh_cn", "zh_tw", "de", "fr"
     val languageDisplayName: String
 )
 
@@ -85,7 +85,7 @@ object SamplePdfCatalog {
             fileName = "tameshibu_episode1_2_zh_cn.pdf",
             url = "${BASE_URL}tameshibu_episode1_2_zh_cn.pdf",
             fileSize = "23MB",
-            languageCode = "zh",
+            languageCode = "zh_cn",
             languageDisplayName = "Chinese (Simplified)"
         ),
         SamplePdfItem(
@@ -94,7 +94,7 @@ object SamplePdfCatalog {
             fileName = "tameshibu_episode2_2_zh_cn.pdf",
             url = "${BASE_URL}tameshibu_episode2_2_zh_cn.pdf",
             fileSize = "24MB",
-            languageCode = "zh",
+            languageCode = "zh_cn",
             languageDisplayName = "Chinese (Simplified)"
         ),
         SamplePdfItem(
@@ -139,7 +139,7 @@ object SamplePdfCatalog {
             fileName = "tameshibu_episode1_2_zh_tw.pdf",
             url = "${BASE_URL}tameshibu_episode1_2_zh_tw.pdf",
             fileSize = "23MB",
-            languageCode = "zh",
+            languageCode = "zh_tw",
             languageDisplayName = "Chinese (Traditional)"
         ),
         SamplePdfItem(
@@ -148,7 +148,7 @@ object SamplePdfCatalog {
             fileName = "tameshibu_episode2_2_zh_tw.pdf",
             url = "${BASE_URL}tameshibu_episode2_2_zh_tw.pdf",
             fileSize = "24MB",
-            languageCode = "zh",
+            languageCode = "zh_tw",
             languageDisplayName = "Chinese (Traditional)"
         )
     )

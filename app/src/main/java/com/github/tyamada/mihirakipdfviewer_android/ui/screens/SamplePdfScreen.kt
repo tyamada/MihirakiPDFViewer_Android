@@ -60,7 +60,8 @@ fun SamplePdfScreen(
                         "en" -> "English"
                         "ja" -> "Japanese (日本語)"
                         "ko" -> "Korean (한국어)"
-                        "zh" -> "Chinese (中文)"
+                        "zh_cn" -> "Chinese (Simplified) (中国語(簡体字))"
+                        "zh_tw" -> "Chinese (Traditional) (中国語(繁体字))"
                         "de" -> "German (Deutsch)"
                         "fr" -> "French (Français)"
                         else -> uiState.selectedLanguage.uppercase()
@@ -85,7 +86,8 @@ fun SamplePdfScreen(
                                 "en" -> "English"
                                 "ja" -> "Japanese (日本語)"
                                 "ko" -> "Korean (한국어)"
-                                "zh" -> "Chinese (中文)"
+                                "zh_cn" -> "Chinese (Simplified) (中国語(簡体字))"
+                                "zh_tw" -> "Chinese (Traditional) (中国語(繁体字))"
                                 "de" -> "German (Deutsch)"
                                 "fr" -> "French (Français)"
                                 else -> lang.uppercase()
