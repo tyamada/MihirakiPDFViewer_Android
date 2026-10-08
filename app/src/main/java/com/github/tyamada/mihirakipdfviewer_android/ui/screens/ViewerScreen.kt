@@ -6,6 +6,7 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.compose.animation.core.*
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.focusable
 import androidx.compose.foundation.gestures.*
 import androidx.compose.foundation.layout.*
@@ -37,10 +38,11 @@ import com.github.tyamada.mihirakipdfviewer_android.data.ReadingDirection
 import com.github.tyamada.mihirakipdfviewer_android.data.ViewerLayout
 import com.github.tyamada.mihirakipdfviewer_android.viewmodel.ViewerViewModel
 import kotlinx.coroutines.delay
+import kotlinx.coroutines.withTimeoutOrNull
 import kotlin.math.abs
 
 @OptIn(ExperimentalMaterial3Api::class)
-@Composable fun ViewerScreen(vm: ViewerViewModel, openSettings: () -> Unit, openTips: () -> Unit) {
+@Composable fun ViewerScreen(vm: ViewerViewModel, openSettings: () -> Unit, openSamplePdfs: () -> Unit) {
     val state by vm.state.collectAsState(); val context = LocalContext.current
     val focusRequester = remember { FocusRequester() }
     var password by remember { mutableStateOf("") }
@@ -102,17 +104,11 @@ import kotlin.math.abs
                             }
                         },
                         actions = {
+                            IconButton(onClick = openSamplePdfs) {
+                                Icon(Icons.Default.Download, contentDescription = "Sample PDFs")
+                            }
                             IconButton(onClick = { picker.launch(arrayOf("application/pdf")) }) {
                                 Icon(Icons.Default.FolderOpen, stringResource(R.string.open_pdf))
-                            }
-                            val tipColor = when (state.settings.purchasedTier) {
-                                "BRONZE" -> androidx.compose.ui.graphics.Color(0xFFCD7F32)
-                                "SILVER" -> androidx.compose.ui.graphics.Color(0xFFC0C0C0)
-                                "GOLD" -> androidx.compose.ui.graphics.Color(0xFFFFD700)
-                                else -> LocalContentColor.current
-                            }
-                            IconButton(onClick = openTips) {
-                                Icon(Icons.Default.Favorite, stringResource(R.string.support), tint = tipColor)
                             }
                             IconButton(onClick = openSettings) {
                                 Icon(Icons.Default.Settings, stringResource(R.string.settings))
@@ -189,7 +185,25 @@ import kotlin.math.abs
  ) {
         if ((state.source == null) && !state.loading) Column(Modifier.align(Alignment.Center), horizontalAlignment = Alignment.CenterHorizontally) {
             Icon(Icons.AutoMirrored.Filled.MenuBook, null, tint = Color.White, modifier = Modifier.size(80.dp))
-            Spacer(Modifier.height(20.dp)); Button(onClick = { picker.launch(arrayOf("application/pdf")) }, modifier = Modifier.heightIn(min = 48.dp)) { Text(stringResource(R.string.open_pdf)) }
+            Spacer(Modifier.height(20.dp))
+            Row(horizontalArrangement = Arrangement.spacedBy(12.dp), verticalAlignment = Alignment.CenterVertically) {
+                OutlinedButton(
+                    onClick = openSamplePdfs,
+                    modifier = Modifier.heightIn(min = 48.dp),
+                    border = BorderStroke(1.dp, Color.White),
+                    colors = ButtonDefaults.outlinedButtonColors(contentColor = Color.White)
+                ) {
+                    Icon(Icons.Default.Download, contentDescription = null, modifier = Modifier.size(20.dp))
+                    Spacer(Modifier.width(8.dp))
+                    Text("サンプルPDF")
+                }
+                Button(
+                    onClick = { picker.launch(arrayOf("application/pdf")) },
+                    modifier = Modifier.heightIn(min = 48.dp)
+                ) {
+                    Text(stringResource(R.string.open_pdf))
+                }
+            }
         }
         if ((state.source == null) && !state.loading) IconButton(openSettings, Modifier.align(Alignment.TopEnd).padding(top = 36.dp, end = 8.dp).size(48.dp)) { Icon(Icons.Default.Settings, stringResource(R.string.settings), tint = Color.White) }
         if (state.loading) CircularProgressIndicator(Modifier.align(Alignment.Center))
@@ -201,6 +215,7 @@ import kotlin.math.abs
                 onPrevious = { vm.move(-1) },
                 onNext = { vm.move(1) },
                 direction = direction,
+                currentPage = state.currentPage,
             ) {
                 Row(Modifier.fillMaxSize(), horizontalArrangement = Arrangement.Center) {
                     if (state.settings.layout == ViewerLayout.SPREAD) {
@@ -316,10 +331,16 @@ import kotlin.math.abs
     onPrevious: () -> Unit,
     onNext: () -> Unit,
     direction: ReadingDirection,
+    currentPage: Int,
     content: @Composable () -> Unit,
 ) {
     var scale by remember { mutableFloatStateOf(1f) }
     var offset by remember { mutableStateOf(Offset.Zero) }
+
+    LaunchedEffect(currentPage) {
+        scale = 1f
+        offset = Offset.Zero
+    }
 
     Box(
         modifier
@@ -363,7 +384,26 @@ import kotlin.math.abs
 
                     val duration = System.currentTimeMillis() - startTime
                     if (!hasMoved && duration < 350f) {
-                        onTap()
+                        val secondDown = withTimeoutOrNull(300L) {
+                            awaitFirstDown(requireUnconsumed = false)
+                        }
+                        if (secondDown != null) {
+                            var secondMoved = false
+                            do {
+                                val secondEvent = awaitPointerEvent()
+                                val currentPos = secondEvent.changes.firstOrNull()?.position ?: secondDown.position
+                                if ((currentPos - secondDown.position).getDistance() > 15f) {
+                                    secondMoved = true
+                                }
+                            } while (secondEvent.changes.any { it.pressed })
+
+                            if (!secondMoved) {
+                                scale = 1f
+                                offset = Offset.Zero
+                            }
+                        } else {
+                            onTap()
+                        }
                     } else if (scale <= 1.05f && abs(totalPan.x) > 60f) {
                         val isForward = if (direction == ReadingDirection.L2R) totalPan.x < 0 else totalPan.x > 0
                         if (isForward) onNext() else onPrevious()

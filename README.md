@@ -118,6 +118,21 @@ This project was developed with the assistance of AI:
 - **Initial Code Generation**: [ChatGPT](https://chat.openai.com/)
 - **Modifications, Feature Implementation & Bug Fixes**: [Gemini 3.0 Flash Preview](https://deepmind.google/technologies/gemini/flash/) (via Android Studio)
 
+## 📜 Version History
+
+- **v1.4.0** (Code 22)
+  - Updated tip purchases from consumable to non-consumable to comply with App Store review guidelines.
+  - Reorganized and updated store listing assets and sample PDFs.
+- **v1.3.0** (Code 21)
+  - Improved settings screen layout by relocating options group below document info.
+  - Enabled advanced R8 optimizations and native debug symbols for improved performance and crash reporting.
+- **v1.2.4** (Code 18)
+  - Minor settings screen layout adjustments.
+- **v1.2.3** (Code 17)
+  - Consolidated and organized store listing materials and device screenshots.
+- **v1.0.0** (Code 20)
+  - Initial production release with two-page spread support, R2L reading order, smart auto-detection, precise search & highlighting, and privacy-focused local PDF processing.
+
 ## 📄 License
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 

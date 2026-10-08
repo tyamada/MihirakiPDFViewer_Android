@@ -17,6 +17,7 @@ import kotlinx.coroutines.Job
 import kotlinx.coroutines.ensureActive
 import kotlinx.coroutines.flow.*
 import kotlinx.coroutines.launch
+import java.io.File
 
 data class ViewerUiState(
     val loading: Boolean = false, val source: PdfSource? = null, val uri: Uri? = null,
@@ -78,7 +79,21 @@ class ViewerViewModel(app: Application) : AndroidViewModel(app) {
             
             // Auto-resume if no file is currently being opened (e.g. via Intent)
             if (!_state.value.loading && _state.value.source == null) {
-                initial.lastUri?.let { open(Uri.parse(it), initial.lastPage) }
+                initial.lastUri?.let { uriStr ->
+                    val uri = Uri.parse(uriStr)
+                    val isValid = if (uri.scheme == "file") {
+                        val f = File(uri.path ?: "")
+                        f.exists() && f.length() > 0
+                    } else true
+
+                    if (isValid) {
+                        open(uri, initial.lastPage)
+                    } else {
+                        val cleared = initial.copy(lastUri = null, lastPage = 0)
+                        preferences.save(cleared)
+                        _state.update { it.copy(settings = cleared) }
+                    }
+                }
             }
 
             // Sync further settings changes
@@ -113,6 +128,11 @@ class ViewerViewModel(app: Application) : AndroidViewModel(app) {
             preferences.save(newSettings)
             render(startPage)
         }.onFailure { e ->
+            // Clear lastUri on failure so app doesn't loop opening a corrupted or missing file on restart
+            val clearedSettings = _state.value.settings.copy(lastUri = null, lastPage = 0)
+            preferences.save(clearedSettings)
+            _state.update { it.copy(settings = clearedSettings) }
+
             when (e) {
                 is PdfOpenException.PasswordRequired -> _state.update { it.copy(loading = false, passwordRequested = true) }
                 is PdfOpenException.WrongPassword -> _state.update { it.copy(loading = false, passwordRequested = true, errorKey = "wrong_password") }
