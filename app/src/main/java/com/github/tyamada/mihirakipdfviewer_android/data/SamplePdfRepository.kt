@@ -37,11 +37,15 @@ class SamplePdfRepository(private val context: Context) {
 
     fun isDownloaded(fileName: String): Boolean {
         val file = getLocalFile(fileName)
-        return file.exists() && file.length() > 0
+        val tempFile = File(sampleDir, "$fileName.tmp")
+        // File is only considered downloaded if it exists, is non-empty, and temp file does not exist (not downloading)
+        return file.exists() && file.length() > 0 && !tempFile.exists()
     }
 
     fun deletePdf(fileName: String): Boolean {
         val file = getLocalFile(fileName)
+        val tempFile = File(sampleDir, "$fileName.tmp")
+        if (tempFile.exists()) tempFile.delete()
         return if (file.exists()) file.delete() else true
     }
 
@@ -56,6 +60,8 @@ class SamplePdfRepository(private val context: Context) {
 
     fun downloadPdf(item: SamplePdfItem): Flow<DownloadState> = flow {
         emit(DownloadState.Downloading(0f))
+        val targetFile = getLocalFile(item.fileName)
+        val tempFile = File(sampleDir, "${item.fileName}.tmp")
         try {
             val url = URL(item.url)
             val connection = url.openConnection() as HttpsURLConnection
@@ -64,14 +70,14 @@ class SamplePdfRepository(private val context: Context) {
             val responseCode = connection.responseCode
             if (responseCode != HttpsURLConnection.HTTP_OK) {
                 emit(DownloadState.Error("HTTP error: $responseCode"))
+                if (tempFile.exists()) tempFile.delete()
                 return@flow
             }
 
             val fileLength = connection.contentLength
-            val outputFile = getLocalFile(item.fileName)
 
             connection.inputStream.use { input ->
-                FileOutputStream(outputFile).use { output ->
+                FileOutputStream(tempFile).use { output ->
                     val buffer = ByteArray(8192)
                     var bytesCopied = 0L
                     var bytesRead: Int
@@ -85,8 +91,17 @@ class SamplePdfRepository(private val context: Context) {
                     }
                 }
             }
-            emit(DownloadState.Success)
+
+            if (targetFile.exists()) {
+                targetFile.delete()
+            }
+            if (tempFile.renameTo(targetFile)) {
+                emit(DownloadState.Success)
+            } else {
+                emit(DownloadState.Error("Failed to save downloaded file"))
+            }
         } catch (e: Exception) {
+            if (tempFile.exists()) tempFile.delete()
             emit(DownloadState.Error(e.message ?: "Download failed"))
         }
     }.flowOn(Dispatchers.IO)

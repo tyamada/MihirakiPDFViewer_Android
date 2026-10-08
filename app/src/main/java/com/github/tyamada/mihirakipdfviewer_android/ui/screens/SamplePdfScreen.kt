@@ -203,7 +203,7 @@ fun SamplePdfCard(
                 horizontalArrangement = Arrangement.End,
                 verticalAlignment = Alignment.CenterVertically
             ) {
-                if (itemState.isDownloaded) {
+                if (itemState.isDownloaded && !itemState.isDownloading) {
                     OutlinedButton(
                         onClick = onDelete,
                         modifier = Modifier.padding(end = 8.dp)
@@ -225,7 +225,7 @@ fun SamplePdfCard(
                     ) {
                         Icon(Icons.Default.Download, contentDescription = null, modifier = Modifier.size(18.dp))
                         Spacer(modifier = Modifier.width(4.dp))
-                        Text("Download (ダウンロード)")
+                        Text(if (itemState.isDownloading) "Downloading... (ダウンロード中)" else "Download (ダウンロード)")
                     }
                 }
             }
