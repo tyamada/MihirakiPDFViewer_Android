@@ -11,7 +11,7 @@ import com.github.tyamada.mihirakipdfviewer_android.viewmodel.ViewerViewModel
 @Composable fun MihirakiApp(viewer: ViewerViewModel) = MihirakiTheme {
     val nav = rememberNavController()
     NavHost(nav, startDestination = "viewer") {
-        composable("viewer") { ViewerScreen(viewer, { nav.navigate("settings") }, { nav.navigate("tips") }) }
+        composable("viewer") { ViewerScreen(viewer, { nav.navigate("settings") }, { nav.navigate("tips") }, { nav.navigate("sample_pdfs") }) }
         composable("settings") { 
             SettingsScreen(
                 vm = viewer,

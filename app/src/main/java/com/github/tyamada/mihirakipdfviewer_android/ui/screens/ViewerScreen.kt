@@ -41,7 +41,7 @@ import kotlinx.coroutines.withTimeoutOrNull
 import kotlin.math.abs
 
 @OptIn(ExperimentalMaterial3Api::class)
-@Composable fun ViewerScreen(vm: ViewerViewModel, openSettings: () -> Unit, openTips: () -> Unit) {
+@Composable fun ViewerScreen(vm: ViewerViewModel, openSettings: () -> Unit, openTips: () -> Unit, openSamplePdfs: () -> Unit) {
     val state by vm.state.collectAsState(); val context = LocalContext.current
     val focusRequester = remember { FocusRequester() }
     var password by remember { mutableStateOf("") }
@@ -190,7 +190,24 @@ import kotlin.math.abs
  ) {
         if ((state.source == null) && !state.loading) Column(Modifier.align(Alignment.Center), horizontalAlignment = Alignment.CenterHorizontally) {
             Icon(Icons.AutoMirrored.Filled.MenuBook, null, tint = Color.White, modifier = Modifier.size(80.dp))
-            Spacer(Modifier.height(20.dp)); Button(onClick = { picker.launch(arrayOf("application/pdf")) }, modifier = Modifier.heightIn(min = 48.dp)) { Text(stringResource(R.string.open_pdf)) }
+            Spacer(Modifier.height(20.dp))
+            Row(horizontalArrangement = Arrangement.spacedBy(12.dp), verticalAlignment = Alignment.CenterVertically) {
+                OutlinedButton(
+                    onClick = openSamplePdfs,
+                    modifier = Modifier.heightIn(min = 48.dp),
+                    colors = ButtonDefaults.outlinedButtonColors(contentColor = Color.White)
+                ) {
+                    Icon(Icons.Default.Download, contentDescription = null, modifier = Modifier.size(20.dp))
+                    Spacer(Modifier.width(8.dp))
+                    Text("Sample PDFs")
+                }
+                Button(
+                    onClick = { picker.launch(arrayOf("application/pdf")) },
+                    modifier = Modifier.heightIn(min = 48.dp)
+                ) {
+                    Text(stringResource(R.string.open_pdf))
+                }
+            }
         }
         if ((state.source == null) && !state.loading) IconButton(openSettings, Modifier.align(Alignment.TopEnd).padding(top = 36.dp, end = 8.dp).size(48.dp)) { Icon(Icons.Default.Settings, stringResource(R.string.settings), tint = Color.White) }
         if (state.loading) CircularProgressIndicator(Modifier.align(Alignment.Center))
