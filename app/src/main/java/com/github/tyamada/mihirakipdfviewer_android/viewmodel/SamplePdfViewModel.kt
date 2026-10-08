@@ -29,12 +29,14 @@ class SamplePdfViewModel(application: Application) : AndroidViewModel(applicatio
     private val _downloadStates = MutableStateFlow<Map<String, DownloadState>>(emptyMap())
     private val _selectedLanguage = MutableStateFlow(getDefaultLanguage())
     private val _cellularDialogItem = MutableStateFlow<SamplePdfItem?>(null)
+    private val _refreshTrigger = MutableStateFlow(0)
 
     val uiState: StateFlow<SamplePdfUiState> = combine(
         _downloadStates,
         _selectedLanguage,
-        _cellularDialogItem
-    ) { states, lang, dialogItem ->
+        _cellularDialogItem,
+        _refreshTrigger
+    ) { states, lang, dialogItem, _ ->
         val allLangs = SamplePdfCatalog.items.map { it.languageCode }.distinct()
         val filteredItems = SamplePdfCatalog.items.map { item ->
             val dlState = states[item.id] ?: DownloadState.Idle
@@ -97,6 +99,9 @@ class SamplePdfViewModel(application: Application) : AndroidViewModel(applicatio
         viewModelScope.launch {
             repository.downloadPdf(item).collect { state ->
                 _downloadStates.value = _downloadStates.value + (item.id to state)
+                if (state is DownloadState.Success || state is DownloadState.Error) {
+                    _refreshTrigger.value++
+                }
             }
         }
     }
@@ -105,6 +110,7 @@ class SamplePdfViewModel(application: Application) : AndroidViewModel(applicatio
         viewModelScope.launch {
             repository.deletePdf(item.fileName)
             _downloadStates.value = _downloadStates.value - item.id
+            _refreshTrigger.value++
         }
     }
 }
