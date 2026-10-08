@@ -38,7 +38,9 @@ class SamplePdfRepository(private val context: Context) {
     fun isDownloaded(fileName: String): Boolean {
         val file = getLocalFile(fileName)
         val tempFile = File(sampleDir, "$fileName.tmp")
-        // File is only considered downloaded if it exists, is non-empty, and temp file does not exist (not downloading)
+        if (file.exists() && file.length() == 0L) {
+            file.delete()
+        }
         return file.exists() && file.length() > 0 && !tempFile.exists()
     }
 
