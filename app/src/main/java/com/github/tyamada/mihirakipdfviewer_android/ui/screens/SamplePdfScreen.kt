@@ -1,11 +1,9 @@
 package com.github.tyamada.mihirakipdfviewer_android.ui.screens
 
 import android.net.Uri
-import androidx.compose.foundation.horizontalScroll
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
-import androidx.compose.foundation.rememberScrollState
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.material.icons.automirrored.filled.OpenInNew
@@ -16,7 +14,6 @@ import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
-import com.github.tyamada.mihirakipdfviewer_android.data.SamplePdfItem
 import com.github.tyamada.mihirakipdfviewer_android.data.SamplePdfItemState
 import com.github.tyamada.mihirakipdfviewer_android.viewmodel.SamplePdfViewModel
 
@@ -28,6 +25,7 @@ fun SamplePdfScreen(
     onOpenPdf: (Uri) -> Unit
 ) {
     val uiState by viewModel.uiState.collectAsState()
+    var expanded by remember { mutableStateOf(false) }
 
     Scaffold(
         topBar = {
@@ -46,20 +44,42 @@ fun SamplePdfScreen(
                 .fillMaxSize()
                 .padding(padding)
         ) {
-            // Language Filter Chips
-            Row(
+            // Language Dropdown Filter
+            Box(
                 modifier = Modifier
                     .fillMaxWidth()
-                    .horizontalScroll(rememberScrollState())
-                    .padding(horizontal = 16.dp, vertical = 8.dp),
-                horizontalArrangement = Arrangement.spacedBy(8.dp)
+                    .padding(horizontal = 16.dp, vertical = 8.dp)
             ) {
-                uiState.availableLanguages.forEach { lang ->
-                    val isSelected = uiState.selectedLanguage == lang
-                    FilterChip(
-                        selected = isSelected,
-                        onClick = { viewModel.setLanguage(lang) },
-                        label = {
+                ExposedDropdownMenuBox(
+                    expanded = expanded,
+                    onExpandedChange = { expanded = !expanded },
+                    modifier = Modifier.fillMaxWidth()
+                ) {
+                    val selectedLabel = when (uiState.selectedLanguage) {
+                        "ALL" -> "All (全部)"
+                        "en" -> "English"
+                        "ja" -> "Japanese (日本語)"
+                        "ko" -> "Korean (한국어)"
+                        "zh" -> "Chinese (中文)"
+                        "de" -> "German (Deutsch)"
+                        "fr" -> "French (Français)"
+                        else -> uiState.selectedLanguage.uppercase()
+                    }
+                    OutlinedTextField(
+                        value = selectedLabel,
+                        onValueChange = {},
+                        readOnly = true,
+                        label = { Text("Language Filter (言語フィルター)") },
+                        trailingIcon = { ExposedDropdownMenuDefaults.TrailingIcon(expanded = expanded) },
+                        modifier = Modifier
+                            .menuAnchor(ExposedDropdownMenuAnchorType.PrimaryNotEditable, true)
+                            .fillMaxWidth()
+                    )
+                    ExposedDropdownMenu(
+                        expanded = expanded,
+                        onDismissRequest = { expanded = false }
+                    ) {
+                        uiState.availableLanguages.forEach { lang ->
                             val labelText = when (lang) {
                                 "ALL" -> "All (全部)"
                                 "en" -> "English"
@@ -70,9 +90,15 @@ fun SamplePdfScreen(
                                 "fr" -> "French (Français)"
                                 else -> lang.uppercase()
                             }
-                            Text(labelText)
+                            DropdownMenuItem(
+                                text = { Text(labelText) },
+                                onClick = {
+                                    viewModel.setLanguage(lang)
+                                    expanded = false
+                                }
+                            )
                         }
-                    )
+                    }
                 }
             }
 
