@@ -37,6 +37,7 @@ import com.github.tyamada.mihirakipdfviewer_android.data.ReadingDirection
 import com.github.tyamada.mihirakipdfviewer_android.data.ViewerLayout
 import com.github.tyamada.mihirakipdfviewer_android.viewmodel.ViewerViewModel
 import kotlinx.coroutines.delay
+import kotlinx.coroutines.withTimeoutOrNull
 import kotlin.math.abs
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -201,6 +202,7 @@ import kotlin.math.abs
                 onPrevious = { vm.move(-1) },
                 onNext = { vm.move(1) },
                 direction = direction,
+                currentPage = state.currentPage,
             ) {
                 Row(Modifier.fillMaxSize(), horizontalArrangement = Arrangement.Center) {
                     if (state.settings.layout == ViewerLayout.SPREAD) {
@@ -316,10 +318,16 @@ import kotlin.math.abs
     onPrevious: () -> Unit,
     onNext: () -> Unit,
     direction: ReadingDirection,
+    currentPage: Int,
     content: @Composable () -> Unit,
 ) {
     var scale by remember { mutableFloatStateOf(1f) }
     var offset by remember { mutableStateOf(Offset.Zero) }
+
+    LaunchedEffect(currentPage) {
+        scale = 1f
+        offset = Offset.Zero
+    }
 
     Box(
         modifier
@@ -363,7 +371,26 @@ import kotlin.math.abs
 
                     val duration = System.currentTimeMillis() - startTime
                     if (!hasMoved && duration < 350f) {
-                        onTap()
+                        val secondDown = withTimeoutOrNull(300L) {
+                            awaitFirstDown(requireUnconsumed = false)
+                        }
+                        if (secondDown != null) {
+                            var secondMoved = false
+                            do {
+                                val secondEvent = awaitPointerEvent()
+                                val currentPos = secondEvent.changes.firstOrNull()?.position ?: secondDown.position
+                                if ((currentPos - secondDown.position).getDistance() > 15f) {
+                                    secondMoved = true
+                                }
+                            } while (secondEvent.changes.any { it.pressed })
+
+                            if (!secondMoved) {
+                                scale = 1f
+                                offset = Offset.Zero
+                            }
+                        } else {
+                            onTap()
+                        }
                     } else if (scale <= 1.05f && abs(totalPan.x) > 60f) {
                         val isForward = if (direction == ReadingDirection.L2R) totalPan.x < 0 else totalPan.x > 0
                         if (isForward) onNext() else onPrevious()
