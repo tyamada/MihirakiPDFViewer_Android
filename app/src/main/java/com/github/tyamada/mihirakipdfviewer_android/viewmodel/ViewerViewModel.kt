@@ -238,7 +238,12 @@ class ViewerViewModel(app: Application) : AndroidViewModel(app) {
     fun updateSettings(transform: (ViewerSettings) -> ViewerSettings) = viewModelScope.launch {
         val value = transform(_state.value.settings); _state.update { it.copy(settings = value) }; preferences.save(value); render(_state.value.currentPage)
     }
-    fun reset() = viewModelScope.launch { preferences.reset(); closeDocument(); _state.value = ViewerUiState() }
+    fun reset() = viewModelScope.launch {
+        preferences.reset()
+        closeDocument()
+        SamplePdfRepository(getApplication()).deleteAllDownloadedPdfs()
+        _state.value = ViewerUiState()
+    }
     fun closeDocument() {
         renderJob?.cancel()
         searchJob?.cancel()
