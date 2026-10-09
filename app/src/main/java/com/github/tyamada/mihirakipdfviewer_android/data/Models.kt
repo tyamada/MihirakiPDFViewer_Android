@@ -11,6 +11,7 @@ data class ViewerSettings(
     val showCover: Boolean = false,
     val highQuality: Boolean = false,
     val sharpness: Float = 0f,
+    val mouseNavigation: Boolean = false,
     val purchasedTiers: Set<String> = emptySet(),
     val purchasedTier: String? = null,
     val lastUri: String? = null,
