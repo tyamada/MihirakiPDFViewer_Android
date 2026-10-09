@@ -8,6 +8,7 @@
     <string name="help_high_quality"><b>高画質化:</b> PDFページをより高画質で表示します。</string>
     <string name="help_sharpness"><b>シャープネス:</b> 文字や線をより鮮明に表示します。</string>
     <string name="help_two_page"><b>見開き表示:</b> 2ページを横に並べて表示します。</string>
+    <string name="help_portrait_display"><b>Portrait表示:</b> 縦長画面（Portrait）のときに見開き表示にするかどうかを選択します。</string>
     <string name="help_show_cover"><b>表紙を表示:</b> 見開き表示で最初のページを表紙として単独で表示します。</string>
     <string name="help_reading_direction"><b>スクロール方向:</b> ページを左から右へ送るか、右から左へ送るかを選択します。</string>
     <string name="help_cover_mode"><b>表紙設定:</b> 読む方向ごとの表紙の配置を選択します。</string>

@@ -14,7 +14,7 @@ class DomainLogicTest {
         assertEquals(ReadingDirection.R2L, DirectionDetector.fromMetadata(null, "R2L")); assertEquals(ReadingDirection.L2R, DirectionDetector.fromMetadata(null, "L2R")); assertNull(DirectionDetector.fromMetadata(null, null))
     }
     @Test fun `settings defaults match product specification`() {
-        val settings = ViewerSettings(); assertEquals(CoverMode.STANDARD, settings.coverMode); assertEquals(ViewerLayout.SINGLE, settings.layout); assertFalse(settings.showCover)
+        val settings = ViewerSettings(); assertEquals(CoverMode.STANDARD, settings.coverMode); assertEquals(ViewerLayout.SINGLE, settings.layout); assertFalse(settings.showCover); assertTrue(settings.portraitSpread)
     }
     @Test fun `l2r odd final page is left aligned`() {
         assertEquals(PageSpread(2, null), SpreadPlanner.plan(3, ReadingDirection.L2R, false, CoverMode.STANDARD).last())
