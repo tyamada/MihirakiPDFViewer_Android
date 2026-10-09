@@ -30,4 +30,5 @@
     <string name="help_reading_direction"><b>Reading direction:</b> Choose whether pages turn from left to right or right to left.</string>
     <string name="help_cover_mode"><b>Cover setting:</b> Choose cover placement for each reading direction.</string>
     <string name="help_reset"><b>Reset:</b> Reset app settings and close the current document.</string>
+    <string name="testing_diagnostic_logs">Nhật ký kiểm tra &amp; chẩn đoán</string>
 </resources>

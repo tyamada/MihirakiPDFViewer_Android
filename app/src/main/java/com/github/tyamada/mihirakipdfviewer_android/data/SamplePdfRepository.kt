@@ -51,6 +51,15 @@ class SamplePdfRepository(private val context: Context) {
         return if (file.exists()) file.delete() else true
     }
 
+    fun deleteAllDownloadedPdfs() {
+        SamplePdfCatalog.items.forEach { item ->
+            deletePdf(item.fileName)
+        }
+        if (sampleDir.exists()) {
+            sampleDir.deleteRecursively()
+        }
+    }
+
     fun isOnCellularNetwork(): Boolean {
         val cm = context.getSystemService(Context.CONNECTIVITY_SERVICE) as? ConnectivityManager ?: return false
         val network = cm.activeNetwork ?: return false

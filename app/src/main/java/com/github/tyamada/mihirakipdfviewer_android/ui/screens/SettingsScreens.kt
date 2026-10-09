@@ -38,16 +38,24 @@ import com.github.tyamada.mihirakipdfviewer_android.viewmodel.ViewerViewModel
 
             Section(stringResource(R.string.options))
             SelectRow(stringResource(R.string.cover_mode), state.settings.coverMode.name) { vm.updateSettings { s -> s.copy(coverMode = if (s.coverMode == CoverMode.STANDARD) CoverMode.COMPATIBILITY else CoverMode.STANDARD) } }
+            TextButton(onClick = deviceTest, modifier = Modifier.fillMaxWidth()) {
+                Box(Modifier.fillMaxWidth(), contentAlignment = Alignment.CenterStart) {
+                    Text("実機テストを実行 (Device Test)")
+                }
+            }
+            TextButton(onClick = logViewer, modifier = Modifier.fillMaxWidth()) {
+                Box(Modifier.fillMaxWidth(), contentAlignment = Alignment.CenterStart) {
+                    Text("アプリログを表示・共有 (App Logs)")
+                }
+            }
+            TextButton(onClick = diagnostics, modifier = Modifier.fillMaxWidth()) {
+                Box(Modifier.fillMaxWidth(), contentAlignment = Alignment.CenterStart) {
+                    Text(stringResource(R.string.testing_diagnostic_logs))
+                }
+            }
             TextButton(onClick = reset, modifier = Modifier.fillMaxWidth()) {
                 Box(Modifier.fillMaxWidth(), contentAlignment = Alignment.CenterStart) {
                     Text(stringResource(R.string.reset))
-                }
-            }
-            
-            Section("Testing & Diagnostics")
-            TextButton(onClick = diagnostics, modifier = Modifier.fillMaxWidth()) {
-                Box(Modifier.fillMaxWidth(), contentAlignment = Alignment.CenterStart) {
-                    Text("Testing & Diagnostic Logs")
                 }
             }
 
@@ -66,18 +74,6 @@ import com.github.tyamada.mihirakipdfviewer_android.viewmodel.ViewerViewModel
             TextButton(onClick = licenses, modifier = Modifier.fillMaxWidth()) {
                 Box(Modifier.fillMaxWidth(), contentAlignment = Alignment.CenterStart) {
                     Text(stringResource(R.string.licenses))
-                }
-            }
-
-            TextButton(onClick = deviceTest, modifier = Modifier.fillMaxWidth()) {
-                Box(Modifier.fillMaxWidth(), contentAlignment = Alignment.CenterStart) {
-                    Text("実機テストを実行 (Device Test)")
-                }
-            }
-
-            TextButton(onClick = logViewer, modifier = Modifier.fillMaxWidth()) {
-                Box(Modifier.fillMaxWidth(), contentAlignment = Alignment.CenterStart) {
-                    Text("アプリログを表示・共有 (App Logs)")
                 }
             }
 
