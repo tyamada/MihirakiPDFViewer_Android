@@ -72,20 +72,6 @@ Try out MihirakiPDFViewer with these sample PDF files:
 - [LE CLUB DES ESSAIS EPISODE 2 (French)](docs/sample/tameshibu_episode2_2_fr.pdf) (24MB)
 - [試試社 第1話 (Chinese (Traditional))](docs/sample/tameshibu_episode1_2_zh_tw.pdf) (23MB)
 - [試試社 第2話 (Chinese (Traditional))](docs/sample/tameshibu_episode2_2_zh_tw.pdf) (24MB)
-<<<<<<< HEAD
-
-### Sample PDF License & Attribution
-**"The Try-It Club" Episodes 1 & 2**
-© 2026 Komairo Biyori
-
-Parts of this work to which the publisher holds copyright and other licensable rights are provided under the Creative Commons Attribution 4.0 International (CC BY 4.0) license.
-https://creativecommons.org/licenses/by/4.0/
-
-When reusing this work, please display the title, author name "Komairo Biyori", the publisher of the original work, and a link to the license, and clearly indicate if any changes were made.
-
-This work uses generative AI for the creation of text, images, and translation. Materials whose rights belong to third parties, such as fonts, are subject to their respective licenses. This notice does not restrict the use of parts of the work that are not protected by copyright or similar rights.
-=======
->>>>>>> testing
 
 ### Sample PDF License & Attribution
 **"The Try-It Club" Episodes 1 & 2**
