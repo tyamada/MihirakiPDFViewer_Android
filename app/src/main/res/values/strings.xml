@@ -8,6 +8,7 @@
     <string name="help_high_quality"><b>High quality:</b> Render PDF pages in higher quality.</string>
     <string name="help_sharpness"><b>Sharpness:</b> Render text and lines more sharply.</string>
     <string name="help_two_page"><b>Two-page view:</b> Display two pages side-by-side.</string>
+    <string name="help_portrait_display"><b>Portrait display:</b> Choose whether spread view is used in portrait orientation.</string>
     <string name="help_show_cover"><b>Show cover:</b> Display the first page standalone as a cover in spread view.</string>
     <string name="help_reading_direction"><b>Reading direction:</b> Choose whether pages turn from left to right or right to left.</string>
     <string name="help_cover_mode"><b>Cover setting:</b> Choose cover placement for each reading direction.</string>

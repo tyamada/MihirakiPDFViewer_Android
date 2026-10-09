@@ -141,6 +141,7 @@ import com.github.tyamada.mihirakipdfviewer_android.viewmodel.ViewerViewModel
             R.string.help_high_quality,
             R.string.help_sharpness,
             R.string.help_two_page,
+            R.string.help_portrait_display,
             R.string.help_show_cover,
             R.string.help_reading_direction,
             R.string.help_cover_mode,

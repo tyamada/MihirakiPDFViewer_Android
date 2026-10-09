@@ -47,6 +47,13 @@ class ViewerViewModel(app: Application) : AndroidViewModel(app) {
         }
     }
 
+    private fun getEffectiveLayout(): ViewerLayout {
+        val settings = _state.value.settings
+        val configuration = getApplication<Application>().resources.configuration
+        val isPortrait = configuration.orientation == android.content.res.Configuration.ORIENTATION_PORTRAIT
+        return if (isPortrait && !settings.portraitSpread) ViewerLayout.SINGLE else settings.layout
+    }
+
     private suspend fun getOrRender(source: PdfSource, page: Int, width: Int, highQuality: Boolean, sharpness: Float, highlights: List<SearchRect>): Bitmap {
         val targetWidth = if (isLowRamDevice) minOf(width, 720) else width
         val useHighQ = if (isLowRamDevice) false else highQuality
@@ -167,7 +174,7 @@ class ViewerViewModel(app: Application) : AndroidViewModel(app) {
                 oldRight?.recycle()
             }
 
-            if (settings.layout == ViewerLayout.SPREAD) {
+            if (getEffectiveLayout() == ViewerLayout.SPREAD) {
                 val spreads = SpreadPlanner.plan(source.pageCount, settings.direction, settings.showCover, settings.coverMode)
                 val spread = spreads.firstOrNull { (it.left == target) || (it.right == target) } ?: spreads.first()
                 
@@ -198,7 +205,7 @@ class ViewerViewModel(app: Application) : AndroidViewModel(app) {
             }
         }
     }
-    fun move(delta: Int) = render(_state.value.currentPage + (delta * if (_state.value.settings.layout == ViewerLayout.SPREAD) 2 else 1))
+    fun move(delta: Int) = render(_state.value.currentPage + (delta * if (getEffectiveLayout() == ViewerLayout.SPREAD) 2 else 1))
     fun movePage(delta: Int) = render(_state.value.currentPage + delta)
     fun toggleChrome() = _state.update { it.copy(chromeVisible = !it.chromeVisible) }
     fun dismissError() = _state.update { it.copy(errorKey = null) }
