@@ -13,6 +13,7 @@ class SettingsRepository(private val context: Context) {
         val direction = stringPreferencesKey("direction"); val coverMode = stringPreferencesKey("cover_mode")
         val layout = stringPreferencesKey("layout"); val cover = booleanPreferencesKey("cover")
         val highQuality = booleanPreferencesKey("high_quality"); val sharpness = floatPreferencesKey("sharpness")
+        val mouseNavigation = booleanPreferencesKey("mouse_navigation")
         val purchasedTier = stringPreferencesKey("purchased_tier")
         val purchasedTiers = stringSetPreferencesKey("purchased_tiers")
         val lastUri = stringPreferencesKey("last_uri")
@@ -20,16 +21,20 @@ class SettingsRepository(private val context: Context) {
     }
     val settings: Flow<ViewerSettings> = context.dataStore.data.map { p ->
         val tiersSet = p[Keys.purchasedTiers] ?: p[Keys.purchasedTier]?.let { setOf(it) } ?: emptySet()
+        val isDefaultDesktop = !context.packageManager.hasSystemFeature(android.content.pm.PackageManager.FEATURE_TOUCHSCREEN) ||
+            context.resources.configuration.touchscreen == android.content.res.Configuration.TOUCHSCREEN_NOTOUCH
         ViewerSettings(
             enumOr(p[Keys.direction], ReadingDirection.L2R), enumOr(p[Keys.coverMode], CoverMode.STANDARD),
             enumOr(p[Keys.layout], ViewerLayout.SINGLE), p[Keys.cover] ?: false,
             p[Keys.highQuality] ?: false, p[Keys.sharpness] ?: 0f,
+            p[Keys.mouseNavigation] ?: isDefaultDesktop,
             tiersSet, p[Keys.purchasedTier], p[Keys.lastUri], p[Keys.lastPage] ?: 0,
         )
     }
     suspend fun save(s: ViewerSettings) = context.dataStore.edit { p ->
         p[Keys.direction] = s.direction.name; p[Keys.coverMode] = s.coverMode.name; p[Keys.layout] = s.layout.name
         p[Keys.cover] = s.showCover; p[Keys.highQuality] = s.highQuality; p[Keys.sharpness] = s.sharpness
+        p[Keys.mouseNavigation] = s.mouseNavigation
         p[Keys.purchasedTiers] = s.allPurchasedTiers
         s.purchasedTier?.let { p[Keys.purchasedTier] = it }
         if (s.lastUri != null) p[Keys.lastUri] = s.lastUri else p.remove(Keys.lastUri)

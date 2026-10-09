@@ -1,6 +1,7 @@
 package com.github.tyamada.mihirakipdfviewer_android.ui.screens
 
 import android.content.Intent
+import android.content.res.Configuration
 import androidx.activity.compose.rememberLauncherForActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.compose.animation.core.*
@@ -28,6 +29,7 @@ import androidx.compose.ui.input.key.*
 import androidx.compose.ui.input.pointer.PointerEventType
 import androidx.compose.ui.input.pointer.pointerInput
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalLayoutDirection
 import androidx.compose.ui.res.stringResource
@@ -44,6 +46,7 @@ import kotlin.math.abs
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable fun ViewerScreen(vm: ViewerViewModel, openSettings: () -> Unit, openSamplePdfs: () -> Unit) {
     val state by vm.state.collectAsState(); val context = LocalContext.current
+    val isDesktop = state.settings.mouseNavigation
     val focusRequester = remember { FocusRequester() }
     var password by remember { mutableStateOf("") }
     val picker = rememberLauncherForActivityResult(ActivityResultContracts.OpenDocument()) { uri -> uri?.let {
@@ -216,6 +219,7 @@ import kotlin.math.abs
                 onNext = { vm.move(1) },
                 direction = direction,
                 currentPage = state.currentPage,
+                isDesktop = isDesktop,
             ) {
                 Row(Modifier.fillMaxSize(), horizontalArrangement = Arrangement.Center) {
                     if (state.settings.layout == ViewerLayout.SPREAD) {
@@ -248,46 +252,68 @@ import kotlin.math.abs
 
         if (showSwipeHint && state.source != null) {
             val isR2L = state.settings.direction == ReadingDirection.R2L
-            val infiniteTransition = rememberInfiniteTransition(label = "SwipeHint")
-            val translationX by infiniteTransition.animateFloat(
-                initialValue = if (isR2L) -60f else 60f,
-                targetValue = if (isR2L) 60f else -60f,
-                animationSpec = infiniteRepeatable(
-                    animation = tween(600, easing = LinearEasing),
-                    repeatMode = RepeatMode.Restart
-                ),
-                label = "ArrowTranslation"
-            )
-            val alpha by infiniteTransition.animateFloat(
-                initialValue = 0.2f,
+            val infiniteTransition = rememberInfiniteTransition(label = "EdgeHint")
+            val pulseAlpha by infiniteTransition.animateFloat(
+                initialValue = 0.4f,
                 targetValue = 1f,
                 animationSpec = infiniteRepeatable(
-                    animation = tween(300, easing = LinearEasing),
+                    animation = tween(600, easing = LinearEasing),
                     repeatMode = RepeatMode.Reverse
                 ),
-                label = "ArrowAlpha"
+                label = "EdgePulse"
             )
 
-            Box(
-                modifier = Modifier.fillMaxSize(),
-                contentAlignment = Alignment.Center
-            ) {
+            Box(modifier = Modifier.fillMaxSize()) {
                 Surface(
-                    color = Color.Black.copy(alpha = 0.6f),
+                    color = Color.Black.copy(alpha = 0.7f),
                     shape = MaterialTheme.shapes.medium,
-                    modifier = Modifier.padding(16.dp)
+                    modifier = Modifier
+                        .align(Alignment.CenterStart)
+                        .padding(start = 12.dp)
+                        .graphicsLayer(alpha = pulseAlpha)
                 ) {
-                    Box(
-                        modifier = Modifier.size(100.dp, 80.dp),
-                        contentAlignment = Alignment.Center
+                    Row(
+                        modifier = Modifier.padding(horizontal = 12.dp, vertical = 16.dp),
+                        verticalAlignment = Alignment.CenterVertically,
+                        horizontalArrangement = Arrangement.spacedBy(6.dp)
                     ) {
                         Icon(
-                            imageVector = if (isR2L) Icons.AutoMirrored.Filled.ArrowForward else Icons.AutoMirrored.Filled.ArrowBack,
+                            imageVector = Icons.AutoMirrored.Filled.ArrowBack,
                             contentDescription = null,
                             tint = Color.White,
-                            modifier = Modifier
-                                .size(48.dp)
-                                .graphicsLayer(translationX = translationX, alpha = alpha)
+                            modifier = Modifier.size(24.dp)
+                        )
+                        Text(
+                            text = if (isR2L) stringResource(R.string.open) else stringResource(R.string.back),
+                            style = MaterialTheme.typography.labelSmall,
+                            color = Color.White
+                        )
+                    }
+                }
+
+                Surface(
+                    color = Color.Black.copy(alpha = 0.7f),
+                    shape = MaterialTheme.shapes.medium,
+                    modifier = Modifier
+                        .align(Alignment.CenterEnd)
+                        .padding(end = 12.dp)
+                        .graphicsLayer(alpha = pulseAlpha)
+                ) {
+                    Row(
+                        modifier = Modifier.padding(horizontal = 12.dp, vertical = 16.dp),
+                        verticalAlignment = Alignment.CenterVertically,
+                        horizontalArrangement = Arrangement.spacedBy(6.dp)
+                    ) {
+                        Text(
+                            text = if (isR2L) stringResource(R.string.back) else stringResource(R.string.open),
+                            style = MaterialTheme.typography.labelSmall,
+                            color = Color.White
+                        )
+                        Icon(
+                            imageVector = Icons.AutoMirrored.Filled.ArrowForward,
+                            contentDescription = null,
+                            tint = Color.White,
+                            modifier = Modifier.size(24.dp)
                         )
                     }
                 }
@@ -332,6 +358,7 @@ import kotlin.math.abs
     onNext: () -> Unit,
     direction: ReadingDirection,
     currentPage: Int,
+    isDesktop: Boolean,
     content: @Composable () -> Unit,
 ) {
     var scale by remember { mutableFloatStateOf(1f) }
@@ -402,7 +429,21 @@ import kotlin.math.abs
                                 offset = Offset.Zero
                             }
                         } else {
-                            onTap()
+                            val boxWidth = size.width.toFloat()
+                            if (isDesktop && scale <= 1.05f && boxWidth > 0f) {
+                                val x = down.position.x
+                                val leftBoundary = boxWidth * 0.2f
+                                val rightBoundary = boxWidth * 0.8f
+                                if (x < leftBoundary) {
+                                    if (direction == ReadingDirection.L2R) onPrevious() else onNext()
+                                } else if (x > rightBoundary) {
+                                    if (direction == ReadingDirection.L2R) onNext() else onPrevious()
+                                } else {
+                                    onTap()
+                                }
+                            } else {
+                                onTap()
+                            }
                         }
                     } else if (scale <= 1.05f && abs(totalPan.x) > 60f) {
                         val isForward = if (direction == ReadingDirection.L2R) totalPan.x < 0 else totalPan.x > 0
