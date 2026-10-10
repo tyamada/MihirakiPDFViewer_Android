@@ -26,7 +26,13 @@ data class ViewerUiState(
     val errorKey: String? = null, val searchQuery: String = "", val searchResults: List<SearchHit> = emptyList(),
     val currentSearchIndex: Int = -1,
     val settings: ViewerSettings = ViewerSettings(),
-) { val pageCount get() = source?.pageCount ?: 0; val info get() = source?.info ?: DocumentInfo() }
+    val isPortrait: Boolean = true,
+) {
+    val pageCount get() = source?.pageCount ?: 0
+    val info get() = source?.info ?: DocumentInfo()
+    val effectiveLayout: ViewerLayout
+        get() = if (isPortrait && !settings.portraitSpread) ViewerLayout.SINGLE else settings.layout
+}
 
 class ViewerViewModel(app: Application) : AndroidViewModel(app) {
     private val pdfs = PdfDocumentRepository(app)
@@ -48,10 +54,16 @@ class ViewerViewModel(app: Application) : AndroidViewModel(app) {
     }
 
     private fun getEffectiveLayout(): ViewerLayout {
-        val settings = _state.value.settings
-        val configuration = getApplication<Application>().resources.configuration
-        val isPortrait = configuration.orientation == android.content.res.Configuration.ORIENTATION_PORTRAIT
-        return if (isPortrait && !settings.portraitSpread) ViewerLayout.SINGLE else settings.layout
+        return _state.value.effectiveLayout
+    }
+
+    fun setOrientation(isPortrait: Boolean) {
+        if (_state.value.isPortrait != isPortrait) {
+            _state.update { it.copy(isPortrait = isPortrait) }
+            if (_state.value.source != null) {
+                render(_state.value.currentPage)
+            }
+        }
     }
 
     private suspend fun getOrRender(source: PdfSource, page: Int, width: Int, highQuality: Boolean, sharpness: Float, highlights: List<SearchRect>): Bitmap {
