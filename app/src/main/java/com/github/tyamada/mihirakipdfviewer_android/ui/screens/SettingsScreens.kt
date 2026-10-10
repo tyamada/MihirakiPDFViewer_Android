@@ -40,6 +40,7 @@ import com.github.tyamada.mihirakipdfviewer_android.viewmodel.ViewerViewModel
             Section(stringResource(R.string.document_info)); Info(stringResource(R.string.title), state.info.title); Info(stringResource(R.string.author), state.info.author); Info(stringResource(R.string.subject), state.info.subject); Info(stringResource(R.string.keywords), state.info.keywords); Info(stringResource(R.string.pdf_version), state.info.version)
 
             Section(stringResource(R.string.options))
+            SwitchRow(stringResource(R.string.portrait_display), state.settings.portraitSpread) { vm.updateSettings { s -> s.copy(portraitSpread = it) } }
             SelectRow(stringResource(R.string.cover_mode), state.settings.coverMode.name) { vm.updateSettings { s -> s.copy(coverMode = if (s.coverMode == CoverMode.STANDARD) CoverMode.COMPATIBILITY else CoverMode.STANDARD) } }
             TextButton(onClick = deviceTest, modifier = Modifier.fillMaxWidth()) {
                 Box(Modifier.fillMaxWidth(), contentAlignment = Alignment.CenterStart) {
