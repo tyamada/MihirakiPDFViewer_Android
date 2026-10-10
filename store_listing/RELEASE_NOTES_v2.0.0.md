@@ -1,4 +1,4 @@
-# Release Notes v2.0.0 (Version Code 23)
+# Release Notes v2.0.0 (Version Code 24)
 
 - **Version Bump to v2.0.0**: Major update featuring refined UI layouts, in-app HTML help rendering, and comprehensive web documentation (`docs/*.html`) updates.
 - **Direct Issue Reporting**: Added a direct "Report Issue" button in the Settings screen and set up GitHub Issue templates for bug reports and feature requests.
