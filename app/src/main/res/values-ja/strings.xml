@@ -32,4 +32,6 @@
     <string name="oss_license_description">このアプリは以下のオープンソースソフトウェアを利用しています：</string>
     <string name="help_diagnostics"><b>テスト・診断とアプリログ:</b> 端末診断テストの実行や、アプリログの閲覧・共有が行えます。ログは端末内にのみ最大24時間保存され、個人情報やファイルの内容は記録されません。また、自動的に外部へ送信されることもありません。</string>
     <string name="testing_diagnostic_logs">テスト・診断ログ</string>
+    <string name="help_report_issue"><b>不具合の報告:</b> バグやクラッシュが発生した場合は、診断ログを添えて GitHub Issues からご報告ください。</string>
+    <string name="report_issue">不具合を報告する (GitHub)</string>
 </resources>
