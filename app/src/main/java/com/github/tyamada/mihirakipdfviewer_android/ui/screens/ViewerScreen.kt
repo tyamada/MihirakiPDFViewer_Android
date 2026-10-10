@@ -91,11 +91,11 @@ import kotlin.math.abs
                                                     text = "${state.currentSearchIndex + 1}/${state.searchResults.size}",
                                                     style = MaterialTheme.typography.labelSmall,
                                                 )
-                                                IconButton(onClick = { vm.navigateSearch(-1) }, modifier = Modifier.size(32.dp)) {
-                                                    Icon(Icons.Default.KeyboardArrowUp, null)
+                                                IconButton(onClick = { vm.navigateSearch(-1) }, modifier = Modifier.size(48.dp)) {
+                                                    Icon(Icons.Default.KeyboardArrowUp, contentDescription = stringResource(R.string.previous_search))
                                                 }
-                                                IconButton(onClick = { vm.navigateSearch(1) }, modifier = Modifier.size(32.dp)) {
-                                                    Icon(Icons.Default.KeyboardArrowDown, null)
+                                                IconButton(onClick = { vm.navigateSearch(1) }, modifier = Modifier.size(48.dp)) {
+                                                    Icon(Icons.Default.KeyboardArrowDown, contentDescription = stringResource(R.string.next_search))
                                                 }
                                             }
                                         }
@@ -137,7 +137,7 @@ import kotlin.math.abs
                     CompositionLocalProvider(LocalLayoutDirection provides if (direction == ReadingDirection.L2R) LayoutDirection.Ltr else LayoutDirection.Rtl) {
                         Row(verticalAlignment = Alignment.CenterVertically, modifier = Modifier.weight(1f)) {
                             IconButton(onClick = { vm.movePage(-1) }) {
-                                Icon(Icons.Default.ChevronLeft, stringResource(R.string.back))
+                                Icon(Icons.Default.ChevronLeft, stringResource(R.string.previous_page))
                             }
                             Slider(
                                 value = state.currentPage.toFloat(),
@@ -146,7 +146,7 @@ import kotlin.math.abs
                                 modifier = Modifier.weight(1f),
                             )
                             IconButton(onClick = { vm.movePage(1) }) {
-                                Icon(Icons.Default.ChevronRight, stringResource(R.string.open))
+                                Icon(Icons.Default.ChevronRight, stringResource(R.string.next_page))
                             }
                         }
                     }

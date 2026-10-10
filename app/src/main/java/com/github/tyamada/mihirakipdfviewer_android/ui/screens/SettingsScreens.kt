@@ -113,7 +113,7 @@ import com.github.tyamada.mihirakipdfviewer_android.viewmodel.ViewerViewModel
                         res?.let {
                             Image(
                                 painter = painterResource(it),
-                                contentDescription = tier,
+                                contentDescription = "$tier Supporter Badge",
                                 modifier = Modifier.height(100.dp).padding(horizontal = 8.dp)
                             )
                         }
