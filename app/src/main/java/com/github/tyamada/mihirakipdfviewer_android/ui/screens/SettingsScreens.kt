@@ -220,7 +220,7 @@ import com.github.tyamada.mihirakipdfviewer_android.viewmodel.ViewerViewModel
             Text("Memory Usage: ${usedMemory}MB / ${maxMemory}MB", style = MaterialTheme.typography.bodyLarge)
             Spacer(Modifier.height(12.dp))
             Row(Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.spacedBy(8.dp)) {
-                Button(onClick = { AppLogger.clear() }) { Text("Clear Logs") }
+                Button(onClick = { AppLogger.clear() }) { Text("テスト・診断ログのクリア") }
             }
             Spacer(Modifier.height(12.dp))
             Text("Application Logs (${logs.size}):", style = MaterialTheme.typography.titleMedium)
