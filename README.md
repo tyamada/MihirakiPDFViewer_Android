@@ -101,6 +101,14 @@ Device compatibility and verification results tested by developers and users are
 ## 💖 Support the Developer
 If you find this app useful, you can support further development via the in-app "Support" feature. We offer Bronze, Silver, and Gold tip tiers, which unlock a special commemorative icon in your settings screen!
 
+## 🐛 Reporting Issues & Bug Reports
+If you encounter any bugs, crashes, or unexpected behavior, please open an issue on [GitHub Issues](https://github.com/tyamada/MihirakiPDFViewer_Android/issues). 
+When reporting an issue, please include:
+1. **App Version & Build Code** (e.g., v2.0.0, Code 23)
+2. **Device Model & Android Version** (e.g., Pixel 8, Android 15)
+3. **Steps to Reproduce** the problem
+4. **Diagnostic Logs**: Copy or share app logs from **Settings > Testing & Diagnostics** (safe: contains zero personal or document data).
+
 ## 🤖 Developed with AI
 This project was developed with the assistance of AI:
 - **Initial Code Generation**: [ChatGPT](https://chat.openai.com/)
