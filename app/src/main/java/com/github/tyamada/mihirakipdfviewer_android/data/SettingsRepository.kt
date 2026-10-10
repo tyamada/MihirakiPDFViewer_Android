@@ -24,14 +24,12 @@ class SettingsRepository(private val context: Context) {
         val tiersSet = p[Keys.purchasedTiers] ?: p[Keys.purchasedTier]?.let { setOf(it) } ?: emptySet()
         val isDefaultDesktop = !context.packageManager.hasSystemFeature(android.content.pm.PackageManager.FEATURE_TOUCHSCREEN) ||
             context.resources.configuration.touchscreen == android.content.res.Configuration.TOUCHSCREEN_NOTOUCH
-        val sw = context.resources.configuration.smallestScreenWidthDp
-        val isPhone = sw > 0 && sw < 600
         ViewerSettings(
             enumOr(p[Keys.direction], ReadingDirection.L2R), enumOr(p[Keys.coverMode], CoverMode.STANDARD),
             enumOr(p[Keys.layout], ViewerLayout.SINGLE), p[Keys.cover] ?: false,
             p[Keys.highQuality] ?: false, p[Keys.sharpness] ?: 0f,
             p[Keys.mouseNavigation] ?: isDefaultDesktop,
-            p[Keys.portraitSpread] ?: !isPhone,
+            p[Keys.portraitSpread] ?: true,
             tiersSet, p[Keys.purchasedTier], p[Keys.lastUri], p[Keys.lastPage] ?: 0,
         )
     }

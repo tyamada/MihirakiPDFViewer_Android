@@ -5,14 +5,14 @@
     <string name="previous_search">前の検索結果</string>
     <string name="next_search">次の検索結果</string>
     <string name="password_required">パスワードが必要です</string><string name="password">パスワード</string><string name="wrong_password">パスワードが正しくありません。</string><string name="permission_denied">このファイルを読み取る権限がありません。</string><string name="cannot_open_pdf">PDFを開けません。ファイルが破損している可能性があります。</string><string name="no_results">検索結果がありません。</string>
-    <string name="display_settings">表示設定</string><string name="high_quality">高画質化</string><string name="sharpness">シャープネス</string><string name="two_page">見開き表示</string><string name="portrait_display">Portrait表示（見開き表示）</string><string name="show_cover">表紙表示</string><string name="reading_direction">ページ方向</string><string name="cover_mode">表紙設定</string><string name="mouse_navigation">マウスクリックでページ切り替え</string>
+    <string name="display_settings">表示設定</string><string name="high_quality">高画質化</string><string name="sharpness">シャープネス</string><string name="two_page">見開き表示</string><string name="portrait_display">縦向きでは単一ページ表示</string><string name="show_cover">表紙表示</string><string name="reading_direction">ページ方向</string><string name="cover_mode">表紙設定</string><string name="mouse_navigation">マウスクリックでページ切り替え</string>
     <string name="document_info">ドキュメント情報</string><string name="title">タイトル</string><string name="author">作成者</string><string name="subject">サブタイトル</string><string name="keywords">キーワード</string><string name="pdf_version">PDFのバージョン</string><string name="options">オプション</string><string name="help">ヘルプ</string><string name="licenses">ライセンス</string><string name="reset">リセット</string>
     <string name="reset_message">アプリの設定をリセットします。</string>
     <string name="help_open"><b>PDFを開く:</b> ファイルピッカーから端末またはクラウドストレージのPDFを選択します。</string><string name="help_navigate"><b>ページ移動:</b> スワイプ、スライダー、または（デスクトップ・マウス操作モードでは）左右端のクリックでページを切り替えます。</string><string name="help_menu"><b>メニュー:</b> 画面をタップしてツールバーとスライダーの表示を切り替えます。</string><string name="help_zoom"><b>ズーム:</b> ピンチで拡大・縮小します。拡大中は長押ししてドラッグします。</string><string name="help_search"><b>検索:</b> 検索バーに語句を入力してPDF内を検索します。</string>    <string name="help_layout"><b>6. 設定:</b> 設定画面で表示をカスタマイズし、現在のドキュメントやアプリの情報を確認できます。</string>
     <string name="help_high_quality"><b>高画質化:</b> PDFページをより高画質で表示します。</string>
     <string name="help_sharpness"><b>シャープネス:</b> 文字や線をより鮮明に表示します。</string>
     <string name="help_two_page"><b>見開き表示:</b> 2ページを横に並べて表示します。</string>
-    <string name="help_portrait_display"><b>Portrait表示:</b> 縦長画面（Portrait）のときに見開き表示にするかどうかを選択します。</string>
+    <string name="help_portrait_display"><b>縦向きでは単一ページ表示:</b> 縦長画面（Portrait）のときに単一ページ表示にするかどうかを選択します。</string>
     <string name="help_show_cover"><b>表紙を表示:</b> 見開き表示で最初のページを表紙として単独で表示します。</string>
     <string name="help_reading_direction"><b>スクロール方向:</b> ページを左から右へ送るか、右から左へ送るかを選択します。</string>
     <string name="help_cover_mode"><b>表紙設定:</b> 読む方向ごとの表紙の配置を選択します。</string>

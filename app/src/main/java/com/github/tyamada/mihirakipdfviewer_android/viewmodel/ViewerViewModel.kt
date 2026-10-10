@@ -31,7 +31,7 @@ data class ViewerUiState(
     val pageCount get() = source?.pageCount ?: 0
     val info get() = source?.info ?: DocumentInfo()
     val effectiveLayout: ViewerLayout
-        get() = if (isPortrait && !settings.portraitSpread) ViewerLayout.SINGLE else settings.layout
+        get() = if (isPortrait && settings.portraitSpread) ViewerLayout.SINGLE else settings.layout
 }
 
 class ViewerViewModel(app: Application) : AndroidViewModel(app) {
