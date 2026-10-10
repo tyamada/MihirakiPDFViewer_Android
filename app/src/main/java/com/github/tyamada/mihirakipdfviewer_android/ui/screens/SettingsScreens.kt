@@ -14,7 +14,10 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import android.content.Intent
+import android.widget.TextView
+import androidx.core.text.HtmlCompat
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.viewinterop.AndroidView
 import com.github.tyamada.mihirakipdfviewer_android.BuildConfig
 import com.github.tyamada.mihirakipdfviewer_android.R
 import com.github.tyamada.mihirakipdfviewer_android.data.*
@@ -148,11 +151,35 @@ import com.github.tyamada.mihirakipdfviewer_android.viewmodel.ViewerViewModel
             R.string.help_support,
             R.string.help_diagnostics
         )
-        originalItems.forEach {
-            Text(stringResource(it), Modifier.padding(bottom = 16.dp))
+        originalItems.forEach { resId ->
+            val htmlText = stringResource(resId)
+            AndroidView(
+                factory = { context ->
+                    TextView(context).apply {
+                        textSize = 16f
+                    }
+                },
+                update = { view ->
+                    view.text = HtmlCompat.fromHtml(htmlText, HtmlCompat.FROM_HTML_MODE_COMPACT)
+                    view.setTextColor(android.graphics.Color.parseColor("#1C1B1F"))
+                },
+                modifier = Modifier.fillMaxWidth().padding(bottom = 16.dp)
+            )
         }
-        subItems.forEach {
-            Text(stringResource(it), Modifier.padding(start = 24.dp, bottom = 16.dp))
+        subItems.forEach { resId ->
+            val htmlText = stringResource(resId)
+            AndroidView(
+                factory = { context ->
+                    TextView(context).apply {
+                        textSize = 14f
+                    }
+                },
+                update = { view ->
+                    view.text = HtmlCompat.fromHtml(htmlText, HtmlCompat.FROM_HTML_MODE_COMPACT)
+                    view.setTextColor(android.graphics.Color.parseColor("#49454F"))
+                },
+                modifier = Modifier.fillMaxWidth().padding(start = 24.dp, bottom = 16.dp)
+            )
         }
     }
 }
