@@ -101,6 +101,14 @@ https://creativecommons.org/licenses/by/4.0/
 ## 💖 開発者の応援
 アプリを気に入っていただけた場合は、アプリ内の「応援」機能から開発を支援できます。Bronze、Silver、Gold の各チップを贈ると、設定画面に特別な記念アイコンが表示されます！
 
+## 🐛 不具合・問題の報告 (GitHub Issues)
+アプリの不具合や予期せぬ動作、クラッシュなどが発生した場合は、[GitHub Issues](https://github.com/tyamada/MihirakiPDFViewer_Android/issues) よりご報告ください。
+ご報告の際は以下の情報を記載していただくとスムーズです：
+1. **アプリのバージョン & ビルドコード**（例: v2.0.0, Code 23）
+2. **端末モデル & Androidバージョン**（例: Pixel 8, Android 15）
+3. **問題を再現する手順**
+4. **診断ログ**: 設定画面の「Testing & Diagnostics」からアプリログをコピーまたは共有して添付してください（ログには個人情報やファイルの内容は一切含まれません）。
+
 ## 🤖 AI による開発
 このプロジェクトは、AI アシスタントを活用して開発されています：
 - **初期コード作成**: [ChatGPT](https://chat.openai.com/)
