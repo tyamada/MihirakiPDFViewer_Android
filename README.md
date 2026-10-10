@@ -116,7 +116,7 @@ This project was developed with the assistance of AI:
 
 ## 📜 Version History
 
-- **v2.0.0** (Code 23)
+- **v2.0.0** (Code 24)
   - Major version bump to v2.0.0 with comprehensive documentation updates and help screen HTML rendering enhancements.
   - Added direct "Report Issue" button to the settings screen and established GitHub Issue templates.
   - Reorganized settings options group (placing Mouse Navigation and Portrait Display switches at the top of options).
