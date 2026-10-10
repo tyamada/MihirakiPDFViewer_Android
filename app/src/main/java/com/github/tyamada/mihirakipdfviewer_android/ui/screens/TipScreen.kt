@@ -62,7 +62,7 @@ import com.github.tyamada.mihirakipdfviewer_android.viewmodel.ViewerViewModel
                         }
                         Image(
                             painter = painterResource(iconRes),
-                            contentDescription = tier.name,
+                            contentDescription = "${tier.name} Supporter Badge",
                             modifier = Modifier.size(48.dp).align(Alignment.CenterVertically)
                         )
                         Column(Modifier.weight(1f)) {
