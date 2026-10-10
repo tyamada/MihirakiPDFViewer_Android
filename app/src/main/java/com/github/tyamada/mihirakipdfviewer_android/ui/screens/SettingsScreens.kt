@@ -27,6 +27,7 @@ import com.github.tyamada.mihirakipdfviewer_android.viewmodel.ViewerViewModel
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable fun SettingsScreen(vm: ViewerViewModel, back: () -> Unit, help: () -> Unit, reset: () -> Unit, tips: () -> Unit, licenses: () -> Unit, diagnostics: () -> Unit, deviceTest: () -> Unit, logViewer: () -> Unit) {
     val state by vm.state.collectAsState()
+    val context = LocalContext.current
     Scaffold(topBar = { TopAppBar(title = { Text(stringResource(R.string.settings)) }, navigationIcon = { IconButton(back) { Icon(Icons.AutoMirrored.Filled.ArrowBack, stringResource(R.string.back)) } }) }) { p ->
         Column(Modifier.padding(p).verticalScroll(rememberScrollState()).padding(16.dp)) {
             Section(stringResource(R.string.display_settings))
@@ -50,6 +51,14 @@ import com.github.tyamada.mihirakipdfviewer_android.viewmodel.ViewerViewModel
             TextButton(onClick = logViewer, modifier = Modifier.fillMaxWidth()) {
                 Box(Modifier.fillMaxWidth(), contentAlignment = Alignment.CenterStart) {
                     Text("アプリログを表示・共有 (App Logs)")
+                }
+            }
+            TextButton(onClick = {
+                val intent = Intent(Intent.ACTION_VIEW, android.net.Uri.parse("https://github.com/tyamada/MihirakiPDFViewer_Android/issues"))
+                context.startActivity(intent)
+            }, modifier = Modifier.fillMaxWidth()) {
+                Box(Modifier.fillMaxWidth(), contentAlignment = Alignment.CenterStart) {
+                    Text(stringResource(R.string.report_issue))
                 }
             }
             TextButton(onClick = diagnostics, modifier = Modifier.fillMaxWidth()) {
@@ -150,8 +159,7 @@ import com.github.tyamada.mihirakipdfviewer_android.viewmodel.ViewerViewModel
             R.string.help_help,
             R.string.help_app_info,
             R.string.help_support,
-            R.string.help_diagnostics,
-            R.string.help_report_issue
+            R.string.help_diagnostics
         )
         originalItems.forEach { resId ->
             val htmlText = stringResource(resId)
@@ -182,17 +190,6 @@ import com.github.tyamada.mihirakipdfviewer_android.viewmodel.ViewerViewModel
                 },
                 modifier = Modifier.fillMaxWidth().padding(start = 24.dp, bottom = 16.dp)
             )
-        }
-        Spacer(Modifier.height(8.dp))
-        val context = LocalContext.current
-        Button(
-            onClick = {
-                val intent = Intent(Intent.ACTION_VIEW, android.net.Uri.parse("https://github.com/tyamada/MihirakiPDFViewer_Android/issues"))
-                context.startActivity(intent)
-            },
-            modifier = Modifier.fillMaxWidth()
-        ) {
-            Text(stringResource(R.string.report_issue))
         }
     }
 }
