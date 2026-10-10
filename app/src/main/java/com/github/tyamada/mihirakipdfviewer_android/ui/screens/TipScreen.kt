@@ -44,14 +44,19 @@ import com.github.tyamada.mihirakipdfviewer_android.viewmodel.ViewerViewModel
             Text(stringResource(R.string.tip_free_notice))
             TipTier.entries.forEach { tier ->
                 val product = products.firstOrNull { it.productId == tier.productId }
-                val priceText = product?.oneTimePurchaseOfferDetailsList?.firstOrNull()?.formattedPrice
-                    ?: if (isDebug) {
-                        when (tier) {
-                            TipTier.BRONZE -> "¥100 (Mock)"
-                            TipTier.SILVER -> "¥500 (Mock)"
-                            TipTier.GOLD -> "¥1000 (Mock)"
-                        }
-                    } else tier.productId
+                val priceText = if (tier.isFree) {
+                    "¥0 (${stringResource(R.string.free)})"
+                } else {
+                    product?.oneTimePurchaseOfferDetailsList?.firstOrNull()?.formattedPrice
+                        ?: if (isDebug) {
+                            when (tier) {
+                                TipTier.BRONZE -> "¥100 (Mock)"
+                                TipTier.SILVER -> "¥500 (Mock)"
+                                TipTier.GOLD -> "¥1000 (Mock)"
+                                else -> tier.productId
+                            }
+                        } else tier.productId
+                }
 
                 ElevatedCard(Modifier.fillMaxWidth()) {
                     Row(Modifier.padding(16.dp), horizontalArrangement = Arrangement.spacedBy(16.dp)) {
@@ -59,6 +64,7 @@ import com.github.tyamada.mihirakipdfviewer_android.viewmodel.ViewerViewModel
                             TipTier.BRONZE -> R.drawable.ic_tip_bronze
                             TipTier.SILVER -> R.drawable.ic_tip_silver
                             TipTier.GOLD -> R.drawable.ic_tip_gold
+                            TipTier.KOYOMI -> R.drawable.ic_tip_koyomi
                         }
                         Image(
                             painter = painterResource(iconRes),
@@ -66,21 +72,35 @@ import com.github.tyamada.mihirakipdfviewer_android.viewmodel.ViewerViewModel
                             modifier = Modifier.size(48.dp).align(Alignment.CenterVertically)
                         )
                         Column(Modifier.weight(1f)) {
-                            Text(tier.name)
+                            val tierTitle = when (tier) {
+                                TipTier.KOYOMI -> stringResource(R.string.koyomi_badge_title)
+                                else -> tier.name
+                            }
+                            Text(tierTitle)
                             Text(priceText)
                         }
                         val isPurchased = purchasedTiers.contains(tier)
                         Button(
                             onClick = {
-                                if (isDebug && product == null) {
+                                if (tier.isFree) {
+                                    manager.simulateSuccess(tier)
+                                } else if (isDebug && product == null) {
                                     manager.simulateSuccess(tier)
                                 } else {
                                     product?.let { manager.purchase(context as Activity, it) }
                                 }
                             },
-                            enabled = !isPurchased && (isDebug || product != null)
+                            enabled = !isPurchased && (tier.isFree || isDebug || product != null)
                         ) {
-                            Text(if (isPurchased) stringResource(R.string.purchased) else stringResource(R.string.purchase))
+                            Text(
+                                if (isPurchased) {
+                                    stringResource(R.string.purchased)
+                                } else if (tier.isFree) {
+                                    stringResource(R.string.claim)
+                                } else {
+                                    stringResource(R.string.purchase)
+                                }
+                            )
                         }
                     }
                 }

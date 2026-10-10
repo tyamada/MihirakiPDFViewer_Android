@@ -108,6 +108,7 @@ import com.github.tyamada.mihirakipdfviewer_android.viewmodel.ViewerViewModel
                             "BRONZE" -> R.drawable.ic_tip_bronze
                             "SILVER" -> R.drawable.ic_tip_silver
                             "GOLD" -> R.drawable.ic_tip_gold
+                            "KOYOMI" -> R.drawable.ic_tip_koyomi
                             else -> null
                         }
                         res?.let {

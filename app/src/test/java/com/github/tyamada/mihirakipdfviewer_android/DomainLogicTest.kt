@@ -10,7 +10,9 @@ import java.io.File
 class DomainLogicTest {
     @Test fun `tip product maps to badge and tier`() {
         assertEquals(TipTier.BRONZE, TipTier.fromProductId("tip_100")); assertEquals("🥈", TipTier.fromProductId("tip_500")?.badge)
-        assertEquals(TipTier.GOLD, TipTier.fromProductId("tip_1000")); assertNull(TipTier.fromProductId("unknown"))
+        assertEquals(TipTier.GOLD, TipTier.fromProductId("tip_1000")); assertEquals(TipTier.KOYOMI, TipTier.fromProductId("tip_v20_koyomi"))
+        assertEquals("🌸", TipTier.fromProductId("tip_v20_koyomi")?.badge); assertTrue(TipTier.fromProductId("tip_v20_koyomi")?.isFree == true)
+        assertNull(TipTier.fromProductId("unknown"))
     }
     @Test fun `direction detects viewer preference`() {
         assertEquals(ReadingDirection.R2L, DirectionDetector.fromMetadata(null, "R2L")); assertEquals(ReadingDirection.L2R, DirectionDetector.fromMetadata(null, "L2R")); assertNull(DirectionDetector.fromMetadata(null, null))
