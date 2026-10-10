@@ -117,7 +117,10 @@ This project was developed with the assistance of AI:
 ## 📜 Version History
 
 - **v2.0.0** (Code 23)
-  - Updated major version to v2.0.0 with comprehensive documentation updates, help screen enhancements, and store listing refinements.
+  - Major version bump to v2.0.0 with comprehensive documentation updates and help screen HTML rendering enhancements.
+  - Added direct "Report Issue" button to the settings screen and established GitHub Issue templates.
+  - Reorganized settings options group (placing Mouse Navigation and Portrait Display switches at the top of options).
+  - Improved screen rotation synchronization for adaptive portrait display.
 - **v1.4.0** (Code 22)
   - Updated tip purchases from consumable to non-consumable to comply with App Store review guidelines.
   - Reorganized and updated store listing assets and sample PDFs.

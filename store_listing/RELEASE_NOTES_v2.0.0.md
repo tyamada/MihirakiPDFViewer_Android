@@ -1,4 +1,6 @@
 # Release Notes v2.0.0 (Version Code 23)
 
-- **Documentation & Help Screen Refresh**: Updated help screen in-app rendering to properly support HTML formatting, updated all web documentation (`docs/*.html`), and synchronized Play Console store listings.
-- **Enhanced Feature Visibility**: Clarified support for mouse & edge-click navigation, adaptive portrait display, secure 24-hour local logging, and non-consumable developer support tips with commemorative badges.
+- **Version Bump to v2.0.0**: Major update featuring refined UI layouts, in-app HTML help rendering, and comprehensive web documentation (`docs/*.html`) updates.
+- **Direct Issue Reporting**: Added a direct "Report Issue" button in the Settings screen and set up GitHub Issue templates for bug reports and feature requests.
+- **Settings Reorganization & Rotation Fix**: Reorganized settings options (placing Mouse Navigation and Portrait Display switches at the top of options) and improved immediate layout synchronization on device rotation.
+- **Diagnostic Logging & Support**: Clarified secure 24-hour local logging (`AppLogger`) and non-consumable developer support tip tiers with commemorative badges.
