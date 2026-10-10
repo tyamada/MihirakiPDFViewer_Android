@@ -46,6 +46,11 @@ import kotlin.math.abs
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable fun ViewerScreen(vm: ViewerViewModel, openSettings: () -> Unit, openSamplePdfs: () -> Unit) {
     val state by vm.state.collectAsState(); val context = LocalContext.current
+    val configuration = LocalConfiguration.current
+    val isPortrait = configuration.orientation == android.content.res.Configuration.ORIENTATION_PORTRAIT
+    LaunchedEffect(isPortrait) {
+        vm.setOrientation(isPortrait)
+    }
     val isDesktop = state.settings.mouseNavigation
     val focusRequester = remember { FocusRequester() }
     var password by remember { mutableStateOf("") }
@@ -222,7 +227,7 @@ import kotlin.math.abs
                 isDesktop = isDesktop,
             ) {
                 Row(Modifier.fillMaxSize(), horizontalArrangement = Arrangement.Center) {
-                    if (state.settings.layout == ViewerLayout.SPREAD) {
+                    if (state.effectiveLayout == ViewerLayout.SPREAD) {
                         val images = listOfNotNull(state.bitmap, state.secondBitmap)
                         if (images.size == 1) {
                             val image = images.first()
