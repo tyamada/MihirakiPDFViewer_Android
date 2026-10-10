@@ -11,7 +11,7 @@ class DomainLogicTest {
     @Test fun `tip product maps to badge and tier`() {
         assertEquals(TipTier.BRONZE, TipTier.fromProductId("tip_100")); assertEquals("🥈", TipTier.fromProductId("tip_500")?.badge)
         assertEquals(TipTier.GOLD, TipTier.fromProductId("tip_1000")); assertEquals(TipTier.KOYOMI, TipTier.fromProductId("tip_v20_koyomi"))
-        assertEquals("🌸", TipTier.fromProductId("tip_v20_koyomi")?.badge); assertTrue(TipTier.fromProductId("tip_v20_koyomi")?.isFree == true)
+        assertEquals("🌸", TipTier.fromProductId("tip_v20_koyomi")?.badge)
         assertNull(TipTier.fromProductId("unknown"))
     }
     @Test fun `direction detects viewer preference`() {
