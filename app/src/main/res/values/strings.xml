@@ -32,4 +32,6 @@
     <string name="oss_license_description">This app uses the following open source software:</string>
     <string name="help_diagnostics"><b>Testing &amp; App Logs:</b> Run device diagnostic tests, view app logs, and share logs securely. Logs are stored locally for up to 24 hours, never contain personal info or file contents, and are never sent externally automatically.</string>
     <string name="testing_diagnostic_logs">Testing &amp; Diagnostic Logs</string>
+    <string name="help_report_issue" translatable="false"><b>Report Issue:</b> Encountered a bug or crash? Please report it on GitHub Issues, attaching app logs from Testing &amp; Diagnostics.</string>
+    <string name="report_issue" translatable="false">Report Issue (GitHub)</string>
 </resources>

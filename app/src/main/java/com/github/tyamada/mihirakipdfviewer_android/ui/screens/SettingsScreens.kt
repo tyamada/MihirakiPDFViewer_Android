@@ -149,7 +149,8 @@ import com.github.tyamada.mihirakipdfviewer_android.viewmodel.ViewerViewModel
             R.string.help_help,
             R.string.help_app_info,
             R.string.help_support,
-            R.string.help_diagnostics
+            R.string.help_diagnostics,
+            R.string.help_report_issue
         )
         originalItems.forEach { resId ->
             val htmlText = stringResource(resId)
@@ -180,6 +181,17 @@ import com.github.tyamada.mihirakipdfviewer_android.viewmodel.ViewerViewModel
                 },
                 modifier = Modifier.fillMaxWidth().padding(start = 24.dp, bottom = 16.dp)
             )
+        }
+        Spacer(Modifier.height(8.dp))
+        val context = LocalContext.current
+        Button(
+            onClick = {
+                val intent = Intent(Intent.ACTION_VIEW, android.net.Uri.parse("https://github.com/tyamada/MihirakiPDFViewer_Android/issues"))
+                context.startActivity(intent)
+            },
+            modifier = Modifier.fillMaxWidth()
+        ) {
+            Text(stringResource(R.string.report_issue))
         }
     }
 }
