@@ -42,4 +42,15 @@
     <string name="promo_code_dialog_title" translatable="false">Enter Promotion Code</string>
     <string name="promo_code_instructions" translatable="false">Enter your Google Play promotion code to redeem items.</string>
     <string name="redeem" translatable="false">Redeem</string>
+    <string name="sample_pdfs" translatable="false">Sample PDFs</string>
+    <string name="language_filter" translatable="false">Language Filter</string>
+    <string name="all_languages" translatable="false">All</string>
+    <string name="sample_pdf_download" translatable="false">Download</string>
+    <string name="sample_pdf_downloading" translatable="false">Downloading...</string>
+    <string name="sample_pdf_downloading_progress" translatable="false">Downloading... %d%%</string>
+    <string name="sample_pdf_open" translatable="false">Open</string>
+    <string name="sample_pdf_delete" translatable="false">Delete</string>
+    <string name="cellular_data_warning" translatable="false">Cellular Data Warning</string>
+    <string name="cellular_data_message" translatable="false">You are currently on a cellular network. Downloading \"%1$s\" (%2$s) may consume a significant amount of mobile data. Do you want to proceed?</string>
+    <string name="error_prefix" translatable="false">Error: %s</string>
 </resources>
