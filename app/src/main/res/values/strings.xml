@@ -38,4 +38,8 @@
     <string name="testing_diagnostic_logs" translatable="false">Clear Test &amp; Diagnostic Logs</string>
     <string name="help_report_issue" translatable="false"><b>Report Issue:</b> Encountered a bug or crash? Please report it on GitHub Issues, attaching app logs from Testing &amp; Diagnostics.</string>
     <string name="report_issue" translatable="false">Report Issue (GitHub)</string>
+    <string name="enter_promo_code" translatable="false">Enter promo code</string>
+    <string name="promo_code_dialog_title" translatable="false">Enter Promotion Code</string>
+    <string name="promo_code_instructions" translatable="false">Enter your Google Play promotion code to redeem items.</string>
+    <string name="redeem" translatable="false">Redeem</string>
 </resources>

@@ -38,4 +38,8 @@
     <string name="testing_diagnostic_logs">テスト・診断ログのクリア</string>
     <string name="help_report_issue"><b>不具合の報告:</b> バグやクラッシュが発生した場合は、診断ログを添えて GitHub Issues からご報告ください。</string>
     <string name="report_issue">不具合を報告する (GitHub)</string>
+    <string name="enter_promo_code">プロモコードを入力</string>
+    <string name="promo_code_dialog_title">プロモーションコードを入力</string>
+    <string name="promo_code_instructions">Google Playのプロモーションコードを入力してアイテムを引き換えます。</string>
+    <string name="redeem">利用する</string>
 </resources>
