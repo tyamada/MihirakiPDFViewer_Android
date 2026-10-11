@@ -14,6 +14,7 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import android.content.Intent
+import android.net.Uri
 import android.widget.TextView
 import androidx.core.text.HtmlCompat
 import androidx.compose.ui.platform.LocalContext
@@ -127,6 +128,56 @@ import com.github.tyamada.mihirakipdfviewer_android.viewmodel.ViewerViewModel
                 Box(Modifier.fillMaxWidth(), contentAlignment = Alignment.CenterStart) {
                     Text(stringResource(R.string.support))
                 }
+            }
+
+            var showPromoDialog by remember { mutableStateOf(false) }
+            var promoCodeInput by remember { mutableStateOf("") }
+
+            TextButton(onClick = { showPromoDialog = true }, modifier = Modifier.fillMaxWidth()) {
+                Box(Modifier.fillMaxWidth(), contentAlignment = Alignment.CenterStart) {
+                    Text(stringResource(R.string.enter_promo_code))
+                }
+            }
+
+            if (showPromoDialog) {
+                AlertDialog(
+                    onDismissRequest = { showPromoDialog = false },
+                    title = { Text(stringResource(R.string.promo_code_dialog_title)) },
+                    text = {
+                        Column(verticalArrangement = Arrangement.spacedBy(8.dp)) {
+                            Text(stringResource(R.string.promo_code_instructions))
+                            OutlinedTextField(
+                                value = promoCodeInput,
+                                onValueChange = { promoCodeInput = it },
+                                label = { Text(stringResource(R.string.enter_promo_code)) },
+                                singleLine = true,
+                                modifier = Modifier.fillMaxWidth()
+                            )
+                        }
+                    },
+                    confirmButton = {
+                        Button(
+                            onClick = {
+                                showPromoDialog = false
+                                val code = promoCodeInput.trim()
+                                val uri = Uri.parse(if (code.isNotEmpty()) "https://play.google.com/redeem?code=$code" else "https://play.google.com/redeem")
+                                val intent = Intent(Intent.ACTION_VIEW, uri)
+                                try {
+                                    context.startActivity(intent)
+                                } catch (_: Exception) {}
+                                promoCodeInput = ""
+                            },
+                            enabled = promoCodeInput.isNotBlank()
+                        ) {
+                            Text(stringResource(R.string.redeem))
+                        }
+                    },
+                    dismissButton = {
+                        TextButton(onClick = { showPromoDialog = false; promoCodeInput = "" }) {
+                            Text(stringResource(R.string.cancel))
+                        }
+                    }
+                )
             }
         }
     }
