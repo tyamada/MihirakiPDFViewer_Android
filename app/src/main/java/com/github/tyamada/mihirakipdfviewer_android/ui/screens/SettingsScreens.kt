@@ -130,6 +130,39 @@ import com.github.tyamada.mihirakipdfviewer_android.viewmodel.ViewerViewModel
                     Text(stringResource(R.string.support))
                 }
             }
+
+            var showPromoDialog by remember { mutableStateOf(false) }
+
+            TextButton(onClick = { showPromoDialog = true }, modifier = Modifier.fillMaxWidth()) {
+                Box(Modifier.fillMaxWidth(), contentAlignment = Alignment.CenterStart) {
+                    Text(stringResource(R.string.enter_promo_code))
+                }
+            }
+
+            if (showPromoDialog) {
+                AlertDialog(
+                    onDismissRequest = { showPromoDialog = false },
+                    title = { Text(stringResource(R.string.promo_code_help_title)) },
+                    text = {
+                        Text(stringResource(R.string.promo_code_help_message))
+                    },
+                    confirmButton = {
+                        Button(
+                            onClick = {
+                                showPromoDialog = false
+                                tips()
+                            }
+                        ) {
+                            Text(stringResource(R.string.go_to_support))
+                        }
+                    },
+                    dismissButton = {
+                        TextButton(onClick = { showPromoDialog = false }) {
+                            Text(stringResource(R.string.cancel))
+                        }
+                    }
+                )
+            }
         }
     }
 }
