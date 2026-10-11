@@ -16,6 +16,7 @@ import androidx.compose.ui.unit.dp
 import android.content.Intent
 import android.net.Uri
 import android.widget.TextView
+import android.widget.Toast
 import androidx.core.text.HtmlCompat
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.viewinterop.AndroidView
@@ -132,6 +133,7 @@ import com.github.tyamada.mihirakipdfviewer_android.viewmodel.ViewerViewModel
 
             var showPromoDialog by remember { mutableStateOf(false) }
             var promoCodeInput by remember { mutableStateOf("") }
+            val errorMessage = stringResource(R.string.error_opening_play_store)
 
             TextButton(onClick = { showPromoDialog = true }, modifier = Modifier.fillMaxWidth()) {
                 Box(Modifier.fillMaxWidth(), contentAlignment = Alignment.CenterStart) {
@@ -160,11 +162,23 @@ import com.github.tyamada.mihirakipdfviewer_android.viewmodel.ViewerViewModel
                             onClick = {
                                 showPromoDialog = false
                                 val code = promoCodeInput.trim()
-                                val uri = Uri.parse(if (code.isNotEmpty()) "https://play.google.com/redeem?code=$code" else "https://play.google.com/redeem")
-                                val intent = Intent(Intent.ACTION_VIEW, uri)
+                                val url = if (code.isNotEmpty()) "https://play.google.com/redeem?code=$code" else "https://play.google.com/redeem"
+                                val intent = Intent(Intent.ACTION_VIEW, Uri.parse(url)).apply {
+                                    setPackage("com.android.vending")
+                                    addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+                                }
                                 try {
                                     context.startActivity(intent)
-                                } catch (_: Exception) {}
+                                } catch (_: Exception) {
+                                    try {
+                                        val browserIntent = Intent(Intent.ACTION_VIEW, Uri.parse(url)).apply {
+                                            addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+                                        }
+                                        context.startActivity(browserIntent)
+                                    } catch (_: Exception) {
+                                        Toast.makeText(context, errorMessage, Toast.LENGTH_SHORT).show()
+                                    }
+                                }
                                 promoCodeInput = ""
                             },
                             enabled = promoCodeInput.isNotBlank()
