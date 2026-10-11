@@ -203,7 +203,7 @@ import kotlin.math.abs
                 ) {
                     Icon(Icons.Default.Download, contentDescription = null, modifier = Modifier.size(20.dp))
                     Spacer(Modifier.width(8.dp))
-                    Text("サンプルPDF")
+                    Text(stringResource(R.string.sample_pdfs))
                 }
                 Button(
                     onClick = { picker.launch(arrayOf("application/pdf")) },

@@ -13,7 +13,9 @@ import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
+import com.github.tyamada.mihirakipdfviewer_android.R
 import com.github.tyamada.mihirakipdfviewer_android.data.SamplePdfItemState
 import com.github.tyamada.mihirakipdfviewer_android.viewmodel.SamplePdfViewModel
 
@@ -27,13 +29,15 @@ fun SamplePdfScreen(
     val uiState by viewModel.uiState.collectAsState()
     var expanded by remember { mutableStateOf(false) }
 
+    val allLabel = stringResource(R.string.all_languages)
+
     Scaffold(
         topBar = {
             TopAppBar(
-                title = { Text("Sample PDFs (サンプルPDF)") },
+                title = { Text(stringResource(R.string.sample_pdfs)) },
                 navigationIcon = {
                     IconButton(onClick = back) {
-                        Icon(Icons.AutoMirrored.Filled.ArrowBack, contentDescription = "Back")
+                        Icon(Icons.AutoMirrored.Filled.ArrowBack, contentDescription = stringResource(R.string.back))
                     }
                 }
             )
@@ -56,7 +60,7 @@ fun SamplePdfScreen(
                     modifier = Modifier.fillMaxWidth()
                 ) {
                     val selectedLabel = when (uiState.selectedLanguage) {
-                        "ALL" -> "All (全部)"
+                        "ALL" -> allLabel
                         "en" -> "English"
                         "ja" -> "Japanese (日本語)"
                         "ko" -> "Korean (한국어)"
@@ -70,7 +74,7 @@ fun SamplePdfScreen(
                         value = selectedLabel,
                         onValueChange = {},
                         readOnly = true,
-                        label = { Text("Language Filter (言語フィルター)") },
+                        label = { Text(stringResource(R.string.language_filter)) },
                         trailingIcon = { ExposedDropdownMenuDefaults.TrailingIcon(expanded = expanded) },
                         modifier = Modifier
                             .menuAnchor(ExposedDropdownMenuAnchorType.PrimaryNotEditable, true)
@@ -82,7 +86,7 @@ fun SamplePdfScreen(
                     ) {
                         uiState.availableLanguages.forEach { lang ->
                             val labelText = when (lang) {
-                                "ALL" -> "All (全部)"
+                                "ALL" -> allLabel
                                 "en" -> "English"
                                 "ja" -> "Japanese (日本語)"
                                 "ko" -> "Korean (한국어)"
@@ -153,16 +157,16 @@ fun SamplePdfScreen(
     uiState.cellularDialogItem?.let { item ->
         AlertDialog(
             onDismissRequest = { viewModel.dismissCellularDialog() },
-            title = { Text("Cellular Data Warning (モバイル通信の確認)") },
-            text = { Text("You are currently on a cellular network. Downloading \"${item.title}\" (${item.fileSize}) may consume a significant amount of mobile data. Do you want to proceed?") },
+            title = { Text(stringResource(R.string.cellular_data_warning)) },
+            text = { Text(stringResource(R.string.cellular_data_message, item.title, item.fileSize)) },
             confirmButton = {
                 TextButton(onClick = { viewModel.confirmCellularDownload(item) }) {
-                    Text("Download (ダウンロード)")
+                    Text(stringResource(R.string.sample_pdf_download))
                 }
             },
             dismissButton = {
                 TextButton(onClick = { viewModel.dismissCellularDialog() }) {
-                    Text("Cancel (キャンセル)")
+                    Text(stringResource(R.string.cancel))
                 }
             }
         )
@@ -210,7 +214,7 @@ fun SamplePdfCard(
                 )
                 Spacer(modifier = Modifier.height(4.dp))
                 Text(
-                    text = "Downloading... ${(itemState.progress * 100).toInt()}%",
+                    text = stringResource(R.string.sample_pdf_downloading_progress, (itemState.progress * 100).toInt()),
                     style = MaterialTheme.typography.bodySmall
                 )
             }
@@ -218,7 +222,7 @@ fun SamplePdfCard(
             itemState.errorMessage?.let { err ->
                 Spacer(modifier = Modifier.height(4.dp))
                 Text(
-                    text = "Error: $err",
+                    text = stringResource(R.string.error_prefix, err),
                     style = MaterialTheme.typography.bodySmall,
                     color = MaterialTheme.colorScheme.error
                 )
@@ -238,13 +242,13 @@ fun SamplePdfCard(
                     ) {
                         Icon(Icons.Default.Delete, contentDescription = null, modifier = Modifier.size(18.dp))
                         Spacer(modifier = Modifier.width(4.dp))
-                        Text("Delete (削除)")
+                        Text(stringResource(R.string.sample_pdf_delete))
                     }
 
                     Button(onClick = onOpen) {
                         Icon(Icons.AutoMirrored.Filled.OpenInNew, contentDescription = null, modifier = Modifier.size(18.dp))
                         Spacer(modifier = Modifier.width(4.dp))
-                        Text("Open (開く)")
+                        Text(stringResource(R.string.sample_pdf_open))
                     }
                 } else {
                     Button(
@@ -253,7 +257,7 @@ fun SamplePdfCard(
                     ) {
                         Icon(Icons.Default.Download, contentDescription = null, modifier = Modifier.size(18.dp))
                         Spacer(modifier = Modifier.width(4.dp))
-                        Text(if (itemState.isDownloading) "Downloading... (ダウンロード中)" else "Download (ダウンロード)")
+                        Text(if (itemState.isDownloading) stringResource(R.string.sample_pdf_downloading) else stringResource(R.string.sample_pdf_download))
                     }
                 }
             }
