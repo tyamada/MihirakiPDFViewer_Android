@@ -54,4 +54,7 @@
     <string name="cellular_data_message">モバイル通信回線に接続しています。「%1$s」（%2$s）をダウンロードすると、多くのモバイルデータ通信量を消費する可能性があります。続行しますか？</string>
     <string name="error_prefix">エラー: %s</string>
     <string name="error_opening_play_store">Google Play ストアを開けませんでした</string>
+    <string name="promo_code_help_title">プロモーションコードの利用方法</string>
+    <string name="promo_code_help_message">記念こよみバッジのプロモーションコードは、「応援」画面を開き「Ver.2.0公開記念こよみバッジ」の購入ボタンをタップ後、Google Play決済画面のお支払い方法メニューから「コードの利用」を選択して入力してください。</string>
+    <string name="go_to_support">応援画面へ移動</string>
 </resources>

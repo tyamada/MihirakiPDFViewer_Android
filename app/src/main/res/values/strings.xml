@@ -54,4 +54,7 @@
     <string name="cellular_data_message" translatable="false">You are currently on a cellular network. Downloading \"%1$s\" (%2$s) may consume a significant amount of mobile data. Do you want to proceed?</string>
     <string name="error_prefix" translatable="false">Error: %s</string>
     <string name="error_opening_play_store" translatable="false">Could not open Google Play Store</string>
+    <string name="promo_code_help_title" translatable="false">How to Redeem Promo Code</string>
+    <string name="promo_code_help_message" translatable="false">To redeem a promotion code for the Koyomi badge, go to the Support screen, tap the purchase button for the Ver.2.0 Koyomi badge, and in the Google Play payment sheet, select Redeem.</string>
+    <string name="go_to_support" translatable="false">Go to Support</string>
 </resources>
