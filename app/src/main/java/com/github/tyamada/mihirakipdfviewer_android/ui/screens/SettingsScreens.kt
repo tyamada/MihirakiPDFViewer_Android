@@ -132,8 +132,6 @@ import com.github.tyamada.mihirakipdfviewer_android.viewmodel.ViewerViewModel
             }
 
             var showPromoDialog by remember { mutableStateOf(false) }
-            var promoCodeInput by remember { mutableStateOf("") }
-            val errorMessage = stringResource(R.string.error_opening_play_store)
 
             TextButton(onClick = { showPromoDialog = true }, modifier = Modifier.fillMaxWidth()) {
                 Box(Modifier.fillMaxWidth(), contentAlignment = Alignment.CenterStart) {
@@ -144,50 +142,22 @@ import com.github.tyamada.mihirakipdfviewer_android.viewmodel.ViewerViewModel
             if (showPromoDialog) {
                 AlertDialog(
                     onDismissRequest = { showPromoDialog = false },
-                    title = { Text(stringResource(R.string.promo_code_dialog_title)) },
+                    title = { Text(stringResource(R.string.promo_code_help_title)) },
                     text = {
-                        Column(verticalArrangement = Arrangement.spacedBy(8.dp)) {
-                            Text(stringResource(R.string.promo_code_instructions))
-                            OutlinedTextField(
-                                value = promoCodeInput,
-                                onValueChange = { promoCodeInput = it },
-                                label = { Text(stringResource(R.string.enter_promo_code)) },
-                                singleLine = true,
-                                modifier = Modifier.fillMaxWidth()
-                            )
-                        }
+                        Text(stringResource(R.string.promo_code_help_message))
                     },
                     confirmButton = {
                         Button(
                             onClick = {
                                 showPromoDialog = false
-                                val code = promoCodeInput.trim()
-                                val url = if (code.isNotEmpty()) "https://play.google.com/redeem?code=$code" else "https://play.google.com/redeem"
-                                val intent = Intent(Intent.ACTION_VIEW, Uri.parse(url)).apply {
-                                    setPackage("com.android.vending")
-                                    addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
-                                }
-                                try {
-                                    context.startActivity(intent)
-                                } catch (_: Exception) {
-                                    try {
-                                        val browserIntent = Intent(Intent.ACTION_VIEW, Uri.parse(url)).apply {
-                                            addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
-                                        }
-                                        context.startActivity(browserIntent)
-                                    } catch (_: Exception) {
-                                        Toast.makeText(context, errorMessage, Toast.LENGTH_SHORT).show()
-                                    }
-                                }
-                                promoCodeInput = ""
-                            },
-                            enabled = promoCodeInput.isNotBlank()
+                                tips()
+                            }
                         ) {
-                            Text(stringResource(R.string.redeem))
+                            Text(stringResource(R.string.go_to_support))
                         }
                     },
                     dismissButton = {
-                        TextButton(onClick = { showPromoDialog = false; promoCodeInput = "" }) {
+                        TextButton(onClick = { showPromoDialog = false }) {
                             Text(stringResource(R.string.cancel))
                         }
                     }
