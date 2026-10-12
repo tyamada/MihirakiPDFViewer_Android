@@ -47,7 +47,7 @@ class BillingManager(context: Context) : PurchasesUpdatedListener, AutoCloseable
         )
     }
 
-    private fun queryPurchases() {
+    fun queryPurchases() {
         client.queryPurchasesAsync(
             QueryPurchasesParams.newBuilder().setProductType(BillingClient.ProductType.INAPP).build()
         ) { billingResult, purchases ->

@@ -30,6 +30,19 @@ import com.github.tyamada.mihirakipdfviewer_android.viewmodel.ViewerViewModel
 @Composable fun SettingsScreen(vm: ViewerViewModel, back: () -> Unit, help: () -> Unit, reset: () -> Unit, tips: () -> Unit, licenses: () -> Unit, diagnostics: () -> Unit, deviceTest: () -> Unit, logViewer: () -> Unit) {
     val state by vm.state.collectAsState()
     val context = LocalContext.current
+    val billing = vm.billing
+    val purchasedTiers by billing.purchasedTiers.collectAsState()
+
+    LaunchedEffect(Unit) {
+        billing.queryPurchases()
+    }
+
+    LaunchedEffect(purchasedTiers) {
+        if (purchasedTiers.isNotEmpty()) {
+            vm.updateSettings { s -> s.copy(purchasedTiers = s.purchasedTiers + purchasedTiers.map { it.name }) }
+        }
+    }
+
     Scaffold(topBar = { TopAppBar(title = { Text(stringResource(R.string.settings)) }, navigationIcon = { IconButton(back) { Icon(Icons.AutoMirrored.Filled.ArrowBack, stringResource(R.string.back)) } }) }) { p ->
         Column(Modifier.padding(p).verticalScroll(rememberScrollState()).padding(16.dp)) {
             Section(stringResource(R.string.display_settings))
