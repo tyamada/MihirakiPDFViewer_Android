@@ -65,9 +65,19 @@ class PdfDocumentRepository(private val context: Context) {
     private fun copyToPrivateCache(resolver: ContentResolver, uri: Uri): File {
         val file = File.createTempFile("mihiraki_", ".pdf", context.cacheDir)
         try {
-            resolver.openInputStream(uri)?.use { input -> FileOutputStream(file).use(input::copyTo) }
-                ?: throw PdfOpenException.PermissionDenied()
+            if (uri.scheme == "file" || (uri.scheme == null && uri.path != null)) {
+                val sourceFile = File(uri.path!!)
+                if (sourceFile.exists()) {
+                    sourceFile.inputStream().use { input -> FileOutputStream(file).use(input::copyTo) }
+                } else {
+                    throw PdfOpenException.PermissionDenied()
+                }
+            } else {
+                resolver.openInputStream(uri)?.use { input -> FileOutputStream(file).use(input::copyTo) }
+                    ?: throw PdfOpenException.PermissionDenied()
+            }
         } catch (e: SecurityException) { file.delete(); throw PdfOpenException.PermissionDenied(e) }
+          catch (e: IOException) { file.delete(); throw PdfOpenException.Corrupt(e) }
         return file
     }
 }

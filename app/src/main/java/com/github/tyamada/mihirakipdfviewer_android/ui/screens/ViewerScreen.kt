@@ -32,6 +32,7 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalLayoutDirection
+import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.LayoutDirection
 import androidx.compose.ui.unit.dp
@@ -112,13 +113,13 @@ import kotlin.math.abs
                             }
                         },
                         actions = {
-                            IconButton(onClick = openSamplePdfs) {
+                            IconButton(onClick = openSamplePdfs, modifier = Modifier.testTag("btn_top_sample_pdfs")) {
                                 Icon(Icons.Default.Download, contentDescription = "Sample PDFs")
                             }
                             IconButton(onClick = { picker.launch(arrayOf("application/pdf")) }) {
                                 Icon(Icons.Default.FolderOpen, stringResource(R.string.open_pdf))
                             }
-                            IconButton(onClick = openSettings) {
+                            IconButton(onClick = openSettings, modifier = Modifier.testTag("btn_settings")) {
                                 Icon(Icons.Default.Settings, stringResource(R.string.settings))
                             }
                         },
@@ -197,7 +198,7 @@ import kotlin.math.abs
             Row(horizontalArrangement = Arrangement.spacedBy(12.dp), verticalAlignment = Alignment.CenterVertically) {
                 OutlinedButton(
                     onClick = openSamplePdfs,
-                    modifier = Modifier.heightIn(min = 48.dp),
+                    modifier = Modifier.heightIn(min = 48.dp).testTag("btn_center_sample_pdfs"),
                     border = BorderStroke(1.dp, Color.White),
                     colors = ButtonDefaults.outlinedButtonColors(contentColor = Color.White)
                 ) {
