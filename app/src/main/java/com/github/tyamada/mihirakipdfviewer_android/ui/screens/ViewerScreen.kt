@@ -114,7 +114,7 @@ import kotlin.math.abs
                         },
                         actions = {
                             IconButton(onClick = openSamplePdfs, modifier = Modifier.testTag("btn_top_sample_pdfs")) {
-                                Icon(Icons.Default.Download, contentDescription = "Sample PDFs")
+                                Icon(Icons.Default.Download, contentDescription = stringResource(R.string.sample_pdfs))
                             }
                             IconButton(onClick = { picker.launch(arrayOf("application/pdf")) }) {
                                 Icon(Icons.Default.FolderOpen, stringResource(R.string.open_pdf))
