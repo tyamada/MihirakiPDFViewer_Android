@@ -25,6 +25,10 @@ import com.github.tyamada.mihirakipdfviewer_android.viewmodel.ViewerViewModel
     val purchasedTiers by manager.purchasedTiers.collectAsState()
     val isDebug = BuildConfig.DEBUG
 
+    LaunchedEffect(Unit) {
+        manager.queryPurchases()
+    }
+
     LaunchedEffect(purchasedTiers) {
         if (purchasedTiers.isNotEmpty()) {
             vm.updateSettings { s -> s.copy(purchasedTiers = s.purchasedTiers + purchasedTiers.map { it.name }) }
