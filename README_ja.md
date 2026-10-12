@@ -99,7 +99,7 @@ https://creativecommons.org/licenses/by/4.0/
 開発者およびユーザーによって検証されたデバイス互換性や動作確認の結果は、[VERIFICATION_LIST.md](VERIFICATION_LIST.md) に記載されています。
 
 ## 💖 開発者の応援
-アプリを気に入っていただけた場合は、アプリ内の「応援」機能から開発を支援できます。Bronze、Silver、Gold の各チップを贈ると、設定画面に特別な記念アイコンが表示されます！
+アプリを気に入っていただけた場合は、アプリ内の「応援」機能から開発を支援できます。Bronze、Silver、Gold、および Ver.2.0公開記念こよみバッジの各チップをご用意しており（Google Play Consoleのプロモーションコードによる無料引き換えにも対応）、設定画面に特別な記念バッジが表示されます！
 
 ## 🐛 不具合・問題の報告 (GitHub Issues)
 アプリの不具合や予期せぬ動作、クラッシュなどが発生した場合は、[GitHub Issues](https://github.com/tyamada/MihirakiPDFViewer_Android/issues) よりご報告ください。
