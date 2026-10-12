@@ -99,7 +99,7 @@ Run unit tests and instrumented UI tests. Test PDF files are available [here](ht
 Device compatibility and verification results tested by developers and users are documented in [VERIFICATION_LIST.md](VERIFICATION_LIST.md).
 
 ## 💖 Support the Developer
-If you find this app useful, you can support further development via the in-app "Support" feature. We offer Bronze, Silver, and Gold tip tiers, which unlock a special commemorative icon in your settings screen!
+If you find this app useful, you can support further development via the in-app "Support" feature. We offer Bronze, Silver, Gold, and Ver.2.0 Release Commemoration Koyomi Badge tip tiers, which unlock special commemorative badges in your settings screen! (Play Console promotion codes are also supported for free badge redemption).
 
 ## 🐛 Reporting Issues & Bug Reports
 If you encounter any bugs, crashes, or unexpected behavior, please open an issue on [GitHub Issues](https://github.com/tyamada/MihirakiPDFViewer_Android/issues). 
