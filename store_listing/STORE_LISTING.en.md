@@ -27,7 +27,7 @@ Optimal for Manga! A privacy-focused PDF viewer with spread and R2L support.
 - **Offline Capable**: No internet connection is required to read local files.
 
 ### 💖 Support Development
-This app is ad-free and free to use. All core features, including PDF viewing, spreads, and search, are fully available for free without any restrictions. If you find the app helpful, you can support further development via optional non-consumable in-app tips (Bronze, Silver, Gold tiers) which unlock commemorative supporter badges in settings.
+This app is ad-free and free to use. All core features, including PDF viewing, spreads, and search, are fully available for free without any restrictions. If you find the app helpful, you can support further development via optional non-consumable in-app tips (Bronze, Silver, Gold, and Ver.2.0 Release Commemoration Koyomi Badge tiers, with promo code support) which unlock commemorative supporter badges in settings.
 
 ---
 *Note: Search features are not available for scanned image-only PDFs without a text layer.*
