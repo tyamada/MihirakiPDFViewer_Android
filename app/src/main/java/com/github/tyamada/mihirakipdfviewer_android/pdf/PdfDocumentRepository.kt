@@ -12,6 +12,7 @@ import android.os.ParcelFileDescriptor
 import android.util.Log
 import androidx.core.graphics.createBitmap
 import com.github.tyamada.mihirakipdfviewer_android.data.DocumentInfo
+import com.github.tyamada.mihirakipdfviewer_android.data.OutlineNode
 import com.github.tyamada.mihirakipdfviewer_android.data.SearchHit
 import com.github.tyamada.mihirakipdfviewer_android.data.SearchRect
 import com.tom_roush.pdfbox.pdmodel.PDDocument
@@ -41,6 +42,7 @@ interface PdfSource : Closeable {
     val info: DocumentInfo
     val directionHint: String?
     val layoutHint: String?
+    val outline: List<OutlineNode>
     suspend fun render(page: Int, width: Int, highQuality: Boolean, sharpness: Float = 0f, highlights: List<SearchRect> = emptyList()): Bitmap
     suspend fun search(query: String): List<SearchHit>
 }
@@ -101,6 +103,32 @@ private class HybridPdfSource(private val file: File, password: String?) : PdfSo
     override val layoutHint: String? = runCatching {
         pdfBox.documentCatalog.cosObject.getNameAsString("PageLayout")
     }.getOrNull()
+    override val outline: List<OutlineNode> = runCatching {
+        val root = pdfBox.documentCatalog.documentOutline
+        if (root != null) extractOutlineItems(root, pdfBox) else emptyList()
+    }.getOrElse { emptyList() }
+
+    private fun extractOutlineItems(node: com.tom_roush.pdfbox.pdmodel.interactive.documentnavigation.outline.PDOutlineNode, doc: PDDocument): List<OutlineNode> {
+        val result = mutableListOf<OutlineNode>()
+        var item = node.firstChild
+        while (item != null) {
+            val title = item.title.orEmpty()
+            val pageIndex = try {
+                val dest = item.destination
+                if (dest is com.tom_roush.pdfbox.pdmodel.interactive.documentnavigation.destination.PDPageDestination) {
+                    val page = dest.page
+                    if (page != null) {
+                        doc.pages.indexOf(page).takeIf { it >= 0 } ?: 0
+                    } else 0
+                } else 0
+            } catch (_: Exception) { 0 }
+
+            val children = extractOutlineItems(item, doc)
+            result.add(OutlineNode(title, pageIndex, children))
+            item = item.nextSibling
+        }
+        return result
+    }
 
     override suspend fun render(page: Int, width: Int, highQuality: Boolean, sharpness: Float, highlights: List<SearchRect>): Bitmap = mutex.withLock {
         withContext(Dispatchers.IO) {

@@ -31,6 +31,7 @@ data class PageSpread(val left: Int?, val right: Int?)
 
 data class SearchRect(val left: Float, val top: Float, val right: Float, val bottom: Float)
 data class SearchHit(val pageIndex: Int, val rects: List<SearchRect>)
+data class OutlineNode(val title: String, val pageIndex: Int, val children: List<OutlineNode> = emptyList())
 
 object SpreadPlanner {
     fun plan(pageCount: Int, direction: ReadingDirection, showCover: Boolean, mode: CoverMode): List<PageSpread> {

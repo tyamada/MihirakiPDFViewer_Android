@@ -38,6 +38,7 @@ import androidx.compose.ui.semantics.*
 import androidx.compose.ui.unit.LayoutDirection
 import androidx.compose.ui.unit.dp
 import com.github.tyamada.mihirakipdfviewer_android.R
+import com.github.tyamada.mihirakipdfviewer_android.data.OutlineNode
 import com.github.tyamada.mihirakipdfviewer_android.data.ReadingDirection
 import com.github.tyamada.mihirakipdfviewer_android.data.ViewerLayout
 import com.github.tyamada.mihirakipdfviewer_android.viewmodel.ViewerViewModel
@@ -61,6 +62,7 @@ import kotlin.math.abs
     } }
 
     var showSwipeHint by remember { mutableStateOf(false) }
+    var showOutlineDialog by remember { mutableStateOf(false) }
     LaunchedEffect(state.source) {
         if (state.source != null) {
             showSwipeHint = true
@@ -117,6 +119,11 @@ import kotlin.math.abs
                             }
                         },
                         actions = {
+                            if (state.outline.isNotEmpty()) {
+                                IconButton(onClick = { showOutlineDialog = true }) {
+                                    Icon(Icons.AutoMirrored.Filled.FormatListBulleted, contentDescription = "Table of Contents")
+                                }
+                            }
                             IconButton(onClick = openSamplePdfs, modifier = Modifier.testTag("btn_top_sample_pdfs")) {
                                 Icon(Icons.Default.Download, contentDescription = stringResource(R.string.sample_pdfs))
                             }
@@ -370,6 +377,47 @@ import kotlin.math.abs
                 }
             }
         )
+    }
+
+    if (showOutlineDialog) {
+        AlertDialog(
+            onDismissRequest = { showOutlineDialog = false },
+            title = { Text("目次 (Table of Contents)") },
+            text = {
+                androidx.compose.foundation.lazy.LazyColumn(modifier = Modifier.fillMaxWidth().heightIn(max = 400.dp)) {
+                    items(state.outline.size) { index ->
+                        OutlineItemView(state.outline[index], onSelect = { page ->
+                            vm.render(page)
+                            showOutlineDialog = false
+                        })
+                    }
+                }
+            },
+            confirmButton = {
+                TextButton(onClick = { showOutlineDialog = false }) {
+                    Text(stringResource(R.string.ok))
+                }
+            }
+        )
+    }
+}
+
+@Composable
+private fun OutlineItemView(node: OutlineNode, onSelect: (Int) -> Unit) {
+    Column(modifier = Modifier.fillMaxWidth()) {
+        TextButton(onClick = { onSelect(node.pageIndex) }, modifier = Modifier.fillMaxWidth()) {
+            Row(modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.SpaceBetween) {
+                Text(node.title, modifier = Modifier.weight(1f))
+                Text("p.${node.pageIndex + 1}", style = MaterialTheme.typography.labelSmall)
+            }
+        }
+        if (node.children.isNotEmpty()) {
+            Column(modifier = Modifier.padding(start = 16.dp)) {
+                node.children.forEach { child ->
+                    OutlineItemView(child, onSelect)
+                }
+            }
+        }
     }
 }
 
