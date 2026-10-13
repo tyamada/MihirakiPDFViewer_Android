@@ -34,6 +34,7 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalLayoutDirection
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.semantics.*
 import androidx.compose.ui.unit.LayoutDirection
 import androidx.compose.ui.unit.dp
 import com.github.tyamada.mihirakipdfviewer_android.R
@@ -91,6 +92,9 @@ import kotlin.math.abs
                                                 Text(
                                                     text = "${state.currentSearchIndex + 1}/${state.searchResults.size}",
                                                     style = MaterialTheme.typography.labelSmall,
+                                                    modifier = Modifier.semantics {
+                                                        contentDescription = "Search result ${state.currentSearchIndex + 1} of ${state.searchResults.size}"
+                                                    }
                                                 )
                                                 IconButton(onClick = { vm.navigateSearch(-1) }, modifier = Modifier.size(48.dp)) {
                                                     Icon(Icons.Default.KeyboardArrowUp, contentDescription = stringResource(R.string.previous_search))
@@ -133,7 +137,14 @@ import kotlin.math.abs
                     val direction = state.settings.direction
                     val maxPage = (state.pageCount - 1).coerceAtLeast(0).toFloat()
 
-                    Text("${state.currentPage + 1} / ${state.pageCount}", modifier = Modifier.padding(horizontal = 12.dp))
+                    Text(
+                        text = "${state.currentPage + 1} / ${state.pageCount}",
+                        modifier = Modifier
+                            .padding(horizontal = 12.dp)
+                            .semantics {
+                                contentDescription = "Page ${state.currentPage + 1} of ${state.pageCount}"
+                            }
+                    )
 
                     CompositionLocalProvider(LocalLayoutDirection provides if (direction == ReadingDirection.L2R) LayoutDirection.Ltr else LayoutDirection.Rtl) {
                         Row(verticalAlignment = Alignment.CenterVertically, modifier = Modifier.weight(1f)) {
