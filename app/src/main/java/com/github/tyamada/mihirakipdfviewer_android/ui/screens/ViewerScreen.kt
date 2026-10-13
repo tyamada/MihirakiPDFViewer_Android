@@ -166,7 +166,7 @@ import kotlin.math.abs
             }
         },
     )
- { padding -> Box(
+ { padding -> BoxWithConstraints(
      Modifier
          .fillMaxSize()
          .padding(padding)
@@ -203,7 +203,14 @@ import kotlin.math.abs
              } else false
          }
  ) {
-        if ((state.source == null) && !state.loading) Column(Modifier.align(Alignment.Center), horizontalAlignment = Alignment.CenterHorizontally) {
+     val isTabletOrFoldable = maxWidth >= 600.dp
+        if ((state.source == null) && !state.loading) Column(
+            Modifier
+                .align(Alignment.Center)
+                .then(if (isTabletOrFoldable) Modifier.widthIn(max = 520.dp) else Modifier.fillMaxWidth())
+                .padding(horizontal = 24.dp),
+            horizontalAlignment = Alignment.CenterHorizontally
+        ) {
             Icon(Icons.AutoMirrored.Filled.MenuBook, null, tint = Color.White, modifier = Modifier.size(80.dp))
             Spacer(Modifier.height(20.dp))
             Row(horizontalArrangement = Arrangement.spacedBy(12.dp), verticalAlignment = Alignment.CenterVertically) {
