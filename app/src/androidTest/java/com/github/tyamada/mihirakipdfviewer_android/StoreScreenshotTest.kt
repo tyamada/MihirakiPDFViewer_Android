@@ -1,134 +1,161 @@
 package com.github.tyamada.mihirakipdfviewer_android
 
+import android.content.res.Configuration
 import android.graphics.Bitmap
+import android.graphics.Color
 import android.net.Uri
-import androidx.compose.ui.graphics.asAndroidBitmap
 import androidx.compose.ui.test.*
 import androidx.compose.ui.test.junit4.createAndroidComposeRule
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.platform.app.InstrumentationRegistry
 import androidx.test.uiautomator.UiDevice
+import com.github.tyamada.mihirakipdfviewer_android.data.*
+import org.json.JSONObject
+import org.junit.Assert.*
 import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
 import java.io.File
-import java.io.FileOutputStream
-import java.util.Locale
+import java.security.MessageDigest
 
+/** One independently reproducible scene per invocation. The host owns rotation and locale. */
 @RunWith(AndroidJUnit4::class)
 class StoreScreenshotTest {
-
-    @get:Rule
-    val compose = createAndroidComposeRule<MainActivity>()
-
-    private val device = UiDevice.getInstance(InstrumentationRegistry.getInstrumentation())
-
-    @Test
-    fun captureStoreScreenshots() {
-        compose.waitForIdle()
-        Thread.sleep(3000)
-
-        // 1. 01_library_or_cover (PDF未オープンの初期ライブラリ/カバー画面)
-        compose.waitUntil(10000) {
-            compose.activity.viewer.state.value.source == null
-        }
-        Thread.sleep(1500)
-        takeScreenshot("01_library_or_cover")
-
-        // Determine language suffix based on current device locale
-        val lang = Locale.getDefault().language.lowercase()
-        val region = Locale.getDefault().country.lowercase()
-        val fileLang = if (lang == "zh" && region == "cn") "zh_cn" else lang
-        val pdfName = when (fileLang) {
-            "ja" -> "tameshibu_episode1_2_ja.pdf"
-            "en" -> "tameshibu_episode1_2_en.pdf"
-            "ko" -> "tameshibu_episode1_2_ko.pdf"
-            "zh_cn" -> "tameshibu_episode1_2_zh_cn.pdf"
-            else -> "tameshibu_episode1_2_en.pdf"
-        }
-
-        // 2. 02_two_page_spread (PDF見開き表示画面)
-        val pdfFile = copyAssetToCache(pdfName)
-        val uri = Uri.fromFile(pdfFile)
-        InstrumentationRegistry.getInstrumentation().runOnMainSync {
-            compose.activity.viewer.open(uri)
-        }
-        compose.waitUntil(20000) {
-            val state = compose.activity.viewer.state.value
-            if (state.errorKey != null) {
-                throw AssertionError("FATAL: PDF failed to open in test with errorKey='${state.errorKey}'")
-            }
-            state.source != null
+    @get:Rule val compose = createAndroidComposeRule<MainActivity>()
+    private val instrumentation = InstrumentationRegistry.getInstrumentation()
+    private val device = UiDevice.getInstance(instrumentation)
+    private val args get() = InstrumentationRegistry.getArguments()
+    private val vm get() = compose.activity.viewer
+    private fun main(action: () -> Unit) = instrumentation.runOnMainSync(action)
+    private fun waitFor(condition: () -> Boolean) {
+        compose.waitUntil(60_000) {
+            val state = vm.state.value
+            check(state.errorKey == null) { "Viewer error: ${state.errorKey}" }
+            condition()
         }
         compose.waitForIdle()
-        Thread.sleep(4000) // Allow time for page rendering & layout
-        takeScreenshot("02_two_page_spread")
-
-        // 3. 03_thumbnail_view (ページめくり状態 - 次のページへ移動)
-        InstrumentationRegistry.getInstrumentation().runOnMainSync {
-            compose.activity.viewer.movePage(1)
-        }
-        compose.waitUntil(20000) {
-            val state = compose.activity.viewer.state.value
-            if (state.errorKey != null) {
-                throw AssertionError("FATAL: PDF navigation failed with errorKey='${state.errorKey}'")
-            }
-            state.source != null
-        }
+    }
+    private fun label(id: Int) = compose.activity.getString(id)
+    private fun chrome() {
+        main { if (!vm.state.value.chromeVisible) vm.toggleChrome() }
         compose.waitForIdle()
-        Thread.sleep(2500)
-        takeScreenshot("03_thumbnail_view")
-
-        // 4. 04_text_search (テキスト検索画面 - キーワード: 'ひと息マップ')
-        InstrumentationRegistry.getInstrumentation().runOnMainSync {
-            compose.activity.viewer.search("ひと息マップ")
-        }
-        compose.waitUntil(20000) {
-            val state = compose.activity.viewer.state.value
-            if (state.errorKey != null) {
-                throw AssertionError("FATAL: PDF search failed with errorKey='${state.errorKey}'")
-            }
-            state.source != null
-        }
-        compose.waitForIdle()
-        Thread.sleep(3000)
-        takeScreenshot("04_text_search")
-
-        // 5. 05_settings (設定画面 - 最後に設定ボタンをクリックして撮影、戻らない)
-        runCatching {
-            device.click(device.displayWidth / 2, device.displayHeight / 2)
-            compose.waitForIdle()
-            Thread.sleep(1000)
-
-            compose.onNode(hasTestTag("btn_settings")).performClick()
-            compose.waitForIdle()
-            Thread.sleep(2500)
-        }
-        takeScreenshot("05_settings")
     }
 
-    private fun copyAssetToCache(fileName: String): File {
-        val targetContext = InstrumentationRegistry.getInstrumentation().targetContext
-        val testContext = InstrumentationRegistry.getInstrumentation().context
-        val file = File(targetContext.cacheDir, fileName)
-        testContext.assets.open("testdata/$fileName").use { input ->
-            FileOutputStream(file).use { output -> input.copyTo(output) }
+    @Test fun captureStoreScreenshots() {
+        org.junit.Assume.assumeTrue("Use the screenshot runner to supply capture arguments", args.containsKey("captureLanguage"))
+        val lang = requireNotNull(args.getString("captureLanguage"))
+        val scene = requireNotNull(args.getString("captureScene"))
+        val portrait = args.getString("captureOrientation") == "portrait"
+        val locale = compose.activity.resources.configuration.locales[0].toLanguageTag()
+        val expectedLocale = mapOf("ja" to "ja-JP", "en" to "en-US", "ko" to "ko-KR", "zh_cn" to "zh-CN").getValue(lang)
+        val expected = java.util.Locale.forLanguageTag(expectedLocale)
+        val actual = java.util.Locale.forLanguageTag(locale)
+        assertEquals("System/app language mismatch", expected.language, actual.language)
+        assertEquals("System/app country mismatch", expected.country, actual.country)
+        // UiAutomation holds the physical display rotation during the test. Some
+        // tablet images revert host-side rotation when the test activity launches.
+        val naturalPortrait = if (device.displayRotation % 2 == 0)
+            device.displayHeight > device.displayWidth else device.displayWidth > device.displayHeight
+        if (portrait == naturalPortrait) device.setOrientationNatural() else device.setOrientationLeft()
+        main { compose.activity.requestedOrientation = if (portrait)
+            android.content.pm.ActivityInfo.SCREEN_ORIENTATION_PORTRAIT else android.content.pm.ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE }
+        compose.waitUntil(15_000) { portrait == (compose.activity.resources.configuration.orientation == Configuration.ORIENTATION_PORTRAIT) }
+        val pdf = File(compose.activity.filesDir, "store_capture/$lang.pdf")
+        assertTrue("Verified transferred PDF missing", pdf.isFile)
+        val digest = MessageDigest.getInstance("SHA-256").digest(pdf.readBytes()).joinToString("") { "%02x".format(it) }
+        assertEquals(args.getString("capturePdfSha256"), digest)
+        main { vm.closeDocument() }
+        main { vm.open(Uri.fromFile(pdf), 5) }
+        waitFor { vm.state.value.pageCount == 8 && vm.state.value.bitmap != null }
+        main { vm.updateSettings { it.copy(direction = ReadingDirection.R2L, layout = ViewerLayout.SPREAD,
+            showCover = true, portraitSpread = true, mouseNavigation = false, highQuality = false, sharpness = 0f) } }
+        waitFor { vm.state.value.settings.direction == ReadingDirection.R2L && vm.state.value.settings.layout == ViewerLayout.SPREAD }
+        // A newly rendered target after settings are committed, rather than a fixed sleep.
+        val previous = vm.state.value.bitmap
+        main { vm.render(5) }
+        waitFor { vm.state.value.bitmap != null && vm.state.value.bitmap !== previous &&
+            (if (portrait) vm.state.value.currentPage == 5 else vm.state.value.secondBitmap != null) }
+        chrome()
+        var query = ""
+        when (scene) {
+            "01_reader" -> assertEquals(ViewerLayout.SINGLE, vm.state.value.effectiveLayout)
+            "02_spread" -> {
+                assertEquals(ViewerLayout.SPREAD, vm.state.value.effectiveLayout)
+                main { vm.toggleChrome() }
+            }
+            "03_reading_settings" -> {
+                compose.onNodeWithTag("btn_settings").performClick()
+                compose.onNodeWithText(label(R.string.reading_direction)).performScrollTo().assertIsDisplayed()
+                compose.onNodeWithText("R2L").assertIsDisplayed()
+            }
+            "04_search" -> {
+                val candidates = mapOf("ja" to listOf("ひと息マップ", "完成", "今"), "en" to listOf("Break-Time", "arrow"),
+                    "ko" to listOf("한숨 돌림 지도", "화살표"), "zh_cn" to listOf("歇口气地图", "箭头")).getValue(lang)
+                // Probe the real PDF text engine; a title-only match is insufficient.
+                val source = requireNotNull(vm.state.value.source)
+                val selected = kotlinx.coroutines.runBlocking {
+                    candidates.firstOrNull { candidate -> source.search(candidate).any { hit -> hit.pageIndex == 5 &&
+                        // These A5 fixtures have dialogue between y=40 and y=560.
+                        hit.rects.any { it.top > 40f && it.bottom < 560f } } }
+                }
+                query = requireNotNull(selected) { "No page 6 search hit for $lang" }
+                main { vm.search(query) }
+                waitFor { vm.state.value.searchQuery == query && vm.state.value.searchResults.any { it.pageIndex == 5 } }
+                val index = vm.state.value.searchResults.indexOfFirst { it.pageIndex == 5 }
+                main { vm.navigateSearch(index - vm.state.value.currentSearchIndex) }
+                waitFor { vm.state.value.searchResults[vm.state.value.currentSearchIndex].pageIndex == 5 }
+                // Force and await the highlight-bearing render, including on cached devices.
+                val before = vm.state.value.bitmap
+                main { vm.render(5) }
+                waitFor { vm.state.value.bitmap != null && (vm.state.value.bitmap !== before || hasHighlight(vm.state.value.bitmap!!)) }
+                assertTrue("Search highlight absent", listOfNotNull(vm.state.value.bitmap, vm.state.value.secondBitmap).any(::hasHighlight))
+            }
+            "05_page_navigation" -> {
+                val before = vm.state.value.bitmap
+                main { vm.render(3) }
+                waitFor { vm.state.value.bitmap != null && vm.state.value.bitmap !== before && vm.state.value.currentPage == 3 }
+            }
+            "06_display_settings" -> {
+                compose.onNodeWithTag("btn_settings").performClick()
+                compose.onNodeWithText(label(R.string.portrait_display)).performScrollTo().assertIsDisplayed()
+            }
+            else -> error("Unknown capture scene: $scene")
         }
-        return file
+        compose.waitUntil(15_000) { compose.onAllNodesWithTag("swipe_hint").fetchSemanticsNodes().isEmpty() }
+        compose.waitForIdle()
+        device.waitForIdle()
+        assertEquals(portrait, device.displayHeight > device.displayWidth)
+        assertTrue(device.isScreenOn)
+        assertEquals(compose.activity.packageName, device.currentPackageName)
+        assertEquals(portrait, compose.activity.resources.configuration.orientation == Configuration.ORIENTATION_PORTRAIT)
+        assertNull(vm.state.value.errorKey)
+        assertFalse(vm.state.value.passwordRequested)
+        assertFalse(vm.state.value.loading)
+        val dir = File(compose.activity.filesDir, "store_capture")
+        assertTrue(device.takeScreenshot(File(dir, "${args.getString("captureId")}.png")))
+        val state = vm.state.value
+        File(dir, "${args.getString("captureId")}.json").writeText(JSONObject().apply {
+            put("captureId", args.getString("captureId")); put("scene", scene); put("language", lang); put("locale", locale); put("portrait", portrait)
+            put("pdfSha256", digest); put("page", state.currentPage + 1); put("pageCount", state.pageCount)
+            put("query", query); put("searchResultCount", state.searchResults.size)
+            put("page6SearchRects", org.json.JSONArray().apply {
+                state.searchResults.filter { it.pageIndex == 5 }.flatMap { it.rects }.forEach {
+                    put(JSONObject().put("left", it.left).put("top", it.top).put("right", it.right).put("bottom", it.bottom))
+                }
+            })
+            put("direction", state.settings.direction.name); put("layout", state.effectiveLayout.name)
+            put("showCover", state.settings.showCover); put("version", BuildConfig.VERSION_NAME)
+            put("versionCode", BuildConfig.VERSION_CODE); put("package", compose.activity.packageName)
+        }.toString(2))
     }
 
-    private fun takeScreenshot(name: String) {
-        val bitmap = compose.onRoot().captureToImage().asAndroidBitmap()
-        val targetContext = InstrumentationRegistry.getInstrumentation().targetContext
-        val filesDir = targetContext.getExternalFilesDir(null) ?: targetContext.cacheDir
-        if (!filesDir.exists()) {
-            filesDir.mkdirs()
+    private fun hasHighlight(bitmap: Bitmap): Boolean {
+        if (bitmap.isRecycled) return false
+        var count = 0
+        for (y in 0 until bitmap.height step 2) for (x in 0 until bitmap.width step 2) {
+            val p = bitmap.getPixel(x, y)
+            if (Color.red(p) > 180 && Color.green(p) < 100 && Color.blue(p) < 100) count++
         }
-        val path = File(filesDir, "$name.png")
-        val fos = FileOutputStream(path)
-        bitmap.compress(Bitmap.CompressFormat.PNG, 100, fos)
-        fos.flush()
-        fos.close()
-        println("Captured Compose screenshot to external files dir: ${path.absolutePath}")
+        return count > 8
     }
 }
