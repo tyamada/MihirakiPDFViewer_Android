@@ -269,7 +269,7 @@ import kotlin.math.abs
                 label = "EdgePulse"
             )
 
-            Box(modifier = Modifier.fillMaxSize()) {
+            Box(modifier = Modifier.fillMaxSize().testTag("swipe_hint")) {
                 Surface(
                     color = Color.Black.copy(alpha = 0.7f),
                     shape = MaterialTheme.shapes.medium,
