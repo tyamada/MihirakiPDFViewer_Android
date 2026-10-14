@@ -47,7 +47,15 @@ import kotlinx.coroutines.withTimeoutOrNull
 import kotlin.math.abs
 
 @OptIn(ExperimentalMaterial3Api::class)
-@Composable fun ViewerScreen(vm: ViewerViewModel, openSettings: () -> Unit, openHelp: () -> Unit, openSupport: () -> Unit, openSamplePdfs: () -> Unit) {
+@Composable fun ViewerScreen(
+    vm: ViewerViewModel,
+    openSettings: () -> Unit,
+    openHelp: () -> Unit,
+    openVersion: () -> Unit,
+    openDiagnostics: () -> Unit,
+    openSupport: () -> Unit,
+    openSamplePdfs: () -> Unit
+) {
     val state by vm.state.collectAsState(); val context = LocalContext.current
     val configuration = LocalConfiguration.current
     val isPortrait = configuration.orientation == android.content.res.Configuration.ORIENTATION_PORTRAIT
@@ -143,6 +151,14 @@ import kotlin.math.abs
                                     DropdownMenuItem(
                                         text = { Text(stringResource(R.string.help)) },
                                         onClick = { showMenu = false; openHelp() }
+                                    )
+                                    DropdownMenuItem(
+                                        text = { Text(stringResource(R.string.version)) },
+                                        onClick = { showMenu = false; openVersion() }
+                                    )
+                                    DropdownMenuItem(
+                                        text = { Text("診断 (Diagnostics)") },
+                                        onClick = { showMenu = false; openDiagnostics() }
                                     )
                                     DropdownMenuItem(
                                         text = { Text(stringResource(R.string.support)) },
