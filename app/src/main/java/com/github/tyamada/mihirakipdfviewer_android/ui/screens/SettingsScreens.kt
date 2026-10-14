@@ -1,11 +1,14 @@
 package com.github.tyamada.mihirakipdfviewer_android.ui.screens
 
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
+import androidx.compose.material.icons.filled.ExpandLess
+import androidx.compose.material.icons.filled.ExpandMore
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
@@ -209,22 +212,76 @@ import com.github.tyamada.mihirakipdfviewer_android.viewmodel.ViewerViewModel
         }
     }
 
+    val categories = listOf(
+        HelpCategory("はじめての使い方 / Getting Started", listOf(
+            "Open PDF", "PDFを開く", "Sample PDFs", "サンプルPDF", "Menu", "メニュー"
+        )),
+        HelpCategory("読書を快適にする機能 / Reading Features", listOf(
+            "Navigate Pages", "ページ移動", "PDF Table of Contents", "PDF目次", "Zoom", "ズーム", "Search", "検索", "Adaptive Layout", "アダプティブレイアウト"
+        )),
+        HelpCategory("設定とカスタマイズ / Settings Guide", listOf(
+            "Settings", "設定", "High quality", "高画質化", "Sharpness", "シャープネス", "Two-page view", "見開き表示", "Show cover", "表紙を表示", "Reading direction", "スクロール方向", "Mouse Navigation", "マウス操作", "Portrait single page", "縦向きでは単一ページ表示", "Cover setting", "表紙設定", "Reset", "リセット"
+        )),
+        HelpCategory("サポートと診断 / Support & Diagnostics", listOf(
+            "Document information", "ドキュメント情報", "Help", "ヘルプ", "App information", "アプリ情報", "Support the Developer", "開発者を応援", "Testing & App Logs", "テスト・診断とアプリログ"
+        ))
+    )
+
     Scaffold(topBar = { TopAppBar(title = { Text(stringResource(R.string.help)) }, navigationIcon = { IconButton(back) { Icon(Icons.AutoMirrored.Filled.ArrowBack, stringResource(R.string.back)) } }) }) { p ->
-        Column(Modifier.padding(p).verticalScroll(rememberScrollState()).padding(20.dp)) {
-            AndroidView(
-                factory = { context ->
-                    TextView(context).apply {
-                        textSize = 15f
+        Column(Modifier.padding(p).verticalScroll(rememberScrollState()).padding(16.dp), verticalArrangement = Arrangement.spacedBy(12.dp)) {
+            categories.forEach { category ->
+                var expanded by remember { mutableStateOf(false) }
+                ElevatedCard(
+                    modifier = Modifier.fillMaxWidth()
+                ) {
+                    Column(Modifier.fillMaxWidth()) {
+                        Row(
+                            modifier = Modifier
+                                .fillMaxWidth()
+                                .clickable { expanded = !expanded }
+                                .padding(16.dp),
+                            horizontalArrangement = Arrangement.SpaceBetween,
+                            verticalAlignment = Alignment.CenterVertically
+                        ) {
+                            Text(category.title, style = MaterialTheme.typography.titleMedium, color = MaterialTheme.colorScheme.primary)
+                            IconButton(onClick = { expanded = !expanded }) {
+                                Icon(
+                                    imageVector = if (expanded) Icons.Default.ExpandLess else Icons.Default.ExpandMore,
+                                    contentDescription = if (expanded) "Collapse" else "Expand"
+                                )
+                            }
+                        }
+                        if (expanded) {
+                            HorizontalDivider(color = MaterialTheme.colorScheme.outlineVariant.copy(alpha = 0.5f))
+                            Box(Modifier.padding(16.dp)) {
+                                val filteredHtml = filterHtmlForCategory(htmlText, category.keywords)
+                                AndroidView(
+                                    factory = { context ->
+                                        TextView(context).apply {
+                                            textSize = 14f
+                                        }
+                                    },
+                                    update = { view ->
+                                        view.text = HtmlCompat.fromHtml(filteredHtml, HtmlCompat.FROM_HTML_MODE_COMPACT)
+                                        view.setTextColor(android.graphics.Color.parseColor("#1C1B1F"))
+                                    },
+                                    modifier = Modifier.fillMaxWidth()
+                                )
+                            }
+                        }
                     }
-                },
-                update = { view ->
-                    view.text = HtmlCompat.fromHtml(htmlText, HtmlCompat.FROM_HTML_MODE_COMPACT)
-                    view.setTextColor(android.graphics.Color.parseColor("#1C1B1F"))
-                },
-                modifier = Modifier.fillMaxWidth()
-            )
+                }
+            }
         }
     }
+}
+
+data class HelpCategory(val title: String, val keywords: List<String>)
+
+private fun filterHtmlForCategory(html: String, keywords: List<String>): String {
+    val paragraphs = html.split("</p>")
+    val matched = paragraphs.filter { p -> keywords.any { kw -> p.contains(kw) } }
+    return if (matched.isNotEmpty()) matched.joinToString("</p>") + "</p>" else html
 }
 
 @OptIn(ExperimentalMaterial3Api::class)
