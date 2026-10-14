@@ -14,6 +14,7 @@ Optimal for Manga! A privacy-focused PDF viewer with spread and R2L support.
 ### ✨ Key Features
 - 📖 **Seamless Two-Page Spreads**: View two pages side-by-side. Perfect for immersive art and manga layouts.
 - 📑 **PDF Table of Contents (Outline) Tree Navigation**: Automatically extracts bookmarks and chapters from PDF metadata for instant jumping to any section.
+- ☰ **Top Bar Dropdown Menu & Dedicated Screens**: Quick access to Settings, Help, Version, Diagnostics, and Support from the top bar menu, featuring an accordion Help screen and dedicated Version & Diagnostics screens.
 - 🔄 **Smart Auto-Detection**: Automatically detects page layout and reading direction from PDF metadata for a zero-config experience.
 - 🇯🇵 **Native R2L Support**: Full support for right-to-left reading order, including inverted sliders and swipe gestures.
 - 🔍 **Precise Search & Highlighting**: Fast text search with clear, accurate hit highlighting on the document (yellow background and red border).

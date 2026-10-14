@@ -13,6 +13,7 @@ Built with **Kotlin**, **Jetpack Compose**, and **Material 3** following the **M
 
 - 📖 **Two-Page Spread Support**: Seamlessly view two pages side-by-side.
 - 📑 **PDF Table of Contents (Outline) Tree Navigation**: Extract bookmarks and chapters from PDF metadata for instant chapter jumping.
+- ☰ **Top Bar Dropdown Menu & Dedicated Screens**: Quick access to Settings, Help, Version, Diagnostics, and Support directly from the top bar dropdown menu, featuring an accordion Help screen and dedicated Version & Diagnostics hub screens.
 - 🔄 **Auto-Detection**: Automatically detects page layout (Single/Spread) and reading direction (L2R/R2L) from PDF metadata.
 - 🇯🇵 **R2L Support**: Native support for right-to-left reading order and right-bound book layouts.
 - 🔍 **Powerful Search**: Fast text search with precise hit highlighting (yellow background and red border).
