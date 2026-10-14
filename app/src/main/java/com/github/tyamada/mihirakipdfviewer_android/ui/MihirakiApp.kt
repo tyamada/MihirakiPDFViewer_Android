@@ -45,7 +45,7 @@ import com.github.tyamada.mihirakipdfviewer_android.viewmodel.ViewerViewModel
             )
         }
         composable("help") { HelpScreen { nav.popBackStack() } }
-        composable("version") { VersionScreen(viewer, { nav.popBackStack() }, { nav.navigate("licenses") }) }
+        composable("version") { VersionScreen(viewer, { nav.popBackStack() }, { nav.navigate("licenses") }, { nav.navigate("tips") }) }
         composable("diagnostics") { 
             DiagnosticScreen(
                 back = { nav.popBackStack() },

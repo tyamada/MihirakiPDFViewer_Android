@@ -185,7 +185,7 @@ private fun filterHtmlForCategory(html: String, keywords: List<String>): String 
 }
 
 @OptIn(ExperimentalMaterial3Api::class)
-@Composable fun VersionScreen(vm: ViewerViewModel, back: () -> Unit, licenses: () -> Unit) {
+@Composable fun VersionScreen(vm: ViewerViewModel, back: () -> Unit, licenses: () -> Unit, tips: () -> Unit) {
     val state by vm.state.collectAsState()
     val context = LocalContext.current
     var showPromoDialog by remember { mutableStateOf(false) }
@@ -213,7 +213,7 @@ private fun filterHtmlForCategory(html: String, keywords: List<String>): String 
             Spacer(Modifier.height(16.dp))
             TextButton(onClick = { showPromoDialog = true }, modifier = Modifier.fillMaxWidth()) {
                 Box(Modifier.fillMaxWidth(), contentAlignment = Alignment.CenterStart) {
-                    Text(stringResource(R.string.enter_promo_code))
+                    Text(stringResource(R.string.promo_code_help_title))
                 }
             }
 
@@ -250,36 +250,20 @@ private fun filterHtmlForCategory(html: String, keywords: List<String>): String 
             }
 
             if (showPromoDialog) {
-                var promoCode by remember { mutableStateOf("") }
                 AlertDialog(
                     onDismissRequest = { showPromoDialog = false },
-                    title = { Text(stringResource(R.string.promo_code_dialog_title)) },
+                    title = { Text(stringResource(R.string.promo_code_help_title)) },
                     text = {
-                        Column(verticalArrangement = Arrangement.spacedBy(8.dp)) {
-                            Text(stringResource(R.string.promo_code_instructions), style = MaterialTheme.typography.bodyMedium)
-                            OutlinedTextField(
-                                value = promoCode,
-                                onValueChange = { promoCode = it },
-                                label = { Text(stringResource(R.string.enter_promo_code)) },
-                                singleLine = true,
-                                modifier = Modifier.fillMaxWidth()
-                            )
-                            Text(
-                                stringResource(R.string.promo_code_help_message),
-                                style = MaterialTheme.typography.bodySmall,
-                                color = MaterialTheme.colorScheme.onSurfaceVariant
-                            )
-                        }
+                        Text(stringResource(R.string.promo_code_help_message), style = MaterialTheme.typography.bodyMedium)
                     },
                     confirmButton = {
-                        TextButton(onClick = {
-                            showPromoDialog = false
-                            val intent = Intent(Intent.ACTION_VIEW, Uri.parse("https://play.google.com/store?code=$promoCode"))
-                            runCatching { context.startActivity(intent) }.onFailure {
-                                Toast.makeText(context, R.string.error_opening_play_store, Toast.LENGTH_SHORT).show()
+                        Button(
+                            onClick = {
+                                showPromoDialog = false
+                                tips()
                             }
-                        }) {
-                            Text(stringResource(R.string.redeem))
+                        ) {
+                            Text(stringResource(R.string.go_to_support))
                         }
                     },
                     dismissButton = {
