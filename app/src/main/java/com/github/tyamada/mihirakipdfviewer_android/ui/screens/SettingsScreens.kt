@@ -185,63 +185,43 @@ import com.github.tyamada.mihirakipdfviewer_android.viewmodel.ViewerViewModel
 @Composable private fun Info(label: String, value: String) { ListItem(headlineContent = { Text(label) }, supportingContent = { Text(value.ifBlank { "—" }) }) }
 
 @OptIn(ExperimentalMaterial3Api::class)
-@Composable fun HelpScreen(back: () -> Unit) = Scaffold(topBar = { TopAppBar(title = { Text(stringResource(R.string.help)) }, navigationIcon = { IconButton(back) { Icon(Icons.AutoMirrored.Filled.ArrowBack, stringResource(R.string.back)) } }) }) { p ->
-    Column(Modifier.padding(p).verticalScroll(rememberScrollState()).padding(20.dp)) {
-        val originalItems = listOf(
-            R.string.help_open,
-            R.string.help_sample_pdfs_desc,
-            R.string.help_menu,
-            R.string.help_navigate,
-            R.string.help_outline,
-            R.string.help_adaptive,
-            R.string.help_zoom,
-            R.string.help_search,
-            R.string.help_layout
-        )
-        val subItems = listOf(
-            R.string.help_high_quality,
-            R.string.help_sharpness,
-            R.string.help_two_page,
-            R.string.help_show_cover,
-            R.string.help_reading_direction,
-            R.string.help_document_info,
-            R.string.mouse_navigation,
-            R.string.help_portrait_display,
-            R.string.help_cover_mode,
-            R.string.help_reset,
-            R.string.help_help,
-            R.string.help_app_info,
-            R.string.help_support,
-            R.string.help_diagnostics
-        )
-        originalItems.forEach { resId ->
-            val htmlText = stringResource(resId)
+@Composable fun HelpScreen(back: () -> Unit) {
+    val context = LocalContext.current
+    val htmlText = remember {
+        val lang = java.util.Locale.getDefault().language
+        val fullTag = java.util.Locale.getDefault().toLanguageTag()
+        val fileName = when {
+            fullTag.contains("zh-TW", ignoreCase = true) || fullTag.contains("zh-HK", ignoreCase = true) -> "help_zh-TW.html"
+            lang == "zh" -> "help_zh.html"
+            lang in listOf("ja", "ko", "de", "fr", "es", "pt", "vi", "ne", "id", "fil") -> "help_$lang.html"
+            else -> "help_en.html"
+        }
+        val assetName = try {
+            context.assets.open(fileName).close()
+            fileName
+        } catch (_: Exception) {
+            "help_en.html"
+        }
+        try {
+            context.assets.open(assetName).bufferedReader().use { it.readText() }
+        } catch (_: Exception) {
+            "<p>Help content not available.</p>"
+        }
+    }
+
+    Scaffold(topBar = { TopAppBar(title = { Text(stringResource(R.string.help)) }, navigationIcon = { IconButton(back) { Icon(Icons.AutoMirrored.Filled.ArrowBack, stringResource(R.string.back)) } }) }) { p ->
+        Column(Modifier.padding(p).verticalScroll(rememberScrollState()).padding(20.dp)) {
             AndroidView(
                 factory = { context ->
                     TextView(context).apply {
-                        textSize = 16f
+                        textSize = 15f
                     }
                 },
                 update = { view ->
                     view.text = HtmlCompat.fromHtml(htmlText, HtmlCompat.FROM_HTML_MODE_COMPACT)
                     view.setTextColor(android.graphics.Color.parseColor("#1C1B1F"))
                 },
-                modifier = Modifier.fillMaxWidth().padding(bottom = 16.dp)
-            )
-        }
-        subItems.forEach { resId ->
-            val htmlText = stringResource(resId)
-            AndroidView(
-                factory = { context ->
-                    TextView(context).apply {
-                        textSize = 14f
-                    }
-                },
-                update = { view ->
-                    view.text = HtmlCompat.fromHtml(htmlText, HtmlCompat.FROM_HTML_MODE_COMPACT)
-                    view.setTextColor(android.graphics.Color.parseColor("#49454F"))
-                },
-                modifier = Modifier.fillMaxWidth().padding(start = 24.dp, bottom = 16.dp)
+                modifier = Modifier.fillMaxWidth()
             )
         }
     }
