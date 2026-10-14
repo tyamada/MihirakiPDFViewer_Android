@@ -190,6 +190,8 @@ import com.github.tyamada.mihirakipdfviewer_android.viewmodel.ViewerViewModel
         val originalItems = listOf(
             R.string.help_open,
             R.string.help_navigate,
+            R.string.help_outline,
+            R.string.help_adaptive,
             R.string.help_menu,
             R.string.help_zoom,
             R.string.help_search

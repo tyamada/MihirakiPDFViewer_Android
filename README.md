@@ -12,12 +12,14 @@ Built with **Kotlin**, **Jetpack Compose**, and **Material 3** following the **M
 ## ✨ Features
 
 - 📖 **Two-Page Spread Support**: Seamlessly view two pages side-by-side.
+- 📑 **PDF Table of Contents (Outline) Tree Navigation**: Extract bookmarks and chapters from PDF metadata for instant chapter jumping.
 - 🔄 **Auto-Detection**: Automatically detects page layout (Single/Spread) and reading direction (L2R/R2L) from PDF metadata.
 - 🇯🇵 **R2L Support**: Native support for right-to-left reading order and right-bound book layouts.
 - 🔍 **Powerful Search**: Fast text search with precise hit highlighting (yellow background and red border).
 - 🛡️ **Privacy First**: No internet permissions required for PDF processing. Uses Storage Access Framework (SAF) to only access files you choose.
 - 🚀 **Performant Rendering**: Uses Android's native `PdfRenderer` with a fallback to `PDFBox-Android` for maximum compatibility and features.
-- 🎨 **Adaptive UI**: Responsive design that works great on both phones and tablets, in portrait and landscape.
+- 🎨 **Adaptive UI & Foldable Support**: Responsive design with `BoxWithConstraints` that adapts seamlessly across phones, tablets, and foldables.
+- ♿ **Accessibility (A11y) & Automated Audits**: TalkBack semantics and automated Espresso AccessibilityChecks integrated into test suites.
 - 🖱️ **Desktop Mouse & Edge-Click Navigation**: Intuitive page turning by clicking the left and right edges on desktop/mouse navigation mode, configurable in Settings.
 - 📱 **Adaptive Portrait Display**: Automatically switches to single-page display in portrait orientation (defaulting to single-page on smartphones and spread on tablets, configurable in Settings).
 - 📋 **Diagnostics & Persistent Logging**: In-app device diagnostic testing and local app log management (stored securely locally for up to 24 hours, with zero personal/file data logging and no automatic external transmission).
