@@ -189,24 +189,26 @@ import com.github.tyamada.mihirakipdfviewer_android.viewmodel.ViewerViewModel
     Column(Modifier.padding(p).verticalScroll(rememberScrollState()).padding(20.dp)) {
         val originalItems = listOf(
             R.string.help_open,
+            R.string.help_sample_pdfs_desc,
+            R.string.help_menu,
             R.string.help_navigate,
             R.string.help_outline,
             R.string.help_adaptive,
-            R.string.help_menu,
             R.string.help_zoom,
-            R.string.help_search
+            R.string.help_search,
+            R.string.help_layout
         )
         val subItems = listOf(
-            R.string.help_layout,
             R.string.help_high_quality,
             R.string.help_sharpness,
             R.string.help_two_page,
-            R.string.help_portrait_display,
             R.string.help_show_cover,
             R.string.help_reading_direction,
+            R.string.help_document_info,
+            R.string.mouse_navigation,
+            R.string.help_portrait_display,
             R.string.help_cover_mode,
             R.string.help_reset,
-            R.string.help_document_info,
             R.string.help_help,
             R.string.help_app_info,
             R.string.help_support,
