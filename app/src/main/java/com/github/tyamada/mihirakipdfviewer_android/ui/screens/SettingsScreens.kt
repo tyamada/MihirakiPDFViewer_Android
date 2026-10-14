@@ -30,9 +30,8 @@ import com.github.tyamada.mihirakipdfviewer_android.util.*
 import com.github.tyamada.mihirakipdfviewer_android.viewmodel.ViewerViewModel
 
 @OptIn(ExperimentalMaterial3Api::class)
-@Composable fun SettingsScreen(vm: ViewerViewModel, back: () -> Unit, reset: () -> Unit, diagnostics: () -> Unit, deviceTest: () -> Unit, logViewer: () -> Unit) {
+@Composable fun SettingsScreen(vm: ViewerViewModel, back: () -> Unit, reset: () -> Unit) {
     val state by vm.state.collectAsState()
-    val context = LocalContext.current
 
     Scaffold(topBar = { TopAppBar(title = { Text(stringResource(R.string.settings)) }, navigationIcon = { IconButton(back) { Icon(Icons.AutoMirrored.Filled.ArrowBack, stringResource(R.string.back)) } }) }) { p ->
         Column(Modifier.padding(p).verticalScroll(rememberScrollState()).padding(16.dp)) {
@@ -54,42 +53,17 @@ import com.github.tyamada.mihirakipdfviewer_android.viewmodel.ViewerViewModel
                     Text(stringResource(R.string.reset))
                 }
             }
-
-            Section(stringResource(R.string.help))
-            TextButton(onClick = deviceTest, modifier = Modifier.fillMaxWidth()) {
-                Box(Modifier.fillMaxWidth(), contentAlignment = Alignment.CenterStart) {
-                    Text("実機テストを実行 (Device Test)")
-                }
-            }
-            TextButton(onClick = logViewer, modifier = Modifier.fillMaxWidth()) {
-                Box(Modifier.fillMaxWidth(), contentAlignment = Alignment.CenterStart) {
-                    Text("アプリログを表示・共有 (App Logs)")
-                }
-            }
-            TextButton(onClick = {
-                val intent = Intent(Intent.ACTION_VIEW, android.net.Uri.parse("https://github.com/tyamada/MihirakiPDFViewer_Android/issues"))
-                context.startActivity(intent)
-            }, modifier = Modifier.fillMaxWidth()) {
-                Box(Modifier.fillMaxWidth(), contentAlignment = Alignment.CenterStart) {
-                    Text(stringResource(R.string.report_issue))
-                }
-            }
-            TextButton(onClick = diagnostics, modifier = Modifier.fillMaxWidth()) {
-                Box(Modifier.fillMaxWidth(), contentAlignment = Alignment.CenterStart) {
-                    Text(stringResource(R.string.testing_diagnostic_logs))
-                }
-            }
         }
     }
 }
+
 @Composable private fun Section(text: String) { Text(text, style = MaterialTheme.typography.titleMedium, color = MaterialTheme.colorScheme.primary, modifier = Modifier.padding(top = 20.dp, bottom = 8.dp)) }
 @Composable private fun SwitchRow(label: String, checked: Boolean, change: (Boolean) -> Unit) { Row(Modifier.fillMaxWidth().heightIn(min = 56.dp), horizontalArrangement = Arrangement.SpaceBetween) { Text(label, Modifier.padding(top = 14.dp)); Switch(checked, change) } }
 @Composable private fun SelectRow(label: String, value: String, click: () -> Unit) { TextButton(click, Modifier.fillMaxWidth().heightIn(min = 56.dp)) { Text(label, Modifier.weight(1f)); Text(value) } }
 @Composable private fun Info(label: String, value: String) { ListItem(headlineContent = { Text(label) }, supportingContent = { Text(value.ifBlank { "—" }) }) }
 
 @OptIn(ExperimentalMaterial3Api::class)
-@Composable fun HelpScreen(vm: ViewerViewModel, back: () -> Unit, licenses: () -> Unit) {
-    val state by vm.state.collectAsState()
+@Composable fun HelpScreen(back: () -> Unit) {
     val context = LocalContext.current
     val htmlText = remember {
         val lang = java.util.Locale.getDefault().language
@@ -140,16 +114,11 @@ import com.github.tyamada.mihirakipdfviewer_android.viewmodel.ViewerViewModel
             "表紙設定", "Cover setting",
             "リセット", "Reset"
         )),
-        HelpCategory("サポートと診断 / Support & Diagnostics", listOf(
-            "ヘルプ", "Help",
+        HelpCategory("診断 / Diagnostics", listOf(
             "実機テストを実行", "Device Test",
             "アプリログを表示・共有", "App Logs",
             "不具合を報告する", "Report Issue",
-            "テスト・診断ログのクリア", "Clear Test & Diagnostic Logs",
-            "アプリ情報", "App information",
-            "購入した応援バッジ", "Purchased Support Badges",
-            "応援", "Support",
-            "プロモコードを入力", "Enter Promo Code"
+            "テスト・診断ログのクリア", "Clear Test & Diagnostic Logs"
         ))
     )
 
@@ -198,8 +167,38 @@ import com.github.tyamada.mihirakipdfviewer_android.viewmodel.ViewerViewModel
                     }
                 }
             }
+        }
+    }
+}
 
-            Spacer(Modifier.height(16.dp))
+data class HelpCategory(val title: String, val keywords: List<String>)
+
+private fun filterHtmlForCategory(html: String, keywords: List<String>): String {
+    val paragraphs = html.split("</p>").filter { it.isNotBlank() }
+    val orderedParagraphs = mutableListOf<String>()
+    keywords.forEach { kw ->
+        paragraphs.firstOrNull { p -> p.contains(kw) && !orderedParagraphs.contains(p + "</p>") }?.let { match ->
+            orderedParagraphs.add(match + "</p>")
+        }
+    }
+    return orderedParagraphs.joinToString("")
+}
+
+@OptIn(ExperimentalMaterial3Api::class)
+@Composable fun VersionScreen(vm: ViewerViewModel, back: () -> Unit, licenses: () -> Unit) {
+    val state by vm.state.collectAsState()
+    val context = LocalContext.current
+    var showPromoDialog by remember { mutableStateOf(false) }
+
+    Scaffold(
+        topBar = {
+            TopAppBar(
+                title = { Text(stringResource(R.string.app_info)) },
+                navigationIcon = { IconButton(back) { Icon(Icons.AutoMirrored.Filled.ArrowBack, stringResource(R.string.back)) } }
+            )
+        }
+    ) { p ->
+        Column(Modifier.padding(p).verticalScroll(rememberScrollState()).padding(16.dp)) {
             Section(stringResource(R.string.app_info))
             Info(stringResource(R.string.version), BuildConfig.VERSION_NAME)
             Info(stringResource(R.string.build_number), BuildConfig.VERSION_CODE.toString())
@@ -211,8 +210,15 @@ import com.github.tyamada.mihirakipdfviewer_android.viewmodel.ViewerViewModel
                 }
             }
 
+            Spacer(Modifier.height(16.dp))
+            TextButton(onClick = { showPromoDialog = true }, modifier = Modifier.fillMaxWidth()) {
+                Box(Modifier.fillMaxWidth(), contentAlignment = Alignment.CenterStart) {
+                    Text(stringResource(R.string.enter_promo_code))
+                }
+            }
+
             if (state.settings.allPurchasedTiers.isNotEmpty()) {
-                Spacer(Modifier.height(16.dp))
+                Spacer(Modifier.height(24.dp))
                 Text(
                     stringResource(R.string.purchased_badges_title),
                     style = MaterialTheme.typography.titleMedium,
@@ -242,30 +248,88 @@ import com.github.tyamada.mihirakipdfviewer_android.viewmodel.ViewerViewModel
                     }
                 }
             }
+
+            if (showPromoDialog) {
+                var promoCode by remember { mutableStateOf("") }
+                AlertDialog(
+                    onDismissRequest = { showPromoDialog = false },
+                    title = { Text(stringResource(R.string.promo_code_dialog_title)) },
+                    text = {
+                        Column(verticalArrangement = Arrangement.spacedBy(8.dp)) {
+                            Text(stringResource(R.string.promo_code_instructions), style = MaterialTheme.typography.bodyMedium)
+                            OutlinedTextField(
+                                value = promoCode,
+                                onValueChange = { promoCode = it },
+                                label = { Text(stringResource(R.string.enter_promo_code)) },
+                                singleLine = true,
+                                modifier = Modifier.fillMaxWidth()
+                            )
+                            Text(
+                                stringResource(R.string.promo_code_help_message),
+                                style = MaterialTheme.typography.bodySmall,
+                                color = MaterialTheme.colorScheme.onSurfaceVariant
+                            )
+                        }
+                    },
+                    confirmButton = {
+                        TextButton(onClick = {
+                            showPromoDialog = false
+                            val intent = Intent(Intent.ACTION_VIEW, Uri.parse("https://play.google.com/store?code=$promoCode"))
+                            runCatching { context.startActivity(intent) }.onFailure {
+                                Toast.makeText(context, R.string.error_opening_play_store, Toast.LENGTH_SHORT).show()
+                            }
+                        }) {
+                            Text(stringResource(R.string.redeem))
+                        }
+                    },
+                    dismissButton = {
+                        TextButton(onClick = { showPromoDialog = false }) {
+                            Text(stringResource(R.string.cancel))
+                        }
+                    }
+                )
+            }
         }
     }
 }
 
-data class HelpCategory(val title: String, val keywords: List<String>)
-
-private fun filterHtmlForCategory(html: String, keywords: List<String>): String {
-    val paragraphs = html.split("</p>").filter { it.isNotBlank() }
-    val orderedParagraphs = mutableListOf<String>()
-    keywords.forEach { kw ->
-        paragraphs.firstOrNull { p -> p.contains(kw) && !orderedParagraphs.contains(p + "</p>") }?.let { match ->
-            orderedParagraphs.add(match + "</p>")
+@OptIn(ExperimentalMaterial3Api::class)
+@Composable fun DiagnosticScreen(back: () -> Unit, deviceTest: () -> Unit, logViewer: () -> Unit, diagnostics: () -> Unit, reportIssue: () -> Unit) {
+    Scaffold(
+        topBar = {
+            TopAppBar(
+                title = { Text("診断 (Diagnostics)") },
+                navigationIcon = { IconButton(back) { Icon(Icons.AutoMirrored.Filled.ArrowBack, stringResource(R.string.back)) } }
+            )
+        }
+    ) { p ->
+        Column(Modifier.padding(p).verticalScroll(rememberScrollState()).padding(16.dp), verticalArrangement = Arrangement.spacedBy(8.dp)) {
+            TextButton(onClick = deviceTest, modifier = Modifier.fillMaxWidth()) {
+                Box(Modifier.fillMaxWidth(), contentAlignment = Alignment.CenterStart) {
+                    Text("実機テストを実行 (Device Test)")
+                }
+            }
+            TextButton(onClick = logViewer, modifier = Modifier.fillMaxWidth()) {
+                Box(Modifier.fillMaxWidth(), contentAlignment = Alignment.CenterStart) {
+                    Text("アプリログを表示・共有 (App Logs)")
+                }
+            }
+            TextButton(onClick = reportIssue, modifier = Modifier.fillMaxWidth()) {
+                Box(Modifier.fillMaxWidth(), contentAlignment = Alignment.CenterStart) {
+                    Text(stringResource(R.string.report_issue))
+                }
+            }
+            TextButton(onClick = diagnostics, modifier = Modifier.fillMaxWidth()) {
+                Box(Modifier.fillMaxWidth(), contentAlignment = Alignment.CenterStart) {
+                    Text(stringResource(R.string.testing_diagnostic_logs))
+                }
+            }
         }
     }
-    return orderedParagraphs.joinToString("")
 }
 
 @OptIn(ExperimentalMaterial3Api::class)
-@Composable fun ResetScreen(vm: ViewerViewModel, back: () -> Unit) = Scaffold(topBar = { TopAppBar(title = { Text(stringResource(R.string.reset)) }, navigationIcon = { IconButton(back) { Icon(Icons.AutoMirrored.Filled.ArrowBack, stringResource(R.string.back)) } }) }) { p ->
-    Column(Modifier.padding(p).padding(24.dp)) { Text(stringResource(R.string.reset_message), style = MaterialTheme.typography.titleLarge); Spacer(Modifier.weight(1f)); Row(Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.End) { TextButton(back) { Text(stringResource(R.string.cancel)) }; Spacer(Modifier.width(8.dp)); Button(onClick = { vm.reset(); back() }) { Text(stringResource(R.string.reset)) } } }
-}
-
-@OptIn(ExperimentalMaterial3Api::class)
-@Composable fun DiagnosticScreen(back: () -> Unit) {
+@Composable fun DiagnosticLogsScreen(back: () -> Unit) {
     val logs by AppLogger.logs.collectAsState()
     val runtime = Runtime.getRuntime()
     val usedMemory = (runtime.totalMemory() - runtime.freeMemory()) / 1024 / 1024
@@ -274,7 +338,7 @@ private fun filterHtmlForCategory(html: String, keywords: List<String>): String 
     Scaffold(
         topBar = {
             TopAppBar(
-                title = { Text("Testing & Diagnostics") },
+                title = { Text(stringResource(R.string.testing_diagnostic_logs)) },
                 navigationIcon = { IconButton(back) { Icon(Icons.AutoMirrored.Filled.ArrowBack, stringResource(R.string.back)) } }
             )
         }
@@ -310,6 +374,11 @@ private fun filterHtmlForCategory(html: String, keywords: List<String>): String 
             }
         }
     }
+}
+
+@OptIn(ExperimentalMaterial3Api::class)
+@Composable fun ResetScreen(vm: ViewerViewModel, back: () -> Unit) = Scaffold(topBar = { TopAppBar(title = { Text(stringResource(R.string.reset)) }, navigationIcon = { IconButton(back) { Icon(Icons.AutoMirrored.Filled.ArrowBack, stringResource(R.string.back)) } }) }) { p ->
+    Column(Modifier.padding(p).padding(24.dp)) { Text(stringResource(R.string.reset_message), style = MaterialTheme.typography.titleLarge); Spacer(Modifier.weight(1f)); Row(Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.End) { TextButton(back) { Text(stringResource(R.string.cancel)) }; Spacer(Modifier.width(8.dp)); Button(onClick = { vm.reset(); back() }) { Text(stringResource(R.string.reset)) } } }
 }
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -496,6 +565,3 @@ private fun filterHtmlForCategory(html: String, keywords: List<String>): String 
         }
     }
 }
-
-
-
