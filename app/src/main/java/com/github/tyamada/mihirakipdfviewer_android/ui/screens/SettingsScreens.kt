@@ -64,62 +64,38 @@ import com.github.tyamada.mihirakipdfviewer_android.viewmodel.ViewerViewModel
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable fun HelpScreen(back: () -> Unit) {
-    val context = LocalContext.current
-    val htmlText = remember {
-        val lang = java.util.Locale.getDefault().language
-        val fullTag = java.util.Locale.getDefault().toLanguageTag()
-        val fileName = when {
-            fullTag.contains("zh-TW", ignoreCase = true) || fullTag.contains("zh-HK", ignoreCase = true) -> "help_zh-TW.html"
-            lang == "zh" -> "help_zh.html"
-            lang in listOf("ja", "ko", "de", "fr", "es", "pt", "vi", "ne", "id", "fil") -> "help_$lang.html"
-            else -> "help_en.html"
-        }
-        val assetName = try {
-            context.assets.open(fileName).close()
-            fileName
-        } catch (_: Exception) {
-            "help_en.html"
-        }
-        try {
-            context.assets.open(assetName).bufferedReader().use { it.readText() }
-        } catch (_: Exception) {
-            "<p>Help content not available.</p>"
-        }
-    }
-
     val categories = listOf(
-        HelpCategory("はじめての使い方 / Getting Started", listOf(
-            "PDFを開く", "Open PDF",
-            "サンプルPDF", "Sample PDFs",
-            "ページ移動", "Navigate Pages",
-            "メニュー", "Menu"
+        HelpCategorySpec("はじめての使い方 / Getting Started", listOf(
+            R.string.help_open,
+            R.string.help_sample_pdfs_desc,
+            R.string.help_navigate,
+            R.string.help_menu
         )),
-        HelpCategory("読書を快適にする機能 / Reading Features", listOf(
-            "検索", "Search",
-            "PDF目次", "PDF Table of Contents",
-            "サンプルPDF", "Sample PDFs",
-            "PDFを開く", "Open PDF",
-            "設定", "Settings",
-            "ズーム", "Zoom",
-            "スライダー", "Slider"
+        HelpCategorySpec("読書を快適にする機能 / Reading Features", listOf(
+            R.string.help_search,
+            R.string.help_outline,
+            R.string.help_sample_pdfs_desc,
+            R.string.help_open,
+            R.string.help_layout,
+            R.string.help_zoom,
+            R.string.help_slider
         )),
-        HelpCategory("設定とカスタマイズ / Settings Guide", listOf(
-            "高画質化", "High quality",
-            "シャープネス", "Sharpness",
-            "見開き表示", "Two-page view",
-            "表紙を表示", "Show cover",
-            "ページ方向", "Reading direction",
-            "ドキュメント情報", "Document information",
-            "マウスクリックでページ切り替え", "Mouse Navigation",
-            "縦向きでは単一ページ表示", "Portrait single page",
-            "表紙設定", "Cover setting",
-            "リセット", "Reset"
+        HelpCategorySpec("設定とカスタマイズ / Settings Guide", listOf(
+            R.string.help_high_quality,
+            R.string.help_sharpness,
+            R.string.help_two_page,
+            R.string.help_show_cover,
+            R.string.help_reading_direction,
+            R.string.help_document_info,
+            R.string.mouse_navigation,
+            R.string.help_portrait_display,
+            R.string.help_cover_mode
         )),
-        HelpCategory("診断 / Diagnostics", listOf(
-            "実機テストを実行", "Device Test",
-            "アプリログを表示・共有", "App Logs",
-            "不具合を報告する", "Report Issue",
-            "テスト・診断ログのクリア", "Clear Test & Diagnostic Logs"
+        HelpCategorySpec("診断 / Diagnostics", listOf(
+            R.string.help_device_test,
+            R.string.help_log_viewer,
+            R.string.report_issue_desc,
+            R.string.help_clear_logs
         ))
     )
 
@@ -149,20 +125,22 @@ import com.github.tyamada.mihirakipdfviewer_android.viewmodel.ViewerViewModel
                         }
                         if (expanded) {
                             HorizontalDivider(color = MaterialTheme.colorScheme.outlineVariant.copy(alpha = 0.5f))
-                            Box(Modifier.padding(16.dp)) {
-                                val filteredHtml = filterHtmlForCategory(htmlText, category.keywords)
-                                AndroidView(
-                                    factory = { context ->
-                                        TextView(context).apply {
-                                            textSize = 14f
-                                        }
-                                    },
-                                    update = { view ->
-                                        view.text = HtmlCompat.fromHtml(filteredHtml, HtmlCompat.FROM_HTML_MODE_COMPACT)
-                                        view.setTextColor(android.graphics.Color.parseColor("#1C1B1F"))
-                                    },
-                                    modifier = Modifier.fillMaxWidth()
-                                )
+                            Column(Modifier.padding(16.dp), verticalArrangement = Arrangement.spacedBy(12.dp)) {
+                                category.items.forEach { resId ->
+                                    val htmlText = stringResource(resId)
+                                    AndroidView(
+                                        factory = { context ->
+                                            TextView(context).apply {
+                                                textSize = 14f
+                                            }
+                                        },
+                                        update = { view ->
+                                            view.text = HtmlCompat.fromHtml(htmlText, HtmlCompat.FROM_HTML_MODE_COMPACT)
+                                            view.setTextColor(android.graphics.Color.parseColor("#1C1B1F"))
+                                        },
+                                        modifier = Modifier.fillMaxWidth()
+                                    )
+                                }
                             }
                         }
                     }
@@ -172,18 +150,7 @@ import com.github.tyamada.mihirakipdfviewer_android.viewmodel.ViewerViewModel
     }
 }
 
-data class HelpCategory(val title: String, val keywords: List<String>)
-
-private fun filterHtmlForCategory(html: String, keywords: List<String>): String {
-    val paragraphs = html.split("</p>").filter { it.isNotBlank() }
-    val orderedParagraphs = mutableListOf<String>()
-    keywords.forEach { kw ->
-        paragraphs.firstOrNull { p -> p.contains(kw) && !orderedParagraphs.contains(p + "</p>") }?.let { match ->
-            orderedParagraphs.add(match + "</p>")
-        }
-    }
-    return orderedParagraphs.joinToString("")
-}
+data class HelpCategorySpec(val title: String, val items: List<Int>)
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable fun VersionScreen(vm: ViewerViewModel, back: () -> Unit, licenses: () -> Unit, tips: () -> Unit) {
