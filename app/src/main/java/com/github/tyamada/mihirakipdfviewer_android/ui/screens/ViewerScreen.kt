@@ -47,7 +47,7 @@ import kotlinx.coroutines.withTimeoutOrNull
 import kotlin.math.abs
 
 @OptIn(ExperimentalMaterial3Api::class)
-@Composable fun ViewerScreen(vm: ViewerViewModel, openSettings: () -> Unit, openSamplePdfs: () -> Unit) {
+@Composable fun ViewerScreen(vm: ViewerViewModel, openSettings: () -> Unit, openHelp: () -> Unit, openSupport: () -> Unit, openSamplePdfs: () -> Unit) {
     val state by vm.state.collectAsState(); val context = LocalContext.current
     val configuration = LocalConfiguration.current
     val isPortrait = configuration.orientation == android.content.res.Configuration.ORIENTATION_PORTRAIT
@@ -130,8 +130,25 @@ import kotlin.math.abs
                             IconButton(onClick = { picker.launch(arrayOf("application/pdf")) }) {
                                 Icon(Icons.Default.FolderOpen, stringResource(R.string.open_pdf))
                             }
-                            IconButton(onClick = openSettings, modifier = Modifier.testTag("btn_settings")) {
-                                Icon(Icons.Default.Settings, stringResource(R.string.settings))
+                            var showMenu by remember { mutableStateOf(false) }
+                            Box {
+                                IconButton(onClick = { showMenu = true }, modifier = Modifier.testTag("btn_settings")) {
+                                    Icon(Icons.Default.Settings, stringResource(R.string.settings))
+                                }
+                                DropdownMenu(expanded = showMenu, onDismissRequest = { showMenu = false }) {
+                                    DropdownMenuItem(
+                                        text = { Text(stringResource(R.string.settings)) },
+                                        onClick = { showMenu = false; openSettings() }
+                                    )
+                                    DropdownMenuItem(
+                                        text = { Text(stringResource(R.string.help)) },
+                                        onClick = { showMenu = false; openHelp() }
+                                    )
+                                    DropdownMenuItem(
+                                        text = { Text(stringResource(R.string.support)) },
+                                        onClick = { showMenu = false; openSupport() }
+                                    )
+                                }
                             }
                         },
                     )
