@@ -1,0 +1,38 @@
+{
+  "captureId": "17906b5bbe644e5c812600d7a89b006b",
+  "scene": "04_search",
+  "language": "zh_cn",
+  "locale": "zh-CN",
+  "portrait": true,
+  "pdfSha256": "967fc8f75c8a936e1c27a30d0b8541eafd49140f7ba3d4b80e1c3df3e5502605",
+  "page": 6,
+  "pageCount": 8,
+  "query": "歇口气地图",
+  "searchResultCount": 8,
+  "page6SearchRects": [
+    {
+      "left": 323.0776,
+      "top": 141.03085,
+      "right": 366.57767,
+      "bottom": 148.68338
+    },
+    {
+      "left": 39.021004,
+      "top": 575.1446,
+      "right": 74.021,
+      "bottom": 581.30176
+    }
+  ],
+  "direction": "R2L",
+  "layout": "SINGLE",
+  "showCover": true,
+  "version": "2.0.0",
+  "versionCode": 29,
+  "package": "com.github.tyamada.MihirakiPDFViewer_Android",
+  "avd": "Smartphone_6.3",
+  "serial": "emulator-5580",
+  "fingerprint": "ebd6aa89d073fc84fce9661ac4bad5a0041547d2f676b4102f451a1b73e854b7",
+  "imageSha256": "b07d61ab16977e860f776e9cd39b724d51eabac2bcc71fdb21d0c68216e2b65d",
+  "checkedAt": "2026-10-12T21:44:34+0900",
+  "validation": "automated-pass; visual-reviewed"
+}

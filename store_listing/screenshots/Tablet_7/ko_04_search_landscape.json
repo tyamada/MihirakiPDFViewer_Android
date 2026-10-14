@@ -1,0 +1,38 @@
+{
+  "captureId": "9d98a0919f9f4b92a6265ffabfe5d495",
+  "scene": "04_search",
+  "language": "ko",
+  "locale": "ko-KR",
+  "portrait": false,
+  "pdfSha256": "4f0181a147183572879297b157a3d5f04ca166e77f21c768c114d043e7424e06",
+  "page": 6,
+  "pageCount": 8,
+  "query": "한숨 돌림 지도",
+  "searchResultCount": 8,
+  "page6SearchRects": [
+    {
+      "left": 326.3575,
+      "top": 141.03085,
+      "right": 378.27908,
+      "bottom": 148.68338
+    },
+    {
+      "left": 37.901,
+      "top": 575.1446,
+      "right": 79.677,
+      "bottom": 581.30176
+    }
+  ],
+  "direction": "R2L",
+  "layout": "SPREAD",
+  "showCover": true,
+  "version": "2.0.0",
+  "versionCode": 29,
+  "package": "com.github.tyamada.MihirakiPDFViewer_Android",
+  "avd": "Tablet_7",
+  "serial": "emulator-5582",
+  "fingerprint": "ebd6aa89d073fc84fce9661ac4bad5a0041547d2f676b4102f451a1b73e854b7",
+  "imageSha256": "bc2deef7e6c7e8bf75822779fc03f4a085a0f32b7cb4c87faf3163eb18ccbfcc",
+  "checkedAt": "2026-10-12T21:47:36+0900",
+  "validation": "automated-pass; visual-reviewed"
+}
