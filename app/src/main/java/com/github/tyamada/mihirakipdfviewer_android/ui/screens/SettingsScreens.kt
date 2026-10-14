@@ -100,7 +100,8 @@ import com.github.tyamada.mihirakipdfviewer_android.viewmodel.ViewerViewModel
             "サンプルPDF", "Sample PDFs",
             "PDFを開く", "Open PDF",
             "設定", "Settings",
-            "ズーム", "Zoom"
+            "ズーム", "Zoom",
+            "スライダー", "Slider"
         )),
         HelpCategory("設定とカスタマイズ / Settings Guide", listOf(
             "高画質化", "High quality",
