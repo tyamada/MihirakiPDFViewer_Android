@@ -30,21 +30,9 @@ import com.github.tyamada.mihirakipdfviewer_android.util.*
 import com.github.tyamada.mihirakipdfviewer_android.viewmodel.ViewerViewModel
 
 @OptIn(ExperimentalMaterial3Api::class)
-@Composable fun SettingsScreen(vm: ViewerViewModel, back: () -> Unit, help: () -> Unit, reset: () -> Unit, tips: () -> Unit, licenses: () -> Unit, diagnostics: () -> Unit, deviceTest: () -> Unit, logViewer: () -> Unit) {
+@Composable fun SettingsScreen(vm: ViewerViewModel, back: () -> Unit, reset: () -> Unit, diagnostics: () -> Unit, deviceTest: () -> Unit, logViewer: () -> Unit) {
     val state by vm.state.collectAsState()
     val context = LocalContext.current
-    val billing = vm.billing
-    val purchasedTiers by billing.purchasedTiers.collectAsState()
-
-    LaunchedEffect(Unit) {
-        billing.queryPurchases()
-    }
-
-    LaunchedEffect(purchasedTiers) {
-        if (purchasedTiers.isNotEmpty()) {
-            vm.updateSettings { s -> s.copy(purchasedTiers = s.purchasedTiers + purchasedTiers.map { it.name }) }
-        }
-    }
 
     Scaffold(topBar = { TopAppBar(title = { Text(stringResource(R.string.settings)) }, navigationIcon = { IconButton(back) { Icon(Icons.AutoMirrored.Filled.ArrowBack, stringResource(R.string.back)) } }) }) { p ->
         Column(Modifier.padding(p).verticalScroll(rememberScrollState()).padding(16.dp)) {
@@ -68,11 +56,6 @@ import com.github.tyamada.mihirakipdfviewer_android.viewmodel.ViewerViewModel
             }
 
             Section(stringResource(R.string.help))
-            TextButton(onClick = help, modifier = Modifier.fillMaxWidth()) {
-                Box(Modifier.fillMaxWidth(), contentAlignment = Alignment.CenterStart) {
-                    Text(stringResource(R.string.help))
-                }
-            }
             TextButton(onClick = deviceTest, modifier = Modifier.fillMaxWidth()) {
                 Box(Modifier.fillMaxWidth(), contentAlignment = Alignment.CenterStart) {
                     Text("実機テストを実行 (Device Test)")
@@ -96,89 +79,6 @@ import com.github.tyamada.mihirakipdfviewer_android.viewmodel.ViewerViewModel
                     Text(stringResource(R.string.testing_diagnostic_logs))
                 }
             }
-
-            Section(stringResource(R.string.app_info))
-            Info(stringResource(R.string.version), BuildConfig.VERSION_NAME)
-            Info(stringResource(R.string.build_number), BuildConfig.VERSION_CODE.toString())
-            Info(stringResource(R.string.copyright), "©️ 2026 Takuma Yamada")
-
-            TextButton(onClick = licenses, modifier = Modifier.fillMaxWidth()) {
-                Box(Modifier.fillMaxWidth(), contentAlignment = Alignment.CenterStart) {
-                    Text(stringResource(R.string.licenses))
-                }
-            }
-
-            if (state.settings.allPurchasedTiers.isNotEmpty()) {
-                Spacer(Modifier.height(24.dp))
-                Text(
-                    stringResource(R.string.purchased_badges_title),
-                    style = MaterialTheme.typography.titleMedium,
-                    color = MaterialTheme.colorScheme.primary,
-                    modifier = Modifier.padding(bottom = 8.dp)
-                )
-                Row(
-                    Modifier.fillMaxWidth(),
-                    horizontalArrangement = Arrangement.Center,
-                    verticalAlignment = Alignment.CenterVertically
-                ) {
-                    state.settings.allPurchasedTiers.forEach { tier ->
-                        val res = when (tier) {
-                            "BRONZE" -> R.drawable.ic_tip_bronze
-                            "SILVER" -> R.drawable.ic_tip_silver
-                            "GOLD" -> R.drawable.ic_tip_gold
-                            "KOYOMI" -> R.drawable.ic_tip_koyomi
-                            else -> null
-                        }
-                        res?.let {
-                            Image(
-                                painter = painterResource(it),
-                                contentDescription = "$tier Supporter Badge",
-                                modifier = Modifier.height(100.dp).padding(horizontal = 8.dp)
-                            )
-                        }
-                    }
-                }
-            }
-
-            Section("開発者を応援")
-            TextButton(onClick = tips, modifier = Modifier.fillMaxWidth()) {
-                Box(Modifier.fillMaxWidth(), contentAlignment = Alignment.CenterStart) {
-                    Text(stringResource(R.string.support))
-                }
-            }
-
-            var showPromoDialog by remember { mutableStateOf(false) }
-
-            TextButton(onClick = { showPromoDialog = true }, modifier = Modifier.fillMaxWidth()) {
-                Box(Modifier.fillMaxWidth(), contentAlignment = Alignment.CenterStart) {
-                    Text(stringResource(R.string.enter_promo_code))
-                }
-            }
-
-            if (showPromoDialog) {
-                AlertDialog(
-                    onDismissRequest = { showPromoDialog = false },
-                    title = { Text(stringResource(R.string.promo_code_help_title)) },
-                    text = {
-                        Text(stringResource(R.string.promo_code_help_message))
-                    },
-                    confirmButton = {
-                        Button(
-                            onClick = {
-                                showPromoDialog = false
-                                tips()
-                            }
-                        ) {
-                            Text(stringResource(R.string.go_to_support))
-                        }
-                    },
-                    dismissButton = {
-                        TextButton(onClick = { showPromoDialog = false }) {
-                            Text(stringResource(R.string.cancel))
-                        }
-                    }
-                )
-            }
         }
     }
 }
@@ -188,7 +88,8 @@ import com.github.tyamada.mihirakipdfviewer_android.viewmodel.ViewerViewModel
 @Composable private fun Info(label: String, value: String) { ListItem(headlineContent = { Text(label) }, supportingContent = { Text(value.ifBlank { "—" }) }) }
 
 @OptIn(ExperimentalMaterial3Api::class)
-@Composable fun HelpScreen(back: () -> Unit) {
+@Composable fun HelpScreen(vm: ViewerViewModel, back: () -> Unit, licenses: () -> Unit) {
+    val state by vm.state.collectAsState()
     val context = LocalContext.current
     val htmlText = remember {
         val lang = java.util.Locale.getDefault().language
@@ -231,7 +132,7 @@ import com.github.tyamada.mihirakipdfviewer_android.viewmodel.ViewerViewModel
             "高画質化", "High quality",
             "シャープネス", "Sharpness",
             "見開き表示", "Two-page view",
-            "表紙を表示する", "Show cover",
+            "表紙を表示", "Show cover",
             "ページ方向", "Reading direction",
             "ドキュメント情報", "Document information",
             "マウスクリックでページ切り替え", "Mouse Navigation",
@@ -246,6 +147,7 @@ import com.github.tyamada.mihirakipdfviewer_android.viewmodel.ViewerViewModel
             "不具合を報告する", "Report Issue",
             "テスト・診断ログのクリア", "Clear Test & Diagnostic Logs",
             "アプリ情報", "App information",
+            "購入した応援バッジ", "Purchased Support Badges",
             "応援", "Support",
             "プロモコードを入力", "Enter Promo Code"
         ))
@@ -292,6 +194,50 @@ import com.github.tyamada.mihirakipdfviewer_android.viewmodel.ViewerViewModel
                                     modifier = Modifier.fillMaxWidth()
                                 )
                             }
+                        }
+                    }
+                }
+            }
+
+            Spacer(Modifier.height(16.dp))
+            Section(stringResource(R.string.app_info))
+            Info(stringResource(R.string.version), BuildConfig.VERSION_NAME)
+            Info(stringResource(R.string.build_number), BuildConfig.VERSION_CODE.toString())
+            Info(stringResource(R.string.copyright), "©️ 2026 Takuma Yamada")
+
+            TextButton(onClick = licenses, modifier = Modifier.fillMaxWidth()) {
+                Box(Modifier.fillMaxWidth(), contentAlignment = Alignment.CenterStart) {
+                    Text(stringResource(R.string.licenses))
+                }
+            }
+
+            if (state.settings.allPurchasedTiers.isNotEmpty()) {
+                Spacer(Modifier.height(16.dp))
+                Text(
+                    stringResource(R.string.purchased_badges_title),
+                    style = MaterialTheme.typography.titleMedium,
+                    color = MaterialTheme.colorScheme.primary,
+                    modifier = Modifier.padding(bottom = 8.dp)
+                )
+                Row(
+                    Modifier.fillMaxWidth(),
+                    horizontalArrangement = Arrangement.Center,
+                    verticalAlignment = Alignment.CenterVertically
+                ) {
+                    state.settings.allPurchasedTiers.forEach { tier ->
+                        val res = when (tier) {
+                            "BRONZE" -> R.drawable.ic_tip_bronze
+                            "SILVER" -> R.drawable.ic_tip_silver
+                            "GOLD" -> R.drawable.ic_tip_gold
+                            "KOYOMI" -> R.drawable.ic_tip_koyomi
+                            else -> null
+                        }
+                        res?.let {
+                            Image(
+                                painter = painterResource(it),
+                                contentDescription = "$tier Supporter Badge",
+                                modifier = Modifier.height(100.dp).padding(horizontal = 8.dp)
+                            )
                         }
                     }
                 }

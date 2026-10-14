@@ -11,15 +11,12 @@ import com.github.tyamada.mihirakipdfviewer_android.viewmodel.ViewerViewModel
 @Composable fun MihirakiApp(viewer: ViewerViewModel) = MihirakiTheme {
     val nav = rememberNavController()
     NavHost(nav, startDestination = "viewer") {
-        composable("viewer") { ViewerScreen(viewer, { nav.navigate("settings") }, { nav.navigate("sample_pdfs") }) }
+        composable("viewer") { ViewerScreen(viewer, { nav.navigate("settings") }, { nav.navigate("help") }, { nav.navigate("tips") }, { nav.navigate("sample_pdfs") }) }
         composable("settings") { 
             SettingsScreen(
                 vm = viewer,
                 back = { nav.popBackStack() },
-                help = { nav.navigate("help") },
                 reset = { nav.navigate("reset") },
-                tips = { nav.navigate("tips") },
-                licenses = { nav.navigate("licenses") },
                 diagnostics = { nav.navigate("diagnostics") },
                 deviceTest = { nav.navigate("device_test") },
                 logViewer = { nav.navigate("log_viewer") }
@@ -36,7 +33,7 @@ import com.github.tyamada.mihirakipdfviewer_android.viewmodel.ViewerViewModel
                 }
             )
         }
-        composable("help") { HelpScreen { nav.popBackStack() } }
+        composable("help") { HelpScreen(viewer, { nav.popBackStack() }, { nav.navigate("licenses") }) }
         composable("licenses") { LicenseScreen { nav.popBackStack() } }
         composable("reset") { ResetScreen(viewer) { nav.popBackStack() } }
         composable("tips") { TipScreen(viewer) { nav.popBackStack() } }
