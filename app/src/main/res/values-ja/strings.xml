@@ -5,7 +5,7 @@
     <string name="previous_search">前の検索結果</string>
     <string name="next_search">次の検索結果</string>
     <string name="password_required">パスワードが必要です</string><string name="password">パスワード</string><string name="wrong_password">パスワードが正しくありません。</string><string name="permission_denied">このファイルを読み取る権限がありません。</string><string name="cannot_open_pdf">PDFを開けません。ファイルが破損している可能性があります。</string><string name="no_results">検索結果がありません。</string>
-    <string name="display_settings">表示設定</string><string name="high_quality">高画質化</string><string name="sharpness">シャープネス</string><string name="two_page">見開き表示</string><string name="portrait_display">縦向きでは単一ページ表示</string><string name="show_cover">表紙表示</string><string name="reading_direction">ページ方向</string><string name="cover_mode">表紙設定</string><string name="mouse_navigation">マウスクリックでページ切り替え</string>
+    <string name="display_settings">表示設定</string><string name="high_quality">高画質化</string><string name="sharpness">シャープネス</string><string name="two_page">見開き表示</string><string name="portrait_display">縦向きでは単一ページ表示</string><string name="show_cover">表紙を表示</string><string name="reading_direction">ページ方向</string><string name="cover_mode">表紙設定</string><string name="mouse_navigation">マウスクリックでページ切り替え</string>
     <string name="document_info">ドキュメント情報</string><string name="title">タイトル</string><string name="author">作成者</string><string name="subject">サブタイトル</string><string name="keywords">キーワード</string><string name="pdf_version">PDFのバージョン</string><string name="options">オプション</string><string name="help">ヘルプ</string><string name="licenses">ライセンス</string><string name="reset">リセット</string>
     <string name="reset_message">アプリの設定をリセットします。</string>
     <string name="help_open"><b>PDFを開く:</b> ファイルピッカーから端末またはクラウドストレージのPDFを選択します。</string>
@@ -26,7 +26,7 @@
     <string name="help_app_info"><b>アプリ情報:</b> アプリのバージョン、ビルド番号、著作権、サポーターバッジを確認します。</string>
     <string name="help_support"><b>開発者を応援:</b> 任意の応援チップで開発を支援し、サポーターバッジを表示します。</string>
     <string name="tip_message">アプリを気に入っていただけたら、開発を応援できます。</string>
-    <string name="tip_free_notice">購入しなくてもすべての機能を利用できます。</string>
+    <string name="tip_free_notice">本アプリは完全に無料でご利用いただけます。PDFの閲覧、見開き表示、検索といったすべての機能は、購入の有無にかかわらず制限なくお使いいただけます。</string>
     <string name="purchased_badges_title">購入した応援バッジ</string>
     <string name="purchase_badge_notice">設定画面に応援バッジを表示しました。</string>
     <string name="purchase">購入</string><string name="purchased" translatable="false">購入済み</string><string name="free">無料</string><string name="claim">取得</string><string name="koyomi_badge_title">Ver.2.0公開記念こよみバッジ</string><string name="purchase_thanks">ありがとうございます！%1$sの応援を受け取りました。</string><string name="purchase_cancelled">購入をキャンセルしました。</string><string name="purchase_failed">購入に失敗しました。もう一度お試しください。</string>
@@ -59,4 +59,10 @@
     <string name="promo_code_help_title">プロモーションコードの利用方法</string>
     <string name="promo_code_help_message">記念こよみバッジのプロモーションコードは、「応援」画面を開き「Ver.2.0公開記念こよみバッジ」の購入ボタンをタップ後、Google Play決済画面のお支払い方法メニューから「コードの利用」を選択して入力してください。</string>
     <string name="go_to_support">応援画面へ移動</string>
+    <string name="help_device_test" translatable="false"><b>実機テストを実行:</b> 端末のハードウェアおよびパフォーマンスのテストを実行します。</string>
+    <string name="help_log_viewer" translatable="false"><b>アプリログを表示・共有:</b> トラブルシューティング用にローカルのアプリログを表示・共有します。</string>
+    <string name="help_clear_logs" translatable="false"><b>テスト・診断ログのクリア:</b> ローカルストレージに記録されたすべてのテストおよび診断ログを削除します。</string>
+    <string name="help_promo_code" translatable="false"><b>プロモコードを入力:</b> Google Playのプロモーションコードを入力してバッジやアイテムを引き換えます。</string>
+    <string name="help_slider" translatable="false"><b>スライダー:</b> 下部バーのスライダーをドラッグして、ドキュメント内の任意のページへ素早く移動できます。</string>
+    <string name="report_issue_desc" translatable="false"><b>不具合を報告する:</b> バグやクラッシュが発生した場合は、診断ログを添えて GitHub Issues からご報告ください。</string>
 </resources>
