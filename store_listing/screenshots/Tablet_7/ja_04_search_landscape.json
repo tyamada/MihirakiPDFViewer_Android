@@ -1,0 +1,32 @@
+{
+  "captureId": "ce900fcc91324850944865f4ec0034c6",
+  "scene": "04_search",
+  "language": "ja",
+  "locale": "ja-JP",
+  "portrait": false,
+  "pdfSha256": "9cc25ea07e9259b0062b4970a858a6315ac9152b23ccd3a1320ba83d2846c5af",
+  "page": 6,
+  "pageCount": 8,
+  "query": "今",
+  "searchResultCount": 1,
+  "page6SearchRects": [
+    {
+      "left": 376,
+      "top": 344.55637,
+      "right": 390.1,
+      "bottom": 352.37338
+    }
+  ],
+  "direction": "R2L",
+  "layout": "SPREAD",
+  "showCover": true,
+  "version": "2.0.0",
+  "versionCode": 29,
+  "package": "com.github.tyamada.MihirakiPDFViewer_Android",
+  "avd": "Tablet_7",
+  "serial": "emulator-5582",
+  "fingerprint": "ebd6aa89d073fc84fce9661ac4bad5a0041547d2f676b4102f451a1b73e854b7",
+  "imageSha256": "bce93ee7008b41d1002e5d5dbb55fed5ded07b7464e7ed2db7787ef337413ad7",
+  "checkedAt": "2026-10-12T21:45:16+0900",
+  "validation": "automated-pass; visual-reviewed"
+}
