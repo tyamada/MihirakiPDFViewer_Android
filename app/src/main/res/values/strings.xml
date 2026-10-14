@@ -59,4 +59,8 @@
     <string name="promo_code_help_title" translatable="false">How to Redeem Promo Code</string>
     <string name="promo_code_help_message" translatable="false">To redeem a promotion code for the Koyomi badge, go to the Support screen, tap the purchase button for the Ver.2.0 Koyomi badge, and in the Google Play payment sheet, select Redeem.</string>
     <string name="go_to_support" translatable="false">Go to Support</string>
+    <string name="help_device_test" translatable="false"><b>Device Test:</b> Run hardware and performance tests on your device.</string>
+    <string name="help_log_viewer" translatable="false"><b>App Logs:</b> View and securely share local application logs for troubleshooting.</string>
+    <string name="help_clear_logs" translatable="false"><b>Clear Test &amp; Diagnostic Logs:</b> Delete all recorded test and diagnostic logs from local storage.</string>
+    <string name="help_promo_code" translatable="false"><b>Enter Promo Code:</b> Redeem Google Play promotion codes to unlock items and badges.</string>
 </resources>

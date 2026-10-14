@@ -214,16 +214,40 @@ import com.github.tyamada.mihirakipdfviewer_android.viewmodel.ViewerViewModel
 
     val categories = listOf(
         HelpCategory("はじめての使い方 / Getting Started", listOf(
-            "Open PDF", "PDFを開く", "Sample PDFs", "サンプルPDF", "Menu", "メニュー"
+            "PDFを開く", "Open PDF",
+            "サンプルPDF", "Sample PDFs",
+            "ページ移動", "Navigate Pages",
+            "メニュー", "Menu"
         )),
         HelpCategory("読書を快適にする機能 / Reading Features", listOf(
-            "Navigate Pages", "ページ移動", "PDF Table of Contents", "PDF目次", "Zoom", "ズーム", "Search", "検索", "Adaptive Layout", "アダプティブレイアウト"
+            "検索", "Search",
+            "PDF目次", "PDF Table of Contents",
+            "サンプルPDF", "Sample PDFs",
+            "PDFを開く", "Open PDF",
+            "設定", "Settings",
+            "ズーム", "Zoom"
         )),
         HelpCategory("設定とカスタマイズ / Settings Guide", listOf(
-            "Settings", "設定", "High quality", "高画質化", "Sharpness", "シャープネス", "Two-page view", "見開き表示", "Show cover", "表紙を表示", "Reading direction", "スクロール方向", "Mouse Navigation", "マウス操作", "Portrait single page", "縦向きでは単一ページ表示", "Cover setting", "表紙設定", "Reset", "リセット"
+            "高画質化", "High quality",
+            "シャープネス", "Sharpness",
+            "見開き表示", "Two-page view",
+            "表紙を表示する", "Show cover",
+            "ページ方向", "Reading direction",
+            "ドキュメント情報", "Document information",
+            "マウスクリックでページ切り替え", "Mouse Navigation",
+            "縦向きでは単一ページ表示", "Portrait single page",
+            "表紙設定", "Cover setting",
+            "リセット", "Reset"
         )),
         HelpCategory("サポートと診断 / Support & Diagnostics", listOf(
-            "Document information", "ドキュメント情報", "Help", "ヘルプ", "App information", "アプリ情報", "Support the Developer", "開発者を応援", "Testing & App Logs", "テスト・診断とアプリログ"
+            "ヘルプ", "Help",
+            "実機テストを実行", "Device Test",
+            "アプリログを表示・共有", "App Logs",
+            "不具合を報告する", "Report Issue",
+            "テスト・診断ログのクリア", "Clear Test & Diagnostic Logs",
+            "アプリ情報", "App information",
+            "応援", "Support",
+            "プロモコードを入力", "Enter Promo Code"
         ))
     )
 
@@ -279,9 +303,14 @@ import com.github.tyamada.mihirakipdfviewer_android.viewmodel.ViewerViewModel
 data class HelpCategory(val title: String, val keywords: List<String>)
 
 private fun filterHtmlForCategory(html: String, keywords: List<String>): String {
-    val paragraphs = html.split("</p>")
-    val matched = paragraphs.filter { p -> keywords.any { kw -> p.contains(kw) } }
-    return if (matched.isNotEmpty()) matched.joinToString("</p>") + "</p>" else html
+    val paragraphs = html.split("</p>").filter { it.isNotBlank() }
+    val orderedParagraphs = mutableListOf<String>()
+    keywords.forEach { kw ->
+        paragraphs.firstOrNull { p -> p.contains(kw) && !orderedParagraphs.contains(p + "</p>") }?.let { match ->
+            orderedParagraphs.add(match + "</p>")
+        }
+    }
+    return orderedParagraphs.joinToString("")
 }
 
 @OptIn(ExperimentalMaterial3Api::class)
