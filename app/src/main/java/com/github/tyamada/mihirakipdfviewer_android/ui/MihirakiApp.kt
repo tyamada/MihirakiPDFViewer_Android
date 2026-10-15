@@ -30,7 +30,11 @@ import com.github.tyamada.mihirakipdfviewer_android.viewmodel.ViewerViewModel
             SettingsScreen(
                 vm = viewer,
                 back = { nav.popBackStack() },
-                reset = { nav.navigate("reset") }
+                reset = { nav.navigate("reset") },
+                openHelp = { nav.navigate("help") },
+                openVersion = { nav.navigate("version") },
+                openDiagnostics = { nav.navigate("diagnostics") },
+                openSupport = { nav.navigate("tips") }
             )
         }
         composable("sample_pdfs") {
@@ -52,10 +56,14 @@ import com.github.tyamada.mihirakipdfviewer_android.viewmodel.ViewerViewModel
                 deviceTest = { nav.navigate("device_test") },
                 logViewer = { nav.navigate("log_viewer") },
                 diagnostics = { nav.navigate("diagnostic_logs") },
-                reportIssue = {
-                    val intent = Intent(Intent.ACTION_VIEW, Uri.parse("https://github.com/tyamada/MihirakiPDFViewer_Android/issues"))
-                    context.startActivity(intent)
-                }
+                reportIssue = { nav.navigate("report_issue") }
+            ) 
+        }
+        composable("report_issue") { 
+            ReportIssueScreen(
+                back = { nav.popBackStack() },
+                deviceTest = { nav.navigate("device_test") },
+                logViewer = { nav.navigate("log_viewer") }
             ) 
         }
         composable("diagnostic_logs") { DiagnosticLogsScreen { nav.popBackStack() } }

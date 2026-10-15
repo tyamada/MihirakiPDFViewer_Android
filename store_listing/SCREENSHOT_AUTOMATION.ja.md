@@ -136,3 +136,17 @@ PDFは `/data/local/tmp` に転送してハッシュを検証し、`run-as` で�
 Desktopのページ移動試験は矢印キーと、マウス操作設定を有効にした状態の端クリックを確認する。端クリックにはComposeのマウス入力APIを使用する。Desktopのリサイズ枠を避けるため、読書領域の幅10%の位置でクリックする。物理マウスとOS全体の互換性確認とは区別する。
 
 撮影試験で検出した目次のGoToアクションの解決漏れを修正した。目次sceneでは既存PDFの全8項目が0〜7ページを指すこと、および3ページ目への移動を検証する。
+
+## 本撮影時の再開メモ（2026-10-15）
+
+同じAVDで連続して言語変更すると、2回目のStoreLocaleSetterが終了コード134（Aborted）になる場合があった。本撮影は下記のように1言語ずつプロセスを分けて完了した。各実行でAVDを終了するため、次の言語は新しい起動から始まる。
+
+```sh
+for capture_language in zh_cn en ja ko; do
+  python3 scripts/capture_store_screenshots.py --skip-build --resume --language "$capture_language" || break
+done
+```
+
+APKを変更した場合は先にビルドする。ループの終了コードだけでは全体完了と判断せず、最後に引数なしのreview_store_screenshots.pyで108/108を検証する。run-status.jsonは直近に選択した言語の範囲を表す。
+
+AVD終了直後の名前取得でIndexErrorになった場合は、ADB一覧から終了中の端末が消えたことを確認して同じ撮影を再開する。無関係な端末は停止しない。
