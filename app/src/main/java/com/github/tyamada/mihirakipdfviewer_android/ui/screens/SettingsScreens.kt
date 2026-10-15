@@ -36,11 +36,7 @@ import com.github.tyamada.mihirakipdfviewer_android.viewmodel.ViewerViewModel
 @Composable fun SettingsScreen(
     vm: ViewerViewModel,
     back: () -> Unit,
-    reset: () -> Unit,
-    openHelp: () -> Unit,
-    openVersion: () -> Unit,
-    openDiagnostics: () -> Unit,
-    openSupport: () -> Unit
+    reset: () -> Unit
 ) {
     val state by vm.state.collectAsState()
 
@@ -59,13 +55,8 @@ import com.github.tyamada.mihirakipdfviewer_android.viewmodel.ViewerViewModel
             SwitchRow(stringResource(R.string.mouse_navigation), state.settings.mouseNavigation) { vm.updateSettings { s -> s.copy(mouseNavigation = it) } }
             SwitchRow(stringResource(R.string.portrait_display), state.settings.portraitSpread) { vm.updateSettings { s -> s.copy(portraitSpread = it) } }
             SelectRow(stringResource(R.string.cover_mode), state.settings.coverMode.name) { vm.updateSettings { s -> s.copy(coverMode = if (s.coverMode == CoverMode.STANDARD) CoverMode.COMPATIBILITY else CoverMode.STANDARD) } }
-            
-            Spacer(Modifier.height(8.dp))
-            SelectRow(stringResource(R.string.help), "›") { openHelp() }
-            SelectRow(stringResource(R.string.version), "›") { openVersion() }
-            SelectRow("診断 (Diagnostics)", "›") { openDiagnostics() }
-            SelectRow(stringResource(R.string.support), "›") { openSupport() }
 
+            Spacer(Modifier.height(8.dp))
             TextButton(onClick = reset, modifier = Modifier.fillMaxWidth()) {
                 Box(Modifier.fillMaxWidth(), contentAlignment = Alignment.CenterStart) {
                     Text(stringResource(R.string.reset))
