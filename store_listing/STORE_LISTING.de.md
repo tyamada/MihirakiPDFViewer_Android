@@ -3,7 +3,7 @@
 Entwurf für den "Store-Eintrag" in der Google Play Console.
 
 ## App-Name (max. 30 Zeichen)
-MihirakiPDFViewer - Doppelseiten
+MihirakiPDFViewer: Doppelseiten
 
 ## Kurzbeschreibung (max. 80 Zeichen)
 Optimal für Manga! Ein datenschutzfreundlicher PDF-Viewer mit Doppelseiten- & R2L-Support.
