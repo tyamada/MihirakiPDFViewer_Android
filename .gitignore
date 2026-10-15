@@ -26,4 +26,8 @@ app/src/androidTest/assets/
 .artifacts/
 *.log
 *.png
+!store_listing/screenshots/Smartphone_6.3/*.png
+!store_listing/screenshots/Tablet_7/*.png
+!store_listing/screenshots/Tablet_10/*.png
+!store_listing/screenshots/Chromebook_FHD/*.png
 
