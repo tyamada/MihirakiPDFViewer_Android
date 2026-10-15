@@ -3,7 +3,7 @@
 Brouillon pour la "Fiche the store" dans Google Play Console.
 
 ## Nom de l'application (max. 30 car.)
-MihirakiPDFViewer - Double page
+MihirakiPDFViewer: Double page
 
 ## Description courte (max. 80 car.)
 Idéal pour les mangas ! Lecteur PDF axé sur la confidentialité, double page et R2L.
