@@ -273,7 +273,36 @@ import kotlin.math.abs
                 }
             }
         }
-        if ((state.source == null) && !state.loading) IconButton(openSettings, Modifier.align(Alignment.TopEnd).padding(top = 36.dp, end = 8.dp).size(48.dp)) { Icon(Icons.Default.Settings, stringResource(R.string.settings), tint = Color.White) }
+        if ((state.source == null) && !state.loading) {
+            Box(Modifier.align(Alignment.TopEnd).padding(top = 36.dp, end = 8.dp)) {
+                var showMenu by remember { mutableStateOf(false) }
+                IconButton(onClick = { showMenu = true }, modifier = Modifier.size(48.dp).testTag("btn_settings")) {
+                    Icon(Icons.Default.Settings, stringResource(R.string.settings), tint = Color.White)
+                }
+                DropdownMenu(expanded = showMenu, onDismissRequest = { showMenu = false }) {
+                    DropdownMenuItem(
+                        text = { Text(stringResource(R.string.settings)) },
+                        onClick = { showMenu = false; openSettings() }
+                    )
+                    DropdownMenuItem(
+                        text = { Text(stringResource(R.string.help)) },
+                        onClick = { showMenu = false; openHelp() }
+                    )
+                    DropdownMenuItem(
+                        text = { Text(stringResource(R.string.version)) },
+                        onClick = { showMenu = false; openVersion() }
+                    )
+                    DropdownMenuItem(
+                        text = { Text("診断 (Diagnostics)") },
+                        onClick = { showMenu = false; openDiagnostics() }
+                    )
+                    DropdownMenuItem(
+                        text = { Text(stringResource(R.string.support)) },
+                        onClick = { showMenu = false; openSupport() }
+                    )
+                }
+            }
+        }
         if (state.loading) CircularProgressIndicator(Modifier.align(Alignment.Center))
         if ((state.bitmap != null) || (state.secondBitmap != null)) {
             val direction = state.settings.direction

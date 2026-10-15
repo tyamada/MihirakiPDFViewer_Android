@@ -1,0 +1,56 @@
+{
+  "desktopInputVerified": false,
+  "outlinePages": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7
+  ],
+  "outlineVerified": false,
+  "maximized": true,
+  "activityBounds": "[0,42][1920,1080]",
+  "captureId": "d25f7a383cbe458ab03f476a77adbca5",
+  "scene": "04_search",
+  "language": "ko",
+  "locale": "ko-KR",
+  "portrait": false,
+  "pdfSha256": "4f0181a147183572879297b157a3d5f04ca166e77f21c768c114d043e7424e06",
+  "page": 6,
+  "pageCount": 8,
+  "query": "한숨 돌림 지도",
+  "searchResultCount": 8,
+  "page6SearchRects": [
+    {
+      "left": 326.3575,
+      "top": 141.03085,
+      "right": 378.27908,
+      "bottom": 148.68338
+    },
+    {
+      "left": 37.901,
+      "top": 575.1446,
+      "right": 79.677,
+      "bottom": 581.30176
+    }
+  ],
+  "direction": "R2L",
+  "layout": "SPREAD",
+  "showCover": true,
+  "version": "2.0.0",
+  "versionCode": 31,
+  "package": "com.github.tyamada.MihirakiPDFViewer_Android",
+  "fingerprint": "39ef0280b4aaa14074f29a6ab024bccaad05ab9c016789b278bbb77c5afaac14",
+  "avd": "Chromebook_FHD",
+  "dimensions": [
+    1920,
+    1080
+  ],
+  "serial": "emulator-5580",
+  "imageSha256": "ed24b07bd2a3842faa2ed1d4cee2c864298547b92e45dccdea93a98643f4e712",
+  "checkedAt": "2026-10-15T20:25:21+0900",
+  "validation": "automated-pass; visual-reviewed"
+}

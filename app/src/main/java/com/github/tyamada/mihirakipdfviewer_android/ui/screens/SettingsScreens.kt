@@ -20,6 +20,7 @@ import android.content.Intent
 import android.net.Uri
 import android.widget.TextView
 import android.widget.Toast
+import java.util.Locale
 import androidx.core.text.HtmlCompat
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.viewinterop.AndroidView
@@ -30,7 +31,15 @@ import com.github.tyamada.mihirakipdfviewer_android.util.*
 import com.github.tyamada.mihirakipdfviewer_android.viewmodel.ViewerViewModel
 
 @OptIn(ExperimentalMaterial3Api::class)
-@Composable fun SettingsScreen(vm: ViewerViewModel, back: () -> Unit, reset: () -> Unit) {
+@Composable fun SettingsScreen(
+    vm: ViewerViewModel,
+    back: () -> Unit,
+    reset: () -> Unit,
+    openHelp: () -> Unit,
+    openVersion: () -> Unit,
+    openDiagnostics: () -> Unit,
+    openSupport: () -> Unit
+) {
     val state by vm.state.collectAsState()
 
     Scaffold(topBar = { TopAppBar(title = { Text(stringResource(R.string.settings)) }, navigationIcon = { IconButton(back) { Icon(Icons.AutoMirrored.Filled.ArrowBack, stringResource(R.string.back)) } }) }) { p ->
@@ -48,6 +57,13 @@ import com.github.tyamada.mihirakipdfviewer_android.viewmodel.ViewerViewModel
             SwitchRow(stringResource(R.string.mouse_navigation), state.settings.mouseNavigation) { vm.updateSettings { s -> s.copy(mouseNavigation = it) } }
             SwitchRow(stringResource(R.string.portrait_display), state.settings.portraitSpread) { vm.updateSettings { s -> s.copy(portraitSpread = it) } }
             SelectRow(stringResource(R.string.cover_mode), state.settings.coverMode.name) { vm.updateSettings { s -> s.copy(coverMode = if (s.coverMode == CoverMode.STANDARD) CoverMode.COMPATIBILITY else CoverMode.STANDARD) } }
+            
+            Spacer(Modifier.height(8.dp))
+            SelectRow(stringResource(R.string.help), "›") { openHelp() }
+            SelectRow(stringResource(R.string.version), "›") { openVersion() }
+            SelectRow("診断 (Diagnostics)", "›") { openDiagnostics() }
+            SelectRow(stringResource(R.string.support), "›") { openSupport() }
+
             TextButton(onClick = reset, modifier = Modifier.fillMaxWidth()) {
                 Box(Modifier.fillMaxWidth(), contentAlignment = Alignment.CenterStart) {
                     Text(stringResource(R.string.reset))
@@ -348,7 +364,7 @@ data class HelpCategorySpec(val title: String, val items: List<Int>)
     ) { p ->
         Column(Modifier.padding(p).padding(16.dp).verticalScroll(rememberScrollState()).fillMaxSize()) {
             Text(
-                "この画面では、お使いの端末でビューアの動作確認テスト（メモリ、キャッシュ、PDFエンジン環境）を実行できます。",
+                "この画面では、お使いの端末でビューアの動作確認テスト（RAM、ストレージ、メモリ、キャッシュ、PDFエンジン環境）を実行できます。",
                 style = MaterialTheme.typography.bodyMedium
             )
             Spacer(Modifier.height(16.dp))
@@ -393,9 +409,20 @@ data class HelpCategorySpec(val title: String, val items: List<Int>)
                 Info("ベンダー名", result.manufacturer)
                 Info("端末名", result.model)
                 Info("OS バージョン", "Android ${result.osVersion} (SDK ${result.sdkInt})")
-                Info("総メモリ / 空きメモリ", "${result.totalMemoryMb} MB / ${result.freeMemoryMb} MB")
+                Info("システム言語 (Locale)", result.systemLocale)
+                Info("画面の向き (Orientation)", result.deviceOrientation)
+                Info("テーマモード (Theme)", result.themeMode)
+                Info("フォント倍率 (Font Scale)", "${result.fontScale}x")
+                Info("総 RAM / 空き RAM", "${result.totalRamMb} MB / ${result.freeRamMb} MB")
+                Info("総ストレージ / 空き", String.format(Locale.US, "%.2f GB / %.2f GB", result.totalStorageGb, result.freeStorageGb))
+                Info("省メモリ最適化モード", if (result.isLowRamDevice) "有効 (Low-RAM Mode)" else "無効 (Normal)")
+                Info("CPU コア数", "${result.cpuCores} cores")
+                Info("画面解像度 / 密度", result.screenResolution)
+                Info("JVM ヒープ (総 / 空き)", "${result.totalMemoryMb} MB / ${result.freeMemoryMb} MB")
                 Info("キャッシュ領域", if (result.cacheDirWritable) "書込可能 (OK)" else "エラー")
-                Info("PDF エンジン", if (result.pdfEngineAvailable) "利用可能 (OK)" else "エラー")
+                Info("PDF Renderer API", if (result.pdfRendererApiWorking) "利用可能 (Functional)" else "エラー")
+                Info("Google Play Billing API", if (result.billingApiAvailable) "利用可能 (Available)" else "利用不可")
+                Info("ContentResolver (SAF)", if (result.contentResolverAvailable) "利用可能 (Active)" else "エラー")
                 Info("ステータス", result.status)
 
                 Spacer(Modifier.height(16.dp))
@@ -418,6 +445,99 @@ data class HelpCategorySpec(val title: String, val items: List<Int>)
             }
         }
     }
+}
+
+@OptIn(ExperimentalMaterial3Api::class)
+@Composable fun ReportIssueScreen(
+    back: () -> Unit,
+    deviceTest: () -> Unit,
+    logViewer: () -> Unit
+) {
+    val context = LocalContext.current
+    val issueUrl = "https://github.com/tyamada/MihirakiPDFViewer_Android/issues/new?template=bug_report.md"
+
+    Scaffold(
+        topBar = {
+            TopAppBar(
+                title = { Text("問題を報告 (Report a Problem)") },
+                navigationIcon = { IconButton(back) { Icon(Icons.AutoMirrored.Filled.ArrowBack, stringResource(R.string.back)) } }
+            )
+        }
+    ) { p ->
+        Column(
+            Modifier
+                .padding(p)
+                .verticalScroll(rememberScrollState())
+                .padding(16.dp),
+            verticalArrangement = Arrangement.spacedBy(16.dp)
+        ) {
+            Card(
+                colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surfaceVariant),
+                modifier = Modifier.fillMaxWidth()
+            ) {
+                Column(Modifier.padding(16.dp)) {
+                    Text(
+                        "不具合が発生した場合は、以下の情報をまとめて GitHub Issues からご報告ください。",
+                        style = MaterialTheme.typography.bodyMedium
+                    )
+                }
+            }
+
+            Section("報告に含める内容 (Include in your report)")
+            BulletPoint("1. 問題の簡単な要約")
+            BulletPoint("2. 再現手順")
+            BulletPoint("3. 期待される動作と実際の動作")
+            BulletPoint("4. 発生頻度")
+            BulletPoint("5. アプリのバージョン、OSバージョン、デバイス、表示設定")
+            BulletPoint("6. スクリーンショット、アプリログ、または実機テスト結果")
+
+            Section("診断情報 (Diagnostic information)")
+            OutlinedButton(
+                onClick = logViewer,
+                modifier = Modifier.fillMaxWidth()
+            ) {
+                Text("アプリログを表示する (View app logs)")
+            }
+            OutlinedButton(
+                onClick = deviceTest,
+                modifier = Modifier.fillMaxWidth()
+            ) {
+                Text("実機テストを実行する (Run device tests)")
+            }
+
+            Section("プライバシー保護 (Protect your privacy)")
+            Card(
+                colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.errorContainer.copy(alpha = 0.3f)),
+                modifier = Modifier.fillMaxWidth()
+            ) {
+                Column(Modifier.padding(16.dp), verticalArrangement = Arrangement.spacedBy(8.dp)) {
+                    Text("• PDFファイル本体や文書の内容、ファイル名、氏名などの個人情報を含めないでください。", style = MaterialTheme.typography.bodySmall)
+                    Text("• スクリーンショットや診断情報を投稿前にご確認ください。データは自動送信されません。", style = MaterialTheme.typography.bodySmall)
+                }
+            }
+
+            Spacer(Modifier.height(8.dp))
+
+            Button(
+                onClick = {
+                    val intent = Intent(Intent.ACTION_VIEW, Uri.parse(issueUrl))
+                    context.startActivity(intent)
+                },
+                modifier = Modifier.fillMaxWidth()
+            ) {
+                Text("GitHub Issues を開く (Open GitHub Issues)")
+            }
+            Text(
+                "※ GitHubアカウントが必要です。送信した情報は公開される場合があります。",
+                style = MaterialTheme.typography.labelSmall,
+                color = MaterialTheme.colorScheme.onSurfaceVariant
+            )
+        }
+    }
+}
+
+@Composable private fun BulletPoint(text: String) {
+    Text(text, style = MaterialTheme.typography.bodyMedium, modifier = Modifier.padding(start = 8.dp, bottom = 4.dp))
 }
 
 @OptIn(ExperimentalMaterial3Api::class)
