@@ -8,6 +8,7 @@ import androidx.compose.ui.test.*
 import androidx.compose.ui.test.junit4.createAndroidComposeRule
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.platform.app.InstrumentationRegistry
+import androidx.test.uiautomator.UiSelector
 import androidx.test.uiautomator.UiDevice
 import com.github.tyamada.mihirakipdfviewer_android.data.*
 import org.json.JSONObject
@@ -47,18 +48,36 @@ class StoreScreenshotTest {
         val scene = requireNotNull(args.getString("captureScene"))
         val portrait = args.getString("captureOrientation") == "portrait"
         val locale = compose.activity.resources.configuration.locales[0].toLanguageTag()
-        val expectedLocale = mapOf("ja" to "ja-JP", "en" to "en-US", "ko" to "ko-KR", "zh_cn" to "zh-CN").getValue(lang)
+        val expectedLocale = requireNotNull(args.getString("captureLocale"))
         val expected = java.util.Locale.forLanguageTag(expectedLocale)
         val actual = java.util.Locale.forLanguageTag(locale)
         assertEquals("System/app language mismatch", expected.language, actual.language)
         assertEquals("System/app country mismatch", expected.country, actual.country)
+        val desktop = args.getString("captureDesktop") == "true"
+        assertEquals(args.getString("captureVersionCode")!!.toInt(), BuildConfig.VERSION_CODE)
+        if (desktop) {
+            // Desktop caption belongs to the system, not Compose.
+            val maximize = device.findObject(UiSelector().descriptionMatches("(?i).*(maximize|最大化|최대화|最大化窗口).*"))
+            if (maximize.waitForExists(3000)) maximize.click()
+            device.waitForIdle()
+            val bounds = compose.activity.windowManager.currentWindowMetrics.bounds
+            if (bounds.width() < device.displayWidth * 0.95) {
+                // Desktop API 34 exposes task resizing to the adb shell UID.
+                device.executeShellCommand("am task resize ${compose.activity.taskId} 0 0 ${device.displayWidth} ${device.displayHeight}")
+                compose.waitUntil(15_000) {
+                    compose.activity.windowManager.currentWindowMetrics.bounds.width() >= device.displayWidth * 0.95
+                }
+            }
+        }
         // UiAutomation holds the physical display rotation during the test. Some
         // tablet images revert host-side rotation when the test activity launches.
         val naturalPortrait = if (device.displayRotation % 2 == 0)
             device.displayHeight > device.displayWidth else device.displayWidth > device.displayHeight
-        if (portrait == naturalPortrait) device.setOrientationNatural() else device.setOrientationLeft()
-        main { compose.activity.requestedOrientation = if (portrait)
-            android.content.pm.ActivityInfo.SCREEN_ORIENTATION_PORTRAIT else android.content.pm.ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE }
+        if (!desktop) {
+            if (portrait == naturalPortrait) device.setOrientationNatural() else device.setOrientationLeft()
+            main { compose.activity.requestedOrientation = if (portrait)
+                android.content.pm.ActivityInfo.SCREEN_ORIENTATION_PORTRAIT else android.content.pm.ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE }
+        }
         compose.waitUntil(15_000) { portrait == (compose.activity.resources.configuration.orientation == Configuration.ORIENTATION_PORTRAIT) }
         val pdf = File(compose.activity.filesDir, "store_capture/$lang.pdf")
         assertTrue("Verified transferred PDF missing", pdf.isFile)
@@ -66,7 +85,7 @@ class StoreScreenshotTest {
         assertEquals(args.getString("capturePdfSha256"), digest)
         main { vm.closeDocument() }
         main { vm.open(Uri.fromFile(pdf), 5) }
-        waitFor { vm.state.value.pageCount == 8 && vm.state.value.bitmap != null }
+        waitFor { vm.state.value.pageCount == args.getString("capturePageCount")!!.toInt() && vm.state.value.bitmap != null }
         main { vm.updateSettings { it.copy(direction = ReadingDirection.R2L, layout = ViewerLayout.SPREAD,
             showCover = true, portraitSpread = true, mouseNavigation = false, highQuality = false, sharpness = 0f) } }
         waitFor { vm.state.value.settings.direction == ReadingDirection.R2L && vm.state.value.settings.layout == ViewerLayout.SPREAD }
@@ -77,6 +96,12 @@ class StoreScreenshotTest {
             (if (portrait) vm.state.value.currentPage == 5 else vm.state.value.secondBitmap != null) }
         chrome()
         var query = ""
+        var outlineVerified = false
+        var desktopInputVerified = false
+        fun openSettings() {
+            compose.onNodeWithTag("btn_settings").performClick()
+            compose.onNodeWithText(label(R.string.settings)).performClick()
+        }
         when (scene) {
             "01_reader" -> assertEquals(ViewerLayout.SINGLE, vm.state.value.effectiveLayout)
             "02_spread" -> {
@@ -84,7 +109,7 @@ class StoreScreenshotTest {
                 main { vm.toggleChrome() }
             }
             "03_reading_settings" -> {
-                compose.onNodeWithTag("btn_settings").performClick()
+                openSettings()
                 compose.onNodeWithText(label(R.string.reading_direction)).performScrollTo().assertIsDisplayed()
                 compose.onNodeWithText("R2L").assertIsDisplayed()
             }
@@ -111,13 +136,53 @@ class StoreScreenshotTest {
                 assertTrue("Search highlight absent", listOfNotNull(vm.state.value.bitmap, vm.state.value.secondBitmap).any(::hasHighlight))
             }
             "05_page_navigation" -> {
+                if (desktop) {
+                    main { vm.updateSettings { it.copy(mouseNavigation = true) } }
+                    compose.waitForIdle()
+                    compose.onNodeWithTag("viewer_content").performSemanticsAction(androidx.compose.ui.semantics.SemanticsActions.RequestFocus) { it() }
+                    val start = vm.state.value.currentPage
+                    device.pressDPadRight()
+                    waitFor { vm.state.value.currentPage != start }
+                    val afterKey = vm.state.value.currentPage
+                    compose.onNodeWithTag("viewer_content").performMouseInput {
+                        click(androidx.compose.ui.geometry.Offset(width * 0.1f, height / 2f))
+                    }
+                    compose.mainClock.advanceTimeBy(500)
+                    waitFor { vm.state.value.currentPage != afterKey }
+                    desktopInputVerified = true
+                    chrome()
+                }
                 val before = vm.state.value.bitmap
                 main { vm.render(3) }
                 waitFor { vm.state.value.bitmap != null && vm.state.value.bitmap !== before && vm.state.value.currentPage == 3 }
             }
+            "07_outline" -> {
+                waitFor { vm.state.value.outline.isNotEmpty() }
+                val first = vm.state.value.outline.first()
+                assertEquals(args.getString("captureOutlineFirst"), first.title)
+                assertEquals(8, vm.state.value.outline.size)
+                assertEquals((0 until 8).toList(), vm.state.value.outline.map { it.pageIndex })
+                val destination = vm.state.value.outline[2]
+                val expectedPage = if (portrait) destination.pageIndex else {
+                    val settings = vm.state.value.settings
+                    val spread = SpreadPlanner.plan(8, settings.direction, settings.showCover, settings.coverMode)
+                        .first { it.left == destination.pageIndex || it.right == destination.pageIndex }
+                    minOf(spread.left ?: Int.MAX_VALUE, spread.right ?: Int.MAX_VALUE)
+                }
+                compose.onNodeWithTag("btn_outline").performClick()
+                compose.onNodeWithText(destination.title).performClick()
+                waitFor { vm.state.value.currentPage == expectedPage &&
+                    (vm.state.value.bitmap != null || vm.state.value.secondBitmap != null) }
+                chrome()
+                compose.onNodeWithTag("btn_outline").performClick()
+                compose.onNodeWithText(first.title).assertIsDisplayed()
+                compose.onNodeWithText(label(R.string.table_of_contents)).assertIsDisplayed()
+                outlineVerified = true
+            }
             "06_display_settings" -> {
-                compose.onNodeWithTag("btn_settings").performClick()
-                compose.onNodeWithText(label(R.string.portrait_display)).performScrollTo().assertIsDisplayed()
+                openSettings()
+                compose.onNodeWithText(label(R.string.reset)).performScrollTo().assertIsDisplayed()
+                compose.onNodeWithText(label(if (desktop) R.string.mouse_navigation else R.string.portrait_display)).assertIsDisplayed()
             }
             else -> error("Unknown capture scene: $scene")
         }
@@ -131,10 +196,18 @@ class StoreScreenshotTest {
         assertNull(vm.state.value.errorKey)
         assertFalse(vm.state.value.passwordRequested)
         assertFalse(vm.state.value.loading)
+        val bounds = android.graphics.Rect()
+        compose.activity.window.decorView.getWindowVisibleDisplayFrame(bounds)
+        val maximized = !desktop || (bounds.width() >= device.displayWidth * 0.95 && bounds.height() >= device.displayHeight * 0.80)
+        assertTrue("Desktop window not maximized: $bounds", maximized)
         val dir = File(compose.activity.filesDir, "store_capture")
         assertTrue(device.takeScreenshot(File(dir, "${args.getString("captureId")}.png")))
         val state = vm.state.value
         File(dir, "${args.getString("captureId")}.json").writeText(JSONObject().apply {
+            put("desktopInputVerified", desktopInputVerified)
+            put("outlinePages", org.json.JSONArray(vm.state.value.outline.map { it.pageIndex }))
+            put("outlineVerified", outlineVerified); put("maximized", maximized)
+            put("activityBounds", bounds.toShortString())
             put("captureId", args.getString("captureId")); put("scene", scene); put("language", lang); put("locale", locale); put("portrait", portrait)
             put("pdfSha256", digest); put("page", state.currentPage + 1); put("pageCount", state.pageCount)
             put("query", query); put("searchResultCount", state.searchResults.size)

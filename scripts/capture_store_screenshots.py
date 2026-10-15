@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 """Reproducible store captures. Run --help; no Play Console upload is performed."""
 import argparse
+import fcntl
 import hashlib
 import json
 import os
@@ -15,11 +16,12 @@ ROOT = Path(__file__).resolve().parents[1]
 PACKAGE = 'com.github.tyamada.MihirakiPDFViewer_Android'
 RUNNER = PACKAGE + '.test/androidx.test.runner.AndroidJUnitRunner'
 TEST = 'com.github.tyamada.mihirakipdfviewer_android.StoreScreenshotTest#captureStoreScreenshots'
-DEVICES = {name: name for name in ['Smartphone_6.3', 'Tablet_7', 'Tablet_10']}
-LANGUAGES = {'ja': 'ja-JP', 'en': 'en-US', 'ko': 'ko-KR', 'zh_cn': 'zh-CN'}
-SCENES = ['01_reader', '02_spread', '03_reading_settings', '04_search', '05_page_navigation', '06_display_settings']
-# This runner produced the same image protocol/APKs before the adb-unroot fix.
-COMPATIBLE_RUNNER_SHA256 = ('897b32721441f0bbc42976b76c568e15297dd9ea7731974aee3155bb2e5ab212', 'e5cec0002aa7290c9336bc761f2f901b31ffe5d925563d099aa32f5ce2f4dc70')
+CONFIG_PATH = Path(__file__).with_name('store_capture_config.json')
+CONFIG = json.loads(CONFIG_PATH.read_text())
+PROFILES = CONFIG['devices']
+DEVICES = {name: name for name in PROFILES}
+LANGUAGES = CONFIG['languages']
+SCENES = list(dict.fromkeys(scene for profile in PROFILES.values() for scene in profile['scenes']))
 OUT = ROOT / 'store_listing/screenshots'
 WORK = ROOT / '.artifacts/store-capture'
 SDK = Path(os.environ.get('ANDROID_SDK_ROOT') or os.environ.get('ANDROID_HOME') or Path.home() / 'Library/Android/sdk')
@@ -44,15 +46,31 @@ def sha(path):
 
 
 def orientation(avd, scene):
-    return 'landscape' if scene == '02_spread' or (avd != 'Smartphone_6.3' and scene in SCENES[2:5]) else 'portrait'
+    return PROFILES[avd]['scenes'][scene]
 
 
-def validate_image(path, expected_orientation, search=False):
+def selected_scenes(avd, requested=None):
+    supported = list(PROFILES[avd]['scenes'])
+    if requested and any(scene not in supported for scene in requested):
+        raise ValueError(f'Unsupported scene for {avd}: {requested}')
+    return requested or supported
+
+
+def fingerprint(apks):
+    return hashlib.sha256((''.join(sha(p) for p in apks) + sha(Path(__file__)) + sha(CONFIG_PATH)).encode()).hexdigest()
+
+
+def expected_size(avd, portrait):
+    size = sorted(PROFILES[avd]['size'])
+    return tuple(size if portrait else size[::-1])
+
+
+def validate_image(path, expected_orientation, search=False, dimensions=None):
     from PIL import Image, ImageStat
     with Image.open(path) as raw:
         raw.load()
         image = raw.convert('RGB')
-        if raw.format != 'PNG' or min(image.size) < 320:
+        if raw.format != 'PNG' or raw.mode != 'RGB' or min(image.size) < 1080 or max(image.size) > 3840 or (dimensions and image.size != tuple(dimensions)):
             raise RuntimeError('Invalid PNG/dimensions')
         if (image.height > image.width) != (expected_orientation == 'portrait'):
             raise RuntimeError('Image orientation mismatch')
@@ -70,10 +88,6 @@ def validate_image(path, expected_orientation, search=False):
                 raise RuntimeError('Search highlight missing in screenshot')
 
 
-def compatible_fingerprints(apks):
-    apk_stamp = ''.join(sha(p) for p in apks)
-    return tuple(hashlib.sha256((apk_stamp + runner).encode()).hexdigest() for runner in COMPATIBLE_RUNNER_SHA256)
-
 
 def can_resume(path, record, expected, compatible=()):
     try:
@@ -84,7 +98,13 @@ def can_resume(path, record, expected, compatible=()):
             return False
         if any(info.get(k) != v for k, v in expected.items() if k != 'fingerprint') or info.get('imageSha256') != sha(path):
             return False
-        validate_image(path, 'portrait' if expected['portrait'] else 'landscape', expected['scene'] == '04_search')
+        if expected['scene'] == '07_outline' and not info.get('outlineVerified'):
+            return False
+        if PROFILES.get(expected.get('avd'), {}).get('desktop') and expected['scene'] == '05_page_navigation' and not info.get('desktopInputVerified'):
+            return False
+        if PROFILES.get(expected.get('avd'), {}).get('desktop') and not info.get('maximized'):
+            return False
+        validate_image(path, 'portrait' if expected['portrait'] else 'landscape', expected['scene'] == '04_search', expected.get('dimensions'))
         return True
     except (OSError, ValueError, RuntimeError):
         return False
@@ -96,6 +116,8 @@ class Device:
         self.serial = None
         self.process = None
         self.log = None
+        self.original_display = None
+        self.owned = None
 
     def adb(self, *args, **kwargs):
         return run([ADB, '-s', self.serial, *args], **kwargs)
@@ -122,12 +144,16 @@ class Device:
             if len(parts) == 2 and parts[1] == 'device' and parts[0].startswith('emulator-'):
                 name = run([ADB, '-s', parts[0], 'emu', 'avd', 'name']).stdout.decode().splitlines()[0]
                 if name == self.avd:
+                    if self.owned is None:
+                        self.owned = False
                     self.serial = parts[0]
                     self.boot()
                     return
         # Use an unused emulator port; leave unrelated devices running.
         used = {line.split()[0] for line in devices if line.strip()}
         port = next(p for p in range(5580, 5680, 2) if f'emulator-{p}' not in used)
+        if self.owned is None:
+            self.owned = True
         self.serial = f'emulator-{port}'
         self.log = (WORK / f'{self.avd}-emulator.log').open('ab')
         self.process = subprocess.Popen([EMULATOR, '-avd', self.avd, '-port', str(port), '-no-snapshot', '-no-boot-anim', '-no-audio'], stdout=self.log, stderr=subprocess.STDOUT, start_new_session=True)
@@ -135,7 +161,7 @@ class Device:
 
     def stop(self):
         # Only shut down an emulator launched by this process.
-        if self.process:
+        if self.process and self.owned:
             self.adb('emu', 'kill', check=False)
             try:
                 self.process.wait(timeout=20)
@@ -172,6 +198,7 @@ class Device:
             # continue on a production image that rejects changing the system locale.
             self.adb('root')
             self.adb('wait-for-device')
+            self.adb('shell', 'setprop', 'persist.sys.locale', locale)
             self.adb('shell', 'CLASSPATH=/data/local/tmp/store-capture-tests.apk',
                      'app_process', '/system/bin',
                      'com.github.tyamada.mihirakipdfviewer_android.StoreLocaleSetter', locale)
@@ -185,7 +212,50 @@ class Device:
         if not same_locale(self.text('shell', 'settings', 'get', 'system', 'system_locales'), locale):
             raise RuntimeError('System locale list failed after reboot')
 
+    def save_display(self):
+        self.original_display = {}
+        for kind in ('size', 'density'):
+            value = self.text('shell', 'wm', kind)
+            match = re.search(r'Override .*?:\s*(\S+)', value)
+            self.original_display[kind] = match.group(1) if match else 'reset'
+        self.original_display['rotation'] = {
+            key: self.text('shell', 'settings', 'get', 'system', key)
+            for key in ('accelerometer_rotation', 'user_rotation')}
+        self.original_display['wm_rotation'] = self.text('shell', 'wm', 'user-rotation')
+
+    def restore_display(self):
+        if self.original_display is None:
+            return
+        for kind in ('size', 'density'):
+            self.adb('shell', 'wm', kind, self.original_display[kind])
+        for key, value in self.original_display['rotation'].items():
+            if value == 'null':
+                self.adb('shell', 'settings', 'delete', 'system', key)
+            else:
+                self.adb('shell', 'settings', 'put', 'system', key, value)
+        previous = self.original_display['wm_rotation']
+        if 'free' in previous:
+            self.adb('shell', 'wm', 'user-rotation', 'free')
+        else:
+            match = re.search(r'(?:lock|locked)\s+(\d)', previous)
+            self.adb('shell', 'wm', 'user-rotation', 'lock', match.group(1) if match else self.original_display['rotation']['user_rotation'])
+
+    def prepare_display(self):
+        profile = PROFILES[self.avd]
+        if profile['override']:
+            self.adb('shell', 'wm', 'size', 'x'.join(map(str, profile['size'])))
+            self.adb('shell', 'wm', 'density', str(profile['density']))
+        size = self.text('shell', 'wm', 'size')
+        actual = tuple(map(int, re.findall(r'(\d+)x(\d+)', size)[-1]))
+        density = int(re.findall(r'\d+', self.text('shell', 'wm', 'density'))[-1])
+        if actual != tuple(profile['size']) or density != profile['density']:
+            raise RuntimeError(f'Display profile mismatch: {actual}, {density}')
+
     def rotate(self, target):
+        self.prepare_display()
+        self.adb('shell', 'cmd', 'uimode', 'night', 'no')
+        if PROFILES[self.avd]['desktop']:
+            return
         self.adb('shell', 'am', 'force-stop', PACKAGE)
         size = self.text('shell', 'wm', 'size')
         w, h = map(int, re.findall(r'(\d+)x(\d+)', size)[-1])
@@ -199,26 +269,27 @@ class Device:
         time.sleep(1)
 
     def transfer(self, lang, path, digest):
-        remote = f'/sdcard/Download/tameshibu_episode1_2_{lang}.pdf'
-        remote_hash = self.text('shell', 'sha256sum', remote, check=False).split()
-        if not remote_hash or remote_hash[0] != digest:
-            self.adb('push', path, remote)
-        if self.text('shell', 'sha256sum', remote).split()[0] != digest:
-            raise RuntimeError('Transferred PDF hash mismatch')
-        # Scoped storage: stage the same verified bytes in app-private files via
-        # run-as, instead of giving the production app broad storage permission.
+        # Use app-private storage on every device. Desktop images can deny shell
+        # writes to Downloads; the test consumes only this hash-verified copy.
         self.adb('shell', 'run-as', PACKAGE, 'mkdir', '-p', 'files/store_capture')
         app_file = f'files/store_capture/{lang}.pdf'
-        self.adb('shell', 'run-as', PACKAGE, 'sh', '-c', f"'cat > {app_file}'", data=path.read_bytes())
-        staged = self.adb('exec-out', 'run-as', PACKAGE, 'cat', app_file).stdout
-        if hashlib.sha256(staged).hexdigest() != digest:
+        staged = f'/data/local/tmp/store-capture-{digest}.pdf'
+        self.adb('push', path, staged)
+        if self.text('shell', 'sha256sum', staged).split()[0] != digest:
+            raise RuntimeError('Staged PDF hash mismatch')
+        self.adb('shell', 'run-as', PACKAGE, 'cp', staged, app_file)
+        if self.text('shell', 'run-as', PACKAGE, 'sha256sum', app_file).split()[0] != digest:
             raise RuntimeError('App-private PDF hash mismatch')
+
 
 
 def capture(device, lang, scene, digest, target, attempt):
     token = uuid.uuid4().hex
     device.adb('shell', 'am', 'force-stop', PACKAGE)
     args = {'class': TEST, 'captureLanguage': lang, 'captureScene': scene,
+            'captureDesktop': str(PROFILES[device.avd]['desktop']).lower(),
+            'captureLocale': LANGUAGES[lang], 'capturePageCount': str(CONFIG['pageCount']),
+            'captureOutlineFirst': CONFIG['outlineFirst'][lang], 'captureVersionCode': str(CONFIG['versionCode']),
             'captureOrientation': target, 'capturePdfSha256': digest, 'captureId': token}
     command = ['shell', 'am', 'instrument', '-w', '-r']
     for key, value in args.items():
@@ -236,7 +307,24 @@ def capture(device, lang, scene, digest, target, attempt):
         raise RuntimeError('Capture metadata mismatch')
     temp = WORK / f'{token}.png'
     temp.write_bytes(device.adb('exec-out', 'run-as', PACKAGE, 'cat', base + '.png').stdout)
-    validate_image(temp, target, scene == '04_search')
+    from PIL import Image
+    with Image.open(temp) as raw:
+        if 'A' in raw.getbands() and raw.getchannel('A').getextrema() != (255, 255):
+            raise RuntimeError('Transparent screenshot')
+        rgb = raw.convert('RGB')
+    rgb.save(temp)
+
+    validate_image(temp, target, scene == '04_search', expected_size(device.avd, target == 'portrait'))
+    if metadata.get('layout') != ('SINGLE' if target == 'portrait' else 'SPREAD'):
+        raise RuntimeError('Effective layout mismatch')
+    if PROFILES[device.avd]['desktop'] and scene == '05_page_navigation' and not metadata.get('desktopInputVerified'):
+        raise RuntimeError('Desktop input not verified')
+    if metadata.get('versionCode') != CONFIG['versionCode']:
+        raise RuntimeError('App version mismatch')
+    if scene == '07_outline' and not metadata.get('outlineVerified'):
+        raise RuntimeError('Outline not verified')
+    if PROFILES[device.avd]['desktop'] and not metadata.get('maximized'):
+        raise RuntimeError('Desktop window not maximized')
     return temp, metadata
 
 
@@ -244,17 +332,24 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--device', choices=DEVICES, nargs='+', default=list(DEVICES))
     parser.add_argument('--language', choices=LANGUAGES, nargs='+', default=list(LANGUAGES))
-    parser.add_argument('--scene', choices=SCENES, nargs='+', default=SCENES)
+    parser.add_argument('--scene', choices=SCENES, nargs='+', default=None)
     parser.add_argument('--resume', action='store_true', help='Skip only verified outputs matching APKs, PDFs and runner code')
     parser.add_argument('--skip-build', action='store_true', help='Use already built APKs')
     parser.add_argument('--keep-device', action='store_true', help='Leave the selected emulator running after capture')
     parser.add_argument('--retries', type=int, default=3)
     options = parser.parse_args()
+    selections = {avd: selected_scenes(avd, options.scene) for avd in options.device}
     # Required before build, launch, or any adb action, including on resume.
     pdfs = {lang: ROOT / f'testdata/tameshibu_episode1_2_{lang}.pdf' for lang in LANGUAGES}
     missing = [str(path) for path in pdfs.values() if not path.is_file()]
     if missing:
         raise RuntimeError('FATAL: source PDFs missing: ' + ', '.join(missing))
+    avd_root = Path.home() / '.android/avd'
+    for avd in options.device:
+        ini = dict(line.split('=', 1) for line in (avd_root / f'{avd}.ini').read_text().splitlines() if '=' in line)
+        profile = dict(line.split('=', 1) for line in (Path(ini['path']) / 'config.ini').read_text().splitlines() if '=' in line)
+        if not (SDK / profile['image.sysdir.1']).is_dir():
+            raise RuntimeError(f'System image missing: {avd}')
     from PIL import Image  # fail before device operations when QA dependency is missing
     WORK.mkdir(parents=True, exist_ok=True)
     if options.retries < 1:
@@ -264,33 +359,42 @@ def main():
         env.pop('ANDROID_PREFS_ROOT', None)
         subprocess.run(['./gradlew', 'assembleDebug', 'assembleDebugAndroidTest'], cwd=ROOT, env=env, check=True)
     apks = [ROOT / 'app/build/outputs/apk/debug/app-debug.apk', ROOT / 'app/build/outputs/apk/androidTest/debug/app-debug-androidTest.apk']
-    fingerprint = hashlib.sha256((''.join(sha(p) for p in apks) + sha(Path(__file__))).encode()).hexdigest()
+    stamp = fingerprint(apks)
     available = run([EMULATOR, '-list-avds']).stdout.decode().splitlines()
     if any(avd not in available for avd in options.device):
         raise RuntimeError('Required AVD missing')
+    pending = [f'{avd}/{lang}/{scene}' for avd in options.device for lang in options.language for scene in selections[avd]]
+    status_path = WORK / 'run-status.json'
+    def status(error=None):
+        status_path.write_text(json.dumps(dict(pending=pending, error=error, complete=not pending), ensure_ascii=False, indent=2)+'\n')
+    status()
     for avd in options.device:
         device = Device(avd)
         try:
             print(f'Starting {avd}', flush=True)
             device.start()
+            device.save_display()
             for apk in apks:
                 device.adb('install', '-r', '-t', apk, timeout=180)
             device.adb('push', apks[1], '/data/local/tmp/store-capture-tests.apk')
             for lang in options.language:
                 # Always verify even when all images are already complete.
                 device.locale(LANGUAGES[lang])
-                device.rotate(orientation(avd, options.scene[0]))
+                device.rotate(orientation(avd, selections[avd][0]))
                 digest = sha(pdfs[lang])
                 device.transfer(lang, pdfs[lang], digest)
                 folder = OUT / DEVICES[avd]
                 folder.mkdir(parents=True, exist_ok=True)
-                for scene in options.scene:
+                for scene in selections[avd]:
                     target = orientation(avd, scene)
                     final = folder / f'{lang}_{scene}_{target}.png'
                     record = final.with_suffix('.json')
-                    expected = dict(fingerprint=fingerprint, pdfSha256=digest, avd=avd,
-                                    language=lang, scene=scene, portrait=target == 'portrait')
-                    if options.resume and can_resume(final, record, expected, compatible_fingerprints(apks)):
+                    expected = dict(fingerprint=stamp, pdfSha256=digest, avd=avd,
+                                    language=lang, scene=scene, portrait=target == 'portrait',
+                                    versionCode=CONFIG['versionCode'], dimensions=list(expected_size(avd, target == 'portrait')))
+                    if options.resume and can_resume(final, record, expected):
+                        pending.remove(f'{avd}/{lang}/{scene}')
+                        status()
                         print(f'  Verified / skip {final.name}', flush=True)
                         continue
                     for attempt in range(1, options.retries + 1):
@@ -301,28 +405,46 @@ def main():
                             device.rotate(target)
                             device.transfer(lang, pdfs[lang], digest)
                             temp, info = capture(device, lang, scene, digest, target, attempt)
-                            info.update(avd=avd, serial=device.serial, fingerprint=fingerprint,
+                            info.update(expected)
+                            info.update(serial=device.serial,
                                         imageSha256=sha(temp), checkedAt=time.strftime('%Y-%m-%dT%H:%M:%S%z'),
                                         validation='automated-pass; visual review pending')
                             if any(other != final and sha(other) == sha(temp) for other in folder.glob(f'{lang}_*.png')):
                                 raise RuntimeError('Duplicate screenshot from another scene')
                             temp.replace(final)
                             record.write_text(json.dumps(info, ensure_ascii=False, indent=2) + '\n')
+                            pending.remove(f'{avd}/{lang}/{scene}')
+                            status()
                             print(f'  Saved {final.relative_to(ROOT)}', flush=True)
                             break
                         except (RuntimeError, subprocess.SubprocessError, ValueError) as error:
                             print(f'  FAILED: {error}', flush=True)
                             if attempt == options.retries:
                                 raise
+        except BaseException as error:
+            status(str(error))
+            raise
         finally:
-            if not options.keep_device:
-                device.stop()
+            try:
+                device.restore_display()
+            except Exception as restore_error:
+                status(f"{json.loads(status_path.read_text()).get('error')}; restore failed: {restore_error}")
+                raise RuntimeError(f"Display restoration failed; see {status_path}: {restore_error}") from restore_error
+            finally:
+                if not options.keep_device:
+                    device.stop()
     print('All selected captures passed automated checks. Visual review is still required.', flush=True)
 
 
 if __name__ == '__main__':
     try:
-        main()
+        WORK.mkdir(parents=True, exist_ok=True)
+        with (WORK / 'runner.lock').open('w') as lock:
+            try:
+                fcntl.flock(lock, fcntl.LOCK_EX | fcntl.LOCK_NB)
+            except BlockingIOError:
+                raise RuntimeError('Another capture runner is active; run devices sequentially')
+            main()
     except (RuntimeError, subprocess.SubprocessError, ValueError, OSError) as error:
         print(f'FATAL: {error}', file=sys.stderr)
         sys.exit(1)

@@ -128,8 +128,8 @@ import kotlin.math.abs
                         },
                         actions = {
                             if (state.outline.isNotEmpty()) {
-                                IconButton(onClick = { showOutlineDialog = true }) {
-                                    Icon(Icons.AutoMirrored.Filled.FormatListBulleted, contentDescription = "Table of Contents")
+                                IconButton(onClick = { showOutlineDialog = true }, modifier = Modifier.testTag("btn_outline")) {
+                                    Icon(Icons.AutoMirrored.Filled.FormatListBulleted, contentDescription = stringResource(R.string.table_of_contents))
                                 }
                             }
                             IconButton(onClick = openSamplePdfs, modifier = Modifier.testTag("btn_top_sample_pdfs")) {
@@ -211,6 +211,7 @@ import kotlin.math.abs
          .fillMaxSize()
          .padding(padding)
          .background(androidx.compose.ui.graphics.Color(0xFF202124))
+         .testTag("viewer_content")
          .focusRequester(focusRequester)
          .focusable()
          .onKeyEvent { event ->
@@ -415,7 +416,7 @@ import kotlin.math.abs
     if (showOutlineDialog) {
         AlertDialog(
             onDismissRequest = { showOutlineDialog = false },
-            title = { Text("目次 (Table of Contents)") },
+            title = { Text(stringResource(R.string.table_of_contents)) },
             text = {
                 androidx.compose.foundation.lazy.LazyColumn(modifier = Modifier.fillMaxWidth().heightIn(max = 400.dp)) {
                     items(state.outline.size) { index ->
@@ -476,7 +477,7 @@ private fun OutlineItemView(node: OutlineNode, onSelect: (Int) -> Unit) {
 
     Box(
         modifier
-            .pointerInput(Unit) {
+            .pointerInput(isDesktop, direction) {
                 awaitEachGesture {
                     val down = awaitFirstDown(requireUnconsumed = false)
                     var totalPan = Offset.Zero
