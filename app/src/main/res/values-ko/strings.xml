@@ -31,4 +31,5 @@
     <string name="help_cover_mode"><b>Cover setting:</b> Choose cover placement for each reading direction.</string>
     <string name="help_reset"><b>Reset:</b> Reset app settings and close the current document.</string>
     <string name="testing_diagnostic_logs">테스트 및 진단 로그</string>
+    <string name="table_of_contents">목차</string>
 </resources>

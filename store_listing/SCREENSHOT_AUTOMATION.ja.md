@@ -107,3 +107,32 @@ UI Automatorで前面パッケージを確認し、OSバーを含む画面全体
 
 従来の `capture_screenshots.py` と `scripts/capture_screenshots.py` はそのまま残しているが、今回の撮影には使用しない。
 通常の `connectedAndroidTest` では、撮影引数のないStoreScreenshotTestはスキップされる。
+
+## versionCode 31向けの更新
+
+撮影条件は `scripts/store_capture_config.json` を正とする。スマホ・両タブレットは目次を含む7画面、Chromebook_FHDは横画面6種類。4言語で計108枚。
+
+```sh
+# スマホの追加・修正画面を試験
+python3 scripts/capture_store_screenshots.py --device Smartphone_6.3 --language ja --scene 07_outline 03_reading_settings 06_display_settings
+# Desktopの全6画面
+python3 scripts/capture_store_screenshots.py --device Chromebook_FHD --language ja
+# 選択端末・言語だけを検品（未撮影画像があれば失敗）
+python3 scripts/review_store_screenshots.py --device Chromebook_FHD --language ja
+```
+
+Tablet_7は1080×1920・360dpiへ一時変更し、終了時に元のoverrideと回転設定へ戻す。元が未設定ならresetする。強制killやホスト停止ではfinallyが動かないため、必要なら開始時の値を確認して復元する。通常の中断はCtrl-Cを使う。
+
+Desktopでは画面回転を強制せず、システムの最大化操作、必要ならAPI 34の `am task resize` でアプリ領域を拡大する。実際のActivity領域を検査し、失敗時は保存しない。Desktop AVDによる撮影であり、ChromeOS固有UIを再現するものではない。
+
+PDFは `/data/local/tmp` に転送してハッシュを検証し、`run-as` でアプリ専用領域へコピーして再検証する。Downloadsへの転送は行わない。画像は実画面を撮影し、不透明なアルファチャンネルのみ除去して24-bit RGB PNGへ保存する。
+
+旧版画像の互換再利用は行わない。APK・スクリプト・共通設定のfingerprintが一致する完成画像だけ再開時にスキップする。同時起動によるポート競合を防ぐため、撮影スクリプトは1プロセスずつ実行する。
+
+`.artifacts/store-capture/run-status.json` に選択範囲の未完了一覧とエラーを保存する。部分検品レポートは `SCREENSHOT_CAPTURE_REPORT.partial.ja.md` に出力し、全体完了と区別する。目視完了を付ける前に選択範囲全体を検証する。
+
+上にある旧版の72枚・versionCode 29・Downloads転送の説明より、この節と共通設定を優先する。
+
+Desktopのページ移動試験は矢印キーと、マウス操作設定を有効にした状態の端クリックを確認する。端クリックにはComposeのマウス入力APIを使用する。Desktopのリサイズ枠を避けるため、読書領域の幅10%の位置でクリックする。物理マウスとOS全体の互換性確認とは区別する。
+
+撮影試験で検出した目次のGoToアクションの解決漏れを修正した。目次sceneでは既存PDFの全8項目が0〜7ページを指すこと、および3ページ目への移動を検証する。

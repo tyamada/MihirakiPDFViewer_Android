@@ -65,4 +65,5 @@
     <string name="help_promo_code" translatable="false"><b>プロモコードを入力:</b> Google Playのプロモーションコードを入力してバッジやアイテムを引き換えます。</string>
     <string name="help_slider" translatable="false"><b>スライダー:</b> 下部バーのスライダーをドラッグして、ドキュメント内の任意のページへ素早く移動できます。</string>
     <string name="report_issue_desc" translatable="false"><b>不具合を報告する:</b> バグやクラッシュが発生した場合は、診断ログを添えて GitHub Issues からご報告ください。</string>
+    <string name="table_of_contents">目次</string>
 </resources>

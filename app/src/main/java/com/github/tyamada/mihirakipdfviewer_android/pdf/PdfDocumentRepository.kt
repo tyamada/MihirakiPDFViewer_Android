@@ -114,13 +114,9 @@ private class HybridPdfSource(private val file: File, password: String?) : PdfSo
         while (item != null) {
             val title = item.title.orEmpty()
             val pageIndex = try {
-                val dest = item.destination
-                if (dest is com.tom_roush.pdfbox.pdmodel.interactive.documentnavigation.destination.PDPageDestination) {
-                    val page = dest.page
-                    if (page != null) {
-                        doc.pages.indexOf(page).takeIf { it >= 0 } ?: 0
-                    } else 0
-                } else 0
+                // Resolve direct destinations, named destinations and GoTo actions.
+                val page = item.findDestinationPage(doc)
+                if (page != null) doc.pages.indexOf(page).takeIf { it >= 0 } ?: 0 else 0
             } catch (_: Exception) { 0 }
 
             val children = extractOutlineItems(item, doc)
