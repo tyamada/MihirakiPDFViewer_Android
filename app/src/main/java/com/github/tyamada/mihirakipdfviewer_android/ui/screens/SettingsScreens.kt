@@ -16,6 +16,8 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
+import android.content.ClipData
+import android.content.Context
 import android.content.Intent
 import android.net.Uri
 import android.widget.TextView
@@ -492,17 +494,33 @@ data class HelpCategorySpec(val title: String, val items: List<Int>)
             BulletPoint("6. スクリーンショット、アプリログ、または実機テスト結果")
 
             Section("診断情報 (Diagnostic information)")
+            Button(
+                onClick = {
+                    val result = DeviceTestRunner.runTest(context)
+                    val testReport = DeviceTestRunner.formatResultString(result)
+                    val logs = PersistentLogManager.getAllLogs().joinToString("\n")
+                    val combined = "$testReport\n\n--- App Logs (${PersistentLogManager.getAllLogs().size} lines) ---\n$logs"
+                    val clipboard = context.getSystemService(Context.CLIPBOARD_SERVICE) as android.content.ClipboardManager
+                    val clip = ClipData.newPlainText("MihirakiPDFViewer Diagnostic Report", combined)
+                    clipboard.setPrimaryClip(clip)
+                    Toast.makeText(context, "実機テスト結果とアプリログを一括コピーしました", Toast.LENGTH_SHORT).show()
+                },
+                modifier = Modifier.fillMaxWidth()
+            ) {
+                Text("実機テスト結果とアプリログを一括コピー (Copy All Diagnostics)")
+            }
+            Spacer(Modifier.height(8.dp))
             OutlinedButton(
                 onClick = logViewer,
                 modifier = Modifier.fillMaxWidth()
             ) {
-                Text("アプリログを表示する (View app logs)")
+                Text("アプリログ個別の表示・管理 (View app logs)")
             }
             OutlinedButton(
                 onClick = deviceTest,
                 modifier = Modifier.fillMaxWidth()
             ) {
-                Text("実機テストを実行する (Run device tests)")
+                Text("実機テスト個別の実行 (Run device tests)")
             }
 
             Section("プライバシー保護 (Protect your privacy)")
