@@ -6,7 +6,7 @@ Brouillon pour la "Fiche the store" dans Google Play Console.
 MihirakiPDFViewer: Double page
 
 ## Description courte (max. 80 car.)
-Idéal pour les mangas ! Lecteur PDF axé sur la confidentialité, double page et R2L.
+Idéal pour mangas ! Lecteur PDF privé (double page & R2L).
 
 ## Description longue (max. 4000 car.)
 **MihirakiPDFViewer** est un lecteur PDF moderne et axé sur la confidentialité, conçu spécifiquement pour offrir une lecture optimale des doubles pages et des documents de droite à gauche (R2L) tels que les mangas japonais et les light novels.
