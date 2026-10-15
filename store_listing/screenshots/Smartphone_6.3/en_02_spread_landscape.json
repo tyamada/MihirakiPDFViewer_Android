@@ -1,5 +1,19 @@
 {
-  "captureId": "3779d3a29a264d00b39ef240818f5075",
+  "desktopInputVerified": false,
+  "outlinePages": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7
+  ],
+  "outlineVerified": false,
+  "maximized": true,
+  "activityBounds": "[0,48][1920,1032]",
+  "captureId": "1c950227cd4145e8a7bfe549c067c2dd",
   "scene": "02_spread",
   "language": "en",
   "locale": "en-US",
@@ -14,12 +28,16 @@
   "layout": "SPREAD",
   "showCover": true,
   "version": "2.0.0",
-  "versionCode": 29,
+  "versionCode": 31,
   "package": "com.github.tyamada.MihirakiPDFViewer_Android",
+  "fingerprint": "39ef0280b4aaa14074f29a6ab024bccaad05ab9c016789b278bbb77c5afaac14",
   "avd": "Smartphone_6.3",
+  "dimensions": [
+    1920,
+    1080
+  ],
   "serial": "emulator-5580",
-  "fingerprint": "ebd6aa89d073fc84fce9661ac4bad5a0041547d2f676b4102f451a1b73e854b7",
-  "imageSha256": "a970ded2f3315c02688f58c6a73b774779815915d82538e6b50258be0a42e545",
-  "checkedAt": "2026-10-12T21:42:44+0900",
+  "imageSha256": "3cae4533ec0cd8306c6cd876b352f645f486925f60c570f082a8ce3ec61490f8",
+  "checkedAt": "2026-10-15T19:34:57+0900",
   "validation": "automated-pass; visual-reviewed"
 }

@@ -19,10 +19,11 @@ class NavigationTest {
     @Test fun fileSelectionRouteIsClickable() { compose.onNodeWithText(compose.activity.getString(R.string.open_pdf)).assertHasClickAction() }
     @Test fun settingsHelpAndResetRoutes() {
         compose.onNodeWithContentDescription(compose.activity.getString(R.string.settings)).performClick()
+        compose.onNodeWithText(compose.activity.getString(R.string.settings)).performClick()
         compose.onNodeWithText(compose.activity.getString(R.string.display_settings)).assertExists()
         
         // Scroll to and click Help
-        compose.onAllNodesWithText(compose.activity.getString(R.string.help))[1].performScrollTo().performClick()
+        compose.onNodeWithText(compose.activity.getString(R.string.help)).performScrollTo().performClick()
         compose.onNodeWithText(compose.activity.getString(R.string.help)).assertExists()
         compose.onNodeWithContentDescription(compose.activity.getString(R.string.back)).performClick()
         
@@ -49,13 +50,14 @@ class NavigationTest {
 
         // 4. Settings screen (At initial launch before opening PDF)
         compose.onNodeWithContentDescription(compose.activity.getString(R.string.settings)).performClick()
+        compose.onNodeWithText(compose.activity.getString(R.string.settings)).performClick()
         compose.onNodeWithText(compose.activity.getString(R.string.display_settings)).assertExists()
         compose.waitForIdle()
         Thread.sleep(1500)
         device.takeScreenshot(File(outputDir, "4_smartphone_screenshot_settings_ja.png"))
 
         // 5. Support / Help detail screen
-        compose.onAllNodesWithText(compose.activity.getString(R.string.help))[1].performScrollTo().performClick()
+        compose.onNodeWithText(compose.activity.getString(R.string.help)).performScrollTo().performClick()
         compose.waitForIdle()
         Thread.sleep(1500)
         device.takeScreenshot(File(outputDir, "5_smartphone_screenshot_support_ja.png"))
@@ -109,13 +111,14 @@ class NavigationTest {
 
         // 4. Settings screen (At initial launch before opening PDF)
         compose.onNodeWithContentDescription(compose.activity.getString(R.string.settings)).performClick()
+        compose.onNodeWithText(compose.activity.getString(R.string.settings)).performClick()
         compose.onNodeWithText(compose.activity.getString(R.string.display_settings)).assertExists()
         compose.waitForIdle()
         Thread.sleep(1500)
         device.takeScreenshot(File(outputDir, "4_smartphone_screenshot_settings_en.png"))
 
         // 5. Support / Help detail screen
-        compose.onAllNodesWithText(compose.activity.getString(R.string.help))[1].performScrollTo().performClick()
+        compose.onNodeWithText(compose.activity.getString(R.string.help)).performScrollTo().performClick()
         compose.waitForIdle()
         Thread.sleep(1500)
         device.takeScreenshot(File(outputDir, "5_smartphone_screenshot_support_en.png"))

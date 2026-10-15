@@ -39,5 +39,5 @@
   "serial": "emulator-5580",
   "imageSha256": "58bb968a4366a705222d1710e3f6e8c88af095c666210c9255bbc286245694a0",
   "checkedAt": "2026-10-15T12:13:41+0900",
-  "validation": "automated-pass; visual review pending"
+  "validation": "automated-pass; visual-reviewed"
 }
