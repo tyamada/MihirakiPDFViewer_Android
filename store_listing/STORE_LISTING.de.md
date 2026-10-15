@@ -3,10 +3,10 @@
 Entwurf für den "Store-Eintrag" in der Google Play Console.
 
 ## App-Name (max. 30 Zeichen)
-MihirakiPDFViewer: Doppelseiten
+MihirakiPDFViewer: Doppelseite
 
 ## Kurzbeschreibung (max. 80 Zeichen)
-Optimal für Manga! Ein datenschutzfreundlicher PDF-Viewer mit Doppelseiten- & R2L-Support.
+Optimal für Manga! Privater PDF-Viewer mit Doppelseiten- & R2L-Support.
 
 ## Ausführliche Beschreibung (max. 4000 Zeichen)
 **MihirakiPDFViewer** ist ein moderner, datenschutzorientierter PDF-Reader, der speziell für ein optimales Leseerlebnis von Doppelseiten und von rechts nach links (R2L) geschriebenen Dokumenten wie japanischen Mangas und Light Novels entwickelt wurde.
