@@ -3,7 +3,7 @@
 Draft content for the "Main store listing" in Google Play Console.
 
 ## App name (Max 30 chars)
-MihirakiPDFViewer - Spread View
+MihirakiPDFViewer - Spread
 
 ## Short description (Max 80 chars)
 Optimal for Manga! A privacy-focused PDF viewer with spread and R2L support.
