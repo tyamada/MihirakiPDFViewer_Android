@@ -22,11 +22,6 @@ class NavigationTest {
         compose.onNodeWithText(compose.activity.getString(R.string.settings)).performClick()
         compose.onNodeWithText(compose.activity.getString(R.string.display_settings)).assertExists()
         
-        // Scroll to and click Help
-        compose.onNodeWithText(compose.activity.getString(R.string.help)).performScrollTo().performClick()
-        compose.onNodeWithText(compose.activity.getString(R.string.help)).assertExists()
-        compose.onNodeWithContentDescription(compose.activity.getString(R.string.back)).performClick()
-        
         // Scroll to and click Reset
         compose.onNodeWithText(compose.activity.getString(R.string.reset)).performScrollTo().performClick()
         compose.onNodeWithText(compose.activity.getString(R.string.reset_message)).assertExists()
@@ -57,7 +52,8 @@ class NavigationTest {
         device.takeScreenshot(File(outputDir, "4_smartphone_screenshot_settings_ja.png"))
 
         // 5. Support / Help detail screen
-        compose.onNodeWithText(compose.activity.getString(R.string.help)).performScrollTo().performClick()
+        compose.onNodeWithContentDescription(compose.activity.getString(R.string.settings)).performClick()
+        compose.onNodeWithText(compose.activity.getString(R.string.help)).performClick()
         compose.waitForIdle()
         Thread.sleep(1500)
         device.takeScreenshot(File(outputDir, "5_smartphone_screenshot_support_ja.png"))
@@ -118,7 +114,8 @@ class NavigationTest {
         device.takeScreenshot(File(outputDir, "4_smartphone_screenshot_settings_en.png"))
 
         // 5. Support / Help detail screen
-        compose.onNodeWithText(compose.activity.getString(R.string.help)).performScrollTo().performClick()
+        compose.onNodeWithContentDescription(compose.activity.getString(R.string.settings)).performClick()
+        compose.onNodeWithText(compose.activity.getString(R.string.help)).performClick()
         compose.waitForIdle()
         Thread.sleep(1500)
         device.takeScreenshot(File(outputDir, "5_smartphone_screenshot_support_en.png"))

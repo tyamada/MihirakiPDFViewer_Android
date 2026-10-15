@@ -30,11 +30,7 @@ import com.github.tyamada.mihirakipdfviewer_android.viewmodel.ViewerViewModel
             SettingsScreen(
                 vm = viewer,
                 back = { nav.popBackStack() },
-                reset = { nav.navigate("reset") },
-                openHelp = { nav.navigate("help") },
-                openVersion = { nav.navigate("version") },
-                openDiagnostics = { nav.navigate("diagnostics") },
-                openSupport = { nav.navigate("tips") }
+                reset = { nav.navigate("reset") }
             )
         }
         composable("sample_pdfs") {
