@@ -89,8 +89,8 @@ class NavigationTest {
         Thread.sleep(3000)
         device.takeScreenshot(File(outputDir, "2_smartphone_screenshot_search_ja.png"))
 
-        // 3. Password screen (TestLightNovel_password.pdf)
-        val pwdPdf = copyAssetToCache("TestLightNovel_password.pdf")
+        // 3. Password screen (R2L_Cover_password.pdf)
+        val pwdPdf = copyAssetToCache("R2L_Cover_password.pdf")
         val pwdUri = Uri.fromFile(pwdPdf)
         InstrumentationRegistry.getInstrumentation().runOnMainSync {
             compose.activity.viewer.open(pwdUri)
@@ -151,8 +151,8 @@ class NavigationTest {
         Thread.sleep(3000)
         device.takeScreenshot(File(outputDir, "2_smartphone_screenshot_search_en.png"))
 
-        // 3. Password screen (TestLightNovel_password.pdf)
-        val pwdPdf = copyAssetToCache("TestLightNovel_password.pdf")
+        // 3. Password screen (R2L_Cover_password.pdf)
+        val pwdPdf = copyAssetToCache("R2L_Cover_password.pdf")
         val pwdUri = Uri.fromFile(pwdPdf)
         InstrumentationRegistry.getInstrumentation().runOnMainSync {
             compose.activity.viewer.open(pwdUri)
