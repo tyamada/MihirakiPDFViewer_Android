@@ -69,6 +69,13 @@ fun SamplePdfScreen(
                         "zh_tw" -> "Chinese (Traditional) (中国語(繁体字))"
                         "de" -> "German (Deutsch)"
                         "fr" -> "French (Français)"
+                        "es" -> "Spanish (Español)"
+                        "it" -> "Italian (Italiano)"
+                        "pt" -> "Portuguese (Português)"
+                        "vi" -> "Vietnamese (Tiếng Việt)"
+                        "id" -> "Indonesian (Bahasa Indonesia)"
+                        "fil" -> "Filipino (Filipino)"
+                        "ne" -> "Nepali (नेपाली)"
                         else -> uiState.selectedLanguage.uppercase()
                     }
                     OutlinedTextField(
@@ -78,6 +85,7 @@ fun SamplePdfScreen(
                         label = { Text(stringResource(R.string.language_filter)) },
                         trailingIcon = { ExposedDropdownMenuDefaults.TrailingIcon(expanded = expanded) },
                         modifier = Modifier
+                            .testTag("sample_language_filter")
                             .menuAnchor(ExposedDropdownMenuAnchorType.PrimaryNotEditable, true)
                             .fillMaxWidth()
                     )
@@ -95,6 +103,13 @@ fun SamplePdfScreen(
                                 "zh_tw" -> "Chinese (Traditional) (中国語(繁体字))"
                                 "de" -> "German (Deutsch)"
                                 "fr" -> "French (Français)"
+                                "es" -> "Spanish (Español)"
+                                "it" -> "Italian (Italiano)"
+                                "pt" -> "Portuguese (Português)"
+                                "vi" -> "Vietnamese (Tiếng Việt)"
+                                "id" -> "Indonesian (Bahasa Indonesia)"
+                                "fil" -> "Filipino (Filipino)"
+                                "ne" -> "Nepali (नेपाली)"
                                 else -> lang.uppercase()
                             }
                             DropdownMenuItem(
