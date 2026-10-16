@@ -95,8 +95,23 @@ https://creativecommons.org/licenses/by/4.0/
 ./gradlew test
 ./gradlew connectedAndroidTest
 ```
+- **実機自動テスト & ログ収集スクリプト**: `python3 scripts/run_device_tests_and_save.py` を実行することで、接続された実機やエミュレータに対して以下の処理を全自動で実行し、結果を `logs/` ディレクトリに一括保存できます：
+  1. 端末情報・診断データの自動収集 (`device_info.txt`)
+  2. 既存アプリのクリーンアンインストールおよび最新デバッグAPKのクリーンインストール・起動ログ (`App started.`) 検証
+  3. JVM単体テスト (`app:testDebug`) の実行
+  4. 接続インストルメンテーションテストスイート (`app:connectedDebugAndroidTest`: 負荷・パフォーマンステスト、アクセシビリティ、メタデータ、ナビゲーション、ストアスクリーンショット) の実行
+  5. Python QA・回帰テスト（全9テスト）の実行
+  6. 検証リスト ([VERIFICATION_LIST.md](VERIFICATION_LIST.md)) のバージョン (`2.0.0(32)`) および結果 (`No issues`) への自動更新
 - **アプリ内診断ログ**: 設定画面の「Testing & Diagnostics」から、リアルタイムのメモリ使用量や、インメモリバッファに記録されたアプリケーションログ (`AppLogger`) を確認できます。
 - **パフォーマンス・ストレステスト**: 大容量PDFのメモリトラッキングテスト、高速ページめくりストレステスト、連続ドキュメント切り替え安定性テストが含まれています。
+
+## 🤖 CI (継続的インテグレーション)
+GitHub Actions (`.github/workflows/ci.yml`) を利用した自動ビルドおよびテスト検証パイプラインを構築しています。
+- **対象ブランチ**: `main`, `testing` (プッシュおよびプルリクエスト時)
+- **検証内容**:
+  - JDK 21 環境のセットアップ
+  - デバッグ APK のビルド (`./gradlew assembleDebug`)
+  - JVM 単体テストの実行 (`./gradlew testDebugUnitTest`)
 
 ## 📋 動作確認リスト
 開発者およびユーザーによって検証されたデバイス互換性や動作確認の結果は、[VERIFICATION_LIST.md](VERIFICATION_LIST.md) に記載されています。
