@@ -68,3 +68,14 @@ logs/
 
 正規入口は `scripts/capture_store_screenshots.py`。対応順は `ja en ko zh_tw de fr es pt zh_cn vi fil ne id it`（ポルトガル語はブラジル）。言語未指定では14言語が対象となり、4端末で378枚です。選択した言語ごとの `testdata/tameshibu_episode1_2_<言語コード>.pdf` が必要です。
 追加3言語の実行手順は [追加撮影計画](store_listing/SCREENSHOT_ADDITIONAL_CAPTURE_PLAN.ja.md) を参照してください。
+
+### サンプルPDF追加時の検証
+
+`testdata/` を正本とし、カタログが参照する28件は `docs/sample/` と同じ内容に保ちます。単体テストでファイルの存在、言語ごとの2話、配布用コピーとのSHA-256一致を確認します。
+
+```bash
+./gradlew assembleDebug assembleDebugAndroidTest testDebugUnitTest lintDebug
+python3 scripts/run_sample_pdf_smoke.py
+```
+
+端末テストは `Smartphone_6.3` AVDを使用し、28件をアプリ専用領域へ転送してハッシュを照合します。追加7言語の一覧・絞り込み、各2話の描画・目次・ページ移動、第1話の検索、イタリア語リソースを検証します。ネットワーク経由のダウンロードやストア画像の生成は行いません。ログは `.artifacts/sample-validation-v33/instrumentation.log` に保存されます。既存のAVDを使う場合は閲覧履歴・表示設定が更新されるため、検証専用AVDで実行してください。
