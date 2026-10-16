@@ -15,7 +15,7 @@ android {
         applicationId = "com.github.tyamada.MihirakiPDFViewer_Android"
         minSdk = 26
         targetSdk = 37
-        versionCode = 32
+        versionCode = 33
         versionName = "2.0.0"
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         vectorDrawables.useSupportLibrary = true
@@ -29,10 +29,10 @@ android {
         }
 
         create("release") {
-            storeFile = (System.getenv("SIGNING_STORE_FILE") ?: props.getProperty("signing.storeFile"))?.let { file(it) }
-            storePassword = System.getenv("SIGNING_STORE_PASSWORD") ?: props.getProperty("signing.storePassword")
-            keyAlias = System.getenv("SIGNING_KEY_ALIAS") ?: props.getProperty("signing.keyAlias")
-            keyPassword = System.getenv("SIGNING_KEY_PASSWORD") ?: props.getProperty("signing.keyPassword")
+            storeFile = props.getProperty("signing.storeFile")?.let { file(it) }
+            storePassword = props.getProperty("signing.storePassword")
+            keyAlias = props.getProperty("signing.keyAlias")
+            keyPassword = props.getProperty("signing.keyPassword")
         }
     }
 
