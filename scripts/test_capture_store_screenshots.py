@@ -15,13 +15,25 @@ class CaptureSafetyTest(unittest.TestCase):
         original = Path.is_file
         def is_file(path):
             return False if path.name == 'tameshibu_episode1_2_ko.pdf' else original(path)
-        with patch.object(sys, 'argv', ['capture', '--device', 'Smartphone_6.3', '--language', 'ja']), \
+        with patch.object(sys, 'argv', ['capture', '--device', 'Smartphone_6.3', '--language', 'ko']), \
                 patch.object(Path, 'is_file', is_file), patch.object(capture, 'run') as run, \
                 patch.object(capture.subprocess, 'run') as subprocess_run:
             with self.assertRaisesRegex(RuntimeError, 'FATAL: source PDFs missing.*ko.pdf'):
                 capture.main()
             run.assert_not_called()
             subprocess_run.assert_not_called()
+
+    def test_unselected_missing_pdf_does_not_block_selected_languages(self):
+        original = Path.is_file
+        def is_file(path):
+            return path.name == 'tameshibu_episode1_2_fr.pdf' if path.suffix == '.pdf' else original(path)
+        with patch.object(sys, 'argv', ['capture', '--device', 'Smartphone_6.3', '--language', 'fr']), \
+                patch.object(Path, 'is_file', is_file), \
+                patch.object(Path, 'read_text', side_effect=RuntimeError('reached AVD preflight')), \
+                patch.object(capture, 'run') as run:
+            with self.assertRaisesRegex(RuntimeError, 'reached AVD preflight'):
+                capture.main()
+            run.assert_not_called()
 
     def test_resume_rejects_stale_corrupt_or_wrong_scene_outputs(self):
         with tempfile.TemporaryDirectory() as folder:
@@ -43,7 +55,7 @@ class CaptureSafetyTest(unittest.TestCase):
             self.assertFalse(capture.can_resume(path, record, expected))
 
     def test_profiles_and_unsupported_scene(self):
-        self.assertEqual(108, sum(len(capture.selected_scenes(d)) for d in capture.DEVICES) * len(capture.LANGUAGES))
+        self.assertEqual(351, sum(len(capture.selected_scenes(d)) for d in capture.DEVICES) * len(capture.LANGUAGES))
         with self.assertRaises(ValueError):
             capture.selected_scenes('Chromebook_FHD', ['01_reader'])
         self.assertTrue(all(capture.orientation('Chromebook_FHD', s) == 'landscape' for s in capture.selected_scenes('Chromebook_FHD')))

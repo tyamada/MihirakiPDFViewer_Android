@@ -340,7 +340,7 @@ def main():
     options = parser.parse_args()
     selections = {avd: selected_scenes(avd, options.scene) for avd in options.device}
     # Required before build, launch, or any adb action, including on resume.
-    pdfs = {lang: ROOT / f'testdata/tameshibu_episode1_2_{lang}.pdf' for lang in LANGUAGES}
+    pdfs = {lang: ROOT / f'testdata/tameshibu_episode1_2_{lang}.pdf' for lang in options.language}
     missing = [str(path) for path in pdfs.values() if not path.is_file()]
     if missing:
         raise RuntimeError('FATAL: source PDFs missing: ' + ', '.join(missing))

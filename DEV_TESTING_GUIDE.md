@@ -63,3 +63,8 @@ logs/
   - `app/src/androidTest/java/.../` などのテストクラスやパッケージを右クリックし、接続した実機を指定して `Run tests` を選択。
 - **UI自動キャプチャ / スクリーンショットスクリプト**:
   - Terminal から `python3 scripts/capture_store_screenshots.py --device Smartphone_6.3 --language ja` を実行してストアスクリーンショットを生成・検証できます。
+
+### ストア撮影の言語選択
+
+正規入口は `scripts/capture_store_screenshots.py`。対応順は `ja en ko zh_tw de fr es pt zh_cn vi fil ne id`（ポルトガル語はブラジル）。言語未指定では13言語が対象となり、4端末で351枚です。選択した言語ごとの `testdata/tameshibu_episode1_2_<言語コード>.pdf` が必要です。
+追加3言語の実行手順は [追加撮影計画](store_listing/SCREENSHOT_ADDITIONAL_CAPTURE_PLAN.ja.md) を参照してください。

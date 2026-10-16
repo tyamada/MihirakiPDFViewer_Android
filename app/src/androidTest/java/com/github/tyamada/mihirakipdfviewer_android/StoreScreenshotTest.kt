@@ -115,7 +115,16 @@ class StoreScreenshotTest {
             }
             "04_search" -> {
                 val candidates = mapOf("ja" to listOf("ひと息マップ", "完成", "今"), "en" to listOf("Break-Time", "arrow"),
-                    "ko" to listOf("한숨 돌림 지도", "화살표"), "zh_cn" to listOf("歇口气地图", "箭头")).getValue(lang)
+                    "ko" to listOf("한숨 돌림 지도", "화살표"), "zh_cn" to listOf("歇口气地图", "箭头"),
+                    "zh_tw" to listOf("歇口氣地圖", "箭頭"),
+                    "de" to listOf("Pausen", "Pfeil", "Karte"),
+                    "fr" to listOf("détente", "flèche"),
+                    "es" to listOf("descanso", "flecha", "mapa"),
+                    "pt" to listOf("pausa", "seta", "mapa"),
+                    "vi" to listOf("nghỉ", "mũi tên", "bản đồ"),
+                    "fil" to listOf("pahinga", "palaso", "mapa"),
+                    "ne" to listOf("आराम", "तीर", "नक्सा"),
+                    "id" to listOf("istirahat", "panah", "peta")).getValue(lang)
                 // Probe the real PDF text engine; a title-only match is insufficient.
                 val source = requireNotNull(vm.state.value.source)
                 val selected = kotlinx.coroutines.runBlocking {
