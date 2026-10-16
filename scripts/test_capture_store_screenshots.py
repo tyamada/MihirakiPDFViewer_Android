@@ -55,7 +55,7 @@ class CaptureSafetyTest(unittest.TestCase):
             self.assertFalse(capture.can_resume(path, record, expected))
 
     def test_profiles_and_unsupported_scene(self):
-        self.assertEqual(351, sum(len(capture.selected_scenes(d)) for d in capture.DEVICES) * len(capture.LANGUAGES))
+        self.assertEqual(378, sum(len(capture.selected_scenes(d)) for d in capture.DEVICES) * len(capture.LANGUAGES))
         with self.assertRaises(ValueError):
             capture.selected_scenes('Chromebook_FHD', ['01_reader'])
         self.assertTrue(all(capture.orientation('Chromebook_FHD', s) == 'landscape' for s in capture.selected_scenes('Chromebook_FHD')))
