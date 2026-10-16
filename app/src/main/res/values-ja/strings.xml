@@ -1,13 +1,20 @@
 <resources>
     <string name="app_name">見開きPDFビューア</string><string name="open_pdf">PDFを開く</string><string name="open">開く</string><string name="settings">設定</string><string name="support">応援</string><string name="search">PDF内を検索</string><string name="ok">OK</string><string name="cancel">キャンセル</string><string name="back">戻る</string>
+    <string name="previous_page">前のページ</string>
+    <string name="next_page">次のページ</string>
+    <string name="previous_search">前の検索結果</string>
+    <string name="next_search">次の検索結果</string>
     <string name="password_required">パスワードが必要です</string><string name="password">パスワード</string><string name="wrong_password">パスワードが正しくありません。</string><string name="permission_denied">このファイルを読み取る権限がありません。</string><string name="cannot_open_pdf">PDFを開けません。ファイルが破損している可能性があります。</string><string name="no_results">検索結果がありません。</string>
-    <string name="display_settings">表示設定</string><string name="high_quality">高画質化</string><string name="sharpness">シャープネス</string><string name="two_page">見開き表示</string><string name="show_cover">表紙表示</string><string name="reading_direction">ページ方向</string><string name="cover_mode">表紙設定</string>
+    <string name="display_settings">表示設定</string><string name="high_quality">高画質化</string><string name="sharpness">シャープネス</string><string name="two_page">見開き表示</string><string name="portrait_display">縦向きでは単一ページ表示</string><string name="show_cover">表紙を表示</string><string name="reading_direction">ページ方向</string><string name="cover_mode">表紙設定</string><string name="mouse_navigation">マウスクリックでページ切り替え</string>
     <string name="document_info">ドキュメント情報</string><string name="title">タイトル</string><string name="author">作成者</string><string name="subject">サブタイトル</string><string name="keywords">キーワード</string><string name="pdf_version">PDFのバージョン</string><string name="options">オプション</string><string name="help">ヘルプ</string><string name="licenses">ライセンス</string><string name="reset">リセット</string>
     <string name="reset_message">アプリの設定をリセットします。</string>
-    <string name="help_open"><b>PDFを開く:</b> ファイルピッカーから端末またはクラウドストレージのPDFを選択します。</string><string name="help_navigate"><b>ページ移動:</b> スワイプまたはスライダーでページを切り替えます。</string><string name="help_menu"><b>メニュー:</b> 画面をタップしてツールバーとスライダーの表示を切り替えます。</string><string name="help_zoom"><b>ズーム:</b> ピンチで拡大・縮小します。拡大中は長押ししてドラッグします。</string><string name="help_search"><b>検索:</b> 検索バーに語句を入力してPDF内を検索します。</string>    <string name="help_layout"><b>6. 設定:</b> 設定画面で表示をカスタマイズし、現在のドキュメントやアプリの情報を確認できます。</string>
+    <string name="help_open"><b>PDFを開く:</b> ファイルピッカーから端末またはクラウドストレージのPDFを選択します。</string>
+    <string name="help_sample_pdfs_desc" translatable="false"><b>サンプルPDF:</b> アプリで提供されているサンプルPDFをダウンロードして、各機能を試すことができます。</string>
+    <string name="help_navigate"><b>ページ移動:</b> スワイプ、スライダー、または（デスクトップ・マウス操作モードでは）左右端のクリックでページを切り替えます。</string><string name="help_outline" translatable="false"><b>PDF目次（アウトライン）:</b> ツールバーの目次アイコンをタップすると、PDF内のブックマークや章・節の一覧が表示され、任意の箇所へ瞬時にジャンプできます。</string><string name="help_adaptive" translatable="false"><b>アダプティブレイアウト:</b> タブレットや大画面、折りたたみ端末（Foldable）の画面サイズに合わせて自動的に表示が最適化されます。</string><string name="help_menu"><b>メニュー:</b> 画面をタップしてツールバーとスライダーの表示を切り替えます。</string><string name="help_zoom"><b>ズーム:</b> ピンチで拡大・縮小します。拡大中は長押ししてドラッグします。</string><string name="help_search"><b>検索:</b> 検索バーに語句を入力してPDF内を検索します。</string>    <string name="help_layout"><b>設定:</b> 設定画面で表示をカスタマイズし、現在のドキュメントやアプリの情報を確認できます。</string>
     <string name="help_high_quality"><b>高画質化:</b> PDFページをより高画質で表示します。</string>
     <string name="help_sharpness"><b>シャープネス:</b> 文字や線をより鮮明に表示します。</string>
     <string name="help_two_page"><b>見開き表示:</b> 2ページを横に並べて表示します。</string>
+    <string name="help_portrait_display"><b>縦向きでは単一ページ表示:</b> 縦長画面（Portrait）のときに単一ページ表示にするかどうかを選択します。</string>
     <string name="help_show_cover"><b>表紙を表示:</b> 見開き表示で最初のページを表紙として単独で表示します。</string>
     <string name="help_reading_direction"><b>スクロール方向:</b> ページを左から右へ送るか、右から左へ送るかを選択します。</string>
     <string name="help_cover_mode"><b>表紙設定:</b> 読む方向ごとの表紙の配置を選択します。</string>
@@ -19,10 +26,10 @@
     <string name="help_app_info"><b>アプリ情報:</b> アプリのバージョン、ビルド番号、著作権、サポーターバッジを確認します。</string>
     <string name="help_support"><b>開発者を応援:</b> 任意の応援チップで開発を支援し、サポーターバッジを表示します。</string>
     <string name="tip_message">アプリを気に入っていただけたら、開発を応援できます。</string>
-    <string name="tip_free_notice">購入しなくてもすべての機能を利用できます。</string>
+    <string name="tip_free_notice">本アプリは完全に無料でご利用いただけます。PDFの閲覧、見開き表示、検索といったすべての機能は、購入の有無にかかわらず制限なくお使いいただけます。</string>
     <string name="purchased_badges_title">購入した応援バッジ</string>
     <string name="purchase_badge_notice">設定画面に応援バッジを表示しました。</string>
-    <string name="purchase">購入</string><string name="purchased" translatable="false">購入済み</string><string name="purchase_thanks">ありがとうございます！%1$sの応援を受け取りました。</string><string name="purchase_cancelled">購入をキャンセルしました。</string><string name="purchase_failed">購入に失敗しました。もう一度お試しください。</string>
+    <string name="purchase">購入</string><string name="purchased" translatable="false">購入済み</string><string name="free">無料</string><string name="claim">取得</string><string name="koyomi_badge_title">Ver.2.0公開記念こよみバッジ</string><string name="purchase_thanks">ありがとうございます！%1$sの応援を受け取りました。</string><string name="purchase_cancelled">購入をキャンセルしました。</string><string name="purchase_failed">購入に失敗しました。もう一度お試しください。</string>
     <string name="app_info">アプリ情報</string>
     <string name="version">バージョン</string>
     <string name="build_number">ビルド番号</string>
@@ -30,4 +37,33 @@
     <string name="oss_license_title">オープンソースライセンス</string>
     <string name="oss_license_description">このアプリは以下のオープンソースソフトウェアを利用しています：</string>
     <string name="help_diagnostics"><b>テスト・診断とアプリログ:</b> 端末診断テストの実行や、アプリログの閲覧・共有が行えます。ログは端末内にのみ最大24時間保存され、個人情報やファイルの内容は記録されません。また、自動的に外部へ送信されることもありません。</string>
+    <string name="testing_diagnostic_logs">テスト・診断ログのクリア</string>
+    <string name="help_report_issue"><b>不具合の報告:</b> バグやクラッシュが発生した場合は、診断ログを添えて GitHub Issues からご報告ください。</string>
+    <string name="report_issue">不具合を報告する (GitHub)</string>
+    <string name="enter_promo_code">プロモコードを入力</string>
+    <string name="promo_code_dialog_title">プロモーションコードを入力</string>
+    <string name="promo_code_instructions">Google Playのプロモーションコードを入力してアイテムを引き換えます。</string>
+    <string name="redeem">利用する</string>
+    <string name="sample_pdfs">サンプルPDF</string>
+    <string name="language_filter">言語フィルター</string>
+    <string name="all_languages">すべて</string>
+    <string name="sample_pdf_download">ダウンロード</string>
+    <string name="sample_pdf_downloading">ダウンロード中...</string>
+    <string name="sample_pdf_downloading_progress">ダウンロード中... %d%%</string>
+    <string name="sample_pdf_open">開く</string>
+    <string name="sample_pdf_delete">削除</string>
+    <string name="cellular_data_warning">モバイル通信の確認</string>
+    <string name="cellular_data_message">モバイル通信回線に接続しています。「%1$s」（%2$s）をダウンロードすると、多くのモバイルデータ通信量を消費する可能性があります。続行しますか？</string>
+    <string name="error_prefix">エラー: %s</string>
+    <string name="error_opening_play_store">Google Play ストアを開けませんでした</string>
+    <string name="promo_code_help_title">プロモーションコードの利用方法</string>
+    <string name="promo_code_help_message">記念こよみバッジのプロモーションコードは、「応援」画面を開き「Ver.2.0公開記念こよみバッジ」の購入ボタンをタップ後、Google Play決済画面のお支払い方法メニューから「コードの利用」を選択して入力してください。</string>
+    <string name="go_to_support">応援画面へ移動</string>
+    <string name="help_device_test" translatable="false"><b>実機テストを実行:</b> 端末のハードウェアおよびパフォーマンスのテストを実行します。</string>
+    <string name="help_log_viewer" translatable="false"><b>アプリログを表示・共有:</b> トラブルシューティング用にローカルのアプリログを表示・共有します。</string>
+    <string name="help_clear_logs" translatable="false"><b>テスト・診断ログのクリア:</b> ローカルストレージに記録されたすべてのテストおよび診断ログを削除します。</string>
+    <string name="help_promo_code" translatable="false"><b>プロモコードを入力:</b> Google Playのプロモーションコードを入力してバッジやアイテムを引き換えます。</string>
+    <string name="help_slider" translatable="false"><b>スライダー:</b> 下部バーのスライダーをドラッグして、ドキュメント内の任意のページへ素早く移動できます。</string>
+    <string name="report_issue_desc" translatable="false"><b>不具合を報告する:</b> バグやクラッシュが発生した場合は、診断ログを添えて GitHub Issues からご報告ください。</string>
+    <string name="table_of_contents">目次</string>
 </resources>
