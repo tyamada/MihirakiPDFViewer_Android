@@ -1,6 +1,7 @@
 package com.github.tyamada.mihirakipdfviewer_android.ui.screens
 
 import android.content.Intent
+import android.content.res.Configuration
 import androidx.activity.compose.rememberLauncherForActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.compose.animation.core.*
@@ -28,12 +29,16 @@ import androidx.compose.ui.input.key.*
 import androidx.compose.ui.input.pointer.PointerEventType
 import androidx.compose.ui.input.pointer.pointerInput
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalLayoutDirection
+import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.semantics.*
 import androidx.compose.ui.unit.LayoutDirection
 import androidx.compose.ui.unit.dp
 import com.github.tyamada.mihirakipdfviewer_android.R
+import com.github.tyamada.mihirakipdfviewer_android.data.OutlineNode
 import com.github.tyamada.mihirakipdfviewer_android.data.ReadingDirection
 import com.github.tyamada.mihirakipdfviewer_android.data.ViewerLayout
 import com.github.tyamada.mihirakipdfviewer_android.viewmodel.ViewerViewModel
@@ -42,8 +47,22 @@ import kotlinx.coroutines.withTimeoutOrNull
 import kotlin.math.abs
 
 @OptIn(ExperimentalMaterial3Api::class)
-@Composable fun ViewerScreen(vm: ViewerViewModel, openSettings: () -> Unit, openSamplePdfs: () -> Unit) {
+@Composable fun ViewerScreen(
+    vm: ViewerViewModel,
+    openSettings: () -> Unit,
+    openHelp: () -> Unit,
+    openVersion: () -> Unit,
+    openDiagnostics: () -> Unit,
+    openSupport: () -> Unit,
+    openSamplePdfs: () -> Unit
+) {
     val state by vm.state.collectAsState(); val context = LocalContext.current
+    val configuration = LocalConfiguration.current
+    val isPortrait = configuration.orientation == android.content.res.Configuration.ORIENTATION_PORTRAIT
+    LaunchedEffect(isPortrait) {
+        vm.setOrientation(isPortrait)
+    }
+    val isDesktop = state.settings.mouseNavigation
     val focusRequester = remember { FocusRequester() }
     var password by remember { mutableStateOf("") }
     val picker = rememberLauncherForActivityResult(ActivityResultContracts.OpenDocument()) { uri -> uri?.let {
@@ -51,6 +70,7 @@ import kotlin.math.abs
     } }
 
     var showSwipeHint by remember { mutableStateOf(false) }
+    var showOutlineDialog by remember { mutableStateOf(false) }
     LaunchedEffect(state.source) {
         if (state.source != null) {
             showSwipeHint = true
@@ -82,12 +102,15 @@ import kotlin.math.abs
                                                 Text(
                                                     text = "${state.currentSearchIndex + 1}/${state.searchResults.size}",
                                                     style = MaterialTheme.typography.labelSmall,
+                                                    modifier = Modifier.semantics {
+                                                        contentDescription = "Search result ${state.currentSearchIndex + 1} of ${state.searchResults.size}"
+                                                    }
                                                 )
-                                                IconButton(onClick = { vm.navigateSearch(-1) }, modifier = Modifier.size(32.dp)) {
-                                                    Icon(Icons.Default.KeyboardArrowUp, null)
+                                                IconButton(onClick = { vm.navigateSearch(-1) }, modifier = Modifier.size(48.dp)) {
+                                                    Icon(Icons.Default.KeyboardArrowUp, contentDescription = stringResource(R.string.previous_search))
                                                 }
-                                                IconButton(onClick = { vm.navigateSearch(1) }, modifier = Modifier.size(32.dp)) {
-                                                    Icon(Icons.Default.KeyboardArrowDown, null)
+                                                IconButton(onClick = { vm.navigateSearch(1) }, modifier = Modifier.size(48.dp)) {
+                                                    Icon(Icons.Default.KeyboardArrowDown, contentDescription = stringResource(R.string.next_search))
                                                 }
                                             }
                                         }
@@ -104,14 +127,44 @@ import kotlin.math.abs
                             }
                         },
                         actions = {
-                            IconButton(onClick = openSamplePdfs) {
-                                Icon(Icons.Default.Download, contentDescription = "Sample PDFs")
+                            if (state.outline.isNotEmpty()) {
+                                IconButton(onClick = { showOutlineDialog = true }, modifier = Modifier.testTag("btn_outline")) {
+                                    Icon(Icons.AutoMirrored.Filled.FormatListBulleted, contentDescription = stringResource(R.string.table_of_contents))
+                                }
+                            }
+                            IconButton(onClick = openSamplePdfs, modifier = Modifier.testTag("btn_top_sample_pdfs")) {
+                                Icon(Icons.Default.Download, contentDescription = stringResource(R.string.sample_pdfs))
                             }
                             IconButton(onClick = { picker.launch(arrayOf("application/pdf")) }) {
                                 Icon(Icons.Default.FolderOpen, stringResource(R.string.open_pdf))
                             }
-                            IconButton(onClick = openSettings) {
-                                Icon(Icons.Default.Settings, stringResource(R.string.settings))
+                            var showMenu by remember { mutableStateOf(false) }
+                            Box {
+                                IconButton(onClick = { showMenu = true }, modifier = Modifier.testTag("btn_settings")) {
+                                    Icon(Icons.Default.Settings, stringResource(R.string.settings))
+                                }
+                                DropdownMenu(expanded = showMenu, onDismissRequest = { showMenu = false }) {
+                                    DropdownMenuItem(
+                                        text = { Text(stringResource(R.string.settings)) },
+                                        onClick = { showMenu = false; openSettings() }
+                                    )
+                                    DropdownMenuItem(
+                                        text = { Text(stringResource(R.string.help)) },
+                                        onClick = { showMenu = false; openHelp() }
+                                    )
+                                    DropdownMenuItem(
+                                        text = { Text(stringResource(R.string.version)) },
+                                        onClick = { showMenu = false; openVersion() }
+                                    )
+                                    DropdownMenuItem(
+                                        text = { Text("診断 (Diagnostics)") },
+                                        onClick = { showMenu = false; openDiagnostics() }
+                                    )
+                                    DropdownMenuItem(
+                                        text = { Text(stringResource(R.string.support)) },
+                                        onClick = { showMenu = false; openSupport() }
+                                    )
+                                }
                             }
                         },
                     )
@@ -124,12 +177,19 @@ import kotlin.math.abs
                     val direction = state.settings.direction
                     val maxPage = (state.pageCount - 1).coerceAtLeast(0).toFloat()
 
-                    Text("${state.currentPage + 1} / ${state.pageCount}", modifier = Modifier.padding(horizontal = 12.dp))
+                    Text(
+                        text = "${state.currentPage + 1} / ${state.pageCount}",
+                        modifier = Modifier
+                            .padding(horizontal = 12.dp)
+                            .semantics {
+                                contentDescription = "Page ${state.currentPage + 1} of ${state.pageCount}"
+                            }
+                    )
 
                     CompositionLocalProvider(LocalLayoutDirection provides if (direction == ReadingDirection.L2R) LayoutDirection.Ltr else LayoutDirection.Rtl) {
                         Row(verticalAlignment = Alignment.CenterVertically, modifier = Modifier.weight(1f)) {
                             IconButton(onClick = { vm.movePage(-1) }) {
-                                Icon(Icons.Default.ChevronLeft, stringResource(R.string.back))
+                                Icon(Icons.Default.ChevronLeft, stringResource(R.string.previous_page))
                             }
                             Slider(
                                 value = state.currentPage.toFloat(),
@@ -138,7 +198,7 @@ import kotlin.math.abs
                                 modifier = Modifier.weight(1f),
                             )
                             IconButton(onClick = { vm.movePage(1) }) {
-                                Icon(Icons.Default.ChevronRight, stringResource(R.string.open))
+                                Icon(Icons.Default.ChevronRight, stringResource(R.string.next_page))
                             }
                         }
                     }
@@ -146,11 +206,12 @@ import kotlin.math.abs
             }
         },
     )
- { padding -> Box(
+ { padding -> BoxWithConstraints(
      Modifier
          .fillMaxSize()
          .padding(padding)
          .background(androidx.compose.ui.graphics.Color(0xFF202124))
+         .testTag("viewer_content")
          .focusRequester(focusRequester)
          .focusable()
          .onKeyEvent { event ->
@@ -183,19 +244,26 @@ import kotlin.math.abs
              } else false
          }
  ) {
-        if ((state.source == null) && !state.loading) Column(Modifier.align(Alignment.Center), horizontalAlignment = Alignment.CenterHorizontally) {
+     val isTabletOrFoldable = maxWidth >= 600.dp
+        if ((state.source == null) && !state.loading) Column(
+            Modifier
+                .align(Alignment.Center)
+                .then(if (isTabletOrFoldable) Modifier.widthIn(max = 520.dp) else Modifier.fillMaxWidth())
+                .padding(horizontal = 24.dp),
+            horizontalAlignment = Alignment.CenterHorizontally
+        ) {
             Icon(Icons.AutoMirrored.Filled.MenuBook, null, tint = Color.White, modifier = Modifier.size(80.dp))
             Spacer(Modifier.height(20.dp))
             Row(horizontalArrangement = Arrangement.spacedBy(12.dp), verticalAlignment = Alignment.CenterVertically) {
                 OutlinedButton(
                     onClick = openSamplePdfs,
-                    modifier = Modifier.heightIn(min = 48.dp),
+                    modifier = Modifier.heightIn(min = 48.dp).testTag("btn_center_sample_pdfs"),
                     border = BorderStroke(1.dp, Color.White),
                     colors = ButtonDefaults.outlinedButtonColors(contentColor = Color.White)
                 ) {
                     Icon(Icons.Default.Download, contentDescription = null, modifier = Modifier.size(20.dp))
                     Spacer(Modifier.width(8.dp))
-                    Text("サンプルPDF")
+                    Text(stringResource(R.string.sample_pdfs))
                 }
                 Button(
                     onClick = { picker.launch(arrayOf("application/pdf")) },
@@ -205,7 +273,36 @@ import kotlin.math.abs
                 }
             }
         }
-        if ((state.source == null) && !state.loading) IconButton(openSettings, Modifier.align(Alignment.TopEnd).padding(top = 36.dp, end = 8.dp).size(48.dp)) { Icon(Icons.Default.Settings, stringResource(R.string.settings), tint = Color.White) }
+        if ((state.source == null) && !state.loading) {
+            Box(Modifier.align(Alignment.TopEnd).padding(top = 36.dp, end = 8.dp)) {
+                var showMenu by remember { mutableStateOf(false) }
+                IconButton(onClick = { showMenu = true }, modifier = Modifier.size(48.dp).testTag("btn_settings")) {
+                    Icon(Icons.Default.Settings, stringResource(R.string.settings), tint = Color.White)
+                }
+                DropdownMenu(expanded = showMenu, onDismissRequest = { showMenu = false }) {
+                    DropdownMenuItem(
+                        text = { Text(stringResource(R.string.settings)) },
+                        onClick = { showMenu = false; openSettings() }
+                    )
+                    DropdownMenuItem(
+                        text = { Text(stringResource(R.string.help)) },
+                        onClick = { showMenu = false; openHelp() }
+                    )
+                    DropdownMenuItem(
+                        text = { Text(stringResource(R.string.version)) },
+                        onClick = { showMenu = false; openVersion() }
+                    )
+                    DropdownMenuItem(
+                        text = { Text("診断 (Diagnostics)") },
+                        onClick = { showMenu = false; openDiagnostics() }
+                    )
+                    DropdownMenuItem(
+                        text = { Text(stringResource(R.string.support)) },
+                        onClick = { showMenu = false; openSupport() }
+                    )
+                }
+            }
+        }
         if (state.loading) CircularProgressIndicator(Modifier.align(Alignment.Center))
         if ((state.bitmap != null) || (state.secondBitmap != null)) {
             val direction = state.settings.direction
@@ -216,9 +313,10 @@ import kotlin.math.abs
                 onNext = { vm.move(1) },
                 direction = direction,
                 currentPage = state.currentPage,
+                isDesktop = isDesktop,
             ) {
                 Row(Modifier.fillMaxSize(), horizontalArrangement = Arrangement.Center) {
-                    if (state.settings.layout == ViewerLayout.SPREAD) {
+                    if (state.effectiveLayout == ViewerLayout.SPREAD) {
                         val images = listOfNotNull(state.bitmap, state.secondBitmap)
                         if (images.size == 1) {
                             val image = images.first()
@@ -248,46 +346,68 @@ import kotlin.math.abs
 
         if (showSwipeHint && state.source != null) {
             val isR2L = state.settings.direction == ReadingDirection.R2L
-            val infiniteTransition = rememberInfiniteTransition(label = "SwipeHint")
-            val translationX by infiniteTransition.animateFloat(
-                initialValue = if (isR2L) -60f else 60f,
-                targetValue = if (isR2L) 60f else -60f,
-                animationSpec = infiniteRepeatable(
-                    animation = tween(600, easing = LinearEasing),
-                    repeatMode = RepeatMode.Restart
-                ),
-                label = "ArrowTranslation"
-            )
-            val alpha by infiniteTransition.animateFloat(
-                initialValue = 0.2f,
+            val infiniteTransition = rememberInfiniteTransition(label = "EdgeHint")
+            val pulseAlpha by infiniteTransition.animateFloat(
+                initialValue = 0.4f,
                 targetValue = 1f,
                 animationSpec = infiniteRepeatable(
-                    animation = tween(300, easing = LinearEasing),
+                    animation = tween(600, easing = LinearEasing),
                     repeatMode = RepeatMode.Reverse
                 ),
-                label = "ArrowAlpha"
+                label = "EdgePulse"
             )
 
-            Box(
-                modifier = Modifier.fillMaxSize(),
-                contentAlignment = Alignment.Center
-            ) {
+            Box(modifier = Modifier.fillMaxSize().testTag("swipe_hint")) {
                 Surface(
-                    color = Color.Black.copy(alpha = 0.6f),
+                    color = Color.Black.copy(alpha = 0.7f),
                     shape = MaterialTheme.shapes.medium,
-                    modifier = Modifier.padding(16.dp)
+                    modifier = Modifier
+                        .align(Alignment.CenterStart)
+                        .padding(start = 12.dp)
+                        .graphicsLayer(alpha = pulseAlpha)
                 ) {
-                    Box(
-                        modifier = Modifier.size(100.dp, 80.dp),
-                        contentAlignment = Alignment.Center
+                    Row(
+                        modifier = Modifier.padding(horizontal = 12.dp, vertical = 16.dp),
+                        verticalAlignment = Alignment.CenterVertically,
+                        horizontalArrangement = Arrangement.spacedBy(6.dp)
                     ) {
                         Icon(
-                            imageVector = if (isR2L) Icons.AutoMirrored.Filled.ArrowForward else Icons.AutoMirrored.Filled.ArrowBack,
+                            imageVector = Icons.AutoMirrored.Filled.ArrowBack,
                             contentDescription = null,
                             tint = Color.White,
-                            modifier = Modifier
-                                .size(48.dp)
-                                .graphicsLayer(translationX = translationX, alpha = alpha)
+                            modifier = Modifier.size(24.dp)
+                        )
+                        Text(
+                            text = if (isR2L) stringResource(R.string.open) else stringResource(R.string.back),
+                            style = MaterialTheme.typography.labelSmall,
+                            color = Color.White
+                        )
+                    }
+                }
+
+                Surface(
+                    color = Color.Black.copy(alpha = 0.7f),
+                    shape = MaterialTheme.shapes.medium,
+                    modifier = Modifier
+                        .align(Alignment.CenterEnd)
+                        .padding(end = 12.dp)
+                        .graphicsLayer(alpha = pulseAlpha)
+                ) {
+                    Row(
+                        modifier = Modifier.padding(horizontal = 12.dp, vertical = 16.dp),
+                        verticalAlignment = Alignment.CenterVertically,
+                        horizontalArrangement = Arrangement.spacedBy(6.dp)
+                    ) {
+                        Text(
+                            text = if (isR2L) stringResource(R.string.back) else stringResource(R.string.open),
+                            style = MaterialTheme.typography.labelSmall,
+                            color = Color.White
+                        )
+                        Icon(
+                            imageVector = Icons.AutoMirrored.Filled.ArrowForward,
+                            contentDescription = null,
+                            tint = Color.White,
+                            modifier = Modifier.size(24.dp)
                         )
                     }
                 }
@@ -321,6 +441,47 @@ import kotlin.math.abs
             }
         )
     }
+
+    if (showOutlineDialog) {
+        AlertDialog(
+            onDismissRequest = { showOutlineDialog = false },
+            title = { Text(stringResource(R.string.table_of_contents)) },
+            text = {
+                androidx.compose.foundation.lazy.LazyColumn(modifier = Modifier.fillMaxWidth().heightIn(max = 400.dp)) {
+                    items(state.outline.size) { index ->
+                        OutlineItemView(state.outline[index], onSelect = { page ->
+                            vm.render(page)
+                            showOutlineDialog = false
+                        })
+                    }
+                }
+            },
+            confirmButton = {
+                TextButton(onClick = { showOutlineDialog = false }) {
+                    Text(stringResource(R.string.ok))
+                }
+            }
+        )
+    }
+}
+
+@Composable
+private fun OutlineItemView(node: OutlineNode, onSelect: (Int) -> Unit) {
+    Column(modifier = Modifier.fillMaxWidth()) {
+        TextButton(onClick = { onSelect(node.pageIndex) }, modifier = Modifier.fillMaxWidth()) {
+            Row(modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.SpaceBetween) {
+                Text(node.title, modifier = Modifier.weight(1f))
+                Text("p.${node.pageIndex + 1}", style = MaterialTheme.typography.labelSmall)
+            }
+        }
+        if (node.children.isNotEmpty()) {
+            Column(modifier = Modifier.padding(start = 16.dp)) {
+                node.children.forEach { child ->
+                    OutlineItemView(child, onSelect)
+                }
+            }
+        }
+    }
 }
 
 @Composable private fun errorText(key: String) = stringResource(when (key) { "wrong_password" -> R.string.wrong_password; "permission_denied" -> R.string.permission_denied; "no_results" -> R.string.no_results; else -> R.string.cannot_open_pdf })
@@ -332,6 +493,7 @@ import kotlin.math.abs
     onNext: () -> Unit,
     direction: ReadingDirection,
     currentPage: Int,
+    isDesktop: Boolean,
     content: @Composable () -> Unit,
 ) {
     var scale by remember { mutableFloatStateOf(1f) }
@@ -344,7 +506,7 @@ import kotlin.math.abs
 
     Box(
         modifier
-            .pointerInput(Unit) {
+            .pointerInput(isDesktop, direction) {
                 awaitEachGesture {
                     val down = awaitFirstDown(requireUnconsumed = false)
                     var totalPan = Offset.Zero
@@ -402,7 +564,21 @@ import kotlin.math.abs
                                 offset = Offset.Zero
                             }
                         } else {
-                            onTap()
+                            val boxWidth = size.width.toFloat()
+                            if (isDesktop && scale <= 1.05f && boxWidth > 0f) {
+                                val x = down.position.x
+                                val leftBoundary = boxWidth * 0.2f
+                                val rightBoundary = boxWidth * 0.8f
+                                if (x < leftBoundary) {
+                                    if (direction == ReadingDirection.L2R) onPrevious() else onNext()
+                                } else if (x > rightBoundary) {
+                                    if (direction == ReadingDirection.L2R) onNext() else onPrevious()
+                                } else {
+                                    onTap()
+                                }
+                            } else {
+                                onTap()
+                            }
                         }
                     } else if (scale <= 1.05f && abs(totalPan.x) > 60f) {
                         val isForward = if (direction == ReadingDirection.L2R) totalPan.x < 0 else totalPan.x > 0
