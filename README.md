@@ -63,20 +63,20 @@ Built with **Kotlin**, **Jetpack Compose**, and **Material 3** following the **M
 
 ## 📚 Sample PDFs
 Try out MihirakiPDFViewer with these sample PDF files:
-- [THE TRY-IT CLUB EPISODE 1 THE BREAK-TIME MAP (English)](docs/sample/tameshibu_episode1_2_en.pdf) (23MB)
-- [THE TRY-IT CLUB EPISODE 2 ROOM TO GROW (English)](docs/sample/tameshibu_episode2_2_en.pdf) (24MB)
-- [ためし部 第１話 ひと息マップ (Japanese)](docs/sample/tameshibu_episode1_2_ja.pdf) (23MB)
-- [ためし部 第２話 机、ひろがる。 (Japanese)](docs/sample/tameshibu_episode2_2_ja.pdf) (24MB)
-- [해봄부 제1화 한숨 돌림 지도 (Korean)](docs/sample/tameshibu_episode1_2_ko.pdf) (23MB)
-- [해봄부제2화 책상이 넓어지다 (Korean)](docs/sample/tameshibu_episode2_2_ko.pdf) (24MB)
-- [试试社 第1话 歇口气地图 (Chinese (Simplified))](docs/sample/tameshibu_episode1_2_zh_cn.pdf) (23MB)
-- [试试社 第2话 桌子变大了 (Chinese (Simplified))](docs/sample/tameshibu_episode2_2_zh_cn.pdf) (24MB)
-- [DER PROBIERCLUB FOLGE 1 (German)](docs/sample/tameshibu_episode1_2_de.pdf) (23MB)
-- [DER PROBIERCLUB FOLGE 2 (German)](docs/sample/tameshibu_episode2_2_de.pdf) (24MB)
-- [LE CLUB DES ESSAIS EPISODE 1 (French)](docs/sample/tameshibu_episode1_2_fr.pdf) (23MB)
-- [LE CLUB DES ESSAIS EPISODE 2 (French)](docs/sample/tameshibu_episode2_2_fr.pdf) (24MB)
-- [試試社 第1話 (Chinese (Traditional))](docs/sample/tameshibu_episode1_2_zh_tw.pdf) (23MB)
-- [試試社 第2話 (Chinese (Traditional))](docs/sample/tameshibu_episode2_2_zh_tw.pdf) (24MB)
+- [DER PROBIERCLUB FOLGE 1 (Deutsch (German))](docs/sample/tameshibu_episode1_2_de.pdf) (23MB)
+- [DER PROBIERCLUB FOLGE 2 (Deutsch (German))](docs/sample/tameshibu_episode2_2_de.pdf) (24MB)
+- [THE TRY-IT CLUB EPISODE 1 THE BREAK-TIME MAP (English (English))](docs/sample/tameshibu_episode1_2_en.pdf) (23MB)
+- [THE TRY-IT CLUB EPISODE 2 ROOM TO GROW (English (English))](docs/sample/tameshibu_episode2_2_en.pdf) (24MB)
+- [LE CLUB DES ESSAIS EPISODE 1 (Français (French))](docs/sample/tameshibu_episode1_2_fr.pdf) (23MB)
+- [LE CLUB DES ESSAIS EPISODE 2 (Français (French))](docs/sample/tameshibu_episode2_2_fr.pdf) (24MB)
+- [해봄부 제1화 한숨 돌림 지도 (한국어 (Korean))](docs/sample/tameshibu_episode1_2_ko.pdf) (23MB)
+- [해봄부제2화 책상이 넓어지다 (한국어 (Korean))](docs/sample/tameshibu_episode2_2_ko.pdf) (24MB)
+- [ためし部 第１話 ひと息マップ (日本語 (Japanese))](docs/sample/tameshibu_episode1_2_ja.pdf) (23MB)
+- [ためし部 第２話 机、ひろがる。 (日本語 (Japanese))](docs/sample/tameshibu_episode2_2_ja.pdf) (24MB)
+- [试试社 第1话 歇口气地图 (简体中文 (Chinese (Simplified)))](docs/sample/tameshibu_episode1_2_zh_cn.pdf) (23MB)
+- [试试社 第2话 桌子变大了 (简体中文 (Chinese (Simplified)))](docs/sample/tameshibu_episode2_2_zh_cn.pdf) (24MB)
+- [試試社 第1話 (繁體中文 (Chinese (Traditional)))](docs/sample/tameshibu_episode1_2_zh_tw.pdf) (23MB)
+- [試試社 第2話 (繁體中文 (Chinese (Traditional)))](docs/sample/tameshibu_episode2_2_zh_tw.pdf) (24MB)
 
 ### Sample PDF License & Attribution
 **"The Try-It Club" Episodes 1 & 2**
