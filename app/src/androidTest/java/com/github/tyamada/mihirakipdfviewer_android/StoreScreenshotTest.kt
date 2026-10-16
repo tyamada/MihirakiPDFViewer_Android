@@ -124,7 +124,8 @@ class StoreScreenshotTest {
                     "vi" to listOf("nghỉ", "mũi tên", "bản đồ"),
                     "fil" to listOf("pahinga", "palaso", "mapa"),
                     "ne" to listOf("आराम", "तीर", "नक्सा"),
-                    "id" to listOf("istirahat", "panah", "peta")).getValue(lang)
+                    "id" to listOf("istirahat", "panah", "peta"),
+                    "it" to listOf("mappa", "pause", "frecce")).getValue(lang)
                 // Probe the real PDF text engine; a title-only match is insufficient.
                 val source = requireNotNull(vm.state.value.source)
                 val selected = kotlinx.coroutines.runBlocking {

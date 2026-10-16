@@ -1,5 +1,7 @@
 # 追加PDFの撮影可否確認
 
+最新状況: イタリア語の設定追加と先行検証4枚が完了。現在14言語・378枚が対象。詳細は [イタリア語先行検証結果](SCREENSHOT_ITALIAN_PREFLIGHT.ja.md) を参照。以下の13言語・イタリア語未登録の記述は追加前の確認履歴。
+
 2026-10-16。PDF構造の照合と、Android上の検索・目次・表示の先行検証を完了。全画面撮影は未完了。
 
 ## 結果
@@ -75,3 +77,15 @@ Smartphone_6.3とChromebook_FHDで各言語の検索・目次、計24枚をversi
 | Smartphone_6.3 | id | 07_outline | [id_07_outline_portrait.png](screenshots/Smartphone_6.3/id_07_outline_portrait.png) |
 | Chromebook_FHD | id | 04_search | [id_04_search_landscape.png](screenshots/Chromebook_FHD/id_04_search_landscape.png) |
 | Chromebook_FHD | id | 07_outline | [id_07_outline_landscape.png](screenshots/Chromebook_FHD/id_07_outline_landscape.png) |
+
+## 再確認: イタリア語PDFの追加
+
+2026-10-16の再確認で、前回一覧にない `testdata/tameshibu_episode1_it.pdf` と `testdata/tameshibu_episode2_it.pdf` を確認した。両方とも8ページ・目次8項目で、先頭目次名は `Copertina`、遷移先は1〜8ページ。
+
+第1話の6ページ目本文に `mappa` / `pause` / `frecce` が一致する。単数形の `pausa` / `freccia` は同ページに不一致。第1話6ページ目をレンダリングし、本文表示も確認した。Android上の検証は未実施。
+
+イタリア語はユーザー指定の13言語に含まれておらず、現在の撮影設定、ロケール許可リスト、検索候補、先頭目次名の定義に未登録。アプリの `values-it` 翻訳リソースも存在しない。PDFの構造上は撮影候補にできるが、現在の撮影コマンドでは `--language it` を指定できない。今回、自動的な対象追加や既存設定の変更は行っていない。
+
+イタリア語を対象に加える場合の準備作業は、`it-IT` と先頭目次名 `Copertina`、検索候補 `mappa` / `pause` / `frecce` の登録、撮影用PDF参照の準備、撮影用APKの再ビルド、スマホとChromebookでの先行検証となる。UIのイタリア語表示を求める場合は翻訳リソースも必要。4端末すべてを撮影する場合の追加対象は27枚。
+
+既存6言語の撮影用PDFは先行検証JSONのPDFハッシュと一致し、検証済み24枚の画像ハッシュも一致。以前の189枚とJSON計378ファイルに変更・欠落はない。指定済み13言語については、前回と同じく残り138枚の撮影作業を進められる状態。
