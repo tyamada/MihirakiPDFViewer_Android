@@ -12,12 +12,17 @@ Built with **Kotlin**, **Jetpack Compose**, and **Material 3** following the **M
 ## ✨ Features
 
 - 📖 **Two-Page Spread Support**: Seamlessly view two pages side-by-side.
+- 📑 **PDF Table of Contents (Outline) Tree Navigation**: Extract bookmarks and chapters from PDF metadata for instant chapter jumping.
+- ☰ **Top Bar Dropdown Menu & Dedicated Screens**: Quick access to Settings, Help, Version, Diagnostics, and Support directly from the top bar dropdown menu, featuring an accordion Help screen and dedicated Version & Diagnostics hub screens.
 - 🔄 **Auto-Detection**: Automatically detects page layout (Single/Spread) and reading direction (L2R/R2L) from PDF metadata.
 - 🇯🇵 **R2L Support**: Native support for right-to-left reading order and right-bound book layouts.
 - 🔍 **Powerful Search**: Fast text search with precise hit highlighting (yellow background and red border).
 - 🛡️ **Privacy First**: No internet permissions required for PDF processing. Uses Storage Access Framework (SAF) to only access files you choose.
 - 🚀 **Performant Rendering**: Uses Android's native `PdfRenderer` with a fallback to `PDFBox-Android` for maximum compatibility and features.
-- 🎨 **Adaptive UI**: Responsive design that works great on both phones and tablets, in portrait and landscape.
+- 🎨 **Adaptive UI & Foldable Support**: Responsive design with `BoxWithConstraints` that adapts seamlessly across phones, tablets, and foldables.
+- ♿ **Accessibility (A11y) & Automated Audits**: TalkBack semantics and automated Espresso AccessibilityChecks integrated into test suites.
+- 🖱️ **Desktop Mouse & Edge-Click Navigation**: Intuitive page turning by clicking the left and right edges on desktop/mouse navigation mode, configurable in Settings.
+- 📱 **Adaptive Portrait Display**: Automatically switches to single-page display in portrait orientation (defaulting to single-page on smartphones and spread on tablets, configurable in Settings).
 - 📋 **Diagnostics & Persistent Logging**: In-app device diagnostic testing and local app log management (stored securely locally for up to 24 hours, with zero personal/file data logging and no automatic external transmission).
 
 > [!NOTE]
@@ -90,14 +95,37 @@ Run unit tests and instrumented UI tests. Test PDF files are available [here](ht
 ./gradlew test
 ./gradlew connectedAndroidTest
 ```
+- **Automated Device Test & Log Saver Script**: Running `python3 scripts/run_device_tests_and_save.py` automatically executes the following checks on connected physical devices or emulators and saves all outputs to `logs/`:
+  1. Automatic collection of device info and diagnostics (`device_info.txt`)
+  2. Clean uninstallation of existing app, installation of the latest debug APK, and startup log (`App started.`) verification
+  3. JVM unit tests execution (`app:testDebug`)
+  4. Connected instrumentation test suites (`app:connectedDebugAndroidTest`: Load/Performance, A11y, Metadata, Navigation, Store Screenshots) execution
+  5. Python QA & regression tests (9 tests total) execution
+  6. Automatic updating of [VERIFICATION_LIST.md](VERIFICATION_LIST.md) with App Version (`2.0.0(32)`) and test Result (`No issues`).
 - **In-App Diagnostics**: Access "Testing & Diagnostics" in Settings to inspect real-time memory usage and rolling application logs (`AppLogger`).
 - **Performance & Stress Tests**: Includes automated memory tracking, rapid page navigation stress tests, and multi-document switching stability tests.
+
+## 🤖 CI (Continuous Integration)
+An automated build and test verification pipeline is established using GitHub Actions (`.github/workflows/ci.yml`).
+- **Target Branches**: `main`, `testing` (on push and pull requests)
+- **Checks Performed**:
+  - JDK 21 environment setup
+  - Debug APK build (`./gradlew assembleDebug`)
+  - JVM unit tests execution (`./gradlew testDebugUnitTest`)
 
 ## 📋 Verification List
 Device compatibility and verification results tested by developers and users are documented in [VERIFICATION_LIST.md](VERIFICATION_LIST.md).
 
 ## 💖 Support the Developer
-If you find this app useful, you can support further development via the in-app "Support" feature. We offer Bronze, Silver, and Gold tip tiers, which unlock a special commemorative icon in your settings screen!
+If you find this app useful, you can support further development via the in-app "Support" feature. We offer Bronze, Silver, Gold, and Ver.2.0 Release Commemoration Koyomi Badge tip tiers, which unlock special commemorative badges in your settings screen! (Play Console promotion codes are also supported for free badge redemption).
+
+## 🐛 Reporting Issues & Bug Reports
+If you encounter any bugs, crashes, or unexpected behavior, please open an issue on [GitHub Issues](https://github.com/tyamada/MihirakiPDFViewer_Android/issues). 
+When reporting an issue, please include:
+1. **App Version & Build Code** (e.g., v2.0.0, Code 32)
+2. **Device Model & Android Version** (e.g., Pixel 8, Android 15)
+3. **Steps to Reproduce** the problem
+4. **Diagnostic Logs**: Copy or share app logs from **Settings > Testing & Diagnostics** (safe: contains zero personal or document data).
 
 ## 🤖 Developed with AI
 This project was developed with the assistance of AI:
@@ -106,17 +134,22 @@ This project was developed with the assistance of AI:
 
 ## 📜 Version History
 
-- **v1.4.0** (Code 22)
+- **v2.0.0** (Code 32)
+  - Major version bump to v2.0.0 with comprehensive documentation updates and help screen HTML rendering enhancements.
+  - Added direct "Report Issue" button to the settings screen and established GitHub Issue templates.
+  - Reorganized settings options group (placing Mouse Navigation and Portrait Display switches at the top of options).
+  - Improved screen rotation synchronization for adaptive portrait display.
+- **v2.0.0** (Code 32)
   - Updated tip purchases from consumable to non-consumable to comply with App Store review guidelines.
   - Reorganized and updated store listing assets and sample PDFs.
-- **v1.3.0** (Code 21)
+- **v2.0.0** (Code 32)
   - Improved settings screen layout by relocating options group below document info.
   - Enabled advanced R8 optimizations and native debug symbols for improved performance and crash reporting.
-- **v1.2.4** (Code 18)
+- **v2.0.0** (Code 32)
   - Minor settings screen layout adjustments.
-- **v1.2.3** (Code 17)
+- **v2.0.0** (Code 32)
   - Consolidated and organized store listing materials and device screenshots.
-- **v1.0.0** (Code 20)
+- **v2.0.0** (Code 32)
   - Initial production release with two-page spread support, R2L reading order, smart auto-detection, precise search & highlighting, and privacy-focused local PDF processing.
 
 ## 📄 License

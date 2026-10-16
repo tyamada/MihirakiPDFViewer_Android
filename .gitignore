@@ -21,3 +21,16 @@ INTERNAL_README.md
 # Excluding the copy in androidTest/assets to avoid duplication
 # as the source exists in the root testdata/ directory.
 app/src/androidTest/assets/
+!testdata/
+testdata/load_test_1100_pages.pdf
+
+# --- Artifacts & Logs & Screenshots ---
+.artifacts/
+logs/
+*.log
+*.png
+!store_listing/screenshots/Smartphone_6.3/*.png
+!store_listing/screenshots/Tablet_7/*.png
+!store_listing/screenshots/Tablet_10/*.png
+!store_listing/screenshots/Chromebook_FHD/*.png
+
