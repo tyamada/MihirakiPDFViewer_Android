@@ -15,7 +15,8 @@
     "vi": "vi-VN",
     "fil": "fil-PH",
     "ne": "ne-NP",
-    "id": "id-ID"
+    "id": "id-ID",
+    "it": "it-IT"
   },
   "outlineFirst": {
     "ja": "表紙",
@@ -30,7 +31,8 @@
     "vi": "Bìa",
     "fil": "Pabalat",
     "ne": "आवरण",
-    "id": "Sampul"
+    "id": "Sampul",
+    "it": "Copertina"
   },
   "devices": {
     "Smartphone_6.3": {
