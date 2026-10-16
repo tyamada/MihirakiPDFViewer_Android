@@ -1,0 +1,108 @@
+{
+  "schema": 1,
+  "versionCode": 32,
+  "pageCount": 8,
+  "languages": {
+    "ja": "ja-JP",
+    "en": "en-US",
+    "ko": "ko-KR",
+    "zh_tw": "zh-TW",
+    "de": "de-DE",
+    "fr": "fr-FR",
+    "es": "es-ES",
+    "pt": "pt-BR",
+    "zh_cn": "zh-CN",
+    "vi": "vi-VN",
+    "fil": "fil-PH",
+    "ne": "ne-NP",
+    "id": "id-ID"
+  },
+  "outlineFirst": {
+    "ja": "表紙",
+    "en": "Cover",
+    "ko": "표지",
+    "zh_tw": "封面",
+    "de": "Cover",
+    "fr": "Couverture",
+    "es": "Portada",
+    "pt": "Capa",
+    "zh_cn": "封面",
+    "vi": "Bìa",
+    "fil": "Pabalat",
+    "ne": "आवरण",
+    "id": "Sampul"
+  },
+  "devices": {
+    "Smartphone_6.3": {
+      "size": [
+        1080,
+        1920
+      ],
+      "density": 320,
+      "desktop": false,
+      "override": false,
+      "scenes": {
+        "02_spread": "landscape",
+        "01_reader": "portrait",
+        "04_search": "portrait",
+        "07_outline": "portrait",
+        "03_reading_settings": "portrait",
+        "05_page_navigation": "portrait",
+        "06_display_settings": "portrait"
+      }
+    },
+    "Tablet_7": {
+      "size": [
+        1080,
+        1920
+      ],
+      "density": 360,
+      "desktop": false,
+      "override": true,
+      "scenes": {
+        "02_spread": "landscape",
+        "01_reader": "portrait",
+        "04_search": "landscape",
+        "07_outline": "landscape",
+        "03_reading_settings": "landscape",
+        "05_page_navigation": "landscape",
+        "06_display_settings": "portrait"
+      }
+    },
+    "Tablet_10": {
+      "size": [
+        2560,
+        1440
+      ],
+      "density": 320,
+      "desktop": false,
+      "override": false,
+      "scenes": {
+        "02_spread": "landscape",
+        "01_reader": "portrait",
+        "04_search": "landscape",
+        "07_outline": "landscape",
+        "03_reading_settings": "landscape",
+        "05_page_navigation": "landscape",
+        "06_display_settings": "portrait"
+      }
+    },
+    "Chromebook_FHD": {
+      "size": [
+        1920,
+        1080
+      ],
+      "density": 160,
+      "desktop": true,
+      "override": false,
+      "scenes": {
+        "02_spread": "landscape",
+        "04_search": "landscape",
+        "07_outline": "landscape",
+        "03_reading_settings": "landscape",
+        "05_page_navigation": "landscape",
+        "06_display_settings": "landscape"
+      }
+    }
+  }
+}

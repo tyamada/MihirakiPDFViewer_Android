@@ -12,6 +12,7 @@ import android.os.ParcelFileDescriptor
 import android.util.Log
 import androidx.core.graphics.createBitmap
 import com.github.tyamada.mihirakipdfviewer_android.data.DocumentInfo
+import com.github.tyamada.mihirakipdfviewer_android.data.OutlineNode
 import com.github.tyamada.mihirakipdfviewer_android.data.SearchHit
 import com.github.tyamada.mihirakipdfviewer_android.data.SearchRect
 import com.tom_roush.pdfbox.pdmodel.PDDocument
@@ -41,6 +42,7 @@ interface PdfSource : Closeable {
     val info: DocumentInfo
     val directionHint: String?
     val layoutHint: String?
+    val outline: List<OutlineNode>
     suspend fun render(page: Int, width: Int, highQuality: Boolean, sharpness: Float = 0f, highlights: List<SearchRect> = emptyList()): Bitmap
     suspend fun search(query: String): List<SearchHit>
 }
@@ -65,9 +67,19 @@ class PdfDocumentRepository(private val context: Context) {
     private fun copyToPrivateCache(resolver: ContentResolver, uri: Uri): File {
         val file = File.createTempFile("mihiraki_", ".pdf", context.cacheDir)
         try {
-            resolver.openInputStream(uri)?.use { input -> FileOutputStream(file).use(input::copyTo) }
-                ?: throw PdfOpenException.PermissionDenied()
+            if (uri.scheme == "file" || (uri.scheme == null && uri.path != null)) {
+                val sourceFile = File(uri.path!!)
+                if (sourceFile.exists()) {
+                    sourceFile.inputStream().use { input -> FileOutputStream(file).use(input::copyTo) }
+                } else {
+                    throw PdfOpenException.PermissionDenied()
+                }
+            } else {
+                resolver.openInputStream(uri)?.use { input -> FileOutputStream(file).use(input::copyTo) }
+                    ?: throw PdfOpenException.PermissionDenied()
+            }
         } catch (e: SecurityException) { file.delete(); throw PdfOpenException.PermissionDenied(e) }
+          catch (e: IOException) { file.delete(); throw PdfOpenException.Corrupt(e) }
         return file
     }
 }
@@ -91,6 +103,28 @@ private class HybridPdfSource(private val file: File, password: String?) : PdfSo
     override val layoutHint: String? = runCatching {
         pdfBox.documentCatalog.cosObject.getNameAsString("PageLayout")
     }.getOrNull()
+    override val outline: List<OutlineNode> = runCatching {
+        val root = pdfBox.documentCatalog.documentOutline
+        if (root != null) extractOutlineItems(root, pdfBox) else emptyList()
+    }.getOrElse { emptyList() }
+
+    private fun extractOutlineItems(node: com.tom_roush.pdfbox.pdmodel.interactive.documentnavigation.outline.PDOutlineNode, doc: PDDocument): List<OutlineNode> {
+        val result = mutableListOf<OutlineNode>()
+        var item = node.firstChild
+        while (item != null) {
+            val title = item.title.orEmpty()
+            val pageIndex = try {
+                // Resolve direct destinations, named destinations and GoTo actions.
+                val page = item.findDestinationPage(doc)
+                if (page != null) doc.pages.indexOf(page).takeIf { it >= 0 } ?: 0 else 0
+            } catch (_: Exception) { 0 }
+
+            val children = extractOutlineItems(item, doc)
+            result.add(OutlineNode(title, pageIndex, children))
+            item = item.nextSibling
+        }
+        return result
+    }
 
     override suspend fun render(page: Int, width: Int, highQuality: Boolean, sharpness: Float, highlights: List<SearchRect>): Bitmap = mutex.withLock {
         withContext(Dispatchers.IO) {

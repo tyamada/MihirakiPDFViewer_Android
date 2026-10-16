@@ -25,6 +25,10 @@ import com.github.tyamada.mihirakipdfviewer_android.viewmodel.ViewerViewModel
     val purchasedTiers by manager.purchasedTiers.collectAsState()
     val isDebug = BuildConfig.DEBUG
 
+    LaunchedEffect(Unit) {
+        manager.queryPurchases()
+    }
+
     LaunchedEffect(purchasedTiers) {
         if (purchasedTiers.isNotEmpty()) {
             vm.updateSettings { s -> s.copy(purchasedTiers = s.purchasedTiers + purchasedTiers.map { it.name }) }
@@ -50,6 +54,7 @@ import com.github.tyamada.mihirakipdfviewer_android.viewmodel.ViewerViewModel
                             TipTier.BRONZE -> "¥100 (Mock)"
                             TipTier.SILVER -> "¥500 (Mock)"
                             TipTier.GOLD -> "¥1000 (Mock)"
+                            TipTier.KOYOMI -> "¥2000 (Mock)"
                         }
                     } else tier.productId
 
@@ -59,14 +64,19 @@ import com.github.tyamada.mihirakipdfviewer_android.viewmodel.ViewerViewModel
                             TipTier.BRONZE -> R.drawable.ic_tip_bronze
                             TipTier.SILVER -> R.drawable.ic_tip_silver
                             TipTier.GOLD -> R.drawable.ic_tip_gold
+                            TipTier.KOYOMI -> R.drawable.ic_tip_koyomi
                         }
                         Image(
                             painter = painterResource(iconRes),
-                            contentDescription = tier.name,
+                            contentDescription = "${tier.name} Supporter Badge",
                             modifier = Modifier.size(48.dp).align(Alignment.CenterVertically)
                         )
                         Column(Modifier.weight(1f)) {
-                            Text(tier.name)
+                            val tierTitle = when (tier) {
+                                TipTier.KOYOMI -> stringResource(R.string.koyomi_badge_title)
+                                else -> tier.name
+                            }
+                            Text(tierTitle)
                             Text(priceText)
                         }
                         val isPurchased = purchasedTiers.contains(tier)
