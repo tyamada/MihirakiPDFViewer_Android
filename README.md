@@ -75,6 +75,8 @@ Try out MihirakiPDFViewer with these sample PDF files:
 - [Ang Try-It Club Episode 2 (Filipino (Filipino))](docs/sample/tameshibu_episode2_tl.pdf) (24MB)
 - [LE CLUB DES ESSAIS EPISODE 1 (Français (French))](docs/sample/tameshibu_episode1_2_fr.pdf) (23MB)
 - [LE CLUB DES ESSAIS EPISODE 2 (Français (French))](docs/sample/tameshibu_episode2_2_fr.pdf) (24MB)
+- [Il Club delle Prove Episodio 1 (Italiano (Italian))](docs/sample/tameshibu_episode1_it.pdf) (23MB)
+- [Il Club delle Prove Episodio 2 (Italiano (Italian))](docs/sample/tameshibu_episode2_it.pdf) (24MB)
 - [O Clube de Testes Episódio 1 (Português (Portuguese))](docs/sample/tameshibu_episode1_pt.pdf) (23MB)
 - [O Clube de Testes Episódio 2 (Português (Portuguese))](docs/sample/tameshibu_episode2_pt.pdf) (24MB)
 - [Câu Lạc Bộ Thử Nghiệm Tập 1 (Tiếng Việt (Vietnamese))](docs/sample/tameshibu_episode1_vi.pdf) (23MB)
