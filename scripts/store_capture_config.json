@@ -1,18 +1,36 @@
 {
   "schema": 1,
-  "versionCode": 31,
+  "versionCode": 32,
   "pageCount": 8,
   "languages": {
     "ja": "ja-JP",
     "en": "en-US",
     "ko": "ko-KR",
-    "zh_cn": "zh-CN"
+    "zh_tw": "zh-TW",
+    "de": "de-DE",
+    "fr": "fr-FR",
+    "es": "es-ES",
+    "pt": "pt-BR",
+    "zh_cn": "zh-CN",
+    "vi": "vi-VN",
+    "fil": "fil-PH",
+    "ne": "ne-NP",
+    "id": "id-ID"
   },
   "outlineFirst": {
     "ja": "表紙",
     "en": "Cover",
     "ko": "표지",
-    "zh_cn": "封面"
+    "zh_tw": "封面",
+    "de": "Cover",
+    "fr": "Couverture",
+    "es": "Portada",
+    "pt": "Capa",
+    "zh_cn": "封面",
+    "vi": "Bìa",
+    "fil": "Pabalat",
+    "ne": "आवरण",
+    "id": "Sampul"
   },
   "devices": {
     "Smartphone_6.3": {
