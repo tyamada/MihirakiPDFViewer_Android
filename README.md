@@ -95,8 +95,23 @@ Run unit tests and instrumented UI tests. Test PDF files are available [here](ht
 ./gradlew test
 ./gradlew connectedAndroidTest
 ```
+- **Automated Device Test & Log Saver Script**: Running `python3 scripts/run_device_tests_and_save.py` automatically executes the following checks on connected physical devices or emulators and saves all outputs to `logs/`:
+  1. Automatic collection of device info and diagnostics (`device_info.txt`)
+  2. Clean uninstallation of existing app, installation of the latest debug APK, and startup log (`App started.`) verification
+  3. JVM unit tests execution (`app:testDebug`)
+  4. Connected instrumentation test suites (`app:connectedDebugAndroidTest`: Load/Performance, A11y, Metadata, Navigation, Store Screenshots) execution
+  5. Python QA & regression tests (9 tests total) execution
+  6. Automatic updating of [VERIFICATION_LIST.md](VERIFICATION_LIST.md) with App Version (`2.0.0(32)`) and test Result (`No issues`).
 - **In-App Diagnostics**: Access "Testing & Diagnostics" in Settings to inspect real-time memory usage and rolling application logs (`AppLogger`).
 - **Performance & Stress Tests**: Includes automated memory tracking, rapid page navigation stress tests, and multi-document switching stability tests.
+
+## 🤖 CI (Continuous Integration)
+An automated build and test verification pipeline is established using GitHub Actions (`.github/workflows/ci.yml`).
+- **Target Branches**: `main`, `testing` (on push and pull requests)
+- **Checks Performed**:
+  - JDK 21 environment setup
+  - Debug APK build (`./gradlew assembleDebug`)
+  - JVM unit tests execution (`./gradlew testDebugUnitTest`)
 
 ## 📋 Verification List
 Device compatibility and verification results tested by developers and users are documented in [VERIFICATION_LIST.md](VERIFICATION_LIST.md).
