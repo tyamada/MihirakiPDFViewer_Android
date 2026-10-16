@@ -9,7 +9,7 @@ import java.util.Arrays;
 public final class StoreLocaleSetter {
     public static void main(String[] args) throws Exception {
         if (args.length != 1 || !Arrays.asList("ja-JP", "en-US", "ko-KR", "zh-TW", "de-DE", "fr-FR", "es-ES", "pt-BR",
-                "zh-CN", "vi-VN", "fil-PH", "ne-NP", "id-ID").contains(args[0])) {
+                "zh-CN", "vi-VN", "fil-PH", "ne-NP", "id-ID", "it-IT").contains(args[0])) {
             throw new IllegalArgumentException("Unsupported capture locale");
         }
         Method getService = Class.forName("android.app.ActivityManager").getDeclaredMethod("getService");
