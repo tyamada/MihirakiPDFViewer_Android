@@ -57,3 +57,8 @@ Play Consoleで権限を変更した後、APIへ反映するまで時間がか�
 Google Playの掲載画面にはChromebook専用枠がありますが、Android Publisher APIの画像種別にはChromebookまたはDesktopがありません。そのため、Chromebook分84枚（14言語×6枚）はAPIマニフェストから除外しています。Play Consoleのメインストア掲載情報にあるChromebook用グラフィック欄へ登録してください。公式ヘルプ上、Chromebook・タブレットは各端末種別につき4枚以上、最大8枚です。[プレビュー素材の要件](https://support.google.com/googleplay/android-developer/answer/9866151)
 
 このツールは `audit` と `stage` を標準の安全な手順とし、編集の確定にはアプリIDとversionCodeを含む明示的な確認文字列を要求します。`stage` は編集を確定せずに終了します。
+
+## リリースノートの保存ルール
+
+App Bundle（.aab）のビルド時およびリリース時に作成・管理するリリースノート（`RELEASE_NOTES_*.md`）の保存先は、**`store_listing/release-notes/`** ディレクトリに統一します。従来ルート直下の `store_listing/` に配置していたリリースノートはすべて `store_listing/release-notes/` 内に移動されました。
+
