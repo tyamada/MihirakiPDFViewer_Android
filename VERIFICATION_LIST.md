@@ -4,7 +4,9 @@ This is a list of verification results compiled from developer and user informat
 
 | Category   | Manufacturer | Device Name           | OS Version | App Version |  Result   | Notes |
 |:-----------|:-------------|:----------------------|:----------:|:-----------:|:---------:|:------|
+| Smartphone | FCNT         | arrows We2 M07        |     16     |  2.0.0(33)  | No issues | -     |
 | Smartphone | Google       | Pixel 8a              |     17     |  2.0.0(33)  | No issues | -     |
+| Smartphone | OPPO         | Reno11 A CPH2603      |     15     |  2.0.0(33)  | No issues | -     |
 | Smartphone | Samsung      | Galaxy A54 5G SC-53D  |     16     |  2.0.0(33)  | No issues | -     |
 | Smartphone | Sharp        | AQUOS sense4 SH-41A   |     12     |  2.0.0(33)  | No issues | -     |
 | Smartphone | Sony         | Xperia 10VI XQ-ES44   |     16     |  2.0.0(33)  | No issues | -     |
