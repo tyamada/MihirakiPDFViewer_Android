@@ -34,4 +34,5 @@
     <string name="table_of_contents">Daftar isi</string>
     <string name="privacy_policy">Kebijakan Privasi</string>
     <string name="privacy_policy_content" translatable="false">&lt;h2&gt;Kebijakan Privasi&lt;/h2&gt;&lt;p&gt;Pengembang MihirakiPDFViewer menghormati privasi Anda.&lt;/p&gt;&lt;h3&gt;1. Pengumpulan dan Penggunaan Informasi&lt;/h3&gt;&lt;p&gt;Aplikasi tidak mengunggah atau mengumpulkan file PDF Anda. Semua pemrosesan dilakukan secara lokal.&lt;/p&gt;&lt;h3&gt;2. Izin&lt;/h3&gt;&lt;p&gt;Aplikasi menggunakan Storage Access Framework (SAF).&lt;/p&gt;&lt;h3&gt;3. Keamanan Data&lt;/h3&gt;&lt;p&gt;Data Anda tetap berada di bawah kendali Anda.&lt;/p&gt;&lt;h3&gt;4. Kontak&lt;/h3&gt;&lt;p&gt;Hubungi melalui GitHub.&lt;/p&gt;</string>
+    <string name="diagnostics">Diagnostik</string>
 </resources>

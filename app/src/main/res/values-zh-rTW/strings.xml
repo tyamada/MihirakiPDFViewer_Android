@@ -34,4 +34,5 @@
     <string name="testing_diagnostic_logs">測試與診斷記錄</string>
     <string name="privacy_policy">隱私權政策</string>
     <string name="privacy_policy_content" translatable="false">&lt;h2&gt;隱私權政策&lt;/h2&gt;&lt;p&gt;MihirakiPDFViewer 開發者尊重您的隱私。&lt;/p&gt;&lt;h3&gt;1. 資訊收集與使用&lt;/h3&gt;&lt;p&gt;本應用程式不會上傳或收集您的 PDF 檔案。所有 PDF 處理均在您的裝置本地進行。&lt;/p&gt;&lt;h3&gt;2. 權限&lt;/h3&gt;&lt;p&gt;使用儲存空間存取架構 (SAF)。&lt;/p&gt;&lt;h3&gt;3. 資料安全&lt;/h3&gt;&lt;p&gt;您的資料始終在您的掌控之中。&lt;/p&gt;&lt;h3&gt;4. 連絡方式&lt;/h3&gt;&lt;p&gt;如有疑問，請透過 GitHub 儲存庫聯繫我們。&lt;/p&gt;</string>
+    <string name="diagnostics">診斷</string>
 </resources>
