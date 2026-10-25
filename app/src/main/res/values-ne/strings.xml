@@ -34,4 +34,5 @@
     <string name="table_of_contents">विषयसूची</string>
     <string name="privacy_policy">गोपनीयता नीति</string>
     <string name="privacy_policy_content" translatable="false">&lt;h2&gt;गोपनीयता नीति&lt;/h2&gt;&lt;p&gt;MihirakiPDFViewer को विकासकर्ताले तपाईंको गोपनीयताको सम्मान गर्दछ।&lt;/p&gt;&lt;h3&gt;१. सूचना सङ्कलन र प्रयोग&lt;/h3&gt;&lt;p&gt;एपले तपाइँको PDF फाइलहरू अपलोड वा सङ्कलन गर्दैन। सबै प्रशोधन स्थानीय रूपमा हुन्छ।&lt;/p&gt;&lt;h3&gt;२. अनुमतिहरू&lt;/h3&gt;&lt;p&gt;Storage Access Framework (SAF) प्रयोग गरिन्छ।&lt;/p&gt;&lt;h3&gt;३. डेटा सुरक्षा&lt;/h3&gt;&lt;p&gt;तपाईंका कागजातहरू तपाईंको यन्त्रमै रहन्छन्।&lt;/p&gt;&lt;h3&gt;४. सम्पर्क&lt;/h3&gt;&lt;p&gt;GitHub मार्फत सम्पर्क गर्नुहोस्।&lt;/p&gt;</string>
+    <string name="diagnostics">निदान</string>
 </resources>
