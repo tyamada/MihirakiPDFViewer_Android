@@ -69,4 +69,6 @@
     <string name="help_app_info"><b>Informazioni sull’app:</b> Consulta versione, numero build, copyright e badge di supporto.</string>
     <string name="help_support"><b>Supporta lo sviluppo:</b> Contribuisci con una donazione facoltativa e consulta i tuoi badge di supporto.</string>
     <string name="help_slider"><b>Cursore delle pagine:</b> Trascina il cursore nella barra inferiore per passare a un’altra pagina.</string>
+    <string name="privacy_policy">Informativa sulla privacy</string>
+    <string name="privacy_policy_content" translatable="false">&lt;h2&gt;Informativa sulla privacy&lt;/h2&gt;&lt;p&gt;Lo sviluppatore di MihirakiPDFViewer rispetta la tua privacy.&lt;/p&gt;&lt;h3&gt;1. Raccolta e utilizzo&lt;/h3&gt;&lt;p&gt;L\'app non carica né raccoglie i tuoi file PDF. L\'elaborazione avviene localmente.&lt;/p&gt;&lt;h3&gt;2. Autorizzazioni&lt;/h3&gt;&lt;p&gt;L\'app utilizza lo Storage Access Framework (SAF).&lt;/p&gt;&lt;h3&gt;3. Sicurezza&lt;/h3&gt;&lt;p&gt;I tuoi dati rimangono sul tuo dispositivo.&lt;/p&gt;&lt;h3&gt;4. Contatti&lt;/h3&gt;&lt;p&gt;Contattaci tramite GitHub.&lt;/p&gt;</string>
 </resources>

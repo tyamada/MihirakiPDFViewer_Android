@@ -54,6 +54,7 @@ import kotlin.math.abs
     openVersion: () -> Unit,
     openDiagnostics: () -> Unit,
     openSupport: () -> Unit,
+    openPrivacyPolicy: () -> Unit,
     openSamplePdfs: () -> Unit
 ) {
     val state by vm.state.collectAsState(); val context = LocalContext.current
@@ -163,6 +164,10 @@ import kotlin.math.abs
                                     DropdownMenuItem(
                                         text = { Text(stringResource(R.string.support)) },
                                         onClick = { showMenu = false; openSupport() }
+                                    )
+                                    DropdownMenuItem(
+                                        text = { Text(stringResource(R.string.privacy_policy)) },
+                                        onClick = { showMenu = false; openPrivacyPolicy() }
                                     )
                                 }
                             }
@@ -299,6 +304,10 @@ import kotlin.math.abs
                     DropdownMenuItem(
                         text = { Text(stringResource(R.string.support)) },
                         onClick = { showMenu = false; openSupport() }
+                    )
+                    DropdownMenuItem(
+                        text = { Text(stringResource(R.string.privacy_policy)) },
+                        onClick = { showMenu = false; openPrivacyPolicy() }
                     )
                 }
             }
