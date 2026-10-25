@@ -74,13 +74,13 @@ import com.github.tyamada.mihirakipdfviewer_android.viewmodel.ViewerViewModel
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable fun HelpScreen(back: () -> Unit) {
     val categories = listOf(
-        HelpCategorySpec("はじめての使い方 / Getting Started", listOf(
+        HelpCategorySpec(stringResource(R.string.help_category_getting_started), listOf(
             R.string.help_open,
             R.string.help_sample_pdfs_desc,
             R.string.help_navigate,
             R.string.help_menu
         )),
-        HelpCategorySpec("読書を快適にする機能 / Reading Features", listOf(
+        HelpCategorySpec(stringResource(R.string.help_category_reading_features), listOf(
             R.string.help_search,
             R.string.help_outline,
             R.string.help_sample_pdfs_desc,
@@ -89,7 +89,7 @@ import com.github.tyamada.mihirakipdfviewer_android.viewmodel.ViewerViewModel
             R.string.help_zoom,
             R.string.help_slider
         )),
-        HelpCategorySpec("設定とカスタマイズ / Settings Guide", listOf(
+        HelpCategorySpec(stringResource(R.string.help_category_settings_guide), listOf(
             R.string.help_high_quality,
             R.string.help_sharpness,
             R.string.help_two_page,
@@ -100,7 +100,7 @@ import com.github.tyamada.mihirakipdfviewer_android.viewmodel.ViewerViewModel
             R.string.help_portrait_display,
             R.string.help_cover_mode
         )),
-        HelpCategorySpec("診断 / Diagnostics", listOf(
+        HelpCategorySpec(stringResource(R.string.help_category_diagnostics), listOf(
             R.string.help_device_test,
             R.string.help_log_viewer,
             R.string.report_issue_desc,
@@ -277,12 +277,12 @@ data class HelpCategorySpec(val title: String, val items: List<Int>)
         Column(Modifier.padding(p).verticalScroll(rememberScrollState()).padding(16.dp), verticalArrangement = Arrangement.spacedBy(8.dp)) {
             TextButton(onClick = deviceTest, modifier = Modifier.fillMaxWidth()) {
                 Box(Modifier.fillMaxWidth(), contentAlignment = Alignment.CenterStart) {
-                    Text("実機テストを実行 (Device Test)")
+                    Text(stringResource(R.string.device_test_menu))
                 }
             }
             TextButton(onClick = logViewer, modifier = Modifier.fillMaxWidth()) {
                 Box(Modifier.fillMaxWidth(), contentAlignment = Alignment.CenterStart) {
-                    Text("アプリログを表示・共有 (App Logs)")
+                    Text(stringResource(R.string.app_logs_menu))
                 }
             }
             TextButton(onClick = reportIssue, modifier = Modifier.fillMaxWidth()) {
@@ -318,7 +318,7 @@ data class HelpCategorySpec(val title: String, val items: List<Int>)
             Text("Memory Usage: ${usedMemory}MB / ${maxMemory}MB", style = MaterialTheme.typography.bodyLarge)
             Spacer(Modifier.height(12.dp))
             Row(Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.spacedBy(8.dp)) {
-                Button(onClick = { AppLogger.clear() }) { Text("テスト・診断ログのクリア") }
+                Button(onClick = { AppLogger.clear() }) { Text(stringResource(R.string.testing_diagnostic_logs)) }
             }
             Spacer(Modifier.height(12.dp))
             Text("Application Logs (${logs.size}):", style = MaterialTheme.typography.titleMedium)
@@ -331,7 +331,7 @@ data class HelpCategorySpec(val title: String, val items: List<Int>)
                 val scrollState = rememberScrollState()
                 Column(Modifier.verticalScroll(scrollState)) {
                     if (logs.isEmpty()) {
-                        Text("No logs recorded yet.", color = MaterialTheme.colorScheme.onSurfaceVariant)
+                        Text(stringResource(R.string.no_logs_recorded_text), color = MaterialTheme.colorScheme.onSurfaceVariant)
                     } else {
                         logs.forEach { entry ->
                             Text(
@@ -360,14 +360,14 @@ data class HelpCategorySpec(val title: String, val items: List<Int>)
     Scaffold(
         topBar = {
             TopAppBar(
-                title = { Text("実機テスト・端末診断") },
+                title = { Text(stringResource(R.string.device_test_screen_title)) },
                 navigationIcon = { IconButton(back) { Icon(Icons.AutoMirrored.Filled.ArrowBack, stringResource(R.string.back)) } }
             )
         }
     ) { p ->
         Column(Modifier.padding(p).padding(16.dp).verticalScroll(rememberScrollState()).fillMaxSize()) {
             Text(
-                "この画面では、お使いの端末でビューアの動作確認テスト（RAM、ストレージ、メモリ、キャッシュ、PDFエンジン環境）を実行できます。",
+                stringResource(R.string.device_test_intro),
                 style = MaterialTheme.typography.bodyMedium
             )
             Spacer(Modifier.height(16.dp))
@@ -379,13 +379,13 @@ data class HelpCategorySpec(val title: String, val items: List<Int>)
             ) {
                 Column(Modifier.padding(16.dp)) {
                     Text(
-                        "🔒 プライバシー保護に関するお知らせ",
+                        stringResource(R.string.privacy_notice_header),
                         style = MaterialTheme.typography.titleSmall,
                         color = MaterialTheme.colorScheme.primary
                     )
                     Spacer(Modifier.height(4.dp))
                     Text(
-                        "テスト結果を自動的に外部（サーバー等）に送信する機能はありません。データは端末内でのみ処理され、手動で共有する場合を除き外部に出ることはありません。",
+                        stringResource(R.string.privacy_notice_body),
                         style = MaterialTheme.typography.bodySmall
                     )
                 }
@@ -399,34 +399,34 @@ data class HelpCategorySpec(val title: String, val items: List<Int>)
                 },
                 modifier = Modifier.fillMaxWidth()
             ) {
-                Text("テストを実行する")
+                Text(stringResource(R.string.run_test_button))
             }
 
             Spacer(Modifier.height(24.dp))
 
             testResult?.let { result ->
-                Text("📊 テスト結果", style = MaterialTheme.typography.titleMedium, color = MaterialTheme.colorScheme.primary)
+                Text(stringResource(R.string.test_results_header), style = MaterialTheme.typography.titleMedium, color = MaterialTheme.colorScheme.primary)
                 Spacer(Modifier.height(8.dp))
 
-                Info("テスト日時", result.timestamp)
-                Info("ベンダー名", result.manufacturer)
-                Info("端末名", result.model)
-                Info("OS バージョン", "Android ${result.osVersion} (SDK ${result.sdkInt})")
-                Info("システム言語 (Locale)", result.systemLocale)
-                Info("画面の向き (Orientation)", result.deviceOrientation)
-                Info("テーマモード (Theme)", result.themeMode)
-                Info("フォント倍率 (Font Scale)", "${result.fontScale}x")
-                Info("総 RAM / 空き RAM", "${result.totalRamMb} MB / ${result.freeRamMb} MB")
-                Info("総ストレージ / 空き", String.format(Locale.US, "%.2f GB / %.2f GB", result.totalStorageGb, result.freeStorageGb))
-                Info("省メモリ最適化モード", if (result.isLowRamDevice) "有効 (Low-RAM Mode)" else "無効 (Normal)")
-                Info("CPU コア数", "${result.cpuCores} cores")
-                Info("画面解像度 / 密度", result.screenResolution)
-                Info("JVM ヒープ (総 / 空き)", "${result.totalMemoryMb} MB / ${result.freeMemoryMb} MB")
-                Info("キャッシュ領域", if (result.cacheDirWritable) "書込可能 (OK)" else "エラー")
-                Info("PDF Renderer API", if (result.pdfRendererApiWorking) "利用可能 (Functional)" else "エラー")
-                Info("Google Play Billing API", if (result.billingApiAvailable) "利用可能 (Available)" else "利用不可")
-                Info("ContentResolver (SAF)", if (result.contentResolverAvailable) "利用可能 (Active)" else "エラー")
-                Info("ステータス", result.status)
+                Info(stringResource(R.string.test_timestamp_label), result.timestamp)
+                Info(stringResource(R.string.vendor_label), result.manufacturer)
+                Info(stringResource(R.string.device_name_label), result.model)
+                Info(stringResource(R.string.os_version_label), "Android ${result.osVersion} (SDK ${result.sdkInt})")
+                Info(stringResource(R.string.system_locale_label), result.systemLocale)
+                Info(stringResource(R.string.screen_orientation_label), result.deviceOrientation)
+                Info(stringResource(R.string.theme_mode_label), result.themeMode)
+                Info(stringResource(R.string.font_scale_label), "${result.fontScale}x")
+                Info(stringResource(R.string.ram_info_label), "${result.totalRamMb} MB / ${result.freeRamMb} MB")
+                Info(stringResource(R.string.storage_info_label), String.format(Locale.US, "%.2f GB / %.2f GB", result.totalStorageGb, result.freeStorageGb))
+                Info(stringResource(R.string.low_ram_mode_label), if (result.isLowRamDevice) "有効 (Low-RAM Mode)" else "無効 (Normal)")
+                Info(stringResource(R.string.cpu_cores_label), "${result.cpuCores} cores")
+                Info(stringResource(R.string.screen_resolution_label), result.screenResolution)
+                Info(stringResource(R.string.jvm_heap_label), "${result.totalMemoryMb} MB / ${result.freeMemoryMb} MB")
+                Info(stringResource(R.string.cache_dir_label), if (result.cacheDirWritable) "書込可能 (OK)" else "エラー")
+                Info(stringResource(R.string.pdf_renderer_api_label), if (result.pdfRendererApiWorking) "利用可能 (Functional)" else "エラー")
+                Info(stringResource(R.string.billing_api_label), if (result.billingApiAvailable) "利用可能 (Available)" else "利用不可")
+                Info(stringResource(R.string.saf_resolver_label), if (result.contentResolverAvailable) "利用可能 (Active)" else "エラー")
+                Info(stringResource(R.string.status_label), result.status)
 
                 Spacer(Modifier.height(16.dp))
 
@@ -438,12 +438,12 @@ data class HelpCategorySpec(val title: String, val items: List<Int>)
                             putExtra(Intent.EXTRA_TEXT, report)
                             type = "text/plain"
                         }
-                        val shareIntent = Intent.createChooser(sendIntent, "実機テスト結果の共有")
+                        val shareIntent = Intent.createChooser(sendIntent, context.getString(R.string.share_test_results_chooser))
                         context.startActivity(shareIntent)
                     },
                     modifier = Modifier.fillMaxWidth()
                 ) {
-                    Text("テスト結果を共有する")
+                    Text(stringResource(R.string.share_test_results_button))
                 }
             }
         }
@@ -462,7 +462,7 @@ data class HelpCategorySpec(val title: String, val items: List<Int>)
     Scaffold(
         topBar = {
             TopAppBar(
-                title = { Text("問題を報告 (Report a Problem)") },
+                title = { Text(stringResource(R.string.report_issue_screen_title)) },
                 navigationIcon = { IconButton(back) { Icon(Icons.AutoMirrored.Filled.ArrowBack, stringResource(R.string.back)) } }
             )
         }
@@ -480,21 +480,21 @@ data class HelpCategorySpec(val title: String, val items: List<Int>)
             ) {
                 Column(Modifier.padding(16.dp)) {
                     Text(
-                        "不具合が発生した場合は、以下の情報をまとめて GitHub Issues からご報告ください。",
+                        stringResource(R.string.report_issue_intro),
                         style = MaterialTheme.typography.bodyMedium
                     )
                 }
             }
 
-            Section("報告に含める内容 (Include in your report)")
-            BulletPoint("1. 問題の簡単な要約")
-            BulletPoint("2. 再現手順")
-            BulletPoint("3. 期待される動作と実際の動作")
-            BulletPoint("4. 発生頻度")
-            BulletPoint("5. アプリのバージョン、OSバージョン、デバイス、表示設定")
-            BulletPoint("6. スクリーンショット、アプリログ、または実機テスト結果")
+            Section(stringResource(R.string.report_include_header))
+            BulletPoint(stringResource(R.string.report_step1))
+            BulletPoint(stringResource(R.string.report_step2))
+            BulletPoint(stringResource(R.string.report_step3))
+            BulletPoint(stringResource(R.string.report_step4))
+            BulletPoint(stringResource(R.string.report_step5))
+            BulletPoint(stringResource(R.string.report_step6))
 
-            Section("診断情報 (Diagnostic information)")
+            Section(stringResource(R.string.diagnostic_info_header))
             Button(
                 onClick = {
                     val result = DeviceTestRunner.runTest(context)
@@ -504,34 +504,34 @@ data class HelpCategorySpec(val title: String, val items: List<Int>)
                     val clipboard = context.getSystemService(Context.CLIPBOARD_SERVICE) as android.content.ClipboardManager
                     val clip = ClipData.newPlainText("MihirakiPDFViewer Diagnostic Report", combined)
                     clipboard.setPrimaryClip(clip)
-                    Toast.makeText(context, "実機テスト結果とアプリログを一括コピーしました", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(context, context.getString(R.string.copy_all_diagnostics_toast), Toast.LENGTH_SHORT).show()
                 },
                 modifier = Modifier.fillMaxWidth()
             ) {
-                Text("実機テスト結果とアプリログを一括コピー (Copy All Diagnostics)")
+                Text(stringResource(R.string.copy_all_diagnostics_button))
             }
             Spacer(Modifier.height(8.dp))
             OutlinedButton(
                 onClick = logViewer,
                 modifier = Modifier.fillMaxWidth()
             ) {
-                Text("アプリログ個別の表示・管理 (View app logs)")
+                Text(stringResource(R.string.view_app_logs_button))
             }
             OutlinedButton(
                 onClick = deviceTest,
                 modifier = Modifier.fillMaxWidth()
             ) {
-                Text("実機テスト個別の実行 (Run device tests)")
+                Text(stringResource(R.string.run_device_tests_button))
             }
 
-            Section("プライバシー保護 (Protect your privacy)")
+            Section(stringResource(R.string.protect_privacy_header))
             Card(
                 colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.errorContainer.copy(alpha = 0.3f)),
                 modifier = Modifier.fillMaxWidth()
             ) {
                 Column(Modifier.padding(16.dp), verticalArrangement = Arrangement.spacedBy(8.dp)) {
-                    Text("• PDFファイル本体や文書の内容、ファイル名、氏名などの個人情報を含めないでください。", style = MaterialTheme.typography.bodySmall)
-                    Text("• スクリーンショットや診断情報を投稿前にご確認ください。データは自動送信されません。", style = MaterialTheme.typography.bodySmall)
+                    Text(stringResource(R.string.privacy_warning_body_1), style = MaterialTheme.typography.bodySmall)
+                    Text(stringResource(R.string.privacy_warning_body_2), style = MaterialTheme.typography.bodySmall)
                 }
             }
 
@@ -544,10 +544,10 @@ data class HelpCategorySpec(val title: String, val items: List<Int>)
                 },
                 modifier = Modifier.fillMaxWidth()
             ) {
-                Text("GitHub Issues を開く (Open GitHub Issues)")
+                Text(stringResource(R.string.open_github_issues_button))
             }
             Text(
-                "※ GitHubアカウントが必要です。送信した情報は公開される場合があります。",
+                stringResource(R.string.github_account_warning),
                 style = MaterialTheme.typography.labelSmall,
                 color = MaterialTheme.colorScheme.onSurfaceVariant
             )
@@ -568,7 +568,7 @@ data class HelpCategorySpec(val title: String, val items: List<Int>)
     Scaffold(
         topBar = {
             TopAppBar(
-                title = { Text("アプリログ管理") },
+                title = { Text(stringResource(R.string.log_viewer_screen_title)) },
                 navigationIcon = { IconButton(back) { Icon(Icons.AutoMirrored.Filled.ArrowBack, stringResource(R.string.back)) } }
             )
         }
@@ -581,13 +581,13 @@ data class HelpCategorySpec(val title: String, val items: List<Int>)
             ) {
                 Column(Modifier.padding(16.dp)) {
                     Text(
-                        "🔒 プライバシー保護・データ管理について",
+                        stringResource(R.string.log_privacy_notice_header),
                         style = MaterialTheme.typography.titleSmall,
                         color = MaterialTheme.colorScheme.primary
                     )
                     Spacer(Modifier.height(4.dp))
                     Text(
-                        "• ログを自動的に外部（サーバー等）に送信する機能はありません。\n• ユーザーの個人情報やPDFファイルの内容は一切記録されません。\n• 肥大化を防ぐため、24時間以上経過したログファイルは自動的に削除されます。",
+                        stringResource(R.string.log_privacy_notice_body),
                         style = MaterialTheme.typography.bodySmall
                     )
                 }
@@ -604,12 +604,12 @@ data class HelpCategorySpec(val title: String, val items: List<Int>)
                             putExtra(Intent.EXTRA_TEXT, logText.ifBlank { "No logs available." })
                             type = "text/plain"
                         }
-                        val shareIntent = Intent.createChooser(sendIntent, "アプリログの共有")
+                        val shareIntent = Intent.createChooser(sendIntent, context.getString(R.string.share_logs_title))
                         context.startActivity(shareIntent)
                     },
                     modifier = Modifier.weight(1f)
                 ) {
-                    Text("ログを共有する")
+                    Text(stringResource(R.string.share_logs_button))
                 }
 
                 OutlinedButton(
@@ -620,17 +620,17 @@ data class HelpCategorySpec(val title: String, val items: List<Int>)
                     },
                     modifier = Modifier.weight(1f)
                 ) {
-                    Text("ログを削除")
+                    Text(stringResource(R.string.delete_logs_button))
                 }
             }
 
             if (clearedSignal) {
                 Spacer(Modifier.height(4.dp))
-                Text("すべてのログを削除しました。", color = MaterialTheme.colorScheme.primary, style = MaterialTheme.typography.bodySmall)
+                Text(stringResource(R.string.logs_deleted_message), color = MaterialTheme.colorScheme.primary, style = MaterialTheme.typography.bodySmall)
             }
 
             Spacer(Modifier.height(12.dp))
-            Text("保存されたログ (${logs.size} lines):", style = MaterialTheme.typography.titleMedium)
+            Text(stringResource(R.string.saved_logs_title, logs.size), style = MaterialTheme.typography.titleMedium)
             Spacer(Modifier.height(8.dp))
 
             Box(
@@ -641,7 +641,7 @@ data class HelpCategorySpec(val title: String, val items: List<Int>)
                 val scrollState = rememberScrollState()
                 Column(Modifier.verticalScroll(scrollState)) {
                     if (logs.isEmpty()) {
-                        Text("記録されたログはありません。", color = MaterialTheme.colorScheme.onSurfaceVariant)
+                        Text(stringResource(R.string.no_logs_recorded_text), color = MaterialTheme.colorScheme.onSurfaceVariant)
                     } else {
                         logs.forEach { line ->
                             Text(
