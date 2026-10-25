@@ -13,7 +13,7 @@
   "outlineVerified": true,
   "maximized": true,
   "activityBounds": "[0,72][2560,1376]",
-  "captureId": "f5c4d5fb318f4297ad86d7a40f89c6ca",
+  "captureId": "1dd97e3403704c4d9abd0d5c43a0fae3",
   "scene": "07_outline",
   "language": "zh_tw",
   "locale": "zh-TW",
@@ -28,16 +28,16 @@
   "layout": "SPREAD",
   "showCover": true,
   "version": "2.0.0",
-  "versionCode": 32,
+  "versionCode": 33,
   "package": "com.github.tyamada.MihirakiPDFViewer_Android",
-  "fingerprint": "a41d6a1bf163ed35b538c180a71e4814bd7cd6115b5199d954b783f0e7972f10",
+  "fingerprint": "ac3ac21bdd9d67dc7552becc332670a7473266b23d3b7f1890b98501ad7b294f",
   "avd": "Tablet_10",
   "dimensions": [
     2560,
     1440
   ],
   "serial": "emulator-5580",
-  "imageSha256": "1e415758f6735b0d12405eafc495904b49aaedf2b5fd0f13c7bbf669b3dd6ba2",
-  "checkedAt": "2026-10-16T13:45:00+0900",
+  "imageSha256": "a68420b6654d48855afe07644f10c05fb5b031a47ad1ebf3ded2a3e5d7c73b6c",
+  "checkedAt": "2026-10-16T21:46:34+0900",
   "validation": "automated-pass; visual-reviewed"
 }

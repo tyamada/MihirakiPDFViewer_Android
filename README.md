@@ -2,6 +2,7 @@
 
 [![Get it on Google Play](https://img.shields.io/badge/Google%20Play-Get%20it%20on-%2301875f?style=flat&logo=google-play&logoColor=white)](https://play.google.com/store/apps/details?id=com.github.tyamada.MihirakiPDFViewer_Android)
 [![License](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+[![Qiita Series](https://img.shields.io/badge/Qiita-Series-%2355c500?style=flat&logo=qiita&logoColor=white)](https://qiita.com/tyamada22/stocks/8aeb6d899f7e0257f1d2)
 
 English | [日本語](README_ja.md)
 
@@ -136,10 +137,13 @@ If you find this app useful, you can support further development via the in-app 
 ## 🐛 Reporting Issues & Bug Reports
 If you encounter any bugs, crashes, or unexpected behavior, please open an issue on [GitHub Issues](https://github.com/tyamada/MihirakiPDFViewer_Android/issues). 
 When reporting an issue, please include:
-1. **App Version & Build Code** (e.g., v2.0.0, Code 32)
+1. **App Version & Build Code** (e.g., v2.0.0, Code 33)
 2. **Device Model & Android Version** (e.g., Pixel 8, Android 15)
 3. **Steps to Reproduce** the problem
 4. **Diagnostic Logs**: Copy or share app logs from **Settings > Testing & Diagnostics** (safe: contains zero personal or document data).
+
+## 📖 Qiita Series / Articles
+Development articles and series logs are available in the [Qiita Series Stock List](https://qiita.com/tyamada22/stocks/8aeb6d899f7e0257f1d2).
 
 ## 🤖 Developed with AI
 This project was developed with the assistance of AI:
@@ -148,22 +152,22 @@ This project was developed with the assistance of AI:
 
 ## 📜 Version History
 
-- **v2.0.0** (Code 32)
+- **v2.0.0** (Code 33)
   - Major version bump to v2.0.0 with comprehensive documentation updates and help screen HTML rendering enhancements.
   - Added direct "Report Issue" button to the settings screen and established GitHub Issue templates.
   - Reorganized settings options group (placing Mouse Navigation and Portrait Display switches at the top of options).
   - Improved screen rotation synchronization for adaptive portrait display.
-- **v2.0.0** (Code 32)
+- **v2.0.0** (Code 33)
   - Updated tip purchases from consumable to non-consumable to comply with App Store review guidelines.
   - Reorganized and updated store listing assets and sample PDFs.
-- **v2.0.0** (Code 32)
+- **v2.0.0** (Code 33)
   - Improved settings screen layout by relocating options group below document info.
   - Enabled advanced R8 optimizations and native debug symbols for improved performance and crash reporting.
-- **v2.0.0** (Code 32)
+- **v2.0.0** (Code 33)
   - Minor settings screen layout adjustments.
-- **v2.0.0** (Code 32)
+- **v2.0.0** (Code 33)
   - Consolidated and organized store listing materials and device screenshots.
-- **v2.0.0** (Code 32)
+- **v2.0.0** (Code 33)
   - Initial production release with two-page spread support, R2L reading order, smart auto-detection, precise search & highlighting, and privacy-focused local PDF processing.
 
 ## 📄 License
