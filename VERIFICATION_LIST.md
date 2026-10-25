@@ -11,7 +11,7 @@ This is a list of verification results compiled from developer and user informat
 | Smartphone | Samsung      | Galaxy A54 5G SC-53D  |     16     |  2.0.0(33)  | No issues | -     |
 | Smartphone | Sharp        | AQUOS sense4 SH-41A   |     12     |  2.0.0(33)  | No issues | -     |
 | Smartphone | Sony         | Xperia 10VI XQ-ES44   |     16     |  2.0.0(33)  | No issues | -     |
-| Smartphone | Sony         | Xperia 10VIII XQ-GH44 |     16     |  2.0.0(33)  | No issues | -     |
+| Smartphone | Sony         | Xperia 10VIII XQ-GH44 |     17     |  2.0.0(33)  | No issues | -     |
 | Tablet     | Samsung      | Galaxy Tab A SM-T510  |     9      |  2.0.0(33)  | No issues | 1     |
 | Tablet     | aiwa         | tab AG10(JA3-TBA1003) |     13     |  2.0.0(33)  | No issues | -     |
 | Desktop    | ASUS         | Chromebook CM30       |     13     |  2.0.0(33)  | No issues | 2     |
