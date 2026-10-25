@@ -32,4 +32,6 @@
     <string name="help_reset"><b>Reset:</b> Reset app settings and close the current document.</string>
     <string name="testing_diagnostic_logs">테스트 및 진단 로그</string>
     <string name="table_of_contents">목차</string>
+    <string name="privacy_policy">개인정보처리방침</string>
+    <string name="privacy_policy_content" translatable="false">&lt;h2&gt;개인정보처리방침&lt;/h2&gt;&lt;p&gt;MihirakiPDFViewer 개발자는 사용자의 개인정보를 존중합니다.&lt;/p&gt;&lt;h3&gt;1. 정보 수집 및 이용&lt;/h3&gt;&lt;p&gt;PDF 파일은 서버에 업로드되지 않으며 기기 내에서 로컬로 처리됩니다.&lt;/p&gt;&lt;h3&gt;2. 권한&lt;/h3&gt;&lt;p&gt;Storage Access Framework(SAF)를 사용합니다.&lt;/p&gt;&lt;h3&gt;3. 데이터 보안&lt;/h3&gt;&lt;p&gt;데이터는 기기를 벗어나지 않습니다.&lt;/p&gt;&lt;h3&gt;4. 문의&lt;/h3&gt;&lt;p&gt;GitHub 저장소를 통해 문의해주세요.&lt;/p&gt;</string>
 </resources>

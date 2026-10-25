@@ -23,6 +23,7 @@ import com.github.tyamada.mihirakipdfviewer_android.viewmodel.ViewerViewModel
                 openVersion = { nav.navigate("version") },
                 openDiagnostics = { nav.navigate("diagnostics") },
                 openSupport = { nav.navigate("tips") },
+                openPrivacyPolicy = { nav.navigate("privacy_policy") },
                 openSamplePdfs = { nav.navigate("sample_pdfs") }
             )
         }
@@ -45,7 +46,8 @@ import com.github.tyamada.mihirakipdfviewer_android.viewmodel.ViewerViewModel
             )
         }
         composable("help") { HelpScreen { nav.popBackStack() } }
-        composable("version") { VersionScreen(viewer, { nav.popBackStack() }, { nav.navigate("licenses") }, { nav.navigate("tips") }) }
+        composable("version") { VersionScreen(viewer, { nav.popBackStack() }, { nav.navigate("licenses") }, { nav.navigate("tips") }, { nav.navigate("privacy_policy") }) }
+        composable("privacy_policy") { PrivacyPolicyScreen { nav.popBackStack() } }
         composable("diagnostics") { 
             DiagnosticScreen(
                 back = { nav.popBackStack() },
