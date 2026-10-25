@@ -1,0 +1,43 @@
+{
+  "desktopInputVerified": false,
+  "outlinePages": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7
+  ],
+  "outlineVerified": false,
+  "maximized": true,
+  "activityBounds": "[0,42][1920,1080]",
+  "captureId": "a96fbac3efa8482fb7a410c81900d2e0",
+  "scene": "03_reading_settings",
+  "language": "fil",
+  "locale": "fil-PH",
+  "portrait": false,
+  "pdfSha256": "7abe3dace21c1a0f2e8b2e572947686188cec211a816195ef504f6c7cb23eab8",
+  "page": 6,
+  "pageCount": 8,
+  "query": "",
+  "searchResultCount": 0,
+  "page6SearchRects": [],
+  "direction": "R2L",
+  "layout": "SPREAD",
+  "showCover": true,
+  "version": "2.0.0",
+  "versionCode": 33,
+  "package": "com.github.tyamada.MihirakiPDFViewer_Android",
+  "fingerprint": "ac3ac21bdd9d67dc7552becc332670a7473266b23d3b7f1890b98501ad7b294f",
+  "avd": "Chromebook_FHD",
+  "dimensions": [
+    1920,
+    1080
+  ],
+  "serial": "emulator-5580",
+  "imageSha256": "7fc61046713882c111b145cd3e287bbfaf1bb1e9ef618e912c7269b71c66a9dd",
+  "checkedAt": "2026-10-16T22:43:16+0900",
+  "validation": "automated-pass; visual-reviewed"
+}

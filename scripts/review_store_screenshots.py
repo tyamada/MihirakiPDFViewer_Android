@@ -11,6 +11,8 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--device', choices=capture.DEVICES, nargs='+', default=list(capture.DEVICES))
     parser.add_argument('--language', choices=capture.LANGUAGES, nargs='+', default=list(capture.LANGUAGES))
+    parser.add_argument('--compatible-fingerprint', action='append', default=[],
+                        help='Allow verified records from an equivalent capture runner revision')
     parser.add_argument('--mark-reviewed', action='store_true', help='Use only after inspecting every selected original')
     options = parser.parse_args()
     apks = [capture.ROOT / 'app/build/outputs/apk/debug/app-debug.apk', capture.ROOT / 'app/build/outputs/apk/androidTest/debug/app-debug-androidTest.apk']
@@ -40,7 +42,7 @@ def main():
                 expected = dict(fingerprint=stamp, pdfSha256=capture.sha(capture.ROOT / f'testdata/tameshibu_episode1_2_{lang}.pdf'),
                                 avd=avd, language=lang, scene=scene, portrait=target == 'portrait',
                                 versionCode=capture.CONFIG['versionCode'], dimensions=list(capture.expected_size(avd, target == 'portrait')))
-                if not capture.can_resume(path, record, expected):
+                if not capture.can_resume(path, record, expected, options.compatible_fingerprint):
                     raise RuntimeError(f'Missing/stale/invalid capture: {path}')
                 info = json.loads(record.read_text())
                 if info['pageCount'] != capture.CONFIG['pageCount']:

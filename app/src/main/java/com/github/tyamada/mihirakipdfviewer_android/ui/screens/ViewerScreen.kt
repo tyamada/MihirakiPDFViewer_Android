@@ -244,7 +244,7 @@ import kotlin.math.abs
              } else false
          }
  ) {
-     val isTabletOrFoldable = maxWidth >= 600.dp
+        val isTabletOrFoldable = maxWidth >= 600.dp
         if ((state.source == null) && !state.loading) Column(
             Modifier
                 .align(Alignment.Center)

@@ -31,4 +31,5 @@
     <string name="help_cover_mode"><b>Cover setting:</b> Choose cover placement for each reading direction.</string>
     <string name="help_reset"><b>Reset:</b> Reset app settings and close the current document.</string>
     <string name="testing_diagnostic_logs">Log Pengujian &amp; Diagnostik</string>
+    <string name="table_of_contents">Daftar isi</string>
 </resources>

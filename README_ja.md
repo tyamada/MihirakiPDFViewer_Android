@@ -2,6 +2,7 @@
 
 [![Get it on Google Play](https://img.shields.io/badge/Google%20Play-%E3%83%80%E3%82%A6%E3%83%B3%E3%83%AD%E3%83%BC%E3%83%89-%2301875f?style=flat&logo=google-play&logoColor=white)](https://play.google.com/store/apps/details?id=com.github.tyamada.MihirakiPDFViewer_Android)
 [![License](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+[![Qiita Series](https://img.shields.io/badge/Qiita-Series-%2355c500?style=flat&logo=qiita&logoColor=white)](https://qiita.com/tyamada22/stocks/8aeb6d899f7e0257f1d2)
 
 [English](README.md) | 日本語
 
@@ -136,10 +137,13 @@ GitHub Actions (`.github/workflows/ci.yml`) を利用した自動ビルドおよ
 ## 🐛 不具合・問題の報告 (GitHub Issues)
 アプリの不具合や予期せぬ動作、クラッシュなどが発生した場合は、[GitHub Issues](https://github.com/tyamada/MihirakiPDFViewer_Android/issues) よりご報告ください。
 ご報告の際は以下の情報を記載していただくとスムーズです：
-1. **アプリのバージョン & ビルドコード**（例: v2.0.0, Code 32）
+1. **アプリのバージョン & ビルドコード**（例: v2.0.0, Code 33）
 2. **端末モデル & Androidバージョン**（例: Pixel 8, Android 15）
 3. **問題を再現する手順**
 4. **診断ログ**: 設定画面の「Testing & Diagnostics」からアプリログをコピーまたは共有して添付してください（ログには個人情報やファイルの内容は一切含まれません）。
+
+## 📖 Qiita 連載・記事
+本アプリの開発に関する連載・技術記事は [Qiita 連載ストックリスト](https://qiita.com/tyamada22/stocks/8aeb6d899f7e0257f1d2) にまとめています。
 
 ## 🤖 AI による開発
 このプロジェクトは、AI アシスタントを活用して開発されています：
@@ -148,21 +152,21 @@ GitHub Actions (`.github/workflows/ci.yml`) を利用した自動ビルドおよ
 
 ## 📜 バージョン履歴
 
-- **v2.0.0** (コード 32)
+- **v2.0.0** (コード 33)
   - メジャーバージョンを v2.0.0 に更新。ヘルプ画面の HTML レンダリング改善、ドキュメント (`docs/*.html`) およびストア掲載情報の最新化。
   - 設定画面への「不具合を報告」ボタンの追加および GitHub Issue テンプレートの整備。
   - 設定オプション群の並び順整理（マウスクリックページ送り・Portrait表示スイッチを先頭に配置）と画面回転時のレイアウト即時同期の改善。
-- **v2.0.0** (コード 32)
+- **v2.0.0** (コード 33)
   - アプリストアの審査ガイドラインに準拠するため、サポーター応援チップの購入処理を非消耗型（Non-consumable）に変更。
   - ストア掲載用のアセットやサンプルPDFを最新の状態に整理・統合。
-- **v2.0.0** (コード 32)
+- **v2.0.0** (コード 33)
   - 設定画面のレイアウトを改善（オプション項目をドキュメント情報の下へ移動）。
   - R8の最適化およびネイティブシンボルの組み込みによるパフォーマンス・安定性の向上。
-- **v2.0.0** (コード 32)
+- **v2.0.0** (コード 33)
   - 設定画面のレイアウト微調整。
-- **v2.0.0** (コード 32)
+- **v2.0.0** (コード 33)
   - ストア掲載素材やスクリーンショットの整理・統合。
-- **v2.0.0** (コード 32)
+- **v2.0.0** (コード 33)
   - 初回製品版リリース。見開き表示、右綴じ（R2L）完全対応、メタデータ自動検出、強力な検索・ハイライト、プライバシー重視のローカルPDF処理を実装。
 
 ## 📄 ライセンス
