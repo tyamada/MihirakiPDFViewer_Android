@@ -1,3 +1,4 @@
+<?xml version='1.0' encoding='utf-8'?>
 <resources>
     <string name="app_name">見開きPDFビューア</string><string name="open_pdf">PDFを開く</string><string name="open">開く</string><string name="settings">設定</string><string name="support">応援</string><string name="search">PDF内を検索</string><string name="ok">OK</string><string name="cancel">キャンセル</string><string name="back">戻る</string>
     <string name="previous_page">前のページ</string>
