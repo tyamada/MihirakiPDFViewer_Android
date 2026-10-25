@@ -2,6 +2,7 @@
 
 [![Get it on Google Play](https://img.shields.io/badge/Google%20Play-Get%20it%20on-%2301875f?style=flat&logo=google-play&logoColor=white)](https://play.google.com/store/apps/details?id=com.github.tyamada.MihirakiPDFViewer_Android)
 [![License](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+[![Qiita Series](https://img.shields.io/badge/Qiita-Series-%2355c500?style=flat&logo=qiita&logoColor=white)](https://qiita.com/tyamada22/stocks/8aeb6d899f7e0257f1d2)
 
 English | [日本語](README_ja.md)
 
@@ -140,6 +141,9 @@ When reporting an issue, please include:
 2. **Device Model & Android Version** (e.g., Pixel 8, Android 15)
 3. **Steps to Reproduce** the problem
 4. **Diagnostic Logs**: Copy or share app logs from **Settings > Testing & Diagnostics** (safe: contains zero personal or document data).
+
+## 📖 Qiita Series / Articles
+Development articles and series logs are available in the [Qiita Series Stock List](https://qiita.com/tyamada22/stocks/8aeb6d899f7e0257f1d2).
 
 ## 🤖 Developed with AI
 This project was developed with the assistance of AI:

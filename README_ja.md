@@ -2,6 +2,7 @@
 
 [![Get it on Google Play](https://img.shields.io/badge/Google%20Play-%E3%83%80%E3%82%A6%E3%83%B3%E3%83%AD%E3%83%BC%E3%83%89-%2301875f?style=flat&logo=google-play&logoColor=white)](https://play.google.com/store/apps/details?id=com.github.tyamada.MihirakiPDFViewer_Android)
 [![License](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+[![Qiita Series](https://img.shields.io/badge/Qiita-Series-%2355c500?style=flat&logo=qiita&logoColor=white)](https://qiita.com/tyamada22/stocks/8aeb6d899f7e0257f1d2)
 
 [English](README.md) | 日本語
 
@@ -140,6 +141,9 @@ GitHub Actions (`.github/workflows/ci.yml`) を利用した自動ビルドおよ
 2. **端末モデル & Androidバージョン**（例: Pixel 8, Android 15）
 3. **問題を再現する手順**
 4. **診断ログ**: 設定画面の「Testing & Diagnostics」からアプリログをコピーまたは共有して添付してください（ログには個人情報やファイルの内容は一切含まれません）。
+
+## 📖 Qiita 連載・記事
+本アプリの開発に関する連載・技術記事は [Qiita 連載ストックリスト](https://qiita.com/tyamada22/stocks/8aeb6d899f7e0257f1d2) にまとめています。
 
 ## 🤖 AI による開発
 このプロジェクトは、AI アシスタントを活用して開発されています：
