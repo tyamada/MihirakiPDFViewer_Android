@@ -34,4 +34,5 @@
     <string name="table_of_contents">Sumário</string>
     <string name="privacy_policy">Política de privacidade</string>
     <string name="privacy_policy_content" translatable="false">&lt;h2&gt;Política de privacidade&lt;/h2&gt;&lt;p&gt;O desenvolvedor do MihirakiPDFViewer respeita a sua privacidade.&lt;/p&gt;&lt;h3&gt;1. Coleta e uso de informações&lt;/h3&gt;&lt;p&gt;O aplicativo não carrega nem coleta seus arquivos PDF. Todo o processamento é local.&lt;/p&gt;&lt;h3&gt;2. Permissões&lt;/h3&gt;&lt;p&gt;Uso do Storage Access Framework (SAF).&lt;/p&gt;&lt;h3&gt;3. Segurança de dados&lt;/h3&gt;&lt;p&gt;Seus dados permanecem sob seu controle.&lt;/p&gt;&lt;h3&gt;4. Contato&lt;/h3&gt;&lt;p&gt;Entre em contato via GitHub.&lt;/p&gt;</string>
+    <string name="diagnostics">Diagnóstico</string>
 </resources>

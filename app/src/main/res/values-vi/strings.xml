@@ -34,4 +34,5 @@
     <string name="table_of_contents">Mục lục</string>
     <string name="privacy_policy">Chính sách bảo mật</string>
     <string name="privacy_policy_content" translatable="false">&lt;h2&gt;Chính sách bảo mật&lt;/h2&gt;&lt;p&gt;Nhà phát triển MihirakiPDFViewer tôn trọng quyền riêng tư của bạn.&lt;/p&gt;&lt;h3&gt;1. Thu thập và sử dụng thông tin&lt;/h3&gt;&lt;p&gt;Ứng dụng không tải lên hoặc thu thập tệp PDF của bạn. Mọi xử lý đều được thực hiện cục bộ.&lt;/p&gt;&lt;h3&gt;2. Quyền hạn&lt;/h3&gt;&lt;p&gt;Sử dụng Storage Access Framework (SAF).&lt;/p&gt;&lt;h3&gt;3. Bảo mật dữ liệu&lt;/h3&gt;&lt;p&gt;Dữ liệu của bạn nằm trong tầm kiểm soát của bạn.&lt;/p&gt;&lt;h3&gt;4. Liên hệ&lt;/h3&gt;&lt;p&gt;Liên hệ qua GitHub.&lt;/p&gt;</string>
+    <string name="diagnostics">Chẩn đoán</string>
 </resources>

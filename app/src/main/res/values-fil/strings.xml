@@ -34,4 +34,5 @@
     <string name="table_of_contents">Talaan ng nilalaman</string>
     <string name="privacy_policy">Patakaran sa Privacy</string>
     <string name="privacy_policy_content" translatable="false">&lt;h2&gt;Patakaran sa Privacy&lt;/h2&gt;&lt;p&gt;Iginagalang ng developer ng MihirakiPDFViewer ang iyong privacy.&lt;/p&gt;&lt;h3&gt;1. Koleksyon at Paggamit ng Impormasyon&lt;/h3&gt;&lt;p&gt;Ang App ay hindi nag-a-upload o nangongolekta ng iyong mga PDF file. Lahat ng pagpoproseso ay lokal.&lt;/p&gt;&lt;h3&gt;2. Mga Pahintulot&lt;/h3&gt;&lt;p&gt;Gumagamit ng Storage Access Framework (SAF).&lt;/p&gt;&lt;h3&gt;3. Seguridad ng Data&lt;/h3&gt;&lt;p&gt;Ang iyong data ay nananatili sa ilalim ng iyong kontrol.&lt;/p&gt;&lt;h3&gt;4. Makipag-ugnayan&lt;/h3&gt;&lt;p&gt;Makipag-ugnayan sa pamamagitan ng GitHub.&lt;/p&gt;</string>
+    <string name="diagnostics">Diagnostics</string>
 </resources>

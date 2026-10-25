@@ -269,7 +269,7 @@ data class HelpCategorySpec(val title: String, val items: List<Int>)
     Scaffold(
         topBar = {
             TopAppBar(
-                title = { Text("診断 (Diagnostics)") },
+                title = { Text(stringResource(R.string.diagnostics)) },
                 navigationIcon = { IconButton(back) { Icon(Icons.AutoMirrored.Filled.ArrowBack, stringResource(R.string.back)) } }
             )
         }
