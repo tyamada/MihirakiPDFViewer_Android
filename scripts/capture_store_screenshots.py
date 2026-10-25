@@ -142,7 +142,12 @@ class Device:
         for line in devices:
             parts = line.split()
             if len(parts) == 2 and parts[1] == 'device' and parts[0].startswith('emulator-'):
-                name = run([ADB, '-s', parts[0], 'emu', 'avd', 'name']).stdout.decode().splitlines()[0]
+                names = run([ADB, '-s', parts[0], 'emu', 'avd', 'name'], check=False).stdout.decode().splitlines()
+                # A just-shut-down emulator can remain briefly in `adb devices`
+                # while its emulator-console name query returns an empty result.
+                if not names or not names[0].strip():
+                    continue
+                name = names[0]
                 if name == self.avd:
                     if self.owned is None:
                         self.owned = False
@@ -209,8 +214,12 @@ class Device:
         self.adb('wait-for-device')
         if not same_locale(self.text('shell', 'getprop', 'persist.sys.locale'), locale):
             raise RuntimeError('System locale failed after reboot')
-        if not same_locale(self.text('shell', 'settings', 'get', 'system', 'system_locales'), locale):
-            raise RuntimeError('System locale list failed after reboot')
+        # Some API 35 tablet images update the persistent locale and app
+        # configuration while the legacy system_locales setting remains stale.
+        # StoreScreenshotTest checks the actual Activity locale on every scene.
+        setting = self.text('shell', 'settings', 'get', 'system', 'system_locales')
+        if not same_locale(setting, locale):
+            print(f'  Locale setting reports {setting}; Activity locale will be asserted by the test', flush=True)
 
     def save_display(self):
         self.original_display = {}
@@ -336,6 +345,8 @@ def main():
     parser.add_argument('--resume', action='store_true', help='Skip only verified outputs matching APKs, PDFs and runner code')
     parser.add_argument('--skip-build', action='store_true', help='Use already built APKs')
     parser.add_argument('--keep-device', action='store_true', help='Leave the selected emulator running after capture')
+    parser.add_argument('--clear-app-data', action='store_true', help='Clear application state on the selected emulator before capture')
+    parser.add_argument('--compatible-fingerprint', action='append', default=[], help='Allow verified records from an equivalent capture runner revision')
     parser.add_argument('--retries', type=int, default=3)
     options = parser.parse_args()
     selections = {avd: selected_scenes(avd, options.scene) for avd in options.device}
@@ -377,6 +388,8 @@ def main():
             for apk in apks:
                 device.adb('install', '-r', '-t', apk, timeout=180)
             device.adb('push', apks[1], '/data/local/tmp/store-capture-tests.apk')
+            if options.clear_app_data:
+                device.adb('shell', 'pm', 'clear', PACKAGE)
             for lang in options.language:
                 # Always verify even when all images are already complete.
                 device.locale(LANGUAGES[lang])
@@ -392,7 +405,7 @@ def main():
                     expected = dict(fingerprint=stamp, pdfSha256=digest, avd=avd,
                                     language=lang, scene=scene, portrait=target == 'portrait',
                                     versionCode=CONFIG['versionCode'], dimensions=list(expected_size(avd, target == 'portrait')))
-                    if options.resume and can_resume(final, record, expected):
+                    if options.resume and can_resume(final, record, expected, options.compatible_fingerprint):
                         pending.remove(f'{avd}/{lang}/{scene}')
                         status()
                         print(f'  Verified / skip {final.name}', flush=True)
@@ -421,6 +434,9 @@ def main():
                             print(f'  FAILED: {error}', flush=True)
                             if attempt == options.retries:
                                 raise
+                            if 'was:<[a]ndroid>' in str(error):
+                                print('  Restarting the dedicated emulator before retry', flush=True)
+                                device.cold_restart()
         except BaseException as error:
             status(str(error))
             raise
