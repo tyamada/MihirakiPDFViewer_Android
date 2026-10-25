@@ -162,7 +162,7 @@ import com.github.tyamada.mihirakipdfviewer_android.viewmodel.ViewerViewModel
 data class HelpCategorySpec(val title: String, val items: List<Int>)
 
 @OptIn(ExperimentalMaterial3Api::class)
-@Composable fun VersionScreen(vm: ViewerViewModel, back: () -> Unit, licenses: () -> Unit, tips: () -> Unit) {
+@Composable fun VersionScreen(vm: ViewerViewModel, back: () -> Unit, licenses: () -> Unit, tips: () -> Unit, privacyPolicy: () -> Unit) {
     val state by vm.state.collectAsState()
     val context = LocalContext.current
     var showPromoDialog by remember { mutableStateOf(false) }
@@ -176,10 +176,20 @@ data class HelpCategorySpec(val title: String, val items: List<Int>)
         }
     ) { p ->
         Column(Modifier.padding(p).verticalScroll(rememberScrollState()).padding(16.dp)) {
-            Section(stringResource(R.string.app_info))
-            Info(stringResource(R.string.version), BuildConfig.VERSION_NAME)
-            Info(stringResource(R.string.build_number), BuildConfig.VERSION_CODE.toString())
-            Info(stringResource(R.string.copyright), "©️ 2026 Takuma Yamada")
+            ElevatedCard(modifier = Modifier.fillMaxWidth()) {
+                Column(Modifier.padding(8.dp)) {
+                    Info(stringResource(R.string.version), BuildConfig.VERSION_NAME)
+                    Info(stringResource(R.string.build_number), BuildConfig.VERSION_CODE.toString())
+                    Info(stringResource(R.string.copyright), "©️ 2026 Takuma Yamada")
+                }
+            }
+
+            Spacer(Modifier.height(12.dp))
+            TextButton(onClick = privacyPolicy, modifier = Modifier.fillMaxWidth()) {
+                Box(Modifier.fillMaxWidth(), contentAlignment = Alignment.CenterStart) {
+                    Text(stringResource(R.string.privacy_policy))
+                }
+            }
 
             TextButton(onClick = licenses, modifier = Modifier.fillMaxWidth()) {
                 Box(Modifier.fillMaxWidth(), contentAlignment = Alignment.CenterStart) {
@@ -643,6 +653,34 @@ data class HelpCategorySpec(val title: String, val items: List<Int>)
                     }
                 }
             }
+        }
+    }
+}
+
+@OptIn(ExperimentalMaterial3Api::class)
+@Composable fun PrivacyPolicyScreen(back: () -> Unit) {
+    Scaffold(
+        topBar = {
+            TopAppBar(
+                title = { Text(stringResource(R.string.privacy_policy)) },
+                navigationIcon = { IconButton(back) { Icon(Icons.AutoMirrored.Filled.ArrowBack, stringResource(R.string.back)) } }
+            )
+        }
+    ) { p ->
+        Column(Modifier.padding(p).verticalScroll(rememberScrollState()).padding(16.dp)) {
+            val htmlText = stringResource(R.string.privacy_policy_content)
+            AndroidView(
+                factory = { context ->
+                    TextView(context).apply {
+                        textSize = 14f
+                    }
+                },
+                update = { view ->
+                    view.text = HtmlCompat.fromHtml(htmlText, HtmlCompat.FROM_HTML_MODE_COMPACT)
+                    view.setTextColor(android.graphics.Color.parseColor("#1C1B1F"))
+                },
+                modifier = Modifier.fillMaxWidth()
+            )
         }
     }
 }

@@ -32,4 +32,6 @@
     <string name="help_reset"><b>Reset:</b> Reset app settings and close the current document.</string>
     <string name="testing_diagnostic_logs">Registros de pruebas y diagnóstico</string>
     <string name="table_of_contents">Índice</string>
+    <string name="privacy_policy">Política de privacidad</string>
+    <string name="privacy_policy_content" translatable="false">&lt;h2&gt;Política de privacidad&lt;/h2&gt;&lt;p&gt;El desarrollador de MihirakiPDFViewer respeta su privacidad. Esta política describe cómo manejamos la información.&lt;/p&gt;&lt;h3&gt;1. Recopilación y uso de información&lt;/h3&gt;&lt;p&gt;La Aplicación no sube ni recopila sus archivos PDF. Todo el procesamiento de PDF se realiza localmente en su dispositivo.&lt;/p&gt;&lt;h3&gt;2. Permisos&lt;/h3&gt;&lt;p&gt;La Aplicación utiliza el marco de acceso al almacenamiento (SAF) para acceder únicamente a los archivos específicos que usted seleccione.&lt;/p&gt;&lt;h3&gt;3. Seguridad de datos&lt;/h3&gt;&lt;p&gt;Dado que sus documentos nunca salen de su dispositivo, sus datos permanecen bajo su control.&lt;/p&gt;&lt;h3&gt;4. Contacto&lt;/h3&gt;&lt;p&gt;Para preguntas, póngase en contacto a través del repositorio de GitHub.&lt;/p&gt;</string>
 </resources>
