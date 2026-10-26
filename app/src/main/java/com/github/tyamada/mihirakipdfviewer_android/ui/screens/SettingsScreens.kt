@@ -430,6 +430,7 @@ data class HelpCategorySpec(val title: String, val items: List<Int>)
 
                 Spacer(Modifier.height(16.dp))
 
+                val shareChooserTitle = stringResource(R.string.share_test_results_chooser)
                 Button(
                     onClick = {
                         val report = DeviceTestRunner.formatResultString(result)
@@ -438,7 +439,7 @@ data class HelpCategorySpec(val title: String, val items: List<Int>)
                             putExtra(Intent.EXTRA_TEXT, report)
                             type = "text/plain"
                         }
-                        val shareIntent = Intent.createChooser(sendIntent, context.getString(R.string.share_test_results_chooser))
+                        val shareIntent = Intent.createChooser(sendIntent, shareChooserTitle)
                         context.startActivity(shareIntent)
                     },
                     modifier = Modifier.fillMaxWidth()
@@ -495,6 +496,7 @@ data class HelpCategorySpec(val title: String, val items: List<Int>)
             BulletPoint(stringResource(R.string.report_step6))
 
             Section(stringResource(R.string.diagnostic_info_header))
+            val copyToast = stringResource(R.string.copy_all_diagnostics_toast)
             Button(
                 onClick = {
                     val result = DeviceTestRunner.runTest(context)
@@ -504,7 +506,7 @@ data class HelpCategorySpec(val title: String, val items: List<Int>)
                     val clipboard = context.getSystemService(Context.CLIPBOARD_SERVICE) as android.content.ClipboardManager
                     val clip = ClipData.newPlainText("MihirakiPDFViewer Diagnostic Report", combined)
                     clipboard.setPrimaryClip(clip)
-                    Toast.makeText(context, context.getString(R.string.copy_all_diagnostics_toast), Toast.LENGTH_SHORT).show()
+                    Toast.makeText(context, copyToast, Toast.LENGTH_SHORT).show()
                 },
                 modifier = Modifier.fillMaxWidth()
             ) {
@@ -596,6 +598,7 @@ data class HelpCategorySpec(val title: String, val items: List<Int>)
             Spacer(Modifier.height(16.dp))
 
             Row(Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.spacedBy(8.dp)) {
+                val shareLogsTitle = stringResource(R.string.share_logs_title)
                 Button(
                     onClick = {
                         val logText = logs.joinToString("\n")
@@ -604,7 +607,7 @@ data class HelpCategorySpec(val title: String, val items: List<Int>)
                             putExtra(Intent.EXTRA_TEXT, logText.ifBlank { "No logs available." })
                             type = "text/plain"
                         }
-                        val shareIntent = Intent.createChooser(sendIntent, context.getString(R.string.share_logs_title))
+                        val shareIntent = Intent.createChooser(sendIntent, shareLogsTitle)
                         context.startActivity(shareIntent)
                     },
                     modifier = Modifier.weight(1f)
