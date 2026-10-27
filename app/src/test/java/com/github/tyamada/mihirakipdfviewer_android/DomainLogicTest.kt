@@ -63,7 +63,8 @@ class DomainLogicTest {
             "tameshibu_episode1_2_ja.pdf", "tameshibu_episode1_2_ko.pdf", "tameshibu_episode1_2_zh_cn.pdf",
             "tameshibu_episode1_2_zh_tw.pdf", "tameshibu_episode2_2_de.pdf", "tameshibu_episode2_2_en.pdf",
             "tameshibu_episode2_2_fr.pdf", "tameshibu_episode2_2_ja.pdf", "tameshibu_episode2_2_ko.pdf",
-            "tameshibu_episode2_2_zh_cn.pdf", "tameshibu_episode2_2_zh_tw.pdf"
+            "tameshibu_episode2_2_zh_cn.pdf", "tameshibu_episode2_2_zh_tw.pdf",
+            "tameshibu_episode3_en.pdf", "tameshibu_episode3_ja.pdf"
         )
         val roots = listOf(File("."), File(".."))
         val tempDir = java.nio.file.Files.createTempDirectory("pdf_samples_test").toFile()
