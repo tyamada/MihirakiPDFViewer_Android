@@ -19,19 +19,19 @@
     <string name="oss_license_title">開源授權</string>
     <string name="oss_license_description">本應用程式使用以下開源軟體：</string>
 
-    <string name="help_display_settings"><b>Display settings:</b> Adjust high quality, sharpness, two-page view, cover mode, and reading direction.</string>
-    <string name="help_options"><b>Options:</b> Access cover options, reset settings, help, licenses, and support.</string>
-    <string name="help_document_info"><b>Document information:</b> View PDF metadata such as title, author, subject, keywords, and PDF version.</string>
-    <string name="help_help"><b>Help:</b> Read this guide for instructions on how to use the app.</string>
-    <string name="help_app_info"><b>App information:</b> Check app version, build number, copyright, and supporter badges.</string>
-    <string name="help_support"><b>Support the Developer:</b> Support further development via optional tips and view your supporter badges.</string>
-    <string name="help_high_quality"><b>High quality:</b> Render PDF pages in higher quality.</string>
-    <string name="help_sharpness"><b>Sharpness:</b> Render text and lines more sharply.</string>
-    <string name="help_two_page"><b>Two-page view:</b> Display two pages side-by-side.</string>
-    <string name="help_show_cover"><b>Show cover:</b> Display the first page standalone as a cover in spread view.</string>
-    <string name="help_reading_direction"><b>Reading direction:</b> Choose whether pages turn from left to right or right to left.</string>
-    <string name="help_cover_mode"><b>Cover setting:</b> Choose cover placement for each reading direction.</string>
-    <string name="help_reset"><b>Reset:</b> Reset app settings and close the current document.</string>
+    <string name="help_display_settings"><b>顯示設定：</b>調整高品質、清晰度、雙頁檢視、封面模式和閱讀方向。</string>
+    <string name="help_options"><b>選項：</b>存取封面選項、重設設定、說明、授權和支援。</string>
+    <string name="help_document_info"><b>文件資訊：</b>檢視 PDF 中繼資料，例如標題、作者、副標題、關鍵字和 PDF 版本。</string>
+    <string name="help_help"><b>說明：</b>閱讀本指南以取得如何使用應用程式的說明。</string>
+    <string name="help_app_info"><b>應用程式資訊：</b>檢查應用程式版本、組建編號、版權和支援者徽章。</string>
+    <string name="help_support"><b>支援開發者：</b>透過選用的小費支援進一步開發並檢視您的支援者徽章。</string>
+    <string name="help_high_quality"><b>高品質：</b>以更高品質彩現 PDF 頁面。</string>
+    <string name="help_sharpness"><b>清晰度：</b>更清晰地彩現文字和線條。</string>
+    <string name="help_two_page"><b>雙頁檢視：</b>並排顯示兩頁。</string>
+    <string name="help_show_cover"><b>顯示封面：</b>在跨頁檢視中將第一頁單獨顯示為封面。</string>
+    <string name="help_reading_direction"><b>閱讀方向：</b>選擇頁面是從左到右還是從右到左翻頁。</string>
+    <string name="help_cover_mode"><b>封面設定：</b>為每個閱讀方向選擇封面位置。</string>
+    <string name="help_reset"><b>重設：</b>重設應用程式設定並關閉目前的文件。</string>
     <string name="testing_diagnostic_logs">測試與診斷記錄</string>
     <string name="privacy_policy">隱私權政策</string>
     <string name="privacy_policy_content" translatable="false">&lt;h2&gt;隱私權政策&lt;/h2&gt;&lt;p&gt;MihirakiPDFViewer 開發者尊重您的隱私。&lt;/p&gt;&lt;h3&gt;1. 資訊收集與使用&lt;/h3&gt;&lt;p&gt;本應用程式不會上傳或收集您的 PDF 檔案。所有 PDF 處理均在您的裝置本地進行。&lt;/p&gt;&lt;h3&gt;2. 權限&lt;/h3&gt;&lt;p&gt;使用儲存空間存取架構 (SAF)。&lt;/p&gt;&lt;h3&gt;3. 資料安全&lt;/h3&gt;&lt;p&gt;您的資料始終在您的掌控之中。&lt;/p&gt;&lt;h3&gt;4. 連絡方式&lt;/h3&gt;&lt;p&gt;如有疑問，請透過 GitHub 儲存庫聯繫我們。&lt;/p&gt;</string>
