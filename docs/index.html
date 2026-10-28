@@ -1,164 +1,59 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MihirakiPDFViewer - Two-Page Spread & R2L PDF Reader</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Mihiraki PDF Viewer is a privacy-first, local Android PDF viewer designed for two-page spreads and right-to-left documents like manga and light novels.">
+    <title>Mihiraki PDF Viewer for Android</title>
+    <link rel="icon" href="assets/app-icon.png">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <header>
-        <h1>MihirakiPDFViewer</h1>
-        <p>A modern PDF viewer optimized for two-page spreads and R2L reading on Android</p>
+    <header class="site-header">
+        <nav class="nav" aria-label="Main navigation">
+            <a class="brand" href="index.html" aria-current="page"><img src="assets/app-icon.png" alt=""><span>Mihiraki PDF Viewer</span></a>
+            <div class="nav-links"><a href="#features">Features</a><a href="privacy.html">Privacy</a><a href="support.html">Support</a><a href="https://github.com/tyamada/MihirakiPDFViewer_Android">GitHub</a></div>
+        </nav>
     </header>
 
-    <nav>
-        <select onchange="location = this.value;">
-            <option value="index_de.html">Deutsch</option>
-            <option value="index.html" selected>English</option>
-            <option value="index_es.html">Español</option>
-            <option value="index_fil.html">Filipino</option>
-            <option value="index_fr.html">Français</option>
-            <option value="index_id.html">Indonesian</option>
-            <option value="index_ne.html">Nepali</option>
-            <option value="index_pt.html">Português</option>
-            <option value="index_vi.html">Tiếng Việt</option>
-            <option value="index_zh.html">简体中文</option>
-            <option value="index_zh-TW.html">繁體中文</option>
-            <option value="index_ja.html">日本語</option>
-            <option value="index_ko.html">한국어</option>
-        </select>
-        <a href="support.html">Support</a>
-        <a href="privacy.html">Privacy Policy</a>
-        <a href="https://qiita.com/tyamada22/stocks/8aeb6d899f7e0257f1d2" target="_blank">Qiita Series</a>
-        <a href="https://github.com/tyamada/MihirakiPDFViewer_Android" target="_blank">GitHub</a>
-    </nav>
+    <main>
+        <section class="hero">
+            <div>
+                <div class="eyebrow">PRIVACY-FOCUSED ANDROID PDF VIEWER</div>
+                <h1>The ultimate two-page spread reader for manga and PDFs.</h1>
+                <p class="lead">Designed for right-to-left documents and spreads. Enjoy smooth local rendering, outline tree navigation, and precise search highlights without internet required.</p>
+                <div class="actions"><a class="button" href="#features">Explore features</a><a class="button secondary" href="support.html">Help and support</a></div>
+            </div>
+            <img class="hero-icon" src="assets/app-icon.png" alt="Mihiraki PDF Viewer app icon">
+        </section>
 
-    <section>
-        <h2>✨ Key Features</h2>
-        <div class="features">
-            <div class="feature-card">
-                <h3>📖 Seamless Spreads</h3>
-                <p>View two pages side-by-side. Perfect for immersive manga and art book layouts.</p>
+        <section class="section" id="features">
+            <div class="eyebrow">FEATURES</div>
+            <h2>Built for comfortable reading</h2>
+            <p>Read manga, magazines, and documents with complete right-to-left support and intelligent layout detection.</p>
+            <div class="grid">
+                <article class="card"><div class="symbol">📖</div><h3>Two-Page Spread</h3><p>Seamlessly display two pages side-by-side with cover mode support.</p></article>
+                <article class="card"><div class="symbol">🇯🇵</div><h3>Right-to-Left (R2L)</h3><p>Native support for Japanese and traditional reading directions.</p></article>
+                <article class="card"><div class="symbol">📑</div><h3>Outline Navigation</h3><p>Jump instantly to any chapter or section using PDF bookmarks.</p></article>
+                <article class="card"><div class="symbol">🔍</div><h3>Fast Text Search</h3><p>Search text with precision yellow background and red outline highlights.</p></article>
+                <article class="card"><div class="symbol">🛡️</div><h3>100% Local & Private</h3><p>No internet connection required. Operates via Storage Access Framework.</p></article>
+                <article class="card"><div class="symbol">📱</div><h3>Adaptive Layout</h3><p>Optimized for phones, tablets, foldables, and desktop window modes.</p></article>
             </div>
-            <div class="feature-card">
-                <h3>🇯🇵 Native R2L Support</h3>
-                <p>Full support for right-to-left reading order, including inverted sliders and intuitive swipe gestures.</p>
-            </div>
-            <div class="feature-card">
-                <h3>🔄 Auto-Detection</h3>
-                <p>Automatically detects page layout and reading direction from PDF metadata for a zero-config experience.</p>
-            </div>
-            <div class="feature-card">
-                <h3>🔍 Precise Search</h3>
-                <p>Fast text search with accurate hit highlighting (yellow background and red border) on documents.</p>
-            </div>
-            <div class="feature-card">
-                <h3>📑 PDF Table of Contents (Outline)</h3>
-                <p>Extracts bookmarks and chapters from PDF metadata for instant jumping to any section.</p>
-            </div>
-            <div class="feature-card">
-                <h3>☰ Top Bar Dropdown Menu & Dedicated Screens</h3>
-                <p>Quick access to Settings, Help, Version, Diagnostics, and Support from the top bar menu, featuring an accordion Help screen.</p>
-            </div>
-            <div class="feature-card">
-                <h3>📱 Adaptive Layout & Foldable Support</h3>
-                <p>Automatically optimized for tablets, large screens, and foldables using responsive constraints.</p>
-            </div>
-            <div class="feature-card">
-                <h3>🖱️ Mouse & Edge-Click Navigation</h3>
-                <p>Intuitive page turning by clicking the left and right edges on desktop/mouse navigation mode, configurable in Settings.</p>
-            </div>
-            <div class="feature-card">
-                <h3>📱 Adaptive Portrait Display</h3>
-                <p>Automatically switches to single-page display in portrait orientation (enabled by default, configurable in Settings).</p>
-            </div>
-        </div>
-    </section>
+        </section>
 
-    <section>
-        <h2>📱 Screenshots</h2>
-        <div class="screenshots">
-            <img src="./screenshots/smartphone_screenshot_view_en.png" alt="Two-Page Spread View" style="width: 100%;">
-            <img src="./screenshots/smartphone_screenshot_search_en.png" alt="Search Highlighting" style="width: 100%; margin-top: 10px;">
-            <div style="display: flex; gap: 10px; width: 100%; margin-top: 10px;">
-                <img src="./screenshots/smartphone_screenshot_password_en.png" alt="Password Protection" style="width: calc(33.3% - 6.7px);">
-                <img src="./screenshots/smartphone_screenshot_support_en.png" alt="Support the Developer" style="width: calc(33.3% - 6.7px);">
-                <img src="./screenshots/smartphone_screenshot_settings_en.png" alt="Settings Screen" style="width: calc(33.3% - 6.7px);">
-            </div>
-        </div>
-    </section>
+        <section class="section">
+            <div class="eyebrow">DIAGNOSTICS & LOGGING</div>
+            <h2>On-Device Testing & App Logs</h2>
+            <p>Run device diagnostic tests and inspect secure local app logs (`AppLogger`) stored safely for up to 24 hours. Never sends data externally automatically.</p>
+        </section>
 
-    <section>
-        <h2>📚 Sample PDFs</h2>
-        <p>Try out MihirakiPDFViewer with these sample PDF files:</p>
-        <ul>
-            <li><a href="./sample/tameshibu_episode1_id.pdf" target="_blank">Klub Coba-Coba Episode 1 (Bahasa Indonesia (Indonesian))</a> (23MB)</li>
-            <li><a href="./sample/tameshibu_episode2_id.pdf" target="_blank">Klub Coba-Coba Episode 2 (Bahasa Indonesia (Indonesian))</a> (24MB)</li>
-            <li><a href="./sample/tameshibu_episode1_2_de.pdf" target="_blank">DER PROBIERCLUB FOLGE 1 (Deutsch (German))</a> (23MB)</li>
-            <li><a href="./sample/tameshibu_episode2_2_de.pdf" target="_blank">DER PROBIERCLUB FOLGE 2 (Deutsch (German))</a> (24MB)</li>
-            <li><a href="./sample/tameshibu_episode1_2_en.pdf" target="_blank">THE TRY-IT CLUB EPISODE 1 THE BREAK-TIME MAP (English (English))</a> (23MB)</li>
-            <li><a href="./sample/tameshibu_episode2_2_en.pdf" target="_blank">THE TRY-IT CLUB EPISODE 2 ROOM TO GROW (English (English))</a> (24MB)</li>
-            <li><a href="./sample/tameshibu_episode3_en.pdf" target="_blank">THE TRY-IT CLUB EPISODE 3 OUT AND ABOUT (English (English))</a> (22MB)</li>
-            <li><a href="./sample/tameshibu_episode1_es.pdf" target="_blank">El Club de Pruebas Episodio 1 (Español (Spanish))</a> (23MB)</li>
-            <li><a href="./sample/tameshibu_episode2_es.pdf" target="_blank">El Club de Pruebas Episodio 2 (Español (Spanish))</a> (24MB)</li>
-            <li><a href="./sample/tameshibu_episode1_tl.pdf" target="_blank">Ang Try-It Club Episode 1 (Filipino (Filipino))</a> (23MB)</li>
-            <li><a href="./sample/tameshibu_episode2_tl.pdf" target="_blank">Ang Try-It Club Episode 2 (Filipino (Filipino))</a> (24MB)</li>
-            <li><a href="./sample/tameshibu_episode1_2_fr.pdf" target="_blank">LE CLUB DES ESSAIS EPISODE 1 (Français (French))</a> (23MB)</li>
-            <li><a href="./sample/tameshibu_episode2_2_fr.pdf" target="_blank">LE CLUB DES ESSAIS EPISODE 2 (Français (French))</a> (24MB)</li>
-            <li><a href="./sample/tameshibu_episode1_it.pdf" target="_blank">Il Club delle Prove Episodio 1 (Italiano (Italian))</a> (23MB)</li>
-            <li><a href="./sample/tameshibu_episode2_it.pdf" target="_blank">Il Club delle Prove Episodio 2 (Italiano (Italian))</a> (24MB)</li>
-            <li><a href="./sample/tameshibu_episode1_pt.pdf" target="_blank">O Clube de Testes Episódio 1 (Português (Portuguese))</a> (23MB)</li>
-            <li><a href="./sample/tameshibu_episode2_pt.pdf" target="_blank">O Clube de Testes Episódio 2 (Português (Portuguese))</a> (24MB)</li>
-            <li><a href="./sample/tameshibu_episode1_vi.pdf" target="_blank">Câu Lạc Bộ Thử Nghiệm Tập 1 (Tiếng Việt (Vietnamese))</a> (23MB)</li>
-            <li><a href="./sample/tameshibu_episode2_vi.pdf" target="_blank">Câu Lạc Bộ Thử Nghiệm Tập 2 (Tiếng Việt (Vietnamese))</a> (24MB)</li>
-            <li><a href="./sample/tameshibu_episode1_ne.pdf" target="_blank">द ट्राइ-इट क्लब एपिसोड १ (नेपाली (Nepali))</a> (23MB)</li>
-            <li><a href="./sample/tameshibu_episode2_ne.pdf" target="_blank">द ट्राइ-इट क्लब एपिसोड २ (नेपाली (Nepali))</a> (24MB)</li>
-            <li><a href="./sample/tameshibu_episode1_2_ko.pdf" target="_blank">해봄부 제1화 한숨 돌림 지도 (한국어 (Korean))</a> (23MB)</li>
-            <li><a href="./sample/tameshibu_episode2_2_ko.pdf" target="_blank">해봄부제2화 책상이 넓어지다 (한국어 (Korean))</a> (24MB)</li>
-            <li><a href="./sample/tameshibu_episode1_2_ja.pdf" target="_blank">ためし部 第１話 ひと息マップ (日本語 (Japanese))</a> (23MB)</li>
-            <li><a href="./sample/tameshibu_episode2_2_ja.pdf" target="_blank">ためし部 第２話 机、ひろがる。 (日本語 (Japanese))</a> (24MB)</li>
-            <li><a href="./sample/tameshibu_episode3_ja.pdf" target="_blank">ためし部 第３話 出張、ためし部！ (日本語 (Japanese))</a> (22MB)</li>
-            <li><a href="./sample/tameshibu_episode1_2_zh_cn.pdf" target="_blank">试试社 第1话 歇口气地图 (简体中文 (Chinese (Simplified)))</a> (23MB)</li>
-            <li><a href="./sample/tameshibu_episode2_2_zh_cn.pdf" target="_blank">试试社 第2话 桌子变大了 (简体中文 (Chinese (Simplified)))</a> (24MB)</li>
-            <li><a href="./sample/tameshibu_episode1_2_zh_tw.pdf" target="_blank">試試社 第1話 (繁體中文 (Chinese (Traditional)))</a> (23MB)</li>
-            <li><a href="./sample/tameshibu_episode2_2_zh_tw.pdf" target="_blank">試試社 第2話 (繁體中文 (Chinese (Traditional)))</a> (24MB)</li>
-        </ul>
-        <hr style="margin: 20px 0; border: 0; border-top: 1px solid #ddd;">
-        <p><strong>"The Try-It Club" Episodes 1 & 2</strong><br>
-        © 2026 Komairo Biyori<br><br>
-        Parts of this work to which the publisher holds copyright and other licensable rights are provided under the Creative Commons Attribution 4.0 International (CC BY 4.0) license.<br>
-        <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank">https://creativecommons.org/licenses/by/4.0/</a><br><br>
-        When reusing this work, please display the title, author name "Komairo Biyori", the publisher of the original work, and a link to the license, and clearly indicate if any changes were made.<br><br>
-        This work uses generative AI for the creation of text, images, and translation. Materials whose rights belong to third parties, such as fonts, are subject to their respective licenses. This notice does not restrict the use of parts of the work that are not protected by copyright or similar rights.</p>
-    </section>
+        <section class="section">
+            <div class="eyebrow">OPTIONAL SUPPORT</div>
+            <h2>Support the Developer</h2>
+            <p>All core reading features are completely free. Optional one-time supporter tips (Bronze, Silver, Gold, and Koyomi badges) unlock commemorative supporter badges in the app settings.</p>
+        </section>
+    </main>
 
-    <section>
-        <h2>🛡️ Privacy First</h2>
-        <p>MihirakiPDFViewer is designed with privacy at its core.</p>
-        <ul>
-            <li>All PDF processing is performed locally on your device.</li>
-            <li>Your documents are never uploaded to any external server.</li>
-            <li>No unnecessary internet permissions are required.</li>
-        </ul>
-        <p><small>*Note: Internet connection is only used when explicitly opening files from cloud storage services like Google Drive.</small></p>
-    </section>
-
-    <section>
-        <h2>💰 Pricing</h2>
-        <div class="feature-card" style="border-left: 5px solid #ef4fa7;">
-            <p><strong>Free & Ad-Free</strong></p>
-            <p>The app is completely free to use. All core features, such as PDF viewing, spreads, and search, are available without any restrictions regardless of purchase.</p>
-            <p><small>*Optional in-app tips (Bronze, Silver, Gold, and Ver.2.0 Release Commemoration Koyomi Badge) are available to support the developer. Supporters will see special commemorative badges in the Settings screen (Play Console promo codes are also supported for free badge redemption).</small></p>
-        </div>
-    </section>
-
-    <div class="cta">
-        <a href="https://play.google.com/store/apps/details?id=com.github.tyamada.MihirakiPDFViewer_Android" class="btn" target="_blank">Get it on Google Play</a>
-    </div>
-
-    <footer>
-        <p>&copy; 2026 Takuma Yamada. All rights reserved.</p>
-    </footer>
+    <footer><div class="footer-inner"><span>© 2026 Takuma Yamada</span><span><a href="privacy.html">Privacy</a> · <a href="support.html">Support</a> · <a href="https://github.com/tyamada/MihirakiPDFViewer_Android">GitHub</a></span></div></footer>
 </body>
 </html>

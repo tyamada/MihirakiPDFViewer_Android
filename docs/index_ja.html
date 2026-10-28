@@ -1,154 +1,59 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="ja">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>見開きPDFビューア (MihirakiPDFViewer) - 見開き対応・右綴じPDFビューア</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="見開きPDFビューアは、漫画やライトノベルなどの右綴じ・見開きドキュメントを快適に閲覧するために設計された、プライバシー重視のAndroid用ローカルPDFビューアです。">
+    <title>見開きPDFビューア for Android</title>
+    <link rel="icon" href="assets/app-icon.png">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <header>
-        <h1>見開きPDFビューア <span style="font-size: 0.6em; opacity: 0.8; font-weight: normal;">(MihirakiPDFViewer)</span></h1>
-        <p>日本特有の「見開き」と「右綴じ」を快適に楽しむためのAndroid用PDFビューア</p>
+    <header class="site-header">
+        <nav class="nav" aria-label="Main navigation">
+            <a class="brand" href="index_ja.html" aria-current="page"><img src="assets/app-icon.png" alt=""><span>見開きPDFビューア</span></a>
+            <div class="nav-links"><a href="#features">主な機能</a><a href="privacy_ja.html">プライバシー</a><a href="support_ja.html">サポート</a><a href="https://github.com/tyamada/MihirakiPDFViewer_Android">GitHub</a></div>
+        </nav>
     </header>
 
-    <nav>
-        <select onchange="location = this.value;">
-            <option value="index_de.html">Deutsch</option>
-            <option value="index.html">English</option>
-            <option value="index_es.html">Español</option>
-            <option value="index_fil.html">Filipino</option>
-            <option value="index_fr.html">Français</option>
-            <option value="index_id.html">Indonesian</option>
-            <option value="index_ne.html">Nepali</option>
-            <option value="index_pt.html">Português</option>
-            <option value="index_vi.html">Tiếng Việt</option>
-            <option value="index_zh.html">简体中文</option>
-            <option value="index_zh-TW.html">繁體中文</option>
-            <option value="index_ja.html" selected>日本語</option>
-            <option value="index_ko.html">한국어</option>
-        </select>
-        <a href="support_ja.html">サポート</a>
-        <a href="privacy_ja.html">プライバシーポリシー</a>
-        <a href="https://qiita.com/tyamada22/stocks/8aeb6d899f7e0257f1d2" target="_blank">Qiita 連載</a>
-        <a href="https://github.com/tyamada/MihirakiPDFViewer_Android" target="_blank">GitHub</a>
-    </nav>
+    <main>
+        <section class="hero">
+            <div>
+                <div class="eyebrow">プライバシー重視のAndroid用PDFビューア</div>
+                <h1>漫画や右綴じPDFを最も快適に読むためのビューア。</h1>
+                <p class="lead">日本特有の「右綴じ」や「見開き」に完全対応。高速なローカルレンダリング、目次ツリーナビゲーション、高精度な検索ハイライトをインターネット接続なしで実現。</p>
+                <div class="actions"><a class="button" href="#features">機能を見る</a><a class="button secondary" href="support_ja.html">ヘルプとサポート</a></div>
+            </div>
+            <img class="hero-icon" src="assets/app-icon.png" alt="見開きPDFビューア アプリアイコン">
+        </section>
 
-    <section>
-        <h2>✨ 主な特徴</h2>
-        <div class="features">
-            <div class="feature-card">
-                <h3>📖 見開き表示</h3>
-                <p>2つのページを横に並べてシームレスに表示。漫画や画集の迫力をそのままに楽しめます。</p>
+        <section class="section" id="features">
+            <div class="eyebrow">主な機能</div>
+            <h2>快適な読書体験のための設計</h2>
+            <p>漫画や雑誌、資料を右綴じ・見開きでスムーズに閲覧できます。</p>
+            <div class="grid">
+                <article class="card"><div class="symbol">📖</div><h3>見開き表示</h3><p>2つのページを横に並べてシームレスに表示。表紙設定にも対応。</p></article>
+                <article class="card"><div class="symbol">🇯🇵</div><h3>右綴じ（R2L）完全対応</h3><p>日本の書籍特有の右から左への読書順序や製本レイアウトをネイティブサポート。</p></article>
+                <article class="card"><div class="symbol">📑</div><h3>目次ツリーナビゲーション</h3><p>PDFに埋め込まれた目次やブックマークを自動抽出し、ワンタップで章移動。</p></article>
+                <article class="card"><div class="symbol">🔍</div><h3>高精度テキスト検索</h3><p>黄色背景と赤枠による精密なハイライト付きで検索結果を瞬時に表示。</p></article>
+                <article class="card"><div class="symbol">🛡️</div><h3>プライバシー重視（ローカル完結）</h3><p>インターネット接続は不要。Storage Access Frameworkで選択したファイルのみアクセス。</p></article>
+                <article class="card"><div class="symbol">📱</div><h3>アダプティブUI</h3><p>スマートフォンからタブレット、折りたたみ端末、デスクトップモードまで最適化。</p></article>
             </div>
-            <div class="feature-card">
-                <h3>🇯🇵 右綴じ（R2L）対応</h3>
-                <p>日本の書籍に最適な右から左への読書順序をネイティブサポート。ページ移動も直感的です。</p>
-            </div>
-            <div class="feature-card">
-                <h3>🔄 自動構成検出</h3>
-                <p>PDFのメタデータから最適な表示レイアウトと綴じ方向を自動で判別します。</p>
-            </div>
-            <div class="feature-card">
-                <h3>🔍 強力な検索</h3>
-                <p>高速なテキスト検索と、ヒット箇所の精密なハイライト表示機能を搭載しています。</p>
-            </div>
-            <div class="feature-card">
-                <h3>📑 PDF目次（アウトライン）ナビゲーション</h3>
-                <p>PDFに埋め込まれた目次やブックマークを自動抽出。ワンタップで任意の章や節へ瞬時にジャンプできます。</p>
-            </div>
-            <div class="feature-card">
-                <h3>☰ プルダウンメニュー & 専用画面</h3>
-                <p>設定ボタンのメニューから「設定」「ヘルプ」「バージョン」「診断」「応援」にすばやくアクセス。アコーディオン形式のヘルプ画面を完備。</p>
-            </div>
-            <div class="feature-card">
-                <h3>📱 アダプティブレイアウト</h3>
-                <p>タブレットや大画面、折りたたみ端末（Foldable）の画面サイズに合わせて表示を自動最適化します。</p>
-            </div>
-            <div class="feature-card">
-                <h3>🖱️ マウス端クリックページ送り</h3>
-                <p>デスクトップやマウス操作モードにおいて、PDF画像の左右端をクリックして直感的にページを切り替え可能（設定で切替可能）。</p>
-            </div>
-            <div class="feature-card">
-                <h3>📱 アダプティブPortrait表示</h3>
-                <p>縦長画面の時に自動で単一ページ表示にする機能を搭載（デフォルトで有効、設定で切替可能）。</p>
-            </div>
-        </div>
-    </section>
+        </section>
 
-    <section>
-        <h2>📱 スクリーンショット</h2>
-        <div class="screenshots">
-            <img src="./screenshots/smartphone_screenshot_view_ja.png" alt="見開き表示の様子" style="width: 100%;">
-            <img src="./screenshots/smartphone_screenshot_search_ja.png" alt="検索機能" style="width: 100%; margin-top: 10px;">
-            <div style="display: flex; gap: 10px; width: 100%; margin-top: 10px;">
-                <img src="./screenshots/smartphone_screenshot_password_ja.png" alt="パスワード入力" style="width: calc(33.3% - 6.7px);">
-                <img src="./screenshots/smartphone_screenshot_support_ja.png" alt="開発者サポート" style="width: calc(33.3% - 6.7px);">
-                <img src="./screenshots/smartphone_screenshot_settings_ja.png" alt="設定画面" style="width: calc(33.3% - 6.7px);">
-            </div>
-        </div>
-    </section>
+        <section class="section">
+            <div class="eyebrow">診断 & ログ管理</div>
+            <h2>端末診断テスト & アプリログ</h2>
+            <p>設定画面から端末の診断テストを実行し、最大24時間端末内に安全に保存されるローカルログを確認可能。個人情報やファイル内容は一切外部送信されません。</p>
+        </section>
 
-    <section>
-        <h2>📚 サンプルPDF</h2>
-        <p>以下のサンプルPDFファイルで MihirakiPDFViewer をお試しください：</p>
-        <ul>
-            <li><a href="./sample/tameshibu_episode1_2_de.pdf" target="_blank">DER PROBIERCLUB FOLGE 1 (Deutsch (German))</a> (23MB)</li>
-            <li><a href="./sample/tameshibu_episode2_2_de.pdf" target="_blank">DER PROBIERCLUB FOLGE 2 (Deutsch (German))</a> (24MB)</li>
-            <li><a href="./sample/tameshibu_episode1_2_en.pdf" target="_blank">THE TRY-IT CLUB EPISODE 1 THE BREAK-TIME MAP (English (English))</a> (23MB)</li>
-            <li><a href="./sample/tameshibu_episode2_2_en.pdf" target="_blank">THE TRY-IT CLUB EPISODE 2 ROOM TO GROW (English (English))</a> (24MB)</li>
-            <li><a href="./sample/tameshibu_episode3_en.pdf" target="_blank">THE TRY-IT CLUB EPISODE 3 OUT AND ABOUT (English (English))</a> (22MB)</li>
-            <li><a href="./sample/tameshibu_episode1_es.pdf" target="_blank">El Club de Pruebas Episodio 1 (Español (Spanish))</a> (23MB)</li>
-            <li><a href="./sample/tameshibu_episode2_es.pdf" target="_blank">El Club de Pruebas Episodio 2 (Español (Spanish))</a> (24MB)</li>
-            <li><a href="./sample/tameshibu_episode1_2_fr.pdf" target="_blank">LE CLUB DES ESSAIS EPISODE 1 (Français (French))</a> (23MB)</li>
-            <li><a href="./sample/tameshibu_episode2_2_fr.pdf" target="_blank">LE CLUB DES ESSAIS EPISODE 2 (Français (French))</a> (24MB)</li>
-            <li><a href="./sample/tameshibu_episode1_pt.pdf" target="_blank">O Clube de Testes Episódio 1 (Português (Portuguese))</a> (23MB)</li>
-            <li><a href="./sample/tameshibu_episode2_pt.pdf" target="_blank">O Clube de Testes Episódio 2 (Português (Portuguese))</a> (24MB)</li>
-            <li><a href="./sample/tameshibu_episode1_2_ko.pdf" target="_blank">해봄부 제1화 한숨 돌림 지도 (한국어 (Korean))</a> (23MB)</li>
-            <li><a href="./sample/tameshibu_episode2_2_ko.pdf" target="_blank">해봄부제2화 책상이 넓어지다 (한국어 (Korean))</a> (24MB)</li>
-            <li><a href="./sample/tameshibu_episode1_2_ja.pdf" target="_blank">ためし部 第１話 ひと息マップ (日本語 (Japanese))</a> (23MB)</li>
-            <li><a href="./sample/tameshibu_episode2_2_ja.pdf" target="_blank">ためし部 第２話 机、ひろがる。 (日本語 (Japanese))</a> (24MB)</li>
-            <li><a href="./sample/tameshibu_episode3_ja.pdf" target="_blank">ためし部 第３話 出張、ためし部！ (日本語 (Japanese))</a> (22MB)</li>
-            <li><a href="./sample/tameshibu_episode1_2_zh_cn.pdf" target="_blank">试试社 第1话 歇口气地图 (简体中文 (Chinese (Simplified)))</a> (23MB)</li>
-            <li><a href="./sample/tameshibu_episode2_2_zh_cn.pdf" target="_blank">试试社 第2话 桌子变大了 (简体中文 (Chinese (Simplified)))</a> (24MB)</li>
-            <li><a href="./sample/tameshibu_episode1_2_zh_tw.pdf" target="_blank">試試社 第1話 (繁體中文 (Chinese (Traditional)))</a> (23MB)</li>
-            <li><a href="./sample/tameshibu_episode2_2_zh_tw.pdf" target="_blank">試試社 第2話 (繁體中文 (Chinese (Traditional)))</a> (24MB)</li>
-        </ul>
-        <hr style="margin: 20px 0; border: 0; border-top: 1px solid #ddd;">
-        <p><strong>『ためし部』第1話・第2話</strong><br>
-        © 2026 こまいろ日和<br><br>
-        本作品のうち、公開者が著作権その他の許諾対象となる権利を有する部分を、Creative Commons 表示 4.0 国際（CC BY 4.0）で提供します。<br>
-        <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank">https://creativecommons.org/licenses/by/4.0/</a><br><br>
-        再利用時は、作品名、作者名「こまいろ日和」、原作品の公開元、ライセンスへのリンクを表示し、変更した場合はその旨を明示してください。<br><br>
-        本作品は、文章・画像の制作および翻訳に生成AIを使用しています。フォントなど第三者に権利がある素材には、それぞれのライセンスが適用されます。著作権等による保護を受けない部分の利用を、この表示によって制限するものではありません。</p>
-    </section>
+        <section class="section">
+            <div class="eyebrow">開発者の応援</div>
+            <h2>開発の支援</h2>
+            <p>すべての閲覧・編集機能は完全無料でご利用いただけます。お気に入りの方向けに、記念こよみバッジなどの応援チップ機能をご用意しています。</p>
+        </section>
+    </main>
 
-    <section>
-        <h2>🛡️ プライバシーへのこだわり</h2>
-        <p>MihirakiPDFViewerはプライバシーを最優先に設計されています。</p>
-        <ul>
-            <li>PDFファイルはすべてデバイス内でローカルに処理されます。</li>
-            <li>ドキュメントを外部サーバーに送信することはありません。</li>
-            <li>不要なインターネット権限は要求しません。</li>
-        </ul>
-        <p><small>※Googleドライブ等のクラウドストレージからファイルを開く場合にのみ、各サービスのプロバイダを介した通信が発生します。</small></p>
-    </section>
-
-    <section>
-        <h2>💰 アプリの価格</h2>
-        <div class="feature-card" style="border-left: 5px solid #ef4fa7;">
-            <p><strong>基本無料</strong>（広告なし）</p>
-            <p>本アプリは完全に無料でご利用いただけます。PDFの閲覧、見開き表示、検索といったすべての機能は、購入の有無にかかわらず制限なくお使いいただけます。</p>
-            <p><small>※本アプリには「開発者への応援（投げ銭）」としてアプリ内購入が含まれています（Bronze、Silver、Gold、および Ver.2.0公開記念こよみバッジ。プロモーションコードによる無料引き換えにも対応）。応援してくださった方には、設定画面に特別な記念バッジが表示されます。</small></p>
-        </div>
-    </section>
-
-    <div class="cta">
-        <a href="https://play.google.com/store/apps/details?id=com.github.tyamada.MihirakiPDFViewer_Android" class="btn" target="_blank">Google Play でダウンロード</a>
-    </div>
-
-    <footer>
-        <p>&copy; 2026 Takuma Yamada. All rights reserved.</p>
-    </footer>
+    <footer><div class="footer-inner"><span>© 2026 Takuma Yamada</span><span><a href="privacy_ja.html">プライバシーポリシー</a> · <a href="support_ja.html">サポート</a> · <a href="https://github.com/tyamada/MihirakiPDFViewer_Android">GitHub</a></span></div></footer>
 </body>
 </html>
