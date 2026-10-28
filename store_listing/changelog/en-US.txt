@@ -1,3 +1,2 @@
-- Added Episode 3 sample PDFs for Korean, Simplified Chinese, and Traditional Chinese.
-- Updated sample PDF catalog, READMEs, and distribution copies.
+- Standardized author attribution spelling to official "Komairo Hiyori" across all READMEs, docs, and app UI.
 - Verified 100% translation completeness across all locales and passed unit tests.
