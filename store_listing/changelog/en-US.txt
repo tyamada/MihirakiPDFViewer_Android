@@ -1,0 +1,4 @@
+- Added startup tutorial screen with YouTube video link, skip, and "Don't show again" option.
+- Added In-App Update feature with "Update Now" shortcut in top bar and settings.
+- Enabled R8 Full Mode and optimized ProGuard rules.
+- Verified 100% translation completeness across all locales.
