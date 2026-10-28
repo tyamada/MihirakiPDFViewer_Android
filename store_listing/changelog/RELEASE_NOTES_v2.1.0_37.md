@@ -1,13 +1,11 @@
 # Release Notes - v2.1.0 (Code 37)
 
 ## English
-- Redesigned GitHub Pages website referencing MihirakiPDFUtility with a clean teal theme.
-- Updated app assets and launcher icons using new MangaBookPose app icon.
-- Added "View Tutorial" button to Help screen.
-- Verified 100% translation completeness across all locales and enabled R8 Full Mode.
+- Added Episode 3 sample PDFs for Korean, Simplified Chinese, and Traditional Chinese.
+- Updated sample PDF catalog, READMEs, and distribution copies.
+- Verified 100% translation completeness across all locales and passed unit tests.
 
 ## 日本語
-- MihirakiPDFUtilityを参考にしたモダンなティールカラーのGitHub Pagesデザインにリニューアル。
-- 新しいMangaBookPoseアプリアイコンおよび関連素材を全面適用。
-- ヘルプ画面に「チュートリアルを表示」ボタンを追加。
-- 全ロケールの翻訳リソース（100%）およびR8フルモード最適化を確認。
+- 韓国語、中国語（簡体字・繁体字）のサンプルPDF第3話を追加しました。
+- サンプルPDFカタログ、README、および配信ファイルを最新化しました。
+- 全ロケールの翻訳完了（100%）および単体テストの合格を確認。
