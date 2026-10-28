@@ -101,7 +101,7 @@ fun TutorialScreen(
             // YouTube Intro Video Button
             Button(
                 onClick = {
-                    val intent = Intent(Intent.ACTION_VIEW, Uri.parse("https://youtube.com/shorts/fYch_X1KzOo"))
+                    val intent = Intent(Intent.ACTION_VIEW, Uri.parse("https://youtube.com/shorts/ethgkyCJqbI"))
                     try {
                         context.startActivity(intent)
                     } catch (e: Exception) {
