@@ -171,7 +171,7 @@ import kotlin.math.abs
                                         onClick = { showMenu = false; openVersion() }
                                     )
                                     DropdownMenuItem(
-                                        text = { Text("診断 (Diagnostics)") },
+                                        text = { Text(stringResource(R.string.diagnostics_menu)) },
                                         onClick = { showMenu = false; openDiagnostics() }
                                     )
                                     DropdownMenuItem(

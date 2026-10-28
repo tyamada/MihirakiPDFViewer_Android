@@ -130,4 +130,7 @@
     <string name="saved_logs_title" translatable="false">Saved Logs (%d lines):</string>
     <string name="no_logs_recorded_text" translatable="false">No logs recorded.</string>
     <string name="share_logs_title" translatable="false">Share app logs</string>
+    <string name="check_for_updates">Check for Updates</string>
+    <string name="update_now">Update Now</string>
+    <string name="diagnostics_menu">Diagnostics</string>
 </resources>
