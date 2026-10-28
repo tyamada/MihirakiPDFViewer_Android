@@ -220,7 +220,7 @@ data class HelpCategorySpec(val title: String, val items: List<Int>)
                     modifier = Modifier.size(18.dp)
                 )
                 Spacer(Modifier.width(8.dp))
-                Text(if (state.updateAvailable) "Update Now (今すぐ更新)" else "Check for Updates (更新を確認)")
+                Text(stringResource(if (state.updateAvailable) R.string.update_now else R.string.check_for_updates))
             }
 
             Spacer(Modifier.height(16.dp))

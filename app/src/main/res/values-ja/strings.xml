@@ -131,4 +131,7 @@
     <string name="saved_logs_title">保存されたログ (%d lines):</string>
     <string name="no_logs_recorded_text">記録されたログはありません。</string>
     <string name="share_logs_title">アプリログの共有</string>
+    <string name="check_for_updates">更新を確認</string>
+    <string name="update_now">今すぐ更新</string>
+    <string name="diagnostics_menu">診断</string>
 </resources>
