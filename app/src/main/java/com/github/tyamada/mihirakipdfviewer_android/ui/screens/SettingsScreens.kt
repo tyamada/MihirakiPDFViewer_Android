@@ -9,10 +9,13 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.material.icons.filled.ExpandLess
 import androidx.compose.material.icons.filled.ExpandMore
+import androidx.compose.material.icons.filled.SystemUpdate
+import androidx.compose.material.icons.filled.Update
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
@@ -195,6 +198,29 @@ data class HelpCategorySpec(val title: String, val items: List<Int>)
                 Box(Modifier.fillMaxWidth(), contentAlignment = Alignment.CenterStart) {
                     Text(stringResource(R.string.licenses))
                 }
+            }
+
+            Spacer(Modifier.height(16.dp))
+            Button(
+                onClick = {
+                    if (state.updateAvailable) {
+                        UpdateManager.openPlayStore(context)
+                    } else {
+                        vm.checkForUpdate(force = true) { available, msg ->
+                            val toastMsg = if (available) "Update available!" else (msg ?: "You are using the latest version.")
+                            android.widget.Toast.makeText(context, toastMsg, android.widget.Toast.LENGTH_SHORT).show()
+                        }
+                    }
+                },
+                modifier = Modifier.fillMaxWidth().testTag("btn_check_update")
+            ) {
+                Icon(
+                    imageVector = if (state.updateAvailable) Icons.Default.SystemUpdate else Icons.Default.Update,
+                    contentDescription = null,
+                    modifier = Modifier.size(18.dp)
+                )
+                Spacer(Modifier.width(8.dp))
+                Text(if (state.updateAvailable) "Update Now (今すぐ更新)" else "Check for Updates (更新を確認)")
             }
 
             Spacer(Modifier.height(16.dp))

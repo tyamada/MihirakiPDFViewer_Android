@@ -17,6 +17,7 @@ data class ViewerSettings(
     val purchasedTier: String? = null,
     val lastUri: String? = null,
     val lastPage: Int = 0,
+    val showTutorialOnStartup: Boolean = true,
 ) {
     val allPurchasedTiers: Set<String> get() = purchasedTiers + listOfNotNull(purchasedTier)
 }
