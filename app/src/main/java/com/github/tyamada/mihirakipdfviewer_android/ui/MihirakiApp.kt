@@ -3,6 +3,7 @@ package com.github.tyamada.mihirakipdfviewer_android.ui
 import android.content.Intent
 import android.net.Uri
 import androidx.compose.runtime.*
+import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.platform.LocalContext
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.compose.*
@@ -16,10 +17,10 @@ import com.github.tyamada.mihirakipdfviewer_android.viewmodel.ViewerViewModel
     val context = LocalContext.current
     val state by viewer.state.collectAsState()
 
-    var tutorialChecked by remember { mutableStateOf(false) }
-    LaunchedEffect(state.settings.showTutorialOnStartup) {
-        if (state.settings.showTutorialOnStartup && !tutorialChecked) {
-            tutorialChecked = true
+    var tutorialDismissed by rememberSaveable { mutableStateOf(false) }
+    LaunchedEffect(state.settings.showTutorialOnStartup, tutorialDismissed) {
+        if (state.settings.showTutorialOnStartup && !tutorialDismissed) {
+            tutorialDismissed = true
             nav.navigate("tutorial")
         }
     }

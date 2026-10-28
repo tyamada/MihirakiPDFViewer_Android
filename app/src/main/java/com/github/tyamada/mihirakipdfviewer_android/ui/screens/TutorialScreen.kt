@@ -2,6 +2,7 @@ package com.github.tyamada.mihirakipdfviewer_android.ui.screens
 
 import android.content.Intent
 import android.net.Uri
+import android.widget.Toast
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
@@ -101,7 +102,11 @@ fun TutorialScreen(
             Button(
                 onClick = {
                     val intent = Intent(Intent.ACTION_VIEW, Uri.parse("https://youtube.com/shorts/fYch_X1KzOo"))
-                    context.startActivity(intent)
+                    try {
+                        context.startActivity(intent)
+                    } catch (e: Exception) {
+                        Toast.makeText(context, "No app found to open YouTube link", Toast.LENGTH_SHORT).show()
+                    }
                 },
                 colors = ButtonDefaults.buttonColors(containerColor = MaterialTheme.colorScheme.error),
                 modifier = Modifier.fillMaxWidth()
