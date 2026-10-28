@@ -128,6 +128,19 @@ import kotlin.math.abs
                             }
                         },
                         actions = {
+                            if (state.updateAvailable) {
+                                FilledTonalButton(
+                                    onClick = {
+                                        com.github.tyamada.mihirakipdfviewer_android.util.UpdateManager.openPlayStore(context)
+                                    },
+                                    contentPadding = PaddingValues(horizontal = 8.dp, vertical = 4.dp),
+                                    modifier = Modifier.padding(horizontal = 4.dp).testTag("btn_update_now")
+                                ) {
+                                    Icon(Icons.Default.SystemUpdate, contentDescription = null, modifier = Modifier.size(16.dp))
+                                    Spacer(Modifier.width(4.dp))
+                                    Text("Update Now", style = MaterialTheme.typography.labelSmall)
+                                }
+                            }
                             if (state.outline.isNotEmpty()) {
                                 IconButton(onClick = { showOutlineDialog = true }, modifier = Modifier.testTag("btn_outline")) {
                                     Icon(Icons.AutoMirrored.Filled.FormatListBulleted, contentDescription = stringResource(R.string.table_of_contents))

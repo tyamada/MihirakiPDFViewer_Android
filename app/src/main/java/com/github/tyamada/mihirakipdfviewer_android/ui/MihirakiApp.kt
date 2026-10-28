@@ -2,7 +2,7 @@ package com.github.tyamada.mihirakipdfviewer_android.ui
 
 import android.content.Intent
 import android.net.Uri
-import androidx.compose.runtime.Composable
+import androidx.compose.runtime.*
 import androidx.compose.ui.platform.LocalContext
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.compose.*
@@ -14,6 +14,16 @@ import com.github.tyamada.mihirakipdfviewer_android.viewmodel.ViewerViewModel
 @Composable fun MihirakiApp(viewer: ViewerViewModel) = MihirakiTheme {
     val nav = rememberNavController()
     val context = LocalContext.current
+    val state by viewer.state.collectAsState()
+
+    var tutorialChecked by remember { mutableStateOf(false) }
+    LaunchedEffect(state.settings.showTutorialOnStartup) {
+        if (state.settings.showTutorialOnStartup && !tutorialChecked) {
+            tutorialChecked = true
+            nav.navigate("tutorial")
+        }
+    }
+
     NavHost(nav, startDestination = "viewer") {
         composable("viewer") { 
             ViewerScreen(
@@ -25,6 +35,16 @@ import com.github.tyamada.mihirakipdfviewer_android.viewmodel.ViewerViewModel
                 openSupport = { nav.navigate("tips") },
                 openPrivacyPolicy = { nav.navigate("privacy_policy") },
                 openSamplePdfs = { nav.navigate("sample_pdfs") }
+            )
+        }
+        composable("tutorial") {
+            TutorialScreen(
+                vm = viewer,
+                onFinished = {
+                    if (nav.currentBackStackEntry?.destination?.route == "tutorial") {
+                        nav.popBackStack()
+                    }
+                }
             )
         }
         composable("settings") { 
@@ -67,6 +87,7 @@ import com.github.tyamada.mihirakipdfviewer_android.viewmodel.ViewerViewModel
         composable("diagnostic_logs") { DiagnosticLogsScreen { nav.popBackStack() } }
         composable("licenses") { LicenseScreen { nav.popBackStack() } }
         composable("reset") { ResetScreen(viewer) { nav.popBackStack() } }
+        composable("tutorials") { /* placeholder */ }
         composable("tips") { TipScreen(viewer) { nav.popBackStack() } }
         composable("device_test") { DeviceTestScreen { nav.popBackStack() } }
         composable("log_viewer") { LogViewerScreen { nav.popBackStack() } }

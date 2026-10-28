@@ -30,6 +30,8 @@ testdata/load_test_1100_pages.pdf
 # --- Artifacts & Logs & Screenshots ---
 .artifacts/
 logs/
+shorts_output/
+shorts_work/
 *.log
 *.png
 !store_listing/screenshots/Smartphone_6.3/*.png
