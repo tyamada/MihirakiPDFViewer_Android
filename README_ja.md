@@ -87,13 +87,16 @@
 - [द ट्राइ-इट क्लब एपिसोड २ (नेपाली (Nepali))](docs/sample/tameshibu_episode2_ne.pdf) (24MB)
 - [해봄부 제1화 한숨 돌림 지도 (한국어 (Korean))](docs/sample/tameshibu_episode1_2_ko.pdf) (23MB)
 - [해봄부제2화 책상이 넓어지다 (한국어 (Korean))](docs/sample/tameshibu_episode2_2_ko.pdf) (24MB)
+- [해봄부 제3화 출장, 해봄부! (한국어 (Korean))](docs/sample/tameshibu_episode3_ko.pdf) (22MB)
 - [ためし部 第１話 ひと息マップ (日本語 (Japanese))](docs/sample/tameshibu_episode1_2_ja.pdf) (23MB)
 - [ためし部 第２話 机、ひろがる。 (日本語 (Japanese))](docs/sample/tameshibu_episode2_2_ja.pdf) (24MB)
 - [ためし部 第３話 出張、ためし部！ (日本語 (Japanese))](docs/sample/tameshibu_episode3_ja.pdf) (22MB)
 - [试试社 第1话 歇口气地图 (简体中文 (Chinese (Simplified)))](docs/sample/tameshibu_episode1_2_zh_cn.pdf) (23MB)
 - [试试社 第2话 桌子变大了 (简体中文 (Chinese (Simplified)))](docs/sample/tameshibu_episode2_2_zh_cn.pdf) (24MB)
+- [试试社 第3话 出差，试试社！ (简体中文 (Chinese (Simplified)))](docs/sample/tameshibu_episode3_zh_cn.pdf) (22MB)
 - [試試社 第1話 (繁體中文 (Chinese (Traditional)))](docs/sample/tameshibu_episode1_2_zh_tw.pdf) (23MB)
 - [試試社 第2話 (繁體中文 (Chinese (Traditional)))](docs/sample/tameshibu_episode2_2_zh_tw.pdf) (24MB)
+- [試試社 第3話 (繁體中文 (Chinese (Traditional)))](docs/sample/tameshibu_episode3_zh_tw.pdf) (22MB)
 
 ### サンプルPDFのライセンスと表示
 **『ためし部』第1話・第2話**
