@@ -79,7 +79,34 @@ object SamplePdfCatalog {
             languageCode = "ja",
             languageDisplayName = "Japanese"
         ),
+                SamplePdfItem(
+            id = "ep3_ko",
+            title = "해봄부 제3화 출장, 해봄부!",
+            fileName = "tameshibu_episode3_ko.pdf",
+            url = "${BASE_URL}tameshibu_episode3_ko.pdf",
+            fileSize = "22MB",
+            languageCode = "ko",
+            languageDisplayName = "Korean"
+        ),
         SamplePdfItem(
+            id = "ep3_zh_cn",
+            title = "试试社 第3话 出差，试试社！",
+            fileName = "tameshibu_episode3_zh_cn.pdf",
+            url = "${BASE_URL}tameshibu_episode3_zh_cn.pdf",
+            fileSize = "22MB",
+            languageCode = "zh_cn",
+            languageDisplayName = "Chinese (Simplified)"
+        ),
+        SamplePdfItem(
+            id = "ep3_zh_tw",
+            title = "試試社 第3話",
+            fileName = "tameshibu_episode3_zh_tw.pdf",
+            url = "${BASE_URL}tameshibu_episode3_zh_tw.pdf",
+            fileSize = "22MB",
+            languageCode = "zh_tw",
+            languageDisplayName = "Chinese (Traditional)"
+        ),
+SamplePdfItem(
             id = "ep1_ko",
             title = "해봄부 제1화 한숨 돌림 지도",
             fileName = "tameshibu_episode1_2_ko.pdf",

@@ -10,12 +10,12 @@ class SamplePdfCatalogTest {
     @Test fun catalogHasEpisodesAndMatchingLocalCopies() {
         val root = listOf(File("."), File("..")).first { File(it, "testdata").isDirectory }
         val items = SamplePdfCatalog.items
-        assertEquals(30, items.size)
+        assertEquals(33, items.size)
         assertEquals(items.size, items.map { it.id }.distinct().size)
         assertEquals(items.size, items.map { it.fileName }.distinct().size)
         assertEquals(setOf("ja", "en", "ko", "zh_cn", "zh_tw", "de", "fr", "es", "pt", "vi", "fil", "ne", "id", "it"), items.map { it.languageCode }.toSet())
         items.groupBy { it.languageCode }.forEach { (language, episodes) ->
-            val expectedCount = if (language == "en" || language == "ja") 3 else 2
+            val expectedCount = if (language in listOf("en", "ja", "ko", "zh_cn", "zh_tw")) 3 else 2
             assertEquals(language, expectedCount, episodes.size)
         }
         items.forEach { item ->
