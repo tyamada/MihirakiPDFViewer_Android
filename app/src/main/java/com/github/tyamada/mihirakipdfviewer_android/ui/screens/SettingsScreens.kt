@@ -9,6 +9,7 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.material.icons.filled.ExpandLess
 import androidx.compose.material.icons.filled.ExpandMore
+import androidx.compose.material.icons.filled.School
 import androidx.compose.material.icons.filled.SystemUpdate
 import androidx.compose.material.icons.filled.Update
 import androidx.compose.material3.*
@@ -75,7 +76,7 @@ import com.github.tyamada.mihirakipdfviewer_android.viewmodel.ViewerViewModel
 @Composable private fun Info(label: String, value: String) { ListItem(headlineContent = { Text(label) }, supportingContent = { Text(value.ifBlank { "—" }) }) }
 
 @OptIn(ExperimentalMaterial3Api::class)
-@Composable fun HelpScreen(back: () -> Unit) {
+@Composable fun HelpScreen(back: () -> Unit, openTutorial: () -> Unit) {
     val categories = listOf(
         HelpCategorySpec(stringResource(R.string.help_category_getting_started), listOf(
             R.string.help_open,
@@ -113,6 +114,17 @@ import com.github.tyamada.mihirakipdfviewer_android.viewmodel.ViewerViewModel
 
     Scaffold(topBar = { TopAppBar(title = { Text(stringResource(R.string.help)) }, navigationIcon = { IconButton(back) { Icon(Icons.AutoMirrored.Filled.ArrowBack, stringResource(R.string.back)) } }) }) { p ->
         Column(Modifier.padding(p).verticalScroll(rememberScrollState()).padding(16.dp), verticalArrangement = Arrangement.spacedBy(12.dp)) {
+            Button(
+                onClick = openTutorial,
+                modifier = Modifier.fillMaxWidth().testTag("btn_view_tutorial")
+            ) {
+                Icon(Icons.Default.School, contentDescription = null, modifier = Modifier.size(18.dp))
+                Spacer(Modifier.width(8.dp))
+                Text(stringResource(R.string.view_tutorial))
+            }
+
+            Spacer(Modifier.height(4.dp))
+
             categories.forEach { category ->
                 var expanded by remember { mutableStateOf(false) }
                 ElevatedCard(
