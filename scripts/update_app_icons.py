@@ -5,8 +5,8 @@ from PIL import Image
 
 def main():
     root = pathlib.Path(__file__).resolve().parent.parent
-    source_icon = root / "assets" / "icon" / "MihirakiPDFViewer-AppIcon-MangaBookPose.png"
-    source_512 = root / "assets" / "icon" / "MihirakiPDFViewer-AppIcon-MangaBookPose-512.png"
+    source_icon = root / "assets" / "app-icon" / "MihirakiPDFViewer-AppIcon-MangaBookPose.png"
+    source_512 = root / "assets" / "app-icon" / "MihirakiPDFViewer-AppIcon-MangaBookPose-512.png"
 
     if not source_icon.exists():
         print(f"Source icon not found at {source_icon}")
