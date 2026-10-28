@@ -28,6 +28,7 @@ data class ViewerUiState(
     val currentSearchIndex: Int = -1,
     val settings: ViewerSettings = ViewerSettings(),
     val isPortrait: Boolean = true,
+    val updateAvailable: Boolean = false,
 ) {
     val pageCount get() = source?.pageCount ?: 0
     val info get() = source?.info ?: DocumentInfo()
@@ -121,6 +122,14 @@ class ViewerViewModel(app: Application) : AndroidViewModel(app) {
 
             // Sync further settings changes
             preferences.settings.collect { s -> _state.update { it.copy(settings = s) } }
+        }
+        checkForUpdate(false)
+    }
+
+    fun checkForUpdate(force: Boolean = false, onComplete: (Boolean, String?) -> Unit = { _, _ -> }) {
+        com.github.tyamada.mihirakipdfviewer_android.util.UpdateManager.checkForUpdate(getApplication(), force) { available, msg ->
+            _state.update { it.copy(updateAvailable = available) }
+            onComplete(available, msg)
         }
     }
 

@@ -19,6 +19,7 @@ class SettingsRepository(private val context: Context) {
         val purchasedTiers = stringSetPreferencesKey("purchased_tiers")
         val lastUri = stringPreferencesKey("last_uri")
         val lastPage = intPreferencesKey("last_page")
+        val showTutorialOnStartup = booleanPreferencesKey("show_tutorial_on_startup")
     }
     val settings: Flow<ViewerSettings> = context.dataStore.data.map { p ->
         val tiersSet = p[Keys.purchasedTiers] ?: p[Keys.purchasedTier]?.let { setOf(it) } ?: emptySet()
@@ -31,6 +32,7 @@ class SettingsRepository(private val context: Context) {
             p[Keys.mouseNavigation] ?: isDefaultDesktop,
             p[Keys.portraitSpread] ?: true,
             tiersSet, p[Keys.purchasedTier], p[Keys.lastUri], p[Keys.lastPage] ?: 0,
+            p[Keys.showTutorialOnStartup] ?: true,
         )
     }
     suspend fun save(s: ViewerSettings) = context.dataStore.edit { p ->
@@ -41,6 +43,7 @@ class SettingsRepository(private val context: Context) {
         s.purchasedTier?.let { p[Keys.purchasedTier] = it }
         if (s.lastUri != null) p[Keys.lastUri] = s.lastUri else p.remove(Keys.lastUri)
         p[Keys.lastPage] = s.lastPage
+        p[Keys.showTutorialOnStartup] = s.showTutorialOnStartup
     }
     suspend fun reset() = context.dataStore.edit { it.clear() }
     private inline fun <reified T : Enum<T>> enumOr(value: String?, fallback: T) = runCatching { enumValueOf<T>(value!!) }.getOrDefault(fallback)
