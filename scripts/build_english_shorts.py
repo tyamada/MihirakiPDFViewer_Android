@@ -2,7 +2,6 @@
 import os
 import subprocess
 import sys
-from PIL import Image, ImageDraw, ImageFont
 
 def run_cmd(cmd):
     print(f"[RUN] {cmd}")
@@ -12,131 +11,78 @@ def run_cmd(cmd):
         sys.exit(res.returncode)
     return res.stdout
 
-def create_ending_card(output_path="shorts_work/ending_card.png"):
-    """Generate a polished ending card image with app icon, title, and description using Pillow."""
-    width, height = 1080, 1920
-    # Material 3 dark surface background
-    bg_color = (24, 28, 36)
-    img = Image.new("RGB", (width, height), color=bg_color)
-    draw = ImageDraw.Draw(img)
+def build_short_video(video_id, title_text, narration_text, image_path, output_path):
+    os.makedirs("shorts_work", exist_ok=True)
+    audio_aiff = f"shorts_work/{video_id}.aiff"
+    audio_wav = f"shorts_work/{video_id}.wav"
+    video_mp4 = f"shorts_work/{video_id}.mp4"
 
-    # Paste App Icon
-    icon_path = "store_listing/app-icon/GooglePlay-AppIcon-512.png"
-    if os.path.exists(icon_path):
-        icon = Image.open(icon_path).convert("RGBA")
-        # Resize icon to 300x300
-        icon = icon.resize((300, 300), Image.Resampling.LANCZOS)
-        # Position at center top
-        icon_x = (width - 300) // 2
-        icon_y = 500
-        img.paste(icon, (icon_x, icon_y), icon)
+    if not os.path.exists(image_path):
+        print(f"[ERROR] Image not found: {image_path}")
+        sys.exit(1)
 
-    # Try to load a clean system font, fallback to default if not available
-    try:
-        title_font = ImageFont.truetype("/System/Library/Fonts/SFPro.ttc", 60)
-        subtitle_font = ImageFont.truetype("/System/Library/Fonts/SFPro.ttc", 36)
-        cta_font = ImageFont.truetype("/System/Library/Fonts/SFPro.ttc", 42)
-    except Exception:
-        try:
-            title_font = ImageFont.truetype("/Library/Fonts/Arial.ttf", 60)
-            subtitle_font = ImageFont.truetype("/Library/Fonts/Arial.ttf", 36)
-            cta_font = ImageFont.truetype("/Library/Fonts/Arial.ttf", 42)
-        except Exception:
-            title_font = ImageFont.load_default()
-            subtitle_font = ImageFont.load_default()
-            cta_font = ImageFont.load_default()
+    # 1. Generate speech audio with macOS 'say' (Samantha - US English, no BGM/SFX)
+    run_cmd(f"say -v Samantha -o '{audio_aiff}' '{narration_text}'")
+    run_cmd(f"ffmpeg -y -i '{audio_aiff}' -ar 44100 -ac 2 '{audio_wav}'")
 
-    # Draw App Title
-    title_text = "Mihiraki PDF Viewer"
-    # For default font or truetype
-    draw.text((width // 2, 880), title_text, fill=(255, 255, 255), font=title_font, anchor="mm")
+    # Get audio duration
+    probe_out = run_cmd(f"ffprobe -v error -show_entries format=duration -of default=noprint_wrappers=1:nokey=1 '{audio_wav}'")
+    duration = float(probe_out.strip())
+    duration = max(duration + 0.8, 3.0)
 
-    # Draw Subtitle / Description
-    sub_text = "The Ultimate Right-to-Left\n& Two-Page Spread PDF Reader"
-    draw.text((width // 2, 1020), sub_text, fill=(200, 210, 225), font=subtitle_font, anchor="mm", align="center")
-
-    # Draw Call to Action box / text
-    cta_text = "Download on Google Play Today!"
-    draw.text((width // 2, 1250), cta_text, fill=(100, 210, 140), font=cta_font, anchor="mm")
-
-    img.save(output_path)
-    print(f"[INFO] Created ending card image at {output_path}")
+    # 2. Generate video clip from image with speech audio
+    filter_complex = (
+        f"[0:v]scale=1080:1920:force_original_aspect_ratio=decrease,"
+        f"pad=1080:1920:(ow-iw)/2:(oh-ih)/2:color=black[v]"
+    )
+    cmd_vid = (
+        f"ffmpeg -y -loop 1 -i '{image_path}' -i '{audio_wav}' "
+        f"-filter_complex \"{filter_complex}\" "
+        f"-map '[v]' -map 1:a -c:v libx264 -tune stillimage -c:a aac -b:a 192k "
+        f"-pix_fmt yuv420p -t {duration} '{output_path}'"
+    )
+    run_cmd(cmd_vid)
+    print(f"[SUCCESS] Created short video: {output_path}")
 
 def main():
     os.makedirs("shorts_output", exist_ok=True)
-    os.makedirs("shorts_work", exist_ok=True)
+    os.makedirs(".artifacts/videos", exist_ok=True)
 
-    # Create custom ending card image for Scene 4
-    ending_card_img = "shorts_work/ending_card.png"
-    create_ending_card(ending_card_img)
-
-    scenes = [
+    shorts_specs = [
         {
-            "id": "scene1",
-            "text": "Struggling to read manga or right-to-left PDFs on your phone?",
+            "id": "short_1_getting_started",
+            "title": "Getting Started & Opening PDFs",
+            "narration": "Welcome to Mihiraki PDF Viewer! Getting started is easy. Open any PDF from your device storage or cloud, try our sample PDFs, and navigate pages smoothly by swiping, using the slider, or clicking screen edges.",
             "image": "store_listing/screenshots/Smartphone_6.3/en_01_reader_portrait.png"
         },
         {
-            "id": "scene2",
-            "text": "Meet Mihiraki PDF Viewer! Enjoy seamless two-page spreads and full right-to-left support.",
+            "id": "short_2_reading_features",
+            "title": "Two-Page Spread & R2L Reading",
+            "narration": "Designed for right-to-left documents and manga. Mihiraki PDF Viewer automatically detects two-page spreads, supports natural right-to-left reading order, and lets you jump instantly to chapters using outline tree navigation.",
             "image": "store_listing/screenshots/Smartphone_6.3/en_02_spread_landscape.png"
         },
         {
-            "id": "scene3",
-            "text": "Jump instantly with outline tree navigation, and find text with instant highlight.",
+            "id": "short_3_search_highlight",
+            "title": "Fast Search & Highlighting",
+            "narration": "Need to find specific content? Use fast text search to find keywords instantly, highlighted precisely with striking yellow background and red border frames.",
             "image": "store_listing/screenshots/Smartphone_6.3/en_07_outline_portrait.png"
         },
         {
-            "id": "scene4",
-            "text": "100 percent local and private. Download Mihiraki PDF Viewer on Google Play today!",
-            "image": ending_card_img
+            "id": "short_4_settings_support",
+            "title": "Settings, Customization & Support",
+            "narration": "Customize your reading experience with high quality rendering, sharpness, cover settings, and mouse navigation. Support further development and view your supporter badges on Google Play!",
+            "image": "store_listing/screenshots/Smartphone_6.3/en_06_display_settings_portrait.png"
         }
     ]
 
-    concat_list_path = "shorts_work/concat_list.txt"
-    with open(concat_list_path, "w") as f:
-        for i, scene in enumerate(scenes):
-            s_id = scene["id"]
-            text = scene["text"]
-            img = scene["image"]
+    for spec in shorts_specs:
+        out_path = f"shorts_output/{spec['id']}.mp4"
+        artifact_path = f".artifacts/videos/{spec['id']}.mp4"
+        build_short_video(spec['id'], spec['title'], spec['narration'], spec['image'], out_path)
+        # Copy to artifacts for review
+        run_cmd(f"cp '{out_path}' '{artifact_path}'")
 
-            if not os.path.exists(img):
-                print(f"[ERROR] Image not found: {img}")
-                sys.exit(1)
-
-            audio_aiff = f"shorts_work/{s_id}.aiff"
-            audio_wav = f"shorts_work/{s_id}.wav"
-            video_mp4 = f"shorts_work/{s_id}.mp4"
-
-            # 1. Generate audio with macOS 'say' (Samantha - US English)
-            run_cmd(f"say -v Samantha -o '{audio_aiff}' '{text}'")
-            run_cmd(f"ffmpeg -y -i '{audio_aiff}' -ar 44100 -ac 2 '{audio_wav}'")
-
-            # Get audio duration
-            probe_out = run_cmd(f"ffprobe -v error -show_entries format=duration -of default=noprint_wrappers=1:nokey=1 '{audio_wav}'")
-            duration = float(probe_out.strip())
-            duration = max(duration + 0.5, 3.0)
-
-            # 2. Generate video clip from image
-            filter_complex = (
-                f"[0:v]scale=1080:1920:force_original_aspect_ratio=decrease,"
-                f"pad=1080:1920:(ow-iw)/2:(oh-ih)/2:color=black[v]"
-            )
-            cmd_vid = (
-                f"ffmpeg -y -loop 1 -i '{img}' -i '{audio_wav}' "
-                f"-filter_complex \"{filter_complex}\" "
-                f"-map '[v]' -map 1:a -c:v libx264 -tune stillimage -c:a aac -b:a 192k "
-                f"-pix_fmt yuv420p -t {duration} '{video_mp4}'"
-            )
-            run_cmd(cmd_vid)
-
-            f.write(f"file '{os.path.abspath(video_mp4)}'\n")
-
-    # 3. Concatenate all scene clips into final shorts video
-    final_output = "shorts_output/mihiraki_shorts_en.mp4"
-    run_cmd(f"ffmpeg -y -f concat -safe 0 -i '{concat_list_path}' -c copy '{final_output}'")
-
-    print(f"\n[SUCCESS] Updated English YouTube Short successfully created at: {os.path.abspath(final_output)}")
+    print("\n[SUCCESS] All 4 English introduction short videos successfully generated and copied to .artifacts/videos/ for developer review!")
 
 if __name__ == "__main__":
     main()
