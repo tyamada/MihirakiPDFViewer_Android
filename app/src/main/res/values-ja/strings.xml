@@ -135,4 +135,18 @@
     <string name="update_now">今すぐ更新</string>
     <string name="diagnostics_menu">診断</string>
     <string name="view_tutorial">チュートリアルを表示</string>
+    <string name="tutorial_welcome">見開きPDFビューアへようこそ</string>
+    <string name="skip">スキップ</string>
+    <string name="tutorial_headline">マンガや右開きPDFを快適に閲覧</string>
+    <string name="tutorial_description">見開きPDFビューアは、右開きドキュメント、雑誌、マンガに特化して設計されており、便利な機能を備えています：</string>
+    <string name="tutorial_feature_spread_title">見開きページ＆右開き</string>
+    <string name="tutorial_feature_spread_desc">右開きの見開きページを自動検出して美しく表示します。</string>
+    <string name="tutorial_feature_outline_title">目次ツリーナビゲーション</string>
+    <string name="tutorial_feature_outline_desc">PDFの目次やブックマークを使用して、章へ一瞬でジャンプできます。</string>
+    <string name="tutorial_feature_search_title">高速検索＆ハイライト</string>
+    <string name="tutorial_feature_search_desc">テキストを瞬時に検索し、黄色と赤のハイライト枠で正確に示します。</string>
+    <string name="tutorial_youtube_button">YouTubeで紹介動画を見る</string>
+    <string name="tutorial_dont_show_again">起動時にこのチュートリアルを表示しない</string>
+    <string name="tutorial_get_started">読み始める</string>
+    <string name="error_no_app_youtube">YouTubeリンクを開けるアプリが見つかりませんでした</string>
 </resources>
