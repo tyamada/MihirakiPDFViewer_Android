@@ -149,4 +149,14 @@
     <string name="tutorial_dont_show_again">起動時にこのチュートリアルを表示しない</string>
     <string name="tutorial_get_started">読み始める</string>
     <string name="error_no_app_youtube">YouTubeリンクを開けるアプリが見つかりませんでした</string>
+    <string name="tutorial_step1_title">1. はじめての使い方</string>
+    <string name="tutorial_step1_desc">端末やクラウドからPDFを開いたり、サンプルPDFを試したり、スワイプ・スライダー・端クリックでページを簡単に移動できます。</string>
+    <string name="tutorial_step2_title">2. 読書を快適にする機能</string>
+    <string name="tutorial_step2_desc">見開き表示、右開き（R2L）完全対応、目次ツリーによる章移動、高精度なテキスト検索とハイライト機能を楽しめます。</string>
+    <string name="tutorial_step3_title">3. 設定とカスタマイズ</string>
+    <string name="tutorial_step3_desc">高画質化、シャープネス、表紙設定、マウスクリックページ送り、診断機能、開発者への応援などをカスタマイズできます。</string>
+    <string name="tutorial_step4_title">4. 読書の準備完了</string>
+    <string name="tutorial_step4_desc">YouTubeで紹介動画を見るか、今すぐ読書を始めましょう。起動時にこのチュートリアルを表示しないように設定することも可能です。</string>
+    <string name="tutorial_next">次へ</string>
+    <string name="tutorial_previous">前へ</string>
 </resources>
