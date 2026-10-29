@@ -303,7 +303,7 @@ fun TutorialScreen(
                         // Video Shorts Playlist Button
                         OutlinedButton(
                             onClick = {
-                                val intent = Intent(Intent.ACTION_VIEW, Uri.parse("https://www.youtube.com/playlist?list=PLBBAqnUOZR-A"))
+                                val intent = Intent(Intent.ACTION_VIEW, Uri.parse("https://www.youtube.com/watch?v=KhCn6C-lw7I&list=PLBBAqnUOZR-A"))
                                 try {
                                     context.startActivity(intent)
                                 } catch (e: Exception) {
