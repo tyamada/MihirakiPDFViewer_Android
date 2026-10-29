@@ -1,2 +1,3 @@
-- Standardized author attribution spelling to official "Komairo Hiyori" across all READMEs, docs, and app UI.
-- Verified 100% translation completeness across all locales and passed unit tests.
+- Enabled R8 Full Mode and optimized ProGuard/R8 rules for improved app performance and code shrinking.
+- Verified robust accessibility (A11y) and complete translation coverage.
+- Updated documentation and help guides to v2.1.1.

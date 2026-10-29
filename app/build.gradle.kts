@@ -15,8 +15,8 @@ android {
         applicationId = "com.github.tyamada.MihirakiPDFViewer_Android"
         minSdk = 26
         targetSdk = 37
-        versionCode = 38
-        versionName = "2.1.0"
+        versionCode = 39
+        versionName = "2.1.1"
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         vectorDrawables.useSupportLibrary = true
     }

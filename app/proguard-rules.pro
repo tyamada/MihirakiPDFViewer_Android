@@ -16,5 +16,6 @@
 -dontwarn kotlinx.coroutines.**
 -dontwarn androidx.datastore.**
 
-# App Data Models & Repositories (R8 Full Mode safety)
+# App Data Models, ViewModels & Repositories (R8 Full Mode safety)
 -keep class com.github.tyamada.mihirakipdfviewer_android.data.** { *; }
+-keep class com.github.tyamada.mihirakipdfviewer_android.viewmodel.** { *; }
