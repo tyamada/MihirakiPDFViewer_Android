@@ -283,7 +283,7 @@ fun TutorialScreen(
                         // YouTube Intro Video Button
                         Button(
                             onClick = {
-                                val intent = Intent(Intent.ACTION_VIEW, Uri.parse("https://youtube.com/shorts/ethgkyCJqbI"))
+                                val intent = Intent(Intent.ACTION_VIEW, Uri.parse("https://www.youtube.com/watch?v=I5tp84abV5o"))
                                 try {
                                     context.startActivity(intent)
                                 } catch (e: Exception) {
@@ -303,7 +303,7 @@ fun TutorialScreen(
                         // Video Shorts Playlist Button
                         OutlinedButton(
                             onClick = {
-                                val intent = Intent(Intent.ACTION_VIEW, Uri.parse("https://www.youtube.com/@takumayamada605/shorts"))
+                                val intent = Intent(Intent.ACTION_VIEW, Uri.parse("https://www.youtube.com/playlist?list=PLBBAqnUOZR-A"))
                                 try {
                                     context.startActivity(intent)
                                 } catch (e: Exception) {

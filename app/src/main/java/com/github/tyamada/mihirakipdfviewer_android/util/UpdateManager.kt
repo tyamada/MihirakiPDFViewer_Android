@@ -2,7 +2,8 @@ package com.github.tyamada.mihirakipdfviewer_android.util
 
 import android.content.Context
 import android.content.Intent
-import android.net.Uri
+import androidx.core.net.toUri
+import com.github.tyamada.mihirakipdfviewer_android.R
 import com.google.android.play.core.appupdate.AppUpdateManagerFactory
 import com.google.android.play.core.install.model.UpdateAvailability
 
@@ -12,9 +13,10 @@ object UpdateManager {
 
     fun checkForUpdate(context: Context, force: Boolean = false, onResult: (Boolean, String?) -> Unit) {
         val now = System.currentTimeMillis()
-        if (!force && (now - lastCheckTime < COOLDOWN_MS)) {
+        if (!force && ((now - lastCheckTime) < COOLDOWN_MS)) {
             val remainingSec = ((COOLDOWN_MS - (now - lastCheckTime)) / 1000)
-            onResult(false, "Please wait ${remainingSec / 60}m ${remainingSec % 60}s before checking for updates again.")
+            val msg = context.getString(R.string.update_cooldown, remainingSec / 60, remainingSec % 60)
+            onResult(false, msg)
             return
         }
         lastCheckTime = now
@@ -25,19 +27,21 @@ object UpdateManager {
                 val available = info.updateAvailability() == UpdateAvailability.UPDATE_AVAILABLE
                 onResult(available, null)
             }.addOnFailureListener { e ->
-                onResult(false, e.localizedMessage ?: "Check failed")
+                val errorMsg = e.localizedMessage ?: context.getString(R.string.check_failed)
+                onResult(false, errorMsg)
             }
         }.onFailure { e ->
-            onResult(false, e.localizedMessage ?: "Check failed")
+            val errorMsg = e.localizedMessage ?: context.getString(R.string.check_failed)
+            onResult(false, errorMsg)
         }
     }
 
     fun openPlayStore(context: Context) {
         val packageName = context.packageName
         try {
-            context.startActivity(Intent(Intent.ACTION_VIEW, Uri.parse("market://details?id=$packageName")))
-        } catch (e: Exception) {
-            context.startActivity(Intent(Intent.ACTION_VIEW, Uri.parse("https://play.google.com/store/apps/details?id=$packageName")))
+            context.startActivity(Intent(Intent.ACTION_VIEW, "market://details?id=$packageName".toUri()))
+        } catch (_: Exception) {
+            context.startActivity(Intent(Intent.ACTION_VIEW, "https://play.google.com/store/apps/details?id=$packageName".toUri()))
         }
     }
 }

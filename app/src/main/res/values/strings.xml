@@ -23,7 +23,7 @@
     <string name="help_options"><b>Options:</b> Access cover options, reset settings, help, licenses, and support.</string>
     <string name="help_document_info"><b>Document information:</b> View PDF metadata such as title, author, subject, keywords, and PDF version.</string>
     <string name="help_help"><b>Help:</b> Read this guide for instructions on how to use the app.</string>
-    <string name="help_app_info"><b>App information:</b> Check app version, build number, copyright, and supporter badges.</string>
+    <string name="help_app_info"><b>Version:</b> Check app version, build number, copyright, and supporter badges.</string>
     <string name="help_support"><b>Support the Developer:</b> Support further development via optional tips and view your supporter badges.</string>
     <string name="tip_message">If you enjoy the app, you can support its development.</string>
     <string name="tip_free_notice">All features are available without purchase.</string>
@@ -34,6 +34,10 @@
     <string name="version">Version</string>
     <string name="build_number">Build number</string>
     <string name="copyright">Copyright</string>
+    <string name="update_available" translatable="false">Update available!</string>
+    <string name="latest_version" translatable="false">You are using the latest version.</string>
+    <string name="update_cooldown" translatable="false">Please wait %1$d m %2$d s before checking for updates again.</string>
+    <string name="check_failed" translatable="false">Check failed</string>
     <string name="oss_license_title">Open Source Licenses</string>
     <string name="oss_license_description">This app uses the following open source software:</string>
     <string name="help_diagnostics" translatable="false"><b>Testing &amp; App Logs:</b> Run device diagnostic tests, view app logs, and share logs securely. Logs are stored locally for up to 24 hours, never contain personal info or file contents, and are never sent externally automatically.</string>
