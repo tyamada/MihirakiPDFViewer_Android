@@ -24,7 +24,7 @@
     <string name="help_options"><b>オプション:</b> 表紙設定、設定のリセット、ヘルプ、ライセンス、応援にアクセスします。</string>
     <string name="help_document_info"><b>ドキュメント情報:</b> タイトル、作成者、サブタイトル、キーワード、PDFバージョンなどのメタデータを表示します。</string>
     <string name="help_help"><b>ヘルプ:</b> アプリの使い方に関するこのガイドを確認します。</string>
-    <string name="help_app_info"><b>アプリ情報:</b> アプリのバージョン、ビルド番号、著作権、サポーターバッジを確認します。</string>
+    <string name="help_app_info"><b>バージョン:</b> アプリのバージョン、ビルド番号、著作権、サポーターバッジを確認します。</string>
     <string name="help_support"><b>開発者を応援:</b> 任意の応援チップで開発を支援し、サポーターバッジを表示します。</string>
     <string name="tip_message">アプリを気に入っていただけたら、開発を応援できます。</string>
     <string name="tip_free_notice">本アプリは完全に無料でご利用いただけます。PDFの閲覧、見開き表示、検索といったすべての機能は、購入の有無にかかわらず制限なくお使いいただけます。</string>
@@ -35,6 +35,10 @@
     <string name="version">バージョン</string>
     <string name="build_number">ビルド番号</string>
     <string name="copyright">著作権</string>
+    <string name="update_available">アップデートがあります！</string>
+    <string name="latest_version">最新バージョンを使用しています。</string>
+    <string name="update_cooldown">もう一度更新を確認するには %1$d分 %2$d秒 お待ちください。</string>
+    <string name="check_failed">確認に失敗しました</string>
     <string name="oss_license_title">オープンソースライセンス</string>
     <string name="oss_license_description">このアプリは以下のオープンソースソフトウェアを利用しています：</string>
     <string name="help_diagnostics"><b>テスト・診断とアプリログ:</b> 端末診断テストの実行や、アプリログの閲覧・共有が行えます。ログは端末内にのみ最大24時間保存され、個人情報やファイルの内容は記録されません。また、自動的に外部へ送信されることもありません。</string>

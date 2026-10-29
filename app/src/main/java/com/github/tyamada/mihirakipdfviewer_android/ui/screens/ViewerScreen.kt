@@ -167,7 +167,7 @@ import kotlin.math.abs
                                         onClick = { showMenu = false; openHelp() }
                                     )
                                     DropdownMenuItem(
-                                        text = { Text(stringResource(R.string.app_info)) },
+                                        text = { Text(stringResource(R.string.version)) },
                                         onClick = { showMenu = false; openVersion() }
                                     )
                                     DropdownMenuItem(
@@ -307,7 +307,7 @@ import kotlin.math.abs
                         onClick = { showMenu = false; openHelp() }
                     )
                     DropdownMenuItem(
-                        text = { Text(stringResource(R.string.app_info)) },
+                        text = { Text(stringResource(R.string.version)) },
                         onClick = { showMenu = false; openVersion() }
                     )
                     DropdownMenuItem(
