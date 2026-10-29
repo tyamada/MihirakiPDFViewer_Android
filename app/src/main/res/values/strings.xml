@@ -134,18 +134,18 @@
     <string name="update_now">Update Now</string>
     <string name="diagnostics_menu">Diagnostics</string>
     <string name="view_tutorial">View Tutorial</string>
-    <string name="tutorial_welcome">Welcome to Mihiraki PDF Viewer</string>
-    <string name="skip">Skip</string>
-    <string name="tutorial_headline">Read Manga &amp; Right-to-Left PDFs Seamlessly</string>
-    <string name="tutorial_description">Mihiraki PDF Viewer is designed specifically for right-to-left documents, magazines, and manga with advanced features:</string>
-    <string name="tutorial_feature_spread_title">Two-Page Spread &amp; R2L</string>
-    <string name="tutorial_feature_spread_desc">Automatically detects and displays right-to-left spreads perfectly.</string>
-    <string name="tutorial_feature_outline_title">Outline Tree Navigation</string>
-    <string name="tutorial_feature_outline_desc">Jump instantly to chapters using PDF bookmarks and outlines.</string>
-    <string name="tutorial_feature_search_title">Fast Search &amp; Highlight</string>
-    <string name="tutorial_feature_search_desc">Search text instantly with precise yellow-and-red highlight frames.</string>
-    <string name="tutorial_youtube_button">Watch Intro Video on YouTube</string>
-    <string name="tutorial_dont_show_again">Don\'t show this tutorial on startup</string>
-    <string name="tutorial_get_started">Get Started</string>
-    <string name="error_no_app_youtube">No app found to open YouTube link</string>
+    <string name="tutorial_welcome" translatable="false">Welcome to Mihiraki PDF Viewer</string>
+    <string name="skip" translatable="false">Skip</string>
+    <string name="tutorial_headline" translatable="false">Read Manga &amp; Right-to-Left PDFs Seamlessly</string>
+    <string name="tutorial_description" translatable="false">Mihiraki PDF Viewer is designed specifically for right-to-left documents, magazines, and manga with advanced features:</string>
+    <string name="tutorial_feature_spread_title" translatable="false">Two-Page Spread &amp; R2L</string>
+    <string name="tutorial_feature_spread_desc" translatable="false">Automatically detects and displays right-to-left spreads perfectly.</string>
+    <string name="tutorial_feature_outline_title" translatable="false">Outline Tree Navigation</string>
+    <string name="tutorial_feature_outline_desc" translatable="false">Jump instantly to chapters using PDF bookmarks and outlines.</string>
+    <string name="tutorial_feature_search_title" translatable="false">Fast Search &amp; Highlight</string>
+    <string name="tutorial_feature_search_desc" translatable="false">Search text instantly with precise yellow-and-red highlight frames.</string>
+    <string name="tutorial_youtube_button" translatable="false">Watch Intro Video on YouTube</string>
+    <string name="tutorial_dont_show_again" translatable="false">Don\'t show this tutorial on startup</string>
+    <string name="tutorial_get_started" translatable="false">Get Started</string>
+    <string name="error_no_app_youtube" translatable="false">No app found to open YouTube link</string>
 </resources>
