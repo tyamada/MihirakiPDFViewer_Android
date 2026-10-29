@@ -159,4 +159,6 @@
     <string name="tutorial_step4_desc">YouTubeで紹介動画を見るか、今すぐ読書を始めましょう。起動時にこのチュートリアルを表示しないように設定することも可能です。</string>
     <string name="tutorial_next">次へ</string>
     <string name="tutorial_previous">前へ</string>
+    <string name="tutorial_video_guide_button">使い方紹介ショート動画を見る (プレイリスト)</string>
+    <string name="tutorial_video_playlist_title">アプリ紹介ショート動画プレイリスト</string>
 </resources>

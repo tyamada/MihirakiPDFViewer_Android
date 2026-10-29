@@ -158,4 +158,6 @@
     <string name="tutorial_step4_desc" translatable="false">Watch the intro video on YouTube or get started right away. You can also hide this tutorial on startup.</string>
     <string name="tutorial_next" translatable="false">Next</string>
     <string name="tutorial_previous" translatable="false">Previous</string>
+    <string name="tutorial_video_guide_button" translatable="false">Watch App Intro Shorts (Playlist)</string>
+    <string name="tutorial_video_playlist_title" translatable="false">App Introduction Shorts Playlist</string>
 </resources>
