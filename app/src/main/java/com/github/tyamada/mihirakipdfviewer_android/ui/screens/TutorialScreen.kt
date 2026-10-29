@@ -15,9 +15,11 @@ import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
+import com.github.tyamada.mihirakipdfviewer_android.R
 import com.github.tyamada.mihirakipdfviewer_android.viewmodel.ViewerViewModel
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -32,7 +34,7 @@ fun TutorialScreen(
     Scaffold(
         topBar = {
             TopAppBar(
-                title = { Text("Welcome to Mihiraki PDF Viewer") },
+                title = { Text(stringResource(R.string.tutorial_welcome)) },
                 actions = {
                     TextButton(onClick = {
                         if (dontShowAgain) {
@@ -40,7 +42,7 @@ fun TutorialScreen(
                         }
                         onFinished()
                     }) {
-                        Text("Skip")
+                        Text(stringResource(R.string.skip))
                     }
                 }
             )
@@ -65,14 +67,14 @@ fun TutorialScreen(
             )
 
             Text(
-                text = "Read Manga & Right-to-Left PDFs Seamlessly",
+                text = stringResource(R.string.tutorial_headline),
                 style = MaterialTheme.typography.headlineSmall,
                 fontWeight = FontWeight.Bold,
                 textAlign = TextAlign.Center
             )
 
             Text(
-                text = "Mihiraki PDF Viewer is designed specifically for right-to-left documents, magazines, and manga with advanced features:",
+                text = stringResource(R.string.tutorial_description),
                 style = MaterialTheme.typography.bodyMedium,
                 textAlign = TextAlign.Center,
                 color = MaterialTheme.colorScheme.onSurfaceVariant
@@ -82,18 +84,18 @@ fun TutorialScreen(
 
             TutorialFeatureItem(
                 icon = Icons.Default.AutoStories,
-                title = "Two-Page Spread & R2L",
-                description = "Automatically detects and displays right-to-left spreads perfectly."
+                title = stringResource(R.string.tutorial_feature_spread_title),
+                description = stringResource(R.string.tutorial_feature_spread_desc)
             )
             TutorialFeatureItem(
                 icon = Icons.AutoMirrored.Filled.List,
-                title = "Outline Tree Navigation",
-                description = "Jump instantly to chapters using PDF bookmarks and outlines."
+                title = stringResource(R.string.tutorial_feature_outline_title),
+                description = stringResource(R.string.tutorial_feature_outline_desc)
             )
             TutorialFeatureItem(
                 icon = Icons.Default.Search,
-                title = "Fast Search & Highlight",
-                description = "Search text instantly with precise yellow-and-red highlight frames."
+                title = stringResource(R.string.tutorial_feature_search_title),
+                description = stringResource(R.string.tutorial_feature_search_desc)
             )
 
             Spacer(modifier = Modifier.height(8.dp))
@@ -105,7 +107,7 @@ fun TutorialScreen(
                     try {
                         context.startActivity(intent)
                     } catch (e: Exception) {
-                        Toast.makeText(context, "No app found to open YouTube link", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(context, context.getString(R.string.error_no_app_youtube), Toast.LENGTH_SHORT).show()
                     }
                 },
                 colors = ButtonDefaults.buttonColors(containerColor = MaterialTheme.colorScheme.error),
@@ -113,7 +115,7 @@ fun TutorialScreen(
             ) {
                 Icon(imageVector = Icons.Default.PlayArrow, contentDescription = null)
                 Spacer(modifier = Modifier.width(8.dp))
-                Text("Watch Intro Video on YouTube")
+                Text(stringResource(R.string.tutorial_youtube_button))
             }
 
             Spacer(modifier = Modifier.height(12.dp))
@@ -130,7 +132,7 @@ fun TutorialScreen(
                 )
                 Spacer(modifier = Modifier.width(8.dp))
                 Text(
-                    text = "Don't show this tutorial on startup",
+                    text = stringResource(R.string.tutorial_dont_show_again),
                     style = MaterialTheme.typography.bodyMedium
                 )
             }
@@ -147,7 +149,7 @@ fun TutorialScreen(
                 },
                 modifier = Modifier.fillMaxWidth().height(50.dp)
             ) {
-                Text("Get Started", style = MaterialTheme.typography.titleMedium)
+                Text(stringResource(R.string.tutorial_get_started), style = MaterialTheme.typography.titleMedium)
             }
 
             Spacer(modifier = Modifier.height(16.dp))
