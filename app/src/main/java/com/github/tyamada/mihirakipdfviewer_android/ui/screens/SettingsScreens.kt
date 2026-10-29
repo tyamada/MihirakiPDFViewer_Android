@@ -181,11 +181,13 @@ data class HelpCategorySpec(val title: String, val items: List<Int>)
     val state by vm.state.collectAsState()
     val context = LocalContext.current
     var showPromoDialog by remember { mutableStateOf(false) }
+    val updateAvailableText = stringResource(R.string.update_available)
+    val latestVersionText = stringResource(R.string.latest_version)
 
     Scaffold(
         topBar = {
             TopAppBar(
-                title = { Text(stringResource(R.string.app_info)) },
+                title = { Text(stringResource(R.string.version)) },
                 navigationIcon = { IconButton(back) { Icon(Icons.AutoMirrored.Filled.ArrowBack, stringResource(R.string.back)) } }
             )
         }
@@ -219,7 +221,7 @@ data class HelpCategorySpec(val title: String, val items: List<Int>)
                         UpdateManager.openPlayStore(context)
                     } else {
                         vm.checkForUpdate(force = true) { available, msg ->
-                            val toastMsg = if (available) "Update available!" else (msg ?: "You are using the latest version.")
+                            val toastMsg = if (available) updateAvailableText else (msg ?: latestVersionText)
                             android.widget.Toast.makeText(context, toastMsg, android.widget.Toast.LENGTH_SHORT).show()
                         }
                     }

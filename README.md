@@ -142,7 +142,7 @@ If you find this app useful, you can support further development via the in-app 
 ## 🐛 Reporting Issues & Bug Reports
 If you encounter any bugs, crashes, or unexpected behavior, please open an issue on [GitHub Issues](https://github.com/tyamada/MihirakiPDFViewer_Android/issues). 
 When reporting an issue, please include:
-1. **App Version & Build Code** (e.g., v2.1.2, Code 40)
+1. **App Version & Build Code** (e.g., v2.1.3, Code 41)
 2. **Device Model & Android Version** (e.g., Pixel 8, Android 15)
 3. **Steps to Reproduce** the problem
 4. **Diagnostic Logs**: Copy or share app logs from **Settings > Testing & Diagnostics** (safe: contains zero personal or document data).
@@ -157,22 +157,27 @@ This project was developed with the assistance of AI:
 
 ## 📜 Version History
 
-- **v2.1.2** (Code 40)
-  - Major version bump to v2.1.2 with comprehensive documentation updates and help screen HTML rendering enhancements.
+- **v2.1.3** (Code 41)
+  - Renamed "App Info" menu item and screen title to "Version" for cross-app consistency.
+  - Localized update check result messages for seamless multilingual support.
+  - Enabled R8 full mode, optimized ProGuard/R8 rules, and refactored codebase for enhanced performance.
+  - Enhanced accessibility compliance and test verification.
+- **v2.1.3** (Code 41)
+  - Major version bump to v2.1.3 with comprehensive documentation updates and help screen HTML rendering enhancements.
   - Added direct "Report Issue" button to the settings screen and established GitHub Issue templates.
   - Reorganized settings options group (placing Mouse Navigation and Portrait Display switches at the top of options).
   - Improved screen rotation synchronization for adaptive portrait display.
-- **v2.1.2** (Code 40)
+- **v2.1.3** (Code 41)
   - Updated tip purchases from consumable to non-consumable to comply with App Store review guidelines.
   - Reorganized and updated store listing assets and sample PDFs.
-- **v2.1.2** (Code 40)
+- **v2.1.3** (Code 41)
   - Improved settings screen layout by relocating options group below document info.
   - Enabled advanced R8 optimizations and native debug symbols for improved performance and crash reporting.
-- **v2.1.2** (Code 40)
+- **v2.1.3** (Code 41)
   - Minor settings screen layout adjustments.
-- **v2.1.2** (Code 40)
+- **v2.1.3** (Code 41)
   - Consolidated and organized store listing materials and device screenshots.
-- **v2.1.2** (Code 40)
+- **v2.1.3** (Code 41)
   - Initial production release with two-page spread support, R2L reading order, smart auto-detection, precise search & highlighting, and privacy-focused local PDF processing.
 
 ## 📄 License
