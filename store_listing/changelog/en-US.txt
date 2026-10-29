@@ -1,3 +1,2 @@
-- Enabled R8 Full Mode and optimized ProGuard/R8 rules for improved app performance and code shrinking.
-- Verified robust accessibility (A11y) and complete translation coverage.
-- Updated documentation and help guides to v2.1.1.
+- Updated sample PDF manga files for Episode 3 (Korean, Chinese Simplified, and Chinese Traditional).
+- Verified build stability and local rendering.
