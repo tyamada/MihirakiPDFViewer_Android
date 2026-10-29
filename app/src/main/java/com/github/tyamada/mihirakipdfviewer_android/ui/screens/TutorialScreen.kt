@@ -29,6 +29,7 @@ fun TutorialScreen(
     onFinished: () -> Unit
 ) {
     val context = LocalContext.current
+    val errorNoApp = stringResource(R.string.error_no_app_youtube)
     var dontShowAgain by remember { mutableStateOf(false) }
 
     Scaffold(
@@ -107,7 +108,7 @@ fun TutorialScreen(
                     try {
                         context.startActivity(intent)
                     } catch (e: Exception) {
-                        Toast.makeText(context, context.getString(R.string.error_no_app_youtube), Toast.LENGTH_SHORT).show()
+                        Toast.makeText(context, errorNoApp, Toast.LENGTH_SHORT).show()
                     }
                 },
                 colors = ButtonDefaults.buttonColors(containerColor = MaterialTheme.colorScheme.error),
