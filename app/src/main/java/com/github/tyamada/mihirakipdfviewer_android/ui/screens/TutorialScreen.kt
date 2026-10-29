@@ -298,6 +298,25 @@ fun TutorialScreen(
                             Text(stringResource(R.string.tutorial_youtube_button))
                         }
 
+                        Spacer(modifier = Modifier.height(8.dp))
+
+                        // Video Shorts Playlist Button
+                        OutlinedButton(
+                            onClick = {
+                                val intent = Intent(Intent.ACTION_VIEW, Uri.parse("https://www.youtube.com/@takumayamada605/shorts"))
+                                try {
+                                    context.startActivity(intent)
+                                } catch (e: Exception) {
+                                    Toast.makeText(context, errorNoApp, Toast.LENGTH_SHORT).show()
+                                }
+                            },
+                            modifier = Modifier.fillMaxWidth()
+                        ) {
+                            Icon(imageVector = Icons.Default.VideoLibrary, contentDescription = null)
+                            Spacer(modifier = Modifier.width(8.dp))
+                            Text(stringResource(R.string.tutorial_video_guide_button))
+                        }
+
                         Spacer(modifier = Modifier.height(12.dp))
 
                         // Don't show again checkbox
