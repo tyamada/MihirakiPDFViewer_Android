@@ -148,4 +148,14 @@
     <string name="tutorial_dont_show_again" translatable="false">Don\'t show this tutorial on startup</string>
     <string name="tutorial_get_started" translatable="false">Get Started</string>
     <string name="error_no_app_youtube" translatable="false">No app found to open YouTube link</string>
+    <string name="tutorial_step1_title" translatable="false">1. Getting Started</string>
+    <string name="tutorial_step1_desc" translatable="false">Open PDF files from device storage or cloud, try sample PDFs, and navigate pages easily via swipe, slider, or edge clicks.</string>
+    <string name="tutorial_step2_title" translatable="false">2. Reading Features</string>
+    <string name="tutorial_step2_desc" translatable="false">Enjoy two-page spreads, R2L reading order, outline tree chapter navigation, and precise text search with highlights.</string>
+    <string name="tutorial_step3_title" translatable="false">3. Settings &amp; Customization</string>
+    <string name="tutorial_step3_desc" translatable="false">Customize display settings, high quality rendering, sharpness, cover mode, mouse navigation, diagnostics, and developer support.</string>
+    <string name="tutorial_step4_title" translatable="false">4. Ready to Read</string>
+    <string name="tutorial_step4_desc" translatable="false">Watch the intro video on YouTube or get started right away. You can also hide this tutorial on startup.</string>
+    <string name="tutorial_next" translatable="false">Next</string>
+    <string name="tutorial_previous" translatable="false">Previous</string>
 </resources>
