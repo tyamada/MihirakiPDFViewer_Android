@@ -54,3 +54,31 @@
 - `GalaxyTab42-tutorial-check.txt`: Galaxy Tabのチュートリアル内リンク確認。
 - `GalaxyTab42-intro-success.png` / `GalaxyTab42-playlist-success.png`: Galaxy Tabの再生結果。
 - moto g24の根拠: 本リリース作業の会話におけるユーザーの正常動作報告。
+
+## AQUOS sense4追加実機確認（2026-10-30）
+
+- 端末: Sharp AQUOS sense4 SH-41A / Android 12。
+- 配信経路: 内部テスト。Google Playで「内部用ベータ版」「あなたは内部テスターです」と表示。ユーザー指示によりテスト参加状態を維持して検証。
+- 更新前: 2.1.2 / versionCode 40 / installerPackageName=com.android.vending。
+- Google Playの「更新」を実行し、2.1.3 / versionCode 42へ更新成功。
+- firstInstallTime: 2026-10-29 10:37:06 / lastUpdateTime: 2026-10-30 08:41:57。削除・再インストールやアプリデータ消去は実施していない。既存データの内容の更新前後比較は未実施。
+
+| 確認項目 | 結果 |
+|:--|:--|
+| 更新後の起動 | 成功。チュートリアル全4ページを表示。 |
+| 紹介動画 | 実際のチュートリアルのボタンからComplete Quick Guideが開き、再生成功。 |
+| 再生リスト | 実際のボタンから5本のリスト（1/5）が開き、1本目から2本目（2/5）への連続再生を確認。利用不可エラーなし。 |
+| 日本語サンプル一覧 | 正常表示。第1話をダウンロードし「開く」が表示されることを確認。 |
+| PDF描画 | 「ためし部 第1話 ひと息マップ」の表紙と本文を描画。 |
+| ページ送り | キーボードのSpace操作で表紙から本文（2/8）へ移動。 |
+| 検索 | 「ひと息」で8件ヒット（1/8）。表紙の該当語に黄色背景と赤枠のハイライトを確認。 |
+| メニュー・設定 | 歯車から「設定」「ヘルプ」「バージョン」「診断」「応援」「プライバシーポリシー」の表示を確認。設定画面が開き、見開き・表紙表示がオン、方向R2L、文書タイトル・作者の表示を確認。設定値は変更していない。 |
+
+確認範囲では問題なし。タップの代わりにMacのミラー画面からキーボードを使用。タッチスワイプ、横向き・見開きの実描画、目次移動、診断テスト実行、更新前後の全データ比較は未検証。一般ユーザー（テスト未参加アカウント）の「更新」経路の検証には数えない。
+
+### AQUOS検証資料
+資料は本記録の既載資料フォルダに保存。
+- `AQUOS40-Play-update-before.png` / `AQUOS42-Play-update-complete.png`
+- `AQUOS42-intro-success.png` / `AQUOS42-playlist-success.png`
+- `AQUOS42-pdf-cover.png` / `AQUOS42-pdf-page2.png`
+- `AQUOS42-search-highlight.png` / `AQUOS42-settings.png`

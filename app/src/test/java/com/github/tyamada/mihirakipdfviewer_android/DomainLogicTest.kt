@@ -64,7 +64,15 @@ class DomainLogicTest {
             "tameshibu_episode1_2_zh_tw.pdf", "tameshibu_episode2_2_de.pdf", "tameshibu_episode2_2_en.pdf",
             "tameshibu_episode2_2_fr.pdf", "tameshibu_episode2_2_ja.pdf", "tameshibu_episode2_2_ko.pdf",
             "tameshibu_episode2_2_zh_cn.pdf", "tameshibu_episode2_2_zh_tw.pdf",
-            "tameshibu_episode3_en.pdf", "tameshibu_episode3_ja.pdf"
+            "tameshibu_episode1_es.pdf", "tameshibu_episode1_it.pdf", "tameshibu_episode1_pt.pdf",
+            "tameshibu_episode1_vi.pdf", "tameshibu_episode1_ne.pdf", "tameshibu_episode1_id.pdf", "tameshibu_episode1_tl.pdf",
+            "tameshibu_episode2_es.pdf", "tameshibu_episode2_it.pdf", "tameshibu_episode2_pt.pdf",
+            "tameshibu_episode2_vi.pdf", "tameshibu_episode2_ne.pdf", "tameshibu_episode2_id.pdf", "tameshibu_episode2_tl.pdf",
+            "tameshibu_episode3_de.pdf", "tameshibu_episode3_en.pdf", "tameshibu_episode3_es.pdf",
+            "tameshibu_episode3_fr.pdf", "tameshibu_episode3_id.pdf", "tameshibu_episode3_it.pdf",
+            "tameshibu_episode3_ja.pdf", "tameshibu_episode3_ko.pdf", "tameshibu_episode3_ne.pdf",
+            "tameshibu_episode3_pt.pdf", "tameshibu_episode3_tl.pdf", "tameshibu_episode3_vi.pdf",
+            "tameshibu_episode3_zh_cn.pdf", "tameshibu_episode3_zh_tw.pdf"
         )
         val roots = listOf(File("."), File(".."))
         val tempDir = java.nio.file.Files.createTempDirectory("pdf_samples_test").toFile()
