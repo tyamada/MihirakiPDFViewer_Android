@@ -25,6 +25,7 @@ object SamplePdfCatalog {
     private const val BASE_URL = "https://tyamada.github.io/MihirakiPDFViewer_Android/sample/"
 
     val items = listOf(
+        // English
         SamplePdfItem(
             id = "ep1_en",
             title = "THE TRY-IT CLUB EPISODE 1 THE BREAK-TIME MAP",
@@ -52,6 +53,7 @@ object SamplePdfCatalog {
             languageCode = "en",
             languageDisplayName = "English"
         ),
+        // Japanese
         SamplePdfItem(
             id = "ep1_ja",
             title = "ためし部 第１話 ひと息マップ",
@@ -79,34 +81,8 @@ object SamplePdfCatalog {
             languageCode = "ja",
             languageDisplayName = "Japanese"
         ),
-                SamplePdfItem(
-            id = "ep3_ko",
-            title = "해봄부 제3화 출장, 해봄부!",
-            fileName = "tameshibu_episode3_ko.pdf",
-            url = "${BASE_URL}tameshibu_episode3_ko.pdf",
-            fileSize = "22MB",
-            languageCode = "ko",
-            languageDisplayName = "Korean"
-        ),
+        // Korean
         SamplePdfItem(
-            id = "ep3_zh_cn",
-            title = "试试社 第3话 出差，试试社！",
-            fileName = "tameshibu_episode3_zh_cn.pdf",
-            url = "${BASE_URL}tameshibu_episode3_zh_cn.pdf",
-            fileSize = "22MB",
-            languageCode = "zh_cn",
-            languageDisplayName = "Chinese (Simplified)"
-        ),
-        SamplePdfItem(
-            id = "ep3_zh_tw",
-            title = "試試社 第3話",
-            fileName = "tameshibu_episode3_zh_tw.pdf",
-            url = "${BASE_URL}tameshibu_episode3_zh_tw.pdf",
-            fileSize = "22MB",
-            languageCode = "zh_tw",
-            languageDisplayName = "Chinese (Traditional)"
-        ),
-SamplePdfItem(
             id = "ep1_ko",
             title = "해봄부 제1화 한숨 돌림 지도",
             fileName = "tameshibu_episode1_2_ko.pdf",
@@ -124,6 +100,16 @@ SamplePdfItem(
             languageCode = "ko",
             languageDisplayName = "Korean"
         ),
+        SamplePdfItem(
+            id = "ep3_ko",
+            title = "해봄부 제3화 출장, 해봄부!",
+            fileName = "tameshibu_episode3_ko.pdf",
+            url = "${BASE_URL}tameshibu_episode3_ko.pdf",
+            fileSize = "22MB",
+            languageCode = "ko",
+            languageDisplayName = "Korean"
+        ),
+        // Chinese (Simplified)
         SamplePdfItem(
             id = "ep1_zh_cn",
             title = "试试社 第1话 歇口气地图",
@@ -143,6 +129,16 @@ SamplePdfItem(
             languageDisplayName = "Chinese (Simplified)"
         ),
         SamplePdfItem(
+            id = "ep3_zh_cn",
+            title = "试试社 第3话 出差，试试社！",
+            fileName = "tameshibu_episode3_zh_cn.pdf",
+            url = "${BASE_URL}tameshibu_episode3_zh_cn.pdf",
+            fileSize = "22MB",
+            languageCode = "zh_cn",
+            languageDisplayName = "Chinese (Simplified)"
+        ),
+        // German
+        SamplePdfItem(
             id = "ep1_de",
             title = "DER PROBIERCLUB FOLGE 1",
             fileName = "tameshibu_episode1_2_de.pdf",
@@ -160,6 +156,16 @@ SamplePdfItem(
             languageCode = "de",
             languageDisplayName = "German"
         ),
+        SamplePdfItem(
+            id = "ep3_de",
+            title = "DER PROBIERCLUB FOLGE 3",
+            fileName = "tameshibu_episode3_de.pdf",
+            url = "${BASE_URL}tameshibu_episode3_de.pdf",
+            fileSize = "22MB",
+            languageCode = "de",
+            languageDisplayName = "German"
+        ),
+        // French
         SamplePdfItem(
             id = "ep1_fr",
             title = "LE CLUB DES ESSAIS EPISODE 1",
@@ -179,6 +185,16 @@ SamplePdfItem(
             languageDisplayName = "French"
         ),
         SamplePdfItem(
+            id = "ep3_fr",
+            title = "LE CLUB DES ESSAIS EPISODE 3",
+            fileName = "tameshibu_episode3_fr.pdf",
+            url = "${BASE_URL}tameshibu_episode3_fr.pdf",
+            fileSize = "22MB",
+            languageCode = "fr",
+            languageDisplayName = "French"
+        ),
+        // Chinese (Traditional)
+        SamplePdfItem(
             id = "ep1_zh_tw",
             title = "試試社 第1話",
             fileName = "tameshibu_episode1_2_zh_tw.pdf",
@@ -196,6 +212,16 @@ SamplePdfItem(
             languageCode = "zh_tw",
             languageDisplayName = "Chinese (Traditional)"
         ),
+        SamplePdfItem(
+            id = "ep3_zh_tw",
+            title = "試試社 第3話",
+            fileName = "tameshibu_episode3_zh_tw.pdf",
+            url = "${BASE_URL}tameshibu_episode3_zh_tw.pdf",
+            fileSize = "22MB",
+            languageCode = "zh_tw",
+            languageDisplayName = "Chinese (Traditional)"
+        ),
+        // Spanish
         SamplePdfItem(
             id = "ep1_es",
             title = "EL CLUB DE PRUEBA EPISODIO 1",
@@ -215,6 +241,16 @@ SamplePdfItem(
             languageDisplayName = "Spanish"
         ),
         SamplePdfItem(
+            id = "ep3_es",
+            title = "EL CLUB DE PRUEBAS EPISODIO 3",
+            fileName = "tameshibu_episode3_es.pdf",
+            url = "${BASE_URL}tameshibu_episode3_es.pdf",
+            fileSize = "22MB",
+            languageCode = "es",
+            languageDisplayName = "Spanish"
+        ),
+        // Italian
+        SamplePdfItem(
             id = "ep1_it",
             title = "IL CLUB DI PROVA EPISODIO 1",
             fileName = "tameshibu_episode1_it.pdf",
@@ -232,6 +268,16 @@ SamplePdfItem(
             languageCode = "it",
             languageDisplayName = "Italian"
         ),
+        SamplePdfItem(
+            id = "ep3_it",
+            title = "IL CLUB DELLE PROVE EPISODIO 3",
+            fileName = "tameshibu_episode3_it.pdf",
+            url = "${BASE_URL}tameshibu_episode3_it.pdf",
+            fileSize = "22MB",
+            languageCode = "it",
+            languageDisplayName = "Italian"
+        ),
+        // Portuguese
         SamplePdfItem(
             id = "ep1_pt",
             title = "O CLUBE DE TESTE EPISÓDIO 1",
@@ -251,6 +297,16 @@ SamplePdfItem(
             languageDisplayName = "Portuguese"
         ),
         SamplePdfItem(
+            id = "ep3_pt",
+            title = "O CLUBE DAS EXPERIÊNCIAS EPISÓDIO 3",
+            fileName = "tameshibu_episode3_pt.pdf",
+            url = "${BASE_URL}tameshibu_episode3_pt.pdf",
+            fileSize = "22MB",
+            languageCode = "pt",
+            languageDisplayName = "Portuguese"
+        ),
+        // Vietnamese
+        SamplePdfItem(
             id = "ep1_vi",
             title = "CÂU LẠC BỘ THỬ NGHIỆM TẬP 1",
             fileName = "tameshibu_episode1_vi.pdf",
@@ -268,6 +324,16 @@ SamplePdfItem(
             languageCode = "vi",
             languageDisplayName = "Vietnamese"
         ),
+        SamplePdfItem(
+            id = "ep3_vi",
+            title = "CÂU LẠC BỘ THỬ NGHIỆM TẬP 3",
+            fileName = "tameshibu_episode3_vi.pdf",
+            url = "${BASE_URL}tameshibu_episode3_vi.pdf",
+            fileSize = "22MB",
+            languageCode = "vi",
+            languageDisplayName = "Vietnamese"
+        ),
+        // Indonesian
         SamplePdfItem(
             id = "ep1_id",
             title = "KLUB PERCOBAAN EPISODE 1",
@@ -287,6 +353,16 @@ SamplePdfItem(
             languageDisplayName = "Indonesian"
         ),
         SamplePdfItem(
+            id = "ep3_id",
+            title = "KLUB PERCOBAAN EPISODE 3",
+            fileName = "tameshibu_episode3_id.pdf",
+            url = "${BASE_URL}tameshibu_episode3_id.pdf",
+            fileSize = "22MB",
+            languageCode = "id",
+            languageDisplayName = "Indonesian"
+        ),
+        // Filipino
+        SamplePdfItem(
             id = "ep1_fil",
             title = "ANG SUBOK CLUB EPISODE 1",
             fileName = "tameshibu_episode1_tl.pdf",
@@ -305,6 +381,16 @@ SamplePdfItem(
             languageDisplayName = "Filipino"
         ),
         SamplePdfItem(
+            id = "ep3_fil",
+            title = "ANG SUBOK CLUB EPISODE 3",
+            fileName = "tameshibu_episode3_tl.pdf",
+            url = "${BASE_URL}tameshibu_episode3_tl.pdf",
+            fileSize = "22MB",
+            languageCode = "fil",
+            languageDisplayName = "Filipino"
+        ),
+        // Nepali
+        SamplePdfItem(
             id = "ep1_ne",
             title = "परीक्षण क्लब एपिसोड १",
             fileName = "tameshibu_episode1_ne.pdf",
@@ -319,6 +405,15 @@ SamplePdfItem(
             fileName = "tameshibu_episode2_ne.pdf",
             url = "${BASE_URL}tameshibu_episode2_ne.pdf",
             fileSize = "24MB",
+            languageCode = "ne",
+            languageDisplayName = "Nepali"
+        ),
+        SamplePdfItem(
+            id = "ep3_ne",
+            title = "परीक्षण क्लब एपिसोड ३",
+            fileName = "tameshibu_episode3_ne.pdf",
+            url = "${BASE_URL}tameshibu_episode3_ne.pdf",
+            fileSize = "22MB",
             languageCode = "ne",
             languageDisplayName = "Nepali"
         )
