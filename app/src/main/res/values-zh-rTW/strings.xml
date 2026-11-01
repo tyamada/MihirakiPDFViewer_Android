@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='utf-8'?>
 <resources>
-    <string name="app_name">MihirakiPDFViewer</string>
+    <string name="app_name">MihirakiPDFViewer: 雙頁 PDF 閱讀器</string>
     <string name="open_pdf">開啟 PDF</string>
     <string name="open">開啟</string>
     <string name="settings">設定</string>
