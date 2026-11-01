@@ -33,3 +33,7 @@ Production release 42 was published at 07:35 JST on 2026-10-30 with a 100% rollo
 Scope: tutorial links only. A production-track upgrade using the Google Play Update button was not tested because no eligible device with an older version was available. Galaxy Tab testing used a fresh installation after user removal. Pixel testing used the internal-testing release.
 
 See [release record for Code 42](store_listing/changelog/RELEASE_NOTES_v2.1.3_42.md) for publication details, evidence, and limitations. The earlier table remains a record of Code 40 checks.
+
+### AQUOS sense4 / SH-41A — Code 42 additional check (2026-10-30)
+
+Google Play internal tester, Android 12: Update button successfully upgraded 2.1.2 (40) to 2.1.3 (42), installer com.android.vending; lastUpdateTime 2026-10-30 08:41:57. Launch/tutorial, both YouTube links, five-video playlist playback, Japanese sample download, cover/body rendering, keyboard page navigation (2/8), search for “ひと息” (8 matches with yellow/red highlight), and Settings display passed. Menu includes Version. No settings were changed or app data cleared. This is an internal-testing upgrade, not a non-tester production upgrade. Touch gestures, landscape/spread rendering and a full regression were not tested. See the Code 42 release record for evidence.
