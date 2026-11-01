@@ -3,13 +3,13 @@
 Draft content for the "Main store listing" in Google Play Console.
 
 ## App name (Max 30 chars)
-MihirakiPDFViewer - Spread
+Mihiraki: Two-Page PDF Reader
 
 ## Short description (Max 80 chars)
 Optimal for Manga! A privacy-focused PDF viewer with spread and R2L support.
 
 ## Full description (Max 4000 chars)
-**MihirakiPDFViewer** is a modern, privacy-focused PDF reader designed specifically for an optimal reading experience of two-page spreads and right-to-left (R2L) documents, such as Japanese Manga and Light Novels.
+**Mihiraki: Two-Page PDF Reader** (MihirakiPDFViewer) is a modern, privacy-focused PDF reader designed specifically for an optimal reading experience of two-page spreads and right-to-left (R2L) documents, such as Japanese Manga and Light Novels.
 
 ### ✨ Key Features
 - 📖 **Seamless Two-Page Spreads**: View two pages side-by-side. Perfect for immersive art and manga layouts.

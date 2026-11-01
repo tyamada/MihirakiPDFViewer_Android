@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='utf-8'?>
 <resources>
-    <string name="app_name">MihirakiPDFViewer</string>
+    <string name="app_name">미히라키 PDF 뷰어</string>
     <string name="open_pdf">PDF 열기</string>
     <string name="open">열기</string>
     <string name="settings">설정</string>
