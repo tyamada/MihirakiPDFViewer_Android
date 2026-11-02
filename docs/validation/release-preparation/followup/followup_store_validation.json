@@ -1,0 +1,102 @@
+[
+  {
+    "file": "STORE_LISTING.de.md",
+    "title": "MihirakiPDFViewer: Doppelseite",
+    "lengths": [
+      30,
+      71,
+      2668
+    ],
+    "valid": true
+  },
+  {
+    "file": "STORE_LISTING.en.md",
+    "title": "Mihiraki: Two-Page PDF Reader",
+    "lengths": [
+      29,
+      76,
+      2988
+    ],
+    "valid": true
+  },
+  {
+    "file": "STORE_LISTING.es-ES.md",
+    "title": "MihirakiPDFViewer: Doble",
+    "lengths": [
+      24,
+      70,
+      732
+    ],
+    "valid": true
+  },
+  {
+    "file": "STORE_LISTING.fr.md",
+    "title": "MihirakiPDFViewer: Double page",
+    "lengths": [
+      30,
+      58,
+      2824
+    ],
+    "valid": true
+  },
+  {
+    "file": "STORE_LISTING.it.md",
+    "title": "MihirakiPDFViewer - Spread",
+    "lengths": [
+      26,
+      65,
+      3282
+    ],
+    "valid": true
+  },
+  {
+    "file": "STORE_LISTING.ja.md",
+    "title": "見開きPDFビューア - 見開き・右綴じ",
+    "lengths": [
+      20,
+      51,
+      1554
+    ],
+    "valid": true
+  },
+  {
+    "file": "STORE_LISTING.ko.md",
+    "title": "미히라키 PDF 뷰어",
+    "lengths": [
+      11,
+      62,
+      1522
+    ],
+    "valid": true
+  },
+  {
+    "file": "STORE_LISTING.pt-BR.md",
+    "title": "MihirakiPDFViewer: Duplas",
+    "lengths": [
+      25,
+      67,
+      711
+    ],
+    "valid": true
+  },
+  {
+    "file": "STORE_LISTING.zh-CN.md",
+    "title": "MihirakiPDFViewer - 双页阅读",
+    "lengths": [
+      24,
+      46,
+      921
+    ],
+    "valid": true
+  },
+  {
+    "file": "STORE_LISTING.zh-TW.md",
+    "title": "MihirakiPDFViewer - 雙頁閱讀",
+    "lengths": [
+      24,
+      37,
+      925
+    ],
+    "valid": true
+  }
+]

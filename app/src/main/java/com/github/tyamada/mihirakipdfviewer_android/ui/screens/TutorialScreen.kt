@@ -1,5 +1,6 @@
 package com.github.tyamada.mihirakipdfviewer_android.ui.screens
 
+import androidx.core.net.toUri
 import android.content.Intent
 import android.net.Uri
 import android.widget.Toast
@@ -283,7 +284,7 @@ fun TutorialScreen(
                         // YouTube Intro Video Button
                         Button(
                             onClick = {
-                                val intent = Intent(Intent.ACTION_VIEW, Uri.parse("https://www.youtube.com/watch?v=I5tp84abV5o"))
+                                val intent = Intent(Intent.ACTION_VIEW, "https://www.youtube.com/watch?v=I5tp84abV5o".toUri())
                                 try {
                                     context.startActivity(intent)
                                 } catch (e: Exception) {
@@ -303,7 +304,7 @@ fun TutorialScreen(
                         // Video Shorts Playlist Button
                         OutlinedButton(
                             onClick = {
-                                val intent = Intent(Intent.ACTION_VIEW, Uri.parse("https://www.youtube.com/watch?v=KhCn6C-lw7I&list=PLBBAqnUOZR-A"))
+                                val intent = Intent(Intent.ACTION_VIEW, "https://www.youtube.com/watch?v=KhCn6C-lw7I&list=PLBBAqnUOZR-A".toUri())
                                 try {
                                     context.startActivity(intent)
                                 } catch (e: Exception) {

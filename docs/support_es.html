@@ -12,7 +12,7 @@
         <p>Soporte y FAQ</p>
     </header>
     <nav>
-        <select onchange="location = this.value;">
+        <select aria-label="Language" onchange="location = this.value;">
             <option value="support_de.html">Deutsch</option>
             <option value="support.html">English</option>
             <option value="support_es.html" selected>Español</option>
@@ -30,11 +30,13 @@
         <a href="index_es.html">Inicio</a>
         <a href="support_es.html">Soporte</a>
         <a href="privacy_es.html">Política de privacidad</a>
-        <a href="https://github.com/tyamada/MihirakiPDFViewer_Android" target="_blank">GitHub</a>
+        <a href="https://github.com/tyamada/MihirakiPDFViewer_Android" target="_blank" rel="noopener noreferrer">GitHub</a>
     </nav>
     <section>
         <h2>Soporte y Preguntas Frecuentes (FAQ)</h2>
-        <p>Bienvenido al soporte de MihirakiPDFViewer. Si tiene preguntas o problemas, visite nuestro <a href="https://github.com/tyamada/MihirakiPDFViewer_Android" target="_blank">Repositorio de GitHub</a>.</p>
+        <p>Bienvenido al soporte de MihirakiPDFViewer. Si tiene preguntas o problemas, visite nuestro <a href="https://github.com/tyamada/MihirakiPDFViewer_Android" target="_blank" rel="noopener noreferrer">Repositorio de GitHub</a>.</p>
+        <p id="sample-order">Los PDF de ejemplo muestran primero el episodio más reciente. Puedes cambiar para empezar por el episodio 1. El orden se guarda y también se aplica al filtrar por idioma.</p>
+        <p id="network-features">Los PDF se procesan en tu dispositivo. Las descargas de ejemplos, los servicios en la nube, las comprobaciones de actualizaciones y las compras opcionales de apoyo utilizan conexiones de red.</p>
     </section>
     <footer>
         <p>&copy; 2026 Takuma Yamada. All rights reserved.</p>

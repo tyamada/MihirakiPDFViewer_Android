@@ -1,0 +1,65 @@
+[
+  {
+    "item": "language_value",
+    "crop": [
+      64,
+      274,
+      212,
+      304
+    ],
+    "foreground": [
+      29,
+      27,
+      32
+    ],
+    "background": [
+      249,
+      249,
+      255
+    ],
+    "ratio": 16.28,
+    "scope": "Representative solid glyph pixels, not a guarantee for all pixels or screens."
+  },
+  {
+    "item": "sample_title",
+    "crop": [
+      64,
+      530,
+      830,
+      556
+    ],
+    "foreground": [
+      29,
+      27,
+      32
+    ],
+    "background": [
+      230,
+      224,
+      233
+    ],
+    "ratio": 13.17,
+    "scope": "Representative solid glyph pixels, not a guarantee for all pixels or screens."
+  },
+  {
+    "item": "license_text",
+    "crop": [
+      64,
+      1518,
+      980,
+      1568
+    ],
+    "foreground": [
+      73,
+      69,
+      79
+    ],
+    "background": [
+      231,
+      224,
+      236
+    ],
+    "ratio": 7.24,
+    "scope": "Representative solid glyph pixels, not a guarantee for all pixels or screens."
+  }
+]

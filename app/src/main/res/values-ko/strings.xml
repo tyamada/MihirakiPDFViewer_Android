@@ -40,7 +40,7 @@
     <string name="reset">초기화</string>
     <string name="reset_message">앱 설정을 초기화합니다.</string>
     <string name="help_open"><b>PDF 열기:</b> 파일 선택기를 사용하여 기기 또는 클라우드 스토리지에서 PDF 파일을 선택하세요.</string>
-    <string name="help_sample_pdfs_desc"><b>샘플 PDF:</b> 앱에서 제공하는 샘플 PDF 파일을 다운로드하여 기능을 테스트해 보세요.</string>
+    <string name="help_sample_pdfs_desc"><b>샘플 PDF:</b> 앱에서 제공하는 샘플 PDF 파일을 다운로드하여 기능을 테스트해 보세요. 샘플 PDF는 기본적으로 최신 화부터 표시됩니다. 1화부터 또는 최신 화부터 표시하도록 전환할 수 있습니다. 선택한 순서는 저장되며 언어로 필터링할 때도 적용됩니다.</string>
     <string name="help_navigate"><b>페이지 탐색:</b> 스와이프하거나 슬라이더를 사용하여 페이지를 전환하거나 가장자리를 클릭하세요(마우스 탐색 모드).</string>
     <string name="help_outline"><b>PDF 목차:</b> 상단 툴바의 목차 아이콘을 탭하여 문서 북마크와 챕터를 확인하고 원하는 섹션으로 즉시 이동하세요.</string>
     <string name="help_menu"><b>메뉴:</b> 화면을 탭하여 도구 모음과 슬라이더의 표시 여부를 전환하세요.</string>
@@ -186,4 +186,15 @@
     <string name="tutorial_next">다음</string>
     <string name="tutorial_previous">이전</string>
     <string name="tutorial_video_guide_button">앱 소개 쇼츠(재생목록) 보기</string>
+
+    <!-- Sample PDF ordering -->
+    <string name="sample_pdf_order_label">표시 순서: %1$s</string>
+    <string name="sample_pdf_order_from_ch1">1화부터</string>
+    <string name="sample_pdf_order_from_latest">최신화부터</string>
+    <string name="memory_usage">메모리 사용량: %1$d MB / %2$d MB</string>
+    <string name="sample_pdf_license_notice">이 작품의 일부는 CC BY 4.0 라이선스로 제공됩니다. 저작자 표시: The Try-It Club / Komairo Hiyori.</string>
+    <string name="page_position_description">전체 %2$d페이지 중 %1$d페이지</string>
+    <string name="search_position_description">검색 결과 %2$d개 중 %1$d번째</string>
+    <string name="toggle_controls">조작 버튼 표시 또는 숨기기</string>
+    <string name="page_navigation_label">페이지 이동</string>
 </resources>

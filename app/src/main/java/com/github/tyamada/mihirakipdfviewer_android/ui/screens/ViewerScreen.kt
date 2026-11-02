@@ -58,6 +58,13 @@ import kotlin.math.abs
     openSamplePdfs: () -> Unit
 ) {
     val state by vm.state.collectAsState(); val context = LocalContext.current
+    val pagePositionDescription = stringResource(
+        R.string.page_position_description, state.currentPage + 1, state.pageCount
+    )
+    val pageNavigationDescription = stringResource(R.string.page_navigation_label)
+    val toggleControlsDescription = stringResource(R.string.toggle_controls)
+    val previousPageDescription = stringResource(R.string.previous_page)
+    val nextPageDescription = stringResource(R.string.next_page)
     val configuration = LocalConfiguration.current
     val isPortrait = configuration.orientation == android.content.res.Configuration.ORIENTATION_PORTRAIT
     LaunchedEffect(isPortrait) {
@@ -84,47 +91,62 @@ import kotlin.math.abs
         focusRequester.requestFocus()
     }
 
+    val useSeparateSearchRow = configuration.screenWidthDp < 480 || configuration.fontScale > 1.3f
+    val documentSearch: @Composable () -> Unit = {
+        OutlinedTextField(
+            value = state.searchQuery,
+            onValueChange = vm::search,
+            singleLine = true,
+            placeholder = { Text(stringResource(R.string.search), style = MaterialTheme.typography.bodySmall) },
+            leadingIcon = { Icon(Icons.Default.Search, null, modifier = Modifier.size(18.dp)) },
+            trailingIcon = {
+                if (state.searchResults.isNotEmpty()) {
+                    Row(
+                        modifier = Modifier.padding(end = 4.dp),
+                        verticalAlignment = Alignment.CenterVertically
+                    ) {
+                        val searchPositionDescription = stringResource(
+                            R.string.search_position_description,
+                            state.currentSearchIndex + 1, state.searchResults.size
+                        )
+                        Text(
+                            text = "${state.currentSearchIndex + 1}/${state.searchResults.size}",
+                            style = MaterialTheme.typography.labelSmall,
+                            modifier = Modifier.semantics {
+                                contentDescription = searchPositionDescription
+                            }
+                        )
+                        IconButton(onClick = { vm.navigateSearch(-1) }, modifier = Modifier.size(48.dp)) {
+                            Icon(Icons.Default.KeyboardArrowUp, contentDescription = stringResource(R.string.previous_search))
+                        }
+                        IconButton(onClick = { vm.navigateSearch(1) }, modifier = Modifier.size(48.dp)) {
+                            Icon(Icons.Default.KeyboardArrowDown, contentDescription = stringResource(R.string.next_search))
+                        }
+                    }
+                }
+            },
+            modifier = Modifier.fillMaxWidth().padding(vertical = 2.dp),
+            textStyle = MaterialTheme.typography.bodySmall,
+            colors = OutlinedTextFieldDefaults.colors(
+                focusedBorderColor = Color.Transparent,
+                unfocusedBorderColor = Color.Transparent,
+            )
+        )
+    }
+
     Scaffold(
         topBar = {
             if (state.chromeVisible) {
                 Column {
                     TopAppBar(
                         title = {
-                            if (state.source != null) {
-                                OutlinedTextField(
-                                    value = state.searchQuery,
-                                    onValueChange = vm::search,
-                                    singleLine = true,
-                                    placeholder = { Text(stringResource(R.string.search), style = MaterialTheme.typography.bodySmall) },
-                                    leadingIcon = { Icon(Icons.Default.Search, null, modifier = Modifier.size(18.dp)) },
-                                    trailingIcon = {
-                                        if (state.searchResults.isNotEmpty()) {
-                                            Row(verticalAlignment = Alignment.CenterVertically) {
-                                                Text(
-                                                    text = "${state.currentSearchIndex + 1}/${state.searchResults.size}",
-                                                    style = MaterialTheme.typography.labelSmall,
-                                                    modifier = Modifier.semantics {
-                                                        contentDescription = "Search result ${state.currentSearchIndex + 1} of ${state.searchResults.size}"
-                                                    }
-                                                )
-                                                IconButton(onClick = { vm.navigateSearch(-1) }, modifier = Modifier.size(48.dp)) {
-                                                    Icon(Icons.Default.KeyboardArrowUp, contentDescription = stringResource(R.string.previous_search))
-                                                }
-                                                IconButton(onClick = { vm.navigateSearch(1) }, modifier = Modifier.size(48.dp)) {
-                                                    Icon(Icons.Default.KeyboardArrowDown, contentDescription = stringResource(R.string.next_search))
-                                                }
-                                            }
-                                        }
-                                    },
-                                    modifier = Modifier.fillMaxWidth().padding(vertical = 2.dp),
-                                    textStyle = MaterialTheme.typography.bodySmall,
-                                    colors = OutlinedTextFieldDefaults.colors(
-                                        focusedBorderColor = Color.Transparent,
-                                        unfocusedBorderColor = Color.Transparent,
-                                    )
-                                )
+                            if (state.source != null && !useSeparateSearchRow) {
+                                documentSearch()
                             } else {
-                                Text(state.info.title.ifBlank { stringResource(R.string.app_name) })
+                                Text(
+                                    state.info.title.ifBlank { stringResource(R.string.app_name) },
+                                    maxLines = 1, overflow = androidx.compose.ui.text.style.TextOverflow.Ellipsis
+                                )
                             }
                         },
                         actions = {
@@ -138,7 +160,7 @@ import kotlin.math.abs
                                 ) {
                                     Icon(Icons.Default.SystemUpdate, contentDescription = null, modifier = Modifier.size(16.dp))
                                     Spacer(Modifier.width(4.dp))
-                                    Text("Update Now", style = MaterialTheme.typography.labelSmall)
+                                    Text(stringResource(R.string.update_now), style = MaterialTheme.typography.labelSmall)
                                 }
                             }
                             if (state.outline.isNotEmpty()) {
@@ -186,6 +208,11 @@ import kotlin.math.abs
                             }
                         },
                     )
+                    if (state.source != null && useSeparateSearchRow) {
+                        Box(Modifier.fillMaxWidth().padding(horizontal = 8.dp)) {
+                            documentSearch()
+                        }
+                    }
                 }
             }
         },
@@ -200,7 +227,7 @@ import kotlin.math.abs
                         modifier = Modifier
                             .padding(horizontal = 12.dp)
                             .semantics {
-                                contentDescription = "Page ${state.currentPage + 1} of ${state.pageCount}"
+                                contentDescription = pagePositionDescription
                             }
                     )
 
@@ -213,7 +240,10 @@ import kotlin.math.abs
                                 value = state.currentPage.toFloat(),
                                 onValueChange = { vm.render(it.toInt()) },
                                 valueRange = 0f..maxPage,
-                                modifier = Modifier.weight(1f),
+                                modifier = Modifier.weight(1f).semantics {
+                                    contentDescription = pageNavigationDescription
+                                    stateDescription = pagePositionDescription
+                                },
                             )
                             IconButton(onClick = { vm.movePage(1) }) {
                                 Icon(Icons.Default.ChevronRight, stringResource(R.string.next_page))
@@ -230,6 +260,16 @@ import kotlin.math.abs
          .padding(padding)
          .background(androidx.compose.ui.graphics.Color(0xFF202124))
          .testTag("viewer_content")
+         .semantics {
+             if (state.pageCount > 0) {
+                 contentDescription = "PDF: " + pagePositionDescription
+                 onClick(label = toggleControlsDescription) { vm.toggleChrome(); true }
+                 customActions = listOf(
+                     CustomAccessibilityAction(previousPageDescription) { vm.movePage(-1); true },
+                     CustomAccessibilityAction(nextPageDescription) { vm.movePage(1); true }
+                 )
+             }
+         }
          .focusRequester(focusRequester)
          .focusable()
          .onKeyEvent { event ->
@@ -291,7 +331,7 @@ import kotlin.math.abs
                 }
             }
         }
-        if ((state.source == null) && !state.loading) {
+        if ((state.source == null) && !state.loading && !state.chromeVisible) {
             Box(Modifier.align(Alignment.TopEnd).padding(top = 36.dp, end = 8.dp)) {
                 var showMenu by remember { mutableStateOf(false) }
                 IconButton(onClick = { showMenu = true }, modifier = Modifier.size(48.dp).testTag("btn_settings")) {
@@ -364,7 +404,12 @@ import kotlin.math.abs
                 }
             }
         }
-        state.errorKey?.let { key -> Snackbar(Modifier.align(Alignment.BottomCenter), action = { TextButton(onClick = vm::dismissError) { Text(stringResource(R.string.ok)) } }) { Text(errorText(key)) } }
+        state.errorKey?.let { key -> Snackbar(Modifier.align(Alignment.BottomCenter), action = {
+            TextButton(
+                onClick = vm::dismissError,
+                colors = ButtonDefaults.textButtonColors(contentColor = MaterialTheme.colorScheme.inversePrimary)
+            ) { Text(stringResource(R.string.ok)) }
+        }) { Text(errorText(key)) } }
 
         if (showSwipeHint && state.source != null) {
             val isR2L = state.settings.direction == ReadingDirection.R2L
@@ -493,7 +538,7 @@ private fun OutlineItemView(node: OutlineNode, onSelect: (Int) -> Unit) {
         TextButton(onClick = { onSelect(node.pageIndex) }, modifier = Modifier.fillMaxWidth()) {
             Row(modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.SpaceBetween) {
                 Text(node.title, modifier = Modifier.weight(1f))
-                Text("p.${node.pageIndex + 1}", style = MaterialTheme.typography.labelSmall)
+                Text((node.pageIndex + 1).toString(), style = MaterialTheme.typography.labelSmall)
             }
         }
         if (node.children.isNotEmpty()) {

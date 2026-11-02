@@ -1,0 +1,23 @@
+{
+  "received_date": "2026-11-02",
+  "versionName": "2.1.4",
+  "versionCode": 44,
+  "device": "Pixel 8a",
+  "android_version": "17",
+  "source": "user_report",
+  "results": {
+    "support_screen_scrolling": "passed",
+    "TalkBack": "passed",
+    "purchased_status": "passed"
+  },
+  "prior_results": {
+    "versionCode": 43,
+    "items_1_to_6": "passed",
+    "item_7": "failed_then_fixed_in_44"
+  },
+  "manual_items_1_to_9_combined": "passed",
+  "supplementary_item_10": "not_reported",
+  "source_aab_match": true,
+  "aab_sha256": "4f264c5de7937ca8b2241bb96ca4449ae2a128650424b50e9fa4340668577a66",
+  "agent_independently_observed_physical_device": false
+}

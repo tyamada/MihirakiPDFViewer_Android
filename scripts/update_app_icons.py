@@ -31,13 +31,13 @@ def main():
 
         resized = img.resize((size, size), Image.Resampling.LANCZOS)
 
-        # Save ic_launcher.png
-        launcher_path = folder_path / "ic_launcher.png"
+        # Save the artwork used by the adaptive icon XML.
+        launcher_path = folder_path / "launcher_art.png"
         resized.save(launcher_path, "PNG")
 
-        # Save ic_launcher_round.png
-        round_path = folder_path / "ic_launcher_round.png"
-        resized.save(round_path, "PNG")
+        # Both launcher shapes use the adaptive icon; do not recreate legacy duplicates.
+        for legacy_name in ("ic_launcher.png", "ic_launcher_round.png"):
+            (folder_path / legacy_name).unlink(missing_ok=True)
         print(f"Updated {folder_name} ({size}x{size})")
 
     # Update Play Store 512x512 icon

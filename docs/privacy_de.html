@@ -13,9 +13,9 @@
     </header>
 
     <nav>
-        <select onchange="location = this.value;">
+        <select aria-label="Language" onchange="location = this.value;">
             <option value="privacy_de.html" selected>Deutsch</option>
-            <option value="privacy_en.html">English</option>
+            <option value="privacy.html">English</option>
             <option value="privacy_es.html">Español</option>
             <option value="privacy_fil.html">Filipino</option>
             <option value="privacy_fr.html">Français</option>
@@ -29,7 +29,7 @@
             <option value="privacy_ko.html">한국어</option>
         </select>
         <a href="index_de.html">Startseite</a>
-        <a href="https://github.com/tyamada/MihirakiPDFViewer_Android" target="_blank">GitHub</a>
+        <a href="https://github.com/tyamada/MihirakiPDFViewer_Android" target="_blank" rel="noopener noreferrer">GitHub</a>
     </nav>
 
     <section>
@@ -37,10 +37,11 @@
         <p>Der Entwickler von MihirakiPDFViewer („die App“) respektiert Ihre Privatsphäre. Diese Richtlinie beschreibt, wie wir mit Informationen umgehen.</p>
 
         <h3>1. Datenerhebung und -verwendung</h3>
-        <p>Die App lädt Ihre PDF-Dateien **nicht** hoch und sammelt sie auch nicht. Die gesamte PDF-Verarbeitung erfolgt lokal auf Ihrem Gerät. Die App nutzt die Internetverbindung nur in den folgenden begrenzten Szenarien:</p>
+        <p>Die App lädt Ihre PDF-Dateien <strong>nicht</strong> hoch und sammelt sie auch nicht. Die gesamte PDF-Verarbeitung erfolgt lokal auf Ihrem Gerät. Die App nutzt die Internetverbindung nur in den folgenden begrenzten Szenarien:</p>
         <ul>
             <li>Wenn Sie explizit eine Datei aus Cloud-Speicherdiensten wie Google Drive öffnen.</li>
             <li>Wenn Sie einen In-App-Kauf (Trinkgeld zur Unterstützung) über das Google Play Billing-System tätigen.</li>
+        <li id="network-features">PDFs werden lokal auf Ihrem Gerät verarbeitet. Für Beispiel-Downloads, Cloud-Dienste, Update-Prüfungen und freiwillige Unterstützungskäufe werden Netzwerkverbindungen genutzt.</li>
         </ul>
 
         <h3>2. Berechtigungen</h3>

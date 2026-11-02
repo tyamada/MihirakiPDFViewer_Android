@@ -1,0 +1,14 @@
+{
+  "public_main": "975bfdbc2fe56d6f0749dfe1fe90138f9c8eba38",
+  "local_head": "42bf2952d02b81a98a35ce5f1f76e77a2cd5e532",
+  "local_only_remote_only": "5\t0",
+  "app_inputs_unchanged": true,
+  "app_input_files": 71,
+  "aab_sha256": "3c5d9330918e47959cd0a21eecf2a4978cd0802c63ab1b9195c9bcc98ee03d6d",
+  "rebuilt": false,
+  "push": false,
+  "production_submission": false,
+  "production_publication": false,
+  "manual_device_checks": "user_in_progress_results_not_received",
+  "remote_ci_for_current_changes": "not_run"
+}

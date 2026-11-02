@@ -1,0 +1,65 @@
+{
+  "checks": [
+    {
+      "log": "clean-ci-build-lint-unit.log",
+      "exit_code": 0
+    },
+    {
+      "log": "test_run_device_tests_and_save.py.txt",
+      "exit_code": 0
+    },
+    {
+      "log": "validate_localized_strings.py.txt",
+      "exit_code": 0
+    },
+    {
+      "log": "audit_english_residue.py.txt",
+      "exit_code": 0
+    },
+    {
+      "log": "validate_store_metadata.py.txt",
+      "exit_code": 0
+    },
+    {
+      "log": "validate_public_pages.py.txt",
+      "exit_code": 1
+    },
+    {
+      "log": "test_capture_store_screenshots.py.txt",
+      "exit_code": 0
+    },
+    {
+      "log": "test_review_store_screenshots.py.txt",
+      "exit_code": 0
+    },
+    {
+      "log": "ci-yaml.txt",
+      "exit_code": 0
+    }
+  ],
+  "unit_tests": [
+    {
+      "name": "com.github.tyamada.mihirakipdfviewer_android.SamplePdfSortTest",
+      "tests": 3,
+      "failures": 0,
+      "errors": 0
+    },
+    {
+      "name": "com.github.tyamada.mihirakipdfviewer_android.SamplePdfCatalogTest",
+      "tests": 1,
+      "failures": 0,
+      "errors": 0
+    },
+    {
+      "name": "com.github.tyamada.mihirakipdfviewer_android.DomainLogicTest",
+      "tests": 8,
+      "failures": 0,
+      "errors": 0
+    }
+  ],
+  "wrapper_sha256": "7a9ce74cff467ca1bf60a4fcd9f05185acceda4d0f382434d393e17864262c5d",
+  "wrapper_matches_previously_verified_official_checksum": true,
+  "signing_credentials_in_snapshot": false,
+  "source": "Git index export of intended commit",
+  "github_actions_execution": "not_run_no_push"
+}

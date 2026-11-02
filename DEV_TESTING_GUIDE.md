@@ -1,81 +1,68 @@
-# MihirakiPDFViewer 開発・実機テストガイド (Development & Device Testing Guide)
+# 開発・実機テストガイド
 
-本書は、Android Studio または Terminal（コマンドライン）から実機（またはエミュレータ）を接続し、各種テストの実行とログ・レポートの自動保存を行う方法をまとめたガイドです。
+## Play内部テスト版の更新確認
 
----
+Google Playから更新し、[実機確認手順](docs/DEVICE_TEST_CHECKLIST.ja.md)に従います。設定保持・購入権利・TalkBackは実機で手動確認してください。Debug版のインストールやアプリの削除は行いません。
 
-## 1. 事前準備 (Prerequisites)
-
-1. **実機またはエミュレータの接続確認**
-   - Android 端末の「開発者向けオプション」から **USBデバッグ** を有効にし、PCに接続してください。
-   - 端末が正常に認識されているか確認します：
-     ```bash
-     adb devices
-     ```
-     （例: `297231200298 device` または `R52MC0JK0WA device` が表示されること）
-
----
-
-## 2. 自動テスト・ログ保存スクリプトの実行
-
-プロジェクトには、実機テストの自動実行とログの `logs/` ディレクトリへの一括保存を行う自動化スクリプト [`run_device_tests_and_save.py`](file:///Users/tyamada22/src/MihirakiPDFViewer_Android/scripts/run_device_tests_and_save.py) が用意されています。
-
-### 実行方法 (Terminal)
-プロジェクトのルートディレクトリから以下のコマンドを実行してください：
-```bash
-python3 scripts/run_device_tests_and_save.py
-```
-
-### スクリプトの動作内容
-1. 接続されているADBデバイスを自動検出し、ターゲット端末を特定します。
-2. 端末のハードウェアプロパティ (`getprop`)、バッテリー状態、アプリのメモリ使用状況などを取得し、`logs/<timestamp>_<serial>/device_info.txt` に保存します。
-3. デバイスの logcat をクリア＆キャプチャし、`logs/<timestamp>_<serial>/logcat.log` に保存します。
-4. 単体テスト (`./gradlew app:testDebug`) を実行し、結果を `unit_test_result.log` に保存します。
-5. 結合テスト / インストルメンテーションテスト (`./gradlew app:connectedDebugAndroidTest`) を実行し、HTML/XMLレポートを `android_test_reports/` にコピーします。
-6. すべての実行結果をまとめた `summary_report.txt` を生成します。
-
----
-
-## 3. 保存先ディレクトリ構造
-
-生成されるすべてのログ・レポートはプロジェクト直下の `logs/` ディレクトリ（Git管理対象外）にタイムスタンプとデバイスシリアルごとに保存されます：
-
-```text
-logs/
-└── 20261016_133000_R52MC0JK0WA/
-    ├── summary_report.txt
-    ├── device_info.txt
-    ├── logcat.log
-    ├── unit_test_result.log
-    ├── connected_android_test_result.log
-    └── android_test_reports/
-        ├── index.html
-        └── ...
-```
-
----
-
-## 4. Android Studioからの実行方法
-
-- **単体テスト (Unit Test)**:
-  - `app/src/test/java/.../DomainLogicTest.kt` などを右クリックし、`Run 'DomainLogicTest'` を選択。
-- **インインストルメンテーションテスト (Instrumentation Test)**:
-  - `app/src/androidTest/java/.../` などのテストクラスやパッケージを右クリックし、接続した実機を指定して `Run tests` を選択。
-- **UI自動キャプチャ / スクリーンショットスクリプト**:
-  - Terminal から `python3 scripts/capture_store_screenshots.py --device Smartphone_6.3 --language ja` を実行してストアスクリーンショットを生成・検証できます。
-
-### ストア撮影の言語選択
-
-正規入口は `scripts/capture_store_screenshots.py`。対応順は `ja en ko zh_tw de fr es pt zh_cn vi fil ne id it`（ポルトガル語はブラジル）。言語未指定では14言語が対象となり、4端末で378枚です。選択した言語ごとの `testdata/tameshibu_episode1_2_<言語コード>.pdf` が必要です。
-追加3言語の実行手順は [追加撮影計画](store_listing/SCREENSHOT_ADDITIONAL_CAPTURE_PLAN.ja.md) を参照してください。
-
-### サンプルPDF追加時の検証
-
-`testdata/` を正本とし、カタログが参照する28件は `docs/sample/` と同じ内容に保ちます。単体テストでファイルの存在、言語ごとの2話、配布用コピーとのSHA-256一致を確認します。
+任意で、選択端末の実インストール版・モデル・Android版を収集できます。
 
 ```bash
-./gradlew assembleDebug assembleDebugAndroidTest testDebugUnitTest lintDebug
-python3 scripts/run_sample_pdf_smoke.py
+adb devices
+python3 scripts/run_device_tests_and_save.py --serial DEVICE_SERIAL
 ```
 
-端末テストは `Smartphone_6.3` AVDを使用し、28件をアプリ専用領域へ転送してハッシュを照合します。追加7言語の一覧・絞り込み、各2話の描画・目次・ページ移動、第1話の検索、イタリア語リソースを検証します。ネットワーク経由のダウンロードやストア画像の生成は行いません。ログは `.artifacts/sample-validation-v33/instrumentation.log` に保存されます。既存のAVDを使う場合は閲覧履歴・表示設定が更新されるため、検証専用AVDで実行してください。
+`DEVICE_SERIAL`は対象端末の識別子に置き換えます。複数端末があっても先頭を自動選択しません。既定の`collect`モードはアプリの起動・インストール・削除・データ消去・ログ消去・Gradle試験を行いません。収集成功は機能試験の合格ではありません。
+
+## 専用端末のDebug試験
+
+JDK 21、プロジェクトのGradle／Android Gradle Pluginに対応するAndroid Studio、Android SDK 37.0、Build Tools 36.0.0、platform-toolsとPython 3を用意します。`JAVA_HOME`と`ANDROID_HOME`（または`ANDROID_SDK_ROOT`）を環境に合わせて設定し、`adb`を利用可能にします。個人の端末パスはスクリプトに固定していません。
+
+```bash
+python3 scripts/run_device_tests_and_save.py --serial DEVICE_SERIAL --mode debug
+```
+
+専用テスト端末で実行します。Debug APKとテストAPKをビルドし、`install -r`で既存データを保持してインストールします。起動、単体・端末試験、Python画像検査を実行します。自動試験自体が設定やテスト用ファイルを変更するため、普段使うアプリのデータ保持検証には使いません。Playインストールが見つかった場合は置換を拒否します。
+
+データを削除して初回状態から試すときだけ、対象端末の識別子を再指定します。
+
+```bash
+python3 scripts/run_device_tests_and_save.py --serial DEVICE_SERIAL --mode debug --clean-install --confirm-clean DEVICE_SERIAL
+```
+
+署名が異なる既存アプリへの上書きに失敗しても、自動で削除することはありません。別の専用端末を使うか、対象と削除の必要性を確認してください。
+
+## 結果の読み方
+
+`logs/<日時>_<端末>/`に工程別ログ、`result.json`、`summary_report.txt`、実際に実行したJUnit結果を保存します。`--output`で新しい保存先を指定できます。既存フォルダは上書きしません。
+
+- `collect`成功：`collected_manual_checks_pending`。情報収集のみ。
+- Debug自動試験成功：`automated_checks_passed_manual_checks_pending`。手動確認は未実施。
+- 必須工程失敗：`failed`、終了コード1。未実施工程があれば`incomplete`。
+- 単体・端末試験はGradle成功だけでなく、実行されたJUnit件数・失敗・エラー・スキップも確認。古い結果は合格根拠にしません。
+
+`VERIFICATION_LIST.md`は自動更新しません。端末・OS・実インストール版・実施日時・実施項目・未実施項目を確認し、手動の結果も揃えて追記します。アプリ版番号はソースの推測値ではなく端末から取得します。
+
+ログはローカルに保存されます。自動送信はしません。共有前に端末識別子などの私的な情報を確認・除去してください。
+
+## PC上の検証
+
+```bash
+./gradlew assembleDebug lintDebug testDebugUnitTest
+python3 scripts/test_run_device_tests_and_save.py
+python3 scripts/validate_localized_strings.py
+python3 scripts/audit_english_residue.py
+python3 scripts/validate_store_metadata.py
+python3 scripts/validate_public_pages.py
+```
+
+GitHub Actionsは署名鍵なしのDebug検証と公開資料検査を行い、結果を保存します。ローカル成功とGitHub上の成功は区別します。
+
+## ストア撮影・サンプルPDF
+
+撮影入口は`scripts/capture_store_screenshots.py`。専用AVDを使い、手順は[追加撮影計画](store_listing/SCREENSHOT_ADDITIONAL_CAPTURE_PLAN.ja.md)を参照してください。撮影や端末試験はアプリ状態を変更します。
+
+サンプルは`testdata/`と配布先`docs/sample/`の対応を確認します。カタログの対象件数・言語・話数は実ファイルと試験結果に基づいて記録し、過去の28件／2話の記録を現在の証拠に流用しません。
+
+## コミット前の文書検査
+
+`scripts/update_docs_and_listings.py`は既定で読み取り検査のみを行い、過去の版番号を置換しません。現在版を自動更新したい箇所だけ、`<!-- current-app-version:start -->2.1.4 (44)<!-- current-app-version:end -->`で囲み、明示的に`--write`を指定します。履歴・過去の検証結果にはマーカーを付けません。ローカルのpre-commit hookから引数なしで呼ばれても、履歴を改変しません。回帰試験は`python3 scripts/test_update_docs_and_listings.py`です。

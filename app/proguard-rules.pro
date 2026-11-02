@@ -13,9 +13,5 @@
 
 # Kotlin / Coroutines / DataStore
 -keepattributes *Annotation*, Signature, InnerClasses, EnclosingMethod
--dontwarn kotlinx.coroutines.**
--dontwarn androidx.datastore.**
 
-# App Data Models, ViewModels & Repositories (R8 Full Mode safety)
--keep class com.github.tyamada.mihirakipdfviewer_android.data.** { *; }
--keep class com.github.tyamada.mihirakipdfviewer_android.viewmodel.** { *; }
+# App models use explicit Preferences fields, not reflective serialization; no blanket keep.

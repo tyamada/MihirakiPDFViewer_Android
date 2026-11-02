@@ -1,0 +1,329 @@
+[
+  {
+    "screen": "01-launch-a11y.json",
+    "counts": {
+      "NOT_RUN": 145,
+      "WARNING": 1
+    },
+    "findings": [
+      {
+        "check": "ClassNameCheck",
+        "type": "WARNING",
+        "message": "This item's type dx may not be resolvable by accessibility services. Consider using a type defined by the Android SDK.",
+        "text": "null",
+        "description": "null",
+        "bounds": "Rect(0, 0 - 1080, 1920)"
+      }
+    ]
+  },
+  {
+    "screen": "02-samples-latest-a11y.json",
+    "counts": {
+      "NOT_RUN": 371,
+      "WARNING": 3
+    },
+    "findings": [
+      {
+        "check": "TextContrastCheck",
+        "type": "WARNING",
+        "message": "The item's text contrast ratio is 4.34. This ratio is based on an estimated foreground color of #79747E and an estimated background color of #F9F9FF. Consider using colors that result in a contrast ratio greater than 4.50 for small text, or 3.00 for large text.",
+        "text": "English",
+        "description": "null",
+        "bounds": "Rect(32, 216 - 1048, 344)"
+      },
+      {
+        "check": "TextContrastCheck",
+        "type": "WARNING",
+        "message": "The item's text contrast ratio is 3.75. This ratio is based on an estimated foreground color of #747077 and an estimated background color of #E6E0E9. Consider using colors that result in a contrast ratio greater than 4.50 for small text, or 3.00 for large text.",
+        "text": "THE TRY-IT CLUB EPISODE 1 THE BREAK-TIME MAP",
+        "description": "null",
+        "bounds": "Rect(64, 1128 - 834, 1176)"
+      },
+      {
+        "check": "ClassNameCheck",
+        "type": "WARNING",
+        "message": "This item's type dx may not be resolvable by accessibility services. Consider using a type defined by the Android SDK.",
+        "text": "null",
+        "description": "null",
+        "bounds": "Rect(0, 0 - 1080, 1920)"
+      }
+    ]
+  },
+  {
+    "screen": "03-samples-first-a11y.json",
+    "counts": {
+      "NOT_RUN": 371,
+      "WARNING": 3
+    },
+    "findings": [
+      {
+        "check": "TextContrastCheck",
+        "type": "WARNING",
+        "message": "The item's text contrast ratio is 4.34. This ratio is based on an estimated foreground color of #79747E and an estimated background color of #F9F9FF. Consider using colors that result in a contrast ratio greater than 4.50 for small text, or 3.00 for large text.",
+        "text": "English",
+        "description": "null",
+        "bounds": "Rect(32, 216 - 1048, 344)"
+      },
+      {
+        "check": "TextContrastCheck",
+        "type": "WARNING",
+        "message": "The item's text contrast ratio is 3.75. This ratio is based on an estimated foreground color of #747077 and an estimated background color of #E6E0E9. Consider using colors that result in a contrast ratio greater than 4.50 for small text, or 3.00 for large text.",
+        "text": "THE TRY-IT CLUB EPISODE 1 THE BREAK-TIME MAP",
+        "description": "null",
+        "bounds": "Rect(64, 520 - 834, 568)"
+      },
+      {
+        "check": "ClassNameCheck",
+        "type": "WARNING",
+        "message": "This item's type dx may not be resolvable by accessibility services. Consider using a type defined by the Android SDK.",
+        "text": "null",
+        "description": "null",
+        "bounds": "Rect(0, 0 - 1080, 1920)"
+      }
+    ]
+  },
+  {
+    "screen": "04-sample-downloaded-a11y.json",
+    "counts": {
+      "NOT_RUN": 371,
+      "WARNING": 3
+    },
+    "findings": [
+      {
+        "check": "TextContrastCheck",
+        "type": "WARNING",
+        "message": "The item's text contrast ratio is 4.34. This ratio is based on an estimated foreground color of #79747E and an estimated background color of #F9F9FF. Consider using colors that result in a contrast ratio greater than 4.50 for small text, or 3.00 for large text.",
+        "text": "English",
+        "description": "null",
+        "bounds": "Rect(32, 216 - 1048, 344)"
+      },
+      {
+        "check": "TextContrastCheck",
+        "type": "WARNING",
+        "message": "The item's text contrast ratio is 3.75. This ratio is based on an estimated foreground color of #747077 and an estimated background color of #E6E0E9. Consider using colors that result in a contrast ratio greater than 4.50 for small text, or 3.00 for large text.",
+        "text": "THE TRY-IT CLUB EPISODE 1 THE BREAK-TIME MAP",
+        "description": "null",
+        "bounds": "Rect(64, 1128 - 834, 1176)"
+      },
+      {
+        "check": "ClassNameCheck",
+        "type": "WARNING",
+        "message": "This item's type dx may not be resolvable by accessibility services. Consider using a type defined by the Android SDK.",
+        "text": "null",
+        "description": "null",
+        "bounds": "Rect(0, 0 - 1080, 1920)"
+      }
+    ]
+  },
+  {
+    "screen": "05-sample-opened-a11y.json",
+    "counts": {
+      "NOT_RUN": 277,
+      "WARNING": 1
+    },
+    "findings": [
+      {
+        "check": "ClassNameCheck",
+        "type": "WARNING",
+        "message": "This item's type dx may not be resolvable by accessibility services. Consider using a type defined by the Android SDK.",
+        "text": "null",
+        "description": "null",
+        "bounds": "Rect(0, 0 - 1080, 1920)"
+      }
+    ]
+  },
+  {
+    "screen": "06-search-a11y.json",
+    "counts": {
+      "NOT_RUN": 302,
+      "WARNING": 1
+    },
+    "findings": [
+      {
+        "check": "ClassNameCheck",
+        "type": "WARNING",
+        "message": "This item's type dx may not be resolvable by accessibility services. Consider using a type defined by the Android SDK.",
+        "text": "null",
+        "description": "null",
+        "bounds": "Rect(0, 0 - 1080, 1920)"
+      }
+    ]
+  },
+  {
+    "screen": "07-outline-page2-a11y.json",
+    "counts": {
+      "NOT_RUN": 302,
+      "WARNING": 1
+    },
+    "findings": [
+      {
+        "check": "ClassNameCheck",
+        "type": "WARNING",
+        "message": "This item's type dx may not be resolvable by accessibility services. Consider using a type defined by the Android SDK.",
+        "text": "null",
+        "description": "null",
+        "bounds": "Rect(0, 0 - 1080, 1920)"
+      }
+    ]
+  },
+  {
+    "screen": "08-encrypted-rendered-a11y.json",
+    "counts": {
+      "NOT_RUN": 302,
+      "WARNING": 1
+    },
+    "findings": [
+      {
+        "check": "ClassNameCheck",
+        "type": "WARNING",
+        "message": "This item's type dx may not be resolvable by accessibility services. Consider using a type defined by the Android SDK.",
+        "text": "null",
+        "description": "null",
+        "bounds": "Rect(0, 0 - 1080, 1920)"
+      }
+    ]
+  },
+  {
+    "screen": "09-large-font-samples-a11y.json",
+    "counts": {
+      "NOT_RUN": 357,
+      "WARNING": 2
+    },
+    "findings": [
+      {
+        "check": "TextContrastCheck",
+        "type": "WARNING",
+        "message": "The item's text contrast ratio is 4.34. This ratio is based on an estimated foreground color of #79747E and an estimated background color of #F9F9FF. Consider using colors that result in a contrast ratio greater than 4.50 for small text, or 3.00 for large text.",
+        "text": "English",
+        "description": "null",
+        "bounds": "Rect(32, 216 - 1048, 392)"
+      },
+      {
+        "check": "ClassNameCheck",
+        "type": "WARNING",
+        "message": "This item's type dx may not be resolvable by accessibility services. Consider using a type defined by the Android SDK.",
+        "text": "null",
+        "description": "null",
+        "bounds": "Rect(0, 0 - 1080, 1920)"
+      }
+    ]
+  },
+  {
+    "screen": "10-keyboard-focus-a11y.json",
+    "counts": {
+      "NOT_RUN": 357,
+      "WARNING": 2
+    },
+    "findings": [
+      {
+        "check": "TextContrastCheck",
+        "type": "WARNING",
+        "message": "The item's text contrast ratio is 4.34. This ratio is based on an estimated foreground color of #79747E and an estimated background color of #F9F9FF. Consider using colors that result in a contrast ratio greater than 4.50 for small text, or 3.00 for large text.",
+        "text": "English",
+        "description": "null",
+        "bounds": "Rect(32, 216 - 1048, 392)"
+      },
+      {
+        "check": "ClassNameCheck",
+        "type": "WARNING",
+        "message": "This item's type dx may not be resolvable by accessibility services. Consider using a type defined by the Android SDK.",
+        "text": "null",
+        "description": "null",
+        "bounds": "Rect(0, 0 - 1080, 1920)"
+      }
+    ]
+  },
+  {
+    "screen": "11-talkback-a11y.json",
+    "counts": {
+      "NOT_RUN": 277,
+      "WARNING": 1
+    },
+    "findings": [
+      {
+        "check": "ClassNameCheck",
+        "type": "WARNING",
+        "message": "This item's type dx may not be resolvable by accessibility services. Consider using a type defined by the Android SDK.",
+        "text": "null",
+        "description": "null",
+        "bounds": "Rect(0, 0 - 1080, 1920)"
+      }
+    ]
+  },
+  {
+    "screen": "12-narrow-samples-a11y.json",
+    "counts": {
+      "NOT_RUN": 241,
+      "WARNING": 2
+    },
+    "findings": [
+      {
+        "check": "TextContrastCheck",
+        "type": "WARNING",
+        "message": "The item's text contrast ratio is 4.34. This ratio is based on an estimated foreground color of #79747E and an estimated background color of #F9F9FF. Consider using colors that result in a contrast ratio greater than 4.50 for small text, or 3.00 for large text.",
+        "text": "English",
+        "description": "null",
+        "bounds": "Rect(32, 216 - 688, 392)"
+      },
+      {
+        "check": "ClassNameCheck",
+        "type": "WARNING",
+        "message": "This item's type dx may not be resolvable by accessibility services. Consider using a type defined by the Android SDK.",
+        "text": "null",
+        "description": "null",
+        "bounds": "Rect(0, 0 - 720, 1280)"
+      }
+    ]
+  },
+  {
+    "screen": "13-narrow-reader-a11y.json",
+    "counts": {
+      "NOT_RUN": 306,
+      "WARNING": 1
+    },
+    "findings": [
+      {
+        "check": "ClassNameCheck",
+        "type": "WARNING",
+        "message": "This item's type dx may not be resolvable by accessibility services. Consider using a type defined by the Android SDK.",
+        "text": "null",
+        "description": "null",
+        "bounds": "Rect(0, 0 - 720, 1280)"
+      }
+    ]
+  },
+  {
+    "screen": "a-final-a11y.json",
+    "counts": {
+      "NOT_RUN": 277,
+      "WARNING": 1
+    },
+    "findings": [
+      {
+        "check": "ClassNameCheck",
+        "type": "WARNING",
+        "message": "This item's type dx may not be resolvable by accessibility services. Consider using a type defined by the Android SDK.",
+        "text": "null",
+        "description": "null",
+        "bounds": "Rect(0, 0 - 1080, 1920)"
+      }
+    ]
+  },
+  {
+    "screen": "b-final-a11y.json",
+    "counts": {
+      "NOT_RUN": 302,
+      "WARNING": 1
+    },
+    "findings": [
+      {
+        "check": "ClassNameCheck",
+        "type": "WARNING",
+        "message": "This item's type dx may not be resolvable by accessibility services. Consider using a type defined by the Android SDK.",
+        "text": "null",
+        "description": "null",
+        "bounds": "Rect(0, 0 - 1080, 1920)"
+      }
+    ]
+  }
+]

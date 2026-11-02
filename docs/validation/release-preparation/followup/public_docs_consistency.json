@@ -1,0 +1,67 @@
+[
+  {
+    "file": "index.html",
+    "sample_order": true,
+    "network_features": true
+  },
+  {
+    "file": "index_ja.html",
+    "sample_order": true,
+    "network_features": true
+  },
+  {
+    "file": "index_de.html",
+    "sample_order": true,
+    "network_features": true
+  },
+  {
+    "file": "index_es.html",
+    "sample_order": true,
+    "network_features": true
+  },
+  {
+    "file": "index_fil.html",
+    "sample_order": true,
+    "network_features": true
+  },
+  {
+    "file": "index_fr.html",
+    "sample_order": true,
+    "network_features": true
+  },
+  {
+    "file": "index_id.html",
+    "sample_order": true,
+    "network_features": true
+  },
+  {
+    "file": "index_ko.html",
+    "sample_order": true,
+    "network_features": true
+  },
+  {
+    "file": "index_ne.html",
+    "sample_order": true,
+    "network_features": true
+  },
+  {
+    "file": "index_pt.html",
+    "sample_order": true,
+    "network_features": true
+  },
+  {
+    "file": "index_vi.html",
+    "sample_order": true,
+    "network_features": true
+  },
+  {
+    "file": "index_zh-CN.html",
+    "sample_order": true,
+    "network_features": true
+  },
+  {
+    "file": "index_zh-TW.html",
+    "sample_order": true,
+    "network_features": true
+  }
+]

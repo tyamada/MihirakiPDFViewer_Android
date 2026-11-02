@@ -76,7 +76,7 @@
     <string name="pdf_version">Versione PDF</string>
     <string name="reset_message">Ripristina le impostazioni dell’app.</string>
     <string name="help_open">Apri PDF: seleziona un PDF dal dispositivo o dal cloud.</string>
-    <string name="help_sample_pdfs_desc">PDF di esempio: scarica gli esempi per provare le funzioni.</string>
+    <string name="help_sample_pdfs_desc">PDF di esempio: scarica gli esempi per provare le funzioni. I PDF di esempio mostrano prima l’episodio più recente. Puoi scegliere di iniziare dall’episodio 1. L’ordine viene salvato e si applica anche al filtro per lingua.</string>
     <string name="help_navigate">Navigazione: scorri, usa il cursore o fai clic sui bordi in modalità mouse.</string>
     <string name="help_outline">Indice: tocca l’icona in alto per aprire segnalibri e capitoli del PDF.</string>
     <string name="help_menu">Menu: tocca la pagina per mostrare o nascondere barra degli strumenti e cursore.</string>
@@ -189,4 +189,15 @@
     <string name="tutorial_step4_title">4. Pronto a leggere</string>
     <string name="tutorial_step4_desc">Guarda il video o inizia subito. Puoi nascondere il tutorial all’avvio.</string>
     <string name="tutorial_video_guide_button">Guarda video brevi (playlist)</string>
+
+    <!-- Sample PDF ordering -->
+    <string name="sample_pdf_order_label">Ordine: %1$s</string>
+    <string name="sample_pdf_order_from_ch1">Dal capitolo 1</string>
+    <string name="sample_pdf_order_from_latest">Dal capitolo più recente</string>
+    <string name="memory_usage">Memoria utilizzata: %1$d MB / %2$d MB</string>
+    <string name="sample_pdf_license_notice">Parti di questa opera sono fornite con licenza CC BY 4.0. Attribuzione: The Try-It Club di Komairo Hiyori.</string>
+    <string name="page_position_description">Pagina %1$d di %2$d</string>
+    <string name="search_position_description">Risultato di ricerca %1$d di %2$d</string>
+    <string name="toggle_controls">Mostra o nascondi i comandi</string>
+    <string name="page_navigation_label">Navigazione tra le pagine</string>
 </resources>

@@ -13,9 +13,9 @@
     </header>
 
     <nav>
-        <select onchange="location = this.value;">
+        <select aria-label="Language" onchange="location = this.value;">
             <option value="privacy_de.html">Deutsch</option>
-            <option value="privacy_en.html">English</option>
+            <option value="privacy.html">English</option>
             <option value="privacy_es.html">Español</option>
             <option value="privacy_fil.html">Filipino</option>
             <option value="privacy_fr.html">Français</option>
@@ -29,7 +29,7 @@
             <option value="privacy_ko.html">한국어</option>
         </select>
         <a href="index_zh-TW.html">首頁</a>
-        <a href="https://github.com/tyamada/MihirakiPDFViewer_Android" target="_blank">GitHub</a>
+        <a href="https://github.com/tyamada/MihirakiPDFViewer_Android" target="_blank" rel="noopener noreferrer">GitHub</a>
     </nav>
 
     <section>
@@ -37,10 +37,11 @@
         <p>MihirakiPDFViewer（「本應用程式」）的開發者尊重您的隱私。本政策概述了我們處理資訊的方式。</p>
 
         <h3>1. 資訊收集與使用</h3>
-        <p>本應用程式**不會**上傳或收集您的 PDF 檔案。所有 PDF 處理均在您的裝置上本地執行。本應用程式僅在以下有限情況下使用網路連線：</p>
+        <p>本應用程式<strong>不會</strong>上傳或收集您的 PDF 檔案。所有 PDF 處理均在您的裝置上本地執行。本應用程式僅在以下有限情況下使用網路連線：</p>
         <ul>
             <li>當您明確從 Google Drive 等雲端儲存服務開啟檔案時。</li>
             <li>當您透過 Google Play 帳單系統進行應用程式內購買（小費）時。</li>
+        <li id="network-features">PDF 在您的裝置上處理。下載範例、使用雲端服務、檢查更新和選用的支持購買會使用網路連線。</li>
         </ul>
 
         <h3>2. 權限</h3>

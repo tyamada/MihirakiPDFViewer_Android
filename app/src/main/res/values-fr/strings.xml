@@ -75,7 +75,7 @@
     <string name="options">Options</string>
     <string name="reset_message">Réinitialiser les paramètres de l’application.</string>
     <string name="help_open">Ouvrir un PDF : sélectionnez un PDF sur l’appareil ou dans le cloud.</string>
-    <string name="help_sample_pdfs_desc">Exemples de PDF : téléchargez des exemples pour essayer les fonctionnalités.</string>
+    <string name="help_sample_pdfs_desc">Exemples de PDF : téléchargez des exemples pour essayer les fonctionnalités. Les PDF exemples affichent le dernier épisode en premier. Vous pouvez commencer par le premier épisode. Cet ordre est enregistré et reste appliqué lors du filtrage par langue.</string>
     <string name="help_navigate">Navigation : balayez, utilisez le curseur ou cliquez sur les bords en mode souris.</string>
     <string name="help_outline">Sommaire : touchez l’icône en haut pour accéder aux signets et aux chapitres du PDF.</string>
     <string name="help_menu">Menu : touchez la page pour afficher ou masquer la barre d’outils et le curseur.</string>
@@ -189,4 +189,15 @@
     <string name="tutorial_step4_title">4. Prêt à lire</string>
     <string name="tutorial_step4_desc">Regardez la vidéo ou commencez directement. Vous pouvez masquer le tutoriel au démarrage.</string>
     <string name="tutorial_video_guide_button">Voir les vidéos courtes (playlist)</string>
+
+    <!-- Sample PDF ordering -->
+    <string name="sample_pdf_order_label">Ordre : %1$s</string>
+    <string name="sample_pdf_order_from_ch1">Depuis le chapitre 1</string>
+    <string name="sample_pdf_order_from_latest">Depuis le dernier chapitre</string>
+    <string name="memory_usage">Mémoire utilisée : %1$d Mo / %2$d Mo</string>
+    <string name="sample_pdf_license_notice">Certaines parties de cette œuvre sont proposées sous licence CC BY 4.0. Attribution : The Try-It Club de Komairo Hiyori.</string>
+    <string name="page_position_description">Page %1$d sur %2$d</string>
+    <string name="search_position_description">Résultat de recherche %1$d sur %2$d</string>
+    <string name="toggle_controls">Afficher ou masquer les commandes</string>
+    <string name="page_navigation_label">Navigation entre les pages</string>
 </resources>

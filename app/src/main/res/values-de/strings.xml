@@ -75,7 +75,7 @@
     <string name="pdf_version">PDF-Version</string>
     <string name="reset_message">App-Einstellungen zurücksetzen.</string>
     <string name="help_open">PDF öffnen: Wählen Sie eine PDF auf dem Gerät oder im Cloud-Speicher aus.</string>
-    <string name="help_sample_pdfs_desc">Beispiel-PDFs: Laden Sie Beispiele herunter, um die Funktionen auszuprobieren.</string>
+    <string name="help_sample_pdfs_desc">Beispiel-PDFs: Laden Sie Beispiele herunter, um die Funktionen auszuprobieren. Beispiel-PDFs werden zunächst mit der neuesten Folge angezeigt. Sie können zur ersten Folge wechseln. Die Reihenfolge wird gespeichert und gilt auch beim Filtern nach Sprache.</string>
     <string name="help_navigate">Seitenwechsel: Wischen Sie, verwenden Sie den Regler oder klicken Sie im Mausmodus auf den linken oder rechten Rand.</string>
     <string name="help_outline">Inhaltsverzeichnis: Tippen Sie oben auf das Symbol, um PDF-Lesezeichen und Kapitel zu öffnen.</string>
     <string name="help_menu">Menü: Tippen Sie auf die Seite, um Symbolleiste und Regler ein- oder auszublenden.</string>
@@ -189,4 +189,15 @@
     <string name="tutorial_step4_title">4. Bereit zum Lesen</string>
     <string name="tutorial_step4_desc">Sehen Sie das Einführungsvideo oder starten Sie sofort. Die Einführung lässt sich beim Start ausblenden.</string>
     <string name="tutorial_video_guide_button">Einführungs-Shorts ansehen (Playlist)</string>
+
+    <!-- Sample PDF ordering -->
+    <string name="sample_pdf_order_label">Reihenfolge: %1$s</string>
+    <string name="sample_pdf_order_from_ch1">Ab Kapitel 1</string>
+    <string name="sample_pdf_order_from_latest">Ab dem neuesten Kapitel</string>
+    <string name="memory_usage">Speichernutzung: %1$d MB / %2$d MB</string>
+    <string name="sample_pdf_license_notice">Teile dieses Werks stehen unter der Lizenz CC BY 4.0. Namensnennung: The Try-It Club von Komairo Hiyori.</string>
+    <string name="page_position_description">Seite %1$d von %2$d</string>
+    <string name="search_position_description">Suchergebnis %1$d von %2$d</string>
+    <string name="toggle_controls">Bedienelemente ein- oder ausblenden</string>
+    <string name="page_navigation_label">Seitennavigation</string>
 </resources>

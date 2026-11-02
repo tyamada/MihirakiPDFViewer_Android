@@ -33,3 +33,5 @@ Questa app è senza pubblicità e completamente gratuita. Tutte le funzionalità
 
 ---
 *Nota: Le funzioni di ricerca non sono disponibili per i PDF scansionati composti solo da immagini senza livello di testo.*
+
+I PDF di esempio mostrano prima l’episodio più recente. Puoi scegliere di iniziare dall’episodio 1. L’ordine viene salvato e si applica anche al filtro per lingua.

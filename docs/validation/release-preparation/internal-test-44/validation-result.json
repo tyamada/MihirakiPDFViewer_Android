@@ -1,0 +1,96 @@
+{
+  "versionName": "2.1.4",
+  "versionCode": 44,
+  "aab_sha256": "4f264c5de7937ca8b2241bb96ca4449ae2a128650424b50e9fa4340668577a66",
+  "aab_bytes": 18191412,
+  "apk_sha256": "1221690c05b23f7653a33cc1fef569cabbf11f6b9ebfc3fa4d16788eeb0a43a9",
+  "upload_certificate_sha256": "d13ec6f737040f4bce0c7c42b18ced78c671585e4d3ee3d0ac206c9860ff2c07",
+  "build": "PASS",
+  "bundle_validate": "PASS",
+  "signature_entries": 300,
+  "source_inputs_verified": 71,
+  "unit_tests": [
+    {
+      "class": "com.github.tyamada.mihirakipdfviewer_android.SamplePdfSortTest",
+      "tests": 3,
+      "failures": 0,
+      "errors": 0
+    },
+    {
+      "class": "com.github.tyamada.mihirakipdfviewer_android.SamplePdfCatalogTest",
+      "tests": 1,
+      "failures": 0,
+      "errors": 0
+    },
+    {
+      "class": "com.github.tyamada.mihirakipdfviewer_android.DomainLogicTest",
+      "tests": 8,
+      "failures": 0,
+      "errors": 0
+    }
+  ],
+  "release_core_tests": {
+    "tests": 4,
+    "failures": 0,
+    "evidence": "release-functional-tests.log",
+    "note": "Initial 5-test run: four core tests passed; the added Support test failed because it stopped swiping early."
+  },
+  "release_support_test": {
+    "tests": 1,
+    "failures": 0,
+    "evidence": "release-support-test-results.xml",
+    "method": "real swipes to bottom and top; fontScale=2; narrow width; no app change after correcting harness"
+  },
+  "release_upgrade": {
+    "emulator": "ReleaseStable Android 15",
+    "from": 43,
+    "to": 44,
+    "uninstall": false
+  },
+  "lint": {
+    "debug": {
+      "Warning": 10
+    },
+    "release": {
+      "Warning": 10
+    }
+  },
+  "accessibility": {
+    "errors": 0,
+    "warnings": 27,
+    "note": "Automatic hierarchy checks; does not replace physical TalkBack and enlarged-font retest."
+  },
+  "content_checks": [
+    {
+      "check": "validate_localized_strings.py",
+      "exit_code": 0
+    },
+    {
+      "check": "audit_english_residue.py",
+      "exit_code": 0
+    },
+    {
+      "check": "validate_store_metadata.py",
+      "exit_code": 0
+    },
+    {
+      "check": "validate_public_pages.py",
+      "exit_code": 0
+    },
+    {
+      "check": "test_run_device_tests_and_save.py",
+      "exit_code": 0
+    }
+  ],
+  "manual_pixel8a_retest": "passed_user_report",
+  "r8_mapping_included": true,
+  "subsequent_manual_retest": {
+    "date": "2026-11-02",
+    "source": "user_report",
+    "scrolling": "passed",
+    "TalkBack": "passed",
+    "purchased_status": "passed",
+    "record": "../readiness-44/manual-retest44.json"
+  },
+  "manual_pixel8a_retest_at_distribution": "pending"
+}

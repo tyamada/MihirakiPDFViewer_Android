@@ -31,3 +31,5 @@ Diese App ist werbefrei und kostenlos. Alle Kernfunktionen wie PDF-Anzeige, Dopp
 
 ---
 *Hinweis: Die Suchfunktion ist bei reinen Scan-PDFs ohne Textebene nicht verfügbar.*
+
+Beispiel-PDFs werden zunächst mit der neuesten Folge angezeigt. Sie können zur ersten Folge wechseln. Die Reihenfolge wird gespeichert und gilt auch beim Filtern nach Sprache.

@@ -31,3 +31,5 @@ Cette application est sans publicité et entièrement gratuite. Toutes les fonct
 
 ---
 *Remarque : La fonction de recherche n'est pas disponible pour les PDF scannés composés uniquement d'images sans couche texte.*
+
+Les PDF exemples affichent le dernier épisode en premier. Vous pouvez commencer par le premier épisode. Cet ordre est enregistré et reste appliqué lors du filtrage par langue.

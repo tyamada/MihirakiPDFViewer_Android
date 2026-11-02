@@ -9,6 +9,8 @@ MihirakiPDFViewer: Doble
 Visor PDF privado para R2L y vista de dos páginas. Soporte Chromebook.
 
 ## Full description (Max 4000 chars)
+
+Los PDF de ejemplo muestran primero el episodio más reciente. Puedes cambiar para empezar por el episodio 1. El orden se guarda y también se aplica al filtrar por idioma.
 **MihirakiPDFViewer** es un visor de PDF moderno centrado en la privacidad, diseñado para la lectura cómoda de documentos de derecha a izquierda (R2L) y en vista de dos páginas.
 
 ### ✨ Key Features

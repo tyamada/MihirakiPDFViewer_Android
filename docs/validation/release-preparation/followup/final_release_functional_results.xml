@@ -1,0 +1,14 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<testsuites tests="4" failures="0" errors="0" skipped="0" time="91.048" timestamp="2026-11-02T05:34:17" hostname="localhost">
+  <testsuite name="com.github.tyamada.viewerreleasevalidation.ReleaseCandidateTest" tests="4" failures="0" errors="0" skipped="0" time="90.319" timestamp="2026-11-02T05:34:17" hostname="localhost">
+    <properties>
+      <property name="device" value="ReleaseStable(AVD) - 15" />
+      <property name="flavor" value="" />
+      <property name="project" value=":app" />
+    </properties>
+    <testcase name="a_launchSortDownloadAndPersist" classname="com.github.tyamada.viewerreleasevalidation.ReleaseCandidateTest" time="25.838" />
+    <testcase name="b_pdfPasswordSearchAndOutline" classname="com.github.tyamada.viewerreleasevalidation.ReleaseCandidateTest" time="38.742" />
+    <testcase name="c_largeFontAndKeyboard" classname="com.github.tyamada.viewerreleasevalidation.ReleaseCandidateTest" time="6.74" />
+    <testcase name="e_narrowPhoneLargeFont" classname="com.github.tyamada.viewerreleasevalidation.ReleaseCandidateTest" time="18.999" />
+  </testsuite>
+</testsuites>

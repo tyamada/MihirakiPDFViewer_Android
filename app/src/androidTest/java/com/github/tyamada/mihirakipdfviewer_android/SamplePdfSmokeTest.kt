@@ -35,7 +35,7 @@ class SamplePdfSmokeTest {
             val episodes = SamplePdfCatalog.items.filter { it.languageCode == language }
             compose.waitUntil(10_000) { compose.onAllNodesWithText(episodes[0].title).fetchSemanticsNodes().isNotEmpty() }
             episodes.forEach { compose.onNodeWithText(it.title).assertExists() }
-            compose.onAllNodesWithTag("btn_download").assertCountEquals(2)
+            compose.onAllNodesWithTag("btn_download").assertCountEquals(episodes.size)
         }
     }
 

@@ -26,6 +26,9 @@ jobs:
         java-version: '21'
         cache: 'gradle'
 
+    - name: Install required Android SDK packages
+      run: sdkmanager "platforms;android-37.0" "build-tools;36.0.0"
+
     - name: Validate Gradle Wrapper
       uses: gradle/wrapper-validation-action@v2
 
@@ -40,3 +43,26 @@ jobs:
 
     - name: Run unit tests
       run: ./gradlew testDebugUnitTest
+
+    - name: Validate device runner and public content
+      run: |
+        mkdir -p .artifacts/ci
+        python3 scripts/test_run_device_tests_and_save.py
+        python3 scripts/test_update_docs_and_listings.py
+        python3 scripts/update_docs_and_listings.py
+        python3 scripts/validate_localized_strings.py > .artifacts/ci/localized-strings.json
+        python3 scripts/audit_english_residue.py > .artifacts/ci/english-residue.json
+        python3 scripts/validate_store_metadata.py > .artifacts/ci/store-metadata.json
+        python3 scripts/validate_public_pages.py > .artifacts/ci/public-pages.json
+
+    - name: Save validation reports
+      if: always()
+      uses: actions/upload-artifact@v4
+      with:
+        name: validation-reports
+        path: |
+          app/build/reports/lint-results-debug.*
+          app/build/reports/tests/testDebugUnitTest/
+          app/build/test-results/testDebugUnitTest/
+          .artifacts/ci/
+        if-no-files-found: warn

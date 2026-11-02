@@ -1,5 +1,7 @@
 package com.github.tyamada.mihirakipdfviewer_android.ui.screens
 
+import androidx.core.graphics.toColorInt
+import androidx.core.net.toUri
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
@@ -19,6 +21,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.res.pluralStringResource
 import androidx.compose.ui.unit.dp
 import android.content.ClipData
 import android.content.Context
@@ -160,7 +163,7 @@ import com.github.tyamada.mihirakipdfviewer_android.viewmodel.ViewerViewModel
                                         },
                                         update = { view ->
                                             view.text = HtmlCompat.fromHtml(htmlText, HtmlCompat.FROM_HTML_MODE_COMPACT)
-                                            view.setTextColor(android.graphics.Color.parseColor("#1C1B1F"))
+                                            view.setTextColor("#1C1B1F".toColorInt())
                                         },
                                         modifier = Modifier.fillMaxWidth()
                                     )
@@ -355,13 +358,13 @@ data class HelpCategorySpec(val title: String, val items: List<Int>)
         }
     ) { p ->
         Column(Modifier.padding(p).padding(16.dp).fillMaxSize()) {
-            Text("Memory Usage: ${usedMemory}MB / ${maxMemory}MB", style = MaterialTheme.typography.bodyLarge)
+            Text(stringResource(R.string.memory_usage, usedMemory, maxMemory), style = MaterialTheme.typography.bodyLarge)
             Spacer(Modifier.height(12.dp))
             Row(Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.spacedBy(8.dp)) {
                 Button(onClick = { AppLogger.clear() }) { Text(stringResource(R.string.testing_diagnostic_logs)) }
             }
             Spacer(Modifier.height(12.dp))
-            Text("Application Logs (${logs.size}):", style = MaterialTheme.typography.titleMedium)
+            Text(pluralStringResource(R.plurals.saved_logs_title, logs.size, logs.size), style = MaterialTheme.typography.titleMedium)
             Spacer(Modifier.height(8.dp))
             Box(
                 Modifier
@@ -581,7 +584,7 @@ data class HelpCategorySpec(val title: String, val items: List<Int>)
 
             Button(
                 onClick = {
-                    val intent = Intent(Intent.ACTION_VIEW, Uri.parse(issueUrl))
+                    val intent = Intent(Intent.ACTION_VIEW, issueUrl.toUri())
                     context.startActivity(intent)
                 },
                 modifier = Modifier.fillMaxWidth()
@@ -673,7 +676,7 @@ data class HelpCategorySpec(val title: String, val items: List<Int>)
             }
 
             Spacer(Modifier.height(12.dp))
-            Text(stringResource(R.string.saved_logs_title, logs.size), style = MaterialTheme.typography.titleMedium)
+            Text(pluralStringResource(R.plurals.saved_logs_title, logs.size, logs.size), style = MaterialTheme.typography.titleMedium)
             Spacer(Modifier.height(8.dp))
 
             Box(
@@ -720,7 +723,7 @@ data class HelpCategorySpec(val title: String, val items: List<Int>)
                 },
                 update = { view ->
                     view.text = HtmlCompat.fromHtml(htmlText, HtmlCompat.FROM_HTML_MODE_COMPACT)
-                    view.setTextColor(android.graphics.Color.parseColor("#1C1B1F"))
+                    view.setTextColor("#1C1B1F".toColorInt())
                 },
                 modifier = Modifier.fillMaxWidth()
             )
