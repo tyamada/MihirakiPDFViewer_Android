@@ -8,10 +8,13 @@ import com.github.tyamada.mihirakipdfviewer_android.data.SamplePdfCatalog
 import com.github.tyamada.mihirakipdfviewer_android.data.SamplePdfItem
 import com.github.tyamada.mihirakipdfviewer_android.data.SamplePdfItemState
 import com.github.tyamada.mihirakipdfviewer_android.data.SamplePdfRepository
+import com.github.tyamada.mihirakipdfviewer_android.data.SamplePdfSortOrder
+import com.github.tyamada.mihirakipdfviewer_android.data.SettingsRepository
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.combine
+import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.launch
 import java.util.Locale
@@ -20,25 +23,37 @@ data class SamplePdfUiState(
     val items: List<SamplePdfItemState> = emptyList(),
     val selectedLanguage: String = "en",
     val availableLanguages: List<String> = emptyList(),
+    val sortOrder: SamplePdfSortOrder = SamplePdfSortOrder.DESC,
     val cellularDialogItem: SamplePdfItem? = null
 )
 
 class SamplePdfViewModel(application: Application) : AndroidViewModel(application) {
     private val repository = SamplePdfRepository(application)
+    private val settingsRepository = SettingsRepository(application)
 
     private val _downloadStates = MutableStateFlow<Map<String, DownloadState>>(emptyMap())
     private val _selectedLanguage = MutableStateFlow(getDefaultLanguage())
+    private val _sortOrder = MutableStateFlow(SamplePdfSortOrder.DESC)
     private val _cellularDialogItem = MutableStateFlow<SamplePdfItem?>(null)
     private val _refreshTrigger = MutableStateFlow(0)
+
+    init {
+        viewModelScope.launch {
+            settingsRepository.settings.collect { settings ->
+                _sortOrder.value = settings.samplePdfSortOrder
+            }
+        }
+    }
 
     val uiState: StateFlow<SamplePdfUiState> = combine(
         _downloadStates,
         _selectedLanguage,
+        _sortOrder,
         _cellularDialogItem,
         _refreshTrigger
-    ) { states, lang, dialogItem, _ ->
+    ) { states, lang, sortOrder, dialogItem, _ ->
         val allLangs = SamplePdfCatalog.items.map { it.languageCode }.distinct()
-        val filteredItems = SamplePdfCatalog.items.map { item ->
+        val mappedItems = SamplePdfCatalog.items.map { item ->
             val dlState = states[item.id] ?: DownloadState.Idle
             val isDownloaded = repository.isDownloaded(item.fileName)
             val isDownloading = dlState is DownloadState.Downloading
@@ -56,10 +71,20 @@ class SamplePdfViewModel(application: Application) : AndroidViewModel(applicatio
             )
         }.filter { lang == "ALL" || it.item.languageCode == lang }
 
+        val sortedItems = mappedItems.sortedWith(
+            compareBy<SamplePdfItemState> { itemState ->
+                val epNum = itemState.item.id.removePrefix("ep").substringBefore("_").toIntOrNull() ?: 1
+                if (sortOrder == SamplePdfSortOrder.ASC) epNum else -epNum
+            }.thenBy { itemState ->
+                itemState.item.languageDisplayName
+            }
+        )
+
         SamplePdfUiState(
-            items = filteredItems,
+            items = sortedItems,
             selectedLanguage = lang,
             availableLanguages = listOf("ALL") + allLangs,
+            sortOrder = sortOrder,
             cellularDialogItem = dialogItem
         )
     }.stateIn(
@@ -76,6 +101,19 @@ class SamplePdfViewModel(application: Application) : AndroidViewModel(applicatio
 
     fun setLanguage(lang: String) {
         _selectedLanguage.value = lang
+    }
+
+    fun toggleSortOrder() {
+        val newOrder = if (_sortOrder.value == SamplePdfSortOrder.ASC) {
+            SamplePdfSortOrder.DESC
+        } else {
+            SamplePdfSortOrder.ASC
+        }
+        _sortOrder.value = newOrder
+        viewModelScope.launch {
+            val currentSettings = settingsRepository.settings.first()
+            settingsRepository.save(currentSettings.copy(samplePdfSortOrder = newOrder))
+        }
     }
 
     fun requestDownload(item: SamplePdfItem) {

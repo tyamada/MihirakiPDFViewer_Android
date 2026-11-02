@@ -1,0 +1,6 @@
+Command: :app:assembleDebug :app:lintDebug --offline
+Exit code: 0
+BUILD SUCCESSFUL
+Lint errors: 0
+Lint warnings: 61
+Lint hints: 0

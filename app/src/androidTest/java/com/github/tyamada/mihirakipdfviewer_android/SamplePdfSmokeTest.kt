@@ -39,6 +39,22 @@ class SamplePdfSmokeTest {
         }
     }
 
+    @Test fun toggleSamplePdfOrderSwitching() {
+        compose.waitUntil(60_000) { !compose.activity.viewer.state.value.loading }
+        main { if (!compose.activity.viewer.state.value.chromeVisible) compose.activity.viewer.toggleChrome() }
+        compose.onNodeWithTag("btn_top_sample_pdfs").performClick()
+        
+        compose.onNodeWithTag("sample_language_filter").performClick()
+        compose.onNodeWithText("English").performScrollTo().performClick()
+        
+        val ep1Title = SamplePdfCatalog.items.first { it.id == "ep1_en" }.title
+        compose.waitUntil(10_000) { compose.onAllNodesWithText(ep1Title).fetchSemanticsNodes().isNotEmpty() }
+        
+        compose.onNodeWithTag("btn_toggle_order").performClick()
+        compose.onNodeWithTag("btn_toggle_order").performClick()
+        compose.onNodeWithText(ep1Title).assertExists()
+    }
+
     @Test fun addedLanguagePdfsRenderSearchAndNavigateOutline() {
         org.junit.Assume.assumeTrue("Stage PDFs with the host smoke runner", InstrumentationRegistry.getArguments().getString("sampleSmoke") == "true")
         val queries = mapOf("es" to "mapa", "it" to "mappa", "pt" to "mapa", "vi" to "nghỉ", "fil" to "mapa", "ne" to "आराम", "id" to "peta")

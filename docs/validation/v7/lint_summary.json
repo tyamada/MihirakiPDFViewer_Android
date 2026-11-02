@@ -1,0 +1,12 @@
+[
+  {
+    "severity": "Warning",
+    "issue": "AndroidGradlePluginVersion",
+    "count": 1
+  },
+  {
+    "severity": "Warning",
+    "issue": "TrustAllX509TrustManager",
+    "count": 3
+  }
+]

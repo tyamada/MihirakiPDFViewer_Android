@@ -15,6 +15,7 @@ class SettingsRepository(private val context: Context) {
         val highQuality = booleanPreferencesKey("high_quality"); val sharpness = floatPreferencesKey("sharpness")
         val mouseNavigation = booleanPreferencesKey("mouse_navigation")
         val portraitSpread = booleanPreferencesKey("portrait_spread")
+        val samplePdfSortOrder = stringPreferencesKey("sample_pdf_sort_order")
         val purchasedTier = stringPreferencesKey("purchased_tier")
         val purchasedTiers = stringSetPreferencesKey("purchased_tiers")
         val lastUri = stringPreferencesKey("last_uri")
@@ -31,6 +32,7 @@ class SettingsRepository(private val context: Context) {
             p[Keys.highQuality] ?: false, p[Keys.sharpness] ?: 0f,
             p[Keys.mouseNavigation] ?: isDefaultDesktop,
             p[Keys.portraitSpread] ?: true,
+            enumOr(p[Keys.samplePdfSortOrder], SamplePdfSortOrder.DESC),
             tiersSet, p[Keys.purchasedTier], p[Keys.lastUri], p[Keys.lastPage] ?: 0,
             p[Keys.showTutorialOnStartup] ?: true,
         )
@@ -39,6 +41,7 @@ class SettingsRepository(private val context: Context) {
         p[Keys.direction] = s.direction.name; p[Keys.coverMode] = s.coverMode.name; p[Keys.layout] = s.layout.name
         p[Keys.cover] = s.showCover; p[Keys.highQuality] = s.highQuality; p[Keys.sharpness] = s.sharpness
         p[Keys.mouseNavigation] = s.mouseNavigation; p[Keys.portraitSpread] = s.portraitSpread
+        p[Keys.samplePdfSortOrder] = s.samplePdfSortOrder.name
         p[Keys.purchasedTiers] = s.allPurchasedTiers
         s.purchasedTier?.let { p[Keys.purchasedTier] = it }
         if (s.lastUri != null) p[Keys.lastUri] = s.lastUri else p.remove(Keys.lastUri)

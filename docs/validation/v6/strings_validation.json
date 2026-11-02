@@ -1,0 +1,80 @@
+[
+  {
+    "locale": "values-de",
+    "keys": 208,
+    "missing": [],
+    "format_mismatch": []
+  },
+  {
+    "locale": "values-es",
+    "keys": 208,
+    "missing": [],
+    "format_mismatch": []
+  },
+  {
+    "locale": "values-fil",
+    "keys": 208,
+    "missing": [],
+    "format_mismatch": []
+  },
+  {
+    "locale": "values-fr",
+    "keys": 208,
+    "missing": [],
+    "format_mismatch": []
+  },
+  {
+    "locale": "values-id",
+    "keys": 208,
+    "missing": [],
+    "format_mismatch": []
+  },
+  {
+    "locale": "values-it",
+    "keys": 208,
+    "missing": [],
+    "format_mismatch": []
+  },
+  {
+    "locale": "values-ja",
+    "keys": 208,
+    "missing": [],
+    "format_mismatch": []
+  },
+  {
+    "locale": "values-ko",
+    "keys": 208,
+    "missing": [],
+    "format_mismatch": []
+  },
+  {
+    "locale": "values-ne",
+    "keys": 208,
+    "missing": [],
+    "format_mismatch": []
+  },
+  {
+    "locale": "values-pt",
+    "keys": 208,
+    "missing": [],
+    "format_mismatch": []
+  },
+  {
+    "locale": "values-vi",
+    "keys": 208,
+    "missing": [],
+    "format_mismatch": []
+  },
+  {
+    "locale": "values-zh-rCN",
+    "keys": 208,
+    "missing": [],
+    "format_mismatch": []
+  },
+  {
+    "locale": "values-zh-rTW",
+    "keys": 208,
+    "missing": [],
+    "format_mismatch": []
+  }
+]

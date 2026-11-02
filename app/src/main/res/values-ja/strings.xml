@@ -10,8 +10,8 @@
     <string name="document_info">ドキュメント情報</string><string name="title">タイトル</string><string name="author">作成者</string><string name="subject">サブタイトル</string><string name="keywords">キーワード</string><string name="pdf_version">PDFのバージョン</string><string name="options">オプション</string><string name="help">ヘルプ</string><string name="licenses">ライセンス</string><string name="reset">リセット</string>
     <string name="reset_message">アプリの設定をリセットします。</string>
     <string name="help_open"><b>PDFを開く:</b> ファイルピッカーから端末またはクラウドストレージのPDFを選択します。</string>
-    <string name="help_sample_pdfs_desc" translatable="false"><b>サンプルPDF:</b> アプリで提供されているサンプルPDFをダウンロードして、各機能を試すことができます。</string>
-    <string name="help_navigate"><b>ページ移動:</b> スワイプ、スライダー、または（デスクトップ・マウス操作モードでは）左右端のクリックでページを切り替えます。</string><string name="help_outline" translatable="false"><b>PDF目次（アウトライン）:</b> ツールバーの目次アイコンをタップすると、PDF内のブックマークや章・節の一覧が表示され、任意の箇所へ瞬時にジャンプできます。</string><string name="help_adaptive" translatable="false"><b>アダプティブレイアウト:</b> タブレットや大画面、折りたたみ端末（Foldable）の画面サイズに合わせて自動的に表示が最適化されます。</string><string name="help_menu"><b>メニュー:</b> 画面をタップしてツールバーとスライダーの表示を切り替えます。</string><string name="help_zoom"><b>ズーム:</b> ピンチで拡大・縮小します。拡大中は長押ししてドラッグします。</string><string name="help_search"><b>検索:</b> 検索バーに語句を入力してPDF内を検索します。</string>    <string name="help_layout"><b>設定:</b> 設定画面で表示をカスタマイズし、現在のドキュメントやアプリの情報を確認できます。</string>
+    <string name="help_sample_pdfs_desc"><b>サンプルPDF:</b> アプリで提供されているサンプルPDFをダウンロードして、各機能を試すことができます。</string>
+    <string name="help_navigate"><b>ページ移動:</b> スワイプ、スライダー、または（デスクトップ・マウス操作モードでは）左右端のクリックでページを切り替えます。</string><string name="help_outline"><b>PDF目次（アウトライン）:</b> ツールバーの目次アイコンをタップすると、PDF内のブックマークや章・節の一覧が表示され、任意の箇所へ瞬時にジャンプできます。</string><string name="help_menu"><b>メニュー:</b> 画面をタップしてツールバーとスライダーの表示を切り替えます。</string><string name="help_zoom"><b>ズーム:</b> ピンチで拡大・縮小します。拡大中は長押ししてドラッグします。</string><string name="help_search"><b>検索:</b> 検索バーに語句を入力してPDF内を検索します。</string>    <string name="help_layout"><b>設定:</b> 設定画面で表示をカスタマイズし、現在のドキュメントやアプリの情報を確認できます。</string>
     <string name="help_high_quality"><b>高画質化:</b> PDFページをより高画質で表示します。</string>
     <string name="help_sharpness"><b>シャープネス:</b> 文字や線をより鮮明に表示します。</string>
     <string name="help_two_page"><b>見開き表示:</b> 2ページを横に並べて表示します。</string>
@@ -19,19 +19,12 @@
     <string name="help_show_cover"><b>表紙を表示:</b> 見開き表示で最初のページを表紙として単独で表示します。</string>
     <string name="help_reading_direction"><b>スクロール方向:</b> ページを左から右へ送るか、右から左へ送るかを選択します。</string>
     <string name="help_cover_mode"><b>表紙設定:</b> 読む方向ごとの表紙の配置を選択します。</string>
-    <string name="help_reset"><b>リセット:</b> アプリの設定をリセットし、現在のドキュメントを閉じます。</string>
-    <string name="help_display_settings"><b>表示設定:</b> 高画質化、シャープネス、見開き表示、表紙設定、ページ方向を調整します。</string>
-    <string name="help_options"><b>オプション:</b> 表紙設定、設定のリセット、ヘルプ、ライセンス、応援にアクセスします。</string>
     <string name="help_document_info"><b>ドキュメント情報:</b> タイトル、作成者、サブタイトル、キーワード、PDFバージョンなどのメタデータを表示します。</string>
-    <string name="help_help"><b>ヘルプ:</b> アプリの使い方に関するこのガイドを確認します。</string>
-    <string name="help_app_info"><b>バージョン:</b> アプリのバージョン、ビルド番号、著作権、サポーターバッジを確認します。</string>
-    <string name="help_support"><b>開発者を応援:</b> 任意の応援チップで開発を支援し、サポーターバッジを表示します。</string>
     <string name="tip_message">アプリを気に入っていただけたら、開発を応援できます。</string>
     <string name="tip_free_notice">本アプリは完全に無料でご利用いただけます。PDFの閲覧、見開き表示、検索といったすべての機能は、購入の有無にかかわらず制限なくお使いいただけます。</string>
     <string name="purchased_badges_title">購入した応援バッジ</string>
     <string name="purchase_badge_notice">設定画面に応援バッジを表示しました。</string>
-    <string name="purchase">購入</string><string name="purchased" translatable="false">購入済み</string><string name="free">無料</string><string name="claim">取得</string><string name="koyomi_badge_title">Ver.2.0公開記念こよみバッジ</string><string name="purchase_thanks">ありがとうございます！%1$sの応援を受け取りました。</string><string name="purchase_cancelled">購入をキャンセルしました。</string><string name="purchase_failed">購入に失敗しました。もう一度お試しください。</string>
-    <string name="app_info">アプリ情報</string>
+    <string name="purchase">購入</string><string name="purchased">購入済み</string><string name="koyomi_badge_title">Ver.2.0公開記念こよみバッジ</string><string name="purchase_thanks">ありがとうございます！%1$sの応援を受け取りました。</string><string name="purchase_cancelled">購入をキャンセルしました。</string><string name="purchase_failed">購入に失敗しました。もう一度お試しください。</string>
     <string name="version">バージョン</string>
     <string name="build_number">ビルド番号</string>
     <string name="copyright">著作権</string>
@@ -41,38 +34,30 @@
     <string name="check_failed">確認に失敗しました</string>
     <string name="oss_license_title">オープンソースライセンス</string>
     <string name="oss_license_description">このアプリは以下のオープンソースソフトウェアを利用しています：</string>
-    <string name="help_diagnostics"><b>テスト・診断とアプリログ:</b> 端末診断テストの実行や、アプリログの閲覧・共有が行えます。ログは端末内にのみ最大24時間保存され、個人情報やファイルの内容は記録されません。また、自動的に外部へ送信されることもありません。</string>
     <string name="testing_diagnostic_logs">テスト・診断ログのクリア</string>
-    <string name="help_report_issue"><b>不具合の報告:</b> バグやクラッシュが発生した場合は、診断ログを添えて GitHub Issues からご報告ください。</string>
     <string name="report_issue">不具合を報告する (GitHub)</string>
-    <string name="enter_promo_code">プロモコードを入力</string>
-    <string name="promo_code_dialog_title">プロモーションコードを入力</string>
-    <string name="promo_code_instructions">Google Playのプロモーションコードを入力してアイテムを引き換えます。</string>
-    <string name="redeem">利用する</string>
     <string name="sample_pdfs">サンプルPDF</string>
     <string name="language_filter">言語フィルター</string>
     <string name="all_languages">すべて</string>
     <string name="sample_pdf_download">ダウンロード</string>
-    <string name="sample_pdf_downloading">ダウンロード中...</string>
-    <string name="sample_pdf_downloading_progress">ダウンロード中... %d%%</string>
+    <string name="sample_pdf_downloading">ダウンロード中…</string>
+    <string name="sample_pdf_downloading_progress">ダウンロード中… %d%%</string>
     <string name="sample_pdf_open">開く</string>
     <string name="sample_pdf_delete">削除</string>
     <string name="cellular_data_warning">モバイル通信の確認</string>
     <string name="cellular_data_message">モバイル通信回線に接続しています。「%1$s」（%2$s）をダウンロードすると、多くのモバイルデータ通信量を消費する可能性があります。続行しますか？</string>
     <string name="error_prefix">エラー: %s</string>
-    <string name="error_opening_play_store">Google Play ストアを開けませんでした</string>
     <string name="promo_code_help_title">プロモーションコードの利用方法</string>
     <string name="promo_code_help_message">記念こよみバッジのプロモーションコードは、「応援」画面を開き「Ver.2.0公開記念こよみバッジ」の購入ボタンをタップ後、Google Play決済画面のお支払い方法メニューから「コードの利用」を選択して入力してください。</string>
     <string name="go_to_support">応援画面へ移動</string>
-    <string name="help_device_test" translatable="false"><b>実機テストを実行:</b> 端末のハードウェアおよびパフォーマンスのテストを実行します。</string>
-    <string name="help_log_viewer" translatable="false"><b>アプリログを表示・共有:</b> トラブルシューティング用にローカルのアプリログを表示・共有します。</string>
-    <string name="help_clear_logs" translatable="false"><b>テスト・診断ログのクリア:</b> ローカルストレージに記録されたすべてのテストおよび診断ログを削除します。</string>
-    <string name="help_promo_code" translatable="false"><b>プロモコードを入力:</b> Google Playのプロモーションコードを入力してバッジやアイテムを引き換えます。</string>
-    <string name="help_slider" translatable="false"><b>スライダー:</b> 下部バーのスライダーをドラッグして、ドキュメント内の任意のページへ素早く移動できます。</string>
-    <string name="report_issue_desc" translatable="false"><b>不具合を報告する:</b> バグやクラッシュが発生した場合は、診断ログを添えて GitHub Issues からご報告ください。</string>
+    <string name="help_device_test"><b>実機テストを実行:</b> 端末のハードウェアおよびパフォーマンスのテストを実行します。</string>
+    <string name="help_log_viewer"><b>アプリログを表示・共有:</b> トラブルシューティング用にローカルのアプリログを表示・共有します。</string>
+    <string name="help_clear_logs"><b>テスト・診断ログのクリア:</b> ローカルストレージに記録されたすべてのテストおよび診断ログを削除します。</string>
+    <string name="help_slider"><b>スライダー:</b> 下部バーのスライダーをドラッグして、ドキュメント内の任意のページへ素早く移動できます。</string>
+    <string name="report_issue_desc"><b>不具合を報告する:</b> バグやクラッシュが発生した場合は、診断ログを添えて GitHub Issues からご報告ください。</string>
     <string name="table_of_contents">目次</string>
     <string name="privacy_policy">プライバシーポリシー</string>
-    <string name="privacy_policy_content" translatable="false">&lt;h2&gt;プライバシーポリシー&lt;/h2&gt;&lt;p&gt;見開きPDFビューア（以下、「本アプリ」）の製作者（以下、「製作者」）は、本アプリにおけるユーザーの個人情報の取扱いについて、以下のとおりプライバシーポリシーを定めます。&lt;/p&gt;&lt;h3&gt;1. 個人情報の収集と利用&lt;/h3&gt;&lt;p&gt;本アプリは、ユーザーのPDFファイルを外部サーバーにアップロードしたり、収集したりすることはありません。すべてのPDF処理はユーザーのデバイス内でローカルに実行されます。本アプリがインターネット通信を行うのは、以下の限定的な場合に限られます：&lt;/p&gt;&lt;ul&gt;&lt;li&gt;Google ドライブ等のクラウドストレージからユーザーが明示的にファイルを開く場合。&lt;/li&gt;&lt;li&gt;Google Play 決済システムを通じてアプリ内購入（応援チップ）を行う場合。&lt;/li&gt;&lt;/ul&gt;&lt;h3&gt;2. アプリログと診断機能&lt;/h3&gt;&lt;p&gt;本アプリは、動作不良やクラッシュ原因の特定、パフォーマンス向上のため、端末内のローカルストレージに技術的なアプリログを一時保存する機能（アプリログ管理・端末テスト機能）を搭載しています。&lt;/p&gt;&lt;ul&gt;&lt;li&gt;ログは端末内にのみ最大24時間保存され、期日を過ぎたログは自動的に削除されます。&lt;/li&gt;&lt;li&gt;ユーザーの個人情報やPDFファイルの内容（テキストや機密データ）は一切記録されません。&lt;/li&gt;&lt;li&gt;&lt;strong&gt;ログを自動的に外部（サーバー等）に送信する機能はありません。&lt;/strong&gt; ユーザーが設定画面から手動で共有操作を行わない限り、ログが外部に出ることはありません。&lt;/li&gt;&lt;/ul&gt;&lt;h3&gt;3. 権限の使用&lt;/h3&gt;&lt;p&gt;本アプリは、Storage Access Framework (SAF) を使用して、ユーザーが選択した特定のファイルにのみアクセスします。デバイス全体のストレージ読み取り権限は要求しません。&lt;/p&gt;&lt;h3&gt;4. 第三者への提供&lt;/h3&gt;&lt;p&gt;製作者は、ユーザーの同意を得ることなく、個人情報を第三者に提供することはありません。&lt;/p&gt;&lt;h3&gt;5. お問い合わせ&lt;/h3&gt;&lt;p&gt;本ポリシーに関するお問い合わせは、GitHubのリポジトリを通じてご連絡ください。&lt;/p&gt;</string>
+    <string name="privacy_policy_content">&lt;h2&gt;プライバシーポリシー&lt;/h2&gt;&lt;p&gt;見開きPDFビューア（以下、「本アプリ」）の製作者（以下、「製作者」）は、本アプリにおけるユーザーの個人情報の取扱いについて、以下のとおりプライバシーポリシーを定めます。&lt;/p&gt;&lt;h3&gt;1. 個人情報の収集と利用&lt;/h3&gt;&lt;p&gt;本アプリは、ユーザーのPDFファイルを外部サーバーにアップロードしたり、収集したりすることはありません。すべてのPDF処理はユーザーのデバイス内でローカルに実行されます。本アプリがインターネット通信を行うのは、以下の限定的な場合に限られます：&lt;/p&gt;&lt;ul&gt;&lt;li&gt;Google ドライブ等のクラウドストレージからユーザーが明示的にファイルを開く場合。&lt;/li&gt;&lt;li&gt;Google Play 決済システムを通じてアプリ内購入（応援チップ）を行う場合。&lt;/li&gt;&lt;/ul&gt;&lt;h3&gt;2. アプリログと診断機能&lt;/h3&gt;&lt;p&gt;本アプリは、動作不良やクラッシュ原因の特定、パフォーマンス向上のため、端末内のローカルストレージに技術的なアプリログを一時保存する機能（アプリログ管理・端末テスト機能）を搭載しています。&lt;/p&gt;&lt;ul&gt;&lt;li&gt;ログは端末内にのみ最大24時間保存され、期日を過ぎたログは自動的に削除されます。&lt;/li&gt;&lt;li&gt;ユーザーの個人情報やPDFファイルの内容（テキストや機密データ）は一切記録されません。&lt;/li&gt;&lt;li&gt;&lt;strong&gt;ログを自動的に外部（サーバー等）に送信する機能はありません。&lt;/strong&gt; ユーザーが設定画面から手動で共有操作を行わない限り、ログが外部に出ることはありません。&lt;/li&gt;&lt;/ul&gt;&lt;h3&gt;3. 権限の使用&lt;/h3&gt;&lt;p&gt;本アプリは、Storage Access Framework (SAF) を使用して、ユーザーが選択した特定のファイルにのみアクセスします。デバイス全体のストレージ読み取り権限は要求しません。&lt;/p&gt;&lt;h3&gt;4. 第三者への提供&lt;/h3&gt;&lt;p&gt;製作者は、ユーザーの同意を得ることなく、個人情報を第三者に提供することはありません。&lt;/p&gt;&lt;h3&gt;5. お問い合わせ&lt;/h3&gt;&lt;p&gt;本ポリシーに関するお問い合わせは、GitHubのリポジトリを通じてご連絡ください。&lt;/p&gt;</string>
     <string name="diagnostics">診断</string>
     <string name="help_category_getting_started">はじめての使い方</string>
     <string name="help_category_reading_features">読書を快適にする機能</string>
@@ -132,7 +117,6 @@
     <string name="share_logs_button">ログを共有する</string>
     <string name="delete_logs_button">ログを削除</string>
     <string name="logs_deleted_message">すべてのログを削除しました。</string>
-    <string name="saved_logs_title">保存されたログ (%d lines):</string>
     <string name="no_logs_recorded_text">記録されたログはありません。</string>
     <string name="share_logs_title">アプリログの共有</string>
     <string name="check_for_updates">更新を確認</string>
@@ -141,8 +125,6 @@
     <string name="view_tutorial">チュートリアルを表示</string>
     <string name="tutorial_welcome">見開きPDFビューアへようこそ</string>
     <string name="skip">スキップ</string>
-    <string name="tutorial_headline">マンガや右開きPDFを快適に閲覧</string>
-    <string name="tutorial_description">見開きPDFビューアは、右開きドキュメント、雑誌、マンガに特化して設計されており、便利な機能を備えています：</string>
     <string name="tutorial_feature_spread_title">見開きページ＆右開き</string>
     <string name="tutorial_feature_spread_desc">右開きの見開きページを自動検出して美しく表示します。</string>
     <string name="tutorial_feature_outline_title">目次ツリーナビゲーション</string>
@@ -164,5 +146,7 @@
     <string name="tutorial_next">次へ</string>
     <string name="tutorial_previous">前へ</string>
     <string name="tutorial_video_guide_button">使い方紹介ショート動画を見る (プレイリスト)</string>
-    <string name="tutorial_video_playlist_title">アプリ紹介ショート動画プレイリスト</string>
+    <string name="sample_pdf_order_label">表示順: %1$s</string>
+    <string name="sample_pdf_order_from_ch1">1話から</string>
+    <string name="sample_pdf_order_from_latest">最新話から</string>
 </resources>

@@ -3,6 +3,9 @@ package com.github.tyamada.mihirakipdfviewer_android.data
 enum class ReadingDirection { L2R, R2L }
 enum class CoverMode { STANDARD, COMPATIBILITY }
 enum class ViewerLayout { SINGLE, SPREAD }
+enum class SamplePdfSortOrder {
+    ASC, DESC
+}
 
 data class ViewerSettings(
     val direction: ReadingDirection = ReadingDirection.L2R,
@@ -13,6 +16,7 @@ data class ViewerSettings(
     val sharpness: Float = 0f,
     val mouseNavigation: Boolean = false,
     val portraitSpread: Boolean = true,
+    val samplePdfSortOrder: SamplePdfSortOrder = SamplePdfSortOrder.DESC,
     val purchasedTiers: Set<String> = emptySet(),
     val purchasedTier: String? = null,
     val lastUri: String? = null,

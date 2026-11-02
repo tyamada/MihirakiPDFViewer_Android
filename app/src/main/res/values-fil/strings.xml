@@ -2,103 +2,123 @@
 <resources>
     <string name="app_name">MihirakiPDFViewer</string><string name="open_pdf">Buksan ang PDF</string><string name="open">Buksan</string><string name="settings">Mga Setting</string><string name="support">Suporta</string><string name="search">Maghanap sa PDF</string><string name="ok">OK</string><string name="cancel">Kanselahin</string><string name="back">Bumalik</string>
     <string name="password_required">Kinakailangan ang password</string><string name="password">Password</string><string name="wrong_password">Maling password.</string><string name="permission_denied">Tinanggihan ang pahintulot na basahin ang file na ito.</string><string name="cannot_open_pdf">Hindi mabuksan ang PDF o sira ang file.</string><string name="no_results">Walang nahanap na resulta ng paghahanap.</string>
-    <string name="display_settings">Mga setting ng display</string><string name="high_quality">Mataas na kalidad</string><string name="sharpness">Sharpness</string><string name="two_page">Two-page view</string><string name="show_cover">Ipakita ang cover</string><string name="reading_direction">Direksyon ng pagbabasa</string><string name="cover_mode">Setting ng cover</string>
-    <string name="document_info">Impormasyon ng dokumento</string><string name="title">Pamagat</string><string name="author">May-akda</string><string name="subject">Subtitle</string><string name="keywords">Mga Keyword</string><string name="pdf_version">Bersyon ng PDF</string><string name="options">Mga Opsyon</string><string name="help">Tulong</string><string name="licenses">Mga Lisensya</string><string name="reset">I-reset</string>
+    <string name="display_settings">Mga setting ng display</string><string name="high_quality">Mataas na kalidad</string><string name="sharpness">Katalasan</string><string name="two_page">Tanaw na dalawang pahina</string><string name="show_cover">Ipakita ang cover</string><string name="reading_direction">Direksyon ng pagbabasa</string><string name="cover_mode">Setting ng cover</string>
+    <string name="document_info">Impormasyon ng dokumento</string><string name="title">Pamagat</string><string name="author">May-akda</string><string name="subject">Pangalawang pamagat</string><string name="keywords">Mga Keyword</string><string name="pdf_version">Bersyon ng PDF</string><string name="options">Mga Opsyon</string><string name="help">Tulong</string><string name="licenses">Mga Lisensya</string><string name="reset">I-reset</string>
     <string name="reset_message">I-reset ang mga setting ng app.</string>
-    <string name="help_open"><b>Buksan ang PDF:</b> Gamitin ang file picker para pumili ng PDF file mula sa iyong device o cloud storage.</string><string name="help_navigate"><b>Mag-navigate sa mga Pahina:</b> Magpalit ng mga pahina sa pamamagitan ng pag-swipe o paggamit ng slider.</string><string name="help_menu"><b>Menu:</b> I-tap ang screen para i-toggle ang visibility ng toolbar at slider.</string><string name="help_zoom"><b>Mag-zoom:</b> Kurutin para mag-zoom in o out. Pindutin nang matagal at i-drag para mag-scroll habang naka-zoom in.</string><string name="help_search"><b>Maghanap:</b> Maglagay ng text sa search bar para makahanap ng partikular na content sa loob ng PDF.</string><string name="help_layout"><b>Layout:</b> Gamitin ang mga opsyon sa layout sa menu para lumipat sa pagitan ng single-page at two-page views.</string>
+    <string name="help_open"><b>Buksan ang PDF:</b> Gamitin ang file picker para pumili ng PDF file mula sa iyong device o cloud storage.</string><string name="help_navigate"><b>Mag-navigate sa mga Pahina:</b> Magpalit ng mga pahina sa pamamagitan ng pag-swipe o paggamit ng slider.</string><string name="help_menu">Menu: I-tap ang screen upang ipakita o itago ang hanay ng mga kasangkapan at slider.</string><string name="help_zoom"><b>Mag-zoom:</b> Kurutin para mag-zoom in o out. Pindutin nang matagal at i-drag para mag-scroll habang naka-zoom in.</string><string name="help_search"><b>Maghanap:</b> Maglagay ng text sa search bar para makahanap ng partikular na content sa loob ng PDF.</string><string name="help_layout"><b>Layout:</b> Gamitin ang mga opsyon sa layout sa menu para lumipat sa pagitan ng single-page at two-page views.</string>
     <string name="tip_message">Kung nagustuhan mo ang app, maaari mong suportahan ang pag-develop nito.</string>
     <string name="tip_free_notice">Magagamit ang lahat ng tampok nang hindi kinakailangang bumili.</string>
     <string name="purchase">Bumili</string><string name="purchase_thanks">Salamat! %1$s suporta ang natanggap.</string><string name="purchase_cancelled">Kinansela ang pagbili.</string><string name="purchase_failed">Nabigo ang pagbili. Pakisubukan ulit.</string>
     <string name="purchased_badges_title">Mga biniling badge ng suporta</string>
     <string name="purchase_badge_notice">Ang badge ng suporta ay ipinakita sa screen ng mga setting.</string>
-
-    <string name="app_info">Impormasyon ng app</string>
     <string name="version">Bersyon</string>
-    <string name="build_number">Build number</string>
+    <string name="build_number">Numero ng build</string>
     <string name="copyright">Karapatang-ari</string>
     <string name="oss_license_title">Mga Lisensya ng Open Source</string>
     <string name="oss_license_description">Gumagamit ang app na ito ng sumusunod na open source software:</string>
-    <string name="help_display_settings"><b>Mga setting ng display:</b> Isausin ang mataas na kalidad, sharpness, two-page view, cover mode, at direksyon ng pagbabasa.</string>
-    <string name="help_options"><b>Mga Opsyon:</b> I-access ang mga opsyon sa cover, i-reset ang mga setting, tulong, mga lisensya, at suporta.</string>
     <string name="help_document_info"><b>Impormasyon ng dokumento:</b> Tingnan ang mga metadata ng PDF tulad ng pamagat, may-akda, subtitle, mga keyword, at bersyon ng PDF.</string>
-    <string name="help_help"><b>Tulong:</b> Basahin ang gabay na ito para sa mga tagubilin kung paano gamitin ang app.</string>
-    <string name="help_app_info"><b>Impormasyon ng app:</b> Suriin ang bersyon ng app, build number, karapatang-ari, at mga badge ng suporta.</string>
-    <string name="help_support"><b>Suportahan ang Developer:</b> Suportahan ang karagdagang pag-develop sa pamamagitan ng mga opsyonal na tip at tingnan ang iyong mga badge ng suporta.</string>
     <string name="help_high_quality"><b>Mataas na kalidad:</b> I-render ang mga pahina ng PDF sa mas mataas na kalidad.</string>
     <string name="help_sharpness"><b>Sharpness:</b> I-render ang text at mga linya nang mas malinaw.</string>
     <string name="help_two_page"><b>Two-page view:</b> Magpakita ng dalawang pahina nang magkatabi.</string>
     <string name="help_show_cover"><b>Ipakita ang cover:</b> Ipakita ang unang pahina nang nag-iisa bilang cover sa spread view.</string>
     <string name="help_reading_direction"><b>Direksyon ng pagbabasa:</b> Pumili kung ang mga pahina ay liliko mula kaliwa pakanan o pakanan kaliwa.</string>
     <string name="help_cover_mode"><b>Setting ng cover:</b> Pumili ng paglalagay ng cover para sa bawat direksyon ng pagbabasa.</string>
-    <string name="help_reset"><b>I-reset:</b> I-reset ang mga setting ng app at isara ang kasalukuyang dokumento.</string>
     <string name="testing_diagnostic_logs">Mga Log ng Pagsubok at Diagnostics</string>
     <string name="table_of_contents">Talaan ng nilalaman</string>
     <string name="privacy_policy">Patakaran sa Privacy</string>
-    <string name="privacy_policy_content" translatable="false">&lt;h2&gt;Patakaran sa Privacy&lt;/h2&gt;&lt;p&gt;Iginagalang ng developer ng MihirakiPDFViewer ang iyong privacy.&lt;/p&gt;&lt;h3&gt;1. Koleksyon at Paggamit ng Impormasyon&lt;/h3&gt;&lt;p&gt;Ang App ay hindi nag-a-upload o nangongolekta ng iyong mga PDF file. Lahat ng pagpoproseso ay lokal.&lt;/p&gt;&lt;h3&gt;2. Mga Pahintulot&lt;/h3&gt;&lt;p&gt;Gumagamit ng Storage Access Framework (SAF).&lt;/p&gt;&lt;h3&gt;3. Seguridad ng Data&lt;/h3&gt;&lt;p&gt;Ang iyong data ay nananatili sa ilalim ng iyong kontrol.&lt;/p&gt;&lt;h3&gt;4. Makipag-ugnayan&lt;/h3&gt;&lt;p&gt;Makipag-ugnayan sa pamamagitan ng GitHub.&lt;/p&gt;</string>
-    <string name="diagnostics">Diagnostics</string>
-<string name="previous_page" translatable="false">Previous page</string><string name="next_page" translatable="false">Next page</string><string name="previous_search" translatable="false">Previous match</string><string name="next_search" translatable="false">Next match</string><string name="portrait_display" translatable="false">Single page in portrait</string><string name="mouse_navigation" translatable="false">Mouse Navigation</string><string name="help_sample_pdfs_desc" translatable="false" /><string name="help_outline" translatable="false" /><string name="help_adaptive" translatable="false" /><string name="help_portrait_display" translatable="false" /><string name="purchased" translatable="false">Purchased</string><string name="free" translatable="false">Free</string><string name="claim" translatable="false">Get</string><string name="koyomi_badge_title" translatable="false">Ver.2.0 Release Commemoration Koyomi Badge</string><string name="help_diagnostics" translatable="false" /><string name="help_report_issue" translatable="false" /><string name="report_issue" translatable="false">Report Issue (GitHub)</string><string name="enter_promo_code" translatable="false">Enter promo code</string><string name="promo_code_dialog_title" translatable="false">Enter Promotion Code</string><string name="promo_code_instructions" translatable="false">Enter your Google Play promotion code to redeem items.</string><string name="redeem" translatable="false">Redeem</string><string name="sample_pdfs" translatable="false">Sample PDFs</string><string name="language_filter" translatable="false">Language Filter</string><string name="all_languages" translatable="false">All</string><string name="sample_pdf_download" translatable="false">Download</string><string name="sample_pdf_downloading" translatable="false">Downloading...</string><string name="sample_pdf_downloading_progress" translatable="false">Downloading... %d%%</string><string name="sample_pdf_open" translatable="false">Open</string><string name="sample_pdf_delete" translatable="false">Delete</string><string name="cellular_data_warning" translatable="false">Cellular Data Warning</string><string name="cellular_data_message" translatable="false">You are currently on a cellular network. Downloading \"%1$s\" (%2$s) may consume a significant amount of mobile data. Do you want to proceed?</string><string name="error_prefix" translatable="false">Error: %s</string><string name="error_opening_play_store" translatable="false">Could not open Google Play Store</string><string name="promo_code_help_title" translatable="false">How to Redeem Promo Code</string><string name="promo_code_help_message" translatable="false">To redeem a promotion code for the Koyomi badge, go to the Support screen, tap the purchase button for the Ver.2.0 Koyomi badge, and in the Google Play payment sheet, select Redeem.</string><string name="go_to_support" translatable="false">Go to Support</string><string name="help_device_test" translatable="false" /><string name="help_log_viewer" translatable="false" /><string name="help_clear_logs" translatable="false" /><string name="help_promo_code" translatable="false" /><string name="help_slider" /><string name="report_issue_desc" /><string name="help_category_getting_started" translatable="false">Getting Started</string>
-    <string name="help_category_reading_features" translatable="false">Reading Features</string>
-    <string name="help_category_settings_guide" translatable="false">Settings Guide</string>
-    <string name="help_category_diagnostics" translatable="false">Diagnostics</string>
-    <string name="device_test_menu" translatable="false">Run Device Test</string>
-    <string name="app_logs_menu" translatable="false">View &amp; Share App Logs</string>
-    <string name="device_test_screen_title" translatable="false">Device Test &amp; Diagnostics</string>
-    <string name="device_test_intro" translatable="false">This screen allows you to run verification tests (RAM, storage, memory, cache, PDF engine environment) on your device.</string>
-    <string name="privacy_notice_header" translatable="false">🔒 Privacy Protection Notice</string>
-    <string name="privacy_notice_body" translatable="false">There is no automatic external transmission of test results. Data is processed locally on your device and never sent externally unless manually shared.</string>
-    <string name="run_test_button" translatable="false">Run Test</string>
-    <string name="test_results_header" translatable="false">📊 Test Results</string>
-    <string name="test_timestamp_label" translatable="false">Test Time</string>
-    <string name="vendor_label" translatable="false">Vendor</string>
-    <string name="device_name_label" translatable="false">Device Name</string>
-    <string name="os_version_label" translatable="false">OS Version</string>
-    <string name="system_locale_label" translatable="false">System Locale</string>
-    <string name="screen_orientation_label" translatable="false">Screen Orientation</string>
-    <string name="theme_mode_label" translatable="false">Theme Mode</string>
-    <string name="font_scale_label" translatable="false">Font Scale</string>
-    <string name="ram_info_label" translatable="false">Total RAM / Free RAM</string>
-    <string name="storage_info_label" translatable="false">Total Storage / Free Storage</string>
-    <string name="low_ram_mode_label" translatable="false">Low-RAM Optimization Mode</string>
-    <string name="cpu_cores_label" translatable="false">CPU Cores</string>
-    <string name="screen_resolution_label" translatable="false">Screen Resolution / Density</string>
-    <string name="jvm_heap_label" translatable="false">JVM Heap (Total / Free)</string>
-    <string name="cache_dir_label" translatable="false">Cache Directory</string>
-    <string name="pdf_renderer_api_label" translatable="false">PDF Renderer API</string>
-    <string name="billing_api_label" translatable="false">Google Play Billing API</string>
-    <string name="saf_resolver_label" translatable="false">ContentResolver (SAF)</string>
-    <string name="status_label" translatable="false">Status</string>
-    <string name="share_test_results_button" translatable="false">Share Test Results</string>
-    <string name="share_test_results_chooser" translatable="false">Share device test results</string>
-    <string name="report_issue_screen_title" translatable="false">Report Issue</string>
-    <string name="report_issue_intro" translatable="false">If you encounter a bug or crash, please gather the information below and report it on GitHub Issues.</string>
-    <string name="report_include_header" translatable="false">Include in your report</string>
-    <string name="report_step1" translatable="false">1. Brief summary of the issue</string>
-    <string name="report_step2" translatable="false">2. Steps to reproduce</string>
-    <string name="report_step3" translatable="false">3. Expected and actual behavior</string>
-    <string name="report_step4" translatable="false">4. Frequency of occurrence</string>
-    <string name="report_step5" translatable="false">5. App version, OS version, device, display settings</string>
-    <string name="report_step6" translatable="false">6. Screenshots, app logs, or device test results</string>
-    <string name="diagnostic_info_header" translatable="false">Diagnostic Information</string>
-    <string name="copy_all_diagnostics_button" translatable="false">Copy All Diagnostics (Test Results &amp; App Logs)</string>
-    <string name="copy_all_diagnostics_toast" translatable="false">Copied test results and app logs to clipboard</string>
-    <string name="view_app_logs_button" translatable="false">View &amp; Manage App Logs</string>
-    <string name="run_device_tests_button" translatable="false">Run Device Tests</string>
-    <string name="protect_privacy_header" translatable="false">Protect Your Privacy</string>
-    <string name="privacy_warning_body_1" translatable="false">• Do not include personal information such as PDF file contents, file names, or names.</string>
-    <string name="privacy_warning_body_2" translatable="false">• Please review screenshots and diagnostic info before posting. Data is not sent automatically.</string>
-    <string name="open_github_issues_button" translatable="false">Open GitHub Issues</string>
-    <string name="github_account_warning" translatable="false">* A GitHub account is required. Submitted information may be public.</string>
-    <string name="log_viewer_screen_title" translatable="false">App Log Management</string>
-    <string name="log_privacy_notice_header" translatable="false">🔒 Privacy Protection &amp; Data Management</string>
-    <string name="log_privacy_notice_body" translatable="false">• Logs are never sent externally automatically.\n• No personal information or PDF file contents are recorded.\n• Logs older than 24 hours are automatically deleted.</string>
-    <string name="share_logs_button" translatable="false">Share Logs</string>
-    <string name="delete_logs_button" translatable="false">Clear Logs</string>
-    <string name="logs_deleted_message" translatable="false">All logs have been deleted.</string>
-    <string name="saved_logs_title" translatable="false">Saved Logs (%d lines):</string>
-    <string name="no_logs_recorded_text" translatable="false">No logs recorded.</string>
-    <string name="share_logs_title" translatable="false">Share app logs</string>
-<string name="check_for_updates">Check for Updates</string>
-    <string name="update_now">Update Now</string>
-    <string name="diagnostics_menu">Diagnostics</string>
-<string name="view_tutorial">View Tutorial</string>
+    <string name="privacy_policy_content">&lt;h2&gt;Patakaran sa Privacy&lt;/h2&gt;&lt;p&gt;Iginagalang ng developer ng MihirakiPDFViewer ang iyong privacy.&lt;/p&gt;&lt;h3&gt;1. Koleksyon at Paggamit ng Impormasyon&lt;/h3&gt;&lt;p&gt;Ang App ay hindi nag-a-upload o nangongolekta ng iyong mga PDF file. Lahat ng pagpoproseso ay lokal.&lt;/p&gt;&lt;h3&gt;2. Mga Pahintulot&lt;/h3&gt;&lt;p&gt;Gumagamit ng Storage Access Framework (SAF).&lt;/p&gt;&lt;h3&gt;3. Seguridad ng Data&lt;/h3&gt;&lt;p&gt;Ang iyong data ay nananatili sa ilalim ng iyong kontrol.&lt;/p&gt;&lt;h3&gt;4. Makipag-ugnayan&lt;/h3&gt;&lt;p&gt;Makipag-ugnayan sa pamamagitan ng GitHub.&lt;/p&gt;</string>
+    <string name="diagnostics">Pagsusuri</string>
+<string name="previous_page">Nakaraang pahina</string><string name="next_page">Susunod na pahina</string><string name="previous_search">Nakaraang resulta</string><string name="next_search">Susunod na resulta</string><string name="portrait_display">Isang pahina sa patayong screen</string><string name="mouse_navigation">Pag-navigate gamit ang mouse</string><string name="help_sample_pdfs_desc">Mga Halimbawang PDF: I-download at subukan ang mga halimbawang PDF file na ibinigay ng app upang subukan ang mga feature.</string><string name="help_outline">Talaan ng mga nilalaman ng PDF: I-tap ang icon sa hanay ng mga kasangkapan upang makita ang mga bookmark at kabanata at lumipat sa anumang seksyon.</string><string name="help_portrait_display">Portrait single page: Piliin kung ang single page view ay gagamitin sa portrait orientation.</string><string name="purchased">Nabili na</string><string name="koyomi_badge_title">Koyomi badge para sa paglunsad ng bersyon 2.0</string><string name="report_issue">Mag-ulat ng problema (GitHub)</string><string name="sample_pdfs">Mga halimbawang PDF</string><string name="language_filter">Salain ayon sa wika</string><string name="all_languages">Lahat</string><string name="sample_pdf_download">I-download</string><string name="sample_pdf_downloading">Dina-download…</string><string name="sample_pdf_downloading_progress">Dina-download… %d%%</string><string name="sample_pdf_open">Buksan</string><string name="sample_pdf_delete">I-delete</string><string name="cellular_data_warning">Babala sa mobile data</string><string name="cellular_data_message">Nasa mobile network ka. Maaaring gumamit ng maraming data ang pag-download ng “%1$s” (%2$s). Magpatuloy?</string><string name="error_prefix">Kamalian: %s</string><string name="promo_code_help_title">Paano gamitin ang promo code</string><string name="promo_code_help_message">Buksan ang Suporta, piliin ang pagbili ng Koyomi badge bersyon 2.0 at piliin ang Redeem sa Google Play.</string><string name="go_to_support">Pumunta sa Suporta</string><string name="help_device_test">Pagsubok ng Device: Patakbuhin ang mga pagsubok sa hardware at pagganap sa iyong device.</string><string name="help_log_viewer">Mga Log ng App: Tingnan at ligtas na ibahagi ang mga lokal na log ng application para sa pag-troubleshoot.</string><string name="help_clear_logs">I-clear ang Mga Log ng Pagsubok at Diagnostic: Burahin ang lahat ng naitalang log ng pagsubok at diagnostic mula sa lokal na imbakan.</string><string name="help_slider">Slider ng pahina: I-drag ang slider sa ibabang bar para lumipat sa ibang pahina.</string><string name="report_issue_desc">Mag-ulat ng isyu: Mag-ulat ng mga bug o pag-crash sa GitHub Issues at isama ang mga diagnostic log.</string><string name="help_category_getting_started">Pagsisimula</string>
+    <string name="help_category_reading_features">Mga tampok sa pagbasa</string>
+    <string name="help_category_settings_guide">Gabay sa mga setting</string>
+    <string name="help_category_diagnostics">Pagsusuri</string>
+    <string name="device_test_menu">Patakbuhin ang pagsusuri ng device</string>
+    <string name="app_logs_menu">Tingnan at ibahagi ang mga log</string>
+    <string name="device_test_screen_title">Pagsusuri at diagnostic ng device</string>
+    <string name="device_test_intro">Suriin ang RAM, imbakan, memorya, cache at kapaligiran ng PDF sa aparato.</string>
+    <string name="privacy_notice_header">🔒 Paalala sa privacy</string>
+    <string name="privacy_notice_body">Lokal ang pagproseso ng resulta. Hindi ito ipinapadala maliban kung manu-mano mong ibahagi.</string>
+    <string name="run_test_button">Simulan ang pagsusuri</string>
+    <string name="test_results_header">📊 Mga resulta</string>
+    <string name="test_timestamp_label">Oras ng pagsusuri</string>
+    <string name="vendor_label">Tagagawa</string>
+    <string name="device_name_label">Pangalan ng device</string>
+    <string name="os_version_label">Bersyon ng sistema</string>
+    <string name="system_locale_label">Wika ng sistema</string>
+    <string name="screen_orientation_label">Oryentasyon ng screen</string>
+    <string name="theme_mode_label">Tema</string>
+    <string name="font_scale_label">Laki ng teksto</string>
+    <string name="ram_info_label">Kabuuan / bakanteng RAM</string>
+    <string name="storage_info_label">Kabuuan / bakanteng storage</string>
+    <string name="low_ram_mode_label">Pag-optimize para sa mababang RAM</string>
+    <string name="cpu_cores_label">Mga core ng CPU</string>
+    <string name="screen_resolution_label">Resolusyon / densidad ng screen</string>
+    <string name="jvm_heap_label">Kabuuan / bakanteng JVM heap</string>
+    <string name="cache_dir_label">Folder ng cache</string>
+    <string name="pdf_renderer_api_label">PDF Renderer API</string>
+    <string name="billing_api_label">Google Play Billing API</string>
+    <string name="saf_resolver_label">ContentResolver (SAF)</string>
+    <string name="status_label">Katayuan</string>
+    <string name="share_test_results_button">Ibahagi ang mga resulta</string>
+    <string name="share_test_results_chooser">Ibahagi ang resulta ng device</string>
+    <string name="report_issue_screen_title">Mag-ulat ng problema</string>
+    <string name="report_issue_intro">Kung may problema, tipunin ang impormasyon sa ibaba at iulat sa GitHub Issues.</string>
+    <string name="report_include_header">Isama sa ulat</string>
+    <string name="report_step1">1. Maikling buod ng problema</string>
+    <string name="report_step2">2. Mga hakbang para maulit</string>
+    <string name="report_step3">3. Inaasahan at aktuwal na resulta</string>
+    <string name="report_step4">4. Dalas ng paglitaw</string>
+    <string name="report_step5">5. Bersyon ng app, sistema, device at display</string>
+    <string name="report_step6">6. Mga screenshot, log o resulta ng pagsusuri</string>
+    <string name="diagnostic_info_header">Impormasyon sa diagnostic</string>
+    <string name="copy_all_diagnostics_button">Kopyahin lahat ng diagnostic (resulta at log)</string>
+    <string name="copy_all_diagnostics_toast">Nakopya ang mga resulta at log</string>
+    <string name="view_app_logs_button">Tingnan at pamahalaan ang mga log</string>
+    <string name="run_device_tests_button">Simulan ang mga pagsusuri ng device</string>
+    <string name="protect_privacy_header">Protektahan ang iyong privacy</string>
+    <string name="privacy_warning_body_1">• Huwag isama ang personal na datos, nilalaman ng PDF, pangalan ng file o tao.</string>
+    <string name="privacy_warning_body_2">• Suriin ang mga larawan at diagnostic bago mag-post. Walang awtomatikong pagpapadala.</string>
+    <string name="open_github_issues_button">Buksan ang GitHub Issues</string>
+    <string name="github_account_warning">* Kailangan ng GitHub account. Maaaring maging pampubliko ang isinumiteng impormasyon.</string>
+    <string name="log_viewer_screen_title">Pamamahala ng mga log</string>
+    <string name="log_privacy_notice_header">🔒 Privacy at pamamahala ng datos</string>
+    <string name="log_privacy_notice_body">• Walang awtomatikong pagpapadala.\n• Walang personal na datos o nilalaman ng PDF.\n• Binubura ang log pagkalipas ng 24 oras.</string>
+    <string name="share_logs_button">Ibahagi ang log</string>
+    <string name="delete_logs_button">Burahin ang mga log</string>
+    <string name="logs_deleted_message">Nabura ang lahat ng log.</string>
+    <string name="no_logs_recorded_text">Walang naitalang log.</string>
+    <string name="share_logs_title">Ibahagi ang log ng app</string>
+<string name="check_for_updates">Suriin ang mga Update</string>
+    <string name="update_now">I-update ngayon</string>
+    <string name="diagnostics_menu">Pagsusuri</string>
+<string name="view_tutorial">Tingnan ang gabay</string>
+
+    <!-- Completed missing translations; native review pending. -->
+    <string name="update_available">May available na update!</string>
+    <string name="latest_version">Pinakabagong bersyon na ang gamit mo.</string>
+    <string name="update_cooldown">Maghintay ng %1$d min %2$d s bago muling tumingin ng update.</string>
+    <string name="check_failed">Hindi natuloy ang pagtingin ng update</string>
+    <string name="tutorial_welcome">Maligayang pagdating sa Mihiraki PDF Viewer</string>
+    <string name="skip">Laktawan</string>
+    <string name="tutorial_feature_spread_title">Dalawang pahina at R2L</string>
+    <string name="tutorial_feature_spread_desc">Awtomatikong tukuyin ang ayos at direksiyon ng pagbasa.</string>
+    <string name="tutorial_feature_outline_title">Pag-navigate sa talaan ng nilalaman</string>
+    <string name="tutorial_feature_outline_desc">Pumunta sa mga kabanata gamit ang mga bookmark ng PDF.</string>
+    <string name="tutorial_feature_search_title">Paghahanap at pag-highlight</string>
+    <string name="tutorial_feature_search_desc">Maghanap ng teksto na may dilaw at pulang marka.</string>
+    <string name="tutorial_youtube_button">Panoorin ang pagpapakilala sa YouTube</string>
+    <string name="tutorial_dont_show_again">Huwag nang ipakita ang gabay sa pagbukas</string>
+    <string name="tutorial_get_started">Magsimula</string>
+    <string name="error_no_app_youtube">Walang app na makakabukas ng YouTube link</string>
+    <string name="tutorial_step1_title">1. Pagsisimula</string>
+    <string name="tutorial_step1_desc">Magbukas ng lokal o cloud na PDF, subukan ang mga halimbawa, at lumipat ng pahina sa pag-swipe, slider o pag-click sa gilid.</string>
+    <string name="tutorial_step2_title">2. Mga tampok sa pagbasa</string>
+    <string name="tutorial_step2_desc">Gamitin ang dalawang pahina, R2L, talaan ng kabanata at paghahanap na may highlight.</string>
+    <string name="tutorial_step3_title">3. Mga setting at pagpapasadya</string>
+    <string name="tutorial_step3_desc">Ayusin ang kalidad, linaw, pabalat, mouse, pagsusuri at suporta sa developer.</string>
+    <string name="tutorial_step4_title">4. Handa nang magbasa</string>
+    <string name="tutorial_step4_desc">Panoorin ang video o magsimula agad. Maaaring itago ang gabay sa pagbukas.</string>
+    <string name="tutorial_next">Susunod</string>
+    <string name="tutorial_previous">Nakaraan</string>
+    <string name="tutorial_video_guide_button">Panoorin ang maiikling video ng app (playlist)</string>
 </resources>

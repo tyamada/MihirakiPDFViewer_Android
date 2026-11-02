@@ -1,0 +1,2954 @@
+{
+  "removed_nontranslatable": [
+    {
+      "key": "previous_page",
+      "classification": "user-facing text; translate",
+      "reason": "UI/help/tutorial/privacy text; not a machine identifier"
+    },
+    {
+      "key": "next_page",
+      "classification": "user-facing text; translate",
+      "reason": "UI/help/tutorial/privacy text; not a machine identifier"
+    },
+    {
+      "key": "previous_search",
+      "classification": "user-facing text; translate",
+      "reason": "UI/help/tutorial/privacy text; not a machine identifier"
+    },
+    {
+      "key": "next_search",
+      "classification": "user-facing text; translate",
+      "reason": "UI/help/tutorial/privacy text; not a machine identifier"
+    },
+    {
+      "key": "portrait_display",
+      "classification": "user-facing text; translate",
+      "reason": "UI/help/tutorial/privacy text; not a machine identifier"
+    },
+    {
+      "key": "mouse_navigation",
+      "classification": "user-facing text; translate",
+      "reason": "UI/help/tutorial/privacy text; not a machine identifier"
+    },
+    {
+      "key": "help_sample_pdfs_desc",
+      "classification": "user-facing text; translate",
+      "reason": "UI/help/tutorial/privacy text; not a machine identifier"
+    },
+    {
+      "key": "help_outline",
+      "classification": "user-facing text; translate",
+      "reason": "UI/help/tutorial/privacy text; not a machine identifier"
+    },
+    {
+      "key": "help_adaptive",
+      "classification": "user-facing text; translate",
+      "reason": "UI/help/tutorial/privacy text; not a machine identifier"
+    },
+    {
+      "key": "help_portrait_display",
+      "classification": "user-facing text; translate",
+      "reason": "UI/help/tutorial/privacy text; not a machine identifier"
+    },
+    {
+      "key": "purchased",
+      "classification": "user-facing text; translate",
+      "reason": "UI/help/tutorial/privacy text; not a machine identifier"
+    },
+    {
+      "key": "free",
+      "classification": "user-facing text; translate",
+      "reason": "UI/help/tutorial/privacy text; not a machine identifier"
+    },
+    {
+      "key": "claim",
+      "classification": "user-facing text; translate",
+      "reason": "UI/help/tutorial/privacy text; not a machine identifier"
+    },
+    {
+      "key": "koyomi_badge_title",
+      "classification": "user-facing text; translate",
+      "reason": "UI/help/tutorial/privacy text; not a machine identifier"
+    },
+    {
+      "key": "update_available",
+      "classification": "user-facing text; translate",
+      "reason": "UI/help/tutorial/privacy text; not a machine identifier"
+    },
+    {
+      "key": "latest_version",
+      "classification": "user-facing text; translate",
+      "reason": "UI/help/tutorial/privacy text; not a machine identifier"
+    },
+    {
+      "key": "update_cooldown",
+      "classification": "user-facing text; translate",
+      "reason": "UI/help/tutorial/privacy text; not a machine identifier"
+    },
+    {
+      "key": "check_failed",
+      "classification": "user-facing text; translate",
+      "reason": "UI/help/tutorial/privacy text; not a machine identifier"
+    },
+    {
+      "key": "help_diagnostics",
+      "classification": "user-facing text; translate",
+      "reason": "UI/help/tutorial/privacy text; not a machine identifier"
+    },
+    {
+      "key": "testing_diagnostic_logs",
+      "classification": "user-facing text; translate",
+      "reason": "UI/help/tutorial/privacy text; not a machine identifier"
+    },
+    {
+      "key": "help_report_issue",
+      "classification": "user-facing text; translate",
+      "reason": "UI/help/tutorial/privacy text; not a machine identifier"
+    },
+    {
+      "key": "report_issue",
+      "classification": "user-facing text; translate",
+      "reason": "UI/help/tutorial/privacy text; not a machine identifier"
+    },
+    {
+      "key": "enter_promo_code",
+      "classification": "user-facing text; translate",
+      "reason": "UI/help/tutorial/privacy text; not a machine identifier"
+    },
+    {
+      "key": "promo_code_dialog_title",
+      "classification": "user-facing text; translate",
+      "reason": "UI/help/tutorial/privacy text; not a machine identifier"
+    },
+    {
+      "key": "promo_code_instructions",
+      "classification": "user-facing text; translate",
+      "reason": "UI/help/tutorial/privacy text; not a machine identifier"
+    },
+    {
+      "key": "redeem",
+      "classification": "user-facing text; translate",
+      "reason": "UI/help/tutorial/privacy text; not a machine identifier"
+    },
+    {
+      "key": "sample_pdfs",
+      "classification": "user-facing text; translate",
+      "reason": "UI/help/tutorial/privacy text; not a machine identifier"
+    },
+    {
+      "key": "language_filter",
+      "classification": "user-facing text; translate",
+      "reason": "UI/help/tutorial/privacy text; not a machine identifier"
+    },
+    {
+      "key": "all_languages",
+      "classification": "user-facing text; translate",
+      "reason": "UI/help/tutorial/privacy text; not a machine identifier"
+    },
+    {
+      "key": "sample_pdf_download",
+      "classification": "user-facing text; translate",
+      "reason": "UI/help/tutorial/privacy text; not a machine identifier"
+    },
+    {
+      "key": "sample_pdf_downloading",
+      "classification": "user-facing text; translate",
+      "reason": "UI/help/tutorial/privacy text; not a machine identifier"
+    },
+    {
+      "key": "sample_pdf_downloading_progress",
+      "classification": "user-facing text; translate",
+      "reason": "UI/help/tutorial/privacy text; not a machine identifier"
+    },
+    {
+      "key": "sample_pdf_open",
+      "classification": "user-facing text; translate",
+      "reason": "UI/help/tutorial/privacy text; not a machine identifier"
+    },
+    {
+      "key": "sample_pdf_delete",
+      "classification": "user-facing text; translate",
+      "reason": "UI/help/tutorial/privacy text; not a machine identifier"
+    },
+    {
+      "key": "cellular_data_warning",
+      "classification": "user-facing text; translate",
+      "reason": "UI/help/tutorial/privacy text; not a machine identifier"
+    },
+    {
+      "key": "cellular_data_message",
+      "classification": "user-facing text; translate",
+      "reason": "UI/help/tutorial/privacy text; not a machine identifier"
+    },
+    {
+      "key": "error_prefix",
+      "classification": "user-facing text; translate",
+      "reason": "UI/help/tutorial/privacy text; not a machine identifier"
+    },
+    {
+      "key": "error_opening_play_store",
+      "classification": "user-facing text; translate",
+      "reason": "UI/help/tutorial/privacy text; not a machine identifier"
+    },
+    {
+      "key": "promo_code_help_title",
+      "classification": "user-facing text; translate",
+      "reason": "UI/help/tutorial/privacy text; not a machine identifier"
+    },
+    {
+      "key": "promo_code_help_message",
+      "classification": "user-facing text; translate",
+      "reason": "UI/help/tutorial/privacy text; not a machine identifier"
+    },
+    {
+      "key": "go_to_support",
+      "classification": "user-facing text; translate",
+      "reason": "UI/help/tutorial/privacy text; not a machine identifier"
+    },
+    {
+      "key": "help_device_test",
+      "classification": "user-facing text; translate",
+      "reason": "UI/help/tutorial/privacy text; not a machine identifier"
+    },
+    {
+      "key": "help_log_viewer",
+      "classification": "user-facing text; translate",
+      "reason": "UI/help/tutorial/privacy text; not a machine identifier"
+    },
+    {
+      "key": "help_clear_logs",
+      "classification": "user-facing text; translate",
+      "reason": "UI/help/tutorial/privacy text; not a machine identifier"
+    },
+    {
+      "key": "help_promo_code",
+      "classification": "user-facing text; translate",
+      "reason": "UI/help/tutorial/privacy text; not a machine identifier"
+    },
+    {
+      "key": "privacy_policy_content",
+      "classification": "user-facing text; translate",
+      "reason": "UI/help/tutorial/privacy text; not a machine identifier"
+    },
+    {
+      "key": "help_category_getting_started",
+      "classification": "user-facing text; translate",
+      "reason": "UI/help/tutorial/privacy text; not a machine identifier"
+    },
+    {
+      "key": "help_category_reading_features",
+      "classification": "user-facing text; translate",
+      "reason": "UI/help/tutorial/privacy text; not a machine identifier"
+    },
+    {
+      "key": "help_category_settings_guide",
+      "classification": "user-facing text; translate",
+      "reason": "UI/help/tutorial/privacy text; not a machine identifier"
+    },
+    {
+      "key": "help_category_diagnostics",
+      "classification": "user-facing text; translate",
+      "reason": "UI/help/tutorial/privacy text; not a machine identifier"
+    },
+    {
+      "key": "device_test_menu",
+      "classification": "user-facing text; translate",
+      "reason": "UI/help/tutorial/privacy text; not a machine identifier"
+    },
+    {
+      "key": "app_logs_menu",
+      "classification": "user-facing text; translate",
+      "reason": "UI/help/tutorial/privacy text; not a machine identifier"
+    },
+    {
+      "key": "device_test_screen_title",
+      "classification": "user-facing text; translate",
+      "reason": "UI/help/tutorial/privacy text; not a machine identifier"
+    },
+    {
+      "key": "device_test_intro",
+      "classification": "user-facing text; translate",
+      "reason": "UI/help/tutorial/privacy text; not a machine identifier"
+    },
+    {
+      "key": "privacy_notice_header",
+      "classification": "user-facing text; translate",
+      "reason": "UI/help/tutorial/privacy text; not a machine identifier"
+    },
+    {
+      "key": "privacy_notice_body",
+      "classification": "user-facing text; translate",
+      "reason": "UI/help/tutorial/privacy text; not a machine identifier"
+    },
+    {
+      "key": "run_test_button",
+      "classification": "user-facing text; translate",
+      "reason": "UI/help/tutorial/privacy text; not a machine identifier"
+    },
+    {
+      "key": "test_results_header",
+      "classification": "user-facing text; translate",
+      "reason": "UI/help/tutorial/privacy text; not a machine identifier"
+    },
+    {
+      "key": "test_timestamp_label",
+      "classification": "user-facing text; translate",
+      "reason": "UI/help/tutorial/privacy text; not a machine identifier"
+    },
+    {
+      "key": "vendor_label",
+      "classification": "user-facing text; translate",
+      "reason": "UI/help/tutorial/privacy text; not a machine identifier"
+    },
+    {
+      "key": "device_name_label",
+      "classification": "user-facing text; translate",
+      "reason": "UI/help/tutorial/privacy text; not a machine identifier"
+    },
+    {
+      "key": "os_version_label",
+      "classification": "user-facing text; translate",
+      "reason": "UI/help/tutorial/privacy text; not a machine identifier"
+    },
+    {
+      "key": "system_locale_label",
+      "classification": "user-facing text; translate",
+      "reason": "UI/help/tutorial/privacy text; not a machine identifier"
+    },
+    {
+      "key": "screen_orientation_label",
+      "classification": "user-facing text; translate",
+      "reason": "UI/help/tutorial/privacy text; not a machine identifier"
+    },
+    {
+      "key": "theme_mode_label",
+      "classification": "user-facing text; translate",
+      "reason": "UI/help/tutorial/privacy text; not a machine identifier"
+    },
+    {
+      "key": "font_scale_label",
+      "classification": "user-facing text; translate",
+      "reason": "UI/help/tutorial/privacy text; not a machine identifier"
+    },
+    {
+      "key": "ram_info_label",
+      "classification": "user-facing text; translate",
+      "reason": "UI/help/tutorial/privacy text; not a machine identifier"
+    },
+    {
+      "key": "storage_info_label",
+      "classification": "user-facing text; translate",
+      "reason": "UI/help/tutorial/privacy text; not a machine identifier"
+    },
+    {
+      "key": "low_ram_mode_label",
+      "classification": "user-facing text; translate",
+      "reason": "UI/help/tutorial/privacy text; not a machine identifier"
+    },
+    {
+      "key": "cpu_cores_label",
+      "classification": "user-facing text; translate",
+      "reason": "UI/help/tutorial/privacy text; not a machine identifier"
+    },
+    {
+      "key": "screen_resolution_label",
+      "classification": "user-facing text; translate",
+      "reason": "UI/help/tutorial/privacy text; not a machine identifier"
+    },
+    {
+      "key": "jvm_heap_label",
+      "classification": "user-facing text; translate",
+      "reason": "UI/help/tutorial/privacy text; not a machine identifier"
+    },
+    {
+      "key": "cache_dir_label",
+      "classification": "user-facing text; translate",
+      "reason": "UI/help/tutorial/privacy text; not a machine identifier"
+    },
+    {
+      "key": "pdf_renderer_api_label",
+      "classification": "user-facing text; translate",
+      "reason": "UI/help/tutorial/privacy text; not a machine identifier"
+    },
+    {
+      "key": "billing_api_label",
+      "classification": "user-facing text; translate",
+      "reason": "UI/help/tutorial/privacy text; not a machine identifier"
+    },
+    {
+      "key": "saf_resolver_label",
+      "classification": "user-facing text; translate",
+      "reason": "UI/help/tutorial/privacy text; not a machine identifier"
+    },
+    {
+      "key": "status_label",
+      "classification": "user-facing text; translate",
+      "reason": "UI/help/tutorial/privacy text; not a machine identifier"
+    },
+    {
+      "key": "share_test_results_button",
+      "classification": "user-facing text; translate",
+      "reason": "UI/help/tutorial/privacy text; not a machine identifier"
+    },
+    {
+      "key": "share_test_results_chooser",
+      "classification": "user-facing text; translate",
+      "reason": "UI/help/tutorial/privacy text; not a machine identifier"
+    },
+    {
+      "key": "report_issue_screen_title",
+      "classification": "user-facing text; translate",
+      "reason": "UI/help/tutorial/privacy text; not a machine identifier"
+    },
+    {
+      "key": "report_issue_intro",
+      "classification": "user-facing text; translate",
+      "reason": "UI/help/tutorial/privacy text; not a machine identifier"
+    },
+    {
+      "key": "report_include_header",
+      "classification": "user-facing text; translate",
+      "reason": "UI/help/tutorial/privacy text; not a machine identifier"
+    },
+    {
+      "key": "report_step1",
+      "classification": "user-facing text; translate",
+      "reason": "UI/help/tutorial/privacy text; not a machine identifier"
+    },
+    {
+      "key": "report_step2",
+      "classification": "user-facing text; translate",
+      "reason": "UI/help/tutorial/privacy text; not a machine identifier"
+    },
+    {
+      "key": "report_step3",
+      "classification": "user-facing text; translate",
+      "reason": "UI/help/tutorial/privacy text; not a machine identifier"
+    },
+    {
+      "key": "report_step4",
+      "classification": "user-facing text; translate",
+      "reason": "UI/help/tutorial/privacy text; not a machine identifier"
+    },
+    {
+      "key": "report_step5",
+      "classification": "user-facing text; translate",
+      "reason": "UI/help/tutorial/privacy text; not a machine identifier"
+    },
+    {
+      "key": "report_step6",
+      "classification": "user-facing text; translate",
+      "reason": "UI/help/tutorial/privacy text; not a machine identifier"
+    },
+    {
+      "key": "diagnostic_info_header",
+      "classification": "user-facing text; translate",
+      "reason": "UI/help/tutorial/privacy text; not a machine identifier"
+    },
+    {
+      "key": "copy_all_diagnostics_button",
+      "classification": "user-facing text; translate",
+      "reason": "UI/help/tutorial/privacy text; not a machine identifier"
+    },
+    {
+      "key": "copy_all_diagnostics_toast",
+      "classification": "user-facing text; translate",
+      "reason": "UI/help/tutorial/privacy text; not a machine identifier"
+    },
+    {
+      "key": "view_app_logs_button",
+      "classification": "user-facing text; translate",
+      "reason": "UI/help/tutorial/privacy text; not a machine identifier"
+    },
+    {
+      "key": "run_device_tests_button",
+      "classification": "user-facing text; translate",
+      "reason": "UI/help/tutorial/privacy text; not a machine identifier"
+    },
+    {
+      "key": "protect_privacy_header",
+      "classification": "user-facing text; translate",
+      "reason": "UI/help/tutorial/privacy text; not a machine identifier"
+    },
+    {
+      "key": "privacy_warning_body_1",
+      "classification": "user-facing text; translate",
+      "reason": "UI/help/tutorial/privacy text; not a machine identifier"
+    },
+    {
+      "key": "privacy_warning_body_2",
+      "classification": "user-facing text; translate",
+      "reason": "UI/help/tutorial/privacy text; not a machine identifier"
+    },
+    {
+      "key": "open_github_issues_button",
+      "classification": "user-facing text; translate",
+      "reason": "UI/help/tutorial/privacy text; not a machine identifier"
+    },
+    {
+      "key": "github_account_warning",
+      "classification": "user-facing text; translate",
+      "reason": "UI/help/tutorial/privacy text; not a machine identifier"
+    },
+    {
+      "key": "log_viewer_screen_title",
+      "classification": "user-facing text; translate",
+      "reason": "UI/help/tutorial/privacy text; not a machine identifier"
+    },
+    {
+      "key": "log_privacy_notice_header",
+      "classification": "user-facing text; translate",
+      "reason": "UI/help/tutorial/privacy text; not a machine identifier"
+    },
+    {
+      "key": "log_privacy_notice_body",
+      "classification": "user-facing text; translate",
+      "reason": "UI/help/tutorial/privacy text; not a machine identifier"
+    },
+    {
+      "key": "share_logs_button",
+      "classification": "user-facing text; translate",
+      "reason": "UI/help/tutorial/privacy text; not a machine identifier"
+    },
+    {
+      "key": "delete_logs_button",
+      "classification": "user-facing text; translate",
+      "reason": "UI/help/tutorial/privacy text; not a machine identifier"
+    },
+    {
+      "key": "logs_deleted_message",
+      "classification": "user-facing text; translate",
+      "reason": "UI/help/tutorial/privacy text; not a machine identifier"
+    },
+    {
+      "key": "saved_logs_title",
+      "classification": "user-facing text; translate",
+      "reason": "UI/help/tutorial/privacy text; not a machine identifier"
+    },
+    {
+      "key": "no_logs_recorded_text",
+      "classification": "user-facing text; translate",
+      "reason": "UI/help/tutorial/privacy text; not a machine identifier"
+    },
+    {
+      "key": "share_logs_title",
+      "classification": "user-facing text; translate",
+      "reason": "UI/help/tutorial/privacy text; not a machine identifier"
+    },
+    {
+      "key": "tutorial_welcome",
+      "classification": "user-facing text; translate",
+      "reason": "UI/help/tutorial/privacy text; not a machine identifier"
+    },
+    {
+      "key": "skip",
+      "classification": "user-facing text; translate",
+      "reason": "UI/help/tutorial/privacy text; not a machine identifier"
+    },
+    {
+      "key": "tutorial_headline",
+      "classification": "user-facing text; translate",
+      "reason": "UI/help/tutorial/privacy text; not a machine identifier"
+    },
+    {
+      "key": "tutorial_description",
+      "classification": "user-facing text; translate",
+      "reason": "UI/help/tutorial/privacy text; not a machine identifier"
+    },
+    {
+      "key": "tutorial_feature_spread_title",
+      "classification": "user-facing text; translate",
+      "reason": "UI/help/tutorial/privacy text; not a machine identifier"
+    },
+    {
+      "key": "tutorial_feature_spread_desc",
+      "classification": "user-facing text; translate",
+      "reason": "UI/help/tutorial/privacy text; not a machine identifier"
+    },
+    {
+      "key": "tutorial_feature_outline_title",
+      "classification": "user-facing text; translate",
+      "reason": "UI/help/tutorial/privacy text; not a machine identifier"
+    },
+    {
+      "key": "tutorial_feature_outline_desc",
+      "classification": "user-facing text; translate",
+      "reason": "UI/help/tutorial/privacy text; not a machine identifier"
+    },
+    {
+      "key": "tutorial_feature_search_title",
+      "classification": "user-facing text; translate",
+      "reason": "UI/help/tutorial/privacy text; not a machine identifier"
+    },
+    {
+      "key": "tutorial_feature_search_desc",
+      "classification": "user-facing text; translate",
+      "reason": "UI/help/tutorial/privacy text; not a machine identifier"
+    },
+    {
+      "key": "tutorial_youtube_button",
+      "classification": "user-facing text; translate",
+      "reason": "UI/help/tutorial/privacy text; not a machine identifier"
+    },
+    {
+      "key": "tutorial_dont_show_again",
+      "classification": "user-facing text; translate",
+      "reason": "UI/help/tutorial/privacy text; not a machine identifier"
+    },
+    {
+      "key": "tutorial_get_started",
+      "classification": "user-facing text; translate",
+      "reason": "UI/help/tutorial/privacy text; not a machine identifier"
+    },
+    {
+      "key": "error_no_app_youtube",
+      "classification": "user-facing text; translate",
+      "reason": "UI/help/tutorial/privacy text; not a machine identifier"
+    },
+    {
+      "key": "tutorial_step1_title",
+      "classification": "user-facing text; translate",
+      "reason": "UI/help/tutorial/privacy text; not a machine identifier"
+    },
+    {
+      "key": "tutorial_step1_desc",
+      "classification": "user-facing text; translate",
+      "reason": "UI/help/tutorial/privacy text; not a machine identifier"
+    },
+    {
+      "key": "tutorial_step2_title",
+      "classification": "user-facing text; translate",
+      "reason": "UI/help/tutorial/privacy text; not a machine identifier"
+    },
+    {
+      "key": "tutorial_step2_desc",
+      "classification": "user-facing text; translate",
+      "reason": "UI/help/tutorial/privacy text; not a machine identifier"
+    },
+    {
+      "key": "tutorial_step3_title",
+      "classification": "user-facing text; translate",
+      "reason": "UI/help/tutorial/privacy text; not a machine identifier"
+    },
+    {
+      "key": "tutorial_step3_desc",
+      "classification": "user-facing text; translate",
+      "reason": "UI/help/tutorial/privacy text; not a machine identifier"
+    },
+    {
+      "key": "tutorial_step4_title",
+      "classification": "user-facing text; translate",
+      "reason": "UI/help/tutorial/privacy text; not a machine identifier"
+    },
+    {
+      "key": "tutorial_step4_desc",
+      "classification": "user-facing text; translate",
+      "reason": "UI/help/tutorial/privacy text; not a machine identifier"
+    },
+    {
+      "key": "tutorial_next",
+      "classification": "user-facing text; translate",
+      "reason": "UI/help/tutorial/privacy text; not a machine identifier"
+    },
+    {
+      "key": "tutorial_previous",
+      "classification": "user-facing text; translate",
+      "reason": "UI/help/tutorial/privacy text; not a machine identifier"
+    },
+    {
+      "key": "tutorial_video_guide_button",
+      "classification": "user-facing text; translate",
+      "reason": "UI/help/tutorial/privacy text; not a machine identifier"
+    },
+    {
+      "key": "tutorial_video_playlist_title",
+      "classification": "user-facing text; translate",
+      "reason": "UI/help/tutorial/privacy text; not a machine identifier"
+    }
+  ],
+  "added": [
+    [
+      "de",
+      "password"
+    ],
+    [
+      "de",
+      "title"
+    ],
+    [
+      "de",
+      "author"
+    ],
+    [
+      "de",
+      "keywords"
+    ],
+    [
+      "de",
+      "options"
+    ],
+    [
+      "de",
+      "tip_message"
+    ],
+    [
+      "de",
+      "purchase_thanks"
+    ],
+    [
+      "de",
+      "purchase_cancelled"
+    ],
+    [
+      "de",
+      "purchase_failed"
+    ],
+    [
+      "de",
+      "promo_code_help_title"
+    ],
+    [
+      "de",
+      "go_to_support"
+    ],
+    [
+      "de",
+      "report_issue_screen_title"
+    ],
+    [
+      "de",
+      "report_include_header"
+    ],
+    [
+      "de",
+      "report_step1"
+    ],
+    [
+      "de",
+      "report_step2"
+    ],
+    [
+      "de",
+      "report_step3"
+    ],
+    [
+      "de",
+      "report_step4"
+    ],
+    [
+      "de",
+      "share_logs_button"
+    ],
+    [
+      "de",
+      "check_for_updates"
+    ],
+    [
+      "de",
+      "skip"
+    ],
+    [
+      "de",
+      "tutorial_get_started"
+    ],
+    [
+      "de",
+      "tutorial_next"
+    ],
+    [
+      "de",
+      "previous_page"
+    ],
+    [
+      "de",
+      "next_page"
+    ],
+    [
+      "de",
+      "previous_search"
+    ],
+    [
+      "de",
+      "next_search"
+    ],
+    [
+      "de",
+      "portrait_display"
+    ],
+    [
+      "de",
+      "mouse_navigation"
+    ],
+    [
+      "de",
+      "purchased"
+    ],
+    [
+      "de",
+      "free"
+    ],
+    [
+      "de",
+      "claim"
+    ],
+    [
+      "de",
+      "latest_version"
+    ],
+    [
+      "de",
+      "check_failed"
+    ],
+    [
+      "de",
+      "enter_promo_code"
+    ],
+    [
+      "de",
+      "promo_code_dialog_title"
+    ],
+    [
+      "de",
+      "redeem"
+    ],
+    [
+      "de",
+      "sample_pdfs"
+    ],
+    [
+      "de",
+      "language_filter"
+    ],
+    [
+      "de",
+      "all_languages"
+    ],
+    [
+      "de",
+      "sample_pdf_download"
+    ],
+    [
+      "de",
+      "sample_pdf_downloading"
+    ],
+    [
+      "de",
+      "sample_pdf_open"
+    ],
+    [
+      "de",
+      "sample_pdf_delete"
+    ],
+    [
+      "de",
+      "tutorial_previous"
+    ],
+    [
+      "de",
+      "koyomi_badge_title"
+    ],
+    [
+      "es",
+      "password"
+    ],
+    [
+      "es",
+      "title"
+    ],
+    [
+      "es",
+      "author"
+    ],
+    [
+      "es",
+      "keywords"
+    ],
+    [
+      "es",
+      "options"
+    ],
+    [
+      "es",
+      "tip_message"
+    ],
+    [
+      "es",
+      "purchase_thanks"
+    ],
+    [
+      "es",
+      "purchase_cancelled"
+    ],
+    [
+      "es",
+      "purchase_failed"
+    ],
+    [
+      "es",
+      "version"
+    ],
+    [
+      "es",
+      "promo_code_help_title"
+    ],
+    [
+      "es",
+      "go_to_support"
+    ],
+    [
+      "es",
+      "report_issue_screen_title"
+    ],
+    [
+      "es",
+      "report_include_header"
+    ],
+    [
+      "es",
+      "report_step1"
+    ],
+    [
+      "es",
+      "report_step2"
+    ],
+    [
+      "es",
+      "report_step3"
+    ],
+    [
+      "es",
+      "report_step4"
+    ],
+    [
+      "es",
+      "share_logs_button"
+    ],
+    [
+      "es",
+      "check_for_updates"
+    ],
+    [
+      "es",
+      "skip"
+    ],
+    [
+      "es",
+      "tutorial_get_started"
+    ],
+    [
+      "es",
+      "tutorial_next"
+    ],
+    [
+      "es",
+      "previous_page"
+    ],
+    [
+      "es",
+      "next_page"
+    ],
+    [
+      "es",
+      "previous_search"
+    ],
+    [
+      "es",
+      "next_search"
+    ],
+    [
+      "es",
+      "portrait_display"
+    ],
+    [
+      "es",
+      "mouse_navigation"
+    ],
+    [
+      "es",
+      "purchased"
+    ],
+    [
+      "es",
+      "free"
+    ],
+    [
+      "es",
+      "claim"
+    ],
+    [
+      "es",
+      "latest_version"
+    ],
+    [
+      "es",
+      "check_failed"
+    ],
+    [
+      "es",
+      "enter_promo_code"
+    ],
+    [
+      "es",
+      "promo_code_dialog_title"
+    ],
+    [
+      "es",
+      "redeem"
+    ],
+    [
+      "es",
+      "sample_pdfs"
+    ],
+    [
+      "es",
+      "language_filter"
+    ],
+    [
+      "es",
+      "all_languages"
+    ],
+    [
+      "es",
+      "sample_pdf_download"
+    ],
+    [
+      "es",
+      "sample_pdf_downloading"
+    ],
+    [
+      "es",
+      "sample_pdf_open"
+    ],
+    [
+      "es",
+      "sample_pdf_delete"
+    ],
+    [
+      "es",
+      "tutorial_previous"
+    ],
+    [
+      "es",
+      "koyomi_badge_title"
+    ],
+    [
+      "fr",
+      "password"
+    ],
+    [
+      "fr",
+      "title"
+    ],
+    [
+      "fr",
+      "author"
+    ],
+    [
+      "fr",
+      "keywords"
+    ],
+    [
+      "fr",
+      "tip_message"
+    ],
+    [
+      "fr",
+      "purchase_thanks"
+    ],
+    [
+      "fr",
+      "purchase_cancelled"
+    ],
+    [
+      "fr",
+      "purchase_failed"
+    ],
+    [
+      "fr",
+      "promo_code_help_title"
+    ],
+    [
+      "fr",
+      "go_to_support"
+    ],
+    [
+      "fr",
+      "report_issue_screen_title"
+    ],
+    [
+      "fr",
+      "report_include_header"
+    ],
+    [
+      "fr",
+      "report_step1"
+    ],
+    [
+      "fr",
+      "report_step2"
+    ],
+    [
+      "fr",
+      "report_step3"
+    ],
+    [
+      "fr",
+      "report_step4"
+    ],
+    [
+      "fr",
+      "share_logs_button"
+    ],
+    [
+      "fr",
+      "check_for_updates"
+    ],
+    [
+      "fr",
+      "skip"
+    ],
+    [
+      "fr",
+      "tutorial_get_started"
+    ],
+    [
+      "fr",
+      "tutorial_next"
+    ],
+    [
+      "fr",
+      "previous_page"
+    ],
+    [
+      "fr",
+      "next_page"
+    ],
+    [
+      "fr",
+      "previous_search"
+    ],
+    [
+      "fr",
+      "next_search"
+    ],
+    [
+      "fr",
+      "portrait_display"
+    ],
+    [
+      "fr",
+      "mouse_navigation"
+    ],
+    [
+      "fr",
+      "purchased"
+    ],
+    [
+      "fr",
+      "free"
+    ],
+    [
+      "fr",
+      "claim"
+    ],
+    [
+      "fr",
+      "latest_version"
+    ],
+    [
+      "fr",
+      "check_failed"
+    ],
+    [
+      "fr",
+      "enter_promo_code"
+    ],
+    [
+      "fr",
+      "promo_code_dialog_title"
+    ],
+    [
+      "fr",
+      "redeem"
+    ],
+    [
+      "fr",
+      "sample_pdfs"
+    ],
+    [
+      "fr",
+      "language_filter"
+    ],
+    [
+      "fr",
+      "all_languages"
+    ],
+    [
+      "fr",
+      "sample_pdf_download"
+    ],
+    [
+      "fr",
+      "sample_pdf_downloading"
+    ],
+    [
+      "fr",
+      "sample_pdf_open"
+    ],
+    [
+      "fr",
+      "sample_pdf_delete"
+    ],
+    [
+      "fr",
+      "tutorial_previous"
+    ],
+    [
+      "fr",
+      "koyomi_badge_title"
+    ],
+    [
+      "it",
+      "title"
+    ],
+    [
+      "it",
+      "author"
+    ],
+    [
+      "it",
+      "keywords"
+    ],
+    [
+      "it",
+      "options"
+    ],
+    [
+      "it",
+      "tip_message"
+    ],
+    [
+      "it",
+      "purchase_thanks"
+    ],
+    [
+      "it",
+      "purchase_cancelled"
+    ],
+    [
+      "it",
+      "purchase_failed"
+    ],
+    [
+      "it",
+      "version"
+    ],
+    [
+      "it",
+      "promo_code_help_title"
+    ],
+    [
+      "it",
+      "go_to_support"
+    ],
+    [
+      "it",
+      "report_issue_screen_title"
+    ],
+    [
+      "it",
+      "report_include_header"
+    ],
+    [
+      "it",
+      "report_step1"
+    ],
+    [
+      "it",
+      "report_step2"
+    ],
+    [
+      "it",
+      "report_step3"
+    ],
+    [
+      "it",
+      "report_step4"
+    ],
+    [
+      "it",
+      "share_logs_button"
+    ],
+    [
+      "it",
+      "check_for_updates"
+    ],
+    [
+      "it",
+      "previous_page"
+    ],
+    [
+      "it",
+      "next_page"
+    ],
+    [
+      "it",
+      "previous_search"
+    ],
+    [
+      "it",
+      "next_search"
+    ],
+    [
+      "it",
+      "portrait_display"
+    ],
+    [
+      "it",
+      "mouse_navigation"
+    ],
+    [
+      "it",
+      "purchased"
+    ],
+    [
+      "it",
+      "free"
+    ],
+    [
+      "it",
+      "claim"
+    ],
+    [
+      "it",
+      "latest_version"
+    ],
+    [
+      "it",
+      "check_failed"
+    ],
+    [
+      "it",
+      "enter_promo_code"
+    ],
+    [
+      "it",
+      "promo_code_dialog_title"
+    ],
+    [
+      "it",
+      "redeem"
+    ],
+    [
+      "it",
+      "sample_pdfs"
+    ],
+    [
+      "it",
+      "language_filter"
+    ],
+    [
+      "it",
+      "all_languages"
+    ],
+    [
+      "it",
+      "sample_pdf_download"
+    ],
+    [
+      "it",
+      "sample_pdf_downloading"
+    ],
+    [
+      "it",
+      "sample_pdf_open"
+    ],
+    [
+      "it",
+      "sample_pdf_delete"
+    ],
+    [
+      "it",
+      "tutorial_previous"
+    ],
+    [
+      "it",
+      "skip"
+    ],
+    [
+      "it",
+      "tutorial_get_started"
+    ],
+    [
+      "it",
+      "tutorial_next"
+    ],
+    [
+      "it",
+      "koyomi_badge_title"
+    ],
+    [
+      "zh-rCN",
+      "skip"
+    ],
+    [
+      "zh-rCN",
+      "tutorial_get_started"
+    ],
+    [
+      "zh-rCN",
+      "tutorial_next"
+    ]
+  ],
+  "locales": [
+    {
+      "locale": "values-de",
+      "app_name": "Mihiraki: Doppelseitiger PDF-Reader",
+      "app_name_length": 35,
+      "missing_keys": [
+        "app_logs_menu",
+        "billing_api_label",
+        "build_number",
+        "cache_dir_label",
+        "cannot_open_pdf",
+        "cellular_data_message",
+        "cellular_data_warning",
+        "copy_all_diagnostics_button",
+        "copy_all_diagnostics_toast",
+        "copyright",
+        "cpu_cores_label",
+        "delete_logs_button",
+        "device_name_label",
+        "device_test_intro",
+        "device_test_menu",
+        "device_test_screen_title",
+        "diagnostic_info_header",
+        "diagnostics",
+        "diagnostics_menu",
+        "error_no_app_youtube",
+        "error_opening_play_store",
+        "error_prefix",
+        "font_scale_label",
+        "github_account_warning",
+        "help_adaptive",
+        "help_app_info",
+        "help_category_diagnostics",
+        "help_category_getting_started",
+        "help_category_reading_features",
+        "help_category_settings_guide",
+        "help_clear_logs",
+        "help_cover_mode",
+        "help_device_test",
+        "help_diagnostics",
+        "help_display_settings",
+        "help_document_info",
+        "help_help",
+        "help_high_quality",
+        "help_layout",
+        "help_log_viewer",
+        "help_menu",
+        "help_navigate",
+        "help_open",
+        "help_options",
+        "help_outline",
+        "help_portrait_display",
+        "help_promo_code",
+        "help_reading_direction",
+        "help_report_issue",
+        "help_reset",
+        "help_sample_pdfs_desc",
+        "help_search",
+        "help_sharpness",
+        "help_show_cover",
+        "help_slider",
+        "help_support",
+        "help_two_page",
+        "help_zoom",
+        "high_quality",
+        "jvm_heap_label",
+        "log_privacy_notice_body",
+        "log_privacy_notice_header",
+        "log_viewer_screen_title",
+        "logs_deleted_message",
+        "low_ram_mode_label",
+        "no_logs_recorded_text",
+        "no_results",
+        "open_github_issues_button",
+        "os_version_label",
+        "oss_license_description",
+        "oss_license_title",
+        "password_required",
+        "pdf_renderer_api_label",
+        "pdf_version",
+        "permission_denied",
+        "privacy_notice_body",
+        "privacy_notice_header",
+        "privacy_policy_content",
+        "privacy_warning_body_1",
+        "privacy_warning_body_2",
+        "promo_code_help_message",
+        "promo_code_instructions",
+        "protect_privacy_header",
+        "purchase_badge_notice",
+        "ram_info_label",
+        "report_issue",
+        "report_issue_desc",
+        "report_issue_intro",
+        "report_step5",
+        "report_step6",
+        "reset_message",
+        "run_device_tests_button",
+        "run_test_button",
+        "saf_resolver_label",
+        "sample_pdf_downloading_progress",
+        "saved_logs_title",
+        "screen_orientation_label",
+        "screen_resolution_label",
+        "share_logs_title",
+        "share_test_results_button",
+        "share_test_results_chooser",
+        "sharpness",
+        "show_cover",
+        "status_label",
+        "storage_info_label",
+        "subject",
+        "system_locale_label",
+        "table_of_contents",
+        "test_results_header",
+        "test_timestamp_label",
+        "testing_diagnostic_logs",
+        "theme_mode_label",
+        "tip_free_notice",
+        "tutorial_description",
+        "tutorial_dont_show_again",
+        "tutorial_feature_outline_desc",
+        "tutorial_feature_outline_title",
+        "tutorial_feature_search_desc",
+        "tutorial_feature_search_title",
+        "tutorial_feature_spread_desc",
+        "tutorial_feature_spread_title",
+        "tutorial_headline",
+        "tutorial_step1_desc",
+        "tutorial_step1_title",
+        "tutorial_step2_desc",
+        "tutorial_step2_title",
+        "tutorial_step3_desc",
+        "tutorial_step3_title",
+        "tutorial_step4_desc",
+        "tutorial_step4_title",
+        "tutorial_video_guide_button",
+        "tutorial_video_playlist_title",
+        "tutorial_welcome",
+        "tutorial_youtube_button",
+        "update_available",
+        "update_cooldown",
+        "update_now",
+        "vendor_label",
+        "version",
+        "view_app_logs_button",
+        "view_tutorial",
+        "wrong_password"
+      ],
+      "same_as_english_keys": [
+        "ok"
+      ],
+      "native_review": "pending",
+      "screen_review": "not performed"
+    },
+    {
+      "locale": "values-es",
+      "app_name": "Mihiraki: Lector PDF de Doble Página",
+      "app_name_length": 36,
+      "missing_keys": [
+        "app_logs_menu",
+        "billing_api_label",
+        "build_number",
+        "cache_dir_label",
+        "cannot_open_pdf",
+        "cellular_data_message",
+        "cellular_data_warning",
+        "copy_all_diagnostics_button",
+        "copy_all_diagnostics_toast",
+        "copyright",
+        "cpu_cores_label",
+        "delete_logs_button",
+        "device_name_label",
+        "device_test_intro",
+        "device_test_menu",
+        "device_test_screen_title",
+        "diagnostic_info_header",
+        "diagnostics",
+        "diagnostics_menu",
+        "error_no_app_youtube",
+        "error_opening_play_store",
+        "error_prefix",
+        "font_scale_label",
+        "github_account_warning",
+        "help_adaptive",
+        "help_app_info",
+        "help_category_diagnostics",
+        "help_category_getting_started",
+        "help_category_reading_features",
+        "help_category_settings_guide",
+        "help_clear_logs",
+        "help_cover_mode",
+        "help_device_test",
+        "help_diagnostics",
+        "help_display_settings",
+        "help_document_info",
+        "help_help",
+        "help_high_quality",
+        "help_layout",
+        "help_log_viewer",
+        "help_menu",
+        "help_navigate",
+        "help_open",
+        "help_options",
+        "help_outline",
+        "help_portrait_display",
+        "help_promo_code",
+        "help_reading_direction",
+        "help_report_issue",
+        "help_reset",
+        "help_sample_pdfs_desc",
+        "help_search",
+        "help_sharpness",
+        "help_show_cover",
+        "help_slider",
+        "help_support",
+        "help_two_page",
+        "help_zoom",
+        "high_quality",
+        "jvm_heap_label",
+        "log_privacy_notice_body",
+        "log_privacy_notice_header",
+        "log_viewer_screen_title",
+        "logs_deleted_message",
+        "low_ram_mode_label",
+        "no_logs_recorded_text",
+        "no_results",
+        "open_github_issues_button",
+        "os_version_label",
+        "oss_license_description",
+        "oss_license_title",
+        "password_required",
+        "pdf_renderer_api_label",
+        "pdf_version",
+        "permission_denied",
+        "privacy_notice_body",
+        "privacy_notice_header",
+        "privacy_policy_content",
+        "privacy_warning_body_1",
+        "privacy_warning_body_2",
+        "promo_code_help_message",
+        "promo_code_instructions",
+        "protect_privacy_header",
+        "purchase_badge_notice",
+        "ram_info_label",
+        "report_issue",
+        "report_issue_desc",
+        "report_issue_intro",
+        "report_step5",
+        "report_step6",
+        "reset_message",
+        "run_device_tests_button",
+        "run_test_button",
+        "saf_resolver_label",
+        "sample_pdf_downloading_progress",
+        "saved_logs_title",
+        "screen_orientation_label",
+        "screen_resolution_label",
+        "share_logs_title",
+        "share_test_results_button",
+        "share_test_results_chooser",
+        "sharpness",
+        "show_cover",
+        "status_label",
+        "storage_info_label",
+        "subject",
+        "system_locale_label",
+        "table_of_contents",
+        "test_results_header",
+        "test_timestamp_label",
+        "testing_diagnostic_logs",
+        "theme_mode_label",
+        "tip_free_notice",
+        "tutorial_description",
+        "tutorial_dont_show_again",
+        "tutorial_feature_outline_desc",
+        "tutorial_feature_outline_title",
+        "tutorial_feature_search_desc",
+        "tutorial_feature_search_title",
+        "tutorial_feature_spread_desc",
+        "tutorial_feature_spread_title",
+        "tutorial_headline",
+        "tutorial_step1_desc",
+        "tutorial_step1_title",
+        "tutorial_step2_desc",
+        "tutorial_step2_title",
+        "tutorial_step3_desc",
+        "tutorial_step3_title",
+        "tutorial_step4_desc",
+        "tutorial_step4_title",
+        "tutorial_video_guide_button",
+        "tutorial_video_playlist_title",
+        "tutorial_welcome",
+        "tutorial_youtube_button",
+        "update_available",
+        "update_cooldown",
+        "update_now",
+        "vendor_label",
+        "view_app_logs_button",
+        "view_tutorial",
+        "wrong_password"
+      ],
+      "same_as_english_keys": [],
+      "native_review": "pending",
+      "screen_review": "not performed"
+    },
+    {
+      "locale": "values-fil",
+      "app_name": "MihirakiPDFViewer",
+      "app_name_length": 17,
+      "missing_keys": [
+        "check_failed",
+        "error_no_app_youtube",
+        "latest_version",
+        "skip",
+        "tutorial_description",
+        "tutorial_dont_show_again",
+        "tutorial_feature_outline_desc",
+        "tutorial_feature_outline_title",
+        "tutorial_feature_search_desc",
+        "tutorial_feature_search_title",
+        "tutorial_feature_spread_desc",
+        "tutorial_feature_spread_title",
+        "tutorial_get_started",
+        "tutorial_headline",
+        "tutorial_next",
+        "tutorial_previous",
+        "tutorial_step1_desc",
+        "tutorial_step1_title",
+        "tutorial_step2_desc",
+        "tutorial_step2_title",
+        "tutorial_step3_desc",
+        "tutorial_step3_title",
+        "tutorial_step4_desc",
+        "tutorial_step4_title",
+        "tutorial_video_guide_button",
+        "tutorial_video_playlist_title",
+        "tutorial_welcome",
+        "tutorial_youtube_button",
+        "update_available",
+        "update_cooldown"
+      ],
+      "same_as_english_keys": [
+        "share_logs_button",
+        "cellular_data_warning",
+        "test_results_header",
+        "no_logs_recorded_text",
+        "share_test_results_button",
+        "cellular_data_message",
+        "report_step5",
+        "sample_pdf_downloading",
+        "sample_pdf_downloading_progress",
+        "build_number",
+        "log_privacy_notice_header",
+        "jvm_heap_label",
+        "next_page",
+        "report_step2",
+        "report_step3",
+        "error_opening_play_store",
+        "device_test_menu",
+        "view_tutorial",
+        "protect_privacy_header",
+        "check_for_updates",
+        "cache_dir_label",
+        "language_filter",
+        "device_test_screen_title",
+        "error_prefix",
+        "vendor_label",
+        "sample_pdf_download",
+        "previous_page",
+        "storage_info_label",
+        "test_timestamp_label",
+        "log_privacy_notice_body",
+        "all_languages",
+        "os_version_label",
+        "screen_orientation_label",
+        "sample_pdfs",
+        "app_logs_menu",
+        "enter_promo_code",
+        "delete_logs_button",
+        "copy_all_diagnostics_toast",
+        "subject",
+        "status_label",
+        "device_name_label",
+        "promo_code_help_title",
+        "share_logs_title",
+        "copy_all_diagnostics_button",
+        "report_issue",
+        "help_category_getting_started",
+        "help_category_settings_guide",
+        "font_scale_label",
+        "run_test_button",
+        "log_viewer_screen_title",
+        "report_step4",
+        "saf_resolver_label",
+        "update_now",
+        "view_app_logs_button",
+        "ok",
+        "promo_code_dialog_title",
+        "sharpness",
+        "koyomi_badge_title",
+        "saved_logs_title",
+        "privacy_warning_body_1",
+        "password",
+        "previous_search",
+        "help_category_reading_features",
+        "screen_resolution_label",
+        "ram_info_label",
+        "sample_pdf_open",
+        "report_step1",
+        "claim",
+        "billing_api_label",
+        "diagnostic_info_header",
+        "privacy_warning_body_2",
+        "github_account_warning",
+        "logs_deleted_message",
+        "promo_code_help_message",
+        "report_issue_intro",
+        "share_test_results_chooser",
+        "theme_mode_label",
+        "go_to_support",
+        "device_test_intro",
+        "privacy_notice_header",
+        "system_locale_label",
+        "run_device_tests_button",
+        "redeem",
+        "portrait_display",
+        "diagnostics_menu",
+        "diagnostics",
+        "free",
+        "report_issue_screen_title",
+        "two_page",
+        "privacy_notice_body",
+        "report_include_header",
+        "purchased",
+        "promo_code_instructions",
+        "mouse_navigation",
+        "help_category_diagnostics",
+        "report_step6",
+        "open_github_issues_button",
+        "sample_pdf_delete",
+        "cpu_cores_label",
+        "pdf_renderer_api_label",
+        "next_search",
+        "low_ram_mode_label"
+      ],
+      "native_review": "pending",
+      "screen_review": "not performed"
+    },
+    {
+      "locale": "values-fr",
+      "app_name": "Mihiraki : Lecteur PDF Double Page",
+      "app_name_length": 34,
+      "missing_keys": [
+        "app_logs_menu",
+        "billing_api_label",
+        "build_number",
+        "cache_dir_label",
+        "cannot_open_pdf",
+        "cellular_data_message",
+        "cellular_data_warning",
+        "copy_all_diagnostics_button",
+        "copy_all_diagnostics_toast",
+        "copyright",
+        "cpu_cores_label",
+        "delete_logs_button",
+        "device_name_label",
+        "device_test_intro",
+        "device_test_menu",
+        "device_test_screen_title",
+        "diagnostic_info_header",
+        "diagnostics",
+        "diagnostics_menu",
+        "error_no_app_youtube",
+        "error_opening_play_store",
+        "error_prefix",
+        "font_scale_label",
+        "github_account_warning",
+        "help_adaptive",
+        "help_app_info",
+        "help_category_diagnostics",
+        "help_category_getting_started",
+        "help_category_reading_features",
+        "help_category_settings_guide",
+        "help_clear_logs",
+        "help_cover_mode",
+        "help_device_test",
+        "help_diagnostics",
+        "help_display_settings",
+        "help_document_info",
+        "help_help",
+        "help_high_quality",
+        "help_layout",
+        "help_log_viewer",
+        "help_menu",
+        "help_navigate",
+        "help_open",
+        "help_options",
+        "help_outline",
+        "help_portrait_display",
+        "help_promo_code",
+        "help_reading_direction",
+        "help_report_issue",
+        "help_reset",
+        "help_sample_pdfs_desc",
+        "help_search",
+        "help_sharpness",
+        "help_show_cover",
+        "help_slider",
+        "help_support",
+        "help_two_page",
+        "help_zoom",
+        "high_quality",
+        "jvm_heap_label",
+        "log_privacy_notice_body",
+        "log_privacy_notice_header",
+        "log_viewer_screen_title",
+        "logs_deleted_message",
+        "low_ram_mode_label",
+        "no_logs_recorded_text",
+        "no_results",
+        "open_github_issues_button",
+        "options",
+        "os_version_label",
+        "oss_license_description",
+        "oss_license_title",
+        "password_required",
+        "pdf_renderer_api_label",
+        "pdf_version",
+        "permission_denied",
+        "privacy_notice_body",
+        "privacy_notice_header",
+        "privacy_policy_content",
+        "privacy_warning_body_1",
+        "privacy_warning_body_2",
+        "promo_code_help_message",
+        "promo_code_instructions",
+        "protect_privacy_header",
+        "purchase_badge_notice",
+        "ram_info_label",
+        "report_issue",
+        "report_issue_desc",
+        "report_issue_intro",
+        "report_step5",
+        "report_step6",
+        "reset_message",
+        "run_device_tests_button",
+        "run_test_button",
+        "saf_resolver_label",
+        "sample_pdf_downloading_progress",
+        "saved_logs_title",
+        "screen_orientation_label",
+        "screen_resolution_label",
+        "share_logs_title",
+        "share_test_results_button",
+        "share_test_results_chooser",
+        "sharpness",
+        "show_cover",
+        "status_label",
+        "storage_info_label",
+        "subject",
+        "system_locale_label",
+        "table_of_contents",
+        "test_results_header",
+        "test_timestamp_label",
+        "testing_diagnostic_logs",
+        "theme_mode_label",
+        "tip_free_notice",
+        "tutorial_description",
+        "tutorial_dont_show_again",
+        "tutorial_feature_outline_desc",
+        "tutorial_feature_outline_title",
+        "tutorial_feature_search_desc",
+        "tutorial_feature_search_title",
+        "tutorial_feature_spread_desc",
+        "tutorial_feature_spread_title",
+        "tutorial_headline",
+        "tutorial_step1_desc",
+        "tutorial_step1_title",
+        "tutorial_step2_desc",
+        "tutorial_step2_title",
+        "tutorial_step3_desc",
+        "tutorial_step3_title",
+        "tutorial_step4_desc",
+        "tutorial_step4_title",
+        "tutorial_video_guide_button",
+        "tutorial_video_playlist_title",
+        "tutorial_welcome",
+        "tutorial_youtube_button",
+        "update_available",
+        "update_cooldown",
+        "update_now",
+        "vendor_label",
+        "version",
+        "view_app_logs_button",
+        "view_tutorial",
+        "wrong_password"
+      ],
+      "same_as_english_keys": [
+        "ok"
+      ],
+      "native_review": "pending",
+      "screen_review": "not performed"
+    },
+    {
+      "locale": "values-id",
+      "app_name": "MihirakiPDFViewer",
+      "app_name_length": 17,
+      "missing_keys": [
+        "check_failed",
+        "error_no_app_youtube",
+        "latest_version",
+        "skip",
+        "tutorial_description",
+        "tutorial_dont_show_again",
+        "tutorial_feature_outline_desc",
+        "tutorial_feature_outline_title",
+        "tutorial_feature_search_desc",
+        "tutorial_feature_search_title",
+        "tutorial_feature_spread_desc",
+        "tutorial_feature_spread_title",
+        "tutorial_get_started",
+        "tutorial_headline",
+        "tutorial_next",
+        "tutorial_previous",
+        "tutorial_step1_desc",
+        "tutorial_step1_title",
+        "tutorial_step2_desc",
+        "tutorial_step2_title",
+        "tutorial_step3_desc",
+        "tutorial_step3_title",
+        "tutorial_step4_desc",
+        "tutorial_step4_title",
+        "tutorial_video_guide_button",
+        "tutorial_video_playlist_title",
+        "tutorial_welcome",
+        "tutorial_youtube_button",
+        "update_available",
+        "update_cooldown"
+      ],
+      "same_as_english_keys": [
+        "share_logs_button",
+        "cellular_data_warning",
+        "test_results_header",
+        "no_logs_recorded_text",
+        "share_test_results_button",
+        "cellular_data_message",
+        "report_step5",
+        "sample_pdf_downloading",
+        "sample_pdf_downloading_progress",
+        "log_privacy_notice_header",
+        "jvm_heap_label",
+        "next_page",
+        "report_step2",
+        "report_step3",
+        "error_opening_play_store",
+        "device_test_menu",
+        "view_tutorial",
+        "protect_privacy_header",
+        "check_for_updates",
+        "cache_dir_label",
+        "language_filter",
+        "device_test_screen_title",
+        "error_prefix",
+        "vendor_label",
+        "sample_pdf_download",
+        "previous_page",
+        "storage_info_label",
+        "test_timestamp_label",
+        "log_privacy_notice_body",
+        "all_languages",
+        "os_version_label",
+        "screen_orientation_label",
+        "sample_pdfs",
+        "app_logs_menu",
+        "enter_promo_code",
+        "delete_logs_button",
+        "copy_all_diagnostics_toast",
+        "status_label",
+        "device_name_label",
+        "promo_code_help_title",
+        "share_logs_title",
+        "copy_all_diagnostics_button",
+        "report_issue",
+        "help_category_getting_started",
+        "help_category_settings_guide",
+        "font_scale_label",
+        "run_test_button",
+        "log_viewer_screen_title",
+        "report_step4",
+        "saf_resolver_label",
+        "update_now",
+        "view_app_logs_button",
+        "ok",
+        "promo_code_dialog_title",
+        "koyomi_badge_title",
+        "saved_logs_title",
+        "privacy_warning_body_1",
+        "previous_search",
+        "help_category_reading_features",
+        "screen_resolution_label",
+        "ram_info_label",
+        "sample_pdf_open",
+        "report_step1",
+        "claim",
+        "reset",
+        "billing_api_label",
+        "diagnostic_info_header",
+        "privacy_warning_body_2",
+        "github_account_warning",
+        "logs_deleted_message",
+        "promo_code_help_message",
+        "report_issue_intro",
+        "share_test_results_chooser",
+        "theme_mode_label",
+        "go_to_support",
+        "device_test_intro",
+        "privacy_notice_header",
+        "system_locale_label",
+        "run_device_tests_button",
+        "redeem",
+        "portrait_display",
+        "diagnostics_menu",
+        "free",
+        "report_issue_screen_title",
+        "privacy_notice_body",
+        "report_include_header",
+        "purchased",
+        "promo_code_instructions",
+        "mouse_navigation",
+        "help_category_diagnostics",
+        "report_step6",
+        "open_github_issues_button",
+        "sample_pdf_delete",
+        "cpu_cores_label",
+        "pdf_renderer_api_label",
+        "next_search",
+        "low_ram_mode_label"
+      ],
+      "native_review": "pending",
+      "screen_review": "not performed"
+    },
+    {
+      "locale": "values-it",
+      "app_name": "Mihiraki: Lettore PDF a Doppia Pagina",
+      "app_name_length": 37,
+      "missing_keys": [
+        "app_logs_menu",
+        "billing_api_label",
+        "build_number",
+        "cache_dir_label",
+        "cannot_open_pdf",
+        "cellular_data_message",
+        "cellular_data_warning",
+        "copy_all_diagnostics_button",
+        "copy_all_diagnostics_toast",
+        "copyright",
+        "cpu_cores_label",
+        "delete_logs_button",
+        "device_name_label",
+        "device_test_intro",
+        "device_test_menu",
+        "device_test_screen_title",
+        "diagnostic_info_header",
+        "diagnostics",
+        "diagnostics_menu",
+        "error_no_app_youtube",
+        "error_opening_play_store",
+        "error_prefix",
+        "font_scale_label",
+        "github_account_warning",
+        "help_adaptive",
+        "help_app_info",
+        "help_category_diagnostics",
+        "help_category_getting_started",
+        "help_category_reading_features",
+        "help_category_settings_guide",
+        "help_clear_logs",
+        "help_cover_mode",
+        "help_device_test",
+        "help_diagnostics",
+        "help_display_settings",
+        "help_document_info",
+        "help_help",
+        "help_high_quality",
+        "help_layout",
+        "help_log_viewer",
+        "help_menu",
+        "help_navigate",
+        "help_open",
+        "help_options",
+        "help_outline",
+        "help_portrait_display",
+        "help_promo_code",
+        "help_reading_direction",
+        "help_report_issue",
+        "help_reset",
+        "help_sample_pdfs_desc",
+        "help_search",
+        "help_sharpness",
+        "help_show_cover",
+        "help_slider",
+        "help_support",
+        "help_two_page",
+        "help_zoom",
+        "high_quality",
+        "jvm_heap_label",
+        "log_privacy_notice_body",
+        "log_privacy_notice_header",
+        "log_viewer_screen_title",
+        "logs_deleted_message",
+        "low_ram_mode_label",
+        "no_logs_recorded_text",
+        "no_results",
+        "open_github_issues_button",
+        "os_version_label",
+        "oss_license_description",
+        "oss_license_title",
+        "password",
+        "password_required",
+        "pdf_renderer_api_label",
+        "pdf_version",
+        "permission_denied",
+        "privacy_notice_body",
+        "privacy_notice_header",
+        "privacy_policy_content",
+        "privacy_warning_body_1",
+        "privacy_warning_body_2",
+        "promo_code_help_message",
+        "promo_code_instructions",
+        "protect_privacy_header",
+        "purchase_badge_notice",
+        "ram_info_label",
+        "report_issue",
+        "report_issue_desc",
+        "report_issue_intro",
+        "report_step5",
+        "report_step6",
+        "reset_message",
+        "run_device_tests_button",
+        "run_test_button",
+        "saf_resolver_label",
+        "sample_pdf_downloading_progress",
+        "saved_logs_title",
+        "screen_orientation_label",
+        "screen_resolution_label",
+        "share_logs_title",
+        "share_test_results_button",
+        "share_test_results_chooser",
+        "sharpness",
+        "show_cover",
+        "status_label",
+        "storage_info_label",
+        "subject",
+        "system_locale_label",
+        "table_of_contents",
+        "test_results_header",
+        "test_timestamp_label",
+        "testing_diagnostic_logs",
+        "theme_mode_label",
+        "tip_free_notice",
+        "tutorial_description",
+        "tutorial_dont_show_again",
+        "tutorial_feature_outline_desc",
+        "tutorial_feature_outline_title",
+        "tutorial_feature_search_desc",
+        "tutorial_feature_search_title",
+        "tutorial_feature_spread_desc",
+        "tutorial_feature_spread_title",
+        "tutorial_headline",
+        "tutorial_step1_desc",
+        "tutorial_step1_title",
+        "tutorial_step2_desc",
+        "tutorial_step2_title",
+        "tutorial_step3_desc",
+        "tutorial_step3_title",
+        "tutorial_step4_desc",
+        "tutorial_step4_title",
+        "tutorial_video_guide_button",
+        "tutorial_video_playlist_title",
+        "tutorial_welcome",
+        "tutorial_youtube_button",
+        "update_available",
+        "update_cooldown",
+        "update_now",
+        "vendor_label",
+        "view_app_logs_button",
+        "view_tutorial",
+        "wrong_password"
+      ],
+      "same_as_english_keys": [
+        "ok"
+      ],
+      "native_review": "pending",
+      "screen_review": "not performed"
+    },
+    {
+      "locale": "values-ja",
+      "app_name": "見開きPDFビューア",
+      "app_name_length": 10,
+      "missing_keys": [],
+      "same_as_english_keys": [
+        "saf_resolver_label",
+        "ok",
+        "billing_api_label",
+        "pdf_renderer_api_label"
+      ],
+      "native_review": "pending",
+      "screen_review": "not performed"
+    },
+    {
+      "locale": "values-ko",
+      "app_name": "미히라키 PDF 뷰어",
+      "app_name_length": 11,
+      "missing_keys": [],
+      "same_as_english_keys": [],
+      "native_review": "pending",
+      "screen_review": "not performed"
+    },
+    {
+      "locale": "values-ne",
+      "app_name": "MihirakiPDFViewer",
+      "app_name_length": 17,
+      "missing_keys": [
+        "check_failed",
+        "error_no_app_youtube",
+        "latest_version",
+        "skip",
+        "tutorial_description",
+        "tutorial_dont_show_again",
+        "tutorial_feature_outline_desc",
+        "tutorial_feature_outline_title",
+        "tutorial_feature_search_desc",
+        "tutorial_feature_search_title",
+        "tutorial_feature_spread_desc",
+        "tutorial_feature_spread_title",
+        "tutorial_get_started",
+        "tutorial_headline",
+        "tutorial_next",
+        "tutorial_previous",
+        "tutorial_step1_desc",
+        "tutorial_step1_title",
+        "tutorial_step2_desc",
+        "tutorial_step2_title",
+        "tutorial_step3_desc",
+        "tutorial_step3_title",
+        "tutorial_step4_desc",
+        "tutorial_step4_title",
+        "tutorial_video_guide_button",
+        "tutorial_video_playlist_title",
+        "tutorial_welcome",
+        "tutorial_youtube_button",
+        "update_available",
+        "update_cooldown"
+      ],
+      "same_as_english_keys": [
+        "share_logs_button",
+        "cellular_data_warning",
+        "test_results_header",
+        "no_logs_recorded_text",
+        "share_test_results_button",
+        "cellular_data_message",
+        "report_step5",
+        "sample_pdf_downloading",
+        "sample_pdf_downloading_progress",
+        "log_privacy_notice_header",
+        "jvm_heap_label",
+        "next_page",
+        "report_step2",
+        "report_step3",
+        "error_opening_play_store",
+        "device_test_menu",
+        "view_tutorial",
+        "protect_privacy_header",
+        "check_for_updates",
+        "cache_dir_label",
+        "language_filter",
+        "device_test_screen_title",
+        "error_prefix",
+        "vendor_label",
+        "sample_pdf_download",
+        "previous_page",
+        "storage_info_label",
+        "test_timestamp_label",
+        "log_privacy_notice_body",
+        "all_languages",
+        "os_version_label",
+        "screen_orientation_label",
+        "sample_pdfs",
+        "app_logs_menu",
+        "enter_promo_code",
+        "delete_logs_button",
+        "copy_all_diagnostics_toast",
+        "status_label",
+        "device_name_label",
+        "promo_code_help_title",
+        "share_logs_title",
+        "copy_all_diagnostics_button",
+        "report_issue",
+        "help_category_getting_started",
+        "help_category_settings_guide",
+        "font_scale_label",
+        "run_test_button",
+        "log_viewer_screen_title",
+        "report_step4",
+        "saf_resolver_label",
+        "update_now",
+        "view_app_logs_button",
+        "promo_code_dialog_title",
+        "koyomi_badge_title",
+        "saved_logs_title",
+        "privacy_warning_body_1",
+        "previous_search",
+        "help_category_reading_features",
+        "screen_resolution_label",
+        "ram_info_label",
+        "sample_pdf_open",
+        "report_step1",
+        "claim",
+        "billing_api_label",
+        "diagnostic_info_header",
+        "privacy_warning_body_2",
+        "github_account_warning",
+        "logs_deleted_message",
+        "promo_code_help_message",
+        "report_issue_intro",
+        "share_test_results_chooser",
+        "theme_mode_label",
+        "go_to_support",
+        "device_test_intro",
+        "privacy_notice_header",
+        "system_locale_label",
+        "run_device_tests_button",
+        "redeem",
+        "portrait_display",
+        "diagnostics_menu",
+        "free",
+        "report_issue_screen_title",
+        "privacy_notice_body",
+        "report_include_header",
+        "purchased",
+        "promo_code_instructions",
+        "mouse_navigation",
+        "help_category_diagnostics",
+        "report_step6",
+        "open_github_issues_button",
+        "sample_pdf_delete",
+        "cpu_cores_label",
+        "pdf_renderer_api_label",
+        "next_search",
+        "low_ram_mode_label"
+      ],
+      "native_review": "pending",
+      "screen_review": "not performed"
+    },
+    {
+      "locale": "values-pt",
+      "app_name": "MihirakiPDFViewer",
+      "app_name_length": 17,
+      "missing_keys": [
+        "check_failed",
+        "error_no_app_youtube",
+        "latest_version",
+        "skip",
+        "tutorial_description",
+        "tutorial_dont_show_again",
+        "tutorial_feature_outline_desc",
+        "tutorial_feature_outline_title",
+        "tutorial_feature_search_desc",
+        "tutorial_feature_search_title",
+        "tutorial_feature_spread_desc",
+        "tutorial_feature_spread_title",
+        "tutorial_get_started",
+        "tutorial_headline",
+        "tutorial_next",
+        "tutorial_previous",
+        "tutorial_step1_desc",
+        "tutorial_step1_title",
+        "tutorial_step2_desc",
+        "tutorial_step2_title",
+        "tutorial_step3_desc",
+        "tutorial_step3_title",
+        "tutorial_step4_desc",
+        "tutorial_step4_title",
+        "tutorial_video_guide_button",
+        "tutorial_video_playlist_title",
+        "tutorial_welcome",
+        "tutorial_youtube_button",
+        "update_available",
+        "update_cooldown"
+      ],
+      "same_as_english_keys": [
+        "share_logs_button",
+        "cellular_data_warning",
+        "test_results_header",
+        "no_logs_recorded_text",
+        "share_test_results_button",
+        "cellular_data_message",
+        "report_step5",
+        "sample_pdf_downloading",
+        "sample_pdf_downloading_progress",
+        "log_privacy_notice_header",
+        "jvm_heap_label",
+        "next_page",
+        "report_step2",
+        "report_step3",
+        "error_opening_play_store",
+        "device_test_menu",
+        "view_tutorial",
+        "protect_privacy_header",
+        "check_for_updates",
+        "cache_dir_label",
+        "language_filter",
+        "device_test_screen_title",
+        "error_prefix",
+        "vendor_label",
+        "sample_pdf_download",
+        "previous_page",
+        "storage_info_label",
+        "test_timestamp_label",
+        "log_privacy_notice_body",
+        "all_languages",
+        "os_version_label",
+        "screen_orientation_label",
+        "sample_pdfs",
+        "app_logs_menu",
+        "enter_promo_code",
+        "delete_logs_button",
+        "copy_all_diagnostics_toast",
+        "status_label",
+        "device_name_label",
+        "promo_code_help_title",
+        "share_logs_title",
+        "copy_all_diagnostics_button",
+        "report_issue",
+        "help_category_getting_started",
+        "help_category_settings_guide",
+        "font_scale_label",
+        "run_test_button",
+        "log_viewer_screen_title",
+        "report_step4",
+        "saf_resolver_label",
+        "update_now",
+        "view_app_logs_button",
+        "ok",
+        "promo_code_dialog_title",
+        "koyomi_badge_title",
+        "saved_logs_title",
+        "privacy_warning_body_1",
+        "previous_search",
+        "help_category_reading_features",
+        "screen_resolution_label",
+        "ram_info_label",
+        "sample_pdf_open",
+        "report_step1",
+        "claim",
+        "billing_api_label",
+        "diagnostic_info_header",
+        "privacy_warning_body_2",
+        "github_account_warning",
+        "logs_deleted_message",
+        "promo_code_help_message",
+        "report_issue_intro",
+        "share_test_results_chooser",
+        "theme_mode_label",
+        "go_to_support",
+        "device_test_intro",
+        "privacy_notice_header",
+        "system_locale_label",
+        "run_device_tests_button",
+        "redeem",
+        "portrait_display",
+        "diagnostics_menu",
+        "free",
+        "report_issue_screen_title",
+        "privacy_notice_body",
+        "report_include_header",
+        "purchased",
+        "promo_code_instructions",
+        "mouse_navigation",
+        "help_category_diagnostics",
+        "report_step6",
+        "open_github_issues_button",
+        "sample_pdf_delete",
+        "cpu_cores_label",
+        "pdf_renderer_api_label",
+        "next_search",
+        "low_ram_mode_label"
+      ],
+      "native_review": "pending",
+      "screen_review": "not performed"
+    },
+    {
+      "locale": "values-vi",
+      "app_name": "MihirakiPDFViewer",
+      "app_name_length": 17,
+      "missing_keys": [
+        "check_failed",
+        "error_no_app_youtube",
+        "latest_version",
+        "skip",
+        "tutorial_description",
+        "tutorial_dont_show_again",
+        "tutorial_feature_outline_desc",
+        "tutorial_feature_outline_title",
+        "tutorial_feature_search_desc",
+        "tutorial_feature_search_title",
+        "tutorial_feature_spread_desc",
+        "tutorial_feature_spread_title",
+        "tutorial_get_started",
+        "tutorial_headline",
+        "tutorial_next",
+        "tutorial_previous",
+        "tutorial_step1_desc",
+        "tutorial_step1_title",
+        "tutorial_step2_desc",
+        "tutorial_step2_title",
+        "tutorial_step3_desc",
+        "tutorial_step3_title",
+        "tutorial_step4_desc",
+        "tutorial_step4_title",
+        "tutorial_video_guide_button",
+        "tutorial_video_playlist_title",
+        "tutorial_welcome",
+        "tutorial_youtube_button",
+        "update_available",
+        "update_cooldown"
+      ],
+      "same_as_english_keys": [
+        "share_logs_button",
+        "cellular_data_warning",
+        "test_results_header",
+        "no_logs_recorded_text",
+        "share_test_results_button",
+        "cellular_data_message",
+        "report_step5",
+        "sample_pdf_downloading",
+        "sample_pdf_downloading_progress",
+        "log_privacy_notice_header",
+        "jvm_heap_label",
+        "next_page",
+        "report_step2",
+        "report_step3",
+        "error_opening_play_store",
+        "device_test_menu",
+        "view_tutorial",
+        "protect_privacy_header",
+        "check_for_updates",
+        "cache_dir_label",
+        "language_filter",
+        "device_test_screen_title",
+        "error_prefix",
+        "vendor_label",
+        "sample_pdf_download",
+        "previous_page",
+        "storage_info_label",
+        "test_timestamp_label",
+        "log_privacy_notice_body",
+        "all_languages",
+        "os_version_label",
+        "screen_orientation_label",
+        "sample_pdfs",
+        "app_logs_menu",
+        "enter_promo_code",
+        "delete_logs_button",
+        "copy_all_diagnostics_toast",
+        "status_label",
+        "device_name_label",
+        "promo_code_help_title",
+        "share_logs_title",
+        "copy_all_diagnostics_button",
+        "report_issue",
+        "help_category_getting_started",
+        "help_category_settings_guide",
+        "font_scale_label",
+        "run_test_button",
+        "log_viewer_screen_title",
+        "report_step4",
+        "saf_resolver_label",
+        "update_now",
+        "view_app_logs_button",
+        "ok",
+        "promo_code_dialog_title",
+        "koyomi_badge_title",
+        "saved_logs_title",
+        "privacy_warning_body_1",
+        "previous_search",
+        "help_category_reading_features",
+        "screen_resolution_label",
+        "ram_info_label",
+        "sample_pdf_open",
+        "report_step1",
+        "claim",
+        "billing_api_label",
+        "diagnostic_info_header",
+        "privacy_warning_body_2",
+        "github_account_warning",
+        "logs_deleted_message",
+        "promo_code_help_message",
+        "report_issue_intro",
+        "share_test_results_chooser",
+        "theme_mode_label",
+        "go_to_support",
+        "device_test_intro",
+        "privacy_notice_header",
+        "system_locale_label",
+        "run_device_tests_button",
+        "redeem",
+        "portrait_display",
+        "diagnostics_menu",
+        "free",
+        "report_issue_screen_title",
+        "privacy_notice_body",
+        "report_include_header",
+        "purchased",
+        "promo_code_instructions",
+        "mouse_navigation",
+        "help_category_diagnostics",
+        "report_step6",
+        "open_github_issues_button",
+        "sample_pdf_delete",
+        "cpu_cores_label",
+        "pdf_renderer_api_label",
+        "next_search",
+        "low_ram_mode_label"
+      ],
+      "native_review": "pending",
+      "screen_review": "not performed"
+    },
+    {
+      "locale": "values-zh-rCN",
+      "app_name": "MihirakiPDFViewer",
+      "app_name_length": 17,
+      "missing_keys": [
+        "check_failed",
+        "error_no_app_youtube",
+        "latest_version",
+        "tutorial_description",
+        "tutorial_dont_show_again",
+        "tutorial_feature_outline_desc",
+        "tutorial_feature_outline_title",
+        "tutorial_feature_search_desc",
+        "tutorial_feature_search_title",
+        "tutorial_feature_spread_desc",
+        "tutorial_feature_spread_title",
+        "tutorial_headline",
+        "tutorial_previous",
+        "tutorial_step1_desc",
+        "tutorial_step1_title",
+        "tutorial_step2_desc",
+        "tutorial_step2_title",
+        "tutorial_step3_desc",
+        "tutorial_step3_title",
+        "tutorial_step4_desc",
+        "tutorial_step4_title",
+        "tutorial_video_guide_button",
+        "tutorial_video_playlist_title",
+        "tutorial_welcome",
+        "tutorial_youtube_button",
+        "update_available",
+        "update_cooldown"
+      ],
+      "same_as_english_keys": [
+        "share_logs_button",
+        "cellular_data_warning",
+        "test_results_header",
+        "no_logs_recorded_text",
+        "share_test_results_button",
+        "cellular_data_message",
+        "report_step5",
+        "sample_pdf_downloading",
+        "sample_pdf_downloading_progress",
+        "log_privacy_notice_header",
+        "jvm_heap_label",
+        "next_page",
+        "report_step2",
+        "report_step3",
+        "error_opening_play_store",
+        "device_test_menu",
+        "view_tutorial",
+        "protect_privacy_header",
+        "check_for_updates",
+        "cache_dir_label",
+        "language_filter",
+        "device_test_screen_title",
+        "error_prefix",
+        "vendor_label",
+        "sample_pdf_download",
+        "previous_page",
+        "storage_info_label",
+        "test_timestamp_label",
+        "log_privacy_notice_body",
+        "all_languages",
+        "os_version_label",
+        "screen_orientation_label",
+        "sample_pdfs",
+        "app_logs_menu",
+        "enter_promo_code",
+        "delete_logs_button",
+        "copy_all_diagnostics_toast",
+        "status_label",
+        "device_name_label",
+        "promo_code_help_title",
+        "share_logs_title",
+        "copy_all_diagnostics_button",
+        "report_issue",
+        "help_category_getting_started",
+        "help_category_settings_guide",
+        "font_scale_label",
+        "run_test_button",
+        "log_viewer_screen_title",
+        "report_step4",
+        "saf_resolver_label",
+        "update_now",
+        "view_app_logs_button",
+        "promo_code_dialog_title",
+        "koyomi_badge_title",
+        "saved_logs_title",
+        "privacy_warning_body_1",
+        "previous_search",
+        "help_category_reading_features",
+        "screen_resolution_label",
+        "ram_info_label",
+        "sample_pdf_open",
+        "report_step1",
+        "claim",
+        "billing_api_label",
+        "diagnostic_info_header",
+        "privacy_warning_body_2",
+        "github_account_warning",
+        "logs_deleted_message",
+        "promo_code_help_message",
+        "report_issue_intro",
+        "share_test_results_chooser",
+        "theme_mode_label",
+        "go_to_support",
+        "device_test_intro",
+        "privacy_notice_header",
+        "system_locale_label",
+        "run_device_tests_button",
+        "redeem",
+        "portrait_display",
+        "diagnostics_menu",
+        "free",
+        "report_issue_screen_title",
+        "privacy_notice_body",
+        "report_include_header",
+        "purchased",
+        "promo_code_instructions",
+        "mouse_navigation",
+        "help_category_diagnostics",
+        "report_step6",
+        "open_github_issues_button",
+        "sample_pdf_delete",
+        "cpu_cores_label",
+        "pdf_renderer_api_label",
+        "next_search",
+        "low_ram_mode_label"
+      ],
+      "native_review": "pending",
+      "screen_review": "not performed"
+    },
+    {
+      "locale": "values-zh-rTW",
+      "app_name": "MihirakiPDFViewer: 雙頁 PDF 閱讀器",
+      "app_name_length": 29,
+      "missing_keys": [
+        "error_no_app_youtube",
+        "help_app_info",
+        "help_cover_mode",
+        "help_display_settings",
+        "help_document_info",
+        "help_help",
+        "help_high_quality",
+        "help_options",
+        "help_portrait_display",
+        "help_reading_direction",
+        "help_reset",
+        "help_sharpness",
+        "help_show_cover",
+        "help_support",
+        "help_two_page",
+        "skip",
+        "tutorial_description",
+        "tutorial_dont_show_again",
+        "tutorial_feature_outline_desc",
+        "tutorial_feature_outline_title",
+        "tutorial_feature_search_desc",
+        "tutorial_feature_search_title",
+        "tutorial_feature_spread_desc",
+        "tutorial_feature_spread_title",
+        "tutorial_get_started",
+        "tutorial_headline",
+        "tutorial_next",
+        "tutorial_previous",
+        "tutorial_step1_desc",
+        "tutorial_step1_title",
+        "tutorial_step2_desc",
+        "tutorial_step2_title",
+        "tutorial_step3_desc",
+        "tutorial_step3_title",
+        "tutorial_step4_desc",
+        "tutorial_step4_title",
+        "tutorial_video_guide_button",
+        "tutorial_video_playlist_title",
+        "tutorial_welcome",
+        "tutorial_youtube_button"
+      ],
+      "same_as_english_keys": [],
+      "native_review": "pending",
+      "screen_review": "not performed"
+    }
+  ],
+  "removed_localized_nontranslatable": [
+    [
+      "values-fil",
+      102
+    ],
+    [
+      "values-zh-rTW",
+      1
+    ],
+    [
+      "values-zh-rCN",
+      102
+    ],
+    [
+      "values-ja",
+      11
+    ],
+    [
+      "values-vi",
+      102
+    ],
+    [
+      "values-id",
+      102
+    ],
+    [
+      "values-ne",
+      102
+    ],
+    [
+      "values-ko",
+      1
+    ],
+    [
+      "values-pt",
+      102
+    ]
+  ]
+}
