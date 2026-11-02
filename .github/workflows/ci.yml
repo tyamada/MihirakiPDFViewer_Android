@@ -26,6 +26,12 @@ jobs:
         java-version: '21'
         cache: 'gradle'
 
+    - name: Set up Android SDK command-line tools
+      uses: android-actions/setup-android@v3
+      with:
+        packages: ''
+        log-accepted-android-sdk-licenses: false
+
     - name: Install required Android SDK packages
       run: sdkmanager "platforms;android-37.0" "build-tools;36.0.0"
 
