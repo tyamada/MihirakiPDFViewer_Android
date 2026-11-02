@@ -43,7 +43,6 @@
     <string name="help_sample_pdfs_desc"><b>샘플 PDF:</b> 앱에서 제공하는 샘플 PDF 파일을 다운로드하여 기능을 테스트해 보세요.</string>
     <string name="help_navigate"><b>페이지 탐색:</b> 스와이프하거나 슬라이더를 사용하여 페이지를 전환하거나 가장자리를 클릭하세요(마우스 탐색 모드).</string>
     <string name="help_outline"><b>PDF 목차:</b> 상단 툴바의 목차 아이콘을 탭하여 문서 북마크와 챕터를 확인하고 원하는 섹션으로 즉시 이동하세요.</string>
-    <string name="help_adaptive"><b>적응형 레이아웃:</b> 태블릿, 대형 화면 및 폴더블 기기에 자동으로 최적화됩니다.</string>
     <string name="help_menu"><b>메뉴:</b> 화면을 탭하여 도구 모음과 슬라이더의 표시 여부를 전환하세요.</string>
     <string name="help_zoom"><b>확대/축소:</b> 핀치하여 확대하거나 축소하세요. 확대된 상태에서 길게 누르고 드래그하여 스크롤하세요.</string>
     <string name="help_search"><b>검색:</b> 검색창에 텍스트를 입력하여 PDF 내의 특정 콘텐츠를 찾으세요.</string>
@@ -55,26 +54,17 @@
     <string name="help_show_cover"><b>표지 표시:</b> 스프레드 보기에서 첫 페이지를 단독 표지로 표시합니다.</string>
     <string name="help_reading_direction"><b>읽기 방향:</b> 페이지가 왼쪽에서 오른쪽으로 넘어가거나 오른쪽에서 왼쪽으로 넘어가도록 선택합니다.</string>
     <string name="help_cover_mode"><b>표지 설정:</b> 각 읽기 방향에 대한 표지 배치를 선택합니다.</string>
-    <string name="help_reset"><b>초기화:</b> 앱 설정을 초기화하고 현재 문서를 닫습니다.</string>
-    <string name="help_display_settings"><b>디스플레이 설정:</b> 고화질, 선명도, 양면 보기, 표지 설정 및 읽기 방향을 조정합니다.</string>
-    <string name="help_options"><b>옵션:</b> 표지 옵션, 설정 초기화, 도움말, 라이선스 및 지원에 액세스합니다.</string>
     <string name="help_document_info"><b>문서 정보:</b> 제목, 저자, 부제목, 키워드 및 PDF 버전과 같은 PDF 메타데이터를 봅니다.</string>
-    <string name="help_help"><b>도움말:</b> 앱 사용 방법에 대한 지침은 이 가이드를 읽어보세요.</string>
-    <string name="help_app_info"><b>앱 정보:</b> 앱 버전, 빌드 번호, 저작권 및 후원자 배지를 확인합니다.</string>
-    <string name="help_support"><b>개발자 후원:</b> 선택적 팁을 통해 추가 개발을 후원하고 후원자 배지를 확인하세요.</string>
     <string name="tip_message">앱이 마음에 드신다면 개발을 후원해 주세요.</string>
     <string name="tip_free_notice">구매하지 않아도 모든 기능을 이용할 수 있습니다.</string>
     <string name="purchase">구매</string>
     <string name="purchased">구매 완료</string>
-    <string name="free">무료</string>
-    <string name="claim">받기</string>
     <string name="koyomi_badge_title">Ver.2.0 출시 기념 코요미 배지</string>
     <string name="purchase_thanks">감사합니다! %1$s 후원을 받았습니다.</string>
     <string name="purchase_cancelled">구매가 취소되었습니다.</string>
     <string name="purchase_failed">구매에 실패했습니다. 다시 시도해 주세요.</string>
     <string name="purchased_badges_title">구매한 후원 배지</string>
     <string name="purchase_badge_notice">설정 화면에 후원 배지가 표시되었습니다.</string>
-    <string name="app_info">앱 정보</string>
     <string name="version">버전</string>
     <string name="build_number">빌드 번호</string>
     <string name="copyright">저작권</string>
@@ -84,14 +74,8 @@
     <string name="check_failed">확인 실패</string>
     <string name="oss_license_title">오픈 소스 라이선스</string>
     <string name="oss_license_description">이 앱은 다음 오픈 소스 소프트웨어를 사용합니다:</string>
-    <string name="help_diagnostics"><b>테스트 및 앱 로그:</b> 기기 진단 테스트를 실행하고, 앱 로그를 확인하며, 로그를 안전하게 공유합니다. 로그는 기기에 최대 24시간 동안 로컬로 저장되며, 개인정보나 파일 내용은 기록되지 않고 자동으로 외부 전송되지 않습니다.</string>
     <string name="testing_diagnostic_logs">테스트 및 진단 로그 지우기</string>
-    <string name="help_report_issue"><b>문제 신고:</b> 버그나 크래시가 발생했나요? 테스트 및 진단 화면의 앱 로그를 첨부하여 GitHub Issues에 신고해 주세요.</string>
     <string name="report_issue">문제 신고 (GitHub)</string>
-    <string name="enter_promo_code">프로모션 코드 입력</string>
-    <string name="promo_code_dialog_title">프로모션 코드 입력</string>
-    <string name="promo_code_instructions">Google Play 프로모션 코드를 입력하여 아이템을 교환하세요.</string>
-    <string name="redeem">코드 교환</string>
     <string name="sample_pdfs">샘플 PDF</string>
     <string name="language_filter">언어 필터</string>
     <string name="all_languages">전체</string>
@@ -103,19 +87,17 @@
     <string name="cellular_data_warning">셀룰러 데이터 경고</string>
     <string name="cellular_data_message">현재 셀룰러 네트워크를 사용 중입니다. \"%1$s\" (%2$s) 다운로드 시 상당한 모바일 데이터가 소비될 수 있습니다. 계속하시겠습니까?</string>
     <string name="error_prefix">오류: %s</string>
-    <string name="error_opening_play_store">Google Play 스토어를 열 수 없습니다.</string>
     <string name="promo_code_help_title">프로모션 코드 교환 방법</string>
     <string name="promo_code_help_message">코요미 배지 프로모션 코드를 교환하려면, 후원 화면으로 이동하여 Ver.2.0 코요미 배지의 구매 버튼을 탭한 뒤 Google Play 결제창에서 \'코드 교환\'을 선택하세요.</string>
     <string name="go_to_support">후원 화면으로 이동</string>
     <string name="help_device_test"><b>기기 테스트:</b> 기기 하드웨어 및 성능 테스트를 실행합니다.</string>
     <string name="help_log_viewer"><b>앱 로그:</b> 문제 해결을 위해 로컬 애플리케이션 로그를 확인하고 안전하게 공유합니다.</string>
     <string name="help_clear_logs"><b>테스트 및 진단 로그 삭제:</b> 로컬 저장소에 기록된 모든 테스트 및 진단 로그를 삭제합니다.</string>
-    <string name="help_promo_code"><b>프로모션 코드 입력:</b> Google Play 프로모션 코드를 교환하여 아이템과 배지를 잠금 해제합니다.</string>
     <string name="table_of_contents">목차</string>
     <string name="help_slider"><b>페이지 슬라이더:</b> 하단 바의 슬라이더를 드래그하여 다른 페이지로 이동합니다.</string>
     <string name="report_issue_desc"><b>문제 신고:</b> GitHub Issues에 버그나 크래시를 신고하고 진단 로그를 첨부합니다.</string>
     <string name="privacy_policy">개인정보처리방침</string>
-    <string name="privacy_policy_content" translatable="false">&lt;h2&gt;개인정보처리방침&lt;/h2&gt;&lt;p&gt;MihirakiPDFViewer 개발자는 사용자의 개인정보를 존중합니다. 이 방침은 정보 처리 방식을 설명합니다.&lt;/p&gt;&lt;h3&gt;1. 정보 수집 및 이용&lt;/h3&gt;&lt;p&gt;앱은 PDF 파일을 업로드하거나 수집하지 않습니다. 모든 PDF 처리는 기기 내에서 로컬로 수행됩니다. 앱은 다음과 같은 제한된 경우에만 인터넷 연결을 사용합니다:&lt;/p&gt;&lt;ul&gt;&lt;li&gt;Google Drive와 같은 클라우드 스토리지 서비스에서 파일을 명시적으로 열 때.&lt;/li&gt;&lt;li&gt;Google Play 결제 시스템을 통해 인앱 구매(후원 팁)를 진행할 때.&lt;/li&gt;&lt;/ul&gt;&lt;h3&gt;2. 앱 로그 및 진단&lt;/h3&gt;&lt;p&gt;앱은 크래시, 속도 저하, 렌더링 문제를 식별하는 데 도움을 주기 위해 로컬 애플리케이션 로깅 및 기기 테스트 도구를 제공합니다.&lt;/p&gt;&lt;ul&gt;&lt;li&gt;로그는 기기에 최대 24시간 동안 로컬로 저장되며 그 이후에 자동으로 삭제됩니다.&lt;/li&gt;&lt;li&gt;어떤 개인정보나 PDF 파일 내용도 기록되지 않습니다.&lt;/li&gt;&lt;li&gt;&lt;strong&gt;로그의 자동 외부 전송은 없습니다.&lt;/strong&gt; 사용자가 수동으로 공유하지 않는 한 로그는 기기에 엄격히 유지됩니다.&lt;/li&gt;&lt;/ul&gt;&lt;h3&gt;3. 권한&lt;/h3&gt;&lt;p&gt;앱은 사용자가 선택한 특정 파일에만 액세스하기 위해 Storage Access Framework(SAF)를 사용합니다. 광범위한 저장소 액세스 권한을 요청하지 않습니다.&lt;/p&gt;&lt;h3&gt;4. 데이터 보안&lt;/h3&gt;&lt;p&gt;문서가 기기를 벗어나지 않으므로 데이터는 사용자의 통제 하에 유지됩니다.&lt;/p&gt;&lt;h3&gt;5. 문의&lt;/h3&gt;&lt;p&gt;이 정책에 관한 질문은 GitHub 저장소를 통해 문의해 주세요.&lt;/p&gt;</string>
+    <string name="privacy_policy_content">&lt;h2&gt;개인정보처리방침&lt;/h2&gt;&lt;p&gt;MihirakiPDFViewer 개발자는 사용자의 개인정보를 존중합니다. 이 방침은 정보 처리 방식을 설명합니다.&lt;/p&gt;&lt;h3&gt;1. 정보 수집 및 이용&lt;/h3&gt;&lt;p&gt;앱은 PDF 파일을 업로드하거나 수집하지 않습니다. 모든 PDF 처리는 기기 내에서 로컬로 수행됩니다. 앱은 다음과 같은 제한된 경우에만 인터넷 연결을 사용합니다:&lt;/p&gt;&lt;ul&gt;&lt;li&gt;Google Drive와 같은 클라우드 스토리지 서비스에서 파일을 명시적으로 열 때.&lt;/li&gt;&lt;li&gt;Google Play 결제 시스템을 통해 인앱 구매(후원 팁)를 진행할 때.&lt;/li&gt;&lt;/ul&gt;&lt;h3&gt;2. 앱 로그 및 진단&lt;/h3&gt;&lt;p&gt;앱은 크래시, 속도 저하, 렌더링 문제를 식별하는 데 도움을 주기 위해 로컬 애플리케이션 로깅 및 기기 테스트 도구를 제공합니다.&lt;/p&gt;&lt;ul&gt;&lt;li&gt;로그는 기기에 최대 24시간 동안 로컬로 저장되며 그 이후에 자동으로 삭제됩니다.&lt;/li&gt;&lt;li&gt;어떤 개인정보나 PDF 파일 내용도 기록되지 않습니다.&lt;/li&gt;&lt;li&gt;&lt;strong&gt;로그의 자동 외부 전송은 없습니다.&lt;/strong&gt; 사용자가 수동으로 공유하지 않는 한 로그는 기기에 엄격히 유지됩니다.&lt;/li&gt;&lt;/ul&gt;&lt;h3&gt;3. 권한&lt;/h3&gt;&lt;p&gt;앱은 사용자가 선택한 특정 파일에만 액세스하기 위해 Storage Access Framework(SAF)를 사용합니다. 광범위한 저장소 액세스 권한을 요청하지 않습니다.&lt;/p&gt;&lt;h3&gt;4. 데이터 보안&lt;/h3&gt;&lt;p&gt;문서가 기기를 벗어나지 않으므로 데이터는 사용자의 통제 하에 유지됩니다.&lt;/p&gt;&lt;h3&gt;5. 문의&lt;/h3&gt;&lt;p&gt;이 정책에 관한 질문은 GitHub 저장소를 통해 문의해 주세요.&lt;/p&gt;</string>
     <string name="diagnostics">진단</string>
     <string name="help_category_getting_started">시작하기</string>
     <string name="help_category_reading_features">읽기 기능</string>
@@ -175,7 +157,6 @@
     <string name="share_logs_button">로그 공유</string>
     <string name="delete_logs_button">로그 지우기</string>
     <string name="logs_deleted_message">모든 로그가 삭제되었습니다.</string>
-    <string name="saved_logs_title">저장된 로그 (%d줄):</string>
     <string name="no_logs_recorded_text">기록된 로그가 없습니다.</string>
     <string name="share_logs_title">앱 로그 공유</string>
     <string name="check_for_updates">업데이트 확인</string>
@@ -184,8 +165,6 @@
     <string name="view_tutorial">튜토리얼 보기</string>
     <string name="tutorial_welcome">Mihiraki PDF Viewer에 오신 것을 환영합니다</string>
     <string name="skip">건너뛰기</string>
-    <string name="tutorial_headline">만화 및 우종서(R2L) PDF를 매끄럽게 읽으세요</string>
-    <string name="tutorial_description">Mihiraki PDF Viewer는 우종서 문서, 잡지, 만화에 특화되어 다음과 같은 고급 기능을 제공합니다:</string>
     <string name="tutorial_feature_spread_title">맞쪽 보기 및 우종서(R2L)</string>
     <string name="tutorial_feature_spread_desc">오른쪽에서 왼쪽으로 읽는 방향과 맞쪽 보기를 자동으로 감지하여 완벽하게 표시합니다.</string>
     <string name="tutorial_feature_outline_title">목차 트리 탐색</string>
@@ -207,5 +186,4 @@
     <string name="tutorial_next">다음</string>
     <string name="tutorial_previous">이전</string>
     <string name="tutorial_video_guide_button">앱 소개 쇼츠(재생목록) 보기</string>
-    <string name="tutorial_video_playlist_title">앱 소개 쇼츠 재생목록</string>
 </resources>

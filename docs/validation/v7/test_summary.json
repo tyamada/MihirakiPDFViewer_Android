@@ -1,0 +1,16 @@
+[
+  {
+    "suite": "com.github.tyamada.mihirakipdfviewer_android.DomainLogicTest",
+    "tests": 8,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  {
+    "suite": "com.github.tyamada.mihirakipdfviewer_android.SamplePdfCatalogTest",
+    "tests": 1,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  }
+]

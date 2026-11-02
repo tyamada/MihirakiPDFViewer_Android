@@ -1,0 +1,126 @@
+[
+  {
+    "locale": "values",
+    "resource": "saved_logs_title",
+    "quantities": [
+      "one",
+      "other"
+    ],
+    "format_arguments_match": true
+  },
+  {
+    "locale": "values-de",
+    "resource": "saved_logs_title",
+    "quantities": [
+      "one",
+      "other"
+    ],
+    "format_arguments_match": true
+  },
+  {
+    "locale": "values-es",
+    "resource": "saved_logs_title",
+    "quantities": [
+      "many",
+      "one",
+      "other"
+    ],
+    "format_arguments_match": true
+  },
+  {
+    "locale": "values-fil",
+    "resource": "saved_logs_title",
+    "quantities": [
+      "one",
+      "other"
+    ],
+    "format_arguments_match": true
+  },
+  {
+    "locale": "values-fr",
+    "resource": "saved_logs_title",
+    "quantities": [
+      "many",
+      "one",
+      "other"
+    ],
+    "format_arguments_match": true
+  },
+  {
+    "locale": "values-in",
+    "resource": "saved_logs_title",
+    "quantities": [
+      "other"
+    ],
+    "format_arguments_match": true
+  },
+  {
+    "locale": "values-it",
+    "resource": "saved_logs_title",
+    "quantities": [
+      "many",
+      "one",
+      "other"
+    ],
+    "format_arguments_match": true
+  },
+  {
+    "locale": "values-ja",
+    "resource": "saved_logs_title",
+    "quantities": [
+      "other"
+    ],
+    "format_arguments_match": true
+  },
+  {
+    "locale": "values-ko",
+    "resource": "saved_logs_title",
+    "quantities": [
+      "other"
+    ],
+    "format_arguments_match": true
+  },
+  {
+    "locale": "values-ne",
+    "resource": "saved_logs_title",
+    "quantities": [
+      "one",
+      "other"
+    ],
+    "format_arguments_match": true
+  },
+  {
+    "locale": "values-pt",
+    "resource": "saved_logs_title",
+    "quantities": [
+      "many",
+      "one",
+      "other"
+    ],
+    "format_arguments_match": true
+  },
+  {
+    "locale": "values-vi",
+    "resource": "saved_logs_title",
+    "quantities": [
+      "other"
+    ],
+    "format_arguments_match": true
+  },
+  {
+    "locale": "values-zh-rCN",
+    "resource": "saved_logs_title",
+    "quantities": [
+      "other"
+    ],
+    "format_arguments_match": true
+  },
+  {
+    "locale": "values-zh-rTW",
+    "resource": "saved_logs_title",
+    "quantities": [
+      "other"
+    ],
+    "format_arguments_match": true
+  }
+]

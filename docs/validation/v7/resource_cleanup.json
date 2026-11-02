@@ -1,0 +1,30 @@
+{
+  "removed_unused_strings": [
+    "help_adaptive",
+    "help_reset",
+    "help_display_settings",
+    "help_options",
+    "help_help",
+    "help_app_info",
+    "help_support",
+    "claim",
+    "app_info",
+    "help_diagnostics",
+    "help_report_issue",
+    "enter_promo_code",
+    "promo_code_dialog_title",
+    "promo_code_instructions",
+    "redeem",
+    "error_opening_play_store",
+    "help_promo_code",
+    "tutorial_headline",
+    "tutorial_description",
+    "tutorial_video_playlist_title"
+  ],
+  "removed_unused_vectors": [
+    "app/src/main/res/drawable/ic_launcher.xml",
+    "app/src/main/res/drawable/ic_launcher_background.xml",
+    "app/src/main/res/drawable/ic_launcher_foreground.xml",
+    "app/src/main/res/drawable/ic_launcher_monochrome.xml"
+  ]
+}

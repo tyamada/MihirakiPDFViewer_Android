@@ -124,6 +124,27 @@ fun SamplePdfScreen(
                 }
             }
 
+            // Order Toggle Link / Button
+            Row(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(horizontal = 16.dp, vertical = 0.dp),
+                horizontalArrangement = Arrangement.End,
+                verticalAlignment = Alignment.CenterVertically
+            ) {
+                TextButton(
+                    onClick = { viewModel.toggleSortOrder() },
+                    modifier = Modifier.testTag("btn_toggle_order")
+                ) {
+                    val orderText = if (uiState.sortOrder == com.github.tyamada.mihirakipdfviewer_android.data.SamplePdfSortOrder.ASC) {
+                        stringResource(R.string.sample_pdf_order_from_ch1)
+                    } else {
+                        stringResource(R.string.sample_pdf_order_from_latest)
+                    }
+                    Text(stringResource(R.string.sample_pdf_order_label, orderText))
+                }
+            }
+
             // PDF List & Attribution Footer
             LazyColumn(
                 modifier = Modifier

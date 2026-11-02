@@ -11,94 +11,116 @@
     <string name="purchase">购买</string><string name="purchase_thanks">谢谢！已收到 %1$s 的支持。</string><string name="purchase_cancelled">购买已取消。</string><string name="purchase_failed">购买失败。请再试一次。</string>
     <string name="purchased_badges_title">已购买的支持徽章</string>
     <string name="purchase_badge_notice">已在设置屏幕上显示支持徽章。</string>
-
-    <string name="app_info">应用信息</string>
     <string name="version">版本</string>
     <string name="build_number">构建编号</string>
     <string name="copyright">版权所有</string>
     <string name="oss_license_title">开源许可证</string>
     <string name="oss_license_description">本应用使用以下开源软件：</string>
-    <string name="help_display_settings"><b>显示设置：</b>调整高画质、清晰度、双页视图、封面模式和阅读方向。</string>
-    <string name="help_options"><b>选项：</b>访问封面选项、重置设置、帮助、许可证和支持。</string>
     <string name="help_document_info"><b>文档信息：</b>查看 PDF 元数据，例如标题、作者、副标题、关键词和 PDF 版本。</string>
-    <string name="help_help"><b>帮助：</b>阅读本指南了解如何使用应用。</string>
-    <string name="help_app_info"><b>应用信息：</b>检查应用版本、构建编号、版权和支持者徽章。</string>
-    <string name="help_support"><b>支持开发者：</b>通过可选的小费支持进一步开发并查看您的支持者徽章。</string>
     <string name="help_high_quality"><b>高画质：</b>以更高画质渲染 PDF 页面。</string>
     <string name="help_sharpness"><b>清晰度：</b>更清晰地渲染文本和线条。</string>
     <string name="help_two_page"><b>双页视图：</b>并排显示两页。</string>
     <string name="help_show_cover"><b>显示封面：</b>在跨页视图中将第一页单独显示为封面。</string>
     <string name="help_reading_direction"><b>阅读方向：</b>选择页面是从左到右还是从右到左翻页。</string>
     <string name="help_cover_mode"><b>封面设置：</b>为每个阅读方向选择封面放置位置。</string>
-    <string name="help_reset"><b>重置：</b>重置应用设置并关闭当前文档。</string>
     <string name="testing_diagnostic_logs">测试与诊断日志</string>
     <string name="table_of_contents">目录</string>
     <string name="privacy_policy">隐私政策</string>
-    <string name="privacy_policy_content" translatable="false">&lt;h2&gt;隐私政策&lt;/h2&gt;&lt;p&gt;MihirakiPDFViewer 开发者尊重您的隐私。&lt;/p&gt;&lt;h3&gt;1. 信息收集与使用&lt;/h3&gt;&lt;p&gt;本应用不会上传或收集您的 PDF 文件。所有 PDF 处理均在您的设备本地进行。&lt;/p&gt;&lt;h3&gt;2. 权限&lt;/h3&gt;&lt;p&gt;使用存储访问框架 (SAF)。&lt;/p&gt;&lt;h3&gt;3. 数据安全&lt;/h3&gt;&lt;p&gt;您的数据始终在您的掌控之中。&lt;/p&gt;&lt;h3&gt;4. 联系方式&lt;/h3&gt;&lt;p&gt;如有疑问，请通过 GitHub 仓库联系我们。&lt;/p&gt;</string>
+    <string name="privacy_policy_content">&lt;h2&gt;隐私政策&lt;/h2&gt;&lt;p&gt;MihirakiPDFViewer 开发者尊重您的隐私。&lt;/p&gt;&lt;h3&gt;1. 信息收集与使用&lt;/h3&gt;&lt;p&gt;本应用不会上传或收集您的 PDF 文件。所有 PDF 处理均在您的设备本地进行。&lt;/p&gt;&lt;h3&gt;2. 权限&lt;/h3&gt;&lt;p&gt;使用存储访问框架 (SAF)。&lt;/p&gt;&lt;h3&gt;3. 数据安全&lt;/h3&gt;&lt;p&gt;您的数据始终在您的掌控之中。&lt;/p&gt;&lt;h3&gt;4. 联系方式&lt;/h3&gt;&lt;p&gt;如有疑问，请通过 GitHub 仓库联系我们。&lt;/p&gt;</string>
     <string name="diagnostics">诊断</string>
-<string name="previous_page" translatable="false">Previous page</string><string name="next_page" translatable="false">Next page</string><string name="previous_search" translatable="false">Previous match</string><string name="next_search" translatable="false">Next match</string><string name="portrait_display" translatable="false">Single page in portrait</string><string name="mouse_navigation" translatable="false">Mouse Navigation</string><string name="help_sample_pdfs_desc" translatable="false" /><string name="help_outline" translatable="false" /><string name="help_adaptive" translatable="false" /><string name="help_portrait_display" translatable="false" /><string name="purchased" translatable="false">Purchased</string><string name="free" translatable="false">Free</string><string name="claim" translatable="false">Get</string><string name="koyomi_badge_title" translatable="false">Ver.2.0 Release Commemoration Koyomi Badge</string><string name="help_diagnostics" translatable="false" /><string name="help_report_issue" translatable="false" /><string name="report_issue" translatable="false">Report Issue (GitHub)</string><string name="enter_promo_code" translatable="false">Enter promo code</string><string name="promo_code_dialog_title" translatable="false">Enter Promotion Code</string><string name="promo_code_instructions" translatable="false">Enter your Google Play promotion code to redeem items.</string><string name="redeem" translatable="false">Redeem</string><string name="sample_pdfs" translatable="false">Sample PDFs</string><string name="language_filter" translatable="false">Language Filter</string><string name="all_languages" translatable="false">All</string><string name="sample_pdf_download" translatable="false">Download</string><string name="sample_pdf_downloading" translatable="false">Downloading...</string><string name="sample_pdf_downloading_progress" translatable="false">Downloading... %d%%</string><string name="sample_pdf_open" translatable="false">Open</string><string name="sample_pdf_delete" translatable="false">Delete</string><string name="cellular_data_warning" translatable="false">Cellular Data Warning</string><string name="cellular_data_message" translatable="false">You are currently on a cellular network. Downloading \"%1$s\" (%2$s) may consume a significant amount of mobile data. Do you want to proceed?</string><string name="error_prefix" translatable="false">Error: %s</string><string name="error_opening_play_store" translatable="false">Could not open Google Play Store</string><string name="promo_code_help_title" translatable="false">How to Redeem Promo Code</string><string name="promo_code_help_message" translatable="false">To redeem a promotion code for the Koyomi badge, go to the Support screen, tap the purchase button for the Ver.2.0 Koyomi badge, and in the Google Play payment sheet, select Redeem.</string><string name="go_to_support" translatable="false">Go to Support</string><string name="help_device_test" translatable="false" /><string name="help_log_viewer" translatable="false" /><string name="help_clear_logs" translatable="false" /><string name="help_promo_code" translatable="false" /><string name="help_slider" /><string name="report_issue_desc" /><string name="help_category_getting_started" translatable="false">Getting Started</string>
-    <string name="help_category_reading_features" translatable="false">Reading Features</string>
-    <string name="help_category_settings_guide" translatable="false">Settings Guide</string>
-    <string name="help_category_diagnostics" translatable="false">Diagnostics</string>
-    <string name="device_test_menu" translatable="false">Run Device Test</string>
-    <string name="app_logs_menu" translatable="false">View &amp; Share App Logs</string>
-    <string name="device_test_screen_title" translatable="false">Device Test &amp; Diagnostics</string>
-    <string name="device_test_intro" translatable="false">This screen allows you to run verification tests (RAM, storage, memory, cache, PDF engine environment) on your device.</string>
-    <string name="privacy_notice_header" translatable="false">🔒 Privacy Protection Notice</string>
-    <string name="privacy_notice_body" translatable="false">There is no automatic external transmission of test results. Data is processed locally on your device and never sent externally unless manually shared.</string>
-    <string name="run_test_button" translatable="false">Run Test</string>
-    <string name="test_results_header" translatable="false">📊 Test Results</string>
-    <string name="test_timestamp_label" translatable="false">Test Time</string>
-    <string name="vendor_label" translatable="false">Vendor</string>
-    <string name="device_name_label" translatable="false">Device Name</string>
-    <string name="os_version_label" translatable="false">OS Version</string>
-    <string name="system_locale_label" translatable="false">System Locale</string>
-    <string name="screen_orientation_label" translatable="false">Screen Orientation</string>
-    <string name="theme_mode_label" translatable="false">Theme Mode</string>
-    <string name="font_scale_label" translatable="false">Font Scale</string>
-    <string name="ram_info_label" translatable="false">Total RAM / Free RAM</string>
-    <string name="storage_info_label" translatable="false">Total Storage / Free Storage</string>
-    <string name="low_ram_mode_label" translatable="false">Low-RAM Optimization Mode</string>
-    <string name="cpu_cores_label" translatable="false">CPU Cores</string>
-    <string name="screen_resolution_label" translatable="false">Screen Resolution / Density</string>
-    <string name="jvm_heap_label" translatable="false">JVM Heap (Total / Free)</string>
-    <string name="cache_dir_label" translatable="false">Cache Directory</string>
-    <string name="pdf_renderer_api_label" translatable="false">PDF Renderer API</string>
-    <string name="billing_api_label" translatable="false">Google Play Billing API</string>
-    <string name="saf_resolver_label" translatable="false">ContentResolver (SAF)</string>
-    <string name="status_label" translatable="false">Status</string>
-    <string name="share_test_results_button" translatable="false">Share Test Results</string>
-    <string name="share_test_results_chooser" translatable="false">Share device test results</string>
-    <string name="report_issue_screen_title" translatable="false">Report Issue</string>
-    <string name="report_issue_intro" translatable="false">If you encounter a bug or crash, please gather the information below and report it on GitHub Issues.</string>
-    <string name="report_include_header" translatable="false">Include in your report</string>
-    <string name="report_step1" translatable="false">1. Brief summary of the issue</string>
-    <string name="report_step2" translatable="false">2. Steps to reproduce</string>
-    <string name="report_step3" translatable="false">3. Expected and actual behavior</string>
-    <string name="report_step4" translatable="false">4. Frequency of occurrence</string>
-    <string name="report_step5" translatable="false">5. App version, OS version, device, display settings</string>
-    <string name="report_step6" translatable="false">6. Screenshots, app logs, or device test results</string>
-    <string name="diagnostic_info_header" translatable="false">Diagnostic Information</string>
-    <string name="copy_all_diagnostics_button" translatable="false">Copy All Diagnostics (Test Results &amp; App Logs)</string>
-    <string name="copy_all_diagnostics_toast" translatable="false">Copied test results and app logs to clipboard</string>
-    <string name="view_app_logs_button" translatable="false">View &amp; Manage App Logs</string>
-    <string name="run_device_tests_button" translatable="false">Run Device Tests</string>
-    <string name="protect_privacy_header" translatable="false">Protect Your Privacy</string>
-    <string name="privacy_warning_body_1" translatable="false">• Do not include personal information such as PDF file contents, file names, or names.</string>
-    <string name="privacy_warning_body_2" translatable="false">• Please review screenshots and diagnostic info before posting. Data is not sent automatically.</string>
-    <string name="open_github_issues_button" translatable="false">Open GitHub Issues</string>
-    <string name="github_account_warning" translatable="false">* A GitHub account is required. Submitted information may be public.</string>
-    <string name="log_viewer_screen_title" translatable="false">App Log Management</string>
-    <string name="log_privacy_notice_header" translatable="false">🔒 Privacy Protection &amp; Data Management</string>
-    <string name="log_privacy_notice_body" translatable="false">• Logs are never sent externally automatically.\n• No personal information or PDF file contents are recorded.\n• Logs older than 24 hours are automatically deleted.</string>
-    <string name="share_logs_button" translatable="false">Share Logs</string>
-    <string name="delete_logs_button" translatable="false">Clear Logs</string>
-    <string name="logs_deleted_message" translatable="false">All logs have been deleted.</string>
-    <string name="saved_logs_title" translatable="false">Saved Logs (%d lines):</string>
-    <string name="no_logs_recorded_text" translatable="false">No logs recorded.</string>
-    <string name="share_logs_title" translatable="false">Share app logs</string>
-<string name="check_for_updates">Check for Updates</string>
-    <string name="update_now">Update Now</string>
-    <string name="diagnostics_menu">Diagnostics</string>
-<string name="view_tutorial">View Tutorial</string>
+<string name="previous_page">上一页</string><string name="next_page">下一页</string><string name="previous_search">上一个结果</string><string name="next_search">下一个结果</string><string name="portrait_display">竖屏单页</string><string name="mouse_navigation">鼠标导航</string><string name="help_sample_pdfs_desc">示例 PDF：下载并尝试应用提供的 PDF 示例文件，以测试各项功能。</string><string name="help_outline">PDF 目录（大纲）：点击顶部工具栏中的目录图标，即可查看文档书签或章节，并快速跳转至相应部分。</string><string name="help_portrait_display">纵向单页模式：可选择在纵向（竖屏）模式下是否采用单页视图。</string><string name="purchased">已购买</string><string name="koyomi_badge_title">2.0版本发布纪念 Koyomi 徽章</string><string name="report_issue">报告问题（GitHub）</string><string name="sample_pdfs">示例 PDF</string><string name="language_filter">语言筛选</string><string name="all_languages">全部</string><string name="sample_pdf_download">下载</string><string name="sample_pdf_downloading">下载中…</string><string name="sample_pdf_downloading_progress">下载中… %d%%</string><string name="sample_pdf_open">打开</string><string name="sample_pdf_delete">删除</string><string name="cellular_data_warning">移动数据提示</string><string name="cellular_data_message">您正在使用移动网络，下载“%1$s”（%2$s）可能消耗大量数据。是否继续？</string><string name="error_prefix">错误：%s</string><string name="promo_code_help_title">如何兑换优惠码</string><string name="promo_code_help_message">打开支持页面，点击2.0版 Koyomi 徽章购买按钮，在 Google Play 付款界面选择兑换。</string><string name="go_to_support">前往支持</string><string name="help_device_test">设备测试：对您的设备进行硬件和性能测试。</string><string name="help_log_viewer">应用日志：查看并安全共享本地应用日志，以便进行故障排查。</string><string name="help_clear_logs">清除测试与诊断日志：从本地存储中删除所有已记录的测试和诊断日志。</string><string name="help_slider">页面滑块：拖动底部工具栏上的滑块，即可跳转至其他页面。</string><string name="report_issue_desc">报告问题：在 GitHub Issues 中报告错误或程序崩溃，并附上诊断日志。</string><string name="help_category_getting_started">开始使用</string>
+    <string name="help_category_reading_features">阅读功能</string>
+    <string name="help_category_settings_guide">设置指南</string>
+    <string name="help_category_diagnostics">诊断</string>
+    <string name="device_test_menu">运行设备测试</string>
+    <string name="app_logs_menu">查看与分享应用日志</string>
+    <string name="device_test_screen_title">设备测试与诊断</string>
+    <string name="device_test_intro">测试设备的 RAM、存储、内存、缓存与 PDF 引擎环境。</string>
+    <string name="privacy_notice_header">🔒 隐私保护提示</string>
+    <string name="privacy_notice_body">测试结果在本地处理，仅在您主动分享时发送，不会自动外传。</string>
+    <string name="run_test_button">运行测试</string>
+    <string name="test_results_header">📊 测试结果</string>
+    <string name="test_timestamp_label">测试时间</string>
+    <string name="vendor_label">制造商</string>
+    <string name="device_name_label">设备名称</string>
+    <string name="os_version_label">系统版本</string>
+    <string name="system_locale_label">系统语言</string>
+    <string name="screen_orientation_label">屏幕方向</string>
+    <string name="theme_mode_label">主题模式</string>
+    <string name="font_scale_label">字体缩放</string>
+    <string name="ram_info_label">总 RAM／可用 RAM</string>
+    <string name="storage_info_label">总存储／可用存储</string>
+    <string name="low_ram_mode_label">低 RAM 优化模式</string>
+    <string name="cpu_cores_label">CPU 核心数</string>
+    <string name="screen_resolution_label">屏幕分辨率／密度</string>
+    <string name="jvm_heap_label">JVM 堆总量／可用量</string>
+    <string name="cache_dir_label">缓存目录</string>
+    <string name="pdf_renderer_api_label">PDF Renderer API</string>
+    <string name="billing_api_label">Google Play Billing API</string>
+    <string name="saf_resolver_label">ContentResolver (SAF)</string>
+    <string name="status_label">状态</string>
+    <string name="share_test_results_button">分享测试结果</string>
+    <string name="share_test_results_chooser">分享设备测试结果</string>
+    <string name="report_issue_screen_title">报告问题</string>
+    <string name="report_issue_intro">如遇错误，请收集以下信息并在 GitHub Issues 报告。</string>
+    <string name="report_include_header">报告中包含的内容</string>
+    <string name="report_step1">1. 问题简要概述</string>
+    <string name="report_step2">2. 复现步骤</string>
+    <string name="report_step3">3. 预期行为与实际行为</string>
+    <string name="report_step4">4. 发生频率</string>
+    <string name="report_step5">5. 应用版本、系统、设备与显示设置</string>
+    <string name="report_step6">6. 截图、日志或测试结果</string>
+    <string name="diagnostic_info_header">诊断信息</string>
+    <string name="copy_all_diagnostics_button">复制全部诊断（测试结果与日志）</string>
+    <string name="copy_all_diagnostics_toast">已复制测试结果与日志</string>
+    <string name="view_app_logs_button">查看与管理日志</string>
+    <string name="run_device_tests_button">运行设备测试</string>
+    <string name="protect_privacy_header">保护您的隐私</string>
+    <string name="privacy_warning_body_1">• 请勿包含个人信息、PDF 内容、文件名或人名。</string>
+    <string name="privacy_warning_body_2">• 发布前请检查截图和诊断信息，不会自动发送。</string>
+    <string name="open_github_issues_button">打开 GitHub Issues</string>
+    <string name="github_account_warning">* 需要 GitHub 账号，提交的信息可能公开。</string>
+    <string name="log_viewer_screen_title">应用日志管理</string>
+    <string name="log_privacy_notice_header">🔒 隐私保护与数据管理</string>
+    <string name="log_privacy_notice_body">• 不会自动外传。\n• 不记录个人信息或 PDF 内容。\n• 超过24小时自动删除。</string>
+    <string name="share_logs_button">分享日志</string>
+    <string name="delete_logs_button">清除日志</string>
+    <string name="logs_deleted_message">已删除所有日志。</string>
+    <string name="no_logs_recorded_text">暂无日志。</string>
+    <string name="share_logs_title">分享应用日志</string>
+<string name="check_for_updates">检查更新</string>
+    <string name="update_now">立即更新</string>
+    <string name="diagnostics_menu">诊断</string>
+<string name="view_tutorial">查看教程</string>
+
+    <!-- Local additions: translated UI and shared Utility wording; native review pending. -->
+    <string name="skip">跳过</string>
+    <string name="tutorial_get_started">开始使用</string>
+    <string name="tutorial_next">下一步</string>
+
+    <!-- Completed missing translations; native review pending. -->
+    <string name="update_available">有可用更新！</string>
+    <string name="latest_version">您正在使用最新版本。</string>
+    <string name="update_cooldown">请等待 %1$d 分 %2$d 秒后再次检查更新。</string>
+    <string name="check_failed">检查失败</string>
+    <string name="tutorial_welcome">欢迎使用 Mihiraki PDF Viewer</string>
+    <string name="tutorial_feature_spread_title">双页与 R2L 阅读</string>
+    <string name="tutorial_feature_spread_desc">自动识别页面布局和阅读方向。</string>
+    <string name="tutorial_feature_outline_title">目录导航</string>
+    <string name="tutorial_feature_outline_desc">通过 PDF 书签跳转至章节。</string>
+    <string name="tutorial_feature_search_title">搜索与高亮</string>
+    <string name="tutorial_feature_search_desc">搜索文本，并以黄色和红色标记结果。</string>
+    <string name="tutorial_youtube_button">在 YouTube 观看介绍</string>
+    <string name="tutorial_dont_show_again">启动时不再显示教程</string>
+    <string name="error_no_app_youtube">未找到可打开 YouTube 链接的应用</string>
+    <string name="tutorial_step1_title">1. 开始使用</string>
+    <string name="tutorial_step1_desc">打开本地或云端 PDF，试用示例，通过滑动、滑块或点击边缘翻页。</string>
+    <string name="tutorial_step2_title">2. 阅读功能</string>
+    <string name="tutorial_step2_desc">使用双页、R2L、章节目录和文本搜索高亮。</string>
+    <string name="tutorial_step3_title">3. 设置与自定义</string>
+    <string name="tutorial_step3_desc">调整画质、锐度、封面、鼠标导航、诊断及开发者支持。</string>
+    <string name="tutorial_step4_title">4. 准备阅读</string>
+    <string name="tutorial_step4_desc">观看介绍视频或立即开始。可关闭启动教程。</string>
+    <string name="tutorial_previous">上一步</string>
+    <string name="tutorial_video_guide_button">观看应用介绍短视频（播放列表）</string>
 </resources>

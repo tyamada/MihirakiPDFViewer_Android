@@ -6,32 +6,25 @@ This document outlines the localization, pricing strategy, and store listing gui
 
 | Country | Official / Main Languages | Localized Assets & Resources | Notes |
 | :--- | :--- | :--- | :--- |
-| **Singapore** | English, Mandarin, Malay, Tamil | • English (`values`, `docs/index.html`)<br>• Simplified Chinese (`values-zh-rCN`, `docs/index_zh.html`)<br>• Traditional Chinese (`values-zh-rTW`, `docs/index_zh-TW.html`) | English and Mandarin cover the vast majority of digital users. |
+| **Singapore** | English, Mandarin, Malay, Tamil | • English (`values`, `docs/index.html`)<br>• Simplified Chinese (`values-zh-rCN`, `docs/index_zh-CN.html`)<br>• Traditional Chinese (`values-zh-rTW`, `docs/index_zh-TW.html`) | English and Chinese assets exist; country-specific coverage and demand are not measured. |
 | **Malaysia** | Malay, English, Mandarin | • English (`values`)<br>• Simplified/Traditional Chinese | Consider adding Bahasa Malaysia (`values-ms`) if broader local reach is desired. |
-| **Canada** | English, French | • English (`values`)<br>• French (`values-fr`, `docs/index_fr.html`, `docs/privacy_fr.html`, `docs/support_fr.html`) | **Important**: Quebec consumer laws (Bill 96 / Charter of the French Language) strictly require French support for commercial apps and landing pages. |
+| **Canada** | English, French | • English (`values`)<br>• French (`values-fr`, `docs/index_fr.html`, `docs/privacy_fr.html`, `docs/support_fr.html`) | French assets exist. The applicability of language requirements and legal compliance have not been evaluated. |
 | **Australia** | English | • English (`values` / Australian English) | Use Australian English spelling conventions where applicable (e.g., colour, centre). |
 
 ---
 
-## 2. Google Play Console Pricing & Tax Strategy
+## 2. Pricing and tax: verification pending
 
-- **Merchant of Record**: Google handles payment processing, invoicing, and tax calculation/remittance (GST / HST / SST / VAT) automatically.
-- **Currency & Pricing Tiers**:
-  - **Singapore (SGD)**: High purchasing power. Use standard or premium USD-equivalent tiers (e.g., S$2.98 - S$4.48).
-  - **Australia (AUD)**: High purchasing power. Use natural AUD pricing tiers (e.g., A$2.99 - A$4.49).
-  - **Canada (CAD)**: Standard North American pricing tiers (e.g., C$2.79 - C$3.99).
-  - **Malaysia (MYR)**: Localized lower tier pricing (e.g., RM6.90 - RM9.90) to align with local purchasing power and maximize conversion rates.
-
----
+Current Console prices, sale availability, taxes and the allocation of tax obligations have not been verified. Previous SGD/AUD/CAD/MYR ranges were unvalidated examples and are withdrawn as pricing recommendations. Do not infer prices from product IDs or purchasing-power assumptions. Compare actual products and current Console prices before proposing changes. No legal or tax compliance assessment is provided here.
 
 ## 3. Store Listing Drafts
 
 ### English (Singapore, Australia, Canada, Malaysia)
-- **Short Description**: Modern double-page PDF reader optimized for manga and R2L reading.
-- **Full Description**: 
+- **Short Description (max 80 chars)**: Mihiraki PDF Reader: Manga & R2L spread viewer. Privacy-focused.
+- **Full Description (max 4000 chars)**:
   MihirakiPDFViewer is a clean, fast, and feature-rich PDF reader specifically designed for double-page spreads and Right-to-Left (R2L) reading orders. Perfect for reading manga, art books, magazines, and traditional documents on Android.
 
 ### French (Canada / Quebec)
-- **Short Description**: Lecteur PDF double page moderne optimisé pour les mangas et la lecture R2L.
-- **Full Description**: 
+- **Short Description (max 80 chars)**: Idéal pour mangas ! Lecteur PDF privé (double page & R2L).
+- **Full Description (max 4000 chars)**:
   MihirakiPDFViewer est un lecteur PDF épuré, rapide et riche en fonctionnalités, spécialement conçu pour l'affichage en double page et l'ordre de lecture de droite à gauche (R2L). Idéal pour lire des mangas, des livres d'art et des magazines sur Android.

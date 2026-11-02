@@ -1,0 +1,4269 @@
+{
+  "method": "Local translation, reuse of identical-source existing translations, Google Translate candidates via browser (explicit user permission), manual corrections; no native-speaker certification.",
+  "original_same_as_english_count": 599,
+  "changed_same_as_english_count": 558,
+  "retained": [
+    {
+      "app": "Viewer",
+      "file": "app/src/main/res/values-de/strings.xml",
+      "locale": "de",
+      "key": "ok",
+      "source": "OK",
+      "old": "OK",
+      "reason": "Conventional UI confirmation / technical identifier",
+      "resource_folder": "values-de"
+    },
+    {
+      "app": "Viewer",
+      "file": "app/src/main/res/values-de/strings.xml",
+      "locale": "de",
+      "key": "version",
+      "source": "Version",
+      "old": "Version",
+      "reason": "Identical conventional word in the target language",
+      "resource_folder": "values-de"
+    },
+    {
+      "app": "Viewer",
+      "file": "app/src/main/res/values-de/strings.xml",
+      "locale": "de",
+      "key": "saf_resolver_label",
+      "source": "ContentResolver (SAF)",
+      "old": "ContentResolver (SAF)",
+      "reason": "Conventional UI confirmation / technical identifier",
+      "resource_folder": "values-de"
+    },
+    {
+      "app": "Viewer",
+      "file": "app/src/main/res/values-de/strings.xml",
+      "locale": "de",
+      "key": "status_label",
+      "source": "Status",
+      "old": "Status",
+      "reason": "Identical conventional word in the target language",
+      "resource_folder": "values-de"
+    },
+    {
+      "app": "Viewer",
+      "file": "app/src/main/res/values-es/strings.xml",
+      "locale": "es",
+      "key": "error_prefix",
+      "source": "Error: %s",
+      "old": "Error: %s",
+      "reason": "Established target-language UI word or technical loanword; not an English sentence",
+      "resource_folder": "values-es"
+    },
+    {
+      "app": "Viewer",
+      "file": "app/src/main/res/values-es/strings.xml",
+      "locale": "es",
+      "key": "saf_resolver_label",
+      "source": "ContentResolver (SAF)",
+      "old": "ContentResolver (SAF)",
+      "reason": "Conventional UI confirmation / technical identifier",
+      "resource_folder": "values-es"
+    },
+    {
+      "app": "Viewer",
+      "file": "app/src/main/res/values-fil/strings.xml",
+      "locale": "fil",
+      "key": "ok",
+      "source": "OK",
+      "old": "OK",
+      "reason": "Conventional UI confirmation / technical identifier",
+      "resource_folder": "values-fil"
+    },
+    {
+      "app": "Viewer",
+      "file": "app/src/main/res/values-fil/strings.xml",
+      "locale": "fil",
+      "key": "password",
+      "source": "Password",
+      "old": "Password",
+      "reason": "Established target-language UI word or technical loanword; not an English sentence",
+      "resource_folder": "values-fil"
+    },
+    {
+      "app": "Viewer",
+      "file": "app/src/main/res/values-fil/strings.xml",
+      "locale": "fil",
+      "key": "pdf_renderer_api_label",
+      "source": "PDF Renderer API",
+      "old": "PDF Renderer API",
+      "reason": "Conventional UI confirmation / technical identifier",
+      "resource_folder": "values-fil"
+    },
+    {
+      "app": "Viewer",
+      "file": "app/src/main/res/values-fil/strings.xml",
+      "locale": "fil",
+      "key": "billing_api_label",
+      "source": "Google Play Billing API",
+      "old": "Google Play Billing API",
+      "reason": "Conventional UI confirmation / technical identifier",
+      "resource_folder": "values-fil"
+    },
+    {
+      "app": "Viewer",
+      "file": "app/src/main/res/values-fil/strings.xml",
+      "locale": "fil",
+      "key": "saf_resolver_label",
+      "source": "ContentResolver (SAF)",
+      "old": "ContentResolver (SAF)",
+      "reason": "Conventional UI confirmation / technical identifier",
+      "resource_folder": "values-fil"
+    },
+    {
+      "app": "Viewer",
+      "file": "app/src/main/res/values-fr/strings.xml",
+      "locale": "fr",
+      "key": "ok",
+      "source": "OK",
+      "old": "OK",
+      "reason": "Conventional UI confirmation / technical identifier",
+      "resource_folder": "values-fr"
+    },
+    {
+      "app": "Viewer",
+      "file": "app/src/main/res/values-fr/strings.xml",
+      "locale": "fr",
+      "key": "options",
+      "source": "Options",
+      "old": "Options",
+      "reason": "Identical conventional word in the target language",
+      "resource_folder": "values-fr"
+    },
+    {
+      "app": "Viewer",
+      "file": "app/src/main/res/values-fr/strings.xml",
+      "locale": "fr",
+      "key": "version",
+      "source": "Version",
+      "old": "Version",
+      "reason": "Identical conventional word in the target language",
+      "resource_folder": "values-fr"
+    },
+    {
+      "app": "Viewer",
+      "file": "app/src/main/res/values-fr/strings.xml",
+      "locale": "fr",
+      "key": "saf_resolver_label",
+      "source": "ContentResolver (SAF)",
+      "old": "ContentResolver (SAF)",
+      "reason": "Conventional UI confirmation / technical identifier",
+      "resource_folder": "values-fr"
+    },
+    {
+      "app": "Viewer",
+      "file": "app/src/main/res/values-in/strings.xml",
+      "locale": "id",
+      "key": "ok",
+      "source": "OK",
+      "old": "OK",
+      "reason": "Conventional UI confirmation / technical identifier",
+      "resource_folder": "values-in"
+    },
+    {
+      "app": "Viewer",
+      "file": "app/src/main/res/values-in/strings.xml",
+      "locale": "id",
+      "key": "pdf_renderer_api_label",
+      "source": "PDF Renderer API",
+      "old": "PDF Renderer API",
+      "reason": "Conventional UI confirmation / technical identifier",
+      "resource_folder": "values-in"
+    },
+    {
+      "app": "Viewer",
+      "file": "app/src/main/res/values-in/strings.xml",
+      "locale": "id",
+      "key": "billing_api_label",
+      "source": "Google Play Billing API",
+      "old": "Google Play Billing API",
+      "reason": "Conventional UI confirmation / technical identifier",
+      "resource_folder": "values-in"
+    },
+    {
+      "app": "Viewer",
+      "file": "app/src/main/res/values-in/strings.xml",
+      "locale": "id",
+      "key": "saf_resolver_label",
+      "source": "ContentResolver (SAF)",
+      "old": "ContentResolver (SAF)",
+      "reason": "Conventional UI confirmation / technical identifier",
+      "resource_folder": "values-in"
+    },
+    {
+      "app": "Viewer",
+      "file": "app/src/main/res/values-in/strings.xml",
+      "locale": "id",
+      "key": "status_label",
+      "source": "Status",
+      "old": "Status",
+      "reason": "Identical conventional word in the target language",
+      "resource_folder": "values-in"
+    },
+    {
+      "app": "Viewer",
+      "file": "app/src/main/res/values-it/strings.xml",
+      "locale": "it",
+      "key": "ok",
+      "source": "OK",
+      "old": "OK",
+      "reason": "Conventional UI confirmation / technical identifier",
+      "resource_folder": "values-it"
+    },
+    {
+      "app": "Viewer",
+      "file": "app/src/main/res/values-it/strings.xml",
+      "locale": "it",
+      "key": "password",
+      "source": "Password",
+      "old": "Password",
+      "reason": "Identical conventional word in the target language",
+      "resource_folder": "values-it"
+    },
+    {
+      "app": "Viewer",
+      "file": "app/src/main/res/values-it/strings.xml",
+      "locale": "it",
+      "key": "saf_resolver_label",
+      "source": "ContentResolver (SAF)",
+      "old": "ContentResolver (SAF)",
+      "reason": "Conventional UI confirmation / technical identifier",
+      "resource_folder": "values-it"
+    },
+    {
+      "app": "Viewer",
+      "file": "app/src/main/res/values-ja/strings.xml",
+      "locale": "ja",
+      "key": "ok",
+      "source": "OK",
+      "old": "OK",
+      "reason": "Conventional UI confirmation / technical identifier",
+      "resource_folder": "values-ja"
+    },
+    {
+      "app": "Viewer",
+      "file": "app/src/main/res/values-ja/strings.xml",
+      "locale": "ja",
+      "key": "pdf_renderer_api_label",
+      "source": "PDF Renderer API",
+      "old": "PDF Renderer API",
+      "reason": "Conventional UI confirmation / technical identifier",
+      "resource_folder": "values-ja"
+    },
+    {
+      "app": "Viewer",
+      "file": "app/src/main/res/values-ja/strings.xml",
+      "locale": "ja",
+      "key": "billing_api_label",
+      "source": "Google Play Billing API",
+      "old": "Google Play Billing API",
+      "reason": "Conventional UI confirmation / technical identifier",
+      "resource_folder": "values-ja"
+    },
+    {
+      "app": "Viewer",
+      "file": "app/src/main/res/values-ja/strings.xml",
+      "locale": "ja",
+      "key": "saf_resolver_label",
+      "source": "ContentResolver (SAF)",
+      "old": "ContentResolver (SAF)",
+      "reason": "Conventional UI confirmation / technical identifier",
+      "resource_folder": "values-ja"
+    },
+    {
+      "app": "Viewer",
+      "file": "app/src/main/res/values-ne/strings.xml",
+      "locale": "ne",
+      "key": "pdf_renderer_api_label",
+      "source": "PDF Renderer API",
+      "old": "PDF Renderer API",
+      "reason": "Conventional UI confirmation / technical identifier",
+      "resource_folder": "values-ne"
+    },
+    {
+      "app": "Viewer",
+      "file": "app/src/main/res/values-ne/strings.xml",
+      "locale": "ne",
+      "key": "billing_api_label",
+      "source": "Google Play Billing API",
+      "old": "Google Play Billing API",
+      "reason": "Conventional UI confirmation / technical identifier",
+      "resource_folder": "values-ne"
+    },
+    {
+      "app": "Viewer",
+      "file": "app/src/main/res/values-ne/strings.xml",
+      "locale": "ne",
+      "key": "saf_resolver_label",
+      "source": "ContentResolver (SAF)",
+      "old": "ContentResolver (SAF)",
+      "reason": "Conventional UI confirmation / technical identifier",
+      "resource_folder": "values-ne"
+    },
+    {
+      "app": "Viewer",
+      "file": "app/src/main/res/values-pt/strings.xml",
+      "locale": "pt",
+      "key": "ok",
+      "source": "OK",
+      "old": "OK",
+      "reason": "Conventional UI confirmation / technical identifier",
+      "resource_folder": "values-pt"
+    },
+    {
+      "app": "Viewer",
+      "file": "app/src/main/res/values-pt/strings.xml",
+      "locale": "pt",
+      "key": "pdf_renderer_api_label",
+      "source": "PDF Renderer API",
+      "old": "PDF Renderer API",
+      "reason": "Conventional UI confirmation / technical identifier",
+      "resource_folder": "values-pt"
+    },
+    {
+      "app": "Viewer",
+      "file": "app/src/main/res/values-pt/strings.xml",
+      "locale": "pt",
+      "key": "billing_api_label",
+      "source": "Google Play Billing API",
+      "old": "Google Play Billing API",
+      "reason": "Conventional UI confirmation / technical identifier",
+      "resource_folder": "values-pt"
+    },
+    {
+      "app": "Viewer",
+      "file": "app/src/main/res/values-pt/strings.xml",
+      "locale": "pt",
+      "key": "saf_resolver_label",
+      "source": "ContentResolver (SAF)",
+      "old": "ContentResolver (SAF)",
+      "reason": "Conventional UI confirmation / technical identifier",
+      "resource_folder": "values-pt"
+    },
+    {
+      "app": "Viewer",
+      "file": "app/src/main/res/values-vi/strings.xml",
+      "locale": "vi",
+      "key": "ok",
+      "source": "OK",
+      "old": "OK",
+      "reason": "Conventional UI confirmation / technical identifier",
+      "resource_folder": "values-vi"
+    },
+    {
+      "app": "Viewer",
+      "file": "app/src/main/res/values-vi/strings.xml",
+      "locale": "vi",
+      "key": "pdf_renderer_api_label",
+      "source": "PDF Renderer API",
+      "old": "PDF Renderer API",
+      "reason": "Conventional UI confirmation / technical identifier",
+      "resource_folder": "values-vi"
+    },
+    {
+      "app": "Viewer",
+      "file": "app/src/main/res/values-vi/strings.xml",
+      "locale": "vi",
+      "key": "billing_api_label",
+      "source": "Google Play Billing API",
+      "old": "Google Play Billing API",
+      "reason": "Conventional UI confirmation / technical identifier",
+      "resource_folder": "values-vi"
+    },
+    {
+      "app": "Viewer",
+      "file": "app/src/main/res/values-vi/strings.xml",
+      "locale": "vi",
+      "key": "saf_resolver_label",
+      "source": "ContentResolver (SAF)",
+      "old": "ContentResolver (SAF)",
+      "reason": "Conventional UI confirmation / technical identifier",
+      "resource_folder": "values-vi"
+    },
+    {
+      "app": "Viewer",
+      "file": "app/src/main/res/values-zh-rCN/strings.xml",
+      "locale": "zh-rCN",
+      "key": "pdf_renderer_api_label",
+      "source": "PDF Renderer API",
+      "old": "PDF Renderer API",
+      "reason": "Conventional UI confirmation / technical identifier",
+      "resource_folder": "values-zh-rCN"
+    },
+    {
+      "app": "Viewer",
+      "file": "app/src/main/res/values-zh-rCN/strings.xml",
+      "locale": "zh-rCN",
+      "key": "billing_api_label",
+      "source": "Google Play Billing API",
+      "old": "Google Play Billing API",
+      "reason": "Conventional UI confirmation / technical identifier",
+      "resource_folder": "values-zh-rCN"
+    },
+    {
+      "app": "Viewer",
+      "file": "app/src/main/res/values-zh-rCN/strings.xml",
+      "locale": "zh-rCN",
+      "key": "saf_resolver_label",
+      "source": "ContentResolver (SAF)",
+      "old": "ContentResolver (SAF)",
+      "reason": "Conventional UI confirmation / technical identifier",
+      "resource_folder": "values-zh-rCN"
+    }
+  ],
+  "reviewed_technical_loanword_sentences": [
+    {
+      "app": "Viewer",
+      "file": "app/src/main/res/values-de/strings.xml",
+      "key": "cellular_data_message",
+      "value": "Sie nutzen mobile Daten. Der Download von „%1$s“ (%2$s) kann viele Daten verbrauchen. Fortfahren?",
+      "resource_folder": "values-de",
+      "reason": "Localized sentence containing established computing loanwords (download, toolbar, thumbnail, stress test); not a remaining English instruction."
+    },
+    {
+      "app": "Viewer",
+      "file": "app/src/main/res/values-fil/strings.xml",
+      "key": "help_sample_pdfs_desc",
+      "value": "Mga Halimbawang PDF: I-download at subukan ang mga halimbawang PDF file na ibinigay ng app upang subukan ang mga feature.",
+      "resource_folder": "values-fil",
+      "reason": "Localized sentence containing established computing loanwords (download, toolbar, thumbnail, stress test); not a remaining English instruction."
+    },
+    {
+      "app": "Viewer",
+      "file": "app/src/main/res/values-fil/strings.xml",
+      "key": "sample_pdf_download",
+      "value": "I-download",
+      "resource_folder": "values-fil",
+      "reason": "Localized sentence containing established computing loanwords (download, toolbar, thumbnail, stress test); not a remaining English instruction."
+    },
+    {
+      "app": "Viewer",
+      "file": "app/src/main/res/values-fil/strings.xml",
+      "key": "sample_pdf_downloading",
+      "value": "Dina-download…",
+      "resource_folder": "values-fil",
+      "reason": "Localized sentence containing established computing loanwords (download, toolbar, thumbnail, stress test); not a remaining English instruction."
+    },
+    {
+      "app": "Viewer",
+      "file": "app/src/main/res/values-fil/strings.xml",
+      "key": "sample_pdf_downloading_progress",
+      "value": "Dina-download… %d%%",
+      "resource_folder": "values-fil",
+      "reason": "Localized sentence containing established computing loanwords (download, toolbar, thumbnail, stress test); not a remaining English instruction."
+    },
+    {
+      "app": "Viewer",
+      "file": "app/src/main/res/values-fil/strings.xml",
+      "key": "cellular_data_message",
+      "value": "Nasa mobile network ka. Maaaring gumamit ng maraming data ang pag-download ng “%1$s” (%2$s). Magpatuloy?",
+      "resource_folder": "values-fil",
+      "reason": "Localized sentence containing established computing loanwords (download, toolbar, thumbnail, stress test); not a remaining English instruction."
+    },
+    {
+      "app": "Viewer",
+      "file": "app/src/main/res/values-it/strings.xml",
+      "key": "sample_pdf_downloading",
+      "value": "Download in corso…",
+      "resource_folder": "values-it",
+      "reason": "Localized sentence containing established computing loanwords (download, toolbar, thumbnail, stress test); not a remaining English instruction."
+    },
+    {
+      "app": "Viewer",
+      "file": "app/src/main/res/values-it/strings.xml",
+      "key": "sample_pdf_downloading_progress",
+      "value": "Download… %d%%",
+      "resource_folder": "values-it",
+      "reason": "Localized sentence containing established computing loanwords (download, toolbar, thumbnail, stress test); not a remaining English instruction."
+    }
+  ],
+  "changed": [
+    {
+      "locale": "values-fil",
+      "key": "sample_pdf_download",
+      "old": "Download",
+      "new": "I-download"
+    },
+    {
+      "locale": "values-fil",
+      "key": "promo_code_dialog_title",
+      "old": "Enter Promotion Code",
+      "new": "Ilagay ang promotion code"
+    },
+    {
+      "locale": "values-fil",
+      "key": "sample_pdf_downloading_progress",
+      "old": "Downloading... %d%%",
+      "new": "Dina-download… %d%%"
+    },
+    {
+      "locale": "values-fil",
+      "key": "report_step4",
+      "old": "4. Frequency of occurrence",
+      "new": "4. Dalas ng paglitaw"
+    },
+    {
+      "locale": "values-fil",
+      "key": "github_account_warning",
+      "old": "* A GitHub account is required. Submitted information may be public.",
+      "new": "* Kailangan ng GitHub account. Maaaring maging pampubliko ang isinumiteng impormasyon."
+    },
+    {
+      "locale": "values-fil",
+      "key": "saved_logs_title",
+      "old": "Saved Logs (%d lines):",
+      "new": "Mga naka-save na log (%d linya):"
+    },
+    {
+      "locale": "values-fil",
+      "key": "report_issue_screen_title",
+      "old": "Report Issue",
+      "new": "Mag-ulat ng problema"
+    },
+    {
+      "locale": "values-fil",
+      "key": "build_number",
+      "old": "Build number",
+      "new": "Numero ng build"
+    },
+    {
+      "locale": "values-fil",
+      "key": "help_category_reading_features",
+      "old": "Reading Features",
+      "new": "Mga tampok sa pagbasa"
+    },
+    {
+      "locale": "values-fil",
+      "key": "portrait_display",
+      "old": "Single page in portrait",
+      "new": "Isang pahina sa patayong screen"
+    },
+    {
+      "locale": "values-fil",
+      "key": "sharpness",
+      "old": "Sharpness",
+      "new": "Katalasan"
+    },
+    {
+      "locale": "values-fil",
+      "key": "share_logs_button",
+      "old": "Share Logs",
+      "new": "Ibahagi ang log"
+    },
+    {
+      "locale": "values-fil",
+      "key": "theme_mode_label",
+      "old": "Theme Mode",
+      "new": "Tema"
+    },
+    {
+      "locale": "values-fil",
+      "key": "claim",
+      "old": "Get",
+      "new": "Kunin"
+    },
+    {
+      "locale": "values-fil",
+      "key": "check_for_updates",
+      "old": "Check for Updates",
+      "new": "Suriin ang mga Update"
+    },
+    {
+      "locale": "values-fil",
+      "key": "privacy_notice_header",
+      "old": "🔒 Privacy Protection Notice",
+      "new": "🔒 Paalala sa privacy"
+    },
+    {
+      "locale": "values-fil",
+      "key": "cpu_cores_label",
+      "old": "CPU Cores",
+      "new": "Mga core ng CPU"
+    },
+    {
+      "locale": "values-fil",
+      "key": "os_version_label",
+      "old": "OS Version",
+      "new": "Bersyon ng sistema"
+    },
+    {
+      "locale": "values-fil",
+      "key": "sample_pdfs",
+      "old": "Sample PDFs",
+      "new": "Mga halimbawang PDF"
+    },
+    {
+      "locale": "values-fil",
+      "key": "promo_code_help_message",
+      "old": "To redeem a promotion code for the Koyomi badge, go to the Support screen, tap the purchase button for the Ver.2.0 Koyomi badge, and in the Google Play payment sheet, select Redeem.",
+      "new": "Buksan ang Suporta, piliin ang pagbili ng Koyomi badge bersyon 2.0 at piliin ang Redeem sa Google Play."
+    },
+    {
+      "locale": "values-fil",
+      "key": "low_ram_mode_label",
+      "old": "Low-RAM Optimization Mode",
+      "new": "Pag-optimize para sa mababang RAM"
+    },
+    {
+      "locale": "values-fil",
+      "key": "ram_info_label",
+      "old": "Total RAM / Free RAM",
+      "new": "Kabuuan / bakanteng RAM"
+    },
+    {
+      "locale": "values-fil",
+      "key": "protect_privacy_header",
+      "old": "Protect Your Privacy",
+      "new": "Protektahan ang iyong privacy"
+    },
+    {
+      "locale": "values-fil",
+      "key": "status_label",
+      "old": "Status",
+      "new": "Katayuan"
+    },
+    {
+      "locale": "values-fil",
+      "key": "screen_orientation_label",
+      "old": "Screen Orientation",
+      "new": "Oryentasyon ng screen"
+    },
+    {
+      "locale": "values-fil",
+      "key": "help_category_getting_started",
+      "old": "Getting Started",
+      "new": "Pagsisimula"
+    },
+    {
+      "locale": "values-fil",
+      "key": "free",
+      "old": "Free",
+      "new": "Libre"
+    },
+    {
+      "locale": "values-fil",
+      "key": "next_page",
+      "old": "Next page",
+      "new": "Susunod na pahina"
+    },
+    {
+      "locale": "values-fil",
+      "key": "device_test_intro",
+      "old": "This screen allows you to run verification tests (RAM, storage, memory, cache, PDF engine environment) on your device.",
+      "new": "Suriin ang RAM, imbakan, memorya, cache at kapaligiran ng PDF sa aparato."
+    },
+    {
+      "locale": "values-fil",
+      "key": "go_to_support",
+      "old": "Go to Support",
+      "new": "Pumunta sa Suporta"
+    },
+    {
+      "locale": "values-fil",
+      "key": "log_privacy_notice_body",
+      "old": "• Logs are never sent externally automatically.\\n• No personal information or PDF file contents are recorded.\\n• Logs older than 24 hours are automatically deleted.",
+      "new": "• Walang awtomatikong pagpapadala.\\n• Walang personal na datos o nilalaman ng PDF.\\n• Binubura ang log pagkalipas ng 24 oras."
+    },
+    {
+      "locale": "values-fil",
+      "key": "report_step1",
+      "old": "1. Brief summary of the issue",
+      "new": "1. Maikling buod ng problema"
+    },
+    {
+      "locale": "values-fil",
+      "key": "promo_code_instructions",
+      "old": "Enter your Google Play promotion code to redeem items.",
+      "new": "Ilagay ang Google Play promo code para makuha ang mga item."
+    },
+    {
+      "locale": "values-fil",
+      "key": "storage_info_label",
+      "old": "Total Storage / Free Storage",
+      "new": "Kabuuan / bakanteng storage"
+    },
+    {
+      "locale": "values-fil",
+      "key": "privacy_warning_body_2",
+      "old": "• Please review screenshots and diagnostic info before posting. Data is not sent automatically.",
+      "new": "• Suriin ang mga larawan at diagnostic bago mag-post. Walang awtomatikong pagpapadala."
+    },
+    {
+      "locale": "values-fil",
+      "key": "sample_pdf_downloading",
+      "old": "Downloading...",
+      "new": "Dina-download…"
+    },
+    {
+      "locale": "values-fil",
+      "key": "cellular_data_message",
+      "old": "You are currently on a cellular network. Downloading \\\"%1$s\\\" (%2$s) may consume a significant amount of mobile data. Do you want to proceed?",
+      "new": "Nasa mobile network ka. Maaaring gumamit ng maraming data ang pag-download ng “%1$s” (%2$s). Magpatuloy?"
+    },
+    {
+      "locale": "values-fil",
+      "key": "redeem",
+      "old": "Redeem",
+      "new": "I-redeem"
+    },
+    {
+      "locale": "values-fil",
+      "key": "system_locale_label",
+      "old": "System Locale",
+      "new": "Wika ng sistema"
+    },
+    {
+      "locale": "values-fil",
+      "key": "copy_all_diagnostics_button",
+      "old": "Copy All Diagnostics (Test Results & App Logs)",
+      "new": "Kopyahin lahat ng diagnostic (resulta at log)"
+    },
+    {
+      "locale": "values-fil",
+      "key": "share_logs_title",
+      "old": "Share app logs",
+      "new": "Ibahagi ang log ng app"
+    },
+    {
+      "locale": "values-fil",
+      "key": "diagnostic_info_header",
+      "old": "Diagnostic Information",
+      "new": "Impormasyon sa diagnostic"
+    },
+    {
+      "locale": "values-fil",
+      "key": "report_step6",
+      "old": "6. Screenshots, app logs, or device test results",
+      "new": "6. Mga screenshot, log o resulta ng pagsusuri"
+    },
+    {
+      "locale": "values-fil",
+      "key": "koyomi_badge_title",
+      "old": "Ver.2.0 Release Commemoration Koyomi Badge",
+      "new": "Koyomi badge para sa paglunsad ng bersyon 2.0"
+    },
+    {
+      "locale": "values-fil",
+      "key": "help_category_settings_guide",
+      "old": "Settings Guide",
+      "new": "Gabay sa mga setting"
+    },
+    {
+      "locale": "values-fil",
+      "key": "test_results_header",
+      "old": "📊 Test Results",
+      "new": "📊 Mga resulta"
+    },
+    {
+      "locale": "values-fil",
+      "key": "language_filter",
+      "old": "Language Filter",
+      "new": "Salain ayon sa wika"
+    },
+    {
+      "locale": "values-fil",
+      "key": "two_page",
+      "old": "Two-page view",
+      "new": "Tanaw na dalawang pahina"
+    },
+    {
+      "locale": "values-fil",
+      "key": "previous_search",
+      "old": "Previous match",
+      "new": "Nakaraang resulta"
+    },
+    {
+      "locale": "values-fil",
+      "key": "diagnostics_menu",
+      "old": "Diagnostics",
+      "new": "Pagsusuri"
+    },
+    {
+      "locale": "values-fil",
+      "key": "report_include_header",
+      "old": "Include in your report",
+      "new": "Isama sa ulat"
+    },
+    {
+      "locale": "values-fil",
+      "key": "log_privacy_notice_header",
+      "old": "🔒 Privacy Protection & Data Management",
+      "new": "🔒 Privacy at pamamahala ng datos"
+    },
+    {
+      "locale": "values-fil",
+      "key": "device_test_screen_title",
+      "old": "Device Test & Diagnostics",
+      "new": "Pagsusuri at diagnostic ng device"
+    },
+    {
+      "locale": "values-fil",
+      "key": "run_test_button",
+      "old": "Run Test",
+      "new": "Simulan ang pagsusuri"
+    },
+    {
+      "locale": "values-fil",
+      "key": "share_test_results_button",
+      "old": "Share Test Results",
+      "new": "Ibahagi ang mga resulta"
+    },
+    {
+      "locale": "values-fil",
+      "key": "view_tutorial",
+      "old": "View Tutorial",
+      "new": "Tingnan ang gabay"
+    },
+    {
+      "locale": "values-fil",
+      "key": "screen_resolution_label",
+      "old": "Screen Resolution / Density",
+      "new": "Resolusyon / densidad ng screen"
+    },
+    {
+      "locale": "values-fil",
+      "key": "previous_page",
+      "old": "Previous page",
+      "new": "Nakaraang pahina"
+    },
+    {
+      "locale": "values-fil",
+      "key": "error_opening_play_store",
+      "old": "Could not open Google Play Store",
+      "new": "Hindi mabuksan ang Google Play Store"
+    },
+    {
+      "locale": "values-fil",
+      "key": "promo_code_help_title",
+      "old": "How to Redeem Promo Code",
+      "new": "Paano gamitin ang promo code"
+    },
+    {
+      "locale": "values-fil",
+      "key": "logs_deleted_message",
+      "old": "All logs have been deleted.",
+      "new": "Nabura ang lahat ng log."
+    },
+    {
+      "locale": "values-fil",
+      "key": "report_step2",
+      "old": "2. Steps to reproduce",
+      "new": "2. Mga hakbang para maulit"
+    },
+    {
+      "locale": "values-fil",
+      "key": "jvm_heap_label",
+      "old": "JVM Heap (Total / Free)",
+      "new": "Kabuuan / bakanteng JVM heap"
+    },
+    {
+      "locale": "values-fil",
+      "key": "share_test_results_chooser",
+      "old": "Share device test results",
+      "new": "Ibahagi ang resulta ng device"
+    },
+    {
+      "locale": "values-fil",
+      "key": "error_prefix",
+      "old": "Error: %s",
+      "new": "Kamalian: %s"
+    },
+    {
+      "locale": "values-fil",
+      "key": "subject",
+      "old": "Subtitle",
+      "new": "Pangalawang pamagat"
+    },
+    {
+      "locale": "values-fil",
+      "key": "update_now",
+      "old": "Update Now",
+      "new": "I-update ngayon"
+    },
+    {
+      "locale": "values-fil",
+      "key": "open_github_issues_button",
+      "old": "Open GitHub Issues",
+      "new": "Buksan ang GitHub Issues"
+    },
+    {
+      "locale": "values-fil",
+      "key": "copy_all_diagnostics_toast",
+      "old": "Copied test results and app logs to clipboard",
+      "new": "Nakopya ang mga resulta at log"
+    },
+    {
+      "locale": "values-fil",
+      "key": "diagnostics",
+      "old": "Diagnostics",
+      "new": "Pagsusuri"
+    },
+    {
+      "locale": "values-fil",
+      "key": "sample_pdf_open",
+      "old": "Open",
+      "new": "Buksan"
+    },
+    {
+      "locale": "values-fil",
+      "key": "device_name_label",
+      "old": "Device Name",
+      "new": "Pangalan ng device"
+    },
+    {
+      "locale": "values-fil",
+      "key": "report_issue_intro",
+      "old": "If you encounter a bug or crash, please gather the information below and report it on GitHub Issues.",
+      "new": "Kung may problema, tipunin ang impormasyon sa ibaba at iulat sa GitHub Issues."
+    },
+    {
+      "locale": "values-fil",
+      "key": "run_device_tests_button",
+      "old": "Run Device Tests",
+      "new": "Simulan ang mga pagsusuri ng device"
+    },
+    {
+      "locale": "values-fil",
+      "key": "no_logs_recorded_text",
+      "old": "No logs recorded.",
+      "new": "Walang naitalang log."
+    },
+    {
+      "locale": "values-fil",
+      "key": "app_logs_menu",
+      "old": "View & Share App Logs",
+      "new": "Tingnan at ibahagi ang mga log"
+    },
+    {
+      "locale": "values-fil",
+      "key": "report_step5",
+      "old": "5. App version, OS version, device, display settings",
+      "new": "5. Bersyon ng app, sistema, device at display"
+    },
+    {
+      "locale": "values-fil",
+      "key": "mouse_navigation",
+      "old": "Mouse Navigation",
+      "new": "Pag-navigate gamit ang mouse"
+    },
+    {
+      "locale": "values-fil",
+      "key": "purchased",
+      "old": "Purchased",
+      "new": "Nabili na"
+    },
+    {
+      "locale": "values-fil",
+      "key": "help_category_diagnostics",
+      "old": "Diagnostics",
+      "new": "Pagsusuri"
+    },
+    {
+      "locale": "values-fil",
+      "key": "vendor_label",
+      "old": "Vendor",
+      "new": "Tagagawa"
+    },
+    {
+      "locale": "values-fil",
+      "key": "all_languages",
+      "old": "All",
+      "new": "Lahat"
+    },
+    {
+      "locale": "values-fil",
+      "key": "view_app_logs_button",
+      "old": "View & Manage App Logs",
+      "new": "Tingnan at pamahalaan ang mga log"
+    },
+    {
+      "locale": "values-fil",
+      "key": "report_issue",
+      "old": "Report Issue (GitHub)",
+      "new": "Mag-ulat ng problema (GitHub)"
+    },
+    {
+      "locale": "values-fil",
+      "key": "font_scale_label",
+      "old": "Font Scale",
+      "new": "Laki ng teksto"
+    },
+    {
+      "locale": "values-fil",
+      "key": "privacy_notice_body",
+      "old": "There is no automatic external transmission of test results. Data is processed locally on your device and never sent externally unless manually shared.",
+      "new": "Lokal ang pagproseso ng resulta. Hindi ito ipinapadala maliban kung manu-mano mong ibahagi."
+    },
+    {
+      "locale": "values-fil",
+      "key": "sample_pdf_delete",
+      "old": "Delete",
+      "new": "I-delete"
+    },
+    {
+      "locale": "values-fil",
+      "key": "cache_dir_label",
+      "old": "Cache Directory",
+      "new": "Folder ng cache"
+    },
+    {
+      "locale": "values-fil",
+      "key": "report_step3",
+      "old": "3. Expected and actual behavior",
+      "new": "3. Inaasahan at aktuwal na resulta"
+    },
+    {
+      "locale": "values-fil",
+      "key": "device_test_menu",
+      "old": "Run Device Test",
+      "new": "Patakbuhin ang pagsusuri ng device"
+    },
+    {
+      "locale": "values-fil",
+      "key": "privacy_warning_body_1",
+      "old": "• Do not include personal information such as PDF file contents, file names, or names.",
+      "new": "• Huwag isama ang personal na datos, nilalaman ng PDF, pangalan ng file o tao."
+    },
+    {
+      "locale": "values-fil",
+      "key": "next_search",
+      "old": "Next match",
+      "new": "Susunod na resulta"
+    },
+    {
+      "locale": "values-fil",
+      "key": "cellular_data_warning",
+      "old": "Cellular Data Warning",
+      "new": "Babala sa mobile data"
+    },
+    {
+      "locale": "values-fil",
+      "key": "delete_logs_button",
+      "old": "Clear Logs",
+      "new": "Burahin ang mga log"
+    },
+    {
+      "locale": "values-fil",
+      "key": "log_viewer_screen_title",
+      "old": "App Log Management",
+      "new": "Pamamahala ng mga log"
+    },
+    {
+      "locale": "values-fil",
+      "key": "enter_promo_code",
+      "old": "Enter promo code",
+      "new": "Ilagay ang promo code"
+    },
+    {
+      "locale": "values-fil",
+      "key": "test_timestamp_label",
+      "old": "Test Time",
+      "new": "Oras ng pagsusuri"
+    },
+    {
+      "locale": "values-in",
+      "key": "sample_pdf_download",
+      "old": "Download",
+      "new": "Unduh"
+    },
+    {
+      "locale": "values-in",
+      "key": "promo_code_dialog_title",
+      "old": "Enter Promotion Code",
+      "new": "Masukkan kode promosi"
+    },
+    {
+      "locale": "values-in",
+      "key": "sample_pdf_downloading_progress",
+      "old": "Downloading... %d%%",
+      "new": "Mengunduh… %d%%"
+    },
+    {
+      "locale": "values-in",
+      "key": "report_step4",
+      "old": "4. Frequency of occurrence",
+      "new": "4. Frekuensi kejadian"
+    },
+    {
+      "locale": "values-in",
+      "key": "github_account_warning",
+      "old": "* A GitHub account is required. Submitted information may be public.",
+      "new": "* Akun GitHub diperlukan. Informasi yang dikirim dapat bersifat publik."
+    },
+    {
+      "locale": "values-in",
+      "key": "saved_logs_title",
+      "old": "Saved Logs (%d lines):",
+      "new": "Log tersimpan (%d baris):"
+    },
+    {
+      "locale": "values-in",
+      "key": "report_issue_screen_title",
+      "old": "Report Issue",
+      "new": "Laporkan masalah"
+    },
+    {
+      "locale": "values-in",
+      "key": "help_category_reading_features",
+      "old": "Reading Features",
+      "new": "Fitur membaca"
+    },
+    {
+      "locale": "values-in",
+      "key": "portrait_display",
+      "old": "Single page in portrait",
+      "new": "Satu halaman dalam orientasi potret"
+    },
+    {
+      "locale": "values-in",
+      "key": "reset",
+      "old": "Reset",
+      "new": "Atur ulang"
+    },
+    {
+      "locale": "values-in",
+      "key": "share_logs_button",
+      "old": "Share Logs",
+      "new": "Bagikan log"
+    },
+    {
+      "locale": "values-in",
+      "key": "theme_mode_label",
+      "old": "Theme Mode",
+      "new": "Mode tema"
+    },
+    {
+      "locale": "values-in",
+      "key": "claim",
+      "old": "Get",
+      "new": "Dapatkan"
+    },
+    {
+      "locale": "values-in",
+      "key": "check_for_updates",
+      "old": "Check for Updates",
+      "new": "Periksa Pembaruan"
+    },
+    {
+      "locale": "values-in",
+      "key": "privacy_notice_header",
+      "old": "🔒 Privacy Protection Notice",
+      "new": "🔒 Pemberitahuan privasi"
+    },
+    {
+      "locale": "values-in",
+      "key": "cpu_cores_label",
+      "old": "CPU Cores",
+      "new": "Inti CPU"
+    },
+    {
+      "locale": "values-in",
+      "key": "os_version_label",
+      "old": "OS Version",
+      "new": "Versi sistem operasi"
+    },
+    {
+      "locale": "values-in",
+      "key": "sample_pdfs",
+      "old": "Sample PDFs",
+      "new": "PDF contoh"
+    },
+    {
+      "locale": "values-in",
+      "key": "promo_code_help_message",
+      "old": "To redeem a promotion code for the Koyomi badge, go to the Support screen, tap the purchase button for the Ver.2.0 Koyomi badge, and in the Google Play payment sheet, select Redeem.",
+      "new": "Buka Dukungan, ketuk pembelian lencana Koyomi versi 2.0, lalu pilih Tukarkan pada pembayaran Google Play."
+    },
+    {
+      "locale": "values-in",
+      "key": "low_ram_mode_label",
+      "old": "Low-RAM Optimization Mode",
+      "new": "Optimasi RAM rendah"
+    },
+    {
+      "locale": "values-in",
+      "key": "ram_info_label",
+      "old": "Total RAM / Free RAM",
+      "new": "RAM total / bebas"
+    },
+    {
+      "locale": "values-in",
+      "key": "protect_privacy_header",
+      "old": "Protect Your Privacy",
+      "new": "Lindungi privasi Anda"
+    },
+    {
+      "locale": "values-in",
+      "key": "screen_orientation_label",
+      "old": "Screen Orientation",
+      "new": "Orientasi layar"
+    },
+    {
+      "locale": "values-in",
+      "key": "help_category_getting_started",
+      "old": "Getting Started",
+      "new": "Memulai"
+    },
+    {
+      "locale": "values-in",
+      "key": "free",
+      "old": "Free",
+      "new": "Gratis"
+    },
+    {
+      "locale": "values-in",
+      "key": "next_page",
+      "old": "Next page",
+      "new": "Halaman berikutnya"
+    },
+    {
+      "locale": "values-in",
+      "key": "device_test_intro",
+      "old": "This screen allows you to run verification tests (RAM, storage, memory, cache, PDF engine environment) on your device.",
+      "new": "Uji RAM, penyimpanan, memori, cache, dan lingkungan mesin PDF pada perangkat."
+    },
+    {
+      "locale": "values-in",
+      "key": "go_to_support",
+      "old": "Go to Support",
+      "new": "Buka Dukungan"
+    },
+    {
+      "locale": "values-in",
+      "key": "log_privacy_notice_body",
+      "old": "• Logs are never sent externally automatically.\\n• No personal information or PDF file contents are recorded.\\n• Logs older than 24 hours are automatically deleted.",
+      "new": "• Tidak dikirim otomatis.\\n• Tidak mencatat data pribadi atau isi PDF.\\n• Log dihapus setelah 24 jam."
+    },
+    {
+      "locale": "values-in",
+      "key": "report_step1",
+      "old": "1. Brief summary of the issue",
+      "new": "1. Ringkasan masalah"
+    },
+    {
+      "locale": "values-in",
+      "key": "promo_code_instructions",
+      "old": "Enter your Google Play promotion code to redeem items.",
+      "new": "Masukkan kode promosi Google Play untuk menukarkan item."
+    },
+    {
+      "locale": "values-in",
+      "key": "storage_info_label",
+      "old": "Total Storage / Free Storage",
+      "new": "Penyimpanan total / bebas"
+    },
+    {
+      "locale": "values-in",
+      "key": "privacy_warning_body_2",
+      "old": "• Please review screenshots and diagnostic info before posting. Data is not sent automatically.",
+      "new": "• Tinjau gambar dan diagnostik sebelum mengirim. Tidak ada pengiriman otomatis."
+    },
+    {
+      "locale": "values-in",
+      "key": "sample_pdf_downloading",
+      "old": "Downloading...",
+      "new": "Mengunduh…"
+    },
+    {
+      "locale": "values-in",
+      "key": "cellular_data_message",
+      "old": "You are currently on a cellular network. Downloading \\\"%1$s\\\" (%2$s) may consume a significant amount of mobile data. Do you want to proceed?",
+      "new": "Anda memakai jaringan seluler. Mengunduh “%1$s” (%2$s) dapat memakai banyak data. Lanjutkan?"
+    },
+    {
+      "locale": "values-in",
+      "key": "redeem",
+      "old": "Redeem",
+      "new": "Tukarkan"
+    },
+    {
+      "locale": "values-in",
+      "key": "system_locale_label",
+      "old": "System Locale",
+      "new": "Bahasa sistem"
+    },
+    {
+      "locale": "values-in",
+      "key": "copy_all_diagnostics_button",
+      "old": "Copy All Diagnostics (Test Results & App Logs)",
+      "new": "Salin diagnostik (hasil tes dan log)"
+    },
+    {
+      "locale": "values-in",
+      "key": "share_logs_title",
+      "old": "Share app logs",
+      "new": "Bagikan log aplikasi"
+    },
+    {
+      "locale": "values-in",
+      "key": "diagnostic_info_header",
+      "old": "Diagnostic Information",
+      "new": "Informasi diagnostik"
+    },
+    {
+      "locale": "values-in",
+      "key": "report_step6",
+      "old": "6. Screenshots, app logs, or device test results",
+      "new": "6. Tangkapan layar, log atau hasil tes"
+    },
+    {
+      "locale": "values-in",
+      "key": "koyomi_badge_title",
+      "old": "Ver.2.0 Release Commemoration Koyomi Badge",
+      "new": "Lencana Koyomi peringatan versi 2.0"
+    },
+    {
+      "locale": "values-in",
+      "key": "help_category_settings_guide",
+      "old": "Settings Guide",
+      "new": "Panduan pengaturan"
+    },
+    {
+      "locale": "values-in",
+      "key": "test_results_header",
+      "old": "📊 Test Results",
+      "new": "📊 Hasil tes"
+    },
+    {
+      "locale": "values-in",
+      "key": "language_filter",
+      "old": "Language Filter",
+      "new": "Filter bahasa"
+    },
+    {
+      "locale": "values-in",
+      "key": "previous_search",
+      "old": "Previous match",
+      "new": "Hasil sebelumnya"
+    },
+    {
+      "locale": "values-in",
+      "key": "diagnostics_menu",
+      "old": "Diagnostics",
+      "new": "Diagnostik"
+    },
+    {
+      "locale": "values-in",
+      "key": "report_include_header",
+      "old": "Include in your report",
+      "new": "Sertakan dalam laporan"
+    },
+    {
+      "locale": "values-in",
+      "key": "log_privacy_notice_header",
+      "old": "🔒 Privacy Protection & Data Management",
+      "new": "🔒 Privasi dan pengelolaan data"
+    },
+    {
+      "locale": "values-in",
+      "key": "device_test_screen_title",
+      "old": "Device Test & Diagnostics",
+      "new": "Tes dan diagnostik perangkat"
+    },
+    {
+      "locale": "values-in",
+      "key": "run_test_button",
+      "old": "Run Test",
+      "new": "Jalankan tes"
+    },
+    {
+      "locale": "values-in",
+      "key": "share_test_results_button",
+      "old": "Share Test Results",
+      "new": "Bagikan hasil tes"
+    },
+    {
+      "locale": "values-in",
+      "key": "view_tutorial",
+      "old": "View Tutorial",
+      "new": "Lihat panduan"
+    },
+    {
+      "locale": "values-in",
+      "key": "screen_resolution_label",
+      "old": "Screen Resolution / Density",
+      "new": "Resolusi / kepadatan layar"
+    },
+    {
+      "locale": "values-in",
+      "key": "previous_page",
+      "old": "Previous page",
+      "new": "Halaman sebelumnya"
+    },
+    {
+      "locale": "values-in",
+      "key": "error_opening_play_store",
+      "old": "Could not open Google Play Store",
+      "new": "Tidak dapat membuka Google Play Store"
+    },
+    {
+      "locale": "values-in",
+      "key": "promo_code_help_title",
+      "old": "How to Redeem Promo Code",
+      "new": "Cara menukarkan kode promo"
+    },
+    {
+      "locale": "values-in",
+      "key": "logs_deleted_message",
+      "old": "All logs have been deleted.",
+      "new": "Semua log dihapus."
+    },
+    {
+      "locale": "values-in",
+      "key": "report_step2",
+      "old": "2. Steps to reproduce",
+      "new": "2. Langkah reproduksi"
+    },
+    {
+      "locale": "values-in",
+      "key": "jvm_heap_label",
+      "old": "JVM Heap (Total / Free)",
+      "new": "Heap JVM total / bebas"
+    },
+    {
+      "locale": "values-in",
+      "key": "share_test_results_chooser",
+      "old": "Share device test results",
+      "new": "Bagikan hasil tes perangkat"
+    },
+    {
+      "locale": "values-in",
+      "key": "error_prefix",
+      "old": "Error: %s",
+      "new": "Kesalahan: %s"
+    },
+    {
+      "locale": "values-in",
+      "key": "update_now",
+      "old": "Update Now",
+      "new": "Perbarui sekarang"
+    },
+    {
+      "locale": "values-in",
+      "key": "open_github_issues_button",
+      "old": "Open GitHub Issues",
+      "new": "Buka GitHub Issues"
+    },
+    {
+      "locale": "values-in",
+      "key": "copy_all_diagnostics_toast",
+      "old": "Copied test results and app logs to clipboard",
+      "new": "Hasil tes dan log disalin"
+    },
+    {
+      "locale": "values-in",
+      "key": "sample_pdf_open",
+      "old": "Open",
+      "new": "Buka"
+    },
+    {
+      "locale": "values-in",
+      "key": "device_name_label",
+      "old": "Device Name",
+      "new": "Nama perangkat"
+    },
+    {
+      "locale": "values-in",
+      "key": "report_issue_intro",
+      "old": "If you encounter a bug or crash, please gather the information below and report it on GitHub Issues.",
+      "new": "Jika terjadi kesalahan, kumpulkan informasi berikut dan laporkan di GitHub Issues."
+    },
+    {
+      "locale": "values-in",
+      "key": "run_device_tests_button",
+      "old": "Run Device Tests",
+      "new": "Jalankan tes perangkat"
+    },
+    {
+      "locale": "values-in",
+      "key": "no_logs_recorded_text",
+      "old": "No logs recorded.",
+      "new": "Belum ada log."
+    },
+    {
+      "locale": "values-in",
+      "key": "app_logs_menu",
+      "old": "View & Share App Logs",
+      "new": "Lihat dan bagikan log aplikasi"
+    },
+    {
+      "locale": "values-in",
+      "key": "report_step5",
+      "old": "5. App version, OS version, device, display settings",
+      "new": "5. Versi aplikasi, sistem, perangkat dan tampilan"
+    },
+    {
+      "locale": "values-in",
+      "key": "mouse_navigation",
+      "old": "Mouse Navigation",
+      "new": "Navigasi mouse"
+    },
+    {
+      "locale": "values-in",
+      "key": "purchased",
+      "old": "Purchased",
+      "new": "Dibeli"
+    },
+    {
+      "locale": "values-in",
+      "key": "help_category_diagnostics",
+      "old": "Diagnostics",
+      "new": "Diagnostik"
+    },
+    {
+      "locale": "values-in",
+      "key": "vendor_label",
+      "old": "Vendor",
+      "new": "Produsen"
+    },
+    {
+      "locale": "values-in",
+      "key": "all_languages",
+      "old": "All",
+      "new": "Semua"
+    },
+    {
+      "locale": "values-in",
+      "key": "view_app_logs_button",
+      "old": "View & Manage App Logs",
+      "new": "Lihat dan kelola log"
+    },
+    {
+      "locale": "values-in",
+      "key": "report_issue",
+      "old": "Report Issue (GitHub)",
+      "new": "Laporkan masalah (GitHub)"
+    },
+    {
+      "locale": "values-in",
+      "key": "font_scale_label",
+      "old": "Font Scale",
+      "new": "Skala huruf"
+    },
+    {
+      "locale": "values-in",
+      "key": "privacy_notice_body",
+      "old": "There is no automatic external transmission of test results. Data is processed locally on your device and never sent externally unless manually shared.",
+      "new": "Hasil tes diproses secara lokal dan tidak dikirim otomatis. Data hanya dibagikan jika Anda memilihnya."
+    },
+    {
+      "locale": "values-in",
+      "key": "sample_pdf_delete",
+      "old": "Delete",
+      "new": "Hapus"
+    },
+    {
+      "locale": "values-in",
+      "key": "cache_dir_label",
+      "old": "Cache Directory",
+      "new": "Folder cache"
+    },
+    {
+      "locale": "values-in",
+      "key": "report_step3",
+      "old": "3. Expected and actual behavior",
+      "new": "3. Perilaku yang diharapkan dan aktual"
+    },
+    {
+      "locale": "values-in",
+      "key": "device_test_menu",
+      "old": "Run Device Test",
+      "new": "Jalankan tes perangkat"
+    },
+    {
+      "locale": "values-in",
+      "key": "privacy_warning_body_1",
+      "old": "• Do not include personal information such as PDF file contents, file names, or names.",
+      "new": "• Jangan sertakan data pribadi, isi PDF, nama file atau nama orang."
+    },
+    {
+      "locale": "values-in",
+      "key": "next_search",
+      "old": "Next match",
+      "new": "Hasil berikutnya"
+    },
+    {
+      "locale": "values-in",
+      "key": "cellular_data_warning",
+      "old": "Cellular Data Warning",
+      "new": "Peringatan data seluler"
+    },
+    {
+      "locale": "values-in",
+      "key": "delete_logs_button",
+      "old": "Clear Logs",
+      "new": "Hapus log"
+    },
+    {
+      "locale": "values-in",
+      "key": "log_viewer_screen_title",
+      "old": "App Log Management",
+      "new": "Pengelolaan log aplikasi"
+    },
+    {
+      "locale": "values-in",
+      "key": "enter_promo_code",
+      "old": "Enter promo code",
+      "new": "Masukkan kode promo"
+    },
+    {
+      "locale": "values-in",
+      "key": "test_timestamp_label",
+      "old": "Test Time",
+      "new": "Waktu tes"
+    },
+    {
+      "locale": "values-it",
+      "key": "copyright",
+      "old": "Copyright",
+      "new": "Diritto d’autore"
+    },
+    {
+      "locale": "values-ne",
+      "key": "sample_pdf_download",
+      "old": "Download",
+      "new": "डाउनलोड गर्नुहोस्"
+    },
+    {
+      "locale": "values-ne",
+      "key": "promo_code_dialog_title",
+      "old": "Enter Promotion Code",
+      "new": "प्रचार कोड हाल्नुहोस्"
+    },
+    {
+      "locale": "values-ne",
+      "key": "sample_pdf_downloading_progress",
+      "old": "Downloading... %d%%",
+      "new": "डाउनलोड हुँदैछ… %d%%"
+    },
+    {
+      "locale": "values-ne",
+      "key": "report_step4",
+      "old": "4. Frequency of occurrence",
+      "new": "४. समस्या आउने आवृत्ति"
+    },
+    {
+      "locale": "values-ne",
+      "key": "github_account_warning",
+      "old": "* A GitHub account is required. Submitted information may be public.",
+      "new": "* GitHub खाता चाहिन्छ। बुझाइएको जानकारी सार्वजनिक हुन सक्छ।"
+    },
+    {
+      "locale": "values-ne",
+      "key": "saved_logs_title",
+      "old": "Saved Logs (%d lines):",
+      "new": "सुरक्षित लग (%d लाइन):"
+    },
+    {
+      "locale": "values-ne",
+      "key": "report_issue_screen_title",
+      "old": "Report Issue",
+      "new": "समस्या रिपोर्ट"
+    },
+    {
+      "locale": "values-ne",
+      "key": "help_category_reading_features",
+      "old": "Reading Features",
+      "new": "पढ्ने सुविधाहरू"
+    },
+    {
+      "locale": "values-ne",
+      "key": "portrait_display",
+      "old": "Single page in portrait",
+      "new": "ठाडो पर्दामा एक पृष्ठ"
+    },
+    {
+      "locale": "values-ne",
+      "key": "share_logs_button",
+      "old": "Share Logs",
+      "new": "लग साझा गर्नुहोस्"
+    },
+    {
+      "locale": "values-ne",
+      "key": "theme_mode_label",
+      "old": "Theme Mode",
+      "new": "थिम मोड"
+    },
+    {
+      "locale": "values-ne",
+      "key": "claim",
+      "old": "Get",
+      "new": "प्राप्त गर्नुहोस्"
+    },
+    {
+      "locale": "values-ne",
+      "key": "check_for_updates",
+      "old": "Check for Updates",
+      "new": "अपडेटहरू जाँच गर्नुहोस्"
+    },
+    {
+      "locale": "values-ne",
+      "key": "privacy_notice_header",
+      "old": "🔒 Privacy Protection Notice",
+      "new": "🔒 गोपनीयतासम्बन्धी सूचना"
+    },
+    {
+      "locale": "values-ne",
+      "key": "cpu_cores_label",
+      "old": "CPU Cores",
+      "new": "CPU कोर"
+    },
+    {
+      "locale": "values-ne",
+      "key": "os_version_label",
+      "old": "OS Version",
+      "new": "प्रणाली संस्करण"
+    },
+    {
+      "locale": "values-ne",
+      "key": "sample_pdfs",
+      "old": "Sample PDFs",
+      "new": "नमुना PDF"
+    },
+    {
+      "locale": "values-ne",
+      "key": "promo_code_help_message",
+      "old": "To redeem a promotion code for the Koyomi badge, go to the Support screen, tap the purchase button for the Ver.2.0 Koyomi badge, and in the Google Play payment sheet, select Redeem.",
+      "new": "सहयोग पर्दामा संस्करण २.० कोयोमी ब्याज खरिद बटन थिची Google Play भुक्तानीमा कोड साट्ने विकल्प छान्नुहोस्।"
+    },
+    {
+      "locale": "values-ne",
+      "key": "low_ram_mode_label",
+      "old": "Low-RAM Optimization Mode",
+      "new": "कम RAM अनुकूलन मोड"
+    },
+    {
+      "locale": "values-ne",
+      "key": "ram_info_label",
+      "old": "Total RAM / Free RAM",
+      "new": "कुल / खाली RAM"
+    },
+    {
+      "locale": "values-ne",
+      "key": "protect_privacy_header",
+      "old": "Protect Your Privacy",
+      "new": "गोपनीयता सुरक्षित राख्नुहोस्"
+    },
+    {
+      "locale": "values-ne",
+      "key": "status_label",
+      "old": "Status",
+      "new": "स्थिति"
+    },
+    {
+      "locale": "values-ne",
+      "key": "screen_orientation_label",
+      "old": "Screen Orientation",
+      "new": "पर्दाको अभिमुखीकरण"
+    },
+    {
+      "locale": "values-ne",
+      "key": "help_category_getting_started",
+      "old": "Getting Started",
+      "new": "सुरुवात"
+    },
+    {
+      "locale": "values-ne",
+      "key": "free",
+      "old": "Free",
+      "new": "निःशुल्क"
+    },
+    {
+      "locale": "values-ne",
+      "key": "next_page",
+      "old": "Next page",
+      "new": "अर्को पृष्ठ"
+    },
+    {
+      "locale": "values-ne",
+      "key": "device_test_intro",
+      "old": "This screen allows you to run verification tests (RAM, storage, memory, cache, PDF engine environment) on your device.",
+      "new": "उपकरणको RAM, भण्डारण, मेमोरी, क्यास र PDF इन्जिन जाँच्नुहोस्।"
+    },
+    {
+      "locale": "values-ne",
+      "key": "go_to_support",
+      "old": "Go to Support",
+      "new": "सहयोगमा जानुहोस्"
+    },
+    {
+      "locale": "values-ne",
+      "key": "log_privacy_notice_body",
+      "old": "• Logs are never sent externally automatically.\\n• No personal information or PDF file contents are recorded.\\n• Logs older than 24 hours are automatically deleted.",
+      "new": "• स्वतः बाहिर पठाइँदैन।\\n• व्यक्तिगत जानकारी वा PDF सामग्री राखिँदैन।\\n• २४ घण्टापछि लग मेटिन्छ।"
+    },
+    {
+      "locale": "values-ne",
+      "key": "report_step1",
+      "old": "1. Brief summary of the issue",
+      "new": "१. समस्याको सारांश"
+    },
+    {
+      "locale": "values-ne",
+      "key": "promo_code_instructions",
+      "old": "Enter your Google Play promotion code to redeem items.",
+      "new": "वस्तु प्राप्त गर्न Google Play प्रचार कोड हाल्नुहोस्।"
+    },
+    {
+      "locale": "values-ne",
+      "key": "storage_info_label",
+      "old": "Total Storage / Free Storage",
+      "new": "कुल / खाली भण्डारण"
+    },
+    {
+      "locale": "values-ne",
+      "key": "privacy_warning_body_2",
+      "old": "• Please review screenshots and diagnostic info before posting. Data is not sent automatically.",
+      "new": "• पोस्ट गर्नुअघि तस्बिर र निदान जाँच्नुहोस्। स्वतः पठाइँदैन।"
+    },
+    {
+      "locale": "values-ne",
+      "key": "sample_pdf_downloading",
+      "old": "Downloading...",
+      "new": "डाउनलोड हुँदैछ…"
+    },
+    {
+      "locale": "values-ne",
+      "key": "cellular_data_message",
+      "old": "You are currently on a cellular network. Downloading \\\"%1$s\\\" (%2$s) may consume a significant amount of mobile data. Do you want to proceed?",
+      "new": "तपाईं मोबाइल नेटवर्कमा हुनुहुन्छ। “%1$s” (%2$s) डाउनलोड गर्दा धेरै डेटा लाग्न सक्छ। अगाडि बढ्ने?"
+    },
+    {
+      "locale": "values-ne",
+      "key": "redeem",
+      "old": "Redeem",
+      "new": "साट्नुहोस्"
+    },
+    {
+      "locale": "values-ne",
+      "key": "system_locale_label",
+      "old": "System Locale",
+      "new": "प्रणाली भाषा"
+    },
+    {
+      "locale": "values-ne",
+      "key": "copy_all_diagnostics_button",
+      "old": "Copy All Diagnostics (Test Results & App Logs)",
+      "new": "सबै निदान प्रतिलिपि गर्नुहोस् (नतिजा र लग)"
+    },
+    {
+      "locale": "values-ne",
+      "key": "share_logs_title",
+      "old": "Share app logs",
+      "new": "एप लग साझा गर्नुहोस्"
+    },
+    {
+      "locale": "values-ne",
+      "key": "diagnostic_info_header",
+      "old": "Diagnostic Information",
+      "new": "निदान जानकारी"
+    },
+    {
+      "locale": "values-ne",
+      "key": "report_step6",
+      "old": "6. Screenshots, app logs, or device test results",
+      "new": "६. स्क्रिनसट, लग वा परीक्षण नतिजा"
+    },
+    {
+      "locale": "values-ne",
+      "key": "koyomi_badge_title",
+      "old": "Ver.2.0 Release Commemoration Koyomi Badge",
+      "new": "संस्करण २.० कोयोमी स्मृति ब्याज"
+    },
+    {
+      "locale": "values-ne",
+      "key": "help_category_settings_guide",
+      "old": "Settings Guide",
+      "new": "सेटिङ मार्गदर्शन"
+    },
+    {
+      "locale": "values-ne",
+      "key": "test_results_header",
+      "old": "📊 Test Results",
+      "new": "📊 परीक्षण नतिजा"
+    },
+    {
+      "locale": "values-ne",
+      "key": "language_filter",
+      "old": "Language Filter",
+      "new": "भाषा फिल्टर"
+    },
+    {
+      "locale": "values-ne",
+      "key": "previous_search",
+      "old": "Previous match",
+      "new": "अघिल्लो नतिजा"
+    },
+    {
+      "locale": "values-ne",
+      "key": "diagnostics_menu",
+      "old": "Diagnostics",
+      "new": "निदान"
+    },
+    {
+      "locale": "values-ne",
+      "key": "report_include_header",
+      "old": "Include in your report",
+      "new": "रिपोर्टमा समावेश गर्नुहोस्"
+    },
+    {
+      "locale": "values-ne",
+      "key": "log_privacy_notice_header",
+      "old": "🔒 Privacy Protection & Data Management",
+      "new": "🔒 गोपनीयता र डेटा व्यवस्थापन"
+    },
+    {
+      "locale": "values-ne",
+      "key": "device_test_screen_title",
+      "old": "Device Test & Diagnostics",
+      "new": "उपकरण परीक्षण र निदान"
+    },
+    {
+      "locale": "values-ne",
+      "key": "run_test_button",
+      "old": "Run Test",
+      "new": "परीक्षण चलाउनुहोस्"
+    },
+    {
+      "locale": "values-ne",
+      "key": "share_test_results_button",
+      "old": "Share Test Results",
+      "new": "परीक्षण नतिजा साझा गर्नुहोस्"
+    },
+    {
+      "locale": "values-ne",
+      "key": "view_tutorial",
+      "old": "View Tutorial",
+      "new": "मार्गदर्शन हेर्नुहोस्"
+    },
+    {
+      "locale": "values-ne",
+      "key": "screen_resolution_label",
+      "old": "Screen Resolution / Density",
+      "new": "पर्दाको रिजोल्युसन / घनत्व"
+    },
+    {
+      "locale": "values-ne",
+      "key": "previous_page",
+      "old": "Previous page",
+      "new": "अघिल्लो पृष्ठ"
+    },
+    {
+      "locale": "values-ne",
+      "key": "error_opening_play_store",
+      "old": "Could not open Google Play Store",
+      "new": "Google Play Store खोल्न सकिएन"
+    },
+    {
+      "locale": "values-ne",
+      "key": "promo_code_help_title",
+      "old": "How to Redeem Promo Code",
+      "new": "प्रचार कोड साट्ने तरिका"
+    },
+    {
+      "locale": "values-ne",
+      "key": "logs_deleted_message",
+      "old": "All logs have been deleted.",
+      "new": "सबै लग मेटाइयो।"
+    },
+    {
+      "locale": "values-ne",
+      "key": "report_step2",
+      "old": "2. Steps to reproduce",
+      "new": "२. दोहोर्‍याउने चरणहरू"
+    },
+    {
+      "locale": "values-ne",
+      "key": "jvm_heap_label",
+      "old": "JVM Heap (Total / Free)",
+      "new": "कुल / खाली JVM हिप"
+    },
+    {
+      "locale": "values-ne",
+      "key": "share_test_results_chooser",
+      "old": "Share device test results",
+      "new": "उपकरण परीक्षण नतिजा साझा गर्नुहोस्"
+    },
+    {
+      "locale": "values-ne",
+      "key": "error_prefix",
+      "old": "Error: %s",
+      "new": "त्रुटि: %s"
+    },
+    {
+      "locale": "values-ne",
+      "key": "update_now",
+      "old": "Update Now",
+      "new": "अहिले अद्यावधिक गर्नुहोस्"
+    },
+    {
+      "locale": "values-ne",
+      "key": "open_github_issues_button",
+      "old": "Open GitHub Issues",
+      "new": "GitHub Issues खोल्नुहोस्"
+    },
+    {
+      "locale": "values-ne",
+      "key": "copy_all_diagnostics_toast",
+      "old": "Copied test results and app logs to clipboard",
+      "new": "नतिजा र लग क्लिपबोर्डमा सारियो"
+    },
+    {
+      "locale": "values-ne",
+      "key": "sample_pdf_open",
+      "old": "Open",
+      "new": "खोल्नुहोस्"
+    },
+    {
+      "locale": "values-ne",
+      "key": "device_name_label",
+      "old": "Device Name",
+      "new": "उपकरणको नाम"
+    },
+    {
+      "locale": "values-ne",
+      "key": "report_issue_intro",
+      "old": "If you encounter a bug or crash, please gather the information below and report it on GitHub Issues.",
+      "new": "त्रुटि भए तलका जानकारी सङ्कलन गरी GitHub Issues मा रिपोर्ट गर्नुहोस्।"
+    },
+    {
+      "locale": "values-ne",
+      "key": "run_device_tests_button",
+      "old": "Run Device Tests",
+      "new": "उपकरण परीक्षण चलाउनुहोस्"
+    },
+    {
+      "locale": "values-ne",
+      "key": "no_logs_recorded_text",
+      "old": "No logs recorded.",
+      "new": "कुनै लग छैन।"
+    },
+    {
+      "locale": "values-ne",
+      "key": "app_logs_menu",
+      "old": "View & Share App Logs",
+      "new": "एप लग हेर्नुहोस् र साझा गर्नुहोस्"
+    },
+    {
+      "locale": "values-ne",
+      "key": "report_step5",
+      "old": "5. App version, OS version, device, display settings",
+      "new": "५. एप संस्करण, प्रणाली, उपकरण र पर्दा सेटिङ"
+    },
+    {
+      "locale": "values-ne",
+      "key": "mouse_navigation",
+      "old": "Mouse Navigation",
+      "new": "माउस नेभिगेसन"
+    },
+    {
+      "locale": "values-ne",
+      "key": "purchased",
+      "old": "Purchased",
+      "new": "खरिद गरिएको"
+    },
+    {
+      "locale": "values-ne",
+      "key": "help_category_diagnostics",
+      "old": "Diagnostics",
+      "new": "निदान"
+    },
+    {
+      "locale": "values-ne",
+      "key": "vendor_label",
+      "old": "Vendor",
+      "new": "निर्माता"
+    },
+    {
+      "locale": "values-ne",
+      "key": "all_languages",
+      "old": "All",
+      "new": "सबै"
+    },
+    {
+      "locale": "values-ne",
+      "key": "view_app_logs_button",
+      "old": "View & Manage App Logs",
+      "new": "लग हेर्नुहोस् र व्यवस्थापन गर्नुहोस्"
+    },
+    {
+      "locale": "values-ne",
+      "key": "report_issue",
+      "old": "Report Issue (GitHub)",
+      "new": "समस्या रिपोर्ट गर्नुहोस् (GitHub)"
+    },
+    {
+      "locale": "values-ne",
+      "key": "font_scale_label",
+      "old": "Font Scale",
+      "new": "अक्षर आकारको अनुपात"
+    },
+    {
+      "locale": "values-ne",
+      "key": "privacy_notice_body",
+      "old": "There is no automatic external transmission of test results. Data is processed locally on your device and never sent externally unless manually shared.",
+      "new": "नतिजा स्थानीय रूपमा प्रशोधन हुन्छ। तपाईंले आफैँ साझा नगरेसम्म बाहिर पठाइँदैन।"
+    },
+    {
+      "locale": "values-ne",
+      "key": "sample_pdf_delete",
+      "old": "Delete",
+      "new": "हटाउनुहोस्"
+    },
+    {
+      "locale": "values-ne",
+      "key": "cache_dir_label",
+      "old": "Cache Directory",
+      "new": "क्यास फोल्डर"
+    },
+    {
+      "locale": "values-ne",
+      "key": "report_step3",
+      "old": "3. Expected and actual behavior",
+      "new": "३. अपेक्षित र वास्तविक व्यवहार"
+    },
+    {
+      "locale": "values-ne",
+      "key": "device_test_menu",
+      "old": "Run Device Test",
+      "new": "उपकरण परीक्षण चलाउनुहोस्"
+    },
+    {
+      "locale": "values-ne",
+      "key": "privacy_warning_body_1",
+      "old": "• Do not include personal information such as PDF file contents, file names, or names.",
+      "new": "• PDF सामग्री, फाइल नाम वा व्यक्तिको नामजस्ता निजी जानकारी नदिनुहोस्।"
+    },
+    {
+      "locale": "values-ne",
+      "key": "next_search",
+      "old": "Next match",
+      "new": "अर्को नतिजा"
+    },
+    {
+      "locale": "values-ne",
+      "key": "cellular_data_warning",
+      "old": "Cellular Data Warning",
+      "new": "मोबाइल डेटासम्बन्धी चेतावनी"
+    },
+    {
+      "locale": "values-ne",
+      "key": "delete_logs_button",
+      "old": "Clear Logs",
+      "new": "लग मेटाउनुहोस्"
+    },
+    {
+      "locale": "values-ne",
+      "key": "log_viewer_screen_title",
+      "old": "App Log Management",
+      "new": "एप लग व्यवस्थापन"
+    },
+    {
+      "locale": "values-ne",
+      "key": "enter_promo_code",
+      "old": "Enter promo code",
+      "new": "प्रचार कोड हाल्नुहोस्"
+    },
+    {
+      "locale": "values-ne",
+      "key": "test_timestamp_label",
+      "old": "Test Time",
+      "new": "परीक्षण समय"
+    },
+    {
+      "locale": "values-pt",
+      "key": "sample_pdf_download",
+      "old": "Download",
+      "new": "Baixar"
+    },
+    {
+      "locale": "values-pt",
+      "key": "promo_code_dialog_title",
+      "old": "Enter Promotion Code",
+      "new": "Inserir código promocional"
+    },
+    {
+      "locale": "values-pt",
+      "key": "sample_pdf_downloading_progress",
+      "old": "Downloading... %d%%",
+      "new": "Baixando… %d%%"
+    },
+    {
+      "locale": "values-pt",
+      "key": "report_step4",
+      "old": "4. Frequency of occurrence",
+      "new": "4. Frequência do problema"
+    },
+    {
+      "locale": "values-pt",
+      "key": "github_account_warning",
+      "old": "* A GitHub account is required. Submitted information may be public.",
+      "new": "* É necessária uma conta GitHub. As informações enviadas podem ser públicas."
+    },
+    {
+      "locale": "values-pt",
+      "key": "saved_logs_title",
+      "old": "Saved Logs (%d lines):",
+      "new": "Registros salvos (%d linhas):"
+    },
+    {
+      "locale": "values-pt",
+      "key": "report_issue_screen_title",
+      "old": "Report Issue",
+      "new": "Relatar problema"
+    },
+    {
+      "locale": "values-pt",
+      "key": "help_category_reading_features",
+      "old": "Reading Features",
+      "new": "Recursos de leitura"
+    },
+    {
+      "locale": "values-pt",
+      "key": "portrait_display",
+      "old": "Single page in portrait",
+      "new": "Uma página na vertical"
+    },
+    {
+      "locale": "values-pt",
+      "key": "share_logs_button",
+      "old": "Share Logs",
+      "new": "Compartilhar registros"
+    },
+    {
+      "locale": "values-pt",
+      "key": "theme_mode_label",
+      "old": "Theme Mode",
+      "new": "Modo do tema"
+    },
+    {
+      "locale": "values-pt",
+      "key": "claim",
+      "old": "Get",
+      "new": "Obter"
+    },
+    {
+      "locale": "values-pt",
+      "key": "check_for_updates",
+      "old": "Check for Updates",
+      "new": "Verificar atualizações"
+    },
+    {
+      "locale": "values-pt",
+      "key": "privacy_notice_header",
+      "old": "🔒 Privacy Protection Notice",
+      "new": "🔒 Aviso de privacidade"
+    },
+    {
+      "locale": "values-pt",
+      "key": "cpu_cores_label",
+      "old": "CPU Cores",
+      "new": "Núcleos da CPU"
+    },
+    {
+      "locale": "values-pt",
+      "key": "os_version_label",
+      "old": "OS Version",
+      "new": "Versão do sistema"
+    },
+    {
+      "locale": "values-pt",
+      "key": "sample_pdfs",
+      "old": "Sample PDFs",
+      "new": "PDFs de exemplo"
+    },
+    {
+      "locale": "values-pt",
+      "key": "promo_code_help_message",
+      "old": "To redeem a promotion code for the Koyomi badge, go to the Support screen, tap the purchase button for the Ver.2.0 Koyomi badge, and in the Google Play payment sheet, select Redeem.",
+      "new": "Abra Apoio, toque na compra do distintivo Koyomi versão 2.0 e selecione Resgatar no Google Play."
+    },
+    {
+      "locale": "values-pt",
+      "key": "low_ram_mode_label",
+      "old": "Low-RAM Optimization Mode",
+      "new": "Otimização para pouca RAM"
+    },
+    {
+      "locale": "values-pt",
+      "key": "ram_info_label",
+      "old": "Total RAM / Free RAM",
+      "new": "RAM total / livre"
+    },
+    {
+      "locale": "values-pt",
+      "key": "protect_privacy_header",
+      "old": "Protect Your Privacy",
+      "new": "Proteja sua privacidade"
+    },
+    {
+      "locale": "values-pt",
+      "key": "status_label",
+      "old": "Status",
+      "new": "Estado"
+    },
+    {
+      "locale": "values-pt",
+      "key": "screen_orientation_label",
+      "old": "Screen Orientation",
+      "new": "Orientação da tela"
+    },
+    {
+      "locale": "values-pt",
+      "key": "help_category_getting_started",
+      "old": "Getting Started",
+      "new": "Primeiros passos"
+    },
+    {
+      "locale": "values-pt",
+      "key": "free",
+      "old": "Free",
+      "new": "Grátis"
+    },
+    {
+      "locale": "values-pt",
+      "key": "next_page",
+      "old": "Next page",
+      "new": "Próxima página"
+    },
+    {
+      "locale": "values-pt",
+      "key": "device_test_intro",
+      "old": "This screen allows you to run verification tests (RAM, storage, memory, cache, PDF engine environment) on your device.",
+      "new": "Teste RAM, armazenamento, memória, cache e mecanismo PDF do dispositivo."
+    },
+    {
+      "locale": "values-pt",
+      "key": "go_to_support",
+      "old": "Go to Support",
+      "new": "Ir para Apoio"
+    },
+    {
+      "locale": "values-pt",
+      "key": "log_privacy_notice_body",
+      "old": "• Logs are never sent externally automatically.\\n• No personal information or PDF file contents are recorded.\\n• Logs older than 24 hours are automatically deleted.",
+      "new": "• Sem envio externo automático.\\n• Sem dados pessoais ou conteúdo PDF.\\n• Exclusão após 24 horas."
+    },
+    {
+      "locale": "values-pt",
+      "key": "report_step1",
+      "old": "1. Brief summary of the issue",
+      "new": "1. Resumo do problema"
+    },
+    {
+      "locale": "values-pt",
+      "key": "promo_code_instructions",
+      "old": "Enter your Google Play promotion code to redeem items.",
+      "new": "Insira o código promocional do Google Play para resgatar itens."
+    },
+    {
+      "locale": "values-pt",
+      "key": "storage_info_label",
+      "old": "Total Storage / Free Storage",
+      "new": "Armazenamento total / livre"
+    },
+    {
+      "locale": "values-pt",
+      "key": "privacy_warning_body_2",
+      "old": "• Please review screenshots and diagnostic info before posting. Data is not sent automatically.",
+      "new": "• Revise imagens e diagnósticos antes de publicar. Não há envio automático."
+    },
+    {
+      "locale": "values-pt",
+      "key": "sample_pdf_downloading",
+      "old": "Downloading...",
+      "new": "Baixando…"
+    },
+    {
+      "locale": "values-pt",
+      "key": "cellular_data_message",
+      "old": "You are currently on a cellular network. Downloading \\\"%1$s\\\" (%2$s) may consume a significant amount of mobile data. Do you want to proceed?",
+      "new": "Você está na rede móvel. Baixar “%1$s” (%2$s) pode consumir muitos dados. Continuar?"
+    },
+    {
+      "locale": "values-pt",
+      "key": "redeem",
+      "old": "Redeem",
+      "new": "Resgatar"
+    },
+    {
+      "locale": "values-pt",
+      "key": "system_locale_label",
+      "old": "System Locale",
+      "new": "Idioma do sistema"
+    },
+    {
+      "locale": "values-pt",
+      "key": "copy_all_diagnostics_button",
+      "old": "Copy All Diagnostics (Test Results & App Logs)",
+      "new": "Copiar diagnósticos (testes e registros)"
+    },
+    {
+      "locale": "values-pt",
+      "key": "share_logs_title",
+      "old": "Share app logs",
+      "new": "Compartilhar registros do app"
+    },
+    {
+      "locale": "values-pt",
+      "key": "diagnostic_info_header",
+      "old": "Diagnostic Information",
+      "new": "Informações de diagnóstico"
+    },
+    {
+      "locale": "values-pt",
+      "key": "report_step6",
+      "old": "6. Screenshots, app logs, or device test results",
+      "new": "6. Capturas, registros ou resultados de testes"
+    },
+    {
+      "locale": "values-pt",
+      "key": "koyomi_badge_title",
+      "old": "Ver.2.0 Release Commemoration Koyomi Badge",
+      "new": "Distintivo Koyomi de lançamento da versão 2.0"
+    },
+    {
+      "locale": "values-pt",
+      "key": "help_category_settings_guide",
+      "old": "Settings Guide",
+      "new": "Guia de configurações"
+    },
+    {
+      "locale": "values-pt",
+      "key": "test_results_header",
+      "old": "📊 Test Results",
+      "new": "📊 Resultados dos testes"
+    },
+    {
+      "locale": "values-pt",
+      "key": "language_filter",
+      "old": "Language Filter",
+      "new": "Filtro de idioma"
+    },
+    {
+      "locale": "values-pt",
+      "key": "previous_search",
+      "old": "Previous match",
+      "new": "Resultado anterior"
+    },
+    {
+      "locale": "values-pt",
+      "key": "diagnostics_menu",
+      "old": "Diagnostics",
+      "new": "Diagnóstico"
+    },
+    {
+      "locale": "values-pt",
+      "key": "report_include_header",
+      "old": "Include in your report",
+      "new": "Inclua no relatório"
+    },
+    {
+      "locale": "values-pt",
+      "key": "log_privacy_notice_header",
+      "old": "🔒 Privacy Protection & Data Management",
+      "new": "🔒 Privacidade e gerenciamento de dados"
+    },
+    {
+      "locale": "values-pt",
+      "key": "device_test_screen_title",
+      "old": "Device Test & Diagnostics",
+      "new": "Teste e diagnóstico do dispositivo"
+    },
+    {
+      "locale": "values-pt",
+      "key": "run_test_button",
+      "old": "Run Test",
+      "new": "Executar teste"
+    },
+    {
+      "locale": "values-pt",
+      "key": "share_test_results_button",
+      "old": "Share Test Results",
+      "new": "Compartilhar resultados"
+    },
+    {
+      "locale": "values-pt",
+      "key": "view_tutorial",
+      "old": "View Tutorial",
+      "new": "Ver tutorial"
+    },
+    {
+      "locale": "values-pt",
+      "key": "screen_resolution_label",
+      "old": "Screen Resolution / Density",
+      "new": "Resolução / densidade da tela"
+    },
+    {
+      "locale": "values-pt",
+      "key": "previous_page",
+      "old": "Previous page",
+      "new": "Página anterior"
+    },
+    {
+      "locale": "values-pt",
+      "key": "error_opening_play_store",
+      "old": "Could not open Google Play Store",
+      "new": "Não foi possível abrir o Google Play Store"
+    },
+    {
+      "locale": "values-pt",
+      "key": "promo_code_help_title",
+      "old": "How to Redeem Promo Code",
+      "new": "Como resgatar código promocional"
+    },
+    {
+      "locale": "values-pt",
+      "key": "logs_deleted_message",
+      "old": "All logs have been deleted.",
+      "new": "Todos os registros foram excluídos."
+    },
+    {
+      "locale": "values-pt",
+      "key": "report_step2",
+      "old": "2. Steps to reproduce",
+      "new": "2. Passos para reproduzir"
+    },
+    {
+      "locale": "values-pt",
+      "key": "jvm_heap_label",
+      "old": "JVM Heap (Total / Free)",
+      "new": "Memória JVM total / livre"
+    },
+    {
+      "locale": "values-pt",
+      "key": "share_test_results_chooser",
+      "old": "Share device test results",
+      "new": "Compartilhar teste do dispositivo"
+    },
+    {
+      "locale": "values-pt",
+      "key": "error_prefix",
+      "old": "Error: %s",
+      "new": "Erro: %s"
+    },
+    {
+      "locale": "values-pt",
+      "key": "update_now",
+      "old": "Update Now",
+      "new": "Atualizar agora"
+    },
+    {
+      "locale": "values-pt",
+      "key": "open_github_issues_button",
+      "old": "Open GitHub Issues",
+      "new": "Abrir GitHub Issues"
+    },
+    {
+      "locale": "values-pt",
+      "key": "copy_all_diagnostics_toast",
+      "old": "Copied test results and app logs to clipboard",
+      "new": "Resultados e registros copiados"
+    },
+    {
+      "locale": "values-pt",
+      "key": "sample_pdf_open",
+      "old": "Open",
+      "new": "Abrir"
+    },
+    {
+      "locale": "values-pt",
+      "key": "device_name_label",
+      "old": "Device Name",
+      "new": "Nome do dispositivo"
+    },
+    {
+      "locale": "values-pt",
+      "key": "report_issue_intro",
+      "old": "If you encounter a bug or crash, please gather the information below and report it on GitHub Issues.",
+      "new": "Se houver erro, reúna as informações abaixo e relate no GitHub Issues."
+    },
+    {
+      "locale": "values-pt",
+      "key": "run_device_tests_button",
+      "old": "Run Device Tests",
+      "new": "Executar testes do dispositivo"
+    },
+    {
+      "locale": "values-pt",
+      "key": "no_logs_recorded_text",
+      "old": "No logs recorded.",
+      "new": "Nenhum registro salvo."
+    },
+    {
+      "locale": "values-pt",
+      "key": "app_logs_menu",
+      "old": "View & Share App Logs",
+      "new": "Ver e compartilhar registros"
+    },
+    {
+      "locale": "values-pt",
+      "key": "report_step5",
+      "old": "5. App version, OS version, device, display settings",
+      "new": "5. Versão do app, sistema, dispositivo e tela"
+    },
+    {
+      "locale": "values-pt",
+      "key": "mouse_navigation",
+      "old": "Mouse Navigation",
+      "new": "Navegação com mouse"
+    },
+    {
+      "locale": "values-pt",
+      "key": "purchased",
+      "old": "Purchased",
+      "new": "Comprado"
+    },
+    {
+      "locale": "values-pt",
+      "key": "help_category_diagnostics",
+      "old": "Diagnostics",
+      "new": "Diagnóstico"
+    },
+    {
+      "locale": "values-pt",
+      "key": "vendor_label",
+      "old": "Vendor",
+      "new": "Fabricante"
+    },
+    {
+      "locale": "values-pt",
+      "key": "all_languages",
+      "old": "All",
+      "new": "Todos"
+    },
+    {
+      "locale": "values-pt",
+      "key": "view_app_logs_button",
+      "old": "View & Manage App Logs",
+      "new": "Ver e gerenciar registros"
+    },
+    {
+      "locale": "values-pt",
+      "key": "report_issue",
+      "old": "Report Issue (GitHub)",
+      "new": "Relatar problema (GitHub)"
+    },
+    {
+      "locale": "values-pt",
+      "key": "font_scale_label",
+      "old": "Font Scale",
+      "new": "Escala da fonte"
+    },
+    {
+      "locale": "values-pt",
+      "key": "privacy_notice_body",
+      "old": "There is no automatic external transmission of test results. Data is processed locally on your device and never sent externally unless manually shared.",
+      "new": "Os resultados são processados localmente e só são enviados se você os compartilhar manualmente."
+    },
+    {
+      "locale": "values-pt",
+      "key": "sample_pdf_delete",
+      "old": "Delete",
+      "new": "Excluir"
+    },
+    {
+      "locale": "values-pt",
+      "key": "cache_dir_label",
+      "old": "Cache Directory",
+      "new": "Pasta do cache"
+    },
+    {
+      "locale": "values-pt",
+      "key": "report_step3",
+      "old": "3. Expected and actual behavior",
+      "new": "3. Resultado esperado e real"
+    },
+    {
+      "locale": "values-pt",
+      "key": "device_test_menu",
+      "old": "Run Device Test",
+      "new": "Testar dispositivo"
+    },
+    {
+      "locale": "values-pt",
+      "key": "privacy_warning_body_1",
+      "old": "• Do not include personal information such as PDF file contents, file names, or names.",
+      "new": "• Não inclua dados pessoais, conteúdo PDF, nomes de arquivos ou pessoas."
+    },
+    {
+      "locale": "values-pt",
+      "key": "next_search",
+      "old": "Next match",
+      "new": "Próximo resultado"
+    },
+    {
+      "locale": "values-pt",
+      "key": "cellular_data_warning",
+      "old": "Cellular Data Warning",
+      "new": "Aviso de dados móveis"
+    },
+    {
+      "locale": "values-pt",
+      "key": "delete_logs_button",
+      "old": "Clear Logs",
+      "new": "Limpar registros"
+    },
+    {
+      "locale": "values-pt",
+      "key": "log_viewer_screen_title",
+      "old": "App Log Management",
+      "new": "Gerenciamento de registros"
+    },
+    {
+      "locale": "values-pt",
+      "key": "enter_promo_code",
+      "old": "Enter promo code",
+      "new": "Inserir código promocional"
+    },
+    {
+      "locale": "values-pt",
+      "key": "test_timestamp_label",
+      "old": "Test Time",
+      "new": "Hora do teste"
+    },
+    {
+      "locale": "values-vi",
+      "key": "sample_pdf_download",
+      "old": "Download",
+      "new": "Tải xuống"
+    },
+    {
+      "locale": "values-vi",
+      "key": "promo_code_dialog_title",
+      "old": "Enter Promotion Code",
+      "new": "Nhập mã khuyến mãi"
+    },
+    {
+      "locale": "values-vi",
+      "key": "sample_pdf_downloading_progress",
+      "old": "Downloading... %d%%",
+      "new": "Đang tải… %d%%"
+    },
+    {
+      "locale": "values-vi",
+      "key": "report_step4",
+      "old": "4. Frequency of occurrence",
+      "new": "4. Tần suất xảy ra"
+    },
+    {
+      "locale": "values-vi",
+      "key": "github_account_warning",
+      "old": "* A GitHub account is required. Submitted information may be public.",
+      "new": "* Cần tài khoản GitHub. Thông tin gửi đi có thể công khai."
+    },
+    {
+      "locale": "values-vi",
+      "key": "saved_logs_title",
+      "old": "Saved Logs (%d lines):",
+      "new": "Nhật ký đã lưu (%d dòng):"
+    },
+    {
+      "locale": "values-vi",
+      "key": "report_issue_screen_title",
+      "old": "Report Issue",
+      "new": "Báo lỗi"
+    },
+    {
+      "locale": "values-vi",
+      "key": "help_category_reading_features",
+      "old": "Reading Features",
+      "new": "Tính năng đọc"
+    },
+    {
+      "locale": "values-vi",
+      "key": "portrait_display",
+      "old": "Single page in portrait",
+      "new": "Một trang khi để dọc"
+    },
+    {
+      "locale": "values-vi",
+      "key": "share_logs_button",
+      "old": "Share Logs",
+      "new": "Chia sẻ nhật ký"
+    },
+    {
+      "locale": "values-vi",
+      "key": "theme_mode_label",
+      "old": "Theme Mode",
+      "new": "Chế độ giao diện"
+    },
+    {
+      "locale": "values-vi",
+      "key": "claim",
+      "old": "Get",
+      "new": "Nhận"
+    },
+    {
+      "locale": "values-vi",
+      "key": "check_for_updates",
+      "old": "Check for Updates",
+      "new": "Kiểm tra cập nhật"
+    },
+    {
+      "locale": "values-vi",
+      "key": "privacy_notice_header",
+      "old": "🔒 Privacy Protection Notice",
+      "new": "🔒 Thông báo bảo vệ riêng tư"
+    },
+    {
+      "locale": "values-vi",
+      "key": "cpu_cores_label",
+      "old": "CPU Cores",
+      "new": "Số nhân CPU"
+    },
+    {
+      "locale": "values-vi",
+      "key": "os_version_label",
+      "old": "OS Version",
+      "new": "Phiên bản hệ điều hành"
+    },
+    {
+      "locale": "values-vi",
+      "key": "sample_pdfs",
+      "old": "Sample PDFs",
+      "new": "PDF mẫu"
+    },
+    {
+      "locale": "values-vi",
+      "key": "promo_code_help_message",
+      "old": "To redeem a promotion code for the Koyomi badge, go to the Support screen, tap the purchase button for the Ver.2.0 Koyomi badge, and in the Google Play payment sheet, select Redeem.",
+      "new": "Mở Hỗ trợ, nhấn mua huy hiệu Koyomi phiên bản 2.0 rồi chọn Đổi mã trong Google Play."
+    },
+    {
+      "locale": "values-vi",
+      "key": "low_ram_mode_label",
+      "old": "Low-RAM Optimization Mode",
+      "new": "Tối ưu RAM thấp"
+    },
+    {
+      "locale": "values-vi",
+      "key": "ram_info_label",
+      "old": "Total RAM / Free RAM",
+      "new": "RAM tổng / trống"
+    },
+    {
+      "locale": "values-vi",
+      "key": "protect_privacy_header",
+      "old": "Protect Your Privacy",
+      "new": "Bảo vệ quyền riêng tư"
+    },
+    {
+      "locale": "values-vi",
+      "key": "status_label",
+      "old": "Status",
+      "new": "Trạng thái"
+    },
+    {
+      "locale": "values-vi",
+      "key": "screen_orientation_label",
+      "old": "Screen Orientation",
+      "new": "Hướng màn hình"
+    },
+    {
+      "locale": "values-vi",
+      "key": "help_category_getting_started",
+      "old": "Getting Started",
+      "new": "Bắt đầu"
+    },
+    {
+      "locale": "values-vi",
+      "key": "free",
+      "old": "Free",
+      "new": "Miễn phí"
+    },
+    {
+      "locale": "values-vi",
+      "key": "next_page",
+      "old": "Next page",
+      "new": "Trang sau"
+    },
+    {
+      "locale": "values-vi",
+      "key": "device_test_intro",
+      "old": "This screen allows you to run verification tests (RAM, storage, memory, cache, PDF engine environment) on your device.",
+      "new": "Kiểm tra RAM, bộ nhớ, lưu trữ, bộ đệm và môi trường PDF trên thiết bị."
+    },
+    {
+      "locale": "values-vi",
+      "key": "go_to_support",
+      "old": "Go to Support",
+      "new": "Đến Hỗ trợ"
+    },
+    {
+      "locale": "values-vi",
+      "key": "log_privacy_notice_body",
+      "old": "• Logs are never sent externally automatically.\\n• No personal information or PDF file contents are recorded.\\n• Logs older than 24 hours are automatically deleted.",
+      "new": "• Không tự động gửi ra ngoài.\\n• Không ghi dữ liệu cá nhân hay nội dung PDF.\\n• Xóa nhật ký sau 24 giờ."
+    },
+    {
+      "locale": "values-vi",
+      "key": "report_step1",
+      "old": "1. Brief summary of the issue",
+      "new": "1. Tóm tắt lỗi"
+    },
+    {
+      "locale": "values-vi",
+      "key": "promo_code_instructions",
+      "old": "Enter your Google Play promotion code to redeem items.",
+      "new": "Nhập mã khuyến mãi Google Play để đổi vật phẩm."
+    },
+    {
+      "locale": "values-vi",
+      "key": "storage_info_label",
+      "old": "Total Storage / Free Storage",
+      "new": "Lưu trữ tổng / trống"
+    },
+    {
+      "locale": "values-vi",
+      "key": "privacy_warning_body_2",
+      "old": "• Please review screenshots and diagnostic info before posting. Data is not sent automatically.",
+      "new": "• Kiểm tra ảnh và chẩn đoán trước khi đăng. Không tự động gửi."
+    },
+    {
+      "locale": "values-vi",
+      "key": "sample_pdf_downloading",
+      "old": "Downloading...",
+      "new": "Đang tải…"
+    },
+    {
+      "locale": "values-vi",
+      "key": "cellular_data_message",
+      "old": "You are currently on a cellular network. Downloading \\\"%1$s\\\" (%2$s) may consume a significant amount of mobile data. Do you want to proceed?",
+      "new": "Bạn đang dùng mạng di động. Tải “%1$s” (%2$s) có thể tốn nhiều dữ liệu. Tiếp tục?"
+    },
+    {
+      "locale": "values-vi",
+      "key": "redeem",
+      "old": "Redeem",
+      "new": "Đổi mã"
+    },
+    {
+      "locale": "values-vi",
+      "key": "system_locale_label",
+      "old": "System Locale",
+      "new": "Ngôn ngữ hệ thống"
+    },
+    {
+      "locale": "values-vi",
+      "key": "copy_all_diagnostics_button",
+      "old": "Copy All Diagnostics (Test Results & App Logs)",
+      "new": "Sao chép chẩn đoán (kết quả và nhật ký)"
+    },
+    {
+      "locale": "values-vi",
+      "key": "share_logs_title",
+      "old": "Share app logs",
+      "new": "Chia sẻ nhật ký ứng dụng"
+    },
+    {
+      "locale": "values-vi",
+      "key": "diagnostic_info_header",
+      "old": "Diagnostic Information",
+      "new": "Thông tin chẩn đoán"
+    },
+    {
+      "locale": "values-vi",
+      "key": "report_step6",
+      "old": "6. Screenshots, app logs, or device test results",
+      "new": "6. Ảnh chụp, nhật ký hoặc kết quả kiểm tra"
+    },
+    {
+      "locale": "values-vi",
+      "key": "koyomi_badge_title",
+      "old": "Ver.2.0 Release Commemoration Koyomi Badge",
+      "new": "Huy hiệu Koyomi kỷ niệm phiên bản 2.0"
+    },
+    {
+      "locale": "values-vi",
+      "key": "help_category_settings_guide",
+      "old": "Settings Guide",
+      "new": "Hướng dẫn cài đặt"
+    },
+    {
+      "locale": "values-vi",
+      "key": "test_results_header",
+      "old": "📊 Test Results",
+      "new": "📊 Kết quả kiểm tra"
+    },
+    {
+      "locale": "values-vi",
+      "key": "language_filter",
+      "old": "Language Filter",
+      "new": "Lọc ngôn ngữ"
+    },
+    {
+      "locale": "values-vi",
+      "key": "previous_search",
+      "old": "Previous match",
+      "new": "Kết quả trước"
+    },
+    {
+      "locale": "values-vi",
+      "key": "diagnostics_menu",
+      "old": "Diagnostics",
+      "new": "Chẩn đoán"
+    },
+    {
+      "locale": "values-vi",
+      "key": "report_include_header",
+      "old": "Include in your report",
+      "new": "Nội dung cần báo cáo"
+    },
+    {
+      "locale": "values-vi",
+      "key": "log_privacy_notice_header",
+      "old": "🔒 Privacy Protection & Data Management",
+      "new": "🔒 Riêng tư và quản lý dữ liệu"
+    },
+    {
+      "locale": "values-vi",
+      "key": "device_test_screen_title",
+      "old": "Device Test & Diagnostics",
+      "new": "Kiểm tra và chẩn đoán thiết bị"
+    },
+    {
+      "locale": "values-vi",
+      "key": "run_test_button",
+      "old": "Run Test",
+      "new": "Chạy kiểm tra"
+    },
+    {
+      "locale": "values-vi",
+      "key": "share_test_results_button",
+      "old": "Share Test Results",
+      "new": "Chia sẻ kết quả"
+    },
+    {
+      "locale": "values-vi",
+      "key": "view_tutorial",
+      "old": "View Tutorial",
+      "new": "Xem hướng dẫn"
+    },
+    {
+      "locale": "values-vi",
+      "key": "screen_resolution_label",
+      "old": "Screen Resolution / Density",
+      "new": "Độ phân giải / mật độ màn hình"
+    },
+    {
+      "locale": "values-vi",
+      "key": "previous_page",
+      "old": "Previous page",
+      "new": "Trang trước"
+    },
+    {
+      "locale": "values-vi",
+      "key": "error_opening_play_store",
+      "old": "Could not open Google Play Store",
+      "new": "Không mở được Google Play Store"
+    },
+    {
+      "locale": "values-vi",
+      "key": "promo_code_help_title",
+      "old": "How to Redeem Promo Code",
+      "new": "Cách đổi mã khuyến mãi"
+    },
+    {
+      "locale": "values-vi",
+      "key": "logs_deleted_message",
+      "old": "All logs have been deleted.",
+      "new": "Đã xóa mọi nhật ký."
+    },
+    {
+      "locale": "values-vi",
+      "key": "report_step2",
+      "old": "2. Steps to reproduce",
+      "new": "2. Các bước tái hiện"
+    },
+    {
+      "locale": "values-vi",
+      "key": "jvm_heap_label",
+      "old": "JVM Heap (Total / Free)",
+      "new": "Bộ nhớ JVM tổng / trống"
+    },
+    {
+      "locale": "values-vi",
+      "key": "share_test_results_chooser",
+      "old": "Share device test results",
+      "new": "Chia sẻ kết quả thiết bị"
+    },
+    {
+      "locale": "values-vi",
+      "key": "error_prefix",
+      "old": "Error: %s",
+      "new": "Lỗi: %s"
+    },
+    {
+      "locale": "values-vi",
+      "key": "update_now",
+      "old": "Update Now",
+      "new": "Cập nhật ngay"
+    },
+    {
+      "locale": "values-vi",
+      "key": "open_github_issues_button",
+      "old": "Open GitHub Issues",
+      "new": "Mở GitHub Issues"
+    },
+    {
+      "locale": "values-vi",
+      "key": "copy_all_diagnostics_toast",
+      "old": "Copied test results and app logs to clipboard",
+      "new": "Đã sao chép kết quả và nhật ký"
+    },
+    {
+      "locale": "values-vi",
+      "key": "sample_pdf_open",
+      "old": "Open",
+      "new": "Mở"
+    },
+    {
+      "locale": "values-vi",
+      "key": "device_name_label",
+      "old": "Device Name",
+      "new": "Tên thiết bị"
+    },
+    {
+      "locale": "values-vi",
+      "key": "report_issue_intro",
+      "old": "If you encounter a bug or crash, please gather the information below and report it on GitHub Issues.",
+      "new": "Nếu có lỗi, thu thập thông tin dưới đây và báo trên GitHub Issues."
+    },
+    {
+      "locale": "values-vi",
+      "key": "run_device_tests_button",
+      "old": "Run Device Tests",
+      "new": "Chạy kiểm tra thiết bị"
+    },
+    {
+      "locale": "values-vi",
+      "key": "no_logs_recorded_text",
+      "old": "No logs recorded.",
+      "new": "Chưa có nhật ký."
+    },
+    {
+      "locale": "values-vi",
+      "key": "app_logs_menu",
+      "old": "View & Share App Logs",
+      "new": "Xem và chia sẻ nhật ký"
+    },
+    {
+      "locale": "values-vi",
+      "key": "report_step5",
+      "old": "5. App version, OS version, device, display settings",
+      "new": "5. Phiên bản ứng dụng, hệ thống, thiết bị và hiển thị"
+    },
+    {
+      "locale": "values-vi",
+      "key": "mouse_navigation",
+      "old": "Mouse Navigation",
+      "new": "Điều hướng bằng chuột"
+    },
+    {
+      "locale": "values-vi",
+      "key": "purchased",
+      "old": "Purchased",
+      "new": "Đã mua"
+    },
+    {
+      "locale": "values-vi",
+      "key": "help_category_diagnostics",
+      "old": "Diagnostics",
+      "new": "Chẩn đoán"
+    },
+    {
+      "locale": "values-vi",
+      "key": "vendor_label",
+      "old": "Vendor",
+      "new": "Nhà sản xuất"
+    },
+    {
+      "locale": "values-vi",
+      "key": "all_languages",
+      "old": "All",
+      "new": "Tất cả"
+    },
+    {
+      "locale": "values-vi",
+      "key": "view_app_logs_button",
+      "old": "View & Manage App Logs",
+      "new": "Xem và quản lý nhật ký"
+    },
+    {
+      "locale": "values-vi",
+      "key": "report_issue",
+      "old": "Report Issue (GitHub)",
+      "new": "Báo lỗi (GitHub)"
+    },
+    {
+      "locale": "values-vi",
+      "key": "font_scale_label",
+      "old": "Font Scale",
+      "new": "Tỷ lệ phông chữ"
+    },
+    {
+      "locale": "values-vi",
+      "key": "privacy_notice_body",
+      "old": "There is no automatic external transmission of test results. Data is processed locally on your device and never sent externally unless manually shared.",
+      "new": "Kết quả được xử lý trên máy, chỉ gửi đi khi bạn chủ động chia sẻ."
+    },
+    {
+      "locale": "values-vi",
+      "key": "sample_pdf_delete",
+      "old": "Delete",
+      "new": "Xóa"
+    },
+    {
+      "locale": "values-vi",
+      "key": "cache_dir_label",
+      "old": "Cache Directory",
+      "new": "Thư mục bộ đệm"
+    },
+    {
+      "locale": "values-vi",
+      "key": "report_step3",
+      "old": "3. Expected and actual behavior",
+      "new": "3. Hành vi mong đợi và thực tế"
+    },
+    {
+      "locale": "values-vi",
+      "key": "device_test_menu",
+      "old": "Run Device Test",
+      "new": "Chạy kiểm tra thiết bị"
+    },
+    {
+      "locale": "values-vi",
+      "key": "privacy_warning_body_1",
+      "old": "• Do not include personal information such as PDF file contents, file names, or names.",
+      "new": "• Không đưa dữ liệu cá nhân, nội dung PDF, tên tệp hoặc tên người vào báo cáo."
+    },
+    {
+      "locale": "values-vi",
+      "key": "next_search",
+      "old": "Next match",
+      "new": "Kết quả sau"
+    },
+    {
+      "locale": "values-vi",
+      "key": "cellular_data_warning",
+      "old": "Cellular Data Warning",
+      "new": "Cảnh báo dữ liệu di động"
+    },
+    {
+      "locale": "values-vi",
+      "key": "delete_logs_button",
+      "old": "Clear Logs",
+      "new": "Xóa nhật ký"
+    },
+    {
+      "locale": "values-vi",
+      "key": "log_viewer_screen_title",
+      "old": "App Log Management",
+      "new": "Quản lý nhật ký"
+    },
+    {
+      "locale": "values-vi",
+      "key": "enter_promo_code",
+      "old": "Enter promo code",
+      "new": "Nhập mã khuyến mãi"
+    },
+    {
+      "locale": "values-vi",
+      "key": "test_timestamp_label",
+      "old": "Test Time",
+      "new": "Thời gian kiểm tra"
+    },
+    {
+      "locale": "values-zh-rCN",
+      "key": "sample_pdf_download",
+      "old": "Download",
+      "new": "下载"
+    },
+    {
+      "locale": "values-zh-rCN",
+      "key": "promo_code_dialog_title",
+      "old": "Enter Promotion Code",
+      "new": "输入促销代码"
+    },
+    {
+      "locale": "values-zh-rCN",
+      "key": "sample_pdf_downloading_progress",
+      "old": "Downloading... %d%%",
+      "new": "下载中… %d%%"
+    },
+    {
+      "locale": "values-zh-rCN",
+      "key": "report_step4",
+      "old": "4. Frequency of occurrence",
+      "new": "4. 发生频率"
+    },
+    {
+      "locale": "values-zh-rCN",
+      "key": "github_account_warning",
+      "old": "* A GitHub account is required. Submitted information may be public.",
+      "new": "* 需要 GitHub 账号，提交的信息可能公开。"
+    },
+    {
+      "locale": "values-zh-rCN",
+      "key": "saved_logs_title",
+      "old": "Saved Logs (%d lines):",
+      "new": "已保存日志（%d行）："
+    },
+    {
+      "locale": "values-zh-rCN",
+      "key": "report_issue_screen_title",
+      "old": "Report Issue",
+      "new": "报告问题"
+    },
+    {
+      "locale": "values-zh-rCN",
+      "key": "help_category_reading_features",
+      "old": "Reading Features",
+      "new": "阅读功能"
+    },
+    {
+      "locale": "values-zh-rCN",
+      "key": "portrait_display",
+      "old": "Single page in portrait",
+      "new": "竖屏单页"
+    },
+    {
+      "locale": "values-zh-rCN",
+      "key": "share_logs_button",
+      "old": "Share Logs",
+      "new": "分享日志"
+    },
+    {
+      "locale": "values-zh-rCN",
+      "key": "theme_mode_label",
+      "old": "Theme Mode",
+      "new": "主题模式"
+    },
+    {
+      "locale": "values-zh-rCN",
+      "key": "claim",
+      "old": "Get",
+      "new": "领取"
+    },
+    {
+      "locale": "values-zh-rCN",
+      "key": "check_for_updates",
+      "old": "Check for Updates",
+      "new": "检查更新"
+    },
+    {
+      "locale": "values-zh-rCN",
+      "key": "privacy_notice_header",
+      "old": "🔒 Privacy Protection Notice",
+      "new": "🔒 隐私保护提示"
+    },
+    {
+      "locale": "values-zh-rCN",
+      "key": "cpu_cores_label",
+      "old": "CPU Cores",
+      "new": "CPU 核心数"
+    },
+    {
+      "locale": "values-zh-rCN",
+      "key": "os_version_label",
+      "old": "OS Version",
+      "new": "系统版本"
+    },
+    {
+      "locale": "values-zh-rCN",
+      "key": "sample_pdfs",
+      "old": "Sample PDFs",
+      "new": "示例 PDF"
+    },
+    {
+      "locale": "values-zh-rCN",
+      "key": "promo_code_help_message",
+      "old": "To redeem a promotion code for the Koyomi badge, go to the Support screen, tap the purchase button for the Ver.2.0 Koyomi badge, and in the Google Play payment sheet, select Redeem.",
+      "new": "打开支持页面，点击2.0版 Koyomi 徽章购买按钮，在 Google Play 付款界面选择兑换。"
+    },
+    {
+      "locale": "values-zh-rCN",
+      "key": "low_ram_mode_label",
+      "old": "Low-RAM Optimization Mode",
+      "new": "低 RAM 优化模式"
+    },
+    {
+      "locale": "values-zh-rCN",
+      "key": "ram_info_label",
+      "old": "Total RAM / Free RAM",
+      "new": "总 RAM／可用 RAM"
+    },
+    {
+      "locale": "values-zh-rCN",
+      "key": "protect_privacy_header",
+      "old": "Protect Your Privacy",
+      "new": "保护您的隐私"
+    },
+    {
+      "locale": "values-zh-rCN",
+      "key": "status_label",
+      "old": "Status",
+      "new": "状态"
+    },
+    {
+      "locale": "values-zh-rCN",
+      "key": "screen_orientation_label",
+      "old": "Screen Orientation",
+      "new": "屏幕方向"
+    },
+    {
+      "locale": "values-zh-rCN",
+      "key": "help_category_getting_started",
+      "old": "Getting Started",
+      "new": "开始使用"
+    },
+    {
+      "locale": "values-zh-rCN",
+      "key": "free",
+      "old": "Free",
+      "new": "免费"
+    },
+    {
+      "locale": "values-zh-rCN",
+      "key": "next_page",
+      "old": "Next page",
+      "new": "下一页"
+    },
+    {
+      "locale": "values-zh-rCN",
+      "key": "device_test_intro",
+      "old": "This screen allows you to run verification tests (RAM, storage, memory, cache, PDF engine environment) on your device.",
+      "new": "测试设备的 RAM、存储、内存、缓存与 PDF 引擎环境。"
+    },
+    {
+      "locale": "values-zh-rCN",
+      "key": "go_to_support",
+      "old": "Go to Support",
+      "new": "前往支持"
+    },
+    {
+      "locale": "values-zh-rCN",
+      "key": "log_privacy_notice_body",
+      "old": "• Logs are never sent externally automatically.\\n• No personal information or PDF file contents are recorded.\\n• Logs older than 24 hours are automatically deleted.",
+      "new": "• 不会自动外传。\\n• 不记录个人信息或 PDF 内容。\\n• 超过24小时自动删除。"
+    },
+    {
+      "locale": "values-zh-rCN",
+      "key": "report_step1",
+      "old": "1. Brief summary of the issue",
+      "new": "1. 问题简要概述"
+    },
+    {
+      "locale": "values-zh-rCN",
+      "key": "promo_code_instructions",
+      "old": "Enter your Google Play promotion code to redeem items.",
+      "new": "输入 Google Play 促销代码以兑换项目。"
+    },
+    {
+      "locale": "values-zh-rCN",
+      "key": "storage_info_label",
+      "old": "Total Storage / Free Storage",
+      "new": "总存储／可用存储"
+    },
+    {
+      "locale": "values-zh-rCN",
+      "key": "privacy_warning_body_2",
+      "old": "• Please review screenshots and diagnostic info before posting. Data is not sent automatically.",
+      "new": "• 发布前请检查截图和诊断信息，不会自动发送。"
+    },
+    {
+      "locale": "values-zh-rCN",
+      "key": "sample_pdf_downloading",
+      "old": "Downloading...",
+      "new": "下载中…"
+    },
+    {
+      "locale": "values-zh-rCN",
+      "key": "cellular_data_message",
+      "old": "You are currently on a cellular network. Downloading \\\"%1$s\\\" (%2$s) may consume a significant amount of mobile data. Do you want to proceed?",
+      "new": "您正在使用移动网络，下载“%1$s”（%2$s）可能消耗大量数据。是否继续？"
+    },
+    {
+      "locale": "values-zh-rCN",
+      "key": "redeem",
+      "old": "Redeem",
+      "new": "兑换"
+    },
+    {
+      "locale": "values-zh-rCN",
+      "key": "system_locale_label",
+      "old": "System Locale",
+      "new": "系统语言"
+    },
+    {
+      "locale": "values-zh-rCN",
+      "key": "copy_all_diagnostics_button",
+      "old": "Copy All Diagnostics (Test Results & App Logs)",
+      "new": "复制全部诊断（测试结果与日志）"
+    },
+    {
+      "locale": "values-zh-rCN",
+      "key": "share_logs_title",
+      "old": "Share app logs",
+      "new": "分享应用日志"
+    },
+    {
+      "locale": "values-zh-rCN",
+      "key": "diagnostic_info_header",
+      "old": "Diagnostic Information",
+      "new": "诊断信息"
+    },
+    {
+      "locale": "values-zh-rCN",
+      "key": "report_step6",
+      "old": "6. Screenshots, app logs, or device test results",
+      "new": "6. 截图、日志或测试结果"
+    },
+    {
+      "locale": "values-zh-rCN",
+      "key": "koyomi_badge_title",
+      "old": "Ver.2.0 Release Commemoration Koyomi Badge",
+      "new": "2.0版本发布纪念 Koyomi 徽章"
+    },
+    {
+      "locale": "values-zh-rCN",
+      "key": "help_category_settings_guide",
+      "old": "Settings Guide",
+      "new": "设置指南"
+    },
+    {
+      "locale": "values-zh-rCN",
+      "key": "test_results_header",
+      "old": "📊 Test Results",
+      "new": "📊 测试结果"
+    },
+    {
+      "locale": "values-zh-rCN",
+      "key": "language_filter",
+      "old": "Language Filter",
+      "new": "语言筛选"
+    },
+    {
+      "locale": "values-zh-rCN",
+      "key": "previous_search",
+      "old": "Previous match",
+      "new": "上一个结果"
+    },
+    {
+      "locale": "values-zh-rCN",
+      "key": "diagnostics_menu",
+      "old": "Diagnostics",
+      "new": "诊断"
+    },
+    {
+      "locale": "values-zh-rCN",
+      "key": "report_include_header",
+      "old": "Include in your report",
+      "new": "报告中包含的内容"
+    },
+    {
+      "locale": "values-zh-rCN",
+      "key": "log_privacy_notice_header",
+      "old": "🔒 Privacy Protection & Data Management",
+      "new": "🔒 隐私保护与数据管理"
+    },
+    {
+      "locale": "values-zh-rCN",
+      "key": "device_test_screen_title",
+      "old": "Device Test & Diagnostics",
+      "new": "设备测试与诊断"
+    },
+    {
+      "locale": "values-zh-rCN",
+      "key": "run_test_button",
+      "old": "Run Test",
+      "new": "运行测试"
+    },
+    {
+      "locale": "values-zh-rCN",
+      "key": "share_test_results_button",
+      "old": "Share Test Results",
+      "new": "分享测试结果"
+    },
+    {
+      "locale": "values-zh-rCN",
+      "key": "view_tutorial",
+      "old": "View Tutorial",
+      "new": "查看教程"
+    },
+    {
+      "locale": "values-zh-rCN",
+      "key": "screen_resolution_label",
+      "old": "Screen Resolution / Density",
+      "new": "屏幕分辨率／密度"
+    },
+    {
+      "locale": "values-zh-rCN",
+      "key": "previous_page",
+      "old": "Previous page",
+      "new": "上一页"
+    },
+    {
+      "locale": "values-zh-rCN",
+      "key": "error_opening_play_store",
+      "old": "Could not open Google Play Store",
+      "new": "无法打开 Google Play 商店"
+    },
+    {
+      "locale": "values-zh-rCN",
+      "key": "promo_code_help_title",
+      "old": "How to Redeem Promo Code",
+      "new": "如何兑换优惠码"
+    },
+    {
+      "locale": "values-zh-rCN",
+      "key": "logs_deleted_message",
+      "old": "All logs have been deleted.",
+      "new": "已删除所有日志。"
+    },
+    {
+      "locale": "values-zh-rCN",
+      "key": "report_step2",
+      "old": "2. Steps to reproduce",
+      "new": "2. 复现步骤"
+    },
+    {
+      "locale": "values-zh-rCN",
+      "key": "jvm_heap_label",
+      "old": "JVM Heap (Total / Free)",
+      "new": "JVM 堆总量／可用量"
+    },
+    {
+      "locale": "values-zh-rCN",
+      "key": "share_test_results_chooser",
+      "old": "Share device test results",
+      "new": "分享设备测试结果"
+    },
+    {
+      "locale": "values-zh-rCN",
+      "key": "error_prefix",
+      "old": "Error: %s",
+      "new": "错误：%s"
+    },
+    {
+      "locale": "values-zh-rCN",
+      "key": "update_now",
+      "old": "Update Now",
+      "new": "立即更新"
+    },
+    {
+      "locale": "values-zh-rCN",
+      "key": "open_github_issues_button",
+      "old": "Open GitHub Issues",
+      "new": "打开 GitHub Issues"
+    },
+    {
+      "locale": "values-zh-rCN",
+      "key": "copy_all_diagnostics_toast",
+      "old": "Copied test results and app logs to clipboard",
+      "new": "已复制测试结果与日志"
+    },
+    {
+      "locale": "values-zh-rCN",
+      "key": "sample_pdf_open",
+      "old": "Open",
+      "new": "打开"
+    },
+    {
+      "locale": "values-zh-rCN",
+      "key": "device_name_label",
+      "old": "Device Name",
+      "new": "设备名称"
+    },
+    {
+      "locale": "values-zh-rCN",
+      "key": "report_issue_intro",
+      "old": "If you encounter a bug or crash, please gather the information below and report it on GitHub Issues.",
+      "new": "如遇错误，请收集以下信息并在 GitHub Issues 报告。"
+    },
+    {
+      "locale": "values-zh-rCN",
+      "key": "run_device_tests_button",
+      "old": "Run Device Tests",
+      "new": "运行设备测试"
+    },
+    {
+      "locale": "values-zh-rCN",
+      "key": "no_logs_recorded_text",
+      "old": "No logs recorded.",
+      "new": "暂无日志。"
+    },
+    {
+      "locale": "values-zh-rCN",
+      "key": "app_logs_menu",
+      "old": "View & Share App Logs",
+      "new": "查看与分享应用日志"
+    },
+    {
+      "locale": "values-zh-rCN",
+      "key": "report_step5",
+      "old": "5. App version, OS version, device, display settings",
+      "new": "5. 应用版本、系统、设备与显示设置"
+    },
+    {
+      "locale": "values-zh-rCN",
+      "key": "mouse_navigation",
+      "old": "Mouse Navigation",
+      "new": "鼠标导航"
+    },
+    {
+      "locale": "values-zh-rCN",
+      "key": "purchased",
+      "old": "Purchased",
+      "new": "已购买"
+    },
+    {
+      "locale": "values-zh-rCN",
+      "key": "help_category_diagnostics",
+      "old": "Diagnostics",
+      "new": "诊断"
+    },
+    {
+      "locale": "values-zh-rCN",
+      "key": "vendor_label",
+      "old": "Vendor",
+      "new": "制造商"
+    },
+    {
+      "locale": "values-zh-rCN",
+      "key": "all_languages",
+      "old": "All",
+      "new": "全部"
+    },
+    {
+      "locale": "values-zh-rCN",
+      "key": "view_app_logs_button",
+      "old": "View & Manage App Logs",
+      "new": "查看与管理日志"
+    },
+    {
+      "locale": "values-zh-rCN",
+      "key": "report_issue",
+      "old": "Report Issue (GitHub)",
+      "new": "报告问题（GitHub）"
+    },
+    {
+      "locale": "values-zh-rCN",
+      "key": "font_scale_label",
+      "old": "Font Scale",
+      "new": "字体缩放"
+    },
+    {
+      "locale": "values-zh-rCN",
+      "key": "privacy_notice_body",
+      "old": "There is no automatic external transmission of test results. Data is processed locally on your device and never sent externally unless manually shared.",
+      "new": "测试结果在本地处理，仅在您主动分享时发送，不会自动外传。"
+    },
+    {
+      "locale": "values-zh-rCN",
+      "key": "sample_pdf_delete",
+      "old": "Delete",
+      "new": "删除"
+    },
+    {
+      "locale": "values-zh-rCN",
+      "key": "cache_dir_label",
+      "old": "Cache Directory",
+      "new": "缓存目录"
+    },
+    {
+      "locale": "values-zh-rCN",
+      "key": "report_step3",
+      "old": "3. Expected and actual behavior",
+      "new": "3. 预期行为与实际行为"
+    },
+    {
+      "locale": "values-zh-rCN",
+      "key": "device_test_menu",
+      "old": "Run Device Test",
+      "new": "运行设备测试"
+    },
+    {
+      "locale": "values-zh-rCN",
+      "key": "privacy_warning_body_1",
+      "old": "• Do not include personal information such as PDF file contents, file names, or names.",
+      "new": "• 请勿包含个人信息、PDF 内容、文件名或人名。"
+    },
+    {
+      "locale": "values-zh-rCN",
+      "key": "next_search",
+      "old": "Next match",
+      "new": "下一个结果"
+    },
+    {
+      "locale": "values-zh-rCN",
+      "key": "cellular_data_warning",
+      "old": "Cellular Data Warning",
+      "new": "移动数据提示"
+    },
+    {
+      "locale": "values-zh-rCN",
+      "key": "delete_logs_button",
+      "old": "Clear Logs",
+      "new": "清除日志"
+    },
+    {
+      "locale": "values-zh-rCN",
+      "key": "log_viewer_screen_title",
+      "old": "App Log Management",
+      "new": "应用日志管理"
+    },
+    {
+      "locale": "values-zh-rCN",
+      "key": "enter_promo_code",
+      "old": "Enter promo code",
+      "new": "输入促销代码"
+    },
+    {
+      "locale": "values-zh-rCN",
+      "key": "test_timestamp_label",
+      "old": "Test Time",
+      "new": "测试时间"
+    }
+  ],
+  "empty_filled": [
+    {
+      "locale": "fil",
+      "key": "help_sample_pdfs_desc",
+      "old": "",
+      "new": "Mga Halimbawang PDF: I-download at subukan ang mga halimbawang PDF file na ibinigay ng app upang subukan ang mga feature."
+    },
+    {
+      "locale": "fil",
+      "key": "help_outline",
+      "old": "",
+      "new": "PDF Talaan ng mga Nilalaman (Balangkas): I-tap ang icon ng talaan ng mga nilalaman sa toolbar sa itaas upang tingnan ang mga bookmark/kabanata ng dokumento at agad na lumipat sa anumang seksyon."
+    },
+    {
+      "locale": "fil",
+      "key": "help_adaptive",
+      "old": "",
+      "new": "Adaptive Layout: Awtomatikong na-optimize para sa mga tablet, malalaking screen, at mga foldable."
+    },
+    {
+      "locale": "fil",
+      "key": "help_portrait_display",
+      "old": "",
+      "new": "Portrait single page: Piliin kung ang single page view ay gagamitin sa portrait orientation."
+    },
+    {
+      "locale": "fil",
+      "key": "help_diagnostics",
+      "old": "",
+      "new": "Pagsubok at Mga Log ng App: Patakbuhin ang mga diagnostic test ng device, tingnan ang mga log ng app, at ibahagi ang mga log nang ligtas. Ang mga log ay iniimbak nang lokal nang hanggang 24 na oras, hindi kailanman naglalaman ng personal na impormasyon o nilalaman ng file, at hindi kailanman awtomatikong ipinapadala sa labas."
+    },
+    {
+      "locale": "fil",
+      "key": "help_report_issue",
+      "old": "",
+      "new": "Iulat ang Isyu: Nakatagpo ng bug o pag-crash? Pakiulat ito sa GitHub Issues, na inilalakip ang mga log ng app mula sa Pagsubok at Diagnostics."
+    },
+    {
+      "locale": "fil",
+      "key": "help_device_test",
+      "old": "",
+      "new": "Pagsubok ng Device: Patakbuhin ang mga pagsubok sa hardware at pagganap sa iyong device."
+    },
+    {
+      "locale": "fil",
+      "key": "help_log_viewer",
+      "old": "",
+      "new": "Mga Log ng App: Tingnan at ligtas na ibahagi ang mga lokal na log ng application para sa pag-troubleshoot."
+    },
+    {
+      "locale": "fil",
+      "key": "help_clear_logs",
+      "old": "",
+      "new": "I-clear ang Mga Log ng Pagsubok at Diagnostic: Burahin ang lahat ng naitalang log ng pagsubok at diagnostic mula sa lokal na imbakan."
+    },
+    {
+      "locale": "fil",
+      "key": "help_promo_code",
+      "old": "",
+      "new": "Ilagay ang Promo Code: I-redeem ang mga promotion code ng Google Play para ma-unlock ang mga item at badge."
+    },
+    {
+      "locale": "fil",
+      "key": "help_slider",
+      "old": "",
+      "new": "Slider ng pahina: I-drag ang slider sa ibabang bar para lumipat sa ibang pahina."
+    },
+    {
+      "locale": "fil",
+      "key": "report_issue_desc",
+      "old": "",
+      "new": "Mag-ulat ng isyu: Mag-ulat ng mga bug o pag-crash sa GitHub Issues at isama ang mga diagnostic log."
+    },
+    {
+      "locale": "id",
+      "key": "help_sample_pdfs_desc",
+      "old": "",
+      "new": "Contoh PDF: Unduh dan coba contoh file PDF yang disediakan oleh aplikasi untuk menguji berbagai fitur."
+    },
+    {
+      "locale": "id",
+      "key": "help_outline",
+      "old": "",
+      "new": "Daftar Isi (Kerangka) PDF: Ketuk ikon daftar isi di bilah alat (toolbar) bagian atas untuk melihat penanda/bab dokumen dan langsung beralih ke bagian mana pun."
+    },
+    {
+      "locale": "id",
+      "key": "help_adaptive",
+      "old": "",
+      "new": "Tata Letak Adaptif: Dioptimalkan secara otomatis untuk tablet, layar besar, dan perangkat lipat."
+    },
+    {
+      "locale": "id",
+      "key": "help_portrait_display",
+      "old": "",
+      "new": "Tampilan satu halaman (potret): Pilih apakah tampilan satu halaman akan digunakan dalam orientasi potret."
+    },
+    {
+      "locale": "id",
+      "key": "help_diagnostics",
+      "old": "",
+      "new": "Pengujian & Log Aplikasi: Jalankan tes diagnostik perangkat, lihat log aplikasi, dan bagikan log tersebut dengan aman. Log disimpan secara lokal hingga 24 jam, tidak pernah memuat informasi pribadi atau konten file, dan tidak akan pernah dikirim ke pihak luar secara otomatis."
+    },
+    {
+      "locale": "id",
+      "key": "help_report_issue",
+      "old": "",
+      "new": "Laporkan Masalah: Menemukan bug atau aplikasi mengalami crash? Laporkan melalui GitHub Issues dengan melampirkan log aplikasi dari bagian Pengujian & Diagnostik."
+    },
+    {
+      "locale": "id",
+      "key": "help_device_test",
+      "old": "",
+      "new": "Tes Perangkat: Jalankan pengujian perangkat keras dan performa pada perangkat Anda."
+    },
+    {
+      "locale": "id",
+      "key": "help_log_viewer",
+      "old": "",
+      "new": "Log Aplikasi: Lihat dan bagikan log aplikasi lokal dengan aman untuk keperluan pemecahan masalah."
+    },
+    {
+      "locale": "id",
+      "key": "help_clear_logs",
+      "old": "",
+      "new": "Hapus Log Tes & Diagnostik: Hapus semua log tes dan diagnostik yang tersimpan di penyimpanan lokal."
+    },
+    {
+      "locale": "id",
+      "key": "help_promo_code",
+      "old": "",
+      "new": "Masukkan Kode Promo: Tukarkan kode promosi Google Play untuk membuka item dan lencana."
+    },
+    {
+      "locale": "id",
+      "key": "help_slider",
+      "old": "",
+      "new": "Penggeser Halaman: Tarik penggeser di bilah bagian bawah untuk berpindah ke halaman lain."
+    },
+    {
+      "locale": "id",
+      "key": "report_issue_desc",
+      "old": "",
+      "new": "Laporkan masalah: Laporkan bug atau crash pada GitHub Issues dan sertakan log diagnostik."
+    },
+    {
+      "locale": "ne",
+      "key": "help_sample_pdfs_desc",
+      "old": "",
+      "new": "नमुना PDF हरू: एपका विशेषताहरू परीक्षण गर्न, एपद्वारा उपलब्ध गराइएका नमुना PDF फाइलहरू डाउनलोड गर्नुहोस् र प्रयोग गरी हेर्नुहोस्।"
+    },
+    {
+      "locale": "ne",
+      "key": "help_outline",
+      "old": "",
+      "new": "PDF विषयसूची (रूपरेखा): कागजातका बुकमार्कहरू वा अध्यायहरू हेर्न र कुनै पनि खण्डमा तुरुन्तै पुग्न, माथिल्लो टुलबारमा रहेको विषयसूची आइकनमा ट्याप गर्नुहोस्।"
+    },
+    {
+      "locale": "ne",
+      "key": "help_adaptive",
+      "old": "",
+      "new": "अनुकूलन योग्य लेआउट (Adaptive Layout): ट्याब्लेट, ठूला स्क्रिनहरू र फोल्ड गर्न मिल्ने (foldable) उपकरणहरूका लागि स्वतः अनुकूलित हुने व्यवस्था।"
+    },
+    {
+      "locale": "ne",
+      "key": "help_portrait_display",
+      "old": "",
+      "new": "पोर्ट्रेट एकल पृष्ठ: पोर्ट्रेट अभिमुखीकरण (orientation) मा एकल पृष्ठ दृश्य प्रयोग गर्ने वा नगर्ने भन्ने छनौट गर्नुहोस्।"
+    },
+    {
+      "locale": "ne",
+      "key": "help_diagnostics",
+      "old": "",
+      "new": "परीक्षण र एप लगहरू (App Logs): उपकरणको अवस्था जाँच गर्ने परीक्षणहरू (diagnostic tests) चलाउनुहोस्, एप लगहरू हेर्नुहोस् र तिनलाई सुरक्षित रूपमा साझा गर्नुहोस्। लगहरू स्थानीय रूपमा २४ घण्टासम्म मात्र भण्डारण गरिन्छन्; यिनमा कहिल्यै पनि व्यक्तिगत जानकारी वा फाइलका सामग्रीहरू हुँदैनन् र यी कहिल्यै पनि स्वतः बाह्य रूपमा पठाइँदैनन्।"
+    },
+    {
+      "locale": "ne",
+      "key": "help_report_issue",
+      "old": "",
+      "new": "समस्या रिपोर्ट गर्नुहोस्: के तपाईंले कुनै बग (bug) वा एप क्र्यास (crash) भएको फेला पार्नुभयो? कृपया 'परीक्षण र निदान' (Testing & Diagnostics) खण्डबाट एप लगहरू संलग्न गरी GitHub Issues मा रिपोर्ट गर्नुहोस्।"
+    },
+    {
+      "locale": "ne",
+      "key": "help_device_test",
+      "old": "",
+      "new": "उपकरण परीक्षण: आफ्नो उपकरणमा हार्डवेयर र कार्यक्षमता (performance) सम्बन्धी परीक्षणहरू चलाउनुहोस्।"
+    },
+    {
+      "locale": "ne",
+      "key": "help_log_viewer",
+      "old": "",
+      "new": "एप लगहरू: समस्या निवारण (troubleshooting) का लागि स्थानीय एप्लिकेसन लगहरू हेर्नुहोस् र सुरक्षित रूपमा साझा गर्नुहोस्।"
+    },
+    {
+      "locale": "ne",
+      "key": "help_clear_logs",
+      "old": "",
+      "new": "परीक्षण र निदान लगहरू हटाउनुहोस्: स्थानीय भण्डारण (storage) मा रहेका सबै रेकर्ड गरिएका परीक्षण र निदान लगहरू मेटाउनुहोस्।"
+    },
+    {
+      "locale": "ne",
+      "key": "help_promo_code",
+      "old": "",
+      "new": "प्रोमो कोड प्रविष्ट गर्नुहोस्: विभिन्न वस्तुहरू (items) र ब्याजहरू (badges) अनलक गर्न Google Play प्रवर्द्धन कोडहरू (promo codes) प्रयोग गर्नुहोस्।"
+    },
+    {
+      "locale": "ne",
+      "key": "help_slider",
+      "old": "",
+      "new": "पृष्ठ स्लाइडर: अर्को पृष्ठमा जानका लागि तल्लो बारमा रहेको स्लाइडरलाई तान्नुहोस् (drag गर्नुहोस्)।"
+    },
+    {
+      "locale": "ne",
+      "key": "report_issue_desc",
+      "old": "",
+      "new": "समस्या रिपोर्ट गर्नुहोस्: GitHub Issues मा देखिएका बग वा क्र्यासहरू रिपोर्ट गर्नुहोस् र साथमा निदान लगहरू (diagnostic logs) पनि समावेश गर्नुहोस्।"
+    },
+    {
+      "locale": "pt",
+      "key": "help_sample_pdfs_desc",
+      "old": "",
+      "new": "PDFs de exemplo: Baixe e experimente arquivos PDF de exemplo fornecidos pelo aplicativo para testar os recursos."
+    },
+    {
+      "locale": "pt",
+      "key": "help_outline",
+      "old": "",
+      "new": "Sumário (Índice) do PDF: Toque no ícone de sumário na barra de ferramentas superior para visualizar os marcadores/capítulos do documento e acessar instantaneamente qualquer seção."
+    },
+    {
+      "locale": "pt",
+      "key": "help_adaptive",
+      "old": "",
+      "new": "Layout adaptável: Otimizado automaticamente para tablets, telas grandes e dispositivos dobráveis."
+    },
+    {
+      "locale": "pt",
+      "key": "help_portrait_display",
+      "old": "",
+      "new": "Visualização de página única (vertical): Defina se a visualização de página única deve ser utilizada na orientação vertical (retrato)."
+    },
+    {
+      "locale": "pt",
+      "key": "help_diagnostics",
+      "old": "",
+      "new": "Testes e logs do aplicativo: Execute testes de diagnóstico no dispositivo, visualize os logs do aplicativo e compartilhe-os de forma segura. Os logs são armazenados localmente por até 24 horas; eles não contêm informações pessoais nem o conteúdo dos arquivos e nunca são enviados externamente de forma automática."
+    },
+    {
+      "locale": "pt",
+      "key": "help_report_issue",
+      "old": "",
+      "new": "Relatar problema: Encontrou um erro ou o aplicativo travou? Relate o ocorrido no GitHub Issues, anexando os logs do aplicativo disponíveis em \"Testes e Diagnóstico\"."
+    },
+    {
+      "locale": "pt",
+      "key": "help_device_test",
+      "old": "",
+      "new": "Teste do dispositivo: Execute testes de hardware e desempenho no seu dispositivo."
+    },
+    {
+      "locale": "pt",
+      "key": "help_log_viewer",
+      "old": "",
+      "new": "Logs do aplicativo: Visualize e compartilhe, de forma segura, os logs locais do aplicativo para fins de solução de problemas."
+    },
+    {
+      "locale": "pt",
+      "key": "help_clear_logs",
+      "old": "",
+      "new": "Limpar logs de teste e diagnóstico: Exclua todos os logs de teste e diagnóstico armazenados localmente."
+    },
+    {
+      "locale": "pt",
+      "key": "help_promo_code",
+      "old": "",
+      "new": "Inserir código promocional: Resgate códigos promocionais do Google Play para desbloquear itens e emblemas."
+    },
+    {
+      "locale": "pt",
+      "key": "help_slider",
+      "old": "",
+      "new": "Controle deslizante de páginas: Arraste o controle deslizante na barra inferior para navegar até outra página."
+    },
+    {
+      "locale": "pt",
+      "key": "report_issue_desc",
+      "old": "",
+      "new": "Relatar um problema: Informe erros ou travamentos no GitHub Issues e inclua os logs de diagnóstico."
+    },
+    {
+      "locale": "vi",
+      "key": "help_sample_pdfs_desc",
+      "old": "",
+      "new": "Tệp PDF mẫu: Tải xuống và trải nghiệm các tệp PDF mẫu do ứng dụng cung cấp để kiểm tra các tính năng."
+    },
+    {
+      "locale": "vi",
+      "key": "help_outline",
+      "old": "",
+      "new": "Mục lục PDF (Dàn ý): Nhấn vào biểu tượng mục lục trên thanh công cụ phía trên để xem các dấu trang/chương của tài liệu và chuyển nhanh đến bất kỳ phần nào."
+    },
+    {
+      "locale": "vi",
+      "key": "help_adaptive",
+      "old": "",
+      "new": "Bố cục thích ứng: Tự động tối ưu hóa cho máy tính bảng, màn hình lớn và thiết bị gập."
+    },
+    {
+      "locale": "vi",
+      "key": "help_portrait_display",
+      "old": "",
+      "new": "Xem một trang ở chế độ dọc: Tùy chọn hiển thị một trang duy nhất khi thiết bị ở hướng dọc."
+    },
+    {
+      "locale": "vi",
+      "key": "help_diagnostics",
+      "old": "",
+      "new": "Kiểm tra & Nhật ký ứng dụng: Chạy các bài kiểm tra chẩn đoán thiết bị, xem nhật ký ứng dụng và chia sẻ nhật ký một cách an toàn. Nhật ký được lưu trữ cục bộ trong tối đa 24 giờ, không chứa thông tin cá nhân hay nội dung tệp, và không bao giờ tự động gửi ra bên ngoài."
+    },
+    {
+      "locale": "vi",
+      "key": "help_report_issue",
+      "old": "",
+      "new": "Báo cáo sự cố: Gặp lỗi hoặc ứng dụng bị treo? Vui lòng báo cáo trên GitHub Issues, kèm theo nhật ký (log) ứng dụng từ mục Kiểm tra & Chẩn đoán (Testing & Diagnostics)."
+    },
+    {
+      "locale": "vi",
+      "key": "help_device_test",
+      "old": "",
+      "new": "Kiểm tra thiết bị: Chạy các bài kiểm tra phần cứng và hiệu năng trên thiết bị của bạn."
+    },
+    {
+      "locale": "vi",
+      "key": "help_log_viewer",
+      "old": "",
+      "new": "Nhật ký ứng dụng: Xem và chia sẻ an toàn các tệp nhật ký ứng dụng được lưu cục bộ để phục vụ việc khắc phục sự cố."
+    },
+    {
+      "locale": "vi",
+      "key": "help_clear_logs",
+      "old": "",
+      "new": "Xóa nhật ký kiểm tra & chẩn đoán: Xóa tất cả nhật ký kiểm tra và chẩn đoán đã ghi khỏi bộ nhớ cục bộ."
+    },
+    {
+      "locale": "vi",
+      "key": "help_promo_code",
+      "old": "",
+      "new": "Nhập mã khuyến mãi: Sử dụng mã khuyến mãi từ Google Play để mở khóa các vật phẩm và huy hiệu."
+    },
+    {
+      "locale": "vi",
+      "key": "help_slider",
+      "old": "",
+      "new": "Thanh trượt trang: Kéo thanh trượt ở thanh công cụ phía dưới để di chuyển đến trang khác."
+    },
+    {
+      "locale": "vi",
+      "key": "report_issue_desc",
+      "old": "",
+      "new": "Báo cáo sự cố: Báo cáo lỗi hoặc tình trạng ứng dụng bị treo trên GitHub Issues, kèm theo nhật ký chẩn đoán."
+    },
+    {
+      "locale": "zh-rCN",
+      "key": "help_sample_pdfs_desc",
+      "old": "",
+      "new": "示例 PDF：下载并尝试应用提供的 PDF 示例文件，以测试各项功能。"
+    },
+    {
+      "locale": "zh-rCN",
+      "key": "help_outline",
+      "old": "",
+      "new": "PDF 目录（大纲）：点击顶部工具栏中的目录图标，即可查看文档书签或章节，并快速跳转至相应部分。"
+    },
+    {
+      "locale": "zh-rCN",
+      "key": "help_adaptive",
+      "old": "",
+      "new": "自适应布局：针对平板电脑、大屏设备及折叠屏设备自动进行优化。"
+    },
+    {
+      "locale": "zh-rCN",
+      "key": "help_portrait_display",
+      "old": "",
+      "new": "纵向单页模式：可选择在纵向（竖屏）模式下是否采用单页视图。"
+    },
+    {
+      "locale": "zh-rCN",
+      "key": "help_diagnostics",
+      "old": "",
+      "new": "测试与应用日志：执行设备诊断测试、查看应用日志，并安全地共享这些日志。日志仅在本地存储（最长保留 24 小时），绝不包含个人信息或文件内容，也不会自动发送至外部。"
+    },
+    {
+      "locale": "zh-rCN",
+      "key": "help_report_issue",
+      "old": "",
+      "new": "报告问题：遇到错误或程序崩溃？请通过 GitHub Issues 提交报告，并附上“测试与诊断”中的应用日志。"
+    },
+    {
+      "locale": "zh-rCN",
+      "key": "help_device_test",
+      "old": "",
+      "new": "设备测试：对您的设备进行硬件和性能测试。"
+    },
+    {
+      "locale": "zh-rCN",
+      "key": "help_log_viewer",
+      "old": "",
+      "new": "应用日志：查看并安全共享本地应用日志，以便进行故障排查。"
+    },
+    {
+      "locale": "zh-rCN",
+      "key": "help_clear_logs",
+      "old": "",
+      "new": "清除测试与诊断日志：从本地存储中删除所有已记录的测试和诊断日志。"
+    },
+    {
+      "locale": "zh-rCN",
+      "key": "help_promo_code",
+      "old": "",
+      "new": "输入促销代码：兑换 Google Play 促销代码，即可解锁特定项目或徽章。"
+    },
+    {
+      "locale": "zh-rCN",
+      "key": "help_slider",
+      "old": "",
+      "new": "页面滑块：拖动底部工具栏上的滑块，即可跳转至其他页面。"
+    },
+    {
+      "locale": "zh-rCN",
+      "key": "report_issue_desc",
+      "old": "",
+      "new": "报告问题：在 GitHub Issues 中报告错误或程序崩溃，并附上诊断日志。"
+    }
+  ],
+  "other_old_english_revised": [],
+  "limitations": "Exact matching and local language detection are heuristics; all-device visual QA and native review not performed."
+}
