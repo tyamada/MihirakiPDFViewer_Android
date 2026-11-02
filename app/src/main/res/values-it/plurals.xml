@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <plurals name="saved_logs_title">
+    <item quantity="one">Riga di registro salvata: %d</item>
+    <item quantity="other">Righe di registro salvate: %d</item>
+    <item quantity="many">Righe di registro salvate: %d</item>
+  </plurals>
+</resources>

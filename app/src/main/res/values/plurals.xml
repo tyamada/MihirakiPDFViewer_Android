@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <plurals name="saved_logs_title">
+    <item quantity="one">Saved log line: %d</item>
+    <item quantity="other">Saved log lines: %d</item>
+  </plurals>
+</resources>

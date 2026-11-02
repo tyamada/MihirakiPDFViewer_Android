@@ -9,6 +9,8 @@ Mihiraki: Two-Page PDF Reader
 Read manga and scanned books with two-page spreads and local PDF processing.
 
 ## Full description (Max 4000 chars)
+
+Sample PDFs start with the latest episode. Switch to Episode 1 first or latest first; your order is saved and also applies when filtering by language.
 **Mihiraki: Two-Page PDF Reader** (MihirakiPDFViewer) is a modern, privacy-focused PDF reader designed specifically for an optimal reading experience of two-page spreads and right-to-left (R2L) documents, such as Japanese Manga, Light Novels, and digitized/scanned books (book scanning / personal archives).
 
 ### ✨ Key Features

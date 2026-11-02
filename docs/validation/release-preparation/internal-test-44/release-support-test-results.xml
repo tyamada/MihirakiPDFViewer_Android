@@ -1,0 +1,11 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<testsuites tests="1" failures="0" errors="0" skipped="0" time="27.901" timestamp="2026-11-02T09:54:29" hostname="localhost">
+  <testsuite name="com.github.tyamada.viewerreleasevalidation.ReleaseCandidateTest" tests="1" failures="0" errors="0" skipped="0" time="27.338" timestamp="2026-11-02T09:54:29" hostname="localhost">
+    <properties>
+      <property name="device" value="ReleaseStable(AVD) - 15" />
+      <property name="flavor" value="" />
+      <property name="project" value=":app" />
+    </properties>
+    <testcase name="f_supportLargeFontScrollReachability" classname="com.github.tyamada.viewerreleasevalidation.ReleaseCandidateTest" time="27.338" />
+  </testsuite>
+</testsuites>

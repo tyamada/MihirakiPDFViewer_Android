@@ -40,7 +40,7 @@
     <string name="reset">重設</string>
     <string name="reset_message">重設應用程式設定。</string>
     <string name="help_open"><b>開啟 PDF：</b>使用檔案選擇器從您的裝置或雲端儲存空間選取 PDF 檔案。</string>
-    <string name="help_sample_pdfs_desc"><b>範例 PDF：</b>下載並試用應用程式提供的範例 PDF 檔案以測試功能。</string>
+    <string name="help_sample_pdfs_desc"><b>範例 PDF：</b>下載並試用應用程式提供的範例 PDF 檔案以測試功能。 範例 PDF 預設優先顯示最新一話。可切換為從第 1 話開始或從最新一話開始。所選順序會儲存，並在依語言篩選時繼續生效。</string>
     <string name="help_navigate"><b>導覽頁面：</b>透過滑動、使用滑桿或按一下左右邊緣（在桌面/滑鼠導覽模式下）來切換頁面。</string>
     <string name="help_outline"><b>PDF 目錄 (大綱)：</b>輕觸頂端工具列中的目錄圖示以檢視文件的書籤/章節並立即跳至任何章節。</string>
     <string name="help_menu"><b>選單：</b>輕觸螢幕以切換工具列和滑桿的顯示狀態。</string>
@@ -188,4 +188,15 @@
     <string name="tutorial_next">下一步</string>
     <string name="tutorial_previous">上一步</string>
     <string name="tutorial_video_guide_button">觀看應用程式介紹短片（播放清單）</string>
+
+    <!-- Sample PDF ordering -->
+    <string name="sample_pdf_order_label">顯示順序：%1$s</string>
+    <string name="sample_pdf_order_from_ch1">從第1話開始</string>
+    <string name="sample_pdf_order_from_latest">從最新話開始</string>
+    <string name="memory_usage">記憶體使用量：%1$d MB / %2$d MB</string>
+    <string name="sample_pdf_license_notice">本作品的部分內容依 CC BY 4.0 授權提供。姓名標示：The Try-It Club / Komairo Hiyori。</string>
+    <string name="page_position_description">第 %1$d 頁，共 %2$d 頁</string>
+    <string name="search_position_description">第 %1$d 筆搜尋結果，共 %2$d 筆</string>
+    <string name="toggle_controls">顯示或隱藏操作列</string>
+    <string name="page_navigation_label">頁面導覽</string>
 </resources>

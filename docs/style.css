@@ -149,3 +149,20 @@ footer { margin-top: 70px; border-top: 1px solid var(--line); }
     .grid { grid-template-columns: 1fr; }
     .footer-inner { flex-direction: column; }
 }
+
+/* Public documents and long localized navigation labels. */
+.nav { flex-wrap: wrap; }
+.brand { min-width: 0; overflow-wrap: anywhere; }
+a:focus-visible, select:focus-visible { outline: 3px solid var(--accent); outline-offset: 4px; }
+body > header:not(.site-header), body > nav, body > section {
+    width: min(1080px, calc(100% - 32px)); margin-inline: auto;
+}
+body > nav { display: flex; flex-wrap: wrap; align-items: center; gap: 16px; }
+body > section { padding-block: 24px; }
+.screenshots { max-width: 600px; }
+.screenshots img { height: auto; }
+select { max-width: 100%; min-height: 44px; font: inherit; }
+@media (max-width: 760px) {
+    .site-header { position: static; }
+    .nav-links { gap: 12px; }
+}

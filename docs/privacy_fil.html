@@ -13,9 +13,9 @@
     </header>
 
     <nav>
-        <select onchange="location = this.value;">
+        <select aria-label="Language" onchange="location = this.value;">
             <option value="privacy_de.html">Deutsch</option>
-            <option value="privacy_en.html">English</option>
+            <option value="privacy.html">English</option>
             <option value="privacy_es.html">Español</option>
             <option value="privacy_fil.html" selected>Filipino</option>
             <option value="privacy_fr.html">Français</option>
@@ -29,7 +29,7 @@
             <option value="privacy_ko.html">한국어</option>
         </select>
         <a href="index_fil.html">Home</a>
-        <a href="https://github.com/tyamada/MihirakiPDFViewer_Android" target="_blank">GitHub</a>
+        <a href="https://github.com/tyamada/MihirakiPDFViewer_Android" target="_blank" rel="noopener noreferrer">GitHub</a>
     </nav>
 
     <section>
@@ -37,10 +37,11 @@
         <p>Ang developer ng MihirakiPDFViewer ("ang App") ay iginagalang ang iyong privacy. Binabalangkas ng patakarang ito kung paano namin pinangangasiwaan ang impormasyon.</p>
 
         <h3>1. Koleksyon at Paggamit ng Impormasyon</h3>
-        <p>Ang App ay **hindi** nag-a-upload o nangongolekta ng iyong mga PDF file. Ang lahat ng pagproseso ng PDF ay lokal na ginagawa sa iyong device. Ginagamit lang ng App ang koneksyon sa internet sa mga sumusunod na limitadong sitwasyon:</p>
+        <p>Ang App ay <strong>hindi</strong> nag-a-upload o nangongolekta ng iyong mga PDF file. Ang lahat ng pagproseso ng PDF ay lokal na ginagawa sa iyong device. Ginagamit lang ng App ang koneksyon sa internet sa mga sumusunod na limitadong sitwasyon:</p>
         <ul>
             <li>Kapag tahasang nagbukas ka ng file mula sa mga cloud storage service tulad ng Google Drive.</li>
             <li>Kapag nagsagawa ka ng in-app purchase (support tips) sa pamamagitan ng Google Play Billing system.</li>
+        <li id="network-features">Pinoproseso ang mga PDF sa iyong device. Gumagamit ng koneksyon sa network ang pag-download ng mga halimbawa, mga serbisyo sa cloud, pagsuri ng mga update at opsyonal na pagbili bilang suporta.</li>
         </ul>
 
         <h3>2. Mga Pahintulot</h3>

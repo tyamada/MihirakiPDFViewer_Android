@@ -1,0 +1,16 @@
+{
+  "checked_at": "2026-11-02 Asia/Tokyo",
+  "production_countries": [
+    "US",
+    "JP",
+    "KR"
+  ],
+  "country_edits": 0,
+  "console_writes": 0,
+  "max_uploaded_version_code": 42,
+  "candidate_version_code": 43,
+  "candidate_search_result": "No results",
+  "all_bundles_url": "https://play.google.com/console/u/1/developers/8825504212632848490/app/4975203753311543426/bundle-explorer-selector",
+  "production_country_url": "https://play.google.com/console/u/1/developers/8825504212632848490/app/4975203753311543426/tracks/production?releaseType=defaultReleases&tab=countryAvailability",
+  "wrapper_sha256": "7a9ce74cff467ca1bf60a4fcd9f05185acceda4d0f382434d393e17864262c5d"
+}

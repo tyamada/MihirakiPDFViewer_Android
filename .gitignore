@@ -39,3 +39,7 @@ shorts_work/
 !store_listing/screenshots/Tablet_10/*.png
 !store_listing/screenshots/Chromebook_FHD/*.png
 
+
+!app/src/main/res/mipmap-*/launcher_art.png
+!app/src/main/res/drawable-nodpi/*.png
+!/docs/assets/app-icon.png

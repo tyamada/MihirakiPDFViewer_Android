@@ -1,5 +1,6 @@
 package com.github.tyamada.mihirakipdfviewer_android.viewmodel
 
+import androidx.core.net.toUri
 import android.app.ActivityManager
 import android.app.Application
 import android.content.Context
@@ -104,7 +105,7 @@ class ViewerViewModel(app: Application) : AndroidViewModel(app) {
             // Auto-resume if no file is currently being opened (e.g. via Intent)
             if (!_state.value.loading && _state.value.source == null) {
                 initial.lastUri?.let { uriStr ->
-                    val uri = Uri.parse(uriStr)
+                    val uri = uriStr.toUri()
                     val isValid = if (uri.scheme == "file") {
                         val f = File(uri.path ?: "")
                         f.exists() && f.length() > 0

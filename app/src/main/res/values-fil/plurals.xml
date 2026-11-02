@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <plurals name="saved_logs_title">
+    <item quantity="one">Naka-save na linya ng log: %d</item>
+    <item quantity="other">Mga naka-save na linya ng log: %d</item>
+  </plurals>
+</resources>

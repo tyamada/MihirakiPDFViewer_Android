@@ -14,6 +14,8 @@ import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.testTag
+import androidx.compose.ui.semantics.contentDescription
+import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import com.github.tyamada.mihirakipdfviewer_android.R
@@ -134,7 +136,7 @@ fun SamplePdfScreen(
             ) {
                 TextButton(
                     onClick = { viewModel.toggleSortOrder() },
-                    modifier = Modifier.testTag("btn_toggle_order")
+                    modifier = Modifier.heightIn(min = 48.dp).testTag("btn_toggle_order")
                 ) {
                     val orderText = if (uiState.sortOrder == com.github.tyamada.mihirakipdfviewer_android.data.SamplePdfSortOrder.ASC) {
                         stringResource(R.string.sample_pdf_order_from_ch1)
@@ -179,8 +181,7 @@ fun SamplePdfScreen(
                             )
                             Spacer(modifier = Modifier.height(4.dp))
                             Text(
-                                "Parts of this work are provided under the Creative Commons Attribution 4.0 International (CC BY 4.0) license.\n" +
-                                "Attribution: \"The Try-It Club\" by Komairo Hiyori.",
+                                stringResource(R.string.sample_pdf_license_notice),
                                 style = MaterialTheme.typography.bodySmall
                             )
                         }
@@ -272,17 +273,20 @@ fun SamplePdfCard(
                 horizontalArrangement = Arrangement.End,
                 verticalAlignment = Alignment.CenterVertically
             ) {
+                val deleteDescription = stringResource(R.string.sample_pdf_delete) + ": " + itemState.item.title
+                val openDescription = stringResource(R.string.sample_pdf_open) + ": " + itemState.item.title
+                val downloadDescription = stringResource(R.string.sample_pdf_download) + ": " + itemState.item.title
                 if (itemState.isDownloaded && !itemState.isDownloading) {
                     OutlinedButton(
                         onClick = onDelete,
-                        modifier = Modifier.padding(end = 8.dp)
+                        modifier = Modifier.padding(end = 8.dp).semantics { contentDescription = deleteDescription }
                     ) {
                         Icon(Icons.Default.Delete, contentDescription = null, modifier = Modifier.size(18.dp))
                         Spacer(modifier = Modifier.width(4.dp))
                         Text(stringResource(R.string.sample_pdf_delete))
                     }
 
-                    Button(onClick = onOpen, modifier = Modifier.testTag("btn_open")) {
+                    Button(onClick = onOpen, modifier = Modifier.testTag("btn_open").semantics { contentDescription = openDescription }) {
                         Icon(Icons.AutoMirrored.Filled.OpenInNew, contentDescription = null, modifier = Modifier.size(18.dp))
                         Spacer(modifier = Modifier.width(4.dp))
                         Text(stringResource(R.string.sample_pdf_open))
@@ -291,7 +295,7 @@ fun SamplePdfCard(
                     Button(
                         onClick = onDownload,
                         enabled = !itemState.isDownloading,
-                        modifier = Modifier.testTag("btn_download")
+                        modifier = Modifier.testTag("btn_download").semantics { contentDescription = downloadDescription }
                     ) {
                         Icon(Icons.Default.Download, contentDescription = null, modifier = Modifier.size(18.dp))
                         Spacer(modifier = Modifier.width(4.dp))

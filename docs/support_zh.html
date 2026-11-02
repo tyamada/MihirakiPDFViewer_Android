@@ -12,7 +12,7 @@
         <p>支持与 FAQ</p>
     </header>
     <nav>
-        <select onchange="location = this.value;">
+        <select aria-label="Language" onchange="location = this.value;">
             <option value="support_de.html">Deutsch</option>
             <option value="support.html">English</option>
             <option value="support_es.html">Español</option>
@@ -27,14 +27,16 @@
             <option value="support_ja.html">日本語</option>
             <option value="support_ko.html">한국어</option>
         </select>
-        <a href="index_zh.html">首页</a>
+        <a href="index_zh-CN.html">首页</a>
         <a href="support_zh.html">支持</a>
         <a href="privacy_zh.html">隐私政策</a>
-        <a href="https://github.com/tyamada/MihirakiPDFViewer_Android" target="_blank">GitHub</a>
+        <a href="https://github.com/tyamada/MihirakiPDFViewer_Android" target="_blank" rel="noopener noreferrer">GitHub</a>
     </nav>
     <section>
         <h2>支持与常见问题 (FAQ)</h2>
-        <p>欢迎来到 MihirakiPDFViewer 支持页面。如有任何问题或建议，请访问我们的 <a href="https://github.com/tyamada/MihirakiPDFViewer_Android" target="_blank">GitHub 仓库</a>。</p>
+        <p>欢迎来到 MihirakiPDFViewer 支持页面。如有任何问题或建议，请访问我们的 <a href="https://github.com/tyamada/MihirakiPDFViewer_Android" target="_blank" rel="noopener noreferrer">GitHub 仓库</a>。</p>
+        <p id="sample-order">示例 PDF 默认按最新一话优先显示。可切换为从第 1 话开始或从最新一话开始。所选顺序会保存，并在按语言筛选时继续生效。</p>
+        <p id="network-features">PDF 在您的设备上处理。下载示例、使用云服务、检查更新和可选的支持购买会使用网络连接。</p>
     </section>
     <footer>
         <p>&copy; 2026 Takuma Yamada. All rights reserved.</p>

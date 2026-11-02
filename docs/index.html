@@ -13,7 +13,7 @@
         <nav class="nav" aria-label="Main navigation">
             <a class="brand" href="index.html" aria-current="page"><img src="assets/app-icon.png" alt=""><span>Mihiraki: Two-Page PDF Reader</span></a>
             <div class="nav-links"><a href="#features">Features</a><a href="privacy.html">Privacy</a><a href="support.html">Support</a><a href="https://github.com/tyamada/MihirakiPDFViewer_Android">GitHub</a></div>
-        </nav>
+        <label>Language <select class="language-picker" onchange="location = this.value;"><option value="index.html" selected>English</option><option value="index_ja.html">日本語</option><option value="index_de.html">Deutsch</option><option value="index_es.html">Español</option><option value="index_fil.html">Filipino</option><option value="index_fr.html">Français</option><option value="index_id.html">Indonesian</option><option value="index_ne.html">नेपाली</option><option value="index_pt.html">Português</option><option value="index_vi.html">Tiếng Việt</option><option value="index_zh-CN.html">简体中文</option><option value="index_zh-TW.html">繁體中文</option><option value="index_ko.html">한국어</option></select></label></nav>
     </header>
 
     <main>
@@ -21,8 +21,8 @@
             <div>
                 <div class="eyebrow">PRIVACY-FOCUSED ANDROID PDF VIEWER</div>
                 <h1>The ultimate two-page spread reader for manga and PDFs.</h1>
-                <p class="lead">Designed for right-to-left documents and spreads. Enjoy smooth local rendering, outline tree navigation, and precise search highlights without internet required.</p>
-                <div class="actions"><a class="button" href="#features">Explore features</a><a class="button secondary" href="support.html">Help and support</a></div>
+                <p class="lead">Designed for right-to-left documents and spreads. Enjoy smooth local rendering, outline tree navigation, and precise search highlights for PDFs stored on your device, even offline.</p>
+                <div class="actions"><a class="button" href="https://play.google.com/store/apps/details?id=com.github.tyamada.MihirakiPDFViewer_Android">Get it on Google Play</a><a class="button" href="#features">Explore features</a><a class="button secondary" href="support.html">Help and support</a></div>
             </div>
             <img class="hero-icon" src="assets/app-icon.png" alt="Mihiraki PDF Viewer app icon">
         </section>
@@ -36,7 +36,7 @@
                 <article class="card"><div class="symbol">🇯🇵</div><h3>Right-to-Left (R2L)</h3><p>Native support for Japanese and traditional reading directions.</p></article>
                 <article class="card"><div class="symbol">📑</div><h3>Outline Navigation</h3><p>Jump instantly to any chapter or section using PDF bookmarks.</p></article>
                 <article class="card"><div class="symbol">🔍</div><h3>Fast Text Search</h3><p>Search text with precision yellow background and red outline highlights.</p></article>
-                <article class="card"><div class="symbol">🛡️</div><h3>100% Local & Private</h3><p>No internet connection required. Operates via Storage Access Framework.</p></article>
+                <article class="card"><div class="symbol">🛡️</div><h3>Local PDF Processing</h3><p>Read PDFs stored on your device offline. Select files with Storage Access Framework.</p></article>
                 <article class="card"><div class="symbol">📱</div><h3>Adaptive Layout</h3><p>Optimized for phones, tablets, foldables, and desktop window modes.</p></article>
             </div>
         </section>
@@ -44,7 +44,7 @@
         <section class="section">
             <div class="eyebrow">DIAGNOSTICS & LOGGING</div>
             <h2>On-Device Testing & App Logs</h2>
-            <p>Run device diagnostic tests and inspect secure local app logs (`AppLogger`) stored safely for up to 24 hours. Never sends data externally automatically.</p>
+            <p>Run device diagnostic tests and inspect secure local app logs (<code>AppLogger</code>) stored safely for up to 24 hours. Never sends data externally automatically.</p>
         </section>
 
         <section class="section">
@@ -52,6 +52,7 @@
             <h2>Support the Developer</h2>
             <p>All core reading features are completely free. Optional one-time supporter tips (Bronze, Silver, Gold, and Koyomi badges) unlock commemorative supporter badges in the app settings.</p>
         </section>
+        <section class="section" id="sample-order"><p id="network-features">PDF processing takes place on your device. Sample downloads, cloud services, update checks and optional support purchases use network connections.</p><p>Sample PDFs start with the latest episode. Switch to Episode 1 first or latest first; your order is saved and also applies when filtering by language.</p></section>
     </main>
 
     <footer><div class="footer-inner"><span>© 2026 Takuma Yamada</span><span><a href="privacy.html">Privacy</a> · <a href="support.html">Support</a> · <a href="https://github.com/tyamada/MihirakiPDFViewer_Android">GitHub</a></span></div></footer>

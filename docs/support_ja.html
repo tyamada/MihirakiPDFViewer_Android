@@ -13,7 +13,7 @@
     </header>
 
     <nav>
-        <select onchange="location = this.value;">
+        <select aria-label="Language" onchange="location = this.value;">
             <option value="support_de.html">Deutsch</option>
             <option value="support.html">English</option>
             <option value="support_es.html">Español</option>
@@ -31,7 +31,7 @@
         <a href="index_ja.html">ホーム</a>
         <a href="support_ja.html">サポート</a>
         <a href="privacy_ja.html">プライバシーポリシー</a>
-        <a href="https://github.com/tyamada/MihirakiPDFViewer_Android" target="_blank">GitHub</a>
+        <a href="https://github.com/tyamada/MihirakiPDFViewer_Android" target="_blank" rel="noopener noreferrer">GitHub</a>
     </nav>
 
     <section>
@@ -62,13 +62,15 @@
         <p>すべての主要機能（見開き表示や検索など）は広告なしですべて無料でお使いいただけます。もしアプリを気に入っていただけましたら、アプリ内の「応援」画面より開発をご支援いただけます（ブロンズ、シルバー、ゴールド、および Ver.2.0公開記念こよみバッジの非消耗型応援チップをご用意しており、プロモーションコードによる無料引き換えにも対応。設定画面に記念バッジが表示されます）。</p>
 
         <h3>9. 不具合・問題の報告 (GitHub Issues)</h3>
-        <p>アプリの不具合や予期せぬ動作、クラッシュなどが発生した場合は、<a href="https://github.com/tyamada/MihirakiPDFViewer_Android/issues" target="_blank">GitHub Issues</a> よりご報告ください。報告の際は以下の情報を記載していただくとスムーズです：</p>
+        <p>アプリの不具合や予期せぬ動作、クラッシュなどが発生した場合は、<a href="https://github.com/tyamada/MihirakiPDFViewer_Android/issues" target="_blank" rel="noopener noreferrer">GitHub Issues</a> よりご報告ください。報告の際は以下の情報を記載していただくとスムーズです：</p>
         <ul>
             <li><strong>アプリのバージョン</strong>（例: v2.1.3, Code 42）</li>
             <li><strong>端末名とOSバージョン</strong>（例: Pixel 8, Android 15）</li>
             <li><strong>問題を再現する手順</strong></li>
             <li><strong>診断ログ</strong>: 設定画面の「Testing & Diagnostics」からアプリログをコピーまたは共有して添付していただけますと、原因の特定が早まります（ログには個人情報やファイルの内容は一切含まれません）。</li>
         </ul>
+        <p id="sample-order">サンプルPDFは初期状態で最新話順に表示します。第1話順／最新話順を切り替えられ、選択した順序は保存され、言語で絞り込んだ場合にも適用されます。</p>
+        <p id="network-features">PDFの処理は端末内で行います。サンプルの取得、クラウドサービス、更新確認、任意の応援購入では通信を利用します。</p>
     </section>
 
     <footer>

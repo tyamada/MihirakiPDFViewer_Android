@@ -13,7 +13,7 @@
     </header>
 
     <nav>
-        <select onchange="location = this.value;">
+        <select aria-label="Language" onchange="location = this.value;">
             <option value="privacy_de.html">Deutsch</option>
             <option value="privacy.html">English</option>
             <option value="privacy_es.html">Español</option>
@@ -31,7 +31,7 @@
         <a href="index_ja.html">ホーム</a>
         <a href="support_ja.html">サポート</a>
         <a href="privacy_ja.html">プライバシーポリシー</a>
-        <a href="https://github.com/tyamada/MihirakiPDFViewer_Android" target="_blank">GitHub</a>
+        <a href="https://github.com/tyamada/MihirakiPDFViewer_Android" target="_blank" rel="noopener noreferrer">GitHub</a>
     </nav>
 
     <section>
@@ -43,6 +43,7 @@
         <ul>
             <li>Google ドライブ等のクラウドストレージからユーザーが明示的にファイルを開く場合。</li>
             <li>Google Play 決済システムを通じてアプリ内購入（応援チップ）を行う場合。</li>
+        <li id="network-features">PDFの処理は端末内で行います。サンプルの取得、クラウドサービス、更新確認、任意の応援購入では通信を利用します。</li>
         </ul>
 
         <h3>2. アプリログと診断機能</h3>

@@ -13,9 +13,9 @@
     </header>
 
     <nav>
-        <select onchange="location = this.value;">
+        <select aria-label="Language" onchange="location = this.value;">
             <option value="privacy_de.html">Deutsch</option>
-            <option value="privacy_en.html">English</option>
+            <option value="privacy.html">English</option>
             <option value="privacy_es.html">Español</option>
             <option value="privacy_fil.html">Filipino</option>
             <option value="privacy_fr.html" selected>Français</option>
@@ -29,7 +29,7 @@
             <option value="privacy_ko.html">한국어</option>
         </select>
         <a href="index_fr.html">Accueil</a>
-        <a href="https://github.com/tyamada/MihirakiPDFViewer_Android" target="_blank">GitHub</a>
+        <a href="https://github.com/tyamada/MihirakiPDFViewer_Android" target="_blank" rel="noopener noreferrer">GitHub</a>
     </nav>
 
     <section>
@@ -37,10 +37,11 @@
         <p>Le développeur de MihirakiPDFViewer (« l'Application ») respecte votre vie privée. Cette politique décrit la manière dont nous traitons les informations.</p>
 
         <h3>1. Collecte et utilisation des informations</h3>
-        <p>L'Application ne télécharge **pas** et ne collecte pas vos fichiers PDF. Tout le traitement des PDF est effectué localement sur votre appareil. L'Application utilise uniquement la connectivité Internet dans les scénarios limités suivants :</p>
+        <p>L'Application ne télécharge <strong>pas</strong> et ne collecte pas vos fichiers PDF. Tout le traitement des PDF est effectué localement sur votre appareil. L'Application utilise uniquement la connectivité Internet dans les scénarios limités suivants :</p>
         <ul>
             <li>Lorsque vous ouvrez explicitement un fichier à partir de services de stockage cloud comme Google Drive.</li>
             <li>Lorsque vous effectuez un achat via l'application (pourboires de soutien) via le système de facturation Google Play.</li>
+        <li id="network-features">Les PDF sont traités sur votre appareil. Les téléchargements d’exemples, les services cloud, la recherche de mises à jour et les achats de soutien facultatifs utilisent le réseau.</li>
         </ul>
 
         <h3>2. Autorisations</h3>

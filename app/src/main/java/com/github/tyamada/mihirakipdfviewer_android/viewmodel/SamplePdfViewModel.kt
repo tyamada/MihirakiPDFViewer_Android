@@ -9,12 +9,12 @@ import com.github.tyamada.mihirakipdfviewer_android.data.SamplePdfItem
 import com.github.tyamada.mihirakipdfviewer_android.data.SamplePdfItemState
 import com.github.tyamada.mihirakipdfviewer_android.data.SamplePdfRepository
 import com.github.tyamada.mihirakipdfviewer_android.data.SamplePdfSortOrder
+import com.github.tyamada.mihirakipdfviewer_android.data.sortSamplePdfs
 import com.github.tyamada.mihirakipdfviewer_android.data.SettingsRepository
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.combine
-import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.launch
 import java.util.Locale
@@ -71,14 +71,7 @@ class SamplePdfViewModel(application: Application) : AndroidViewModel(applicatio
             )
         }.filter { lang == "ALL" || it.item.languageCode == lang }
 
-        val sortedItems = mappedItems.sortedWith(
-            compareBy<SamplePdfItemState> { itemState ->
-                val epNum = itemState.item.id.removePrefix("ep").substringBefore("_").toIntOrNull() ?: 1
-                if (sortOrder == SamplePdfSortOrder.ASC) epNum else -epNum
-            }.thenBy { itemState ->
-                itemState.item.languageDisplayName
-            }
-        )
+        val sortedItems = sortSamplePdfs(mappedItems, sortOrder)
 
         SamplePdfUiState(
             items = sortedItems,
@@ -104,15 +97,8 @@ class SamplePdfViewModel(application: Application) : AndroidViewModel(applicatio
     }
 
     fun toggleSortOrder() {
-        val newOrder = if (_sortOrder.value == SamplePdfSortOrder.ASC) {
-            SamplePdfSortOrder.DESC
-        } else {
-            SamplePdfSortOrder.ASC
-        }
-        _sortOrder.value = newOrder
         viewModelScope.launch {
-            val currentSettings = settingsRepository.settings.first()
-            settingsRepository.save(currentSettings.copy(samplePdfSortOrder = newOrder))
+            settingsRepository.toggleSamplePdfSortOrder()
         }
     }
 

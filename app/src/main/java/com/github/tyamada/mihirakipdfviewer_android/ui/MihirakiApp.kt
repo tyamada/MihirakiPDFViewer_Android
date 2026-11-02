@@ -12,16 +12,24 @@ import com.github.tyamada.mihirakipdfviewer_android.ui.theme.MihirakiTheme
 import com.github.tyamada.mihirakipdfviewer_android.viewmodel.SamplePdfViewModel
 import com.github.tyamada.mihirakipdfviewer_android.viewmodel.ViewerViewModel
 
-@Composable fun MihirakiApp(viewer: ViewerViewModel) = MihirakiTheme {
+@Composable fun MihirakiApp(viewer: ViewerViewModel, documentRequestId: Int = 0) = MihirakiTheme {
     val nav = rememberNavController()
     val context = LocalContext.current
     val state by viewer.state.collectAsState()
 
     var tutorialDismissed by rememberSaveable { mutableStateOf(false) }
-    LaunchedEffect(state.settings.showTutorialOnStartup, tutorialDismissed) {
-        if (state.settings.showTutorialOnStartup && !tutorialDismissed) {
+    LaunchedEffect(state.settings.showTutorialOnStartup, tutorialDismissed, documentRequestId) {
+        if (documentRequestId == 0 && state.settings.showTutorialOnStartup && !tutorialDismissed) {
             tutorialDismissed = true
             nav.navigate("tutorial")
+        }
+    }
+
+    // ACTION_VIEW can arrive while settings/help/samples are open. Return to the document.
+    LaunchedEffect(documentRequestId) {
+        if (documentRequestId > 0) {
+            tutorialDismissed = true
+            nav.popBackStack("viewer", false)
         }
     }
 

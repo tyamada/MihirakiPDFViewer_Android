@@ -1,0 +1,14 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<testsuites tests="4" failures="0" errors="0" skipped="0" time="5.311" timestamp="2026-11-02T09:42:37" hostname="localhost">
+  <testsuite name="com.github.tyamada.mihirakipdfviewer_android.TipScreenLargeTextTest" tests="4" failures="0" errors="0" skipped="0" time="4.736" timestamp="2026-11-02T09:42:37" hostname="localhost">
+    <properties>
+      <property name="device" value="Smartphone_6.3(AVD) - 17" />
+      <property name="flavor" value="" />
+      <property name="project" value=":app" />
+    </properties>
+    <testcase name="japaneseAtNormalFontScrollsToLastTierAndBack" classname="com.github.tyamada.mihirakipdfviewer_android.TipScreenLargeTextTest" time="1.551" />
+    <testcase name="englishAtDoubleFontScrollsToLastTierAndBack" classname="com.github.tyamada.mihirakipdfviewer_android.TipScreenLargeTextTest" time="1.063" />
+    <testcase name="japaneseAtDoubleFontScrollsToLastTierAndBack" classname="com.github.tyamada.mihirakipdfviewer_android.TipScreenLargeTextTest" time="1.147" />
+    <testcase name="koreanAtDoubleFontScrollsToLastTierAndBack" classname="com.github.tyamada.mihirakipdfviewer_android.TipScreenLargeTextTest" time="0.975" />
+  </testsuite>
+</testsuites>

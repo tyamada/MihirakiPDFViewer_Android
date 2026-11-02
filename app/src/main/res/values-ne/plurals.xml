@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <plurals name="saved_logs_title">
+    <item quantity="one">सुरक्षित लग लाइन: %d</item>
+    <item quantity="other">सुरक्षित लग लाइनहरू: %d</item>
+  </plurals>
+</resources>

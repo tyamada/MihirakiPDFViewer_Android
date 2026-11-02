@@ -1,0 +1,15 @@
+{
+  "base_commit": "42bf295",
+  "includes_uncommitted_worktree_changes": true,
+  "command": ":app:assembleDebug :app:lintDebug :app:testDebugUnitTest --offline",
+  "exit_code": 0,
+  "unit_tests": 9,
+  "test_failures": 0,
+  "lint_errors": 0,
+  "lint_warnings": 4,
+  "missing_sort_keys_fixed": 36,
+  "sort_behavior_ui_test": "not run",
+  "release_bundle": "not built",
+  "remote_ci": "not run",
+  "push": "not performed"
+}

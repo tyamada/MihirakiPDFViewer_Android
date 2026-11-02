@@ -10,7 +10,7 @@
     <string name="document_info">ドキュメント情報</string><string name="title">タイトル</string><string name="author">作成者</string><string name="subject">サブタイトル</string><string name="keywords">キーワード</string><string name="pdf_version">PDFのバージョン</string><string name="options">オプション</string><string name="help">ヘルプ</string><string name="licenses">ライセンス</string><string name="reset">リセット</string>
     <string name="reset_message">アプリの設定をリセットします。</string>
     <string name="help_open"><b>PDFを開く:</b> ファイルピッカーから端末またはクラウドストレージのPDFを選択します。</string>
-    <string name="help_sample_pdfs_desc"><b>サンプルPDF:</b> アプリで提供されているサンプルPDFをダウンロードして、各機能を試すことができます。</string>
+    <string name="help_sample_pdfs_desc"><b>サンプルPDF:</b> アプリで提供されているサンプルPDFをダウンロードして、各機能を試すことができます。 サンプルPDFは初期状態で最新話順に表示します。第1話順／最新話順を切り替えられ、選択した順序は保存され、言語で絞り込んだ場合にも適用されます。</string>
     <string name="help_navigate"><b>ページ移動:</b> スワイプ、スライダー、または（デスクトップ・マウス操作モードでは）左右端のクリックでページを切り替えます。</string><string name="help_outline"><b>PDF目次（アウトライン）:</b> ツールバーの目次アイコンをタップすると、PDF内のブックマークや章・節の一覧が表示され、任意の箇所へ瞬時にジャンプできます。</string><string name="help_menu"><b>メニュー:</b> 画面をタップしてツールバーとスライダーの表示を切り替えます。</string><string name="help_zoom"><b>ズーム:</b> ピンチで拡大・縮小します。拡大中は長押ししてドラッグします。</string><string name="help_search"><b>検索:</b> 検索バーに語句を入力してPDF内を検索します。</string>    <string name="help_layout"><b>設定:</b> 設定画面で表示をカスタマイズし、現在のドキュメントやアプリの情報を確認できます。</string>
     <string name="help_high_quality"><b>高画質化:</b> PDFページをより高画質で表示します。</string>
     <string name="help_sharpness"><b>シャープネス:</b> 文字や線をより鮮明に表示します。</string>
@@ -149,4 +149,10 @@
     <string name="sample_pdf_order_label">表示順: %1$s</string>
     <string name="sample_pdf_order_from_ch1">1話から</string>
     <string name="sample_pdf_order_from_latest">最新話から</string>
+    <string name="memory_usage">メモリ使用量: %1$d MB / %2$d MB</string>
+    <string name="sample_pdf_license_notice">この作品の一部はCC BY 4.0ライセンスで提供されています。著作表示：The Try-It Club / Komairo Hiyori。</string>
+    <string name="page_position_description">全%2$dページ中%1$dページ目</string>
+    <string name="search_position_description">検索結果%2$d件中%1$d件目</string>
+    <string name="toggle_controls">操作バーの表示を切り替え</string>
+    <string name="page_navigation_label">ページ移動</string>
 </resources>

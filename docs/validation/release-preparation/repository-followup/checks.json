@@ -1,0 +1,30 @@
+[
+  {
+    "check": "test_run_device_tests_and_save.py",
+    "exit_code": 0
+  },
+  {
+    "check": "validate_localized_strings.py",
+    "exit_code": 0
+  },
+  {
+    "check": "audit_english_residue.py",
+    "exit_code": 0
+  },
+  {
+    "check": "validate_store_metadata.py",
+    "exit_code": 0
+  },
+  {
+    "check": "validate_public_pages.py",
+    "exit_code": 0
+  },
+  {
+    "check": "test_capture_store_screenshots.py",
+    "exit_code": 0
+  },
+  {
+    "check": "test_review_store_screenshots.py",
+    "exit_code": 0
+  }
+]

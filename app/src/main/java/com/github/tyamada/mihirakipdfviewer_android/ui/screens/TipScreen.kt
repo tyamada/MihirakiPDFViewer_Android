@@ -2,6 +2,8 @@ package com.github.tyamada.mihirakipdfviewer_android.ui.screens
 
 import android.app.Activity
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowBack
@@ -43,7 +45,11 @@ import com.github.tyamada.mihirakipdfviewer_android.viewmodel.ViewerViewModel
     }
 
     Scaffold(topBar = { TopAppBar(title = { Text(stringResource(R.string.support)) }, navigationIcon = { IconButton(back) { Icon(Icons.Default.ArrowBack, stringResource(R.string.back)) } }) }) { p ->
-        Column(Modifier.padding(p).padding(20.dp), verticalArrangement = Arrangement.spacedBy(12.dp)) {
+        Column(
+            modifier = Modifier.fillMaxSize().padding(p)
+                .verticalScroll(rememberScrollState()).padding(20.dp),
+            verticalArrangement = Arrangement.spacedBy(12.dp)
+        ) {
             Text(stringResource(R.string.tip_message))
             Text(stringResource(R.string.tip_free_notice))
             TipTier.entries.forEach { tier ->
@@ -59,28 +65,35 @@ import com.github.tyamada.mihirakipdfviewer_android.viewmodel.ViewerViewModel
                     } else tier.productId
 
                 ElevatedCard(Modifier.fillMaxWidth()) {
-                    Row(Modifier.padding(16.dp), horizontalArrangement = Arrangement.spacedBy(16.dp)) {
-                        val iconRes = when (tier) {
-                            TipTier.BRONZE -> R.drawable.ic_tip_bronze
-                            TipTier.SILVER -> R.drawable.ic_tip_silver
-                            TipTier.GOLD -> R.drawable.ic_tip_gold
-                            TipTier.KOYOMI -> R.drawable.ic_tip_koyomi
-                        }
-                        Image(
-                            painter = painterResource(iconRes),
-                            contentDescription = "${tier.name} Supporter Badge",
-                            modifier = Modifier.size(48.dp).align(Alignment.CenterVertically)
-                        )
-                        Column(Modifier.weight(1f)) {
-                            val tierTitle = when (tier) {
-                                TipTier.KOYOMI -> stringResource(R.string.koyomi_badge_title)
-                                else -> tier.name
+                    Column(Modifier.padding(16.dp), verticalArrangement = Arrangement.spacedBy(12.dp)) {
+                        Row(
+                            modifier = Modifier.fillMaxWidth(),
+                            horizontalArrangement = Arrangement.spacedBy(16.dp),
+                            verticalAlignment = Alignment.CenterVertically
+                        ) {
+                            val iconRes = when (tier) {
+                                TipTier.BRONZE -> R.drawable.ic_tip_bronze
+                                TipTier.SILVER -> R.drawable.ic_tip_silver
+                                TipTier.GOLD -> R.drawable.ic_tip_gold
+                                TipTier.KOYOMI -> R.drawable.ic_tip_koyomi
                             }
-                            Text(tierTitle)
-                            Text(priceText)
+                            Image(
+                                painter = painterResource(iconRes),
+                                contentDescription = null,
+                                modifier = Modifier.size(48.dp).align(Alignment.CenterVertically)
+                            )
+                            Column(Modifier.weight(1f)) {
+                                val tierTitle = when (tier) {
+                                    TipTier.KOYOMI -> stringResource(R.string.koyomi_badge_title)
+                                    else -> tier.name
+                                }
+                                Text(tierTitle)
+                                Text(priceText)
+                            }
                         }
                         val isPurchased = purchasedTiers.contains(tier)
                         Button(
+                            modifier = Modifier.fillMaxWidth(),
                             onClick = {
                                 if (isDebug && product == null) {
                                     manager.simulateSuccess(tier)

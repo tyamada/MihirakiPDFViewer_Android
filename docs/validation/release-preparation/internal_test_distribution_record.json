@@ -1,0 +1,56 @@
+{
+  "recorded_at": "2026-11-02T17:59:13.966542+09:00",
+  "package": "com.github.tyamada.MihirakiPDFViewer_Android",
+  "versionName": "2.1.4",
+  "versionCode": 43,
+  "aab_sha256": "3c5d9330918e47959cd0a21eecf2a4978cd0802c63ab1b9195c9bcc98ee03d6d",
+  "aab_bytes": 18190740,
+  "track": "internal",
+  "track_id": "4701546827696869806",
+  "release_id": "28",
+  "release_name": "43 (2.1.4)",
+  "console_status": "内部テスターに公開",
+  "published_at_console_display": "2026-11-02 17:48",
+  "tester_list": "Internal Testers",
+  "tester_count": 2,
+  "tester_selection_changed": false,
+  "opt_in_url": "https://play.google.com/apps/internaltest/4701546827696869806",
+  "console_release_url": "https://play.google.com/console/u/1/developers/8825504212632848490/app/4975203753311543426/tracks/4701546827696869806/releases/28/details",
+  "release_notes_locales": [
+    "en-US",
+    "ja-JP",
+    "ko-KR"
+  ],
+  "retrace_mapping_attached": true,
+  "console_warnings": [
+    {
+      "type": "native_debug_symbols_missing",
+      "blocking": false,
+      "message": "ネイティブコードを含むが、ネイティブデバッグシンボルが未登録。クラッシュ・ANR解析のため登録を推奨。"
+    }
+  ],
+  "supported_device_exclusions": 0,
+  "supported_device_additions": 0,
+  "production_version_before_after": {
+    "versionCode": 42,
+    "versionName": "2.1.3"
+  },
+  "production_countries_before": [
+    "US",
+    "JP",
+    "KR"
+  ],
+  "production_countries_after": [
+    "US",
+    "JP",
+    "KR"
+  ],
+  "us_included_regions_before_after": 7,
+  "country_changes": 0,
+  "price_changes_performed": false,
+  "production_submission_performed": false,
+  "production_publication_performed": false,
+  "push_performed": false,
+  "tester_device_update_verified": false,
+  "baseline_screenshots_user_reported_saved": true
+}

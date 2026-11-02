@@ -13,9 +13,9 @@
     </header>
 
     <nav>
-        <select onchange="location = this.value;">
+        <select aria-label="Language" onchange="location = this.value;">
             <option value="privacy_de.html">Deutsch</option>
-            <option value="privacy_en.html">English</option>
+            <option value="privacy.html">English</option>
             <option value="privacy_es.html" selected>Español</option>
             <option value="privacy_fil.html">Filipino</option>
             <option value="privacy_fr.html">Français</option>
@@ -29,7 +29,7 @@
             <option value="privacy_ko.html">한국어</option>
         </select>
         <a href="index_es.html">Inicio</a>
-        <a href="https://github.com/tyamada/MihirakiPDFViewer_Android" target="_blank">GitHub</a>
+        <a href="https://github.com/tyamada/MihirakiPDFViewer_Android" target="_blank" rel="noopener noreferrer">GitHub</a>
     </nav>
 
     <section>
@@ -37,10 +37,11 @@
         <p>El desarrollador de MihirakiPDFViewer ("la Aplicación") respeta su privacidad. Esta política describe cómo manejamos la información.</p>
 
         <h3>1. Recopilación y uso de información</h3>
-        <p>La Aplicación **no** sube ni recopila sus archivos PDF. Todo el procesamiento de PDF se realiza localmente en su dispositivo. La Aplicación solo utiliza la conectividad a Internet en los siguientes escenarios limitados:</p>
+        <p>La Aplicación <strong>no</strong> sube ni recopila sus archivos PDF. Todo el procesamiento de PDF se realiza localmente en su dispositivo. La Aplicación solo utiliza la conectividad a Internet en los siguientes escenarios limitados:</p>
         <ul>
             <li>Cuando abre explícitamente un archivo desde servicios de almacenamiento en la nube como Google Drive.</li>
             <li>Cuando realiza una compra dentro de la aplicación (propinas de apoyo) a través del sistema de facturación de Google Play.</li>
+        <li id="network-features">Los PDF se procesan en tu dispositivo. Las descargas de ejemplos, los servicios en la nube, las comprobaciones de actualizaciones y las compras opcionales de apoyo utilizan conexiones de red.</li>
         </ul>
 
         <h3>2. Permisos</h3>

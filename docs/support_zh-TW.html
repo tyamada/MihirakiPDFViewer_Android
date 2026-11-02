@@ -12,7 +12,7 @@
         <p>支援與 FAQ</p>
     </header>
     <nav>
-        <select onchange="location = this.value;">
+        <select aria-label="Language" onchange="location = this.value;">
             <option value="support_de.html">Deutsch</option>
             <option value="support.html">English</option>
             <option value="support_es.html">Español</option>
@@ -30,11 +30,13 @@
         <a href="index_zh-TW.html">首頁</a>
         <a href="support_zh-TW.html">支援</a>
         <a href="privacy_zh-TW.html">隱私權政策</a>
-        <a href="https://github.com/tyamada/MihirakiPDFViewer_Android" target="_blank">GitHub</a>
+        <a href="https://github.com/tyamada/MihirakiPDFViewer_Android" target="_blank" rel="noopener noreferrer">GitHub</a>
     </nav>
     <section>
         <h2>支援與常見問題 (FAQ)</h2>
-        <p>歡迎來到 MihirakiPDFViewer 支援頁面。如有任何問題或功能建議，請造訪我們的 <a href="https://github.com/tyamada/MihirakiPDFViewer_Android" target="_blank">GitHub 儲存庫</a>。</p>
+        <p>歡迎來到 MihirakiPDFViewer 支援頁面。如有任何問題或功能建議，請造訪我們的 <a href="https://github.com/tyamada/MihirakiPDFViewer_Android" target="_blank" rel="noopener noreferrer">GitHub 儲存庫</a>。</p>
+        <p id="sample-order">範例 PDF 預設優先顯示最新一話。可切換為從第 1 話開始或從最新一話開始。所選順序會儲存，並在依語言篩選時繼續生效。</p>
+        <p id="network-features">PDF 在您的裝置上處理。下載範例、使用雲端服務、檢查更新和選用的支持購買會使用網路連線。</p>
     </section>
     <footer>
         <p>&copy; 2026 Takuma Yamada. All rights reserved.</p>

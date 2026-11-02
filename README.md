@@ -18,7 +18,7 @@ Built with **Kotlin**, **Jetpack Compose**, and **Material 3** following the **M
 - 🔄 **Auto-Detection**: Automatically detects page layout (Single/Spread) and reading direction (L2R/R2L) from PDF metadata.
 - 🇯🇵 **R2L Support**: Native support for right-to-left reading order and right-bound book layouts.
 - 🔍 **Powerful Search**: Fast text search with precise hit highlighting (yellow background and red border).
-- 🛡️ **Privacy First**: No internet permissions required for PDF processing. Uses Storage Access Framework (SAF) to only access files you choose.
+- 🛡️ **Privacy First**: PDF processing takes place on your device. Uses Storage Access Framework (SAF) to only access files you choose.
 - 🚀 **Performant Rendering**: Uses Android's native `PdfRenderer` with a fallback to `PDFBox-Android` for maximum compatibility and features.
 - 🎨 **Adaptive UI & Foldable Support**: Responsive design with `BoxWithConstraints` that adapts seamlessly across phones, tablets, and foldables.
 - ♿ **Accessibility (A11y) & Automated Audits**: TalkBack semantics and automated Espresso AccessibilityChecks integrated into test suites.
@@ -27,7 +27,7 @@ Built with **Kotlin**, **Jetpack Compose**, and **Material 3** following the **M
 - 📋 **Diagnostics & Persistent Logging**: In-app device diagnostic testing and local app log management (stored securely locally for up to 24 hours, with zero personal/file data logging and no automatic external transmission).
 
 > [!NOTE]
-> **Internet Connectivity**: An internet connection is required only when opening PDF files stored on **Google Drive** or other cloud services. For PDF files stored locally on your device, no internet connection is required.
+> **Internet Connectivity**: Reading PDFs stored on your device works offline. Sample downloads, cloud storage, update checks, support purchases and purchase restoration require network access; opening external links also uses the network.
 
 ## 📱 Screenshots
 
@@ -49,8 +49,8 @@ Built with **Kotlin**, **Jetpack Compose**, and **Material 3** following the **M
 ## 🚀 Getting Started
 
 ### Prerequisites
-- Android Studio Ladybug (or newer)
-- JDK 17
+- Android Studio with JDK 21 and support for the project’s Gradle/Android Gradle Plugin versions
+- JDK 21
 - Android SDK 37
 
 ### Build
@@ -63,6 +63,9 @@ Built with **Kotlin**, **Jetpack Compose**, and **Material 3** following the **M
 4. Run the app on an emulator or a physical device (minSdk 26).
 
 ## 📚 Sample PDFs
+
+Sample PDFs start with the latest episode. Switch to Episode 1 first or latest first; your order is saved and also applies when filtering by language.
+
 Try out MihirakiPDFViewer with these sample PDF files:
 - [Klub Coba-Coba Episode 1 (Bahasa Indonesia (Indonesian))](docs/sample/tameshibu_episode1_id.pdf) (23MB)
 - [Klub Coba-Coba Episode 2 (Bahasa Indonesia (Indonesian))](docs/sample/tameshibu_episode2_id.pdf) (24MB)
@@ -124,13 +127,9 @@ Run unit tests and instrumented UI tests. Test PDF files are available [here](ht
 ./gradlew test
 ./gradlew connectedAndroidTest
 ```
-- **Automated Device Test & Log Saver Script**: Running `python3 scripts/run_device_tests_and_save.py` automatically executes the following checks on connected physical devices or emulators and saves all outputs to `logs/`:
-  1. Automatic collection of device info and diagnostics (`device_info.txt`)
-  2. Clean uninstallation of existing app, installation of the latest debug APK, and startup log (`App started.`) verification
-  3. JVM unit tests execution (`app:testDebug`)
-  4. Connected instrumentation test suites (`app:connectedDebugAndroidTest`: Load/Performance, A11y, Metadata, Navigation, Store Screenshots) execution
-  5. Python QA & regression tests (9 tests total) execution
-  6. Automatic updating of [VERIFICATION_LIST.md](VERIFICATION_LIST.md) with App Version (`2.0.0(32)`) and test Result (`No issues`).
+- **Installed Play app evidence (no installation or app-data changes)**: `python3 scripts/run_device_tests_and_save.py --serial DEVICE_SERIAL` records the installed version and selected device properties in `logs/`. This is evidence collection, not a functional test pass. Follow the [manual update checklist](docs/DEVICE_TEST_CHECKLIST.ja.md) for settings retention, purchases and TalkBack.
+- **Debug automation on a dedicated test device**: `python3 scripts/run_device_tests_and_save.py --serial DEVICE_SERIAL --mode debug` builds and installs Debug with data retention, then runs startup, unit, instrumentation and Python checks. A Play installation is protected from replacement. For a clean Debug test only, add `--clean-install --confirm-clean DEVICE_SERIAL`; this deletes the test app’s data. Every required failure returns a nonzero status. Manual checks remain pending and the compatibility list is never automatically overwritten.
+- See the [device testing guide](DEV_TESTING_GUIDE.md) for environment setup, reports and limitations. Review logs before sharing.
 - **In-App Diagnostics**: Access "Testing & Diagnostics" in Settings to inspect real-time memory usage and rolling application logs (`AppLogger`).
 - **Performance & Stress Tests**: Includes automated memory tracking, rapid page navigation stress tests, and multi-document switching stability tests.
 
@@ -140,7 +139,10 @@ An automated build and test verification pipeline is established using GitHub Ac
 - **Checks Performed**:
   - JDK 21 environment setup
   - Debug APK build (`./gradlew assembleDebug`)
+  - Android Lint (`./gradlew lintDebug`)
   - JVM unit tests execution (`./gradlew testDebugUnitTest`)
+  - Translation/resource, store metadata and public-page validation; device runner regression tests
+  - Test and Lint reports saved as CI artifacts; no signing keys are required
 
 ## 📋 Verification List
 Device compatibility and verification results tested by developers and users are documented in [VERIFICATION_LIST.md](VERIFICATION_LIST.md).
@@ -151,10 +153,10 @@ If you find this app useful, you can support further development via the in-app 
 ## 🐛 Reporting Issues & Bug Reports
 If you encounter any bugs, crashes, or unexpected behavior, please open an issue on [GitHub Issues](https://github.com/tyamada/MihirakiPDFViewer_Android/issues). 
 When reporting an issue, please include:
-1. **App Version & Build Code** (e.g., v2.1.3, Code 42)
+1. **App Version & Build Code** (e.g., v2.1.4, Code 43)
 2. **Device Model & Android Version** (e.g., Pixel 8, Android 15)
 3. **Steps to Reproduce** the problem
-4. **Diagnostic Logs**: Copy or share app logs from **Settings > Testing & Diagnostics** (safe: contains zero personal or document data).
+4. **Diagnostic Logs**: Copy or share app logs from **Settings > Testing & Diagnostics** Review logs and remove private information before attaching them.
 
 ## 📖 Qiita Series / Articles
 Development articles and series logs are available in the [Qiita Series Stock List](https://qiita.com/tyamada22/stocks/8aeb6d899f7e0257f1d2).
@@ -166,28 +168,16 @@ This project was developed with the assistance of AI:
 
 ## 📜 Version History
 
-- **v2.1.3** (Code 42)
-  - Renamed "App Info" menu item and screen title to "Version" for cross-app consistency.
-  - Localized update check result messages for seamless multilingual support.
-  - Enabled R8 full mode, optimized ProGuard/R8 rules, and refactored codebase for enhanced performance.
-  - Enhanced accessibility compliance and test verification.
-- **v2.1.3** (Code 42)
-  - Major version bump to v2.1.3 with comprehensive documentation updates and help screen HTML rendering enhancements.
-  - Added direct "Report Issue" button to the settings screen and established GitHub Issue templates.
-  - Reorganized settings options group (placing Mouse Navigation and Portrait Display switches at the top of options).
-  - Improved screen rotation synchronization for adaptive portrait display.
-- **v2.1.3** (Code 42)
-  - Updated tip purchases from consumable to non-consumable to comply with App Store review guidelines.
-  - Reorganized and updated store listing assets and sample PDFs.
-- **v2.1.3** (Code 42)
-  - Improved settings screen layout by relocating options group below document info.
-  - Enabled advanced R8 optimizations and native debug symbols for improved performance and crash reporting.
-- **v2.1.3** (Code 42)
-  - Minor settings screen layout adjustments.
-- **v2.1.3** (Code 42)
-  - Consolidated and organized store listing materials and device screenshots.
-- **v2.1.3** (Code 42)
-  - Initial production release with two-page spread support, R2L reading order, smart auto-detection, precise search & highlighting, and privacy-focused local PDF processing.
+- **v2.1.4 (Code 44) — internal testing, 2026-11-02**
+  - Fixed the enlarged-font Support screen: scroll through all tiers, with product details and purchase controls arranged vertically. The support scrolling, TalkBack and purchased-status retest passed on Pixel 8a (Android 17), as reported by the tester.
+
+- **v2.1.4 (Code 43) — internal testing, 2026-11-02**
+  - Saved sample PDF sorting, translation and icon updates, improved screen reader labels, compact search controls, external PDF navigation and settings persistence.
+  - Physical-device update retention, purchase restoration and TalkBack checks are in progress. This is not a production release announcement.
+- **v2.1.3 (Code 42) — production baseline**
+  - The production version recorded before the internal test rollout. See [GitHub Releases](https://github.com/tyamada/MihirakiPDFViewer_Android/releases) for older published tags.
+
+Older README entries repeated version 2.1.3 for unrelated changes. They have been removed rather than assigning unsupported historical version numbers. The Git history retains the original records. Support purchases are non-consumable Google Play products; they do not unlock reading features.
 
 ## 📄 License
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.

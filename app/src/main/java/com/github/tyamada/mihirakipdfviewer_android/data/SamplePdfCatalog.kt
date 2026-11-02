@@ -423,3 +423,10 @@ object SamplePdfCatalog {
         return items.map { it.languageCode }.distinct()
     }
 }
+
+/** Episode order is independent of download state and language filtering. */
+fun sortSamplePdfs(items: List<SamplePdfItemState>, order: SamplePdfSortOrder): List<SamplePdfItemState> =
+    items.sortedWith(compareBy<SamplePdfItemState> {
+        val episode = it.item.id.removePrefix("ep").substringBefore("_").toIntOrNull() ?: 1
+        if (order == SamplePdfSortOrder.ASC) episode else -episode
+    }.thenBy { it.item.languageDisplayName })

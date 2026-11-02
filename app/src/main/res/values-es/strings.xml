@@ -76,7 +76,7 @@
     <string name="pdf_version">Versión del PDF</string>
     <string name="reset_message">Restablecer los ajustes de la aplicación.</string>
     <string name="help_open">Abrir PDF: selecciona un PDF del dispositivo o del almacenamiento en la nube.</string>
-    <string name="help_sample_pdfs_desc">PDF de ejemplo: descarga ejemplos para probar las funciones.</string>
+    <string name="help_sample_pdfs_desc">PDF de ejemplo: descarga ejemplos para probar las funciones. Los PDF de ejemplo muestran primero el episodio más reciente. Puedes cambiar para empezar por el episodio 1. El orden se guarda y también se aplica al filtrar por idioma.</string>
     <string name="help_navigate">Navegación: desliza, usa el control deslizante o haz clic en los bordes en modo ratón.</string>
     <string name="help_outline">Índice: toca el icono superior para acceder a los marcadores y capítulos del PDF.</string>
     <string name="help_menu">Menú: toca la página para mostrar u ocultar la barra de herramientas y el control deslizante.</string>
@@ -189,4 +189,15 @@
     <string name="tutorial_step4_title">4. Listo para leer</string>
     <string name="tutorial_step4_desc">Mira el vídeo o empieza directamente. Puedes ocultar el tutorial al iniciar.</string>
     <string name="tutorial_video_guide_button">Ver vídeos cortos (lista)</string>
+
+    <!-- Sample PDF ordering -->
+    <string name="sample_pdf_order_label">Orden: %1$s</string>
+    <string name="sample_pdf_order_from_ch1">Desde el capítulo 1</string>
+    <string name="sample_pdf_order_from_latest">Desde el capítulo más reciente</string>
+    <string name="memory_usage">Uso de memoria: %1$d MB / %2$d MB</string>
+    <string name="sample_pdf_license_notice">Partes de esta obra se ofrecen bajo la licencia CC BY 4.0. Atribución: The Try-It Club de Komairo Hiyori.</string>
+    <string name="page_position_description">Página %1$d de %2$d</string>
+    <string name="search_position_description">Resultado de búsqueda %1$d de %2$d</string>
+    <string name="toggle_controls">Mostrar u ocultar controles</string>
+    <string name="page_navigation_label">Navegación por páginas</string>
 </resources>

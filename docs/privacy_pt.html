@@ -13,9 +13,9 @@
     </header>
 
     <nav>
-        <select onchange="location = this.value;">
+        <select aria-label="Language" onchange="location = this.value;">
             <option value="privacy_de.html">Deutsch</option>
-            <option value="privacy_en.html">English</option>
+            <option value="privacy.html">English</option>
             <option value="privacy_es.html">Español</option>
             <option value="privacy_fil.html">Filipino</option>
             <option value="privacy_fr.html">Français</option>
@@ -29,7 +29,7 @@
             <option value="privacy_ko.html">한국어</option>
         </select>
         <a href="index_pt.html">Início</a>
-        <a href="https://github.com/tyamada/MihirakiPDFViewer_Android" target="_blank">GitHub</a>
+        <a href="https://github.com/tyamada/MihirakiPDFViewer_Android" target="_blank" rel="noopener noreferrer">GitHub</a>
     </nav>
 
     <section>
@@ -37,10 +37,11 @@
         <p>O desenvolvedor do MihirakiPDFViewer ("o Aplicativo") respeita a sua privacidade. Esta política descreve como lidamos com as informações.</p>
 
         <h3>1. Coleta e uso de informações</h3>
-        <p>O Aplicativo **não** envia nem coleta seus arquivos PDF. Todo o processamento de PDF é realizado localmente no seu dispositivo. O Aplicativo só usa conectividade com a internet nos seguintes cenários limitados:</p>
+        <p>O Aplicativo <strong>não</strong> envia nem coleta seus arquivos PDF. Todo o processamento de PDF é realizado localmente no seu dispositivo. O Aplicativo só usa conectividade com a internet nos seguintes cenários limitados:</p>
         <ul>
             <li>Quando você abre explicitamente um arquivo de serviços de armazenamento em nuvem, como o Google Drive.</li>
             <li>Quando você realiza uma compra no aplicativo (gorjetas de apoio) por meio do sistema de faturamento do Google Play.</li>
+        <li id="network-features">Os PDFs são processados no seu dispositivo. Downloads de exemplos, serviços de nuvem, verificações de atualização e compras opcionais de apoio usam conexões de rede.</li>
         </ul>
 
         <h3>2. Permissões</h3>

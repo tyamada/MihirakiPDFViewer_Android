@@ -1,2 +1,1 @@
-- Updated sample PDF manga files for Episode 3 (Korean, Chinese Simplified, and Chinese Traditional).
-- Verified build stability and local rendering.
+Fixed the Support screen being cut off and unable to scroll at larger font sizes. Improved the layout of product details and purchase buttons.

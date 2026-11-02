@@ -41,12 +41,20 @@ class SettingsRepository(private val context: Context) {
         p[Keys.direction] = s.direction.name; p[Keys.coverMode] = s.coverMode.name; p[Keys.layout] = s.layout.name
         p[Keys.cover] = s.showCover; p[Keys.highQuality] = s.highQuality; p[Keys.sharpness] = s.sharpness
         p[Keys.mouseNavigation] = s.mouseNavigation; p[Keys.portraitSpread] = s.portraitSpread
-        p[Keys.samplePdfSortOrder] = s.samplePdfSortOrder.name
         p[Keys.purchasedTiers] = s.allPurchasedTiers
         s.purchasedTier?.let { p[Keys.purchasedTier] = it }
         if (s.lastUri != null) p[Keys.lastUri] = s.lastUri else p.remove(Keys.lastUri)
         p[Keys.lastPage] = s.lastPage
         p[Keys.showTutorialOnStartup] = s.showTutorialOnStartup
+    }
+    // Sorting belongs to the sample screen; stale viewer snapshots must not overwrite it.
+    suspend fun toggleSamplePdfSortOrder() = context.dataStore.edit { p ->
+        val current = enumOr(p[Keys.samplePdfSortOrder], SamplePdfSortOrder.DESC)
+        p[Keys.samplePdfSortOrder] = if (current == SamplePdfSortOrder.DESC) {
+            SamplePdfSortOrder.ASC.name
+        } else {
+            SamplePdfSortOrder.DESC.name
+        }
     }
     suspend fun reset() = context.dataStore.edit { it.clear() }
     private inline fun <reified T : Enum<T>> enumOr(value: String?, fallback: T) = runCatching { enumValueOf<T>(value!!) }.getOrDefault(fallback)
