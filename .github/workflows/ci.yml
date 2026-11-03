@@ -61,6 +61,7 @@ jobs:
         python3 scripts/validate_store_metadata.py > .artifacts/ci/store-metadata.json
         python3 scripts/validate_public_pages.py > .artifacts/ci/public-pages.json
         python3 scripts/verify_sample_release_assets.py
+        python3 -m unittest discover -s scripts -p 'test_sample_public_catalog.py'
 
     - name: Save validation reports
       if: always()
