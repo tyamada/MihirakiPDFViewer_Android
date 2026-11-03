@@ -60,6 +60,7 @@ jobs:
         python3 scripts/audit_english_residue.py > .artifacts/ci/english-residue.json
         python3 scripts/validate_store_metadata.py > .artifacts/ci/store-metadata.json
         python3 scripts/validate_public_pages.py > .artifacts/ci/public-pages.json
+        python3 scripts/verify_sample_release_assets.py
 
     - name: Save validation reports
       if: always()

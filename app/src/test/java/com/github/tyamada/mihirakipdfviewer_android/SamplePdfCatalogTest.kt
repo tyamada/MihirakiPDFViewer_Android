@@ -18,7 +18,7 @@ class SamplePdfCatalogTest {
             assertEquals(language, 3, episodes.size)
         }
         items.forEach { item ->
-            assertEquals("https://tyamada.github.io/MihirakiPDFViewer_Android/sample/${item.fileName}", item.url)
+            assertEquals("https://github.com/tyamada/MihirakiPDFViewer_Android/releases/download/sample-manga-v1/${item.fileName}", item.url)
             val source = File(root, "testdata/${item.fileName}")
             val published = File(root, "docs/sample/${item.fileName}")
             assertTrue("Missing source: $source", source.isFile && source.length() > 0)

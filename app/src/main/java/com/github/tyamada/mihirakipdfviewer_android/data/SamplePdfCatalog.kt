@@ -22,7 +22,7 @@ data class SamplePdfItemState(
 )
 
 object SamplePdfCatalog {
-    private const val BASE_URL = "https://tyamada.github.io/MihirakiPDFViewer_Android/sample/"
+    private const val BASE_URL = "https://github.com/tyamada/MihirakiPDFViewer_Android/releases/download/sample-manga-v1/"
 
     val items = listOf(
         // English
