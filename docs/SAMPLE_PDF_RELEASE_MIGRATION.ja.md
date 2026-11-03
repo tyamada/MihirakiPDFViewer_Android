@@ -45,3 +45,7 @@ python3 scripts/validate_public_pages.py
 4. 旧版アプリでもPagesから取得できることを確認する。
 
 PDF配布用Releasesは公開済み。アプリ本体のPlay配信・公開ページのデプロイは、この作業では実施していない。
+
+## 公開mainへの反映とCIの追加対応（2026-11-03）
+
+Releases移行は172f713でコミット・push済み。Pagesジョブ41562616081は成功。CIの初回はJava取得時のAPI制限、再試行2回は旧Wrapper検証アクションの外部サービス接続タイムアウトで失敗した。公式の現行`gradle/actions/wrapper-validation@v6`へ更新して再確認する。検証の省略や任意ハッシュの許可は追加しない。アプリ本体の版番号・Play配信は今回変更しない。
