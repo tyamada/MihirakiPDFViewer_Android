@@ -132,4 +132,5 @@
     <string name="search_position_description">जम्मा %2$d खोज परिणाममध्ये %1$d</string>
     <string name="toggle_controls">नियन्त्रणहरू देखाउनुहोस् वा लुकाउनुहोस्</string>
     <string name="page_navigation_label">पृष्ठ नेभिगेसन</string>
+    <string name="sample_pdf_integrity_error">डाउनलोड गरिएको PDF प्रमाणित गर्न सकिएन। कृपया फेरि प्रयास गर्नुहोस्।</string>
 </resources>

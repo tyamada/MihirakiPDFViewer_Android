@@ -17,8 +17,7 @@ class SamplePdfSortTest {
             val episodes = sorted.map(::episode)
             assertEquals(if (order == SamplePdfSortOrder.ASC) episodes.sorted() else episodes.sortedDescending(), episodes)
             sorted.groupBy(::episode).values.forEach { group ->
-                val names = group.map { it.item.languageDisplayName }
-                assertEquals(names.sorted(), names)
+                assertEquals(SamplePdfCatalog.getAvailableLanguages(), group.map { it.item.languageCode })
             }
             assertEquals(items.map { it.item.id }.toSet(), sorted.map { it.item.id }.toSet())
         }

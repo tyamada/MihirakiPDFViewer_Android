@@ -200,4 +200,5 @@
     <string name="search_position_description">Resultado de búsqueda %1$d de %2$d</string>
     <string name="toggle_controls">Mostrar u ocultar controles</string>
     <string name="page_navigation_label">Navegación por páginas</string>
+    <string name="sample_pdf_integrity_error">No se pudo verificar el PDF descargado. Inténtalo de nuevo.</string>
 </resources>

@@ -132,4 +132,5 @@
     <string name="search_position_description">Resulta ng paghahanap %1$d sa %2$d</string>
     <string name="toggle_controls">Ipakita o itago ang mga kontrol</string>
     <string name="page_navigation_label">Paglipat ng pahina</string>
+    <string name="sample_pdf_integrity_error">Hindi ma-verify ang na-download na PDF. Pakisubukang muli.</string>
 </resources>

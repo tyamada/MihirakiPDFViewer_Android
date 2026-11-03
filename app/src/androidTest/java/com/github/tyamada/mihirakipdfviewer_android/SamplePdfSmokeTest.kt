@@ -16,14 +16,16 @@ import java.util.Locale
 /** Host stages catalog PDFs in files/sample_smoke; no network or store images are changed. */
 class SamplePdfSmokeTest {
     @get:Rule val compose = createAndroidComposeRule<MainActivity>()
+    @org.junit.Before fun dismissFirstRunGuide() {
+        compose.waitForIdle()
+        val skip = compose.onAllNodesWithText(compose.activity.getString(R.string.skip))
+        if (skip.fetchSemanticsNodes().isNotEmpty()) skip[0].performClick()
+        compose.waitForIdle()
+    }
+
     private val instrumentation = InstrumentationRegistry.getInstrumentation()
     private fun main(action: () -> Unit) = instrumentation.runOnMainSync(action)
-    private val labels = linkedMapOf(
-        "es" to "Spanish (Español)", "it" to "Italian (Italiano)",
-        "pt" to "Portuguese (Português)", "vi" to "Vietnamese (Tiếng Việt)",
-        "id" to "Indonesian (Bahasa Indonesia)", "fil" to "Filipino (Filipino)",
-        "ne" to "Nepali (नेपाली)"
-    )
+    private val labels = com.github.tyamada.mihirakipdfviewer_android.data.SamplePdfLanguages.entries.associate { it.code to it.displayName }
 
     @Test fun addedLanguagesAppearAndFilterToTheirEpisodes() {
         compose.waitUntil(60_000) { !compose.activity.viewer.state.value.loading }
@@ -31,11 +33,21 @@ class SamplePdfSmokeTest {
         compose.onNodeWithTag("btn_top_sample_pdfs").performClick()
         labels.forEach { (language, label) ->
             compose.onNodeWithTag("sample_language_filter").performClick()
-            compose.onNodeWithText(label).performScrollTo().performClick()
+            compose.onNodeWithTag("sample_language_$language").performScrollTo().performClick()
             val episodes = SamplePdfCatalog.items.filter { it.languageCode == language }
             compose.waitUntil(10_000) { compose.onAllNodesWithText(episodes[0].title).fetchSemanticsNodes().isNotEmpty() }
             episodes.forEach { compose.onNodeWithText(it.title).assertExists() }
             compose.onAllNodesWithTag("btn_download").assertCountEquals(episodes.size)
+        }
+        compose.onNodeWithTag("sample_language_filter").performClick()
+        compose.onNodeWithTag("sample_language_ALL").performScrollTo().performClick()
+        val expected = com.github.tyamada.mihirakipdfviewer_android.data.sortSamplePdfs(
+            SamplePdfCatalog.items.map { com.github.tyamada.mihirakipdfviewer_android.data.SamplePdfItemState(it) },
+            compose.activity.viewer.state.value.settings.samplePdfSortOrder
+        )
+        expected.forEachIndexed { index, state ->
+            compose.onNodeWithTag("sample_pdf_list").performScrollToIndex(index)
+            compose.onNodeWithTag("sample_pdf_${state.item.id}").assertExists()
         }
     }
 
@@ -59,7 +71,7 @@ class SamplePdfSmokeTest {
         org.junit.Assume.assumeTrue("Stage PDFs with the host smoke runner", InstrumentationRegistry.getArguments().getString("sampleSmoke") == "true")
         val queries = mapOf("es" to "mapa", "it" to "mappa", "pt" to "mapa", "vi" to "nghỉ", "fil" to "mapa", "ne" to "आराम", "id" to "peta")
         val viewer = compose.activity.viewer
-        SamplePdfCatalog.items.filter { it.languageCode in labels }.forEach { item ->
+        SamplePdfCatalog.items.filter { it.languageCode in queries }.forEach { item ->
             val file = File(compose.activity.filesDir, "sample_smoke/${item.fileName}")
             assertTrue(file.toString(), file.isFile)
             main { viewer.closeDocument(); viewer.open(Uri.fromFile(file), 5) }

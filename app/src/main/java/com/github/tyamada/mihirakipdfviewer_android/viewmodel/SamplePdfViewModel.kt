@@ -17,6 +17,13 @@ import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.combine
 import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.flow.flowOn
+import kotlinx.coroutines.flow.map
+import kotlinx.coroutines.withContext
+import java.io.File
+import com.github.tyamada.mihirakipdfviewer_android.data.SamplePdfLanguages
+import com.github.tyamada.mihirakipdfviewer_android.R
 import java.util.Locale
 
 data class SamplePdfUiState(
@@ -45,21 +52,27 @@ class SamplePdfViewModel(application: Application) : AndroidViewModel(applicatio
         }
     }
 
+    private val verifiedFiles = _refreshTrigger.map {
+        SamplePdfCatalog.items.associate { item -> item.id to repository.getDownloadedFile(item) }
+    }.flowOn(Dispatchers.IO)
+
     val uiState: StateFlow<SamplePdfUiState> = combine(
         _downloadStates,
         _selectedLanguage,
         _sortOrder,
         _cellularDialogItem,
-        _refreshTrigger
-    ) { states, lang, sortOrder, dialogItem, _ ->
-        val allLangs = SamplePdfCatalog.items.map { it.languageCode }.distinct()
+        verifiedFiles
+    ) { states, lang, sortOrder, dialogItem, files ->
+        val allLangs = SamplePdfCatalog.getAvailableLanguages()
         val mappedItems = SamplePdfCatalog.items.map { item ->
             val dlState = states[item.id] ?: DownloadState.Idle
-            val isDownloaded = repository.isDownloaded(item.fileName)
+            val localFile = files[item.id]
+            val isDownloaded = localFile != null
             val isDownloading = dlState is DownloadState.Downloading
             val progress = (dlState as? DownloadState.Downloading)?.progress ?: 0f
-            val err = (dlState as? DownloadState.Error)?.message
-            val localFile = if (isDownloaded) repository.getLocalFile(item.fileName) else null
+            val err = (dlState as? DownloadState.Error)?.let {
+                if (it.integrityFailure) getApplication<Application>().getString(R.string.sample_pdf_integrity_error) else it.message
+            }
 
             SamplePdfItemState(
                 item = item,
@@ -80,16 +93,14 @@ class SamplePdfViewModel(application: Application) : AndroidViewModel(applicatio
             sortOrder = sortOrder,
             cellularDialogItem = dialogItem
         )
-    }.stateIn(
+    }.flowOn(Dispatchers.IO).stateIn(
         scope = viewModelScope,
         started = SharingStarted.WhileSubscribed(5000),
         initialValue = SamplePdfUiState()
     )
 
     private fun getDefaultLanguage(): String {
-        val deviceLang = Locale.getDefault().language
-        val available = SamplePdfCatalog.items.map { it.languageCode }.distinct()
-        return if (available.contains(deviceLang)) deviceLang else "en"
+        return SamplePdfLanguages.defaultCode(Locale.getDefault())
     }
 
     fun setLanguage(lang: String) {
@@ -130,9 +141,21 @@ class SamplePdfViewModel(application: Application) : AndroidViewModel(applicatio
         }
     }
 
-    fun deletePdf(item: SamplePdfItem) {
+    fun openDownloadedPdf(item: SamplePdfItem, onOpen: (File) -> Unit) {
         viewModelScope.launch {
-            repository.deletePdf(item.fileName)
+            val file = withContext(Dispatchers.IO) { repository.getDownloadedFile(item) }
+            if (file != null) onOpen(file) else {
+                _downloadStates.value = _downloadStates.value + (item.id to DownloadState.Error(
+                    getApplication<Application>().getString(R.string.sample_pdf_integrity_error), true
+                ))
+                _refreshTrigger.value++
+            }
+        }
+    }
+
+    fun deletePdf(item: SamplePdfItem) {
+        viewModelScope.launch(Dispatchers.IO) {
+            repository.deletePdf(item)
             _downloadStates.value = _downloadStates.value - item.id
             _refreshTrigger.value++
         }

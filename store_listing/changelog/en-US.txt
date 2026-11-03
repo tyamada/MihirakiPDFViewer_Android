@@ -1,1 +1,1 @@
-Fixed the Support screen being cut off and unable to scroll at larger font sizes. Improved the layout of product details and purchase buttons.
+Updated the sample manga catalog to 51 PDFs across 17 language and region variants. Added Latin American Spanish, Portugal Portuguese, and Hong Kong written Chinese editions. Improved download verification and cache handling while preserving older PDFs.

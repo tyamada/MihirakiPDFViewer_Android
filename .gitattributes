@@ -1,0 +1,3 @@
+
+# Preserve published handoff CSV bytes, including CRLF.
+docs/sample-releases/**/android-handoff.csv -text whitespace=cr-at-eol

@@ -200,4 +200,5 @@
     <string name="search_position_description">Résultat de recherche %1$d sur %2$d</string>
     <string name="toggle_controls">Afficher ou masquer les commandes</string>
     <string name="page_navigation_label">Navigation entre les pages</string>
+    <string name="sample_pdf_integrity_error">Impossible de vérifier le PDF téléchargé. Veuillez réessayer.</string>
 </resources>

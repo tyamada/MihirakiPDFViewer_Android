@@ -199,4 +199,5 @@
     <string name="search_position_description">第 %1$d 筆搜尋結果，共 %2$d 筆</string>
     <string name="toggle_controls">顯示或隱藏操作列</string>
     <string name="page_navigation_label">頁面導覽</string>
+    <string name="sample_pdf_integrity_error">無法驗證下載的PDF。請再試一次。</string>
 </resources>
