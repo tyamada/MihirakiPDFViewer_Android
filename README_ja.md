@@ -10,6 +10,14 @@
 
 **Kotlin**、**Jetpack Compose**、**Material 3** を使用し、**MVVM** アーキテクチャに基づいて構築されています。
 
+## 動画ガイド
+
+英語の動画です。YouTubeで開きます。
+
+- [紹介動画](https://www.youtube.com/shorts/ethgkyCJqbI)
+- [操作の総合ガイド](https://www.youtube.com/watch?v=I5tp84abV5o)
+- [説明動画の再生リスト（5本）](https://www.youtube.com/watch?v=KhCn6C-lw7I&list=PLBBAqnUOZR-A)
+
 ## ✨ 主な機能
 
 - 📖 **見開き表示対応**: 2つのページを横に並べてシームレスに表示します。

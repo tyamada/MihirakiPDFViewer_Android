@@ -10,6 +10,14 @@ English | [日本語](README_ja.md)
 
 Built with **Kotlin**, **Jetpack Compose**, and **Material 3** following the **MVVM** architecture.
 
+## Video guides
+
+These videos are in English and open on YouTube.
+
+- [Introduction](https://www.youtube.com/shorts/ethgkyCJqbI)
+- [Complete quick guide](https://www.youtube.com/watch?v=I5tp84abV5o)
+- [Tutorial playlist (5 videos)](https://www.youtube.com/watch?v=KhCn6C-lw7I&list=PLBBAqnUOZR-A)
+
 ## ✨ Features
 
 - 📖 **Two-Page Spread Support**: Seamlessly view two pages side-by-side.
