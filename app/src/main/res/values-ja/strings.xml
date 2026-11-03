@@ -155,4 +155,5 @@
     <string name="search_position_description">検索結果%2$d件中%1$d件目</string>
     <string name="toggle_controls">操作バーの表示を切り替え</string>
     <string name="page_navigation_label">ページ移動</string>
+    <string name="sample_pdf_integrity_error">取得したPDFを検証できませんでした。もう一度お試しください。</string>
 </resources>

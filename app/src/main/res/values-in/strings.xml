@@ -132,4 +132,5 @@
     <string name="search_position_description">Hasil pencarian %1$d dari %2$d</string>
     <string name="toggle_controls">Tampilkan atau sembunyikan kontrol</string>
     <string name="page_navigation_label">Navigasi halaman</string>
+    <string name="sample_pdf_integrity_error">PDF yang diunduh tidak dapat diverifikasi. Silakan coba lagi.</string>
 </resources>

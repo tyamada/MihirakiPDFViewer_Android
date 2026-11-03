@@ -3,28 +3,31 @@ package com.github.tyamada.mihirakipdfviewer_android
 import com.github.tyamada.mihirakipdfviewer_android.data.SamplePdfCatalog
 import org.junit.Assert.*
 import org.junit.Test
-import java.io.File
-import java.security.MessageDigest
 
 class SamplePdfCatalogTest {
-    @Test fun catalogHasEpisodesAndMatchingLocalCopies() {
-        val root = listOf(File("."), File("..")).first { File(it, "testdata").isDirectory }
+    @Test fun v2HasUniqueVerifiedEpisodesAndPreservesAllExistingIds() {
         val items = SamplePdfCatalog.items
-        assertEquals(42, items.size)
-        assertEquals(items.size, items.map { it.id }.distinct().size)
-        assertEquals(items.size, items.map { it.fileName }.distinct().size)
-        assertEquals(setOf("ja", "en", "ko", "zh_cn", "zh_tw", "de", "fr", "es", "pt", "vi", "fil", "ne", "id", "it"), items.map { it.languageCode }.toSet())
-        items.groupBy { it.languageCode }.forEach { (language, episodes) ->
-            assertEquals(language, 3, episodes.size)
+        val previous = setOf("ja", "en", "ko", "zh_cn", "zh_tw", "de", "fr", "es", "pt", "vi", "fil", "ne", "id", "it")
+        val regions = previous + setOf("es_419", "pt_pt", "zh_hk")
+        assertEquals(51, items.size)
+        for (values in listOf(items.map { it.id }, items.map { it.fileName }, items.map { it.url })) {
+            assertEquals(51, values.distinct().size)
         }
-        items.forEach { item ->
-            assertEquals("https://github.com/tyamada/MihirakiPDFViewer_Android/releases/download/sample-manga-v1/${item.fileName}", item.url)
-            val source = File(root, "testdata/${item.fileName}")
-            val published = File(root, "docs/sample/${item.fileName}")
-            assertTrue("Missing source: $source", source.isFile && source.length() > 0)
-            assertTrue("Missing distribution copy: $published", published.isFile && published.length() > 0)
-            val sha = MessageDigest.getInstance("SHA-256")
-            assertArrayEquals(item.fileName, sha.digest(source.readBytes()), sha.digest(published.readBytes()))
+        assertEquals(regions, items.map { it.languageCode }.toSet())
+        assertEquals(previous.flatMap { code -> (1..3).map { "ep${it}_$code" } }.toSet(),
+            items.filter { it.languageCode in previous }.map { it.id }.toSet())
+        items.groupBy { it.languageCode }.forEach { (code, episodes) ->
+            assertEquals(setOf("ep1_$code", "ep2_$code", "ep3_$code"), episodes.map { it.id }.toSet())
         }
+        items.forEach {
+            assertEquals("https://github.com/tyamada/MihirakiPDFViewer_Android/releases/download/sample-manga-v2/${it.fileName}", it.url)
+            assertTrue(it.sha256.matches(Regex("[0-9a-f]{64}")))
+            assertTrue(it.bytes > 0L)
+            assertEquals(8, it.pageCount)
+            assertFalse(it.title.isBlank())
+        }
+        assertEquals(listOf("tameshibu_episode1_3_tl.pdf", "tameshibu_episode2_3_tl.pdf", "tameshibu_episode3_2_tl.pdf"),
+            items.filter { it.languageCode == "fil" }.sortedBy { it.id }.map { it.fileName })
+        assertEquals("b84e714206e569318e31ee6255595649decdc57563933fb6d6453d96570de85a", items.single { it.id == "ep1_ja" }.sha256)
     }
 }

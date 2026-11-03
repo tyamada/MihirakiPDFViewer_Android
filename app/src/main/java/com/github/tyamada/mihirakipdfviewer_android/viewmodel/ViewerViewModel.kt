@@ -19,6 +19,7 @@ import kotlinx.coroutines.Job
 import kotlinx.coroutines.ensureActive
 import kotlinx.coroutines.flow.*
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 import java.io.File
 
 data class ViewerUiState(
@@ -252,7 +253,7 @@ class ViewerViewModel(app: Application) : AndroidViewModel(app) {
     fun reset() = viewModelScope.launch {
         preferences.reset()
         closeDocument()
-        SamplePdfRepository(getApplication()).deleteAllDownloadedPdfs()
+        withContext(Dispatchers.IO) { SamplePdfRepository(getApplication()).deleteAllDownloadedPdfs() }
         _state.value = ViewerUiState()
     }
     fun closeDocument() {

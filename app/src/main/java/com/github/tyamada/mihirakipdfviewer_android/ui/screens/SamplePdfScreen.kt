@@ -20,6 +20,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import com.github.tyamada.mihirakipdfviewer_android.R
 import com.github.tyamada.mihirakipdfviewer_android.data.SamplePdfItemState
+import com.github.tyamada.mihirakipdfviewer_android.data.SamplePdfLanguages
 import com.github.tyamada.mihirakipdfviewer_android.viewmodel.SamplePdfViewModel
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -62,24 +63,7 @@ fun SamplePdfScreen(
                     onExpandedChange = { expanded = !expanded },
                     modifier = Modifier.fillMaxWidth()
                 ) {
-                    val selectedLabel = when (uiState.selectedLanguage) {
-                        "ALL" -> allLabel
-                        "en" -> "English"
-                        "ja" -> "Japanese (日本語)"
-                        "ko" -> "Korean (한국어)"
-                        "zh_cn" -> "Chinese (Simplified) (中国語(簡体字))"
-                        "zh_tw" -> "Chinese (Traditional) (中国語(繁体字))"
-                        "de" -> "German (Deutsch)"
-                        "fr" -> "French (Français)"
-                        "es" -> "Spanish (Español)"
-                        "it" -> "Italian (Italiano)"
-                        "pt" -> "Portuguese (Português)"
-                        "vi" -> "Vietnamese (Tiếng Việt)"
-                        "id" -> "Indonesian (Bahasa Indonesia)"
-                        "fil" -> "Filipino (Filipino)"
-                        "ne" -> "Nepali (नेपाली)"
-                        else -> uiState.selectedLanguage.uppercase()
-                    }
+                    val selectedLabel = if (uiState.selectedLanguage == "ALL") allLabel else SamplePdfLanguages.displayName(uiState.selectedLanguage)
                     OutlinedTextField(
                         value = selectedLabel,
                         onValueChange = {},
@@ -96,25 +80,9 @@ fun SamplePdfScreen(
                         onDismissRequest = { expanded = false }
                     ) {
                         uiState.availableLanguages.forEach { lang ->
-                            val labelText = when (lang) {
-                                "ALL" -> allLabel
-                                "en" -> "English"
-                                "ja" -> "Japanese (日本語)"
-                                "ko" -> "Korean (한국어)"
-                                "zh_cn" -> "Chinese (Simplified) (中国語(簡体字))"
-                                "zh_tw" -> "Chinese (Traditional) (中国語(繁体字))"
-                                "de" -> "German (Deutsch)"
-                                "fr" -> "French (Français)"
-                                "es" -> "Spanish (Español)"
-                                "it" -> "Italian (Italiano)"
-                                "pt" -> "Portuguese (Português)"
-                                "vi" -> "Vietnamese (Tiếng Việt)"
-                                "id" -> "Indonesian (Bahasa Indonesia)"
-                                "fil" -> "Filipino (Filipino)"
-                                "ne" -> "Nepali (नेपाली)"
-                                else -> lang.uppercase()
-                            }
+                            val labelText = if (lang == "ALL") allLabel else SamplePdfLanguages.displayName(lang)
                             DropdownMenuItem(
+                                modifier = Modifier.testTag("sample_language_$lang"),
                                 text = { Text(labelText) },
                                 onClick = {
                                     viewModel.setLanguage(lang)
@@ -150,6 +118,7 @@ fun SamplePdfScreen(
             // PDF List & Attribution Footer
             LazyColumn(
                 modifier = Modifier
+                    .testTag("sample_pdf_list")
                     .weight(1f)
                     .fillMaxWidth(),
                 contentPadding = PaddingValues(16.dp),
@@ -160,7 +129,7 @@ fun SamplePdfScreen(
                         itemState = itemState,
                         onDownload = { viewModel.requestDownload(itemState.item) },
                         onOpen = {
-                            itemState.localFile?.let { file ->
+                            viewModel.openDownloadedPdf(itemState.item) { file ->
                                 onOpenPdf(Uri.fromFile(file))
                             }
                         },
@@ -219,7 +188,7 @@ fun SamplePdfCard(
     onDelete: () -> Unit
 ) {
     Card(
-        modifier = Modifier.fillMaxWidth(),
+        modifier = Modifier.fillMaxWidth().testTag("sample_pdf_${itemState.item.id}"),
         elevation = CardDefaults.cardElevation(defaultElevation = 2.dp)
     ) {
         Column(

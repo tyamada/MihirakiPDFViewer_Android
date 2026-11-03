@@ -200,4 +200,5 @@
     <string name="search_position_description">Suchergebnis %1$d von %2$d</string>
     <string name="toggle_controls">Bedienelemente ein- oder ausblenden</string>
     <string name="page_navigation_label">Seitennavigation</string>
+    <string name="sample_pdf_integrity_error">Die heruntergeladene PDF konnte nicht überprüft werden. Bitte erneut versuchen.</string>
 </resources>
