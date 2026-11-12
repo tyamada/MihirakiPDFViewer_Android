@@ -39,9 +39,9 @@ These videos are in English and open on YouTube.
 
 ## 📱 Screenshots
 
-| Viewer (Spread) | Search | Password Protection | Support | Settings |
+| Viewer | Search | Reading settings | Page navigation | Display settings |
 | :---: | :---: | :---: | :---: | :---: |
-| ![Viewer](store_listing/screenshots/smartphone/1_smartphone_screenshot_view_en.png) | ![Search](store_listing/screenshots/smartphone/2_smartphone_screenshot_search_en.png) | ![Password](store_listing/screenshots/smartphone/3_smartphone_screenshot_password_en.png) | ![Support](store_listing/screenshots/smartphone/5_smartphone_screenshot_support_en.png) | ![Settings](store_listing/screenshots/smartphone/4_smartphone_screenshot_settings_en.png) |
+| ![Viewer](store_listing/screenshots/Smartphone_6.3/en_02_spread_landscape.png) | ![Search](store_listing/screenshots/Smartphone_6.3/en_04_search_portrait.png) | ![Reading settings](store_listing/screenshots/Smartphone_6.3/en_03_reading_settings_portrait.png) | ![Page navigation](store_listing/screenshots/Smartphone_6.3/en_05_page_navigation_portrait.png) | ![Display settings](store_listing/screenshots/Smartphone_6.3/en_06_display_settings_portrait.png) |
 
 ## 🛠 Tech Stack
 
@@ -56,19 +56,46 @@ These videos are in English and open on YouTube.
 
 ## 🚀 Getting Started
 
-### Prerequisites
-- Android Studio with JDK 21 and support for the project’s Gradle/Android Gradle Plugin versions
-- JDK 21
-- Android SDK 37
+### Development setup, build and installation
 
-### Build
-1. Clone the repository:
-   ```bash
-   git clone https://github.com/tyamada/MihirakiPDFViewer_Android.git
-   ```
-2. Open the project in Android Studio.
-3. Sync the project with Gradle files.
-4. Run the app on an emulator or a physical device (minSdk 26).
+- JDK 21. The Gradle daemon selects JetBrains JDK 21; the toolchain resolver downloads it if needed.
+- Android SDK Platform 37.0, Build Tools 36.0.0 and Platform Tools.
+- For IDE use, select Android Studio compatible with this repository's Gradle/AGP versions.
+- Install the SDK using Android Studio's SDK Manager or the [official command-line tools](https://developer.android.com/tools/sdkmanager), and accept the SDK licenses.
+
+```bash
+git clone https://github.com/tyamada/MihirakiPDFViewer_Android.git
+cd MihirakiPDFViewer_Android
+# Set JAVA_HOME to JDK 21 and ANDROID_HOME to your Android SDK directory.
+sdkmanager "platforms;android-37.0" "build-tools;36.0.0" "platform-tools"
+sdkmanager --licenses
+./gradlew assembleDebug lintDebug testDebugUnitTest
+# Connect one test device with USB debugging enabled, or start one emulator.
+./gradlew installDebug
+```
+
+Use `gradlew.bat` on Windows. Set the SDK location through `ANDROID_HOME` or `sdk.dir=/absolute/path/to/Android/sdk` in the ignored `local.properties`. In Android Studio, open the project, sync Gradle and select Run. Android 8.0 (API 26) or later is required.
+
+The APK is `app/build/outputs/apk/debug/app-debug.apk`. Debug builds use an automatically generated development key; the author's signing key is unnecessary. A Debug APK cannot replace the Play app with the same application ID and a different signature. Use a dedicated test device.
+
+### Release signing
+
+Generate your own distribution key. The author's private key is not distributed.
+
+```bash
+keytool -genkeypair -v -keystore /absolute/private/path/release-key.jks -alias release -keyalg RSA -keysize 3072 -validity 10000
+```
+
+Enter passwords interactively. Add the following to the ignored `local.properties`, replacing password placeholders with your own values:
+
+```properties
+signing.storeFile=/absolute/private/path/release-key.jks
+signing.storePassword=YOUR_STORE_PASSWORD
+signing.keyAlias=release
+signing.keyPassword=YOUR_KEY_PASSWORD
+```
+
+Run `./gradlew bundleRelease` to create `app/build/outputs/bundle/release/app-release.aab`. Keep keys, passwords, `local.properties` and signed artifacts out of Git. Optional Python tooling dependencies are listed in `requirements-play-console.txt`; normal app builds do not require Play Console credentials.
 
 ## 📚 Sample PDFs
 

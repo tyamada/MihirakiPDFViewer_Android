@@ -39,9 +39,9 @@
 
 ## 📱 スクリーンショット
 
-| ビューア（見開き） | 検索 | パスワード保護 | 応援 | 設定 |
+| 閲覧 | 検索 | 読書設定 | ページ移動 | 表示設定 |
 | :---: | :---: | :---: | :---: | :---: |
-| ![Viewer](store_listing/screenshots/smartphone/1_smartphone_screenshot_view_ja.png) | ![Search](store_listing/screenshots/smartphone/2_smartphone_screenshot_search_ja.png) | ![Password](store_listing/screenshots/smartphone/3_smartphone_screenshot_password_ja.png) | ![Support](store_listing/screenshots/smartphone/5_smartphone_screenshot_support_ja.png) | ![Settings](store_listing/screenshots/smartphone/4_smartphone_screenshot_settings_ja.png) |
+| ![閲覧](store_listing/screenshots/Smartphone_6.3/ja_02_spread_landscape.png) | ![検索](store_listing/screenshots/Smartphone_6.3/ja_04_search_portrait.png) | ![読書設定](store_listing/screenshots/Smartphone_6.3/ja_03_reading_settings_portrait.png) | ![ページ移動](store_listing/screenshots/Smartphone_6.3/ja_05_page_navigation_portrait.png) | ![表示設定](store_listing/screenshots/Smartphone_6.3/ja_06_display_settings_portrait.png) |
 
 ## 🛠 技術スタック
 
@@ -56,19 +56,46 @@
 
 ## 🚀 はじめに
 
-### 動作要件
-- プロジェクトのGradle／Android Gradle PluginとJDK 21に対応するAndroid Studio
-- JDK 21
-- Android SDK 37
+### 開発環境とビルド・インストール
 
-### ビルド方法
-1. リポジトリをクローンします:
-   ```bash
-   git clone https://github.com/tyamada/MihirakiPDFViewer_Android.git
-   ```
-2. Android Studio でプロジェクトを開きます。
-3. Gradle ファイルと同期します。
-4. エミュレーターまたは実機（minSdk 26 以上）で実行します。
+- JDK 21（Gradle DaemonはJetBrains製JDK 21を使用。未導入時はGradleのtoolchain resolverが取得します）
+- Android SDK Platform 37.0、Build Tools 36.0.0、Platform Tools
+- Android Studioで開く場合は、このリポジトリのGradle/AGPバージョンに対応する版を使用してください。
+- SDKはAndroid StudioのSDK Manager、または[公式のコマンドラインツール](https://developer.android.com/tools/sdkmanager)で導入します。SDKライセンスへの同意が必要です。
+
+```bash
+git clone https://github.com/tyamada/MihirakiPDFViewer_Android.git
+cd MihirakiPDFViewer_Android
+# JAVA_HOMEはJDK 21、ANDROID_HOMEは自身のAndroid SDKディレクトリに設定
+sdkmanager "platforms;android-37.0" "build-tools;36.0.0" "platform-tools"
+sdkmanager --licenses
+./gradlew assembleDebug lintDebug testDebugUnitTest
+# USBデバッグを許可した端末、または起動済みエミュレータ1台にインストール
+./gradlew installDebug
+```
+
+Windowsでは`gradlew.bat`を使用します。SDKの場所は`ANDROID_HOME`、または追跡対象外の`local.properties`の`sdk.dir=/absolute/path/to/Android/sdk`で指定します。Android Studioではプロジェクトを開いてGradle Sync後、Runを実行できます。Android 8.0（API 26）以上が必要です。
+
+APKの出力先は`app/build/outputs/apk/debug/app-debug.apk`です。Debugは自動生成の開発用鍵で署名され、作者の秘密鍵は不要です。Play版と署名が異なるため、同じアプリIDで上書きできません。試験用端末を使用してください。
+
+### Release署名
+
+自分の配布用鍵を作成します。作者の鍵は公開・配布しません。
+
+```bash
+keytool -genkeypair -v -keystore /absolute/private/path/release-key.jks -alias release -keyalg RSA -keysize 3072 -validity 10000
+```
+
+パスワードは対話入力します。追跡対象外の`local.properties`に以下を追加してください（パスワード欄は自分の値に置換）。
+
+```properties
+signing.storeFile=/absolute/private/path/release-key.jks
+signing.storePassword=YOUR_STORE_PASSWORD
+signing.keyAlias=release
+signing.keyPassword=YOUR_KEY_PASSWORD
+```
+
+`./gradlew bundleRelease`で`app/build/outputs/bundle/release/app-release.aab`を生成します。鍵・パスワード・`local.properties`・署名済み成果物をGitへ登録しないでください。補助Pythonスクリプトの依存は必要に応じて`requirements-play-console.txt`を参照してください。通常のアプリビルドにPlay Console認証は不要です。
 
 ## 📚 サンプルPDF
 
