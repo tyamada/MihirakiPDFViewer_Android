@@ -27,14 +27,14 @@ data class DeviceTestResult(
     val cpuCores: Int,
     val screenResolution: String,
     val systemLocale: String,
-    val deviceOrientation: String,
-    val themeMode: String,
+    val isLandscape: Boolean,
+    val isDarkMode: Boolean,
     val fontScale: Float,
     val cacheDirWritable: Boolean,
     val pdfRendererApiWorking: Boolean,
     val billingApiAvailable: Boolean,
     val contentResolverAvailable: Boolean,
-    val status: String
+    val passed: Boolean
 )
 
 object DeviceTestRunner {
@@ -68,9 +68,8 @@ object DeviceTestRunner {
         
         val configuration = context.resources.configuration
         val systemLocale = Locale.getDefault().toLanguageTag()
-        val deviceOrientation = if (configuration.orientation == Configuration.ORIENTATION_LANDSCAPE) "Landscape (横)" else "Portrait (縦)"
+        val isLandscape = configuration.orientation == Configuration.ORIENTATION_LANDSCAPE
         val isDarkMode = (configuration.uiMode and Configuration.UI_MODE_NIGHT_MASK) == Configuration.UI_MODE_NIGHT_YES
-        val themeMode = if (isDarkMode) "Dark (ダーク)" else "Light (ライト)"
         val fontScale = configuration.fontScale
 
         val cacheWritable = context.cacheDir?.let { it.exists() || it.mkdirs() } ?: false
@@ -109,14 +108,14 @@ object DeviceTestRunner {
             cpuCores = cpuCores,
             screenResolution = screenResolution,
             systemLocale = systemLocale,
-            deviceOrientation = deviceOrientation,
-            themeMode = themeMode,
+            isLandscape = isLandscape,
+            isDarkMode = isDarkMode,
             fontScale = fontScale,
             cacheDirWritable = cacheWritable,
             pdfRendererApiWorking = pdfRendererApiWorking,
             billingApiAvailable = billingApiAvailable,
             contentResolverAvailable = contentResolverAvailable,
-            status = if (allOk) "PASSED" else "WARNING"
+            passed = allOk
         )
     }
 
@@ -128,8 +127,8 @@ object DeviceTestRunner {
             appendLine("Model: ${result.model}")
             appendLine("OS Version: Android ${result.osVersion} (SDK ${result.sdkInt})")
             appendLine("System Locale: ${result.systemLocale}")
-            appendLine("Device Orientation: ${result.deviceOrientation}")
-            appendLine("Theme Mode: ${result.themeMode}")
+            appendLine("Device Orientation: ${if (result.isLandscape) "Landscape" else "Portrait"}")
+            appendLine("Theme Mode: ${if (result.isDarkMode) "Dark" else "Light"}")
             appendLine("Font Scale: ${result.fontScale}x")
             appendLine("Total RAM: ${result.totalRamMb} MB (Available: ${result.freeRamMb} MB)")
             appendLine("Total Storage: ${String.format(Locale.US, "%.2f", result.totalStorageGb)} GB (Available: ${String.format(Locale.US, "%.2f", result.freeStorageGb)} GB)")
@@ -141,7 +140,7 @@ object DeviceTestRunner {
             appendLine("PDF Renderer API: ${result.pdfRendererApiWorking}")
             appendLine("Google Play Billing API: ${result.billingApiAvailable}")
             appendLine("ContentResolver (SAF): ${result.contentResolverAvailable}")
-            appendLine("Status: ${result.status}")
+            appendLine("Status: ${if (result.passed) "PASSED" else "WARNING"}")
             appendLine("-------------------------------------------")
             appendLine("Privacy Notice: Test results are NOT automatically sent externally.")
         }

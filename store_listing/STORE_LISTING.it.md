@@ -29,7 +29,7 @@ Ideale per i manga! Lettore PDF con doppie pagine e supporto R2L.
 - **Utilizzabile offline**: Non è richiesta alcuna connessione Internet per leggere i file locali.
 
 ### 💖 Sostieni lo sviluppo
-Questa app è senza pubblicità e completamente gratuita. Tutte le funzionalità principali, tra cui la visualizzazione PDF, le doppie pagine e la ricerca, sono pienamente disponibili gratuitamente senza alcuna limitazione. Se trovi l\'app utile, puoi sostenere lo sviluppo tramite mance in-app opzionali non consumabili (livelli Bronzo, Argento, Oro e il Badge commemorativo Ver.2.0, con supporto per codici promozionali) che sbloccano badge di supporto commemorativi nelle impostazioni.
+Questa app è senza pubblicità e completamente gratuita. Tutte le funzionalità principali, tra cui la visualizzazione PDF, le doppie pagine e la ricerca, sono pienamente disponibili gratuitamente senza alcuna limitazione. Se trovi l\'app utile, puoi sostenere lo sviluppo tramite mance in-app opzionali non consumabili (livelli Bronzo, Argento e Oro) che sbloccano badge di supporto commemorativi nelle impostazioni.
 
 ---
 *Nota: Le funzioni di ricerca non sono disponibili per i PDF scansionati composti solo da immagini senza livello di testo.*

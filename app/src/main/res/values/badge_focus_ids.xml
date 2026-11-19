@@ -1,0 +1,11 @@
+<resources>
+    <item name="badge_support_koyomi" type="id" />
+    <item name="badge_support_bronze" type="id" />
+    <item name="badge_support_silver" type="id" />
+    <item name="badge_support_gold" type="id" />
+    <item name="badge_version_koyomi" type="id" />
+    <item name="badge_version_bronze" type="id" />
+    <item name="badge_version_silver" type="id" />
+    <item name="badge_version_gold" type="id" />
+    <item name="badge_version_koyomi_summary" type="id" />
+</resources>

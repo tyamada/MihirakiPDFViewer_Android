@@ -22,7 +22,6 @@
     <string name="tip_message">If you enjoy the app, you can support its development.</string>
     <string name="tip_free_notice">All features are available without purchase.</string>
     <string name="purchase">Purchase</string><string name="purchased">Purchased</string><string name="koyomi_badge_title">Ver.2.0 Release Commemoration Koyomi Badge</string><string name="purchase_thanks">Thank you! %1$s support received.</string><string name="purchase_cancelled">Purchase cancelled.</string><string name="purchase_failed">Purchase failed. Please try again.</string>
-    <string name="purchased_badges_title">Purchased Support Badges</string>
     <string name="purchase_badge_notice">The support badge has been displayed on the settings screen.</string>
     <string name="version">Version</string>
     <string name="build_number">Build number</string>
@@ -46,9 +45,6 @@
     <string name="cellular_data_warning">Cellular Data Warning</string>
     <string name="cellular_data_message">You are currently on a cellular network. Downloading \"%1$s\" (%2$s) may consume a significant amount of mobile data. Do you want to proceed?</string>
     <string name="error_prefix">Error: %s</string>
-    <string name="promo_code_help_title">How to Redeem Promo Code</string>
-    <string name="promo_code_help_message">To redeem a promotion code for the Koyomi badge, go to the Support screen, tap the purchase button for the Ver.2.0 Koyomi badge, and in the Google Play payment sheet, select Redeem.</string>
-    <string name="go_to_support">Go to Support</string>
     <string name="help_device_test"><b>Device Test:</b> Run hardware and performance tests on your device.</string>
     <string name="help_log_viewer"><b>App Logs:</b> View and securely share local application logs for troubleshooting.</string>
     <string name="help_clear_logs"><b>Clear Test &amp; Diagnostic Logs:</b> Delete all recorded test and diagnostic logs from local storage.</string>
@@ -155,4 +151,32 @@
     <string name="toggle_controls">Show or hide controls</string>
     <string name="page_navigation_label">Page navigation</string>
     <string name="sample_pdf_integrity_error">The downloaded PDF could not be verified. Please try again.</string>
+    <string name="tutorial_open_desc">Select a PDF from your device or cloud storage.</string>
+    <string name="tutorial_sample_desc">Download a sample PDF to try the viewer.</string>
+    <string name="tutorial_navigation_desc">Swipe, use the slider, or click the page edges to turn pages.</string>
+    <string name="tutorial_display_desc">Adjust image quality, sharpness, two-page view, cover placement, and reading direction.</string>
+    <string name="tutorial_mouse_desc">Set up mouse navigation and single-page display in portrait orientation.</string>
+    <string name="tutorial_support_desc">Support development with an optional purchase and view your supporter badges.</string>
+    <string name="tip_price_unavailable">Price unavailable</string>
+    <string name="help_expand">Expand</string>
+    <string name="help_collapse">Collapse</string>
+    <string name="sample_pdf_download_error">Could not download the sample PDF. Please try again.</string>
+    <string name="diagnostic_enabled">Enabled</string>
+    <string name="diagnostic_disabled">Disabled</string>
+    <string name="diagnostic_available">Available</string>
+    <string name="diagnostic_unavailable">Unavailable</string>
+    <string name="diagnostic_portrait">Portrait</string>
+    <string name="diagnostic_landscape">Landscape</string>
+    <string name="diagnostic_light">Light</string>
+    <string name="diagnostic_dark">Dark</string>
+    <string name="diagnostic_warning">Warning</string>
+
+    <string name="owned_badges_title">Acquired badges</string>
+    <string name="badge_details_action">View badge details: %1$s</string>
+    <string name="badge_view_details">View badge details</string>
+    <string name="badge_close">Close</string>
+    <string name="koyomi_badge_granted_notice">You received the Koyomi badge for free. It is saved on this device.</string>
+    <string name="koyomi_free_notice">The Koyomi badge is granted automatically for free through December 31, 2027 (Japan time). No purchase or code is needed.</string>
+    <string name="koyomi_badge_description">A commemorative Koyomi badge. Existing and new users receive it automatically for free when the app checks the current device time before January 1, 2028, 00:00 Japan time. Saved badges, including previously purchased badges, remain available after the deadline. If local saved data is lost, the same store account alone does not restore the free grant after the deadline. This badge does not unlock paid features.</string>
+    <string name="support_badge_description">A badge recording your optional support. Existing purchase rights are retained. Opening these details does not start a purchase.</string>
 </resources>

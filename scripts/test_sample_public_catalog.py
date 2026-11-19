@@ -24,9 +24,13 @@ SamplePdfLanguage("zh_hk", "繁體中文（香港書面語）", "Chinese (Tradit
                                     original_source_url='https://example.org/original',
                                     fixed_download_url=f'https://github.com/example/App/releases/download/sample-manga-v2/tameshibu_episode{episode}_{code}.pdf'))
         (evidence / 'manifest.json').write_text(json.dumps(dict(pdf_count=6, entries=entries)))
+        current = root / 'docs/sample-releases/manga-pdf-20261103-v1'
+        current.mkdir()
+        migrated = [dict(entry, new_download_url=entry['fixed_download_url'].replace('/example/App/releases/download/sample-manga-v2/', '/tyamada/manga-prompt-kit/releases/download/manga-pdf-20261103-v1/')) for entry in entries]
+        (current / 'pdf-manifest.json').write_text(json.dumps(dict(pdf_count=6, entries=migrated)))
         items = catalog.catalog_items(root)
-        for name in ['README.md', 'README_ja.md']:
-            (root / name).write_text('# App\n\n' + catalog.markdown_list(items) + '\nKeep https://example.org/legacy.pdf\n')
+        for name in ['SAMPLE_PDF.md', 'SAMPLE_PDF_ja.md']:
+            (root / name).write_text('# Sample PDFs\n\n' + catalog.markdown_list(items) + '\nKeep https://example.org/legacy.pdf\n')
         (root / 'docs/index.html').write_text('<html lang="en"><body><h2 id="legacy-anchor">Samples</h2>' + catalog.html_list(items) +
                                             '<a href="https://example.org/legacy.pdf">Legacy</a></body></html>')
         old = root / 'docs/sample/legacy.pdf'
@@ -48,7 +52,7 @@ SamplePdfLanguage("zh_hk", "繁體中文（香港書面語）", "Chinese (Tradit
         with tempfile.TemporaryDirectory() as directory:
             root = Path(directory); items = self.fixture(root)
             for changed in [items[:-1], [items[0], items[0]] + items[2:]]:
-                self.assert_invalid(root / 'README.md', catalog.markdown_list(changed), items, 'manga links|duplicate')
+                self.assert_invalid(root / 'SAMPLE_PDF.md', catalog.markdown_list(changed), items, 'manga links|duplicate')
 
     def test_language_and_episode_order_are_both_checked(self):
         with tempfile.TemporaryDirectory() as directory:
@@ -60,9 +64,9 @@ SamplePdfLanguage("zh_hk", "繁體中文（香港書面語）", "Chinese (Tradit
         with tempfile.TemporaryDirectory() as directory:
             root = Path(directory); items = self.fixture(root); text = catalog.markdown_list(items)
             url = items[0]['url']
-            for wrong in [url.replace('sample-manga-v2', 'sample-manga-v1'), url.replace('/example/App/', '/example/Other/'),
+            for wrong in [url.replace('manga-pdf-20261103-v1', 'sample-manga-v2'), url.replace('/tyamada/manga-prompt-kit/', '/example/Other/'),
                           url.replace('_zh_hk.pdf', '_fil.pdf')]:
-                self.assert_invalid(root / 'README.md', text.replace(url, wrong), items, 'unexpected manga URLs')
+                self.assert_invalid(root / 'SAMPLE_PDF.md', text.replace(url, wrong), items, 'unexpected manga URLs')
 
     def test_title_language_author_and_size_are_checked(self):
         with tempfile.TemporaryDirectory() as directory:
@@ -78,9 +82,9 @@ SamplePdfLanguage("zh_hk", "繁體中文（香港書面語）", "Chinese (Tradit
             md = catalog.markdown_list(items); html = catalog.html_list(items)
             self.assertIn(r'\[zh-Hant-HK\]', md)
             self.assertIn('[zh-Hant-HK]', html)
-            self.assertEqual([r['label'] for r in catalog.records(root / 'README.md', md)],
+            self.assertEqual([r['label'] for r in catalog.records(root / 'SAMPLE_PDF.md', md)],
                              [r['label'] for r in catalog.records(root / 'docs/index.html', html)])
-            self.assert_invalid(root / 'README.md', md.replace(r'\[zh-Hant-HK\]', '(zh-Hant-HK)'), items, 'differs')
+            self.assert_invalid(root / 'SAMPLE_PDF.md', md.replace(r'\[zh-Hant-HK\]', '(zh-Hant-HK)'), items, 'differs')
 
     def test_missing_html_list_item_size_is_rejected(self):
         with tempfile.TemporaryDirectory() as directory:
@@ -91,14 +95,14 @@ SamplePdfLanguage("zh_hk", "繁體中文（香港書面語）", "Chinese (Tradit
         with tempfile.TemporaryDirectory() as directory:
             root = Path(directory); items = self.fixture(root)
             before = (root / 'docs/sample-releases/sample-manga-v2/manifest.json').read_bytes()
-            (root / 'README.md').write_text('# App\n' + catalog.markdown_list(list(reversed(items))) + 'Keep https://example.org/legacy.pdf\n')
+            (root / 'SAMPLE_PDF.md').write_text('# Sample PDFs\n' + catalog.markdown_list(list(reversed(items))) + 'Keep https://example.org/legacy.pdf\n')
             (root / 'docs/index_ms.html').write_text('<html lang="ms"><body><footer id="old-footer">Old</footer></body></html>')
             (root / 'docs/index_zh_hk.html').write_text('<html lang="zh-HK"><body></body></html>')
-            self.assertEqual(set(catalog.regenerate(root)), {'README.md', 'docs/index_ms.html', 'docs/index_zh_hk.html'})
+            self.assertEqual(set(catalog.regenerate(root)), {'SAMPLE_PDF.md', 'docs/index_ms.html', 'docs/index_zh_hk.html'})
             self.assertEqual(catalog.regenerate(root), [])
             self.assertEqual(catalog.verify_public_lists(root)['public_pdf_links'], 30)
             self.assertIn('id="legacy-anchor"', (root / 'docs/index.html').read_text())
-            self.assertIn('https://example.org/legacy.pdf', (root / 'README.md').read_text())
+            self.assertIn('https://example.org/legacy.pdf', (root / 'SAMPLE_PDF.md').read_text())
             self.assertIn('id="old-footer"', (root / 'docs/index_ms.html').read_text())
             self.assertIn('CC BY 4.0', (root / 'docs/index_zh_hk.html').read_text())
             self.assertEqual((root / 'docs/sample/legacy.pdf').read_bytes(), b'%PDF-legacy-fixture')

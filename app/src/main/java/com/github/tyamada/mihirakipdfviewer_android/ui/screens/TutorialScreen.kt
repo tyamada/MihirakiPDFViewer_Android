@@ -21,6 +21,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.platform.LocalLocale
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
@@ -36,6 +37,17 @@ fun TutorialScreen(
     onFinished: () -> Unit
 ) {
     val context = LocalContext.current
+    val isJapanese = LocalLocale.current.language == "ja"
+    val introVideoUrl = if (isJapanese) {
+        "https://www.youtube.com/watch?v=73bJ0osJYWo"
+    } else {
+        "https://www.youtube.com/watch?v=I5tp84abV5o"
+    }
+    val videoGuidePlaylistUrl = if (isJapanese) {
+        "https://www.youtube.com/playlist?list=PLWD24JL0mav8"
+    } else {
+        "https://www.youtube.com/playlist?list=PLBBAqnUOZR-A"
+    }
     val errorNoApp = stringResource(R.string.error_no_app_youtube)
     var dontShowAgain by remember { mutableStateOf(false) }
     val pagerState = rememberPagerState(pageCount = { 4 })
@@ -171,17 +183,17 @@ fun TutorialScreen(
                         TutorialFeatureItem(
                             icon = Icons.Default.FolderOpen,
                             title = stringResource(R.string.open_pdf),
-                            description = "Use the file picker to select a PDF file from your device or cloud storage."
+                            description = stringResource(R.string.tutorial_open_desc)
                         )
                         TutorialFeatureItem(
                             icon = Icons.Default.Download,
                             title = stringResource(R.string.sample_pdfs),
-                            description = "Download and try sample PDF files provided by the app to test features."
+                            description = stringResource(R.string.tutorial_sample_desc)
                         )
                         TutorialFeatureItem(
                             icon = Icons.Default.Swipe,
                             title = stringResource(R.string.help_navigate),
-                            description = "Switch pages by swiping, using the slider, or clicking left/right edges."
+                            description = stringResource(R.string.tutorial_navigation_desc)
                         )
                     }
                     1 -> {
@@ -245,17 +257,17 @@ fun TutorialScreen(
                         TutorialFeatureItem(
                             icon = Icons.Default.HighQuality,
                             title = stringResource(R.string.display_settings),
-                            description = "Adjust high quality, sharpness, two-page view, cover mode, and reading direction."
+                            description = stringResource(R.string.tutorial_display_desc)
                         )
                         TutorialFeatureItem(
                             icon = Icons.Default.Mouse,
                             title = stringResource(R.string.mouse_navigation),
-                            description = "Configure desktop mouse click navigation and portrait single page display."
+                            description = stringResource(R.string.tutorial_mouse_desc)
                         )
                         TutorialFeatureItem(
                             icon = Icons.Default.Support,
                             title = stringResource(R.string.support),
-                            description = "Support further development via optional tips and view your supporter badges."
+                            description = stringResource(R.string.tutorial_support_desc)
                         )
                     }
                     3 -> {
@@ -284,7 +296,7 @@ fun TutorialScreen(
                         // YouTube Intro Video Button
                         Button(
                             onClick = {
-                                val intent = Intent(Intent.ACTION_VIEW, "https://www.youtube.com/watch?v=I5tp84abV5o".toUri())
+                                val intent = Intent(Intent.ACTION_VIEW, introVideoUrl.toUri())
                                 try {
                                     context.startActivity(intent)
                                 } catch (e: Exception) {
@@ -304,7 +316,7 @@ fun TutorialScreen(
                         // Video Shorts Playlist Button
                         OutlinedButton(
                             onClick = {
-                                val intent = Intent(Intent.ACTION_VIEW, "https://www.youtube.com/watch?v=KhCn6C-lw7I&list=PLBBAqnUOZR-A".toUri())
+                                val intent = Intent(Intent.ACTION_VIEW, videoGuidePlaylistUrl.toUri())
                                 try {
                                     context.startActivity(intent)
                                 } catch (e: Exception) {

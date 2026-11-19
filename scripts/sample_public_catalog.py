@@ -1,8 +1,9 @@
 #!/usr/bin/env python3
-"""Check README/index sample lists; --write regenerates only their manga lists.
+"""Check Markdown/index sample lists; --write regenerates only their manga lists.
 
-The published manifest supplies URLs, titles, authors and sizes. The app's
-language registry supplies display names and the English-name sort key.
+The current manifest supplies URLs, titles and sizes; the original published
+metadata supplies authors and source attribution. The app's language registry
+supplies display names and the English-name sort key.
 Legacy PDFs, release metadata, other links and existing HTML IDs are untouched.
 """
 import argparse
@@ -33,7 +34,9 @@ def unescape_markdown(text):
 
 
 def catalog_items(root):
-    manifest = json.loads((root / 'docs/sample-releases/sample-manga-v2/manifest.json').read_text())
+    manifest = json.loads((root / 'docs/sample-releases/manga-pdf-20261103-v1/pdf-manifest.json').read_text())
+    legacy = json.loads((root / 'docs/sample-releases/sample-manga-v2/manifest.json').read_text())
+    attribution = {entry['sample_id']: entry for entry in legacy['entries']}
     registry = next((root / 'app/src/main/java').rglob('SamplePdfLanguages.kt')).read_text()
     languages = {code: (native, english) for code, native, english in re.findall(
         r'SamplePdfLanguage\("([^"]+)", "([^"]+)", "([^"]+)"\)', registry)}
@@ -45,8 +48,9 @@ def catalog_items(root):
     for entry in ordered:
         native, english = languages[entry['language_key']]
         language = native if native == english else f'{native} ({english})'
-        items.append(dict(id=entry['sample_id'], url=entry['fixed_download_url'],
-                          label=f"{entry['title']} — {language} — {entry['author']}", source=entry['original_source_url'],
+        credit = attribution[entry['sample_id']]
+        items.append(dict(id=entry['sample_id'], url=entry['new_download_url'],
+                          label=f"{entry['title']} — {language} — {credit['author']}", source=credit['original_source_url'],
                           size=f"{entry['bytes'] / 1048576:.1f} MiB"))
     if len({x['url'] for x in items}) != len(items):
         raise ValueError('Manifest has duplicate URLs')
@@ -54,10 +58,10 @@ def catalog_items(root):
 
 
 def target_pages(root):
-    required = [root / 'README.md', root / 'README_ja.md']
+    required = [root / 'SAMPLE_PDF.md', root / 'SAMPLE_PDF_ja.md']
     if any(not p.is_file() for p in required):
-        raise ValueError('Both English and Japanese READMEs are required')
-    pages = sorted(root.glob('README*.md')) + sorted((root / 'docs').glob('index*.html'))
+        raise ValueError('Both English and Japanese sample PDF lists are required')
+    pages = required + sorted((root / 'docs').glob('index*.html'))
     if not any(p.suffix == '.html' for p in pages):
         raise ValueError('No public index pages found')
     return pages

@@ -13,7 +13,8 @@ data class SamplePdfItem(
     val bytes: Long,
     val sha256: String,
     val pageCount: Int,
-    val locale: String
+    val locale: String,
+    val legacyFileNames: List<String> = emptyList()
 )
 
 data class SamplePdfItemState(
@@ -25,9 +26,9 @@ data class SamplePdfItemState(
     val localFile: File? = null
 )
 
-/** Generated from the published Viewer v2 manifest; stable IDs follow android-handoff.csv. */
+/** Bundled offline fallback. SamplePdfManifestStore validates and applies the online manifest separately. */
 object SamplePdfCatalog {
-    private const val BASE_URL = "https://github.com/tyamada/MihirakiPDFViewer_Android/releases/download/sample-manga-v2/"
+    private const val BASE_URL = "https://github.com/tyamada/manga-prompt-kit/releases/download/manga-pdf-20261103-v1/"
 
     val items = listOf(
         SamplePdfItem(

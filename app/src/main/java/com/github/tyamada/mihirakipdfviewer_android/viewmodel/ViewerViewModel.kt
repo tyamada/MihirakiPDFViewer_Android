@@ -45,6 +45,9 @@ class ViewerViewModel(app: Application) : AndroidViewModel(app) {
     val billing = BillingManager(app)
     private val _state = MutableStateFlow(ViewerUiState())
     val state: StateFlow<ViewerUiState> = _state.asStateFlow()
+    private val koyomiNotice = KoyomiNoticeState()
+    val koyomiNoticePending = koyomiNotice.pending
+    fun dismissKoyomiNotice() = koyomiNotice.dismiss()
     private var renderJob: Job? = null
     private var searchJob: Job? = null
 
@@ -100,8 +103,23 @@ class ViewerViewModel(app: Application) : AndroidViewModel(app) {
 
     init {
         viewModelScope.launch {
+            billing.purchasedTiers.collect { tiers ->
+                if (tiers.isNotEmpty()) try {
+                    preferences.recordConfirmedPurchases(tiers.map { it.name }.toSet())
+                } catch (cancelled: kotlinx.coroutines.CancellationException) { throw cancelled
+                } catch (_: Exception) { Log.w("Badges", "Confirmed badge rights could not be saved") }
+            }
+        }
+        viewModelScope.launch {
             val initial = preferences.settings.first()
             _state.update { it.copy(settings = initial) }
+            try {
+                // Device current instant, independent of store acquisition dates and local time zone.
+                koyomiNotice.onGrantResult(preferences.grantKoyomi())
+            } catch (cancelled: kotlinx.coroutines.CancellationException) { throw cancelled
+            } catch (_: Exception) {
+                Log.w("KoyomiBadge", "Badge grant was not saved; no acquisition notice is shown")
+            }
             
             // Auto-resume if no file is currently being opened (e.g. via Intent)
             if (!_state.value.loading && _state.value.source == null) {
@@ -254,7 +272,7 @@ class ViewerViewModel(app: Application) : AndroidViewModel(app) {
         preferences.reset()
         closeDocument()
         withContext(Dispatchers.IO) { SamplePdfRepository(getApplication()).deleteAllDownloadedPdfs() }
-        _state.value = ViewerUiState()
+        _state.value = ViewerUiState(settings = preferences.settings.first())
     }
     fun closeDocument() {
         val previousRender = renderJob

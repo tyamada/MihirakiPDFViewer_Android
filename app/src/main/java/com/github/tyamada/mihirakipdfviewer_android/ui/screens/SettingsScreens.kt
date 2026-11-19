@@ -29,9 +29,9 @@ import android.content.Intent
 import android.net.Uri
 import android.widget.TextView
 import android.widget.Toast
-import java.util.Locale
 import androidx.core.text.HtmlCompat
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.platform.LocalLocale
 import androidx.compose.ui.viewinterop.AndroidView
 import com.github.tyamada.mihirakipdfviewer_android.BuildConfig
 import com.github.tyamada.mihirakipdfviewer_android.R
@@ -146,7 +146,7 @@ import com.github.tyamada.mihirakipdfviewer_android.viewmodel.ViewerViewModel
                             IconButton(onClick = { expanded = !expanded }) {
                                 Icon(
                                     imageVector = if (expanded) Icons.Default.ExpandLess else Icons.Default.ExpandMore,
-                                    contentDescription = if (expanded) "Collapse" else "Expand"
+                                    contentDescription = stringResource(if (expanded) R.string.help_collapse else R.string.help_expand)
                                 )
                             }
                         }
@@ -182,8 +182,10 @@ data class HelpCategorySpec(val title: String, val items: List<Int>)
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable fun VersionScreen(vm: ViewerViewModel, back: () -> Unit, licenses: () -> Unit, tips: () -> Unit, privacyPolicy: () -> Unit) {
     val state by vm.state.collectAsState()
+    val confirmedPurchases by vm.billing.purchasedTiers.collectAsState()
+    val ownedBadges = state.settings.ownedBadgeIds + confirmedPurchases.map { it.name }
     val context = LocalContext.current
-    var showPromoDialog by remember { mutableStateOf(false) }
+    val badgeDetails = rememberBadgeDetailsState()
     val updateAvailableText = stringResource(R.string.update_available)
     val latestVersionText = stringResource(R.string.latest_version)
 
@@ -241,70 +243,19 @@ data class HelpCategorySpec(val title: String, val items: List<Int>)
             }
 
             Spacer(Modifier.height(16.dp))
-            TextButton(onClick = { showPromoDialog = true }, modifier = Modifier.fillMaxWidth()) {
-                Box(Modifier.fillMaxWidth(), contentAlignment = Alignment.CenterStart) {
-                    Text(stringResource(R.string.promo_code_help_title))
-                }
-            }
-
-            if (state.settings.allPurchasedTiers.isNotEmpty()) {
+            BadgeDetailsTextButton("KOYOMI", badgeDetails, stringResource(R.string.koyomi_badge_title), R.id.badge_version_koyomi_summary, Modifier.fillMaxWidth())
+            if (ownedBadges.isNotEmpty()) {
                 Spacer(Modifier.height(24.dp))
-                Text(
-                    stringResource(R.string.purchased_badges_title),
-                    style = MaterialTheme.typography.titleMedium,
-                    color = MaterialTheme.colorScheme.primary,
-                    modifier = Modifier.padding(bottom = 8.dp)
-                )
-                Row(
-                    Modifier.fillMaxWidth(),
-                    horizontalArrangement = Arrangement.Center,
-                    verticalAlignment = Alignment.CenterVertically
-                ) {
-                    state.settings.allPurchasedTiers.forEach { tier ->
-                        val res = when (tier) {
-                            "BRONZE" -> R.drawable.ic_tip_bronze
-                            "SILVER" -> R.drawable.ic_tip_silver
-                            "GOLD" -> R.drawable.ic_tip_gold
-                            "KOYOMI" -> R.drawable.ic_tip_koyomi
-                            else -> null
-                        }
-                        res?.let {
-                            Image(
-                                painter = painterResource(it),
-                                contentDescription = "$tier Supporter Badge",
-                                modifier = Modifier.height(100.dp).padding(horizontal = 8.dp)
-                            )
-                        }
+                Text(stringResource(R.string.owned_badges_title), style = MaterialTheme.typography.titleMedium)
+                FlowRow(Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.spacedBy(12.dp)) {
+                    ownedBadges.forEach { tier ->
+                        key(tier) { OwnedBadgeButton(tier, badgeDetails, BadgeDetailsLocation.Version) }
                     }
                 }
-            }
-
-            if (showPromoDialog) {
-                AlertDialog(
-                    onDismissRequest = { showPromoDialog = false },
-                    title = { Text(stringResource(R.string.promo_code_help_title)) },
-                    text = {
-                        Text(stringResource(R.string.promo_code_help_message), style = MaterialTheme.typography.bodyMedium)
-                    },
-                    confirmButton = {
-                        Button(
-                            onClick = {
-                                showPromoDialog = false
-                                tips()
-                            }
-                        ) {
-                            Text(stringResource(R.string.go_to_support))
-                        }
-                    },
-                    dismissButton = {
-                        TextButton(onClick = { showPromoDialog = false }) {
-                            Text(stringResource(R.string.cancel))
-                        }
-                    }
-                )
             }
         }
     }
+    BadgeDetailsHost(badgeDetails)
 }
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -456,20 +407,20 @@ data class HelpCategorySpec(val title: String, val items: List<Int>)
                 Info(stringResource(R.string.device_name_label), result.model)
                 Info(stringResource(R.string.os_version_label), "Android ${result.osVersion} (SDK ${result.sdkInt})")
                 Info(stringResource(R.string.system_locale_label), result.systemLocale)
-                Info(stringResource(R.string.screen_orientation_label), result.deviceOrientation)
-                Info(stringResource(R.string.theme_mode_label), result.themeMode)
+                Info(stringResource(R.string.screen_orientation_label), stringResource(if (result.isLandscape) R.string.diagnostic_landscape else R.string.diagnostic_portrait))
+                Info(stringResource(R.string.theme_mode_label), stringResource(if (result.isDarkMode) R.string.diagnostic_dark else R.string.diagnostic_light))
                 Info(stringResource(R.string.font_scale_label), "${result.fontScale}x")
                 Info(stringResource(R.string.ram_info_label), "${result.totalRamMb} MB / ${result.freeRamMb} MB")
-                Info(stringResource(R.string.storage_info_label), String.format(Locale.US, "%.2f GB / %.2f GB", result.totalStorageGb, result.freeStorageGb))
-                Info(stringResource(R.string.low_ram_mode_label), if (result.isLowRamDevice) "有効 (Low-RAM Mode)" else "無効 (Normal)")
+                Info(stringResource(R.string.storage_info_label), String.format(LocalLocale.current.platformLocale, "%.2f GB / %.2f GB", result.totalStorageGb, result.freeStorageGb))
+                Info(stringResource(R.string.low_ram_mode_label), stringResource(if (result.isLowRamDevice) R.string.diagnostic_enabled else R.string.diagnostic_disabled))
                 Info(stringResource(R.string.cpu_cores_label), "${result.cpuCores} cores")
                 Info(stringResource(R.string.screen_resolution_label), result.screenResolution)
                 Info(stringResource(R.string.jvm_heap_label), "${result.totalMemoryMb} MB / ${result.freeMemoryMb} MB")
-                Info(stringResource(R.string.cache_dir_label), if (result.cacheDirWritable) "書込可能 (OK)" else "エラー")
-                Info(stringResource(R.string.pdf_renderer_api_label), if (result.pdfRendererApiWorking) "利用可能 (Functional)" else "エラー")
-                Info(stringResource(R.string.billing_api_label), if (result.billingApiAvailable) "利用可能 (Available)" else "利用不可")
-                Info(stringResource(R.string.saf_resolver_label), if (result.contentResolverAvailable) "利用可能 (Active)" else "エラー")
-                Info(stringResource(R.string.status_label), result.status)
+                Info(stringResource(R.string.cache_dir_label), stringResource(if (result.cacheDirWritable) R.string.diagnostic_available else R.string.diagnostic_unavailable))
+                Info(stringResource(R.string.pdf_renderer_api_label), stringResource(if (result.pdfRendererApiWorking) R.string.diagnostic_available else R.string.diagnostic_unavailable))
+                Info(stringResource(R.string.billing_api_label), stringResource(if (result.billingApiAvailable) R.string.diagnostic_available else R.string.diagnostic_unavailable))
+                Info(stringResource(R.string.saf_resolver_label), stringResource(if (result.contentResolverAvailable) R.string.diagnostic_available else R.string.diagnostic_unavailable))
+                Info(stringResource(R.string.status_label), stringResource(if (result.passed) R.string.ok else R.string.diagnostic_warning))
 
                 Spacer(Modifier.height(16.dp))
 

@@ -35,7 +35,11 @@ internal class SamplePdfCache(private val directory: File) {
         if (matches(current, item)) return current
         if (deletedMarker(item).exists()) return null
         // An unchanged v1 PDF remains usable offline, only after a full hash check.
-        return File(directory, item.fileName).takeIf { matches(it, item) }
+        val names = (listOf(item.fileName) + item.legacyFileNames).distinct()
+        if (names.any { SamplePdfUrls.safeFilename(it) && File(directory, "verified/${item.sha256}/$it.deleted").exists() }) return null
+        return names.asSequence().filter(SamplePdfUrls::safeFilename).flatMap { name ->
+            sequenceOf(File(directory, "verified/${item.sha256}/$name"), File(directory, name))
+        }.firstOrNull { matches(it, item) }
     }
 
     fun temporaryFile(item: SamplePdfItem): File {

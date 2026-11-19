@@ -35,13 +35,14 @@ class SettingsRepository(private val context: Context) {
             enumOr(p[Keys.samplePdfSortOrder], SamplePdfSortOrder.DESC),
             tiersSet, p[Keys.purchasedTier], p[Keys.lastUri], p[Keys.lastPage] ?: 0,
             p[Keys.showTutorialOnStartup] ?: true,
+            p[BadgePreferences.freeKoyomiGranted] ?: false,
         )
     }
     suspend fun save(s: ViewerSettings) = context.dataStore.edit { p ->
         p[Keys.direction] = s.direction.name; p[Keys.coverMode] = s.coverMode.name; p[Keys.layout] = s.layout.name
         p[Keys.cover] = s.showCover; p[Keys.highQuality] = s.highQuality; p[Keys.sharpness] = s.sharpness
         p[Keys.mouseNavigation] = s.mouseNavigation; p[Keys.portraitSpread] = s.portraitSpread
-        p[Keys.purchasedTiers] = s.allPurchasedTiers
+        recordPurchasedBadges(p, s.allPurchasedTiers)
         s.purchasedTier?.let { p[Keys.purchasedTier] = it }
         if (s.lastUri != null) p[Keys.lastUri] = s.lastUri else p.remove(Keys.lastUri)
         p[Keys.lastPage] = s.lastPage
@@ -56,6 +57,8 @@ class SettingsRepository(private val context: Context) {
             SamplePdfSortOrder.DESC.name
         }
     }
-    suspend fun reset() = context.dataStore.edit { it.clear() }
+    suspend fun recordConfirmedPurchases(tiers: Set<String>) = context.dataStore.edit { recordPurchasedBadges(it, tiers) }
+    suspend fun grantKoyomi() = KoyomiBadgeStore(context.dataStore).grant()
+    suspend fun reset() = context.dataStore.edit { resetPreferencesKeepingBadges(it) }
     private inline fun <reified T : Enum<T>> enumOr(value: String?, fallback: T) = runCatching { enumValueOf<T>(value!!) }.getOrDefault(fallback)
 }

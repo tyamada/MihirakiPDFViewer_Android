@@ -18,7 +18,6 @@
     <string name="reset">Zurücksetzen</string>
     <string name="privacy_policy">Datenschutzrichtlinie</string>
     <string name="purchase">Kaufen</string>
-    <string name="purchased_badges_title">Gekaufte Unterstützer-Abzeichen</string>
 
     <!-- Local additions: translated UI and shared Utility wording; native review pending. -->
     <string name="password">Passwort</string>
@@ -30,8 +29,6 @@
     <string name="purchase_thanks">Vielen Dank! %1$s Unterstützung erhalten.</string>
     <string name="purchase_cancelled">Kauf abgebrochen.</string>
     <string name="purchase_failed">Kauf fehlgeschlagen. Bitte versuchen Sie es erneut.</string>
-    <string name="promo_code_help_title">Wie man einen Promo-Code einlöst</string>
-    <string name="go_to_support">Zum Support</string>
     <string name="report_issue_screen_title">Problem melden</string>
     <string name="report_include_header">In Ihrem Bericht enthalten</string>
     <string name="report_step1">1. Kurze Zusammenfassung des Problems</string>
@@ -105,7 +102,6 @@
     <string name="cellular_data_warning">Hinweis zu mobilen Daten</string>
     <string name="cellular_data_message">Sie nutzen mobile Daten. Der Download von „%1$s“ (%2$s) kann viele Daten verbrauchen. Fortfahren?</string>
     <string name="error_prefix">Fehler: %s</string>
-    <string name="promo_code_help_message">Öffnen Sie Unterstützung, tippen Sie auf den Kauf des Koyomi-Abzeichens für Version 2.0 und wählen Sie im Google-Play-Zahlungsfenster „Einlösen“.</string>
     <string name="help_device_test">Gerätetest: Hardware und Leistung des Geräts prüfen.</string>
     <string name="help_log_viewer">App-Protokolle: Lokale Protokolle zur Fehleranalyse ansehen und bewusst teilen.</string>
     <string name="help_clear_logs">Protokolle löschen: Alle lokalen Test- und Diagnoseprotokolle entfernen.</string>
@@ -201,4 +197,32 @@
     <string name="toggle_controls">Bedienelemente ein- oder ausblenden</string>
     <string name="page_navigation_label">Seitennavigation</string>
     <string name="sample_pdf_integrity_error">Die heruntergeladene PDF konnte nicht überprüft werden. Bitte erneut versuchen.</string>
+    <string name="tutorial_open_desc">Wähle eine PDF-Datei auf deinem Gerät oder im Cloudspeicher aus.</string>
+    <string name="tutorial_sample_desc">Lade eine Beispiel-PDF herunter, um den Reader auszuprobieren.</string>
+    <string name="tutorial_navigation_desc">Blättere durch Wischen, mit dem Schieberegler oder durch Klick auf den Seitenrand.</string>
+    <string name="tutorial_display_desc">Passe Bildqualität, Schärfe, Doppelseitenansicht, Coverposition und Leserichtung an.</string>
+    <string name="tutorial_mouse_desc">Richte die Mausnavigation und die Einzelseitenansicht im Hochformat ein.</string>
+    <string name="tutorial_support_desc">Unterstütze die Entwicklung mit einem freiwilligen Kauf und sieh dir deine Abzeichen an.</string>
+    <string name="tip_price_unavailable">Preis nicht verfügbar</string>
+    <string name="help_expand">Ausklappen</string>
+    <string name="help_collapse">Einklappen</string>
+    <string name="sample_pdf_download_error">Die Beispiel-PDF konnte nicht heruntergeladen werden. Versuche es erneut.</string>
+    <string name="diagnostic_enabled">Aktiviert</string>
+    <string name="diagnostic_disabled">Deaktiviert</string>
+    <string name="diagnostic_available">Verfügbar</string>
+    <string name="diagnostic_unavailable">Nicht verfügbar</string>
+    <string name="diagnostic_portrait">Hochformat</string>
+    <string name="diagnostic_landscape">Querformat</string>
+    <string name="diagnostic_light">Hell</string>
+    <string name="diagnostic_dark">Dunkel</string>
+    <string name="diagnostic_warning">Warnung</string>
+
+    <string name="owned_badges_title">Erhaltene Abzeichen</string>
+    <string name="badge_details_action">Abzeichendetails ansehen: %1$s</string>
+    <string name="badge_view_details">Abzeichendetails ansehen</string>
+    <string name="badge_close">Schließen</string>
+    <string name="koyomi_badge_granted_notice">Du hast das Koyomi-Abzeichen kostenlos erhalten. Es ist auf diesem Gerät gespeichert.</string>
+    <string name="koyomi_free_notice">Das Koyomi-Abzeichen wird bis einschließlich 31. Dezember 2027 (japanische Zeit) automatisch kostenlos vergeben. Ein Kauf oder Code ist nicht erforderlich.</string>
+    <string name="koyomi_badge_description">Ein Koyomi-Gedenkabzeichen. Bestehende und neue Nutzer erhalten es automatisch kostenlos, wenn die App die aktuelle Gerätezeit prüft und diese vor dem 1. Januar 2028, 00:00 Uhr japanischer Zeit, liegt. Gespeicherte Abzeichen, auch zuvor gekaufte, bleiben nach Ablauf der Frist verfügbar. Gehen die lokal gespeicherten Daten verloren, reicht dasselbe Store-Konto allein nach Ablauf der Frist nicht aus, um das kostenlos erhaltene Abzeichen wiederherzustellen. Dieses Abzeichen schaltet keine kostenpflichtigen Funktionen frei.</string>
+    <string name="support_badge_description">Ein Abzeichen für deine freiwillige Unterstützung. Bereits erworbene Kaufrechte bleiben bestehen. Beim Öffnen dieser Details wird kein Kaufvorgang gestartet.</string>
 </resources>

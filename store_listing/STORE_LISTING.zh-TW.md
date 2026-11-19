@@ -3,7 +3,7 @@
 Google Play Console「商店資訊」的草稿內容。
 
 ## 應用程式名稱 (最多 30 個字元)
-MihirakiPDFViewer - 雙頁閱讀
+MihirakiPDFViewer: 雙頁 PDF 閱讀器
 
 ## 短說明 (最多 80 個字元)
 漫畫閱讀首選！支援雙頁並排與右翻頁（R2L）的注重隱私的 PDF 閱讀器。

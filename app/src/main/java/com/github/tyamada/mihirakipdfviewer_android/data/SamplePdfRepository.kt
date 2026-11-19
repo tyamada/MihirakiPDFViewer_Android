@@ -20,13 +20,17 @@ class SamplePdfRepository(private val context: Context) {
     )
     private val cache = SamplePdfCache(sampleDirectory)
     private val downloads = SamplePdfDownloadManager(cache)
+    private val manifest = SamplePdfManifestStore(File(context.filesDir, "sample-pdf-manifest/catalog.json"))
+    val catalogItems = manifest.items
+    suspend fun loadCatalog() = manifest.load()
+    suspend fun refreshCatalog() = manifest.refresh()
 
     fun getDownloadedFile(item: SamplePdfItem): File? = cache.downloadedFile(item)
     fun isDownloaded(item: SamplePdfItem): Boolean = getDownloadedFile(item) != null
     fun deletePdf(item: SamplePdfItem): Boolean = cache.delete(item)
     // Reset only manages the current catalog's cache. Never recursively delete legacy/user files.
     fun deleteAllDownloadedPdfs() {
-        SamplePdfCatalog.items.forEach { cache.delete(it) }
+        catalogItems.value.forEach { cache.delete(it) }
     }
 
     fun downloadPdf(item: SamplePdfItem) = downloads.download(item)

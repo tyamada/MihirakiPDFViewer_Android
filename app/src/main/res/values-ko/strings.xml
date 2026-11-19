@@ -63,7 +63,6 @@
     <string name="purchase_thanks">감사합니다! %1$s 후원을 받았습니다.</string>
     <string name="purchase_cancelled">구매가 취소되었습니다.</string>
     <string name="purchase_failed">구매에 실패했습니다. 다시 시도해 주세요.</string>
-    <string name="purchased_badges_title">구매한 후원 배지</string>
     <string name="purchase_badge_notice">설정 화면에 후원 배지가 표시되었습니다.</string>
     <string name="version">버전</string>
     <string name="build_number">빌드 번호</string>
@@ -87,9 +86,6 @@
     <string name="cellular_data_warning">셀룰러 데이터 경고</string>
     <string name="cellular_data_message">현재 셀룰러 네트워크를 사용 중입니다. \"%1$s\" (%2$s) 다운로드 시 상당한 모바일 데이터가 소비될 수 있습니다. 계속하시겠습니까?</string>
     <string name="error_prefix">오류: %s</string>
-    <string name="promo_code_help_title">프로모션 코드 교환 방법</string>
-    <string name="promo_code_help_message">코요미 배지 프로모션 코드를 교환하려면, 후원 화면으로 이동하여 Ver.2.0 코요미 배지의 구매 버튼을 탭한 뒤 Google Play 결제창에서 \'코드 교환\'을 선택하세요.</string>
-    <string name="go_to_support">후원 화면으로 이동</string>
     <string name="help_device_test"><b>기기 테스트:</b> 기기 하드웨어 및 성능 테스트를 실행합니다.</string>
     <string name="help_log_viewer"><b>앱 로그:</b> 문제 해결을 위해 로컬 애플리케이션 로그를 확인하고 안전하게 공유합니다.</string>
     <string name="help_clear_logs"><b>테스트 및 진단 로그 삭제:</b> 로컬 저장소에 기록된 모든 테스트 및 진단 로그를 삭제합니다.</string>
@@ -198,4 +194,32 @@
     <string name="toggle_controls">조작 버튼 표시 또는 숨기기</string>
     <string name="page_navigation_label">페이지 이동</string>
     <string name="sample_pdf_integrity_error">다운로드한 PDF를 확인할 수 없습니다. 다시 시도해 주세요.</string>
+    <string name="tutorial_open_desc">기기나 클라우드 저장소에서 PDF를 선택하세요.</string>
+    <string name="tutorial_sample_desc">샘플 PDF를 내려받아 뷰어를 체험해 보세요.</string>
+    <string name="tutorial_navigation_desc">스와이프하거나 슬라이더를 사용하거나 페이지 가장자리를 클릭해 페이지를 넘기세요.</string>
+    <string name="tutorial_display_desc">화질, 선명도, 두 페이지 보기, 표지 위치, 읽기 방향을 조정하세요.</string>
+    <string name="tutorial_mouse_desc">마우스 탐색과 세로 방향의 한 페이지 표시를 설정하세요.</string>
+    <string name="tutorial_support_desc">선택 구매로 개발을 후원하고 받은 배지를 확인하세요.</string>
+    <string name="tip_price_unavailable">가격을 가져올 수 없습니다</string>
+    <string name="help_expand">펼치기</string>
+    <string name="help_collapse">접기</string>
+    <string name="sample_pdf_download_error">샘플 PDF를 내려받지 못했습니다. 다시 시도해 주세요.</string>
+    <string name="diagnostic_enabled">사용</string>
+    <string name="diagnostic_disabled">사용 안 함</string>
+    <string name="diagnostic_available">이용 가능</string>
+    <string name="diagnostic_unavailable">이용 불가</string>
+    <string name="diagnostic_portrait">세로</string>
+    <string name="diagnostic_landscape">가로</string>
+    <string name="diagnostic_light">라이트</string>
+    <string name="diagnostic_dark">다크</string>
+    <string name="diagnostic_warning">경고</string>
+
+    <string name="owned_badges_title">획득한 배지</string>
+    <string name="badge_details_action">배지 상세 정보 보기: %1$s</string>
+    <string name="badge_view_details">배지 상세 정보 보기</string>
+    <string name="badge_close">닫기</string>
+    <string name="koyomi_badge_granted_notice">Koyomi 배지를 무료로 받았습니다. 이 기기에 저장되었습니다.</string>
+    <string name="koyomi_free_notice">Koyomi 배지는 2027년 12월 31일까지(일본 시간 기준) 자동으로 무료 지급됩니다. 구매나 코드 입력은 필요하지 않습니다.</string>
+    <string name="koyomi_badge_description">Koyomi 기념 배지입니다. 앱에서 현재 기기 시간을 확인했을 때 일본 시간으로 2028년 1월 1일 00:00 이전이면 기존 사용자와 신규 사용자 모두에게 자동으로 무료 지급됩니다. 이전에 구매한 배지를 포함해 저장된 배지는 기한이 지난 뒤에도 사용할 수 있습니다. 기기에 저장된 데이터가 사라지면 기한이 지난 뒤에는 같은 스토어 계정만으로 무료 배지를 복원할 수 없습니다. 이 배지로 유료 기능이 잠금 해제되지는 않습니다.</string>
+    <string name="support_badge_description">자발적인 후원을 기록하는 배지입니다. 기존 구매 권한은 유지됩니다. 이 상세 정보를 열어도 구매가 시작되지 않습니다.</string>
 </resources>

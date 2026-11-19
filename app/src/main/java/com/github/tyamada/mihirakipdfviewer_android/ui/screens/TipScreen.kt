@@ -15,6 +15,8 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
+import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.compose.LifecycleEventEffect
 import com.github.tyamada.mihirakipdfviewer_android.BuildConfig
 import com.github.tyamada.mihirakipdfviewer_android.R
 import com.github.tyamada.mihirakipdfviewer_android.billing.*
@@ -23,11 +25,15 @@ import com.github.tyamada.mihirakipdfviewer_android.viewmodel.ViewerViewModel
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable fun TipScreen(vm: ViewerViewModel, back: () -> Unit) {
     val context = LocalContext.current; val manager = vm.billing
-    val products by manager.products.collectAsState(); val purchase by manager.purchase.collectAsState()
+    val catalog by manager.catalog.collectAsState(); val purchase by manager.purchase.collectAsState()
+    val products = catalog.products
     val purchasedTiers by manager.purchasedTiers.collectAsState()
+    val viewerState by vm.state.collectAsState()
+    val badgeDetails = rememberBadgeDetailsState()
     val isDebug = BuildConfig.DEBUG
 
-    LaunchedEffect(Unit) {
+    LifecycleEventEffect(Lifecycle.Event.ON_RESUME) {
+        manager.refreshProducts()
         manager.queryPurchases()
     }
 
@@ -52,17 +58,29 @@ import com.github.tyamada.mihirakipdfviewer_android.viewmodel.ViewerViewModel
         ) {
             Text(stringResource(R.string.tip_message))
             Text(stringResource(R.string.tip_free_notice))
-            TipTier.entries.forEach { tier ->
+            ElevatedCard(Modifier.fillMaxWidth()) {
+                Column(Modifier.padding(16.dp), verticalArrangement = Arrangement.spacedBy(8.dp)) {
+                    Text(stringResource(R.string.koyomi_badge_title), style = MaterialTheme.typography.titleMedium)
+                    Text(stringResource(R.string.koyomi_free_notice))
+                    if ("KOYOMI" in viewerState.settings.ownedBadgeIds || TipTier.KOYOMI in purchasedTiers) {
+                        OwnedBadgeButton("KOYOMI", badgeDetails, BadgeDetailsLocation.Support)
+                    } else {
+                        BadgeDetailsTextButton("KOYOMI", badgeDetails, stringResource(R.string.badge_view_details), R.id.badge_support_koyomi)
+                    }
+                }
+            }
+            TipTier.purchasableTiers.forEach { tier ->
                 val product = products.firstOrNull { it.productId == tier.productId }
-                val priceText = product?.oneTimePurchaseOfferDetailsList?.firstOrNull()?.formattedPrice
+                val offer = product?.oneTimePurchaseOfferDetailsList?.firstOrNull()
+                val priceText = offer?.formattedPrice
                     ?: if (isDebug) {
                         when (tier) {
                             TipTier.BRONZE -> "¥100 (Mock)"
                             TipTier.SILVER -> "¥500 (Mock)"
                             TipTier.GOLD -> "¥1000 (Mock)"
-                            TipTier.KOYOMI -> "¥2000 (Mock)"
+                            else -> stringResource(R.string.tip_price_unavailable)
                         }
-                    } else tier.productId
+                    } else stringResource(R.string.tip_price_unavailable)
 
                 ElevatedCard(Modifier.fillMaxWidth()) {
                     Column(Modifier.padding(16.dp), verticalArrangement = Arrangement.spacedBy(12.dp)) {
@@ -88,23 +106,28 @@ import com.github.tyamada.mihirakipdfviewer_android.viewmodel.ViewerViewModel
                                     else -> tier.name
                                 }
                                 Text(tierTitle)
-                                Text(priceText)
+                                if (catalog.isLoading) {
+                                    CircularProgressIndicator(Modifier.size(20.dp), strokeWidth = 2.dp)
+                                } else {
+                                    Text(priceText)
+                                }
                             }
                         }
-                        val isPurchased = purchasedTiers.contains(tier)
+                        val isPurchased = purchasedTiers.contains(tier) || tier.name in viewerState.settings.allPurchasedTiers
                         Button(
                             modifier = Modifier.fillMaxWidth(),
                             onClick = {
                                 if (isDebug && product == null) {
                                     manager.simulateSuccess(tier)
-                                } else {
-                                    product?.let { manager.purchase(context as Activity, it) }
+                                } else if (product != null && offer != null) {
+                                    manager.purchase(context as Activity, product, offer.offerToken)
                                 }
                             },
-                            enabled = !isPurchased && (isDebug || product != null)
+                            enabled = !catalog.isLoading && !isPurchased && (offer != null || (isDebug && product == null))
                         ) {
                             Text(if (isPurchased) stringResource(R.string.purchased) else stringResource(R.string.purchase))
                         }
+                        if (isPurchased) OwnedBadgeButton(tier.name, badgeDetails, BadgeDetailsLocation.Support)
                     }
                 }
             }
@@ -121,4 +144,6 @@ import com.github.tyamada.mihirakipdfviewer_android.viewmodel.ViewerViewModel
             }
         }
     }
+    BadgeDetailsHost(badgeDetails)
+
 }

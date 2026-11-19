@@ -15,8 +15,8 @@ sealed interface PurchaseState {
 }
 
 class BillingManager(context: Context) : PurchasesUpdatedListener, AutoCloseable {
-    private val _products = MutableStateFlow<List<ProductDetails>>(emptyList())
-    val products = _products.asStateFlow()
+    private val productCatalog = ProductCatalogState<ProductDetails>()
+    val catalog = productCatalog.state
     private val _purchase = MutableStateFlow<PurchaseState>(PurchaseState.Idle)
     val purchase = _purchase.asStateFlow()
     private val _purchasedTiers = MutableStateFlow<Set<TipTier>>(emptySet())
@@ -32,6 +32,7 @@ class BillingManager(context: Context) : PurchasesUpdatedListener, AutoCloseable
         client.startConnection(
             object : BillingClientStateListener {
                 override fun onBillingServiceDisconnected() {
+                    productCatalog.invalidate()
                     Log.d("Billing", "Service disconnected")
                 }
                 override fun onBillingSetupFinished(result: BillingResult) {
@@ -40,6 +41,7 @@ class BillingManager(context: Context) : PurchasesUpdatedListener, AutoCloseable
                         query()
                         queryPurchases()
                     } else {
+                        productCatalog.invalidate()
                         _purchase.value = PurchaseState.Error("Setup Error: ${result.debugMessage} (Code ${result.responseCode})")
                     }
                 }
@@ -63,9 +65,12 @@ class BillingManager(context: Context) : PurchasesUpdatedListener, AutoCloseable
         }
     }
 
+    fun refreshProducts() = query()
+
     private fun query() {
+        val request = productCatalog.begin()
         Log.d("Billing", "Querying products...")
-        val productList = TipTier.entries.map {
+        val productList = TipTier.purchasableTiers.map {
             QueryProductDetailsParams.Product.newBuilder()
                 .setProductId(it.productId)
                 .setProductType(BillingClient.ProductType.INAPP)
@@ -75,20 +80,28 @@ class BillingManager(context: Context) : PurchasesUpdatedListener, AutoCloseable
         client.queryProductDetailsAsync(params) { billingResult, queryResult ->
             Log.d("Billing", "Query result code: ${billingResult.responseCode}")
             if (billingResult.responseCode == BillingClient.BillingResponseCode.OK) {
-                _products.value = queryResult.productDetailsList
+                productCatalog.complete(request, queryResult.productDetailsList)
             } else {
-                _purchase.value = PurchaseState.Error("Query Error: ${billingResult.debugMessage} (Code ${billingResult.responseCode})")
+                if (productCatalog.complete(request, emptyList())) {
+                    _purchase.value = PurchaseState.Error("Query Error: ${billingResult.debugMessage} (Code ${billingResult.responseCode})")
+                }
             }
         }
     }
 
-    fun purchase(activity: Activity, details: ProductDetails) {
-        val params = BillingFlowParams.ProductDetailsParams.newBuilder().setProductDetails(details).build()
+    fun purchase(activity: Activity, details: ProductDetails, offerToken: String?) {
+        if (details.productId == TipTier.KOYOMI.productId) return
+        if (!productCatalog.isCurrent(details)) return
+        val params = BillingFlowParams.ProductDetailsParams.newBuilder()
+            .setProductDetails(details)
+            .apply { offerToken?.let { setOfferToken(it) } }
+            .build()
         val result = client.launchBillingFlow(activity, BillingFlowParams.newBuilder().setProductDetailsParamsList(listOf(params)).build())
         if (result.responseCode != BillingClient.BillingResponseCode.OK) _purchase.value = PurchaseState.Error(result.debugMessage)
     }
 
     fun simulateSuccess(tier: TipTier) {
+        if (tier == TipTier.KOYOMI) return
         _purchasedTiers.value = _purchasedTiers.value + tier
         _purchase.value = PurchaseState.Success(tier)
     }
@@ -117,5 +130,8 @@ class BillingManager(context: Context) : PurchasesUpdatedListener, AutoCloseable
         }
     }
 
-    override fun close() = client.endConnection()
+    override fun close() {
+        productCatalog.invalidate()
+        client.endConnection()
+    }
 }

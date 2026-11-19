@@ -22,8 +22,11 @@ data class ViewerSettings(
     val lastUri: String? = null,
     val lastPage: Int = 0,
     val showTutorialOnStartup: Boolean = true,
+    val freeKoyomiGranted: Boolean = false,
 ) {
     val allPurchasedTiers: Set<String> get() = purchasedTiers + listOfNotNull(purchasedTier)
+    val ownedBadgeIds: Set<String> get() = allPurchasedTiers +
+        if (freeKoyomiGranted) setOf(KoyomiBadgePolicy.BADGE_ID) else emptySet()
 }
 
 data class DocumentInfo(

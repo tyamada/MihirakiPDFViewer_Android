@@ -50,6 +50,27 @@ class SamplePdfCacheTest {
         assertTrue(legacy.isFile)
     }
 
+    @Test fun releaseUrlMigrationReusesBothVerifiedAndLegacyFilesWithoutTransfer() = runBlocking {
+        for (legacyCopy in listOf(false, true)) {
+            val root = temporary.newFolder()
+            val cache = SamplePdfCache(root)
+            val migrated = item()
+            val previous = migrated.copy(url = "https://github.com/tyamada/MihirakiPDFViewer_Android/releases/download/sample-manga-v2/${migrated.fileName}")
+            if (legacyCopy) File(root, previous.fileName).writeBytes(good)
+            else manager(cache).download(previous).toList()
+            val existing = requireNotNull(cache.downloadedFile(previous))
+            val modified = existing.lastModified()
+            val offline = SamplePdfDownloadManager(cache, SamplePdfTransfer { _, _, _ ->
+                fail("Changing only the release URL must not download the PDF again")
+            })
+            assertEquals(DownloadState.Success, offline.download(migrated).toList().last())
+            assertEquals(existing, cache.downloadedFile(migrated))
+            assertEquals(modified, existing.lastModified())
+            assertArrayEquals(good, existing.readBytes())
+            noParts(root)
+        }
+    }
+
     @Test fun offlineFailureCanBeRetriedWithoutLosingOldOrUnrelatedFiles() = runBlocking {
         val root = temporary.newFolder(); val legacy = File(root, "fixture.pdf").apply { writeBytes(old) }
         val user = File(root, "user-document.pdf").apply { writeBytes(good) }; val cache = SamplePdfCache(root)
@@ -104,4 +125,30 @@ class SamplePdfCacheTest {
         try { cancelled.download(item()).toList(); fail("Cancellation must propagate") } catch (_: CancellationException) { }
         noParts(root); assertArrayEquals(old, legacy.readBytes()); assertNull(cache.downloadedFile(item()))
     }
+    @Test fun legacyFilAliasAndVerifiedAliasRemainUsableWithoutDownloadingOrRenaming() = runBlocking {
+        for (verified in listOf(false, true)) {
+            val root = temporary.newFolder()
+            val entry = item().copy(fileName = "new_tl.pdf", legacyFileNames = listOf("old_fil.pdf"))
+            val legacy = File(root, if (verified) "verified/${entry.sha256}/old_fil.pdf" else "old_fil.pdf")
+            legacy.parentFile!!.mkdirs(); legacy.writeBytes(good)
+            val cache = SamplePdfCache(root)
+            val offline = SamplePdfDownloadManager(cache, SamplePdfTransfer { _, _, _ -> fail("Alias must be reused offline") })
+            assertEquals(legacy, cache.downloadedFile(entry))
+            assertEquals(DownloadState.Success, offline.download(entry).toList().last())
+            assertTrue(legacy.isFile); assertArrayEquals(good, legacy.readBytes())
+            assertTrue(cache.delete(entry)); assertNull(cache.downloadedFile(entry))
+            assertArrayEquals(good, legacy.readBytes())
+        }
+    }
+
+    @Test fun deletedLegacyAliasIsNotResurrectedByManifestRename() {
+        val root = temporary.newFolder()
+        val entry = item().copy(fileName = "new_tl.pdf", legacyFileNames = listOf("old_fil.pdf"))
+        File(root, "old_fil.pdf").writeBytes(good)
+        val marker = File(root, "verified/${entry.sha256}/old_fil.pdf.deleted")
+        marker.parentFile!!.mkdirs(); marker.writeText("")
+        assertNull(SamplePdfCache(root).downloadedFile(entry))
+        assertArrayEquals(good, File(root, "old_fil.pdf").readBytes())
+    }
+
 }

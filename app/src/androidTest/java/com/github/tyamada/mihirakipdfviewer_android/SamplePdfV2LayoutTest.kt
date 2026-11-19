@@ -3,6 +3,7 @@ package com.github.tyamada.mihirakipdfviewer_android
 import android.net.Uri
 import androidx.compose.ui.test.*
 import androidx.compose.ui.test.junit4.createAndroidComposeRule
+import androidx.compose.ui.graphics.asAndroidBitmap
 import androidx.test.platform.app.InstrumentationRegistry
 import com.github.tyamada.mihirakipdfviewer_android.data.*
 import kotlinx.coroutines.runBlocking
@@ -45,7 +46,7 @@ class SamplePdfV2LayoutTest {
                 compose.onNode(hasSetTextAction()).performTextReplacement(query)
                 compose.waitUntil(60_000) { viewer.state.value.bitmap !== beforeSearch && viewer.state.value.searchQuery == query && viewer.state.value.searchResults.any { it.pageIndex==0 && it.rects.isNotEmpty() } }
                 compose.waitForIdle()
-                instrument.uiAutomation.takeScreenshot().let { bitmap -> File(output,"$language-search.png").outputStream().use { bitmap.compress(android.graphics.Bitmap.CompressFormat.PNG,100,it) };bitmap.recycle() }
+                compose.onRoot().captureToImage().asAndroidBitmap().let { bitmap -> File(output,"$language-search.png").outputStream().use { bitmap.compress(android.graphics.Bitmap.CompressFormat.PNG,100,it) };bitmap.recycle() }
                 main {
                     val ime = compose.activity.getSystemService(android.content.Context.INPUT_METHOD_SERVICE) as android.view.inputmethod.InputMethodManager
                     ime.hideSoftInputFromWindow(compose.activity.window.decorView.windowToken, 0)
@@ -56,8 +57,9 @@ class SamplePdfV2LayoutTest {
                 compose.waitUntil(60_000) { job.isCompleted }
                 main { viewer.render(2,720) }
                 compose.waitUntil(60_000) { viewer.state.value.effectiveLayout==ViewerLayout.SPREAD && viewer.state.value.bitmap!=null && viewer.state.value.secondBitmap!=null && viewer.state.value.currentPage==2 }
+                compose.waitUntil(60_000) { compose.onAllNodesWithText("3 / 8").fetchSemanticsNodes().isNotEmpty() }
                 compose.waitForIdle()
-                instrument.uiAutomation.takeScreenshot().let { bitmap -> File(output,"$language-spread.png").outputStream().use { bitmap.compress(android.graphics.Bitmap.CompressFormat.PNG,100,it) };bitmap.recycle() }
+                compose.onRoot().captureToImage().asAndroidBitmap().let { bitmap -> File(output,"$language-spread.png").outputStream().use { bitmap.compress(android.graphics.Bitmap.CompressFormat.PNG,100,it) };bitmap.recycle() }
                 main { viewer.move(1) }
                 compose.waitUntil(60_000) { viewer.state.value.currentPage==4 && viewer.state.value.bitmap!=null && viewer.state.value.secondBitmap!=null }
             }

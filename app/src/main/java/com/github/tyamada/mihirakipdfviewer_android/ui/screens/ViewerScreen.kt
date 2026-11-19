@@ -29,6 +29,8 @@ import androidx.compose.ui.input.key.*
 import androidx.compose.ui.input.pointer.PointerEventType
 import androidx.compose.ui.input.pointer.pointerInput
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.platform.LocalDensity
+import androidx.compose.ui.platform.LocalWindowInfo
 import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalLayoutDirection
@@ -91,7 +93,8 @@ import kotlin.math.abs
         focusRequester.requestFocus()
     }
 
-    val useSeparateSearchRow = configuration.screenWidthDp < 480 || configuration.fontScale > 1.3f
+    val windowWidth = with(LocalDensity.current) { LocalWindowInfo.current.containerSize.width.toDp() }
+    val useSeparateSearchRow = windowWidth < 480.dp || configuration.fontScale > 1.3f
     val documentSearch: @Composable () -> Unit = {
         OutlinedTextField(
             value = state.searchQuery,

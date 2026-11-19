@@ -5,7 +5,7 @@ import org.junit.Assert.*
 import org.junit.Test
 
 class SamplePdfCatalogTest {
-    @Test fun v2HasUniqueVerifiedEpisodesAndPreservesAllExistingIds() {
+    @Test fun pinnedReleaseHasUniqueVerifiedEpisodesAndPreservesAllExistingIds() {
         val items = SamplePdfCatalog.items
         val previous = setOf("ja", "en", "ko", "zh_cn", "zh_tw", "de", "fr", "es", "pt", "vi", "fil", "ne", "id", "it")
         val regions = previous + setOf("es_419", "pt_pt", "zh_hk")
@@ -20,7 +20,7 @@ class SamplePdfCatalogTest {
             assertEquals(setOf("ep1_$code", "ep2_$code", "ep3_$code"), episodes.map { it.id }.toSet())
         }
         items.forEach {
-            assertEquals("https://github.com/tyamada/MihirakiPDFViewer_Android/releases/download/sample-manga-v2/${it.fileName}", it.url)
+            assertEquals("https://github.com/tyamada/manga-prompt-kit/releases/download/manga-pdf-20261103-v1/${it.fileName}", it.url)
             assertTrue(it.sha256.matches(Regex("[0-9a-f]{64}")))
             assertTrue(it.bytes > 0L)
             assertEquals(8, it.pageCount)

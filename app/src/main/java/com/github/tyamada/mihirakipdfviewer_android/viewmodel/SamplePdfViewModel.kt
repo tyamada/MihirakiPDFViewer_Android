@@ -4,7 +4,6 @@ import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.viewModelScope
 import com.github.tyamada.mihirakipdfviewer_android.data.DownloadState
-import com.github.tyamada.mihirakipdfviewer_android.data.SamplePdfCatalog
 import com.github.tyamada.mihirakipdfviewer_android.data.SamplePdfItem
 import com.github.tyamada.mihirakipdfviewer_android.data.SamplePdfItemState
 import com.github.tyamada.mihirakipdfviewer_android.data.SamplePdfRepository
@@ -19,7 +18,6 @@ import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.flowOn
-import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.withContext
 import java.io.File
 import com.github.tyamada.mihirakipdfviewer_android.data.SamplePdfLanguages
@@ -46,14 +44,18 @@ class SamplePdfViewModel(application: Application) : AndroidViewModel(applicatio
 
     init {
         viewModelScope.launch {
+            repository.loadCatalog()
+            repository.refreshCatalog()
+        }
+        viewModelScope.launch {
             settingsRepository.settings.collect { settings ->
                 _sortOrder.value = settings.samplePdfSortOrder
             }
         }
     }
 
-    private val verifiedFiles = _refreshTrigger.map {
-        SamplePdfCatalog.items.associate { item -> item.id to repository.getDownloadedFile(item) }
+    private val verifiedFiles = combine(repository.catalogItems, _refreshTrigger) { catalog, _ ->
+        catalog to catalog.associate { item -> item.id to repository.getDownloadedFile(item) }
     }.flowOn(Dispatchers.IO)
 
     val uiState: StateFlow<SamplePdfUiState> = combine(
@@ -63,15 +65,20 @@ class SamplePdfViewModel(application: Application) : AndroidViewModel(applicatio
         _cellularDialogItem,
         verifiedFiles
     ) { states, lang, sortOrder, dialogItem, files ->
-        val allLangs = SamplePdfCatalog.getAvailableLanguages()
-        val mappedItems = SamplePdfCatalog.items.map { item ->
+        val (catalog, localFiles) = files
+        val allLangs = SamplePdfLanguages.entries.filter { language ->
+            catalog.any { it.languageCode == language.code }
+        }.map { it.code }
+        val mappedItems = catalog.map { item ->
             val dlState = states[item.id] ?: DownloadState.Idle
-            val localFile = files[item.id]
+            val localFile = localFiles[item.id]
             val isDownloaded = localFile != null
             val isDownloading = dlState is DownloadState.Downloading
             val progress = (dlState as? DownloadState.Downloading)?.progress ?: 0f
             val err = (dlState as? DownloadState.Error)?.let {
-                if (it.integrityFailure) getApplication<Application>().getString(R.string.sample_pdf_integrity_error) else it.message
+                getApplication<Application>().getString(
+                    if (it.integrityFailure) R.string.sample_pdf_integrity_error else R.string.sample_pdf_download_error
+                )
             }
 
             SamplePdfItemState(

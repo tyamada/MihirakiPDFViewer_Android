@@ -3,6 +3,9 @@ package com.github.tyamada.mihirakipdfviewer_android.ui
 import android.content.Intent
 import android.net.Uri
 import androidx.compose.runtime.*
+import androidx.compose.foundation.layout.*
+import androidx.compose.ui.Modifier
+import com.github.tyamada.mihirakipdfviewer_android.data.canShowKoyomiNotice
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.platform.LocalContext
 import androidx.lifecycle.viewmodel.compose.viewModel
@@ -33,7 +36,11 @@ import com.github.tyamada.mihirakipdfviewer_android.viewmodel.ViewerViewModel
         }
     }
 
-    NavHost(nav, startDestination = "viewer") {
+    val entry by nav.currentBackStackEntryAsState()
+    val noticePending by viewer.koyomiNoticePending.collectAsState()
+    var showGrantedBadgeDetails by rememberSaveable { mutableStateOf(false) }
+    Column(Modifier.fillMaxSize()) {
+    NavHost(nav, startDestination = "viewer", modifier = Modifier.weight(1f)) {
         composable("viewer") { 
             ViewerScreen(
                 vm = viewer,
@@ -101,4 +108,17 @@ import com.github.tyamada.mihirakipdfviewer_android.viewmodel.ViewerViewModel
         composable("device_test") { DeviceTestScreen { nav.popBackStack() } }
         composable("log_viewer") { LogViewerScreen { nav.popBackStack() } }
     }
+    val route = entry?.destination?.route
+    if (canShowKoyomiNotice(noticePending, route,
+            reading = route == "viewer" && state.source != null,
+            blocked = state.loading || state.passwordRequested || state.errorKey != null ||
+                (state.settings.showTutorialOnStartup && !tutorialDismissed))) {
+        KoyomiGrantNotice(
+            onDetails = { viewer.dismissKoyomiNotice(); showGrantedBadgeDetails = true },
+            onDismiss = viewer::dismissKoyomiNotice
+        )
+    }
+    }
+    if (showGrantedBadgeDetails) BadgeDetailsDialog("KOYOMI") { showGrantedBadgeDetails = false }
+
 }

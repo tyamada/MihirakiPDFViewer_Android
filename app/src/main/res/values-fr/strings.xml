@@ -18,7 +18,6 @@
     <string name="reset">Réinitialiser</string>
     <string name="privacy_policy">Politique de confidentialité</string>
     <string name="purchase">Acheter</string>
-    <string name="purchased_badges_title">Badges de soutien achetés</string>
 
     <!-- Local additions: translated UI and shared Utility wording; native review pending. -->
     <string name="password">Mot de passe</string>
@@ -29,8 +28,6 @@
     <string name="purchase_thanks">Merci ! %1$s soutien reçu.</string>
     <string name="purchase_cancelled">Achat annulé.</string>
     <string name="purchase_failed">Échec de l\'achat. Veuillez réessayer.</string>
-    <string name="promo_code_help_title">Comment utiliser un code promotionnel</string>
-    <string name="go_to_support">Aller au support</string>
     <string name="report_issue_screen_title">Signaler un problème</string>
     <string name="report_include_header">À inclure dans votre rapport</string>
     <string name="report_step1">1. Bref résumé du problème</string>
@@ -105,7 +102,6 @@
     <string name="cellular_data_warning">Avertissement sur les données mobiles</string>
     <string name="cellular_data_message">Vous utilisez le réseau mobile. Le téléchargement de « %1$s » (%2$s) peut consommer beaucoup de données. Continuer ?</string>
     <string name="error_prefix">Erreur : %s</string>
-    <string name="promo_code_help_message">Ouvrez l’écran de soutien, touchez l’achat du badge Koyomi version 2.0, puis choisissez « Utiliser un code » dans le paiement Google Play.</string>
     <string name="help_device_test">Test de l’appareil : vérifiez le matériel et les performances.</string>
     <string name="help_log_viewer">Journaux : consultez et partagez manuellement les journaux locaux pour le dépannage.</string>
     <string name="help_clear_logs">Effacer les journaux : supprimer tous les journaux locaux de test et de diagnostic.</string>
@@ -201,4 +197,32 @@
     <string name="toggle_controls">Afficher ou masquer les commandes</string>
     <string name="page_navigation_label">Navigation entre les pages</string>
     <string name="sample_pdf_integrity_error">Impossible de vérifier le PDF téléchargé. Veuillez réessayer.</string>
+    <string name="tutorial_open_desc">Sélectionnez un PDF sur votre appareil ou dans votre stockage infonuagique.</string>
+    <string name="tutorial_sample_desc">Téléchargez un PDF d’exemple pour essayer le lecteur.</string>
+    <string name="tutorial_navigation_desc">Tournez les pages en balayant, en utilisant le curseur ou en cliquant sur les bords.</string>
+    <string name="tutorial_display_desc">Réglez la qualité d’image, la netteté, la double page, la position de la couverture et le sens de lecture.</string>
+    <string name="tutorial_mouse_desc">Configurez la navigation à la souris et l’affichage d’une seule page en mode portrait.</string>
+    <string name="tutorial_support_desc">Soutenez le développement par un achat facultatif et consultez vos badges.</string>
+    <string name="tip_price_unavailable">Prix indisponible</string>
+    <string name="help_expand">Développer</string>
+    <string name="help_collapse">Réduire</string>
+    <string name="sample_pdf_download_error">Impossible de télécharger le PDF d’exemple. Réessayez.</string>
+    <string name="diagnostic_enabled">Activé</string>
+    <string name="diagnostic_disabled">Désactivé</string>
+    <string name="diagnostic_available">Disponible</string>
+    <string name="diagnostic_unavailable">Indisponible</string>
+    <string name="diagnostic_portrait">Mode portrait</string>
+    <string name="diagnostic_landscape">Paysage</string>
+    <string name="diagnostic_light">Clair</string>
+    <string name="diagnostic_dark">Sombre</string>
+    <string name="diagnostic_warning">Avertissement</string>
+
+    <string name="owned_badges_title">Badges obtenus</string>
+    <string name="badge_details_action">Afficher les détails du badge : %1$s</string>
+    <string name="badge_view_details">Afficher les détails du badge</string>
+    <string name="badge_close">Fermer</string>
+    <string name="koyomi_badge_granted_notice">Vous avez reçu gratuitement le badge Koyomi. Il est enregistré sur cet appareil.</string>
+    <string name="koyomi_free_notice">Le badge Koyomi est attribué automatiquement et gratuitement jusqu’au 31 décembre 2027 inclus (heure du Japon). Aucun achat ni code n’est nécessaire.</string>
+    <string name="koyomi_badge_description">Un badge commémoratif Koyomi. Les utilisateurs nouveaux et existants le reçoivent automatiquement et gratuitement si, lors de la vérification de l’heure de l’appareil, l’application constate qu’il est encore avant le 1er janvier 2028 à 00:00, heure du Japon. Les badges enregistrés, y compris ceux achetés auparavant, restent disponibles après cette échéance. En cas de perte des données enregistrées sur l’appareil, le même compte de la boutique ne suffit pas à restaurer le badge gratuit après cette échéance. Ce badge ne déverrouille aucune fonctionnalité payante.</string>
+    <string name="support_badge_description">Un badge qui témoigne de votre soutien volontaire. Les droits liés aux achats antérieurs sont conservés. Consulter ces détails ne déclenche aucun achat.</string>
 </resources>
