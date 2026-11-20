@@ -1,113 +1,35 @@
-#!/usr/bin/env python3
-"""Regression checks for missing, inconsistent or misordered public sample lists."""
-import json
+"""Public entry-point checks use small text fixtures and never download manga PDFs."""
 from pathlib import Path
 import tempfile
 import unittest
 import sample_public_catalog as catalog
 
-
 class PublicSampleCatalogTests(unittest.TestCase):
-    def fixture(self, root):
-        evidence = root / 'docs/sample-releases/sample-manga-v2'
-        evidence.mkdir(parents=True)
-        registry = root / 'app/src/main/java/example/SamplePdfLanguages.kt'
-        registry.parent.mkdir(parents=True)
-        registry.write_text('''SamplePdfLanguage("en", "English", "English")
-SamplePdfLanguage("zh_hk", "繁體中文（香港書面語）", "Chinese (Traditional, Hong Kong written standard)")''')
-        entries = []
-        for code in ['en', 'zh_hk']:
-            for episode in range(1, 4):
-                entries.append(dict(sample_id=f'ep{episode}_{code}', language_key=code, episode=episode,
-                                    title=f'Cover {episode} [zh-Hant-HK] & <text>' if code == 'zh_hk' else f'Episode {episode}',
-                                    author='こまいろ日和 / Komairo Hiyori', bytes=1048576 * episode,
-                                    original_source_url='https://example.org/original',
-                                    fixed_download_url=f'https://github.com/example/App/releases/download/sample-manga-v2/tameshibu_episode{episode}_{code}.pdf'))
-        (evidence / 'manifest.json').write_text(json.dumps(dict(pdf_count=6, entries=entries)))
-        current = root / 'docs/sample-releases/manga-pdf-20261103-v1'
-        current.mkdir()
-        migrated = [dict(entry, new_download_url=entry['fixed_download_url'].replace('/example/App/releases/download/sample-manga-v2/', '/tyamada/manga-prompt-kit/releases/download/manga-pdf-20261103-v1/')) for entry in entries]
-        (current / 'pdf-manifest.json').write_text(json.dumps(dict(pdf_count=6, entries=migrated)))
-        items = catalog.catalog_items(root)
-        for name in ['SAMPLE_PDF.md', 'SAMPLE_PDF_ja.md']:
-            (root / name).write_text('# Sample PDFs\n\n' + catalog.markdown_list(items) + '\nKeep https://example.org/legacy.pdf\n')
-        (root / 'docs/index.html').write_text('<html lang="en"><body><h2 id="legacy-anchor">Samples</h2>' + catalog.html_list(items) +
-                                            '<a href="https://example.org/legacy.pdf">Legacy</a></body></html>')
-        old = root / 'docs/sample/legacy.pdf'
-        old.parent.mkdir(); old.write_bytes(b'%PDF-legacy-fixture')
-        return items
+    def fixture(self,root):
+        (root/'docs').mkdir()
+        for name in ['README.md','README_ja.md','SAMPLE_PDF.md','SAMPLE_PDF_ja.md','docs/index.html','docs/support_ja.html']:
+            p=root/name;p.write_text(f'<a href="{catalog.destination(p)}">Samples</a>' if p.suffix=='.html' else f'[Samples]({catalog.destination(p)})')
+    def test_all_entrypoints_are_checked(self):
+        with tempfile.TemporaryDirectory() as d:
+            r=Path(d);self.fixture(r);self.assertEqual(0,catalog.verify_public_lists(r)['public_pdf_links'])
+            (r/'docs/support_ja.html').write_text('No link')
+            with self.assertRaisesRegex(ValueError,'centralized'):catalog.verify_public_lists(r)
+    def test_direct_pdf_in_privacy_or_readme_is_rejected(self):
+        for target in ['docs/privacy.html','README.md','SAMPLE_PDF_ja.md']:
+            with tempfile.TemporaryDirectory() as d:
+                r=Path(d);self.fixture(r);p=r/target
+                with p.open('a') as f:f.write('<a href="testdata/tameshibu_episode1_2_ja.pdf">PDF</a>')
+                with self.assertRaisesRegex(ValueError,'individual manga'):catalog.verify_public_lists(r)
+    def test_aliases_and_region_anchors(self):
+        for file,end in [('index_zh-CN.html','zh-Hans/'),('support_zh-TW.html','zh-Hant/#zh_tw'),('index_zh_hk.html','zh-Hant/#zh_hk'),('index_tl.html','fil/'),('support_in.html','id/'),('index_ms.html','en/')]:
+            self.assertEqual(catalog.BASE+end,catalog.destination(Path(file)))
+    def test_other_pdfs_and_links_are_preserved(self):
+        with tempfile.TemporaryDirectory() as d:
+            r=Path(d);self.fixture(r);p=r/'docs/index.html';p.write_text(p.read_text()+'<a href="regression.pdf">test</a><a href="https://youtube.com/">video</a>');catalog.verify_public_lists(r)
+    def test_missing_page_and_unknown_locale_fail(self):
+        with tempfile.TemporaryDirectory() as d:
+            r=Path(d);self.fixture(r);(r/'SAMPLE_PDF.md').unlink()
+            with self.assertRaisesRegex(ValueError,'Missing public'):catalog.verify_public_lists(r)
+        with self.assertRaisesRegex(ValueError,'Unknown public'):catalog.destination(Path('index_new.html'))
 
-    def assert_invalid(self, path, text, items, message):
-        with self.assertRaisesRegex(ValueError, message):
-            catalog.validate_text(path, text, items)
-
-    def test_zero_links_and_new_locales_are_never_skipped(self):
-        with tempfile.TemporaryDirectory() as directory:
-            root = Path(directory); self.fixture(root)
-            (root / 'docs/index_new.html').write_text('<html lang="en"><body>No samples</body></html>')
-            with self.assertRaisesRegex(ValueError, 'found 0'):
-                catalog.verify_public_lists(root)
-
-    def test_omission_and_same_count_duplicate_are_rejected(self):
-        with tempfile.TemporaryDirectory() as directory:
-            root = Path(directory); items = self.fixture(root)
-            for changed in [items[:-1], [items[0], items[0]] + items[2:]]:
-                self.assert_invalid(root / 'SAMPLE_PDF.md', catalog.markdown_list(changed), items, 'manga links|duplicate')
-
-    def test_language_and_episode_order_are_both_checked(self):
-        with tempfile.TemporaryDirectory() as directory:
-            root = Path(directory); items = self.fixture(root)
-            for changed in [items[3:] + items[:3], [items[1], items[0]] + items[2:]]:
-                self.assert_invalid(root / 'docs/index.html', catalog.html_list(changed), items, 'sort by English')
-
-    def test_old_release_other_app_and_wrong_filipino_filename_are_rejected(self):
-        with tempfile.TemporaryDirectory() as directory:
-            root = Path(directory); items = self.fixture(root); text = catalog.markdown_list(items)
-            url = items[0]['url']
-            for wrong in [url.replace('manga-pdf-20261103-v1', 'sample-manga-v2'), url.replace('/tyamada/manga-prompt-kit/', '/example/Other/'),
-                          url.replace('_zh_hk.pdf', '_fil.pdf')]:
-                self.assert_invalid(root / 'SAMPLE_PDF.md', text.replace(url, wrong), items, 'unexpected manga URLs')
-
-    def test_title_language_author_and_size_are_checked(self):
-        with tempfile.TemporaryDirectory() as directory:
-            root = Path(directory); items = self.fixture(root); text = catalog.html_list(items)
-            for old, new in [('Cover 1', 'Wrong title'), ('Hong Kong written standard', 'Cantonese'),
-                             ('Komairo Hiyori', 'Another author'), ('(1.0 MiB)', '(8.0 MiB)'),
-                             ('(1.0 MiB)', '(1.0 MB)')]:
-                self.assert_invalid(root / 'docs/index.html', text.replace(old, new, 1), items, 'differs|incorrect MiB')
-
-    def test_markdown_and_html_render_the_same_literal_regional_brackets(self):
-        with tempfile.TemporaryDirectory() as directory:
-            root = Path(directory); items = self.fixture(root)
-            md = catalog.markdown_list(items); html = catalog.html_list(items)
-            self.assertIn(r'\[zh-Hant-HK\]', md)
-            self.assertIn('[zh-Hant-HK]', html)
-            self.assertEqual([r['label'] for r in catalog.records(root / 'SAMPLE_PDF.md', md)],
-                             [r['label'] for r in catalog.records(root / 'docs/index.html', html)])
-            self.assert_invalid(root / 'SAMPLE_PDF.md', md.replace(r'\[zh-Hant-HK\]', '(zh-Hant-HK)'), items, 'differs')
-
-    def test_missing_html_list_item_size_is_rejected(self):
-        with tempfile.TemporaryDirectory() as directory:
-            root = Path(directory); items = self.fixture(root)
-            self.assert_invalid(root / 'docs/index.html', catalog.html_list(items).replace('(1.0 MiB)', '', 1), items, 'incorrect MiB')
-
-    def test_regeneration_is_idempotent_and_preserves_legacy_content(self):
-        with tempfile.TemporaryDirectory() as directory:
-            root = Path(directory); items = self.fixture(root)
-            before = (root / 'docs/sample-releases/sample-manga-v2/manifest.json').read_bytes()
-            (root / 'SAMPLE_PDF.md').write_text('# Sample PDFs\n' + catalog.markdown_list(list(reversed(items))) + 'Keep https://example.org/legacy.pdf\n')
-            (root / 'docs/index_ms.html').write_text('<html lang="ms"><body><footer id="old-footer">Old</footer></body></html>')
-            (root / 'docs/index_zh_hk.html').write_text('<html lang="zh-HK"><body></body></html>')
-            self.assertEqual(set(catalog.regenerate(root)), {'SAMPLE_PDF.md', 'docs/index_ms.html', 'docs/index_zh_hk.html'})
-            self.assertEqual(catalog.regenerate(root), [])
-            self.assertEqual(catalog.verify_public_lists(root)['public_pdf_links'], 30)
-            self.assertIn('id="legacy-anchor"', (root / 'docs/index.html').read_text())
-            self.assertIn('https://example.org/legacy.pdf', (root / 'SAMPLE_PDF.md').read_text())
-            self.assertIn('id="old-footer"', (root / 'docs/index_ms.html').read_text())
-            self.assertIn('CC BY 4.0', (root / 'docs/index_zh_hk.html').read_text())
-            self.assertEqual((root / 'docs/sample/legacy.pdf').read_bytes(), b'%PDF-legacy-fixture')
-            self.assertEqual((root / 'docs/sample-releases/sample-manga-v2/manifest.json').read_bytes(), before)
-
-
-if __name__ == '__main__':
-    unittest.main()
+if __name__=='__main__':unittest.main()

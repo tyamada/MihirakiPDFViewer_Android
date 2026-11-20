@@ -8,7 +8,6 @@ import androidx.test.platform.app.InstrumentationRegistry
 import com.github.tyamada.mihirakipdfviewer_android.data.*
 import kotlinx.coroutines.runBlocking
 import org.junit.Assert.*
-import org.junit.Assume.assumeTrue
 import org.junit.Rule
 import org.junit.Test
 import java.io.File
@@ -23,8 +22,6 @@ class SamplePdfV2LayoutTest {
     }
 
     @Test fun regionalEditionsSearchAndDisplaySingleAndSpread() {
-        val fixture = InstrumentationRegistry.getArguments().getString("samplePdfFixtureDir")
-        assumeTrue("Supply verified v2 PDFs", fixture != null)
         val instrument = InstrumentationRegistry.getInstrumentation()
         val viewer = compose.activity.viewer
         val initial = viewer.state.value.settings
@@ -33,7 +30,7 @@ class SamplePdfV2LayoutTest {
         try {
             listOf("es_419", "pt_pt", "zh_hk").forEach { language ->
                 val item = SamplePdfCatalog.items.single { it.id == "ep1_$language" }
-                main { viewer.closeDocument(); viewer.open(Uri.fromFile(File(fixture!!, item.fileName))) }
+                main { viewer.closeDocument(); viewer.open(Uri.fromFile(VerifiedSampleInputs.file(item.id))) }
                 compose.waitUntil(90_000) { check(viewer.state.value.errorKey == null) { "${item.id}: ${viewer.state.value.errorKey}" }; !viewer.state.value.loading && viewer.state.value.source != null && (viewer.state.value.bitmap != null || viewer.state.value.secondBitmap != null) }
                 assertNull(item.id, viewer.state.value.errorKey)
                 lateinit var job: kotlinx.coroutines.Job

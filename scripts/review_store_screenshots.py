@@ -3,6 +3,7 @@
 import argparse
 import json
 import math
+from pathlib import Path
 from PIL import Image, ImageDraw
 import capture_store_screenshots as capture
 
@@ -11,10 +12,13 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--device', choices=capture.DEVICES, nargs='+', default=list(capture.DEVICES))
     parser.add_argument('--language', choices=capture.LANGUAGES, nargs='+', default=list(capture.LANGUAGES))
+    parser.add_argument('--sample-pdf-dir', type=Path, help='Directory containing the pinned sample PDFs (defaults to VIEWER_SAMPLE_PDF_DIR)')
     parser.add_argument('--compatible-fingerprint', action='append', default=[],
                         help='Allow verified records from an equivalent capture runner revision')
     parser.add_argument('--mark-reviewed', action='store_true', help='Use only after inspecting every selected original')
     options = parser.parse_args()
+    pdfs = capture.resolve_sample_pdfs(options.language, options.sample_pdf_dir)
+    pdf_digests = {lang: capture.sha(path) for lang, path in pdfs.items()}
     apks = [capture.ROOT / 'app/build/outputs/apk/debug/app-debug.apk', capture.ROOT / 'app/build/outputs/apk/androidTest/debug/app-debug-androidTest.apk']
     stamp = capture.fingerprint(apks)
     report_dir = capture.ROOT / 'store_listing/screenshot_review'
@@ -39,7 +43,7 @@ def main():
                 target = capture.orientation(avd, scene)
                 path = capture.OUT / avd / f'{lang}_{scene}_{target}.png'
                 record = path.with_suffix('.json')
-                expected = dict(fingerprint=stamp, pdfSha256=capture.sha(capture.ROOT / f'testdata/tameshibu_episode1_2_{lang}.pdf'),
+                expected = dict(fingerprint=stamp, pdfSha256=pdf_digests[lang],
                                 avd=avd, language=lang, scene=scene, portrait=target == 'portrait',
                                 versionCode=capture.CONFIG['versionCode'], dimensions=list(capture.expected_size(avd, target == 'portrait')))
                 if not capture.can_resume(path, record, expected, options.compatible_fingerprint):

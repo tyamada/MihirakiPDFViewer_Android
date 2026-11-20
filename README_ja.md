@@ -99,7 +99,7 @@ signing.keyPassword=YOUR_KEY_PASSWORD
 
 ## 📚 サンプルPDF
 
-[サンプルPDFのダウンロード](SAMPLE_PDF_ja.md)
+[サンプルPDFのダウンロード](https://tyamada.github.io/manga-prompt-kit/samples/ja/)
 
 サンプルPDFの配布先は、制作資料リポジトリの[固定Release](https://github.com/tyamada/manga-prompt-kit/releases/tag/manga-pdf-20261103-v1)です。PDFの内容と取得済みファイルの識別情報を維持しています。
 

@@ -16,6 +16,7 @@ import subprocess
 import tempfile
 
 from sample_public_catalog import verify_public_lists
+from sample_pdf_inputs import prepare_inputs
 
 
 def verify(root, remote=False, download_dir=None):
@@ -116,16 +117,7 @@ def verify(root, remote=False, download_dir=None):
             with tempfile.TemporaryDirectory(prefix='viewer-pdf-') as directory:
                 target = (download_dir or Path(directory)) / entry['filename']
                 target.parent.mkdir(parents=True, exist_ok=True)
-                process = subprocess.run(['curl', '--fail', '--silent', '--show-error', '--location',
-                    '--proto', '=https', '--proto-redir', '=https', '--max-redirs', '5', '--retry', '2',
-                    '--connect-timeout', '30', '--max-time', '300', '--output', str(target),
-                    '--write-out', '%{http_code}', entry['fixed_download_url']], capture_output=True, text=True)
-                assert process.returncode == 0 and process.stdout == '200', (entry['filename'], process.stderr)
-                with target.open('rb') as stream:
-                    assert stream.read(5) == b'%PDF-'
-                    stream.seek(0)
-                    digest = hashlib.file_digest(stream, 'sha256').hexdigest()
-                assert digest == entry['sha256'] and target.stat().st_size == entry['bytes'], entry['filename']
+                target = prepare_inputs(root, [entry['sample_id']], target.parent, download=True)[entry['sample_id']]
                 info = subprocess.run(['pdfinfo', str(target)], check=True, capture_output=True, text=True)
                 assert re.search(r'^Pages:\s+8$', info.stdout, re.M), entry['filename']
                 result['remote_verified'] = True

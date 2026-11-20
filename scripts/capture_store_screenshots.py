@@ -12,6 +12,8 @@ import sys
 import time
 import uuid
 
+from sample_pdf_inputs import resolve_inputs, sample_id
+
 ROOT = Path(__file__).resolve().parents[1]
 PACKAGE = 'com.github.tyamada.MihirakiPDFViewer_Android'
 RUNNER = PACKAGE + '.test/androidx.test.runner.AndroidJUnitRunner'
@@ -43,6 +45,12 @@ def same_locale(value, expected):
 
 def sha(path):
     return hashlib.sha256(path.read_bytes()).hexdigest()
+
+
+def resolve_sample_pdfs(languages, input_dir):
+    ids = {lang: sample_id(lang) for lang in languages}
+    paths = resolve_inputs(ROOT, list(ids.values()), input_dir)
+    return {lang: paths[sample] for lang, sample in ids.items()}
 
 
 def orientation(avd, scene):
@@ -341,6 +349,7 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--device', choices=DEVICES, nargs='+', default=list(DEVICES))
     parser.add_argument('--language', choices=LANGUAGES, nargs='+', default=list(LANGUAGES))
+    parser.add_argument('--sample-pdf-dir', type=Path, help='Directory containing the pinned sample PDFs (defaults to VIEWER_SAMPLE_PDF_DIR)')
     parser.add_argument('--scene', choices=SCENES, nargs='+', default=None)
     parser.add_argument('--resume', action='store_true', help='Skip only verified outputs matching APKs, PDFs and runner code')
     parser.add_argument('--skip-build', action='store_true', help='Use already built APKs')
@@ -351,10 +360,8 @@ def main():
     options = parser.parse_args()
     selections = {avd: selected_scenes(avd, options.scene) for avd in options.device}
     # Required before build, launch, or any adb action, including on resume.
-    pdfs = {lang: ROOT / f'testdata/tameshibu_episode1_2_{lang}.pdf' for lang in options.language}
-    missing = [str(path) for path in pdfs.values() if not path.is_file()]
-    if missing:
-        raise RuntimeError('FATAL: source PDFs missing: ' + ', '.join(missing))
+    pdfs = resolve_sample_pdfs(options.language, options.sample_pdf_dir)
+    pdf_digests = {lang: sha(path) for lang, path in pdfs.items()}
     avd_root = Path.home() / '.android/avd'
     for avd in options.device:
         ini = dict(line.split('=', 1) for line in (avd_root / f'{avd}.ini').read_text().splitlines() if '=' in line)
@@ -394,7 +401,7 @@ def main():
                 # Always verify even when all images are already complete.
                 device.locale(LANGUAGES[lang])
                 device.rotate(orientation(avd, selections[avd][0]))
-                digest = sha(pdfs[lang])
+                digest = pdf_digests[lang]
                 device.transfer(lang, pdfs[lang], digest)
                 folder = OUT / DEVICES[avd]
                 folder.mkdir(parents=True, exist_ok=True)

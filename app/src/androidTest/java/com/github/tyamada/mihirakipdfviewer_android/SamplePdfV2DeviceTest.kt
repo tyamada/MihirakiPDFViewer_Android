@@ -14,7 +14,6 @@ import kotlinx.coroutines.runBlocking
 import org.json.JSONArray
 import org.json.JSONObject
 import org.junit.Assert.*
-import org.junit.Assume.assumeTrue
 import org.junit.Test
 import java.io.File
 
@@ -22,8 +21,6 @@ import java.io.File
 class SamplePdfV2DeviceTest {
     @get:org.junit.Rule val activity = androidx.test.ext.junit.rules.ActivityScenarioRule(MainActivity::class.java)
     @Test fun all51RenderInPageOrderAndHaveSearchableCopyableCoverText() = runBlocking {
-        val fixture = InstrumentationRegistry.getArguments().getString("samplePdfFixtureDir")
-        assumeTrue("Supply the independently verified v2 PDFs", fixture != null)
         val instrumentation = InstrumentationRegistry.getInstrumentation()
         val context = instrumentation.targetContext
         PDFBoxResourceLoader.init(context)
@@ -32,8 +29,7 @@ class SamplePdfV2DeviceTest {
         val results = JSONArray()
         try {
             SamplePdfCatalog.items.forEach { item ->
-                val file = File(fixture!!, item.fileName)
-                assertEquals(item.id, item.bytes, file.length())
+                val file = VerifiedSampleInputs.file(item.id)
                 PdfDocumentRepository(context).open(Uri.fromFile(file)).use { source ->
                     assertEquals(item.id, item.pageCount, source.pageCount)
                     for (page in 0 until source.pageCount) {

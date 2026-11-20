@@ -8,32 +8,57 @@ from unittest.mock import patch
 
 from PIL import Image, ImageDraw
 import capture_store_screenshots as capture
+from sample_pdf_inputs import MANIFEST, PREFIX
 
 
 class CaptureSafetyTest(unittest.TestCase):
     def test_missing_source_is_fatal_before_build_or_device_operations(self):
-        original = Path.is_file
-        def is_file(path):
-            return False if path.name == 'tameshibu_episode1_2_ko.pdf' else original(path)
-        with patch.object(sys, 'argv', ['capture', '--device', 'Smartphone_6.3', '--language', 'ko']), \
-                patch.object(Path, 'is_file', is_file), patch.object(capture, 'run') as run, \
-                patch.object(capture.subprocess, 'run') as subprocess_run:
-            with self.assertRaisesRegex(RuntimeError, 'FATAL: source PDFs missing.*ko.pdf'):
+        args = ['capture', '--device', 'Smartphone_6.3', '--language', 'ko']
+        with patch.object(sys, 'argv', args), \
+                patch.object(capture, 'resolve_inputs', side_effect=RuntimeError('Missing ep1_ko')) as resolve, \
+                patch.object(capture, 'run') as run, patch.object(capture, 'Device') as device, \
+                patch.object(capture.subprocess, 'run') as build:
+            with self.assertRaisesRegex(RuntimeError, 'Missing ep1_ko'):
                 capture.main()
+            resolve.assert_called_once_with(capture.ROOT, ['ep1_ko'], None)
             run.assert_not_called()
-            subprocess_run.assert_not_called()
+            device.assert_not_called()
+            build.assert_not_called()
 
-    def test_unselected_missing_pdf_does_not_block_selected_languages(self):
-        original = Path.is_file
-        def is_file(path):
-            return path.name == 'tameshibu_episode1_2_fr.pdf' if path.suffix == '.pdf' else original(path)
-        with patch.object(sys, 'argv', ['capture', '--device', 'Smartphone_6.3', '--language', 'fr']), \
-                patch.object(Path, 'is_file', is_file), \
-                patch.object(Path, 'read_text', side_effect=RuntimeError('reached AVD preflight')), \
-                patch.object(capture, 'run') as run:
-            with self.assertRaisesRegex(RuntimeError, 'reached AVD preflight'):
-                capture.main()
-            run.assert_not_called()
+    def test_resolves_only_selected_language_ids_from_explicit_directory(self):
+        with tempfile.TemporaryDirectory() as folder:
+            root = Path(folder) / 'repo'
+            input_dir = Path(folder) / 'cache'
+            input_dir.mkdir()
+            sample = b'%PDF-1.7\nfixture\n'
+            entries = []
+            for lang in ('fil', 'zh_tw'):
+                path = input_dir / f'tameshibu_{lang}.pdf'
+                path.write_bytes(sample)
+                entries.append(dict(sample_id=f'ep1_{lang}', filename=path.name, bytes=len(sample),
+                                    sha256=capture.sha(path), new_download_url=PREFIX + path.name))
+            entries.append(dict(entries[0], sample_id='ep1_ko', filename='tameshibu_ko.pdf',
+                                new_download_url=PREFIX + 'tameshibu_ko.pdf'))
+            manifest = root / MANIFEST
+            manifest.parent.mkdir(parents=True)
+            manifest.write_text(json.dumps(dict(entries=entries)))
+            args = ['capture', '--device', 'Smartphone_6.3', '--language', 'fil', 'zh_tw',
+                    '--sample-pdf-dir', str(input_dir)]
+            read_text = Path.read_text
+
+            def stop_at_avd_preflight(path, *args, **kwargs):
+                if path.suffix == '.ini':
+                    raise RuntimeError('reached AVD preflight')
+                return read_text(path, *args, **kwargs)
+
+            with patch.object(sys, 'argv', args), patch.object(capture, 'ROOT', root), \
+                    patch.object(capture, 'resolve_inputs', wraps=capture.resolve_inputs) as resolve, \
+                    patch.object(Path, 'read_text', stop_at_avd_preflight), \
+                    patch.object(capture, 'run') as run:
+                with self.assertRaisesRegex(RuntimeError, 'reached AVD preflight'):
+                    capture.main()
+                resolve.assert_called_once_with(root, ['ep1_fil', 'ep1_zh_tw'], input_dir)
+                run.assert_not_called()
 
     def test_resume_rejects_stale_corrupt_or_wrong_scene_outputs(self):
         with tempfile.TemporaryDirectory() as folder:
@@ -48,6 +73,7 @@ class CaptureSafetyTest(unittest.TestCase):
             self.assertTrue(capture.can_resume(path, record, expected))
             self.assertFalse(capture.can_resume(path, record, dict(expected, fingerprint='new APK')))
             self.assertTrue(capture.can_resume(path, record, dict(expected, fingerprint='compatible transport fix'), ('current',)))
+            self.assertFalse(capture.can_resume(path, record, dict(expected, fingerprint='new runner', pdfSha256='new source'), ('current',)))
             self.assertFalse(capture.can_resume(path, record, dict(expected, scene='04_search')))
             path.write_bytes(b'broken PNG')
             self.assertFalse(capture.can_resume(path, record, expected))

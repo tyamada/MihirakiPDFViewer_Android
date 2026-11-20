@@ -99,7 +99,7 @@ Run `./gradlew bundleRelease` to create `app/build/outputs/bundle/release/app-re
 
 ## 📚 Sample PDFs
 
-[Download sample PDFs](SAMPLE_PDF.md)
+[Download sample PDFs](https://tyamada.github.io/manga-prompt-kit/samples/en/)
 
 The sample PDFs are hosted in the production-materials repository’s [pinned release](https://github.com/tyamada/manga-prompt-kit/releases/tag/manga-pdf-20261103-v1). Their content and existing download identities are preserved.
 

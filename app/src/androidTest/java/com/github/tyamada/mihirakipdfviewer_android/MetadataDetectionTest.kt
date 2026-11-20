@@ -48,7 +48,11 @@ class MetadataDetectionTest {
     @Test fun dumpMetadata() {
         val targetContext = InstrumentationRegistry.getInstrumentation().targetContext
         val testContext = InstrumentationRegistry.getInstrumentation().context
-        val files = testContext.assets.list("testdata") ?: emptyArray()
+        // General metadata fixtures only. Manga integration uses VerifiedSampleInputs.
+        val files = listOf("L2R", "R2L").flatMap { direction ->
+            listOf("Cover", "NoCover", "Single", "OneColumn", "TwoColumnLeft", "TwoColumnRight", "TwoPageLeft", "TwoPageRight")
+                .map { layout -> "${direction}_${layout}.pdf" }
+        }
         for (fileName in files) {
             if (!fileName.endsWith(".pdf")) continue
             val file = File(targetContext.cacheDir, fileName)

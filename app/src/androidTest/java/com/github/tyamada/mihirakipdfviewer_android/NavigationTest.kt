@@ -10,11 +10,21 @@ import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
 import java.io.File
-import java.io.FileOutputStream
 
 @RunWith(AndroidJUnit4::class)
 class NavigationTest {
     @get:Rule val compose = createAndroidComposeRule<MainActivity>()
+    // General search/password fixtures remain bundled; manga inputs are external and pinned.
+    private fun copyAssetToCache(name: String): File {
+        require(!name.startsWith("tameshibu")) { "Use VerifiedSampleInputs for manga PDFs" }
+        val context = InstrumentationRegistry.getInstrumentation().targetContext
+        return File(context.cacheDir, name).also { target ->
+            InstrumentationRegistry.getInstrumentation().context.assets.open(name).use { input ->
+                target.outputStream().use { output -> input.copyTo(output) }
+            }
+        }
+    }
+
     @Test fun launchShowsFilePickerEntry() { compose.onNodeWithText(compose.activity.getString(R.string.open_pdf)).assertExists() }
     @Test fun fileSelectionRouteIsClickable() { compose.onNodeWithText(compose.activity.getString(R.string.open_pdf)).assertHasClickAction() }
     @Test fun settingsHelpAndResetRoutes() {
@@ -27,15 +37,6 @@ class NavigationTest {
         compose.onNodeWithText(compose.activity.getString(R.string.reset_message)).assertExists()
     }
 
-    private fun copyAssetToCache(fileName: String): File {
-        val targetContext = InstrumentationRegistry.getInstrumentation().targetContext
-        val testContext = InstrumentationRegistry.getInstrumentation().context
-        val file = File(targetContext.cacheDir, fileName)
-        testContext.assets.open("testdata/$fileName").use { input ->
-            FileOutputStream(file).use { output -> input.copyTo(output) }
-        }
-        return file
-    }
 
     @Test
     fun captureAllStoreScreenshotsJa() {
@@ -62,8 +63,8 @@ class NavigationTest {
         compose.onNodeWithContentDescription(compose.activity.getString(R.string.back)).performClick()
         compose.waitForIdle()
 
-        // 1. View / Spread view (tameshibu_episode1_2_ja.pdf)
-        val pdfFile = copyAssetToCache("tameshibu_episode1_2_ja.pdf")
+        // 1. View / Spread view (pinned external Japanese PDF)
+        val pdfFile = VerifiedSampleInputs.file("ep1_ja")
         val uri = Uri.fromFile(pdfFile)
         InstrumentationRegistry.getInstrumentation().runOnMainSync {
             compose.activity.viewer.open(uri)
@@ -124,8 +125,8 @@ class NavigationTest {
         compose.onNodeWithContentDescription(compose.activity.getString(R.string.back)).performClick()
         compose.waitForIdle()
 
-        // 1. View / Spread view (tameshibu_episode1_2_en.pdf)
-        val pdfFile = copyAssetToCache("tameshibu_episode1_2_en.pdf")
+        // 1. View / Spread view (pinned external English PDF)
+        val pdfFile = VerifiedSampleInputs.file("ep1_en")
         val uri = Uri.fromFile(pdfFile)
         InstrumentationRegistry.getInstrumentation().runOnMainSync {
             compose.activity.viewer.open(uri)
