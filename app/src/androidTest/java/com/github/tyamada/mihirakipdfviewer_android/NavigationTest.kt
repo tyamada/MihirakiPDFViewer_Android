@@ -19,7 +19,7 @@ class NavigationTest {
         require(!name.startsWith("tameshibu")) { "Use VerifiedSampleInputs for manga PDFs" }
         val context = InstrumentationRegistry.getInstrumentation().targetContext
         return File(context.cacheDir, name).also { target ->
-            InstrumentationRegistry.getInstrumentation().context.assets.open(name).use { input ->
+            InstrumentationRegistry.getInstrumentation().context.assets.open("testdata/$name").use { input ->
                 target.outputStream().use { output -> input.copyTo(output) }
             }
         }
