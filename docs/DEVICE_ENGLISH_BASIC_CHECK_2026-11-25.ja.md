@@ -48,3 +48,30 @@ UI XMLとスクリーンショットは開発者のローカル検証記録に�
 今回の購入確認は既存データを保持した再照会。新規状態からの購入復元は今回実施していない。BRONZE詳細のTalkBack開閉・回転後復帰、全画面のTalkBack網羅確認も未実施。こよみの無料付与と3商品のPlay購入権利は区別する。現地アカウントによる実インストール確認等、既存の保留事項は維持する。追加のコード修正が必要な不具合は、今回確認した範囲では見つからなかった。
 
 追加根拠は開発者のローカル検証記録に保持：23-restored-support-top.xml、24-restored-purchases.xml、29-bronze-open.png（ファイル名に反して実画像はこよみ）、31-koyomi-close-focus.png、31-accessibility-state.txt、32-settings-restored.png。26/27のUIダンプ時には詳細が開いておらず、詳細表示・復帰成功の根拠には用いていない。
+
+
+## 追加確認：BRONZE実対象のTalkBack・別環境の新規アプリ状態からの復元（2026-11-25）
+
+前節で未実施とした2項目を追加確認した。前節の未実施記述は当時の履歴として保持し、現在の到達範囲は本節に示す。
+
+### moto g24：英語TalkBackのBRONZE詳細
+
+端末のインストール版2.1.10（53）、English優先・日本語第2言語を再確認。TalkBackを一時的に有効化し、縦向きのSupportで利用者がBRONZEの詳細画像を選択・ダブルタップした。35-bronze-confirmed-open.pngで見出しBRONZE、銅色画像、英語説明、Closeがある実対象を確認。利用者は英語の説明が聞こえたと報告した。
+
+その詳細を横向きにし、利用者がTalkBackでCloseを選択・ダブルタップして閉じた。利用者の「BRONZEの詳細ボタンが読み上げられた」という報告と、38-bronze-returned-focus.pngの元のBRONZE詳細画像を囲む緑のフォーカス枠が一致した。Backへ移動せず、開いた元の項目へ復帰したことを確認した。今回の実対象はこよみと混同していない。全画面・全バッジ・全ジェスチャーを網羅した意味ではない。
+
+終了時は言語en-US、言語一覧en-US,ja-JP、enabled_accessibility_services=null、accessibility_enabled=0、accelerometer_rotation=1、user_rotation=0へ戻し、開始時と一致した。moto g24のデータ消去・再インストール・購入取消・再購入は行っていない。
+
+### 別環境：新規アプリ状態からの購入復元
+
+使用前に作業用SSDのUUID 0A844419-D16F-4996-9EE2-82D492AB0771と空き約163.4GBを確認。停止中の既存Play復元AVDから、今回専用のViewer53-Restore-20261125を独立した複製として作成し、通常ファイル23件・2,446,383,342バイトのサイズ・SHA-256を照合した。元AVDは起動・変更していない。複製のAVD内部設定だけを複製先へ向けた。
+
+複製側に限り、pm clearがSuccessとなることを確認してViewerの保存データを初期化した。Androidのbackup_auto_restoreは開始前から0で、そのまま維持した。Playのアカウント・キャッシュは保持。既存のPlayインストール版2.1.10（53）、installer=com.android.vendingを使用し、今回APKの置換や再インストールはしていない。
+
+初回チュートリアルとこよみ無料付与通知を確認後、SupportでBRONZE・SILVER・GOLDすべてがPurchasedへ復元され、¥200・¥500・¥1,000を表示することをUI XMLとスクリーンショットで確認した。Viewerの新規保存状態からPlay購入権利を再取得する確認であり、motoの保存済みデータを参照した結果ではない。こよみの無料付与は有料3商品の購入復元とは別に扱う。
+
+Play自体のキャッシュは消していないため、新規Googleアカウント、全ストア地域、ネットワーク経由の最新サーバーレシートの取得を証明したものではない。購入トークンや注文番号の生ログは取得・公開していない。
+
+終了時は今回専用AVDを停止し、検証データを保持した。元AVDの23通常ファイルが開始時のサイズ・SHA-256と一致することを再確認した。既存の現地アカウント実インストール等の保留事項は維持する。今回確認した2項目で追加のアプリ修正が必要な問題は見つからなかった。
+
+追加証拠：35-bronze-confirmed-open.png、36-bronze-landscape.png、38-bronze-returned-focus.png、37-fresh-launch.xml、39-fresh-home.xml、41-fresh-support.xml、42-fresh-purchased.xml/png、fresh-avd-copy-manifest.json、bronze-fresh-restore-result.jsonをローカルに保持。過去の「未実施」をこれらの追加結果で更新し、元の記録は履歴として残している。
