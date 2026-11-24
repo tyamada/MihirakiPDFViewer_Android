@@ -75,3 +75,18 @@ Play自体のキャッシュは消していないため、新規Googleアカウ�
 終了時は今回専用AVDを停止し、検証データを保持した。元AVDの23通常ファイルが開始時のサイズ・SHA-256と一致することを再確認した。既存の現地アカウント実インストール等の保留事項は維持する。今回確認した2項目で追加のアプリ修正が必要な問題は見つからなかった。
 
 追加証拠：35-bronze-confirmed-open.png、36-bronze-landscape.png、38-bronze-returned-focus.png、37-fresh-launch.xml、39-fresh-home.xml、41-fresh-support.xml、42-fresh-purchased.xml/png、fresh-avd-copy-manifest.json、bronze-fresh-restore-result.jsonをローカルに保持。過去の「未実施」をこれらの追加結果で更新し、元の記録は履歴として残している。
+
+
+## Pixel 8a：English基本操作の追加確認（2026-11-25）
+
+今回接続された端末はPixel 8a、Android 17、実インストール版2.1.10（53）。開始時はシステム言語ja-JP、言語順序ja-JP,en-US、システム地域は日本、TalkBackはオフ。言語設定画面からEnglishを最優先にし、確認ダイアログを承認後、en-USおよびen-US,ja-JPへの切替を確認した。Playアカウントの国設定は変更していない。
+
+英語のGetting Started、Skip、Open PDF、Sample PDFsの案内を確認し、SkipでViewerへ移動。保存済みの日本語PDFを描画し、スワイプで2/8から3/8へ移動した。中央タップでツールバーを表示し、Table of contents、Sample PDFs、Open PDF、Settings、Search PDF、ページ移動ラベルが英語であることを確認。文書タイトルの日本語はPDF由来。
+
+SettingsのDisplay settings、High quality、Sharpness、Two-page view、Show cover、Reading direction、Document informationの英語表示を確認。設定値は変更せず戻った。Helpの見出しを確認し、Getting Startedを展開できた。Versionで2.1.10、Build number 53、取得済みバッジのラベルを確認した。操作停止やクラッシュ画面は今回の操作中に観測しなかった。
+
+終了後、システム言語を日本語へ戻す確認ダイアログを承認。ja-JP、ja-JP,en-US、システム地域日本、TalkBackオフが開始時と一致することを確認した。回転設定は変更していない。アプリのデータ消去・再インストールは行っていない。
+
+今回Pixel 8aでは購入・購入復元・TalkBack・回転・PDF新規オープン・ネットワークダウンロードの個別操作は未実施。別端末での確認結果と混同しない。既存差分と現地アカウント実インストール等の保留事項は維持する。
+
+証拠はローカルのpixel8a-english-20261125記録に保持：05-english-launch.xml、06-home.xml、07-page.xml、08-toolbar.xml、10-settings.xml、11-help.xml、12-help-expanded.xml、13-version.xml、17-restored-language.xml。03-viewer.xmlは言語変更確認の承認前で日本語のため、英語表示成功の根拠には使っていない。
