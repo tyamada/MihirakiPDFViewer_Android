@@ -17,7 +17,7 @@ This is a list of verification results compiled from developer and user informat
 | Tablet     | Samsung      | Galaxy Tab A SM-T510  |     9      |  2.1.3(42)  | No issues | 1     |
 | Tablet     | aiwa         | tab AG10(JA3-TBA1003) |     13     |  2.1.3(42)  | No issues | -     |
 | Desktop    | ASUS         | Chromebook CM30       |     13     |  2.1.3(42)  | No issues | 2     |
-
+| Smartphone | motorola | moto g24 | 14 | 2.1.10(53) | Basic checks passed | 2026-11-25, system English (en-US): tutorial, PDF open/render/page swipe, toolbar, portrait/landscape, Settings, Help, sample list, Version and existing purchased badges. [Scope and evidence](docs/DEVICE_ENGLISH_BASIC_CHECK_2026-11-25.ja.md). Language and rotation settings match the initial state; purchase/restore and TalkBack were not tested in this session. |
 
 ## Notes
 1. The page cache function is automatically disabled on devices with low RAM capacity.
