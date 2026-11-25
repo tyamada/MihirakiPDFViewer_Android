@@ -199,3 +199,78 @@ SettingsのDisplay settings、High quality、Sharpness、Two-page view、Show co
 モデルごとに最新結果だけを残す一覧ルールに従い、VERIFICATION_LISTの旧XQ-ES44行を今回の行に置換した。以前の詳細記録は保持し、限定的な最新検証で未検証項目を合格扱いにしない。
 
 ローカル証拠：xperia10vi-english-20261125の02-launch.xml、05-samples.xml、07-download-complete.xml、08-pdf.xml、09-page.xml、10-toolbar.xml、12-settings.xml、13-help.xml、14-help-expanded.xml、15-version.xml、18-language-restored.xml。
+
+
+## OPPO Reno11 A CPH2603：English基本操作の追加確認（2026-11-25）
+
+実機OPPO Reno11 A（CPH2603）は今回取得したOS情報ではAndroid 16、Viewer 2.1.10（53）。旧一覧のAndroid 15は過去結果であり、今回の実取得値に更新した。開始時はシステム言語・言語一覧ともja-JPのみ、地域日本、TalkBackオフ。言語編集でEnglishを一時追加して標準言語にし、en-JP、en-JP,ja-JPへの切替を確認した。地域は日本のまま、Playアカウントの国設定も変更していない。
+
+英語Getting StartedとSkipを確認。ホームでこよみ無料付与通知を閉じ、English・最新話順のサンプル一覧を表示した。英語第3話22.3 MiBをダウンロードし、Openで1/8を描画。スワイプで2/8へ進み、中央タップで英語ツールバーを表示した。SettingsのDisplay settings、High quality、Sharpness、Two-page view、Show cover、Reading direction、Document informationを英語で表示し、値は変更していない。Helpの英語セクションとGetting Startedの展開、Versionの2.1.10・Build number 53・取得済みバッジラベルを確認した。今回の操作中にアプリ終了・クラッシュ画面・操作停止は観測しなかった。
+
+終了時は一時追加したEnglishのみを削除し、日本語への変更を承認。システム言語・言語一覧ともja-JPのみ、地域日本、accessibility_enabled=0が開始時と一致した。回転設定は変更していない。最終更新時刻は開始前後とも2026-11-25 11:06:31で、検証中の版変更はなかった。既存データを消去せず、今回ダウンロードしたサンプルは保持した。
+
+今回この端末の購入・購入復元・TalkBack実発話/フォーカス・回転・検索/目次/スライダーの個別操作は未実施。既存保留事項を維持し、再インストール・ストア提出・公開は行っていない。一覧は英語でモデルごとに最新1行とするルールに従い、既存CPH2603行を置換した。
+
+ローカル証拠：oppo-english-20261125の04-launch.xml、07-samples.xml、08-download.xml、09-pdf.xml、10-page.xml、11-toolbar.xml、13-settings.xml、14-help.xml、15-help-expanded.xml、16-version.xml、20-restored-edit.xml、21-settings-restored.xml。
+
+
+## 一覧簡潔化前の結果表（2026-11-25時点の履歴）
+
+VERIFICATION_LISTを結果表と使用上の注意だけに整理する前の説明を、履歴としてこちらへ移した。最新の到達範囲・保留事項は各端末の本文と合わせて参照する。以下は最新一覧を更新するための別の一覧ではなく、整理時点のスナップショット。
+
+| Category   | Manufacturer | Device Name           | OS Version | App Version |  Result   | Notes |
+|:-----------|:-------------|:----------------------|:----------:|:-----------:|:---------:|:------|
+| Smartphone | FCNT         | arrows We2 M07        |     16     |  2.1.3(42)  | No issues | -     |
+| Smartphone | Google | Pixel 8a | 17 | 2.1.10(53) | Basic checks passed | 2026-11-25, system English (en-US): tutorial, existing PDF rendering/page swipe, toolbar, Settings, Help expansion and Version/build display. [Scope and evidence](docs/DEVICE_ENGLISH_BASIC_CHECK_2026-11-25.ja.md). Restored system language order to Japanese then English, and region to Japan; TalkBack remained off. Purchases, restoration, rotation and downloads were not tested on this device in this session. |
+| Smartphone | motorola | moto g24 | 14 | 2.1.10(53) | Basic checks passed | 2026-11-25, system English (en-US): tutorial, PDF open/render/page swipe, toolbar, portrait/landscape, Settings, Help, sample list, Version and existing purchased badges. [Scope and evidence](docs/DEVICE_ENGLISH_BASIC_CHECK_2026-11-25.ja.md). Follow-up: after a data-preserving process restart, BRONZE/SILVER/GOLD returned as Purchased; English TalkBack speech was user-confirmed and Koyomi detail focus returned to its source after rotation/Close (screen-confirmed). Further follow-up: confirmed actual BRONZE detail opened with English TalkBack; after rotation/Close, focus returned to BRONZE (speech and screenshot). In a separate cloned Play emulator, all three paid tiers restored after clearing only Viewer app data with automatic backup restore disabled; Play account/cache retained. Language, TalkBack and rotation settings match the initial state. |
+| Smartphone | OPPO | Reno11 A CPH2603 | 16 | 2.1.10(53) | Basic checks passed | 2026-11-25, system English (en-JP): tutorial, English sample download/open, PDF rendering, swipe 1/8 to 2/8, toolbar, Settings, Help expansion and Version. [Scope and evidence](docs/DEVICE_ENGLISH_BASIC_CHECK_2026-11-25.ja.md). Restored Japanese-only language list (ja-JP) and confirmed region Japan; TalkBack stayed off and package update time was unchanged. Purchases, restoration, TalkBack and rotation were not tested in this session. |
+| Smartphone | Samsung | Galaxy A54 5G SC-53D | 16 | 2.1.10(53) | Basic checks passed | 2026-11-25, system English (Japan), en-JP: tutorial, English sample list/download/open, PDF rendering, next-page button, toolbar, Settings, Help expansion and Version/build display. [Scope and evidence](docs/DEVICE_ENGLISH_BASIC_CHECK_2026-11-25.ja.md). Restored original Japanese-only language list (ja-JP); TalkBack remained off. Purchases, restoration, TalkBack and rotation were not tested on this device in this session. |
+| Smartphone | Sharp        | AQUOS sense4 SH-41A   |     12     |  2.1.3(42)  | No issues | -     |
+| Smartphone | Sony | Xperia 10 VI XQ-ES44 | 16 | 2.1.10(53) | Basic checks passed | 2026-11-25, system English (en-US): tutorial, English sample download/open, PDF rendering, swipe 1/8 to 2/8, toolbar, Settings, Help expansion and Version. [Scope and evidence](docs/DEVICE_ENGLISH_BASIC_CHECK_2026-11-25.ja.md). Restored original language order Japanese then English; TalkBack stayed off and package update time was unchanged. Purchases, restoration, TalkBack and rotation were not tested in this session. |
+| Smartphone | Sony         | Xperia 10VIII XQ-GH44 |     17     |  2.1.3(42)  | No issues | -     |
+| Tablet | Samsung | Galaxy Tab A SM-T510 | 9 | 2.1.10(53) | Retest passed | 2026-11-25, system English (en-US): basic checks and PDF retests passed. Initial interruption was OS package replacement: installPackageLI killed Viewer at 09:52:37 JST, matching lastUpdateTime. After update, Episode 3 cold resume, new Episode 2 first open/page swipe and Episode 2 cold resume passed. No app-code fix required for this event. [Scope and evidence](docs/DEVICE_ENGLISH_BASIC_CHECK_2026-11-25.ja.md). Restored original Japanese-only settings; other holds unchanged. |
+| Tablet | aiwa | tab AG10 (JA3-TBA1003) | 13 | 2.1.10(53) | Basic checks passed | 2026-11-25, system English (en-US), landscape: tutorial, English sample download/open, PDF render, swipe 1/8 to 2/8, toolbar, Settings, Help expansion and Version. [Scope and evidence](docs/DEVICE_ENGLISH_BASIC_CHECK_2026-11-25.ja.md). Restored original Japanese-only language list (ja-JP); TalkBack stayed off and package update time was unchanged. Purchases, restoration, TalkBack and rotation transitions were not tested in this session. |
+| Desktop    | ASUS         | Chromebook CM30       |     13     |  2.1.3(42)  | No issues | Window mode and tablet (full-screen) mode ready. |
+
+
+## FCNT arrows We2 M07：English基本操作の追加確認（2026-11-25）
+
+実機arrows We2 M07、Android 16、Viewer 2.1.10（53）を確認した。開始時はシステム言語・言語一覧ともja-JPのみ、TalkBackオフ。通常のEnglish (United States)を一時追加して最優先へ移動。システムの言語変更確認に続き端末固有の再起動確認があり、承認後の再起動と利用者のロック解除を経てen-US、en-US,ja-JPを確認した。疑似言語は使用していない。
+
+英語Getting Started、Skip、ホームを確認。Englishフィルター・最新話順のサンプル一覧から英語第3話22.3 MiBをダウンロードし、Openで1/8を描画。スワイプで2/8へ進み、中央タップで英語ツールバーを表示した。SettingsのDisplay settings、High quality、Sharpness、Two-page view、Show cover、Reading direction、Document informationを英語で確認し、設定値は変更していない。Helpの英語見出しとGetting Startedの展開、Versionの2.1.10・Build number 53・バッジラベルを確認した。今回の操作中にアプリ終了・クラッシュ画面・操作停止は観測しなかった。
+
+終了時は今回追加したEnglishのみを選択・削除し、日本語への変更確認と再起動確認を承認。再接続後、システム言語ja-JP、言語一覧ja-JPのみ、accessibility_enabled=0が開始時と一致した。Viewerの最終更新時刻は開始前後とも2026-11-25 11:21:42、版2.1.10（53）を保持。回転設定は変更していない。データ消去・再インストールは行わず、追加取得したサンプルは保持した。
+
+今回この端末の購入・復元・TalkBack実発話/フォーカス・回転・検索/目次/スライダー等の個別操作は未実施。既存保留事項を維持し、ストア提出・公開は行っていない。一覧は英語の結果表と使用上のNotesのみ、モデルごとに最新1行とするルールに従い、M07の古い行を今回の結果へ置換した。詳細は本メモに保存する。
+
+ローカル証拠：arrows-english-20261125の08-english-launch.xml、10-samples.xml、12-download-complete.xml、13-pdf.xml、14-page.xml、15-toolbar.xml、17-settings.xml、18-help.xml、19-help-expanded.xml、20-version.xml、25-remove-confirm.xml、27-reboot-confirm.xml。05-launch.xmlは言語変更後の再起動承認前で日本語のため、英語表示の成功根拠には含めない。
+
+
+## Sharp AQUOS sense4 SH-41A：English基本操作の追加確認（2026-11-25）
+
+実機AQUOS sense4 SH-41A、Android 12、インストール版2.1.10（53）。開始時はシステム言語・言語一覧ともja-JPのみ、TalkBackオフ。通常のEnglish (United States)を一時追加して最優先へ移動し、en-US、en-US,ja-JPを確認した。疑似言語は選んでいない。
+
+英語Getting StartedとSkipを確認し、保存済みPDF「ためし部 第1話 ひと息マップ」を描画。日本語タイトルは文書由来。スワイプで1/8から2/8へ進み、中央タップで英語ツールバーを表示した。Table of contents、Sample PDFs、Open PDF、Settings、Search PDF、ページ移動ラベルを確認。SettingsのDisplay settings、High quality、Sharpness、Two-page view、Show cover、Reading direction、文書情報を英語表示し、値は変更していない。
+
+無料付与通知を閉じ、Helpの英語見出しとGetting Started展開後の説明文を確認。Versionで2.1.10・Build number 53・取得済みバッジラベルを確認した。今回の操作中にアプリ終了・クラッシュ画面・操作停止は観測しなかった。チュートリアル全ページや大文字サイズの全配置を網羅確認したものではない。
+
+終了後は今回追加したEnglishのみを削除し、システム言語・言語一覧がともにja-JPのみへ戻ったことを確認。accessibility_enabled=0を保持。回転設定は変更していない。Viewerの最終更新時刻は開始前後とも2026-11-25 11:58:32で、版番号も維持した。データ消去・再インストールは行っていない。
+
+購入・購入復元・TalkBack・回転・サンプルの新規ダウンロード・新規PDFのファイル選択・検索/目次/スライダーの個別操作は今回未実施。既存保留事項を維持し、ストア提出・公開は行っていない。VERIFICATION_LISTではSH-41Aの既存行を英語の簡潔な最新結果に置き換え、詳細は本メモに保存した。
+
+ローカル証拠：aquos-english-20261125の05-launch.xml、06-home.xml、07-page.xml、08-toolbar.xml、10-settings.xml、11-help.xml、12-help-expanded.xml、13-version.xml、19-language-restored.xml。
+
+
+## Sony Xperia XQ-GH44：Wi-Fi接続でのEnglish基本操作確認（2026-11-25）
+
+Wi-Fiデバッグで接続済みのSony XQ-GH44、Android 17、実インストール版2.1.10（53）を確認した。ワイヤレスデバッグのペア設定や接続設定は変更していない。開始時はシステム言語・言語一覧ともja-JPのみ、地域日本、TalkBackオフ。English (Japan)を一時追加して優先へ移動し、言語変更を承認。en-JP、en-JP,ja-JP、地域日本を確認した。Playアカウントの国設定も変更していない。
+
+英語Getting StartedとSkipを確認後、保存済みPDF「ためし部 第2話 机、ひろがる。」を表示。スワイプで1/8から2/8へ進み、中央タップで英語ツールバーを表示した。Sample PDFs、Open PDF、Settings、Search PDF、ページ移動ラベルを確認。文書タイトルの日本語はPDF由来。SettingsではDisplay settings、High quality、Sharpness、Two-page view、Show cover、Reading direction、文書情報を英語で確認し、設定値は変更していない。
+
+無料付与通知を閉じ、Helpの英語セクションとGetting Startedの展開・説明表示を確認した。Versionで2.1.10、Build number 53、取得済みバッジラベルを確認。今回の操作中にアプリ終了・クラッシュ画面・操作停止は観測しなかった。
+
+終了時は今回追加したEnglish (Japan)を削除し、日本語への変更を承認。システム言語・言語一覧がともにja-JPのみ、地域日本、accessibility_enabled=0へ戻り、開始時と一致した。Wi-Fiデバッグ接続は継続し、回転設定は変更していない。アプリの最終更新時刻は開始前後とも2026-11-25 12:29:04、版2.1.10（53）のまま。既存データを消去せず、再インストールも行っていない。
+
+今回の購入・購入復元・TalkBack実発話/フォーカス・回転・サンプル新規ダウンロード・新規PDF選択・検索/目次/スライダーの個別操作は未実施。現地アカウント実インストール等の保留事項は維持。ストア提出・公開は行っていない。VERIFICATION_LISTのXQ-GH44の既存行を、英語の簡潔な最新結果に置き換えた。
+
+ローカル証拠：xq-gh44-english-20261125の01-languages.xml、06-launch.xml、07-home.xml、08-page.xml、09-toolbar.xml、11-settings.xml、12-help.xml、13-help-expanded.xml、14-version.xml、18-language-restored.xml。公開資料にWi-Fi接続先IP・ペア情報・端末識別子は記載していない。
