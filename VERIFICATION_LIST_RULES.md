@@ -1,12 +1,14 @@
 # Verification list maintenance rules
 
-- Write the results table and usage cautions in `VERIFICATION_LIST.md` in English. Preserve official manufacturer and model names.
-- Include only the results table and a usage-related Notes section in `VERIFICATION_LIST.md`. Keep result labels concise; table note cells may reference usage cautions. Do not include test procedures, detailed results, verification timelines, evidence links, settings-restoration reports, maintenance rules, or internal memos in the list. Store those details in a separate verification memo or maintenance document.
+- Write the results table and Notes in `VERIFICATION_LIST.md` in English. Preserve official manufacturer and model names.
+- Include only the results table and a Notes section in `VERIFICATION_LIST.md`. Keep each Result cell to a short conclusion, such as Basic checks passed, Retest passed, or Issue found; do not put explanations, test-item lists, or investigation narratives in table cells.
+- Put result qualifications, explanatory details, and usage cautions in numbered Notes outside the table. The table Notes column should contain only the corresponding note number(s), or a dash when no note is needed.
+- Keep test procedures, full test results, chronological investigation logs, raw evidence references, settings-restoration reports, maintenance rules, and internal memos in a separate verification memo or maintenance document. Notes outside the table summarize the result for readers; they do not replace the full verification record.
 - Keep operational rules and internal maintenance notes in this separate file or another dedicated maintenance document, not in `VERIFICATION_LIST.md`.
 - Keep exactly one row per device model, showing its latest verification result. Identify the model by manufacturer and model name/number; spacing differences do not create separate models.
 - When a new verification is completed, replace that model's existing row instead of adding another. Use the verification date and confirmed installed app version; the highest version number alone does not establish the latest verification.
 - Preserve earlier results in detailed verification records and Git history. Keep unresolved issues and untested scope explicit; a newer limited check does not automatically resolve earlier issues or validate every feature.
-- Notes must describe points users should be aware of when using the app, not testing history. Preserve test scope, untested items, unresolved issues, evidence references, and restored settings in the separate verification memo; do not silently discard them when shortening a row. Keep the table result accurate (for example, Basic checks passed does not mean all features were tested).
+- Notes outside the table should explain the reported result and points users should be aware of, including relevant limitations or unresolved issues, without reproducing the testing history. Preserve test scope, untested items, unresolved issues, evidence references, and restored settings in the separate verification memo; do not silently discard them when shortening a row. Keep the table result accurate (for example, Basic checks passed does not mean all features were tested).
 - Maintain existing data, unrelated Git differences, and pending verification items. Restore temporarily changed device settings and record that restoration in the supporting device report.
 
 ## Internal maintenance notes
