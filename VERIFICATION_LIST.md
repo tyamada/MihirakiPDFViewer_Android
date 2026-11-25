@@ -10,8 +10,9 @@
 | Smartphone | Sony | Xperia 10VIII XQ-GH44 | 17 | 2.1.10(53) | Basic checks passed | - |
 | Tablet | Samsung | Galaxy Tab A SM-T510 | 9 | 2.1.10(53) | Retest passed | 1 |
 | Tablet | aiwa | tab AG10 (JA3-TBA1003) | 13 | 2.1.10(53) | Basic checks passed | - |
-| Desktop | ASUS | Chromebook CM30 | 13 | 2.1.3(42) | No issues | - |
+| Desktop | ASUS | Chromebook CM30 | ChromeOS 158.0.8127.65 | 2.1.10(53) | Basic checks passed | 2 |
 
 ## Notes
 
 1. Page caching is automatically disabled on low-RAM devices.
+2. Chromebook results are based on user-reported manual checks.
