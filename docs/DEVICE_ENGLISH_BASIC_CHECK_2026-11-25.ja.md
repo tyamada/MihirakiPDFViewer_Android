@@ -90,3 +90,112 @@ SettingsのDisplay settings、High quality、Sharpness、Two-page view、Show co
 今回Pixel 8aでは購入・購入復元・TalkBack・回転・PDF新規オープン・ネットワークダウンロードの個別操作は未実施。別端末での確認結果と混同しない。既存差分と現地アカウント実インストール等の保留事項は維持する。
 
 証拠はローカルのpixel8a-english-20261125記録に保持：05-english-launch.xml、06-home.xml、07-page.xml、08-toolbar.xml、10-settings.xml、11-help.xml、12-help-expanded.xml、13-version.xml、17-restored-language.xml。03-viewer.xmlは言語変更確認の承認前で日本語のため、英語表示成功の根拠には使っていない。
+
+
+## Galaxy A54 5G SC-53D：English基本操作の追加確認（2026-11-25）
+
+今回接続されたGalaxy A54 5G SC-53DはAndroid 16、実インストール版2.1.10（53）。開始時はロック画面のため利用者に解除を依頼し、解除の回答後に操作した。システム言語・言語一覧はいずれもja-JPのみ、TalkBackはオフだった。
+
+Samsungの言語設定で提示されたEnglish (Japan)を一時追加して標準言語に設定し、en-JP、en-JP,ja-JPへの切替を確認した。Playアカウントの国設定は変更していない。
+
+| 項目 | 結果・範囲 |
+|---|---|
+| チュートリアル | Getting Started、Open PDF、Sample PDFs、Skip等を英語表示。Skipで次画面へ進めた。 |
+| サンプル | Englishフィルター、最新話順、英語タイトルとDownloadを確認。第3話（22.3 MiB）をダウンロードし、完了後のOpen/Deleteを確認。Openで英語PDFを表示した。 |
+| PDF・ページ移動 | 英語第3話を描画し、Next pageボタンで1/8から2/8へ移動。先頭ページでの逆方向スワイプはページが変わらなかったため、スワイプ移動の合格根拠にはしない。 |
+| ツールバー | 中央タップで表示。Table of contents、Sample PDFs、Open PDF、Settings、Search PDF、Previous/Next page、Page navigationの英語ラベルを確認。 |
+| Settings | Display settings、High quality、Sharpness、Two-page view、Show cover、Reading direction、Document informationを英語表示。値は変更していない。 |
+| Help | 英語セクション見出しとGetting Startedの展開を確認。 |
+| Version | 2.1.10、Build number 53、取得済みバッジの英語ラベルを確認。 |
+
+操作中にクラッシュ画面や操作停止は観測しなかった。購入・購入復元・TalkBack実発話/フォーカス・回転・目次/検索/スライダーの個別操作は今回未実施。別端末の検証結果をこの端末の結果とは扱わない。
+
+終了時は今回だけ追加したEnglish (Japan)を言語一覧から削除し、システム言語・言語一覧がともにja-JPのみへ戻ったことを確認した。TalkBackは開始時同様オフ（accessibility_enabled=0）。回転設定は変更していない。既存アプリデータは消去せず、今回ダウンロードした英語サンプルは保存したまま保持した。再インストール・購入・ストア提出・公開は行っていない。既存差分と現地アカウント実インストール等の保留事項を維持する。
+
+ローカル証拠：galaxy-a54-english-20261125の06-launch.xml、07-home.xml、09-toolbar.xml（実内容はサンプル一覧）、11-sample-download.xml、12-open-sample.xml、14-toolbar.xml、15-next-page.xml、17-settings.xml、18-help.xml、19-help-expanded.xml、20-version.xml、25-language-restored.xml。07/08時点はPDF未表示であり、描画・ページ移動の成功根拠には使っていない。
+
+
+## Galaxy Tab A SM-T510：English基本操作の追加確認（2026-11-25）
+
+対象はSamsung Galaxy Tab A SM-T510、Android 9。実機から取得したViewerは2.1.10（53）、minSdk=26。開始時はシステム言語・言語一覧がともにja-JPのみ、TalkBackはオフ。English (United States)を一時追加し、en-US、en-US,ja-JPになったことを確認して検証した。
+
+| 項目 | 結果・範囲 |
+|---|---|
+| チュートリアル・ホーム | 英語Getting Started、Open PDF、Sample PDFs、Skipを確認。ホームの英語ボタンとこよみ無料付与通知を表示し、通知を閉じた。 |
+| サンプル | Englishフィルター、最新話順、英語3話分の案内を確認。第3話22.3 MiBをダウンロードし、Open/Delete表示になった。 |
+| PDF初回オープン | Open後の記録09-pdf.xmlはViewerではなく設定アプリの言語追加画面。直後のpidofでViewerプロセス不在を確認した。Viewerのクラッシュと断定できるスタックは得られず、初回の終了挙動は原因未確定として要再確認。無条件合格にしない。 |
+| PDF再試行 | 再起動して同じサンプルを開くと英語第3話表紙を描画し、Viewerプロセスの存続を確認。右向きスワイプで1/8から2/8へ移動できた。 |
+| ツールバー | 再試行で中央タップにより表示。Search PDF、Table of contents、Sample PDFs、Open PDF、Settings、Previous/Next page、Page navigationの英語ラベルを確認。 |
+| Settings | Display settings、High quality、Sharpness、Two-page view、Show cover、Reading direction、文書情報、Mouse Navigation、Single page in portrait、Cover setting、Resetの英語表示を確認。値は変更していない。 |
+| Help | 英語見出しとGetting Startedの展開を確認。 |
+| Version | 2.1.10、Build number 53、取得済みバッジの英語ラベルを確認。 |
+
+今回の総合判定はFollow-up needed。再試行は成功したが、初回PDFオープン時の終了の原因切り分けは残す。確認したcrashバッファにはAndroid Studio画面共有エージェントの別プロセス障害があったが、Viewer障害の根拠として流用していない。メモリー不足やR8等を原因と断定しない。以前の低RAM端末のキャッシュ無効化に関する注記も今回再検証済みとは扱わない。
+
+終了後、一時追加したEnglishだけを削除し、システム言語・言語一覧がともにja-JPのみで開始時と一致することを確認。TalkBackは0のまま、回転設定は変更していない。既存アプリデータは消去せず、今回ダウンロードしたサンプルは保持。購入・購入復元・TalkBack・回転・新規ローカルPDF選択の操作確認は今回未実施。現地アカウント実インストール等の既存保留事項を維持する。コード修正・再インストール・ストア提出・公開はしていない。
+
+ローカル証拠：tab-a-english-20261125の04-launch.xml、07-samples.xml、08-download.xml、09-pdf.xml（初回終了後の別画面）、11-relaunch.xml、15-open-retry-settled.png、16-page.xml、17-toolbar.xml、19-settings.xml、20-help.xml、21-help-expanded.xml、22-version.xml、27-language-restored.xml。終了挙動を再現可能なアプリクラッシュとして確定した記録ではない。
+
+
+## Galaxy Tab A：初回PDFオープン時の終了原因と再検証（2026-11-25）
+
+前節の原因未確定事項を追加調査し、直接原因を特定した。今回の終了はPDF描画の例外ではなく、検証中のパッケージ更新に伴うOSの強制停止だった。前節は調査前の履歴として保持し、この終了事象についての判定をRetest passedへ更新する。
+
+### 根拠
+
+- 端末の2026-11-25 09:52:37.720 JSTのActivityManager記録：`Force stopping com.github.tyamada.MihirakiPDFViewer_Android appid=10231 user=-1: installPackageLI`。
+- 同09:52:37.723に、前面Viewerプロセス2301を`stop ...,installPackageLI`の理由で終了した記録。
+- 同09:52:37.747に、そのプロセス終了に伴いActivityを除去した記録。
+- PackageManagerの`lastUpdateTime=2026-11-25 09:52:37`が停止時刻と一致。インストーラーは`com.android.vending`。更新後も版番号は2.1.10（53）。番号から更新の有無を推測せず、パッケージ置換記録と更新時刻で照合した。
+
+これにより、初回に設定画面へ戻りViewerプロセスが不在だった理由を説明できる。Playの自動更新設定や、更新を開始した具体的な操作までは特定していない。別プロセスのAndroid Studio画面共有エージェントのクラッシュ、メモリー不足、R8をこの終了の原因とは扱わない。
+
+### 更新完了後の再検証
+
+開始時の日本語のみ・TalkBackオフ・自動回転1・user_rotation未設定を記録し、Englishへ一時切替。既存データを保持したforce-stopによるコールド起動を使用した。これは検証のための明示的停止であり、問題の再発とは区別する。
+
+| 経路 | 結果 |
+|---|---|
+| 第3話のコールド起動・復帰 | 英語チュートリアルのSkip後に保存ページ2/8を描画。 |
+| 別PDFの初回オープン | 未取得だった英語第2話23.9 MiBを追加ダウンロードし、初めて開いて表紙1/8を描画。スクリーンショットとプロセス11250の存続を確認。 |
+| 第2話ページ移動 | スワイプで1/8から2/8へ移動。 |
+| 第2話のコールド起動・復帰 | 再度データ非消去で再起動し、保存ページ2/8を描画。プロセス13266の存続を確認。 |
+| 追加更新の有無 | 再検証後もlastUpdateTimeは09:52:37、版2.1.10（53）のまま。追加更新と重ならず、同じ終了挙動は再発しなかった。 |
+
+この終了事象に対するアプリコード修正・新しいビルドは不要と判断した。今後の実機検証では開始時・異常発生時・終了時の版番号とlastUpdateTimeを記録し、installPackageLIがあれば更新完了後に再起動して再検証する。ログを消去して再現の根拠を失わない。将来別のクラッシュが発生した場合にまで問題なしとする判断ではない。
+
+### 復元・保持事項
+
+終了後、一時追加したEnglishを削除。システム言語ja-JP、言語一覧ja-JPのみ、accessibility_enabled=0、accelerometer_rotation=1、user_rotation=nullが開始時と一致した。回転設定は今回変更していない。アプリデータ・既存PDF・購入権利は消去せず、追加取得した第2話も保持。調査中にアプリを再インストール・更新する操作は行っていない。ストアへの提出・公開は行わず、既存の他の差分・現地アカウント確認等の保留事項は維持する。
+
+今回の証拠はローカルtab-a-open-investigation-20261125記録に保持：events-filtered.txt、system-filtered.txt、06-cold-ready.xml、10-first-open-episode2.xml/png、11-episode2-page.xml、13-second-cold-pdf.xml、18-settings-restored.xml、cause-and-retest-result.json。抽出ログはアプリのライフサイクル記録に限定し、アカウント識別情報等を公開資料に含めない。
+
+
+## aiwa tab AG10 JA3-TBA1003：English基本操作の追加確認（2026-11-25）
+
+実機はaiwa tab AG10（JA3-TBA1003）、Android 13、インストール版2.1.10（53）。開始時のシステム言語・言語一覧はja-JPのみ、TalkBackはオフ。通常のEnglish (United States)を追加して最優先へ並べ替え、en-US、en-US,ja-JPへ切り替えた。言語候補にあった疑似言語は選んでいない。Playアカウントの国設定は変更していない。
+
+横向きで英語Getting Started、Open PDF、Sample PDFs、Skipを確認。Skipでホームへ移動し、こよみ無料付与通知を閉じた。サンプル一覧はEnglishフィルター・最新話順・英語3話分を表示。第3話22.3 MiBをダウンロードし、OpenでPDF1/8を描画した。スワイプで2/8へ進み、中央タップで英語ツールバーを表示。Search PDF、Table of contents、Sample PDFs、Open PDF、Settings、ページ移動のラベルを確認した。
+
+SettingsのDisplay settings、High quality、Sharpness、Two-page view、Show cover、Reading direction、Document informationを英語で確認し、設定値は変更していない。Helpの英語セクションとGetting Startedの展開を確認。Versionでは2.1.10、Build number 53、取得済みバッジのラベルを確認した。今回の操作中にクラッシュ画面・アプリ終了・操作停止は観測しなかった。
+
+終了後は一時追加したEnglishのみを削除し、システム言語・言語一覧がともにja-JPのみへ戻ったことを確認。TalkBackは0のまま。画面の向きは開始時の横向きのままで、回転設定は変更していない。最終更新時刻は開始前・終了後とも2026-11-25 10:34:54で、検証中の版変更はなかった。
+
+既存データは消去せず、今回取得したサンプルは保持した。今回この端末での購入・購入復元・TalkBack実発話/フォーカス・回転遷移・検索/目次/スライダーの個別操作は未実施。ほかの端末での結果と混同しない。既存差分と現地アカウント実インストール等の保留事項は維持し、再インストール・ストア提出・公開は行っていない。
+
+ローカル証拠：aiwa-english-20261125の05-language-order.xml、06-launch.xml、09-samples.xml、11-download-complete.xml、12-pdf.xml、13-page.xml、14-toolbar.xml、16-settings.xml、17-help.xml、18-help-expanded.xml、19-version.xml、25-language-restored.xml。
+
+
+## Xperia 10 VI XQ-ES44：English基本操作の追加確認（2026-11-25）
+
+実機Sony Xperia 10 VI（XQ-ES44）、Android 16、インストール版2.1.10（53）を確認。開始時はシステム言語ja-JP、言語一覧ja-JP,en-US、TalkBackオフ。既存のEnglish (United States)を最優先へ移動し、確認ダイアログを承認してen-US、en-US,ja-JPへの変更を確認した。
+
+英語Getting StartedとSkipを確認し、ホームの無料付与通知を閉じた。Englishフィルター・最新話順のサンプル一覧で英語第3話22.3 MiBを取得し、OpenでPDF1/8を描画。スワイプで2/8へ移動し、中央タップで英語ツールバーを表示した。SettingsのDisplay settings、High quality、Sharpness、Two-page view、Show cover、Reading direction、Document information等を英語表示し、値は変更していない。Helpの英語セクションとGetting Startedの展開、Versionの2.1.10・Build number 53・取得済みバッジラベルを確認。今回の操作中にアプリ終了・クラッシュ画面・操作停止は観測しなかった。
+
+終了時、日本語を最優先へ戻す確認を承認。ja-JP、ja-JP,en-US、accessibility_enabled=0が開始時と一致した。回転設定は変更していない。最終更新時刻は開始前後とも2026-11-22 04:48:00で、検証中の更新はなかった。既存データを消去せず、追加取得したサンプルは保持。
+
+今回この端末での購入・購入復元・TalkBack実発話/フォーカス・回転・検索/目次/スライダー等の個別操作は未実施。現地アカウント実インストール等の保留事項は維持する。再インストール・ストア提出・公開は行っていない。
+
+モデルごとに最新結果だけを残す一覧ルールに従い、VERIFICATION_LISTの旧XQ-ES44行を今回の行に置換した。以前の詳細記録は保持し、限定的な最新検証で未検証項目を合格扱いにしない。
+
+ローカル証拠：xperia10vi-english-20261125の02-launch.xml、05-samples.xml、07-download-complete.xml、08-pdf.xml、09-page.xml、10-toolbar.xml、12-settings.xml、13-help.xml、14-help-expanded.xml、15-version.xml、18-language-restored.xml。
