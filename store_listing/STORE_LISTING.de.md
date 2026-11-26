@@ -13,6 +13,8 @@ Optimal für Manga! Privater PDF-Viewer mit Doppelseiten- & R2L-Support.
 
 ### ✨ Hauptfunktionen
 - 📖 **Nahtlose Doppelseiten**: Zeigt zwei Seiten nebeneinander an. Perfekt für immersive Manga- und Artbook-Layouts.
+- 📑 **PDF-Inhaltsverzeichnis (Gliederung)**: Extrahiert automatisch Lesezeichen und Kapitel aus den PDF-Metadaten für den direkten Sprung zu jedem Abschnitt.
+- ☰ **Oberes Menü & eigene Ansichten**: Schneller Zugriff auf Einstellungen, Hilfe, Version, Diagnose und Unterstützung über die obere Leiste – mit aufklappbarer Hilfe sowie eigenen Bereichen für Version und Diagnose.
 - 🔄 **Intelligente Auto-Erkennung**: Erkennt automatisch Seitenlayout und Leserichtung aus den PDF-Metadaten für ein konfigurationsfreies Erlebnis.
 - 🇯🇵 **Nativer R2L-Support**: Volle Unterstützung für die Leserichtung von rechts nach links, einschließlich umgekehrter Schieberegler und Wischgesten.
 - 🔍 **Präzise Suche & Hervorhebung**: Schnelle Textsuche mit klarer, genauer Trefferhervorhebung im Dokument (gelber Hintergrund und roter Rahmen).

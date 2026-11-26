@@ -13,6 +13,8 @@ Idéal pour mangas ! Lecteur PDF privé (double page & R2L).
 
 ### ✨ Fonctionnalités principales
 - 📖 **Doubles pages fluides**: Affichez deux pages côte à côte. Idéal pour les mises en page immersives de mangas et d'artbooks.
+- 📑 **Navigation par table des matières (plan PDF)** : Extrait automatiquement les signets et chapitres des métadonnées PDF pour accéder instantanément à chaque section.
+- ☰ **Menu déroulant supérieur et écrans dédiés** : Accès rapide aux Paramètres, à l’Aide, à la Version, au Diagnostic et au Soutien depuis la barre supérieure, avec une aide en accordéon et des écrans dédiés.
 - 🔄 **Détection automatique intelligente**: Détecte automatiquement la mise en page et le sens de lecture à partir des métadonnées du PDF.
 - 🇯🇵 **Support natif R2L**: Prise en charge complète du sens de lecture de droite à gauche, avec curseurs inversés et gestes de balayage.
 - 🔍 **Recherche et surbrillance précises**: Recherche textuelle rapide avec surbrillance claire et précise des correspondances sur le document (fond jaune et bordure rouge).
