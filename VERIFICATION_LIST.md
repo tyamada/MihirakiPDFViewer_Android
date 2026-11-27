@@ -17,4 +17,4 @@
 1. Page caching is automatically disabled on low-RAM devices.
 2. Chromebook results are based on user-reported manual checks.
 3. Results apply only to the checked scope; untested features are not certified.
-4. Pixel 8a: the Google Play build downloaded and opened Japanese episode 4. Landscape right-to-left spreads, touch swipes through all eight pages and back in portrait, and panning while zoomed were verified. The full swipe and zoom checks were user-reported.
+4. Pixel 8a: the Google Play build downloaded and opened Japanese episode 4. The user confirmed full swipe round trips and panning while zoomed in both portrait and landscape right-to-left spreads.
