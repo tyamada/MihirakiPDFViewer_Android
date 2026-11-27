@@ -1,6 +1,7 @@
 # Mihiraki: Two-Page PDF Reader for Android
 
 [![Get it on Google Play](https://img.shields.io/badge/Google%20Play-Get%20it%20on-%2301875f?style=flat&logo=google-play&logoColor=white)](https://play.google.com/store/apps/details?id=com.github.tyamada.MihirakiPDFViewer_Android)
+[![Sideload Trial APK](https://img.shields.io/badge/GitHub%20Releases-Sideload%20Trial%20APK-blue?style=flat&logo=android&logoColor=white)](https://github.com/tyamada/MihirakiPDFViewer_Android/releases/tag/v2.1.10-sideload-test.1)
 [![License](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 [![Qiita Series](https://img.shields.io/badge/Qiita-Series-%2355c500?style=flat&logo=qiita&logoColor=white)](https://qiita.com/tyamada22/stocks/8aeb6d899f7e0257f1d2)
 
@@ -55,6 +56,13 @@ These videos are in English and open on YouTube.
 - **In-App Billing**: [Google Play Billing Library](https://developer.android.com/google/play/billing) (for developer support tips)
 
 ## 🚀 Getting Started
+
+### Trial Sideload APK (Pre-release)
+
+For users who cannot use Google Play or want to test direct APK installation, a trial sideload APK is published on [GitHub Releases (`v2.1.10-sideload-test.1`)](https://github.com/tyamada/MihirakiPDFViewer_Android/releases/tag/v2.1.10-sideload-test.1) with `SHA256SUMS` and signing certificate verification details.
+
+- Uses a separate package ID (`com.github.tyamada.MihirakiPDFViewer_Android.sideload`) and dedicated signing key, so it coexists cleanly with the Google Play edition.
+- All PDF viewing features and the free Koyomi badge work identically; optional Google Play support purchases and Play in-app updates are disabled.
 
 ### Development setup, build and installation
 

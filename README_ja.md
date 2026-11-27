@@ -1,6 +1,7 @@
 # 見開きPDFビューア (MihirakiPDFViewer) for Android
 
 [![Get it on Google Play](https://img.shields.io/badge/Google%20Play-%E3%83%80%E3%82%A6%E3%83%B3%E3%83%AD%E3%83%BC%E3%83%89-%2301875f?style=flat&logo=google-play&logoColor=white)](https://play.google.com/store/apps/details?id=com.github.tyamada.MihirakiPDFViewer_Android)
+[![サイドロード試験公開 APK](https://img.shields.io/badge/GitHub%20Releases-%E8%A9%A6%E9%A8%93%E5%85%AC%E9%96%8B%20APK-blue?style=flat&logo=android&logoColor=white)](https://github.com/tyamada/MihirakiPDFViewer_Android/releases/tag/v2.1.10-sideload-test.1)
 [![License](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 [![Qiita Series](https://img.shields.io/badge/Qiita-Series-%2355c500?style=flat&logo=qiita&logoColor=white)](https://qiita.com/tyamada22/stocks/8aeb6d899f7e0257f1d2)
 
@@ -55,6 +56,13 @@
 - **アプリ内課金**: [Google Play Billing Library](https://developer.android.com/google/play/billing) (開発者応援チップ用)
 
 ## 🚀 はじめに
+
+### サイドロード試験公開 APK（Pre-release）
+
+Google Play を利用できない環境や直接 APK インストールを試したい方向けに、[GitHub Releases（`v2.1.10-sideload-test.1`）](https://github.com/tyamada/MihirakiPDFViewer_Android/releases/tag/v2.1.10-sideload-test.1) でサイドロード用 APK と `SHA256SUMS`・署名証明書フィンガープリントを試験公開しています。
+
+- Google Play 版とは別のパッケージ ID（`com.github.tyamada.MihirakiPDFViewer_Android.sideload`）および専用署名鍵を使用しているため、Play 版と共存できます。
+- PDF 閲覧機能および無料こよみバッジはすべて同様に利用できます（任意の Play 応援購入・Play アプリ内更新は無効）。
 
 ### 開発環境とビルド・インストール
 
