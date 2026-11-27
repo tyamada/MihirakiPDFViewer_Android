@@ -1,7 +1,7 @@
 | Category   | Manufacturer | Device Name           | OS Version | App Version |  Result   | Notes |
 |:-----------|:-------------|:----------------------|:----------:|:-----------:|:---------:|:------|
 | Smartphone | FCNT | arrows We2 M07 | 16 | 2.1.10(53) | No issues | 3 |
-| Smartphone | Google | Pixel 8a | 17 | 2.1.10(53) | No issues | 3 |
+| Smartphone | Google | Pixel 8a | 17 | 2.1.10(53) | No issues | 3, 4 |
 | Smartphone | motorola | moto g24 | 14 | 2.1.10(53) | No issues | 3 |
 | Smartphone | OPPO | Reno11 A CPH2603 | 16 | 2.1.10(53) | No issues | 3 |
 | Smartphone | Samsung | Galaxy A54 5G SC-53D | 16 | 2.1.10(53) | No issues | 3 |
@@ -17,3 +17,4 @@
 1. Page caching is automatically disabled on low-RAM devices.
 2. Chromebook results are based on user-reported manual checks.
 3. Results apply only to the checked scope; untested features are not certified.
+4. Pixel 8a: the Google Play build downloaded and opened the Japanese episode 4 PDF (8 pages) on November 28, 2026. This follow-up used Japanese system text; English basic-operation coverage remains in the earlier detailed record.
