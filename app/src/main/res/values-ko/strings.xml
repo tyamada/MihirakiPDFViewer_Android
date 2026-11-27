@@ -222,4 +222,7 @@
     <string name="koyomi_free_notice">Koyomi 배지는 2027년 12월 31일까지(일본 시간 기준) 자동으로 무료 지급됩니다. 구매나 코드 입력은 필요하지 않습니다.</string>
     <string name="koyomi_badge_description">Koyomi 기념 배지입니다. 앱에서 현재 기기 시간을 확인했을 때 일본 시간으로 2028년 1월 1일 00:00 이전이면 기존 사용자와 신규 사용자 모두에게 자동으로 무료 지급됩니다. 이전에 구매한 배지를 포함해 저장된 배지는 기한이 지난 뒤에도 사용할 수 있습니다. 기기에 저장된 데이터가 사라지면 기한이 지난 뒤에는 같은 스토어 계정만으로 무료 배지를 복원할 수 없습니다. 이 배지로 유료 기능이 잠금 해제되지는 않습니다.</string>
     <string name="support_badge_description">자발적인 후원을 기록하는 배지입니다. 기존 구매 권한은 유지됩니다. 이 상세 정보를 열어도 구매가 시작되지 않습니다.</string>
+    <string name="sideload_support_notice">선택적 후원 구매는 Google Play 버전에서 이용할 수 있습니다. 여기에서도 모든 읽기 기능을 구매 없이 이용할 수 있습니다.</string>
+    <string name="sideload_open_play_store">Google Play 버전 열기</string>
+    <string name="sideload_update_notice">사이드로드 버전 업데이트는 GitHub Releases에서 확인하세요.</string>
 </resources>

@@ -225,4 +225,7 @@
     <string name="koyomi_free_notice">Das Koyomi-Abzeichen wird bis einschließlich 31. Dezember 2027 (japanische Zeit) automatisch kostenlos vergeben. Ein Kauf oder Code ist nicht erforderlich.</string>
     <string name="koyomi_badge_description">Ein Koyomi-Gedenkabzeichen. Bestehende und neue Nutzer erhalten es automatisch kostenlos, wenn die App die aktuelle Gerätezeit prüft und diese vor dem 1. Januar 2028, 00:00 Uhr japanischer Zeit, liegt. Gespeicherte Abzeichen, auch zuvor gekaufte, bleiben nach Ablauf der Frist verfügbar. Gehen die lokal gespeicherten Daten verloren, reicht dasselbe Store-Konto allein nach Ablauf der Frist nicht aus, um das kostenlos erhaltene Abzeichen wiederherzustellen. Dieses Abzeichen schaltet keine kostenpflichtigen Funktionen frei.</string>
     <string name="support_badge_description">Ein Abzeichen für deine freiwillige Unterstützung. Bereits erworbene Kaufrechte bleiben bestehen. Beim Öffnen dieser Details wird kein Kaufvorgang gestartet.</string>
+    <string name="sideload_support_notice">Freiwillige Unterstützungskäufe sind in der Google-Play-Version verfügbar. Alle Lesefunktionen sind hier ohne Kauf nutzbar.</string>
+    <string name="sideload_open_play_store">Google-Play-Version öffnen</string>
+    <string name="sideload_update_notice">Prüfen Sie GitHub Releases auf Updates für die Sideload-Version.</string>
 </resources>

@@ -160,4 +160,7 @@
     <string name="koyomi_free_notice">Huy hiệu Koyomi được tự động cấp miễn phí đến hết ngày 31 tháng 12 năm 2027 (giờ Nhật Bản). Bạn không cần mua hay dùng mã.</string>
     <string name="koyomi_badge_description">Huy hiệu kỷ niệm Koyomi. Người dùng mới và hiện tại sẽ tự động nhận miễn phí nếu thời gian hiện tại của thiết bị, khi ứng dụng kiểm tra, là trước 00:00 ngày 1 tháng 1 năm 2028 theo giờ Nhật Bản. Các huy hiệu đã lưu, kể cả huy hiệu đã mua trước đây, vẫn có sau thời hạn này. Nếu dữ liệu lưu trên thiết bị bị mất, chỉ dùng cùng một tài khoản cửa hàng sẽ không khôi phục được huy hiệu miễn phí sau thời hạn. Huy hiệu này không mở khóa tính năng trả phí.</string>
     <string name="support_badge_description">Huy hiệu ghi nhận sự ủng hộ tự nguyện của bạn. Quyền lợi từ các giao dịch mua trước đây vẫn được giữ nguyên. Mở phần chi tiết này không bắt đầu giao dịch mua.</string>
+    <string name="sideload_support_notice">Các giao dịch ủng hộ tùy chọn có trên phiên bản Google Play. Mọi tính năng đọc đều miễn phí tại đây.</string>
+    <string name="sideload_open_play_store">Mở phiên bản Google Play</string>
+    <string name="sideload_update_notice">Kiểm tra GitHub Releases để cập nhật phiên bản sideload.</string>
 </resources>

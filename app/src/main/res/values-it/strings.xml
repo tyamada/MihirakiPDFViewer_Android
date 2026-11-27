@@ -225,4 +225,7 @@
     <string name="koyomi_free_notice">Il distintivo Koyomi viene assegnato automaticamente e gratuitamente fino al 31 dicembre 2027 incluso (ora del Giappone). Non occorrono acquisti o codici.</string>
     <string name="koyomi_badge_description">Un distintivo commemorativo di Koyomi. I nuovi utenti e quelli che già usano l’app lo ricevono automaticamente e gratuitamente se, quando l’app verifica l’ora del dispositivo, in Giappone non sono ancora le 00:00 del 1° gennaio 2028. I distintivi salvati, compresi quelli acquistati in precedenza, restano disponibili dopo la scadenza. Se perdi i dati salvati sul dispositivo, dopo la scadenza lo stesso account dello store non basta per ripristinare il distintivo gratuito. Questo distintivo non sblocca funzioni a pagamento.</string>
     <string name="support_badge_description">Un distintivo che attesta il tuo sostegno volontario. I diritti relativi agli acquisti precedenti restano validi. Aprire questi dettagli non avvia un acquisto.</string>
+    <string name="sideload_support_notice">Gli acquisti di supporto facoltativi sono disponibili nella versione Google Play. Tutte le funzioni di lettura sono disponibili qui senza acquisti.</string>
+    <string name="sideload_open_play_store">Apri versione Google Play</string>
+    <string name="sideload_update_notice">Controlla GitHub Releases per gli aggiornamenti della versione sideload.</string>
 </resources>

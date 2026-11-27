@@ -225,4 +225,7 @@
     <string name="koyomi_free_notice">La insignia de Koyomi se concede gratis y de forma automática hasta el 31 de diciembre de 2027 inclusive (hora de Japón). No hace falta comprar nada ni usar un código.</string>
     <string name="koyomi_badge_description">Una insignia conmemorativa de Koyomi. Los usuarios nuevos y quienes ya usan la aplicación la reciben gratis y de forma automática si, al comprobar la hora del dispositivo, la aplicación detecta que aún no son las 00:00 del 1 de enero de 2028 en Japón. Las insignias guardadas, incluidas las compradas anteriormente, siguen disponibles una vez vencido el plazo. Si se pierden los datos guardados en el dispositivo, usar la misma cuenta de la tienda no basta para recuperar la insignia gratuita después del plazo. Esta insignia no desbloquea funciones de pago.</string>
     <string name="support_badge_description">Una insignia que reconoce tu apoyo voluntario. Se conservan los derechos de las compras anteriores. Abrir estos detalles no inicia una compra.</string>
+    <string name="sideload_support_notice">Las compras opcionales de apoyo están disponibles en la versión de Google Play. Todas las funciones de lectura están disponibles aquí sin compras.</string>
+    <string name="sideload_open_play_store">Abrir versión de Google Play</string>
+    <string name="sideload_update_notice">Consulta GitHub Releases para actualizaciones de la versión sideload.</string>
 </resources>

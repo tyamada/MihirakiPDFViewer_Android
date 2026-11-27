@@ -180,4 +180,7 @@
     <string name="koyomi_free_notice">こよみバッジは2027年12月31日（日本時間）まで無料で自動付与されます。購入やコードは不要です。</string>
     <string name="koyomi_badge_description">記念のこよみバッジです。既存・新規どちらの利用者にも、端末の現在日時による判定が2028年1月1日午前0時（日本時間）より前の場合に無料で自動付与します。保存済みのバッジと従来の購入済みバッジは、締切後も保持します。端末の保存データが失われた場合、締切後は同じストアアカウントだけでは無料付与を復元できません。機能制限を解除するバッジではありません。</string>
     <string name="support_badge_description">任意の応援を記録するバッジです。従来の購入済み権利を保持します。この詳細を開いても購入は始まりません。</string>
+    <string name="sideload_support_notice">任意の応援購入は Google Play 版で利用できます。このサイドロード版でも閲覧機能はすべて無料で利用できます。</string>
+    <string name="sideload_open_play_store">Google Play 版を開く</string>
+    <string name="sideload_update_notice">サイドロード版の更新は GitHub Releases で確認してください。</string>
 </resources>

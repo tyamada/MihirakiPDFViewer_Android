@@ -179,4 +179,7 @@
     <string name="koyomi_free_notice">The Koyomi badge is granted automatically for free through December 31, 2027 (Japan time). No purchase or code is needed.</string>
     <string name="koyomi_badge_description">A commemorative Koyomi badge. Existing and new users receive it automatically for free when the app checks the current device time before January 1, 2028, 00:00 Japan time. Saved badges, including previously purchased badges, remain available after the deadline. If local saved data is lost, the same store account alone does not restore the free grant after the deadline. This badge does not unlock paid features.</string>
     <string name="support_badge_description">A badge recording your optional support. Existing purchase rights are retained. Opening these details does not start a purchase.</string>
+    <string name="sideload_support_notice">Optional support purchases are available in the Google Play edition. All reading features are available here without purchase.</string>
+    <string name="sideload_open_play_store">Open Google Play edition</string>
+    <string name="sideload_update_notice">Check GitHub Releases for updates to the sideload edition.</string>
 </resources>

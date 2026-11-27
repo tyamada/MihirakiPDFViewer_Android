@@ -34,16 +34,42 @@ android {
             keyAlias = props.getProperty("signing.keyAlias")
             keyPassword = props.getProperty("signing.keyPassword")
         }
+
+        create("sideloadRelease") {
+            storeFile = (props.getProperty("sideload.storeFile") ?: props.getProperty("signing.storeFile"))?.let { file(it) }
+            storePassword = props.getProperty("sideload.storePassword") ?: props.getProperty("signing.storePassword")
+            keyAlias = props.getProperty("sideload.keyAlias") ?: props.getProperty("signing.keyAlias")
+            keyPassword = props.getProperty("sideload.keyPassword") ?: props.getProperty("signing.keyPassword")
+        }
+    }
+
+    flavorDimensions += "distribution"
+    productFlavors {
+        create("play") {
+            dimension = "distribution"
+            isDefault = true
+            buildConfigField("boolean", "IS_SIDELOAD", "false")
+            signingConfig = signingConfigs.getByName("release")
+        }
+        create("sideload") {
+            dimension = "distribution"
+            applicationIdSuffix = ".sideload"
+            versionNameSuffix = "-sideload"
+            buildConfigField("boolean", "IS_SIDELOAD", "true")
+            signingConfig = signingConfigs.getByName("sideloadRelease")
+        }
     }
 
     buildFeatures { compose = true; buildConfig = true }
     packaging.resources.excludes += "/META-INF/{AL2.0,LGPL2.1,DEPENDENCIES}"
     buildTypes {
+        debug {
+            signingConfig = signingConfigs.getByName("debug")
+        }
         release {
             isMinifyEnabled = true
             isShrinkResources = true
             proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
-            signingConfig = signingConfigs.getByName("release")
         }
     }
     compileOptions {

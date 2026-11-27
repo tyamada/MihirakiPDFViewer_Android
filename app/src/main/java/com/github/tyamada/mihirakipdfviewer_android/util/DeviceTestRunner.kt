@@ -79,12 +79,16 @@ object DeviceTestRunner {
             android.graphics.pdf.PdfRenderer::class.java.name.isNotBlank()
         }.getOrDefault(false)
 
-        val billingApiAvailable = runCatching {
-            BillingClient.newBuilder(context)
-                .setListener { _, _ -> }
-                .enablePendingPurchases(PendingPurchasesParams.newBuilder().enableOneTimeProducts().build())
-                .build() != null
-        }.getOrDefault(false)
+        val billingApiAvailable = if (com.github.tyamada.mihirakipdfviewer_android.BuildConfig.IS_SIDELOAD) {
+            false
+        } else {
+            runCatching {
+                BillingClient.newBuilder(context)
+                    .setListener { _, _ -> }
+                    .enablePendingPurchases(PendingPurchasesParams.newBuilder().enableOneTimeProducts().build())
+                    .build() != null
+            }.getOrDefault(false)
+        }
 
         val contentResolverAvailable = runCatching {
             context.contentResolver != null

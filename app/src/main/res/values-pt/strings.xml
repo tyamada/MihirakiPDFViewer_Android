@@ -160,4 +160,7 @@
     <string name="koyomi_free_notice">O emblema Koyomi é concedido automaticamente e de graça até o fim de 31 de dezembro de 2027 (horário do Japão). Nenhuma compra ou código é necessário.</string>
     <string name="koyomi_badge_description">Um emblema comemorativo do Koyomi. Usuários novos e atuais o recebem automaticamente e de graça se, ao verificar a hora atual do dispositivo, o app constatar que ainda é antes de 00:00 de 1º de janeiro de 2028 no Japão. Os emblemas salvos, incluindo os comprados anteriormente, continuam disponíveis após o prazo. Se os dados salvos no dispositivo forem perdidos, usar a mesma conta da loja não é suficiente para restaurar o emblema gratuito após o prazo. Este emblema não desbloqueia recursos pagos.</string>
     <string name="support_badge_description">Um emblema que registra seu apoio voluntário. Os direitos de compras anteriores são mantidos. Abrir estes detalhes não inicia uma compra.</string>
+    <string name="sideload_support_notice">Compras opcionais de apoio estão disponíveis na versão do Google Play. Todos os recursos de leitura estão disponíveis aqui sem compras.</string>
+    <string name="sideload_open_play_store">Abrir versão do Google Play</string>
+    <string name="sideload_update_notice">Verifique o GitHub Releases para atualizações da versão sideload.</string>
 </resources>

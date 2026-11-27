@@ -45,10 +45,10 @@ jobs:
       run: ./gradlew assembleDebug
 
     - name: Run Android Lint
-      run: ./gradlew lintDebug
+      run: ./gradlew lintPlayDebug lintSideloadDebug
 
     - name: Run unit tests
-      run: ./gradlew testDebugUnitTest
+      run: ./gradlew testPlayDebugUnitTest testSideloadDebugUnitTest
 
     - name: Validate device runner and public content
       run: |
@@ -69,8 +69,8 @@ jobs:
       with:
         name: validation-reports
         path: |
-          app/build/reports/lint-results-debug.*
-          app/build/reports/tests/testDebugUnitTest/
-          app/build/test-results/testDebugUnitTest/
+          app/build/reports/lint-results-*Debug.*
+          app/build/reports/tests/test*DebugUnitTest/
+          app/build/test-results/test*DebugUnitTest/
           .artifacts/ci/
         if-no-files-found: warn

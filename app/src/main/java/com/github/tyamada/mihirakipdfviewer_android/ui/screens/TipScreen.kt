@@ -20,6 +20,7 @@ import androidx.lifecycle.compose.LifecycleEventEffect
 import com.github.tyamada.mihirakipdfviewer_android.BuildConfig
 import com.github.tyamada.mihirakipdfviewer_android.R
 import com.github.tyamada.mihirakipdfviewer_android.billing.*
+import com.github.tyamada.mihirakipdfviewer_android.util.UpdateManager
 import com.github.tyamada.mihirakipdfviewer_android.viewmodel.ViewerViewModel
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -69,7 +70,20 @@ import com.github.tyamada.mihirakipdfviewer_android.viewmodel.ViewerViewModel
                     }
                 }
             }
-            TipTier.purchasableTiers.forEach { tier ->
+            if (BuildConfig.IS_SIDELOAD) {
+                ElevatedCard(Modifier.fillMaxWidth()) {
+                    Column(Modifier.padding(16.dp), verticalArrangement = Arrangement.spacedBy(12.dp)) {
+                        Text(stringResource(R.string.sideload_support_notice))
+                        Button(
+                            modifier = Modifier.fillMaxWidth(),
+                            onClick = { UpdateManager.openPlayStore(context) }
+                        ) {
+                            Text(stringResource(R.string.sideload_open_play_store))
+                        }
+                    }
+                }
+            } else {
+                TipTier.purchasableTiers.forEach { tier ->
                 val product = products.firstOrNull { it.productId == tier.productId }
                 val offer = product?.oneTimePurchaseOfferDetailsList?.firstOrNull()
                 val priceText = offer?.formattedPrice
@@ -130,6 +144,7 @@ import com.github.tyamada.mihirakipdfviewer_android.viewmodel.ViewerViewModel
                         if (isPurchased) OwnedBadgeButton(tier.name, badgeDetails, BadgeDetailsLocation.Support)
                     }
                 }
+            }
             }
             when (val s = purchase) {
                 is PurchaseState.Success -> {

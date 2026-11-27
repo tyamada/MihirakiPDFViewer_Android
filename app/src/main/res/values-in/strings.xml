@@ -160,4 +160,7 @@
     <string name="koyomi_free_notice">Lencana Koyomi diberikan secara otomatis dan gratis hingga akhir 31 Desember 2027 (waktu Jepang). Tidak perlu membeli atau menggunakan kode.</string>
     <string name="koyomi_badge_description">Lencana kenang-kenangan Koyomi. Pengguna lama dan baru mendapatkannya secara otomatis dan gratis jika, saat aplikasi memeriksa waktu perangkat, hasilnya menunjukkan waktu sebelum 1 Januari 2028 pukul 00.00 waktu Jepang. Lencana yang tersimpan, termasuk lencana yang dibeli sebelumnya, tetap tersedia setelah tenggat. Jika data yang tersimpan di perangkat hilang, akun toko yang sama saja tidak cukup untuk memulihkan lencana gratis setelah tenggat. Lencana ini tidak membuka fitur berbayar.</string>
     <string name="support_badge_description">Lencana sebagai tanda dukungan sukarela Anda. Hak dari pembelian sebelumnya tetap berlaku. Membuka detail ini tidak memulai pembelian.</string>
+    <string name="sideload_support_notice">Pembelian dukungan opsional tersedia di versi Google Play. Semua fitur membaca tersedia di sini tanpa pembelian.</string>
+    <string name="sideload_open_play_store">Buka versi Google Play</string>
+    <string name="sideload_update_notice">Periksa GitHub Releases untuk pembaruan versi sideload.</string>
 </resources>

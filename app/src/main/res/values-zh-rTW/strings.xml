@@ -224,4 +224,7 @@
     <string name="koyomi_free_notice">截至 2027 年 12 月 31 日（含當天，日本時間），系統會自動免費發放 Koyomi 徽章。無須購買或使用兌換碼。</string>
     <string name="koyomi_badge_description">Koyomi 紀念徽章。如果應用程式檢查裝置目前時間時，該時間早於日本時間 2028 年 1 月 1 日 00:00，新舊使用者都能自動免費取得這枚徽章。已儲存的徽章（包括先前購買的徽章）在發放截止後仍可使用。如果裝置上的儲存資料遺失，截止後僅憑同一個應用程式商店帳號無法還原免費發放的徽章。這枚徽章不會解鎖付費功能。</string>
     <string name="support_badge_description">這枚徽章用來記錄您的自願支持。先前購買取得的權益將繼續保留。開啟這些詳細資料不會啟動購買程序。</string>
+    <string name="sideload_support_notice">選擇性贊助購買僅於 Google Play 版本提供。此側載版本亦可免費使用所有閱讀功能。</string>
+    <string name="sideload_open_play_store">開啟 Google Play 版本</string>
+    <string name="sideload_update_notice">請至 GitHub Releases 查看側載版本的更新。</string>
 </resources>

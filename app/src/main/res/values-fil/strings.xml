@@ -160,4 +160,7 @@
     <string name="koyomi_free_notice">Awtomatikong ibinibigay nang libre ang Koyomi badge hanggang sa pagtatapos ng Disyembre 31, 2027 (oras sa Japan). Hindi kailangang bumili o gumamit ng code.</string>
     <string name="koyomi_badge_description">Isang pang-alaalang badge ng Koyomi. Awtomatiko itong matatanggap nang libre ng mga bago at kasalukuyang user kung, sa pagsuri ng app sa kasalukuyang oras ng device, hindi pa Enero 1, 2028, 00:00 sa Japan. Magagamit pa rin pagkatapos ng takdang oras ang mga naka-save na badge, kabilang ang mga binili dati. Kung mawala ang mga lokal na naka-save na data, hindi sapat ang parehong store account para maibalik ang libreng badge pagkatapos ng takdang oras. Hindi binubuksan ng badge na ito ang mga bayad na feature.</string>
     <string name="support_badge_description">Isang badge na pagkilala sa kusang-loob mong pagsuporta. Mananatili ang mga karapatang nakuha sa mga naunang pagbili. Hindi magsisimula ang pagbili sa pagbukas ng mga detalyeng ito.</string>
+    <string name="sideload_support_notice">Available ang mga opsyonal na pagbili ng suporta sa bersyong Google Play. Magagamit dito ang lahat ng tampok sa pagbabasa nang walang bayad.</string>
+    <string name="sideload_open_play_store">Buksan ang bersyong Google Play</string>
+    <string name="sideload_update_notice">Tingnan ang GitHub Releases para sa mga update ng sideload na bersyon.</string>
 </resources>

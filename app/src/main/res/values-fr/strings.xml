@@ -225,4 +225,7 @@
     <string name="koyomi_free_notice">Le badge Koyomi est attribué automatiquement et gratuitement jusqu’au 31 décembre 2027 inclus (heure du Japon). Aucun achat ni code n’est nécessaire.</string>
     <string name="koyomi_badge_description">Un badge commémoratif Koyomi. Les utilisateurs nouveaux et existants le reçoivent automatiquement et gratuitement si, lors de la vérification de l’heure de l’appareil, l’application constate qu’il est encore avant le 1er janvier 2028 à 00:00, heure du Japon. Les badges enregistrés, y compris ceux achetés auparavant, restent disponibles après cette échéance. En cas de perte des données enregistrées sur l’appareil, le même compte de la boutique ne suffit pas à restaurer le badge gratuit après cette échéance. Ce badge ne déverrouille aucune fonctionnalité payante.</string>
     <string name="support_badge_description">Un badge qui témoigne de votre soutien volontaire. Les droits liés aux achats antérieurs sont conservés. Consulter ces détails ne déclenche aucun achat.</string>
+    <string name="sideload_support_notice">Les achats de soutien facultatifs sont disponibles dans la version Google Play. Toutes les fonctions de lecture sont accessibles ici sans achat.</string>
+    <string name="sideload_open_play_store">Ouvrir la version Google Play</string>
+    <string name="sideload_update_notice">Consultez GitHub Releases pour les mises à jour de la version sideload.</string>
 </resources>
