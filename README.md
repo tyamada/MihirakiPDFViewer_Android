@@ -153,6 +153,7 @@ This project was developed with the assistance of AI:
 - **v2.1.10 (Code 53) — published November 20, 2026 at 18:28 JST**
   - Improved internal resource optimization to reduce the app package size.
   - Released at 100% in the existing seven countries/regions: Japan, the United States, South Korea, Taiwan, Hong Kong, Macau and Canada. Managed publishing remains on.
+  - Expanded distribution on November 26–27, 2026 to **48 countries/regions** (adding the United Kingdom, Australia, New Zealand, Singapore, Germany, France, Italy, 18 remaining Eurozone countries, 8 non-EUR European countries, Mexico, and 7 Asian countries) alongside unified USD-based regional pricing and updated multilingual store listings/screenshots.
   - Actual installations using local-country accounts in Taiwan, Hong Kong, Macau and Canada remain **on hold and unverified**.
   - [Publication status, verification scope and follow-up](docs/RELEASE_READINESS_2.1.10_53.ja.md).
 
