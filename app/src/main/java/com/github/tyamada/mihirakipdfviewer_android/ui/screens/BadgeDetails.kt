@@ -127,11 +127,15 @@ fun OwnedBadgeButton(id: String, details: BadgeDetailsState, location: BadgeDeta
     val image = badgeImage(id) ?: return
     val title = badgeTitle(id)
     val action = stringResource(R.string.badge_details_action, title)
-    BadgeSourceButton(details, badgeSourceViewId(location, id), action, Modifier.widthIn(max = 160.dp).sizeIn(minWidth = 48.dp, minHeight = 48.dp),
+    BadgeSourceButton(details, badgeSourceViewId(location, id), action, Modifier.widthIn(max = if (id == "KOYOMI") 320.dp else 160.dp)
+            .sizeIn(minWidth = 48.dp, minHeight = 48.dp),
         onOpen = { details.open(id, it) }) {
-        Column(horizontalAlignment = Alignment.CenterHorizontally) {
+        Column(
+            modifier = if (id == "KOYOMI") Modifier.padding(horizontal = 16.dp, vertical = 8.dp) else Modifier,
+            horizontalAlignment = Alignment.CenterHorizontally,
+        ) {
             Image(painterResource(image), contentDescription = null, modifier = Modifier.size(80.dp))
-            Text(title)
+            Text(title, textAlign = androidx.compose.ui.text.style.TextAlign.Center)
         }
     }
 }
