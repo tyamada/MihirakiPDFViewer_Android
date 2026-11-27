@@ -26,9 +26,11 @@ class SamplePdfManifestNetworkTest {
             val store = SamplePdfManifestStore(manifestFile)
             assertTrue("Live manifest refresh failed", store.refresh())
             val items = store.items.value
-            assertEquals(51, items.size)
+            assertTrue("Existing catalog entries must remain", items.size >= SamplePdfCatalog.items.size)
+            SamplePdfCatalog.items.forEach { old -> assertTrue(items.any { it.id == old.id }) }
             report.put("live_manifest_count", items.size)
-            val item = items.single { it.id == "ep3_ja" }
+            val sampleId = InstrumentationRegistry.getArguments().getString("sampleId") ?: "ep3_ja"
+            val item = items.single { it.id == sampleId }
             val cache = SamplePdfCache(File(root, "pdfs"))
             assertEquals(DownloadState.Success, SamplePdfDownloadManager(cache).download(item).toList().last())
             val downloaded = requireNotNull(cache.downloadedFile(item))

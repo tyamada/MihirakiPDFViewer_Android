@@ -32,6 +32,27 @@ class SamplePdfManifestTest {
         assertTrue(fil.url.endsWith("_tl.pdf"))
     }
 
+    @Test fun episodeFourUsesPerEntryReleaseAndSurvivesCachedRestart() = runBlocking {
+        val json = javaClass.getResource("/sample-pdf-manifest-ep4.json")!!.readText()
+        val file = File(temporary.newFolder(), "catalog.json")
+        val store = SamplePdfManifestStore(file, SamplePdfManifestTransfer { json })
+        assertTrue(store.refresh())
+        assertEquals(52, store.items.value.size)
+        val item = store.items.value.single { it.id == "ep4_ja" }
+        assertEquals("ja", item.languageCode)
+        assertEquals(8, item.pageCount)
+        assertEquals(99981486L, item.bytes)
+        assertEquals("7c4bde39dc25800aa097854c6e47f31934abe12b3a05d97450fb73523af3c3dc", item.sha256)
+        assertEquals("https://github.com/tyamada/manga-prompt-kit/releases/download/manga-pdf-20261127-ep4-ja-v1/tameshibu_episode4_ja.pdf", item.url)
+        val offline = SamplePdfManifestStore(file, SamplePdfManifestTransfer { throw IOException("offline") })
+        offline.load()
+        assertFalse(offline.refresh())
+        assertEquals(store.items.value, offline.items.value)
+        SamplePdfCatalog.items.forEach { old ->
+            assertEquals(old.fileName, store.items.value.single { it.id == old.id }.fileName)
+        }
+    }
+
     @Test fun malformedUnsupportedDuplicateIncompleteOrUntrustedCandidatesAreRejected() {
         listOf("not json", fixture() + " garbage", fixture().replace("\"schema_version\": 1", "\"schema_version\": 2"),
             changed { it.getAsJsonArray("entries").add(it.getAsJsonArray("entries")[0]) },
