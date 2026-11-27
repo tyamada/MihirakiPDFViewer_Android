@@ -17,4 +17,4 @@
 1. Page caching is automatically disabled on low-RAM devices.
 2. Chromebook results are based on user-reported manual checks.
 3. Results apply only to the checked scope; untested features are not certified.
-4. Pixel 8a: the Google Play build downloaded and opened the Japanese episode 4 PDF (8 pages), including landscape right-to-left spreads and forward/backward paging by keys and user-confirmed finger swipes, on November 28, 2026. This follow-up used Japanese system text; English basic-operation coverage remains in the earlier detailed record.
+4. Pixel 8a: the Google Play build downloaded and opened Japanese episode 4. Landscape right-to-left spreads, touch swipes through all eight pages and back in portrait, and panning while zoomed were verified. The full swipe and zoom checks were user-reported.
