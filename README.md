@@ -138,7 +138,7 @@ An automated build and test verification pipeline is established using GitHub Ac
 Device compatibility and verification results tested by developers and users are documented in [VERIFICATION_LIST.md](VERIFICATION_LIST.md).
 
 ## 💖 Support the Developer
-Optional Bronze, Silver and Gold tips support development and provide commemorative badges. New sales of the Koyomi badge ended on November 19, 2026; existing badges are retained. Automatic free grants through December 31, 2027 (Japan time) and badge details were introduced in 2.1.9 (52), published on November 20, 2026 at 06:59 JST, and remain available in the current 2.1.10 (53). See [the Koyomi policy and verification record](docs/KOYOMI_FREE_BADGE_2026-11-19.ja.md).
+Optional Bronze, Silver and Gold tips support development and provide commemorative badges. New sales of the Koyomi badge ended on November 19, 2026; existing badges are retained. Automatic free grants through December 31, 2027 (Japan time) and badge details were introduced in 2.1.9 (52), published on November 20, 2026 at 06:59 JST, and remain available in the current 2.1.11 (54). See [the Koyomi policy and verification record](docs/KOYOMI_FREE_BADGE_2026-11-19.ja.md).
 
 ## 🐛 Reporting Issues & Bug Reports
 If you encounter any bugs, crashes, or unexpected behavior, please open an issue on [GitHub Issues](https://github.com/tyamada/MihirakiPDFViewer_Android/issues). 
@@ -157,6 +157,10 @@ This project was developed with the assistance of AI:
 - **Modifications, Feature Implementation & Bug Fixes**: [Gemini 3.0 Flash Preview](https://deepmind.google/technologies/gemini/flash/) (via Android Studio)
 
 ## 📜 Version History
+
+- **v2.1.11 (Code 54) — published November 28, 2026 at 17:03 JST**
+  - The Japanese Google Play listing showed version 2.1.11, the November 28 update date, the English Koyomi badge title clipping fix in What's new, and the install option. [Google Play (Japan)](https://play.google.com/store/apps/details?id=com.github.tyamada.MihirakiPDFViewer_Android&hl=ja&gl=JP)
+  - Managed publishing remains on. Install verification with local accounts remains on hold. [Release record](docs/RELEASE_PREPARATION_PLAN.ja.md) · [X announcement by @tyamada22](https://x.com/tyamada22/status/2126588099912511610)
 
 - **v2.1.10 (Code 53) — published November 20, 2026 at 18:28 JST**
   - Improved internal resource optimization to reduce the app package size.

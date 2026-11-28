@@ -138,7 +138,7 @@ GitHub Actions (`.github/workflows/ci.yml`) を利用した自動ビルドおよ
 開発者およびユーザーによって検証されたデバイス互換性や動作確認の結果は、[VERIFICATION_LIST.md](VERIFICATION_LIST.md) に記載されています。
 
 ## 💖 開発者の応援
-Bronze・Silver・Goldの任意の応援購入で開発を支援でき、記念バッジを表示できます。こよみバッジの新規販売は2026年11月19日に終了し、既存バッジは保持します。2027年12月31日（日本時間）までの無料自動付与とバッジ詳細は、2026年11月20日6:59（日本時間）公開の2.1.9（52）で導入し、現行の2.1.10（53）でも維持しています。[こよみの方針・検証記録](docs/KOYOMI_FREE_BADGE_2026-11-19.ja.md)をご覧ください。
+Bronze・Silver・Goldの任意の応援購入で開発を支援でき、記念バッジを表示できます。こよみバッジの新規販売は2026年11月19日に終了し、既存バッジは保持します。2027年12月31日（日本時間）までの無料自動付与とバッジ詳細は、2026年11月20日6:59（日本時間）公開の2.1.9（52）で導入し、現行の2.1.11（54）でも維持しています。[こよみの方針・検証記録](docs/KOYOMI_FREE_BADGE_2026-11-19.ja.md)をご覧ください。
 
 ## 🐛 不具合・問題の報告 (GitHub Issues)
 アプリの不具合や予期せぬ動作、クラッシュなどが発生した場合は、[GitHub Issues](https://github.com/tyamada/MihirakiPDFViewer_Android/issues) よりご報告ください。
@@ -157,6 +157,10 @@ Bronze・Silver・Goldの任意の応援購入で開発を支援でき、記念�
 - **コードの変更・機能追加・バグ修正**: [Gemini 3.0 Flash Preview](https://deepmind.google/technologies/gemini/flash/) (Android Studio 経由)
 
 ## 📜 バージョン履歴
+
+- **v2.1.11（コード54）— 2026年11月28日17:03（日本時間）に製品版を公開**
+  - 日本向けGoogle Playでバージョン2.1.11、更新日11月28日、英語のこよみバッジ名の表示切れ修正を伝える更新情報、インストール導線を確認しました。[Google Play（日本）](https://play.google.com/store/apps/details?id=com.github.tyamada.MihirakiPDFViewer_Android&hl=ja&gl=JP)
+  - 管理対象の公開はオン。現地アカウントによる実インストール確認は保留です。[公開記録](docs/RELEASE_PREPARATION_PLAN.ja.md) · [Xの公開案内（@tyamada22）](https://x.com/tyamada22/status/2126588099912511610)
 
 - **v2.1.10（コード53）— 2026年11月20日18:28（日本時間）公開済み**
   - アプリ内部のリソース最適化を改善し、配布ファイルを軽量化。
